@@ -1,0 +1,520 @@
+{
+    "game": "dnd35",
+    "name": "Dungeons & Dragons 3.5",
+
+    "pages": [
+        { "file": "Core/Character Info.pdf", "slot": "core", "variant": "simple", "name": "simplified", "position": 15 },
+        { "file": "Core/Combat.pdf", "slot": "combat", "variant": "simple", "name": "simplified", "position": 16 },
+
+        { "file": "Core/Character Info.pdf", "slot": "core", "name": "Character Info" },
+        { "file": "Core/Extended Combat.pdf", "slot": "combat", "name": "Combat" },
+
+        { "file": "Core/Extended Inventory.pdf", "slot": "inventory", "name": "Inventory", "position": 83 },
+        { "file": "Core/Extended Inventory.pdf", "slot": "inventory", "variant": "with", "name": "with accessories", "position": 83 },
+        { "file": "Core/Inventory.pdf", "slot": "inventory", "variant": "without", "name": "without accessories", "position": 83 },
+
+        { "file": "Psionics/Psionic Character Info.pdf", "slot": "core", "variant": "psionic", "name": "Psionic Character Info", "position": 15 },
+        { "file": "Psionics/Psionic Combat.pdf", "slot": "combat", "variant": "psionic", "name": "Psionic Combat", "position": 16 },
+        { "file": "Psionics/Psionic Inventory.pdf", "slot": "inventory", "variant": "psionic", "name": "Psionic Inventory", "position": 83 },
+
+        { "file": "Barbarian/Character Info.pdf", "slot": "core", "variant": "barbarian", "name": "Barbarian", "position": 15 },
+            { "file": "Barbarian/Combat.pdf", "slot": "combat", "variant": "barbarian", "name": "Barbarian", "position": 16 },
+        { "file": "Core/Bard.pdf", "slot": "bard", "name": "Bard" },
+        { "file": "Core/Cleric.pdf", "slot": "cleric", "name": "Cleric" },
+        { "file": "Core/Druid.pdf", "slot": "druid", "name": "Druid" },
+            { "file": "Core/Wild Shape.pdf", "slot": "wildshape", "name": "Wild Shape", "position": 90 },
+        { "file": "Core/Monk.pdf", "slot": "monk", "name": "Monk" },
+        { "file": "Core/Paladin.pdf", "slot": "paladin", "name": "Paladin" },
+        { "file": "Core/Ranger.pdf", "slot": "ranger", "name": "Ranger" },
+        { "file": "Core/Sorcerer.pdf", "slot": "sorcerer", "name": "Sorcerer" },
+            { "file": "Variants/Sorcerer + Metamagic.pdf", "slot": "sorcerer", "variant": "metamagic", "name": "Metamagic Specialist" },
+        { "file": "Core/Wizard.pdf", "slot": "wizard", "name": "Wizard" },
+            { "file": "Variants/Focused Specialist Wizard.pdf", "slot": "wizard", "variant": "focus", "name": "Focused Specialist"},
+
+        { "file": "Extended/Beguiler.pdf", "slot": "beguiler", "name": "Beguiler" },
+        { "file": "Extended/Dragon Shaman.pdf", "slot": "dragonshaman", "name": "Dragon Shaman" },
+        { "file": "Extended/Duskblade.pdf", "slot": "duskblade", "name": "Duskblade" },
+        { "file": "Extended/Ninja.pdf", "slot": "ninja", "name": "Ninja" },
+        { "file": "Extended/Spellthief.pdf", "slot": "spellthief", "name": "Spellthief" },
+        { "file": "Extended/Warlock.pdf", "slot": "warlock", "name": "Warock" },
+        { "file": "Extended/Warmage.pdf", "slot": "warmage", "name": "Warmage" },
+        { "file": "Extended/Wu Jen.pdf", "slot": "wujen", "name": "Wu Jen" },
+        { "file": "Extended/Favoured Soul.pdf", "slot": "favouredsoul", "name": "Favoured Soul" },
+        { "file": "Extended/Shugenja.pdf", "slot": "shugenja", "name": "Shugenja" },
+        { "file": "Extended/Spirit Shaman.pdf", "slot": "spiritshaman", "name": "Spirit Shaman" },
+        { "file": "Psionics/Ardent.pdf", "slot": "ardent", "name": "Ardent" },
+        { "file": "Psionics/Divine Mind.pdf", "slot": "divinemind", "name": "Divine Mind" },
+        { "file": "Psionics/Lurk.pdf", "slot": "lurk", "name": "Lurk" },
+        { "file": "Extended/Hexblade.pdf", "slot": "hexblade", "name": "Hexblade" },
+        { "file": "Dragon Compendium/Battle Dancer.pdf", "slot": "battledancer", "name": "Battle Dancer" },
+        { "file": "Dragon Compendium/Death Master.pdf", "slot": "deathmaster", "name": "Death Master" },
+        { "file": "Dragon Compendium/Jester.pdf", "slot": "jester", "name": "Jester" },
+        { "file": "Dragon Compendium/Mountebank.pdf", "slot": "mountebank", "name": "Mountebank" },
+        { "file": "Dragon Compendium/Savant.pdf", "slot": "savant", "name": "Savant" },
+        { "file": "Dragon Compendium/Sha'ir.pdf", "slot": "shair", "name": "Sha'ir" },
+        { "file": "Dragon Compendium/Urban Druid.pdf", "slot": "urbandruid", "name": "Urban Druid" },
+        { "file": "Extended/Dragonfire Adept.pdf", "slot": "dragonfireadept", "name": "Dragonfire Adept" },
+        { "file": "Extended/Factotum.pdf", "slot": "factotum", "name": "Factotum" },
+        { "file": "Extended/Artificer.pdf", "slot": "artificer", "name": "Artificer" },
+        { "file": "Extended/Archivist.pdf", "slot": "archivist", "name": "Archivist" },
+        { "file": "Extended/Dread Necromancer.pdf", "slot": "dreadnecromancer", "name": "Dread Necromancer" },
+        { "file": "Incarnum/Incarnate.pdf", "slot": "incarnate", "name": "Incarnate" },
+        { "file": "Incarnum/Soulborn.pdf", "slot": "soulborn", "name": "Soulborn" },
+        { "file": "Incarnum/Totemist.pdf", "slot": "totemist", "name": "Totemist" },
+        { "file": "Psionics/Psion.pdf", "slot": "psion", "name": "Psion" },
+        { "file": "Psionics/Psychic Warrior.pdf", "slot": "psychicwarrior", "name": "Psychic Warrior" },
+        { "file": "Psionics/Soulknife.pdf", "slot": "soulknife", "name": "Soulknife" },
+        { "file": "Psionics/Wilder.pdf", "slot": "wilder", "name": "Wilder" },
+        { "file": "Tomes/Crusader.pdf", "slot": "crusader", "name": "Crusader" },
+        { "file": "Tomes/Swordsage.pdf", "slot": "swordsage", "name": "Swordsage" },
+        { "file": "Tomes/Warblade.pdf", "slot": "warblade", "name": "Warblade" },
+        { "file": "Tomes/Blank Tome of Battle.pdf", "slot": "martialadept", "name": "Blank Martial Adept" },
+        { "file": "Tomes/Binder.pdf", "slot": "binder", "name": "Binder" },
+        { "file": "Tomes/Binder (More Vestiges).pdf", "slot": "vestiges", "name": "Vestiges" },
+        { "file": "Tomes/Shadowcaster.pdf", "slot": "shadowcaster", "name": "Shadowcaster" },
+        { "file": "Tomes/Truenamer.pdf", "slot": "truenamer", "name": "Truenamer" },
+        
+        { "file": "Extended/Extended Cleric.pdf", "slot": "cleric", "variant": "extended", "name": "Extended Cleric", "position": 26 },
+        { "file": "Extended/Extended Paladin.pdf", "slot": "paladin", "variant": "extended", "name": "Extended Paladin", "position": 30 },
+        { "file": "Extended/Blank Spellcaster.pdf", "slot": "caster", "variant": "spontaneous", "name": "Spontaneous Caster" },
+        { "file": "Extended/Blank Spellcaster 2.pdf", "slot": "caster", "variant": "vancian", "name": "Vancian Caster" },
+        { "file": "Extended/Blank Spellcaster 3.pdf", "slot": "caster", "variant": "lesser", "name": "Lesser Caster" },
+
+        { "file": "Extended/Character Background.pdf", "slot": "background", "name": "Character Background" },
+        { "file": "Core/Party Funds.pdf", "slot": "partyfunds", "name": "Party Funds" },
+
+        { "file": "Core/Spell Book.pdf", "slot": "spellbook", "name": "Spellbook" },
+        { "file": "Core/Spell Book (Large).pdf", "slot": "spellbook", "variant": "large", "name": "Large" },
+        { "file": "Core/Spell Book (Dense).pdf", "slot": "spellbook", "variant": "small", "name": "Small" },
+
+        { "file": "Core/Animal Companion.pdf", "slot": "animalcompanion", "name": "Animal Companion" },
+        { "file": "Psionics/Psicrystal.pdf", "slot": "psicrystal", "name": "Psicrystal" }
+    ],
+    
+    "gm": [
+        { "file": "DM/Party.pdf", "name": "Party" },
+        { "file": "DM/NPC.pdf", "name": "NPC" },
+        { "file": "DM/NPC Group.pdf", "name": "NPC Group" },
+        { "file": "DM/Grid.pdf", "name": "Map - Grid" },
+        { "file": "DM/Hex Grid.pdf", "name": "Map - Hex"},
+        { "file": "DM/Fine Hex Grid.pdf", "name": "Map - Hex (fine)" },
+        { "file": "DM/Isometric (Portrait).pdf", "name": "Map - Isometric (portrait)" },
+        { "file": "DM/Isometric (Landscape).pdf", "name": "Map - Isometric (landscape)" },
+        { "file": "DM/Fine Isometric (Portrait).pdf", "name": "Map - Isometric (fine portrait)" },
+        { "file": "DM/Fine Isometric (Landscape).pdf", "name": "Map - Isometric (fine landscape)" },
+
+        { "file": "DM/Timeline (Portrait).pdf", "name": "Timeline (Portrait)" },
+        { "file": "DM/Timeline (Portrait - continued).pdf", "name": "Timeline (Portrait - continued)" },
+        { "file": "DM/Timeline (Landscape).pdf", "name": "Timeline (Landscape)" },
+        { "file": "DM/Timeline (Landscape - continued).pdf", "name": "Timeline (Landscape - continued)" }
+    ],
+
+    "base": {
+        "pages": [ "core", "combat", "inventory" ]
+    },
+
+    "layout": [
+        [ "Player's Handbook", "Player's Handbook II", "Complete Adventurer", "Complete Arcane", "Complete Divine" ],
+        [ "Complete Psionic", "Complete Warrior", "Dragon Compendium", "Dragon Magic", "Dungeonscape", "Eberron Campaign Setting", "Heroes of Horror" ],
+        [ "Magic of Incarnum", "Psionics Handbook", "Tome of Battle", "Tome of Magic", "Generic"]
+    ],
+
+    "books": [
+        {
+            "name": "Player's Handbook",
+            "classes": [ "Barbarian", "Bard", "Cleric", "Druid", "Fighter", "Monk", "Paladin", "Ranger", "Rogue", "Sorcerer", "Wizard" ]
+        },
+
+        {
+            "name": "Player's Handbook II",
+            "classes": [ "Beguiler", "Dragon Shaman", "Duskblade" ]
+        },
+
+        {
+            "name": "Complete Adventurer",
+            "classes": [ "Ninja", "Spellthief" ]
+        },
+
+        {
+            "name": "Complete Arcane",
+            "classes": [ "Warlock", "Warmage", "Wu Jen" ]
+        },
+
+        {
+            "name": "Complete Divine",
+            "classes": [ "Favoured Soul", "Shugenja", "Spirit Shaman" ]
+        },
+
+        {
+            "name": "Complete Psionic",
+            "classes": [ "Ardent", "Divine Mind", "Lurk" ]
+        },
+
+        {
+            "name": "Complete Warrior",
+            "classes": [ "Hexblade" ]
+        },
+
+        {
+            "name": "Dragon Compendium",
+            "classes": [ "Battle Dancer", "Death Master", "Jester", "Mountebank", "Savant", "Sha'ir", "Urban Druid"]
+        },
+
+        {
+            "name": "Dragon Magic",
+            "classes": [ "Dragonfire Adept" ]
+        },
+
+        {
+            "name": "Dungeonscape",
+            "classes": [ "Factotum" ]
+        },
+
+        {
+            "name": "Eberron Campaign Setting",
+            "classes": [ "Artificer" ]
+        },
+
+        {
+            "name": "Heroes of Horror",
+            "classes": [ "Archivist", "Dread Necromancer" ]
+        },
+
+        {
+            "name": "Magic of Incarnum",
+            "classes": [ "Incarnate", "Soulborn", "Totemist" ]
+        },
+
+        {
+            "name": "Psionics Handbook",
+            "classes": [ "Psion", "Psychic Warrior", "Soulknife", "Wilder" ]
+        },
+
+        {
+            "name": "Tome of Battle",
+            "classes": [ "Crusader", "Swordsage", "Warblade", "Blank Tome of Battle" ]
+        },
+
+        {
+            "name": "Tome of Magic",
+            "classes": [ "Binder", "Shadowcaster", "Truenamer" ]
+        },
+
+        {
+            "name": "Generic",
+            "classes": [ "Spellcaster" ]
+        }
+    ],
+
+    "classes": [
+        {
+            "name": "Barbarian",
+            "pages": [ "core/barbarian", "combat/barbarian", "inventory/without" ]
+        },
+
+        {
+            "name": "Bard",
+            "pages": [ "bard", "inventory/without", "spellbook" ]
+        },
+
+        {
+            "name": "Cleric",
+            "pages": [ "cleric", "inventory/without", "spellbook" ],
+            "variants": [
+                {
+                    "name": "Extended Cleric",
+                    "variantName": "Extended",
+                    "pages": [ "cleric/extended" ]
+                }
+            ]
+        },
+
+        {
+            "name": "Druid",
+            "pages": [ "druid", "wildshape", "inventory/without", "spellbook" ]
+        },
+
+        {
+            "name": "Fighter",
+            "pages": [ ]
+        },
+
+        {
+            "name": "Monk",
+            "pages": [ "monk" ]
+        },
+
+        {
+            "name": "Paladin",
+            "pages": [ "paladin", "inventory/without", "spellbook" ],
+            "variants": [
+                {
+                    "name": "Extended Paladin",
+                    "variantName": "Extended",
+                    "pages": [ "paladin/extended" ]
+                }
+            ]
+        },
+
+        {
+            "name": "Ranger",
+            "pages": [ "ranger", "spellbook" ]
+        },
+
+        {
+            "name": "Rogue",
+            "pages": [ ]
+        },
+
+        {
+            "name": "Sorcerer",
+            "pages": [ "sorcerer", "inventory/without", "spellbook" ],
+            "variants": [
+                {
+                    "name": "Sorcerer (Metamagic Specialist)",
+                    "pages": [ "sorcerer/metamagic" ]
+                }
+            ]
+        },
+
+        {
+            "name": "Wizard",
+            "pages": [ "wizard", "inventory/without", "spellbook" ],
+            "variants": [
+                {
+                    "name": "Wizard (Focus Specialist)",
+                    "pages": [ "wizard/focus" ]
+                }
+            ]
+        },
+
+        {
+            "name": "Beguiler",
+            "pages": [ "beguiler", "inventory/without", "spellbook" ]
+        },
+
+        {
+            "name": "Dragon Shaman",
+            "pages": [ "dragonshaman", "inventory/without" ]
+        },
+
+        {
+            "name": "Duskblade",
+            "pages": [ "duskblade", "inventory/without", "spellbook" ]
+        },
+
+        {
+            "name": "Ninja",
+            "pages": [ "ninja" ]
+        },
+
+        {
+            "name": "Spellthief",
+            "pages": [ "spellthief", "spellbook" ]
+        },
+
+        {
+            "name": "Warlock",
+            "pages": [ "warlock", "inventory/without" ]
+        },
+
+        {
+            "name": "Warmage",
+            "pages": [ "warmage", "inventory/without", "spellbook" ]
+        },
+
+        {
+            "name": "Wu Jen",
+            "pages": [ "wujen", "inventory/without", "spellbook"]
+        },
+
+        {
+            "name": "Favoured Soul",
+            "pages": [ "favouredsoul", "spellbook" ]
+        },
+
+        {
+            "name": "Shugenja",
+            "pages": [ "shugenja", "spellbook" ]
+        },
+
+        {
+            "name": "Spirit Shaman",
+            "pages": [ "spiritshaman", "spellbook" ]
+        },
+
+        {
+            "name": "Ardent",
+            "pages": [ "core/psionic", "combat/psionic", "inventory/without", "ardent" ]
+        },
+
+        {
+            "name": "Divine Mind",
+            "pages": [ "core/psionic", "combat/psionic", "inventory/without", "divinemind" ]
+        },
+
+        {
+            "name": "Lurk",
+            "pages": [ "core/psionic", "combat/psionic", "inventory/psionic", "lurk" ]
+        },
+
+        {
+            "name": "Hexblade",
+            "pages": [ "hexblade", "inventory/without", "spellbook" ]
+        },
+
+        {
+            "name": "Battle Dancer",
+            "pages": [ "battledancer", "inventory/without" ]
+        },
+
+        {
+            "name": "Death Master",
+            "pages": [ "deathmaster", "inventory/without", "spellbook"]
+        },
+
+        {
+            "name": "Jester",
+            "pages": [ "jester", "inventory/without", "spellbook"]
+        },
+
+        {
+            "name": "Mountebank",
+            "pages": [ "mountebank", "inventory/without", "spellbook"]
+        },
+
+        {
+            "name": "Savant",
+            "pages": [ "savant", "inventory/without", "spellbook"]
+        },
+
+        {
+            "name": "Sha'ir",
+            "pages": [ "shair", "inventory/without", "spellbook"]
+        },
+
+        {
+            "name": "Urban Druid",
+            "pages": [ "urbandruid", "inventory/without", "spellbook"]
+        },
+
+        {
+            "name": "Dragonfire Adept",
+            "pages": [ "dragonfireadept", "inventory/without" ]
+        },
+
+        {
+            "name": "Factotum",
+            "pages": [ "factotum", "spellbook"]
+        },
+
+        {
+            "name": "Artificer",
+            "pages": [ "artificer", "inventory/without", "spellbook"]
+        },
+
+        {
+            "name": "Archivist",
+            "pages": [ "archivist", "inventory/without", "spellbook"]
+        },
+
+        {
+            "name": "Dread Necromancer",
+            "pages": [ "dreadnecromancer", "inventory/with", "spellbook"]
+        },
+
+        {
+            "name": "Incarnate",
+            "pages": [ "incarnate" ]
+        },
+
+        {
+            "name": "Soulborn",
+            "pages": [ "soulborn", "inventory/without" ]
+        },
+
+        {
+            "name": "Totemist",
+            "pages": [ "totemist", "inventory/without" ]
+        },
+
+        {
+            "name": "Psion",
+            "pages": [ "core/psionic", "combat/psionic", "psion", "inventory/without" ]
+        },
+
+        {
+            "name": "Psychic Warrior",
+            "pages": [ "core/psionic", "combat/psionic", "psychicwarrior", "inventory/without", "psicrystal" ]
+        },
+
+        {
+            "name": "Soulknife",
+            "pages": [ "core/psionic", "combat/psionic", "soulknife", "inventory/without" ]
+        },
+
+        {
+            "name": "Wilder",
+            "pages": [ "core/psionic", "combat/psionic", "wilder", "inventory/without", "psicrystal" ]
+        },
+
+        {
+            "name": "Crusader",
+            "pages": [ "crusader" ]
+        },
+
+        {
+            "name": "Swordsage",
+            "pages": [ "swordsage" ]
+        },
+
+        {
+            "name": "Warblade",
+            "pages": [ "warblade" ]
+        },
+
+        {
+            "name": "Martial Adept",
+            "pages": [ "martialadept" ]
+        },
+
+        {
+            "name": "Binder",
+            "pages": [ "binder", "vestiges"]
+        },
+
+        {
+            "name": "Shadowcaster",
+            "pages": [ "shadowcaster" ]
+        },
+
+        {
+            "name": "Truenamer",
+            "pages": [ "truenamer" ]
+        },
+
+        {
+            "name": "Spellcaster",
+            "pages": [ ],
+            "variants": [
+                {
+                    "name": "Spontaneous Caster",
+                    "variantName": "Spontaneous",
+                    "pages": [ "caster/spontaneous", "inventory/without", "spellbook"]
+                },
+
+                {
+                    "name": "Vancian Caster",
+                    "variantName": "Vancian",
+                    "pages": [ "caster/vancian", "inventory/without", "spellbook"]
+                },
+
+                {
+                    "name": "Lesser Caster",
+                    "variantName": "Lesser",
+                    "pages": [ "caster/lesser", "inventory/without", "spellbook"]
+                }
+            ]
+        }
+    ]
+}

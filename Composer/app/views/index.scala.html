@@ -1,0 +1,182 @@
+
+@note() = {
+  @defining(controllers.Application.randomQuote) { quote =>
+    <aside class='float right top'>
+      <aside class='note'>
+        <blockquote class='@quote.noteClass'>@quote.quote</blockquote>
+        <cite>&mdash; @quote.author</cite>
+      </aside>
+    </aside>
+  }
+}
+
+@main("Character Sheets by Dyslexic Studeos") {
+
+    <header id='bodyheader'>
+      <h1>Character Sheets by Dyslexic Studeos</h1>
+
+      <nav class='tabs'>
+        <ul>
+          <li><a rel='#download-tab' class='selected'>Download</a></li>
+          <li><a rel='#tour-tab'>Tour</a></li>
+          <li><a rel='#howto-tab'>How to use</a></li>
+          <li><a rel='#opensource-tab'>Open source</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <section class='tab selected' id='download-tab'>
+      @note()
+
+      <p class='introduction'>Roleplaying games are all about your character. Whatever your game, you spend a lot of time looking at your character sheet so it's worth having a good one.</p>
+      <p>We here present a surprisingly complete set of character sheets for Pathfinder and Dungeons and Dragons 3.5 edition, covering hundreds of classes, along with familiars, spell books, NPCs and map templates.</p>
+      <p>Click one of the buttons below to build your character. Alternatively you can download the whole PDF (each about 100 pages).</p>
+
+      <article class='box' id='main-buttons'>
+        <div class='yui3-g'>
+          <div class='yui3-u-1-2'>
+            <p><img src='@routes.Assets.at("images/c_druid.png")'/></p>
+          </div>
+          <div class='yui3-u-1-2'>
+            <p><img src='@routes.Assets.at("images/c_cleric.png")'/></p>
+          </div>
+        </div>
+
+        <div class='yui3-g'>
+          <div class='yui3-u-1-2'>
+            <p><img src='@routes.Assets.at("images/pathfinder.png")'/></p>
+          </div>
+          <div class='yui3-u-1-2'>
+            <p><img src='@routes.Assets.at("images/dnd35.png")'/></p>
+          </div>
+        </div>
+
+        <div class='yui3-g'>
+          <div class='yui3-u-1-2'>
+            <p><a class='button' href='/build/pathfinder'>Build my character</a></p>
+          </div>
+          <div class='yui3-u-1-2'>
+            <p><a class='button' href='/build/dnd35'>Build my character</a></p>
+          </div>
+        </div>
+      </article>
+    </section>
+
+
+
+    <section class='tab' id='tour-tab'>
+      @note()
+      
+      <p class='introduction'>When I started playing D&amp;D, I wasn’t satisfied with the default sheets. In investigating the other options, I found many with features that were interesting, but none entirely to my satisfaction. I found myself compiling a list of desired features, and had started designing these sheets before I realised.</p>
+      <p>The feature I was most certain of was that each class would have a sheet of their own. There are hundreds of classes, each with their own rules and variants, and a one-size-fits-all sheet can’t possibly do them justice: it wastes space on things that don’t belong there, while failing to keep track of the ki points, spell-like abilities, favoured enemies and sneak attack bonuses that make each class special.</p>
+      <p>These character sheets are entirely free, and my only hope is that they are useful to you.</p>
+
+      <div class='yui3-g clear'><div class='yui3-u-1-2'><div class='col left'>
+        <h3>What's a character sheet?</h3>
+          <p>When you play a roleplaying game with friends, you each play a character. The character sheet is where you keep track of what your character knows, what they're capable of, what they're carrying and what state they're in.</p>
+          <p>These are character sheets for use with the <a href='http://paizo.com/pathfinder'>Pathfinder RPG</a> and <a href='http://www.wizards.com/default.asp?x=d20/article/srd35'>Dungeons &amp; Dragons 3.5</a>. They replace the character sheets for each of those games.</p>
+
+        <h3>How are these different from the ones I already have?</h3>
+          <p>The standard character sheets for both D&amp;D 3.5 and Pathfinder try to cover all different classes with the same design, meaning a lot of space is wasted while important details are overlooked.</p>
+          <p>These sheets are different for every character. On top of the core pages each class has a page of its own, as well as extra support pages for inventory, spells, animal companions etc. The result is a comprehensive set of sheets tailored to your character.</p>
+
+        <h3>So are these electronic? Do I need a computer to play?</h3>
+          <p>No, these are made to be printed out and written on in pencil.</p>
+
+      </div></div>
+      <div class='yui3-u-1-2'><div class='col right'>
+        <h3>What do they cost?</h3>
+          <p>Nothing. These character sheets are free.</p>
+          <p>In fact, they're more than just free, they're open source.</p>
+
+        <h3>Do I still need to buy the books?</h3>
+          <p>Yes, you'll still need the rulebooks to play the game. These character sheets don't replace them at all, they just make it easier to keep track of some details.</p>
+          <p>Both Paizo and Wizards of the Coast have created great stuff, and we wholeheartedly encourage you to go out and buy it. And the same goes for any third party material you play with.</p>
+
+        <h3>You made a mistake!</h3>
+          <p>All these sheets have been much improved by the suggestions of hundreds of people. If you have feedback, suggestions or improvements, I'd love to hear them.</p>
+          <p class='center'><a rel='#message-lightbox' class='button lightbox' href='/message'>Leave a message</a></p>
+      </div></div></div>
+    </section>
+
+
+
+    <section class='tab' id='howto-tab'>
+      @note()
+      
+      <p class='introduction'>First, go to the <a rel='#download-tab'>Download</a> tab and start building your character. After a few steps you'll be able to download a PDF containing exactly the pages you need.</p>
+
+      <table id='example'>
+        <tr><th>Character Info</th><th>Class-Specific Sheets</th></tr>
+        <tr class='top-row'>
+          <td><a rel='charinfo-page'><img src='/assets/images/example/charinfo-min.png'/></td>
+          <td><a rel='class-page'><img src='/assets/images/example/ranger-min.png'/></td>
+          <td><a rel='familiar-page'><img src='/assets/images/example/familiar-min.png'/></td>
+          <td><a rel='spellbook-page'><img src='/assets/images/example/spellbook-min.png'/></td>
+        </tr>
+        <tr>
+          <td><img src='/assets/images/example/flip.png'/></td>
+          <td><img src='/assets/images/example/flip.png'/></td>
+          <td><img src='/assets/images/example/flip.png'/></td>
+          <td><img src='/assets/images/example/flip.png'/></td>
+        </tr>
+        <tr class='bottom-row'>
+          <td><a rel='combat-page'><img src='/assets/images/example/combat-min.png'/></td>
+          <td><a rel='inventory-page'><img src='/assets/images/example/inventory-min.png'/></td>
+          <td><a rel='familiar-reverse-page'><img src='/assets/images/example/familiar-reverse-min.png'/></td>
+          <td><a rel='spellbook-page'><img src='/assets/images/example/spellbook-min.png'/></td>
+        </tr>
+        <tr><th>Combat</th><th>Inventory</th><th>Animal Companion</th><th>Spellbook</th></tr>
+      </table>
+
+
+    </section>
+
+
+
+    <section class='tab' id='opensource-tab'>
+      @note()
+
+      <p class='introduction'>Open source means that these character sheets are more than just free, they're everybody's to change and copy. Anybody can take the building blocks and use them to create new sheets of their own based on this design.</p>
+      <br/>
+
+        <p class='center'>
+          <a class='button' href=''>Get the Files</a>
+        </p>
+
+      <div class='yui3-g clear'><div class='yui3-u-1-2'><div class='col left'>
+        <h3>What do I do with them?</h3>
+          <p>You can get either the whole lot, or just the individual files you want. To edit them you'll need a copy of Adobe Illustrator, or something which can read Illustrator files.</p>
+          <p>If you'd like to contribute your changes back to the project, send me a message with your contact details. If I like your work I'll incorporate it into the project. Even if I don't, you can still publish it on Paizo's forums for others to see. For best results, learn to use the Git version control system and you'll be able to contribute your suggestions directly.</p>
+
+        <h3>What's to stop me stealing them?</h3>
+          <p>Using the sheets as you see fit isn't stealing them, it's fair use - even if you make changes to them.</p>
+          <p>The only way you could &ldquo;steal&rdquo; the sheets is to plagiarise them - to claim that you made them yourself.</p>
+
+        <h3>Technical Stuff</h3>
+          <p>This website and the Build My Character tool are written using <a href='http://www.playframework.org'>the Play! Framework 2.0</a>, <a href='http://www.scala-lang.org'>Scala</a> and the <a href='http://itextpdf.com/'>iText</a> library.</p>
+
+      </div></div>
+      <div class='yui3-u-1-2'><div class='col right'>
+
+        <h3>Artistic License 2.0</h3>
+          <p>These files have been released under the <a href='http://dev.perl.org/licenses/artistic.html'>Artistic License 2.0</a>, which a very permissive license. You're allowed to:</p>
+          <ul>
+            <li>Distribute copies of these files</li>
+            <li>Make modifications, publish those modifications for other people and incorporate other people's modifications</li>
+            <li>Run your own copy of the Build My Character tool</li>
+            <li>Include these character sheets within products of your own</li>
+          </ul>
+          <p>On condition that:</p>
+          <ul>
+            <li>You're honest about where the work came from, crediting this website, and don't remove any copyright notices from the files</li>
+            <li>You don't charge money for these sheets (except for a reasonable distribution fee)</li>
+            <li>You respect the intellectual property belonging to other companies (notably Paizo Publishing LLC and Wizards of the Coast LLC, as well as any third parties)</li>
+          </ul>
+          <p>For the purposes of the license, the artwork files are considered &ldquo;source&rdquo; while the complete PDF is considered an &ldquo;executable&rdquo;. The same license also covers this website and the Build My Character tool.</p>
+          <p>If you need something not covered by the license, or have any questions, just ask.</p>
+          <p class='center'><a rel='#message-lightbox' class='button lightbox' href='/message'>Leave a message</a></p>
+
+      </div></div></div>
+    </section>
+}

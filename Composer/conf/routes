@@ -1,0 +1,21 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET     /                           controllers.Application.index
+#GET     /message                    controllers.Application.leaveMessageForm
+#POST    /message                    controllers.Application.leaveMessage
+#GET     /message/thanks             controllers.Application.messageThanks
+
+GET     /build/pathfinder           controllers.Application.buildPathfinder
+GET     /build/dnd35                controllers.Application.buildDnd35
+GET     /build/test                 controllers.Application.buildTest
+
+POST    /pdf/pathfinder             controllers.Composer.downloadPathfinder
+POST    /pdf/dnd35                  controllers.Composer.downloadDnd35
+
+
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.at(path="/public", file)

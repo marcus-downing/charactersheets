@@ -1,0 +1,511 @@
+{
+    "game": "pathfinder",
+    "name": "Pathfinder RPG",
+
+    "pages": [
+        { "file": "Core/Character Info.pdf", "slot": "core", "name": "Character Info" },
+        { "file": "Core/Combat.pdf", "slot": "combat", "name": "Combat" },
+
+        { "file": "Core/Inventory.pdf", "slot": "inventory", "name": "Inventory", "position": 53 },
+        { "file": "Core/Inventory.pdf", "slot": "inventory", "variant": "with", "name": "with accessories", "position": 53 },
+        { "file": "Core/Inventory 2.pdf", "slot": "inventory", "variant": "without", "name": "without accessories", "position": 53 },
+
+        { "file": "Core/Barbarian/Barbarian - Character Info.pdf", "slot": "core", "variant": "barbarian", "name": "Barbarian", "position": 10 },
+          { "file": "Core/Barbarian/Barbarian - Combat.pdf", "slot": "combat", "variant": "barbarian", "name": "Barbarian", "position": 11 },
+          { "file": "Core/Barbarian/Barbarian.pdf", "slot": "barbarian", "name": "Barbarian" },
+            { "file": "Archetypes/Barbarian/Armoured Hulk.pdf", "slot": "barbarian", "variant": "armouredhulk", "name": "Armoured Hulk" },
+            { "file": "Archetypes/Barbarian/Breaker.pdf", "slot": "barbarian", "variant": "breaker", "name": "Breaker" },
+            { "file": "Archetypes/Barbarian/Brutal Pugilist.pdf", "slot": "barbarian", "variant": "brutalpugilist", "name": "Brutal Pugilist" },
+            { "file": "Archetypes/Barbarian/Drunken Brute.pdf", "slot": "barbarian", "variant": "drunkenbrute", "name": "Drunken Brute" },
+            { "file": "Archetypes/Barbarian/Elemental Kin.pdf", "slot": "barbarian", "variant": "elementalkin", "name": "Elemental Kin" },
+            { "file": "Archetypes/Barbarian/Hurler.pdf", "slot": "barbarian", "variant": "hurler", "name": "Hurler" },
+            { "file": "Archetypes/Barbarian/Invulnerable Rager.pdf", "slot": "barbarian", "variant": "invulnerablerager", "name": "Invulnerable Rager" },
+            { "file": "Archetypes/Barbarian/Mounted Fury.pdf", "slot": "barbarian", "variant": "mountedfury", "name": "Mounted Fury" },
+            { "file": "Archetypes/Barbarian/Savage Barbarian.pdf", "slot": "barbarian", "variant": "savage", "name": "Savage Barbarian" },
+            { "file": "Archetypes/Barbarian/Scarred Rager.pdf", "slot": "barbarian", "variant": "scarredrager", "name": "Scarred Rager" },
+            { "file": "Archetypes/Barbarian/Sea Reaver.pdf", "slot": "barbarian", "variant": "seareaver", "name": "Sea Reaver" },
+            { "file": "Archetypes/Barbarian/Superstitious Barbarian.pdf", "slot": "barbarian", "variant": "superstitious", "name": "Superstitious Barbarian" },
+            { "file": "Archetypes/Barbarian/Titan Mauler.pdf", "slot": "barbarian", "variant": "titanmauler", "name": "Titan Mauler" },
+            { "file": "Archetypes/Barbarian/True Primitive.pdf", "slot": "barbarian", "variant": "trueprimitive", "name": "True Primitive" },
+            { "file": "Archetypes/Barbarian/Urban Barbarian.pdf", "slot": "barbarian", "variant": "urban", "name": "Urban Barbarian" },
+            { "file": "Archetypes/Barbarian/Wild Rager.pdf", "slot": "barbarian", "variant": "wildrager", "name": "Wild Rager" },
+
+        { "file": "Core/Bard.pdf", "slot": "bard", "name": "Bard" },
+            { "file": "Archetypes/Bard/Animal Speaker.pdf", "slot": "bard", "variant": "animalspeaker", "name": "Animal Speaker" },
+            { "file": "Archetypes/Bard/Arcane Duelist.pdf", "slot": "bard", "variant": "arcaneduelist", "name": "Arcane Duelist" },
+            { "file": "Archetypes/Bard/Archaeologist.pdf", "slot": "bard", "variant": "archaeologist", "name": "Archaeologist" },
+            { "file": "Archetypes/Bard/Archivist.pdf", "slot": "bard", "variant": "archivist", "name": "Archivist" },
+            { "file": "Archetypes/Bard/Celebrity.pdf", "slot": "bard", "variant": "celebrity", "name": "Celebrity" },
+            { "file": "Archetypes/Bard/Court Bard.pdf", "slot": "bard", "variant": "courtbard", "name": "Court Bard" },
+            { "file": "Archetypes/Bard/Daredevil.pdf", "slot": "bard", "variant": "daredevil", "name": "Daredevil" },
+            { "file": "Archetypes/Bard/Demagogue.pdf", "slot": "bard", "variant": "demagogue", "name": "Demagogue" },
+            { "file": "Archetypes/Bard/Dervish Dancer.pdf", "slot": "bard", "variant": "dervishdancer", "name": "Dervish Dancer" },
+            { "file": "Archetypes/Bard/Detective.pdf", "slot": "bard", "variant": "detective", "name": "Detective" },
+            { "file": "Archetypes/Bard/Dirge Bard.pdf", "slot": "bard", "variant": "dirge", "name": "Archaeologist" },
+            { "file": "Archetypes/Bard/Geisha.pdf", "slot": "bard", "variant": "geisha", "name": "Geisha" },
+            { "file": "Archetypes/Bard/Magician.pdf", "slot": "bard", "variant": "magician", "name": "Magician" },
+            { "file": "Archetypes/Bard/Sandman.pdf", "slot": "bard", "variant": "sandman", "name": "Sandman" },
+            { "file": "Archetypes/Bard/Savage Skald.pdf", "slot": "bard", "variant": "savageskald", "name": "Savage Skald" },
+            { "file": "Archetypes/Bard/Sea Singer.pdf", "slot": "bard", "variant": "seasinger", "name": "Sea Singer" },
+            { "file": "Archetypes/Bard/Songhealer.pdf", "slot": "bard", "variant": "songhealer", "name": "Song Healer" },
+            { "file": "Archetypes/Bard/Sound Striker.pdf", "slot": "bard", "variant": "soundstriker", "name": "Sound Striker" },
+            { "file": "Archetypes/Bard/Street Performer.pdf", "slot": "bard", "variant": "streetperformer", "name": "Street Performer" },
+
+        { "file": "Core/Cleric.pdf", "slot": "cleric", "name": "Cleric" },
+
+        { "file": "Core/Druid/Duid.pdf", "slot": "druid", "name": "Druid" },
+          { "file": "Core/Druid (Animal Companion).pdf", "slot": "druid", "variant": "animalcompanion", "name": "Druid with Animal Companion" },
+          { "file": "Core/Druid (Domain).pdf", "slot": "druid", "variant": "domain", "name": "Domain Druid" },
+          { "file": "Core/Druid/Wild Shape.pdf", "slot": "wildshape", "name": "Wild Shape", "position": 47 },
+            { "file": "Archetypes/Druid/Blight Druid (Familiar).pdf", "slot": "druid", "variant": "blight/familiar", "name": "Blight Druid (Familiar)" },
+            { "file": "Archetypes/Druid/Blight Druid (Domain).pdf", "slot": "druid", "variant": "blight/domain", "name": "Blight Druid (Domain)" },
+
+        { "file": "Core/Monk/Monk - Combat.pdf", "slot": "combat", "variant": "monk", "name": "Monk", "position": 11 },
+          { "file": "Core/Monk.pdf", "slot": "monk", "name": "Monk" },
+
+        { "file": "Core/Paladin.pdf", "slot": "paladin", "name": "Paladin" },
+          { "file": "Core/Paladin.pdf", "slot": "paladin", "variant": "paladin", "name": "Paladin" },
+          { "file": "Archetypes/Paladin/Antipaladin.pdf", "slot": "paladin", "variant": "antipaladin", "name": "Antipaladin" },
+
+        { "file": "Core/Ranger/Ranger - Character Info.pdf", "slot": "core", "variant": "ranger", "name": "Ranger", "position": 10 },
+          { "file": "Core/Ranger/Ranger - Combat.pdf", "slot": "combat", "variant": "ranger", "name": "Ranger", "position": 11 },
+          { "file": "Core/Ranger/Ranger.pdf", "slot": "ranger", "name": "Ranger" },
+            { "file": "Archetypes/Ranger/Battle Scout.pdf", "slot": "ranger", "variant": "battlescout", "name": "Battle Scout" },
+            { "file": "Archetypes/Ranger/Beast Master.pdf", "slot": "ranger", "variant": "beastmaster", "name": "Beast Master" },
+            { "file": "Archetypes/Ranger/Deep Walker.pdf", "slot": "ranger", "variant": "deepwalker", "name": "Deep Walker" },
+            { "file": "Archetypes/Ranger/Falconer.pdf", "slot": "ranger", "variant": "falconer", "name": "Falconer" },
+            { "file": "Archetypes/Ranger/Guide.pdf", "slot": "ranger", "variant": "guide", "name": "Guide" },
+            { "file": "Archetypes/Ranger/Horse Lord.pdf", "slot": "ranger", "variant": "horselord", "name": "Horse Lord" },
+            { "file": "Archetypes/Ranger/Infiltrator.pdf", "slot": "ranger", "variant": "infiltrator", "name": "Infiltrator" },
+            { "file": "Archetypes/Ranger/Shapeshifter.pdf", "slot": "ranger", "variant": "shapeshifter", "name": "Shapeshifter" },
+            { "file": "Archetypes/Ranger/Spirit Ranger.pdf", "slot": "ranger", "variant": "spirit", "name": "Spirit Ranger" },
+            { "file": "Archetypes/Ranger/Trapper.pdf", "slot": "ranger", "variant": "trapper", "name": "Trapper" },
+            { "file": "Archetypes/Ranger/Trophy Hunter.pdf", "slot": "ranger", "variant": "trophyhunter", "name": "Trophy Hunter" },
+            { "file": "Archetypes/Ranger/Urban Ranger.pdf", "slot": "ranger", "variant": "urban", "name": "Urban Ranger" },
+            { "file": "Archetypes/Ranger/Warden.pdf", "slot": "ranger", "variant": "warden", "name": "Warden" },
+            { "file": "Archetypes/Ranger/Wild Stalker.pdf", "slot": "ranger", "variant": "wildstalker", "name": "Wild Stalker" },
+
+        { "file": "Core/Rogue.pdf", "slot": "rogue", "name": "Rogue" },
+            { "file": "Archetypes/Rogue/Scout.pdf", "slot": "rogue", "variant": "scout", "name": "Scout" },
+        { "file": "Core/Sorcerer.pdf", "slot": "sorcerer", "name": "Sorcerer" },
+            { "file": "Archetypes/Sorcerer/Crossblooded Sorcerer.pdf", "slot": "sorcerer", "variant": "crossblooded", "name": "Crossblooded Sorcerer" },
+        { "file": "Core/Wizard.pdf", "slot": "wizard", "name": "Wizard" },
+
+        { "file": "Advanced/Alchemist.pdf", "slot": "alchemist", "name": "Alchemist`" },
+        { "file": "Advanced/Cavalier.pdf", "slot": "cavalier", "name": "Cavalier" },
+        { "file": "Advanced/Inquisitor.pdf", "slot": "inquisitor", "name": "Inquisitor" },
+        { "file": "Advanced/Oracle.pdf", "slot": "oracle", "name": "Oracle" },
+        { "file": "Advanced/Summoner/Summoner.pdf", "slot": "summoner", "name": "Summoner" },
+          { "file": "Advanced/Summoner/Eidolon.pdf", "slot": "eidolon", "name": "Eidolon" },
+          { "file": "Advanced/Summoner/Eidolon - Combat.pdf", "slot": "eidoloncombat", "name": "Eidolon Combat" },
+        { "file": "Advanced/Witch.pdf", "slot": "witch", "name": "Witch" },
+        
+        { "file": "Ultimate Magic/Magus.pdf", "slot": "magus", "name": "Magus" },
+
+        { "file": "Ultimate Combat/Gunslinger.pdf", "slot": "gunslinger", "name": "Gunslinger" },
+        { "file": "Ultimate Combat/Ninja.pdf", "slot": "ninja", "name": "Ninja" },
+        { "file": "Ultimate Combat/Samurai.pdf", "slot": "samurai", "name": "Samurai" },
+        { "file": "Ultimate Combat/Ronin.pdf", "slot": "samurai", "variant": "ronin", "name": "Samurai" },
+		
+		
+        { "file": "Psionics Unleashed/Psionics - Character Info.pdf", "slot": "core", "variant": "psionic", "name": "Character Info (Psionic)", "position": 10 },
+        { "file": "Psionics Unleashed/Psionics - Inventory.pdf", "slot": "inventory", "variant": "psionic", "name": "Inventory (Psionic)", "position": 53 },
+        { "file": "Psionics Unleashed/Psion.pdf", "slot": "psion", "name": "Psion" },
+        { "file": "Psionics Unleashed/Psychic Warrior.pdf", "slot": "psychicwarrior", "name": "Psychic Warrior" },
+        { "file": "Psionics Unleashed/Soulknife.pdf", "slot": "soulknife", "name": "Soulknife" },
+        { "file": "Psionics Unleashed/Wilder.pdf", "slot": "wilder", "name": "Wilder" },
+		
+        { "file": "Tome of Secrets/Artificer.pdf", "slot": "artificer", "name": "Artificer" },
+        { "file": "Tome of Secrets/Priest.pdf", "slot": "priest", "name": "Priest" },
+        { "file": "Tome of Secrets/Shaman.pdf", "slot": "shaman", "name": "Shaman" },
+        { "file": "Tome of Secrets/Witch Hunter.pdf", "slot": "witchhunter", "name": "Witch Hunter" },
+
+        { "file": "NeoExodus/Core/Character Info.pdf", "slot": "core", "variant": "neoexodus", "name": "Character Info" },
+        { "file": "NeoExodus/Core/Ranger/Ranger - Character Info.pdf", "slot": "core", "variant": "neoexodus/ranger", "name": "Character Info" },
+        { "file": "NeoExodus/Core/Ranger/Ranger - Combat.pdf", "slot": "combat", "variant": "neoexodus/ranger", "name": "Combat" },
+
+        { "file": "NeoExodus/Archetypes/Apothecary.pdf", "slot": "alchemist", "variant": "apothecary", "name": "Apothecary" },
+        { "file": "NeoExodus/Archetypes/Cleric of the Kaga.pdf", "slot": "cleric", "variant": "clericofthekaga", "name": "Cleric of the Kaga" },
+        { "file": "NeoExodus/Archetypes/Janissary.pdf", "slot": "monk", "variant": "janissary", "name": "Janissary" },
+        { "file": "NeoExodus/Archetypes/Barbarian/Barbarian - Character Info.pdf", "slot": "core", "variant": "neoexodus/barbarian", "name": "Character Info" },
+        { "file": "NeoExodus/Archetypes/Barbarian/Fist of the Dragon.pdf", "slot": "barbarian", "variant": "fistofthedragon", "name": "Fist of the Dragon" },
+
+        { "file": "NeoExodus/Prestige Classes/High Guard.pdf", "slot": "highguard", "name": "High Guard" },
+        { "file": "NeoExodus/Prestige Classes/Imperial Man-at-arms.pdf", "slot": "manatarms", "name": "Imperial Man-at-arms" },
+        { "file": "NeoExodus/Prestige Classes/Khalid Asad.pdf", "slot": "khalidasad", "name": "Khalid Asad" },
+        { "file": "NeoExodus/Prestige Classes/Panther Warrior.pdf", "slot": "pantherwarrior", "name": "Panther Warrior" },
+        { "file": "NeoExodus/Prestige Classes/Wyrdcaster.pdf", "slot": "wyrdcaster", "name": "Wyrdcaster" },
+
+        { "file": "Extra/Character Background.pdf", "slot": "background", "name": "Character Background" },
+        { "file": "Core/Party Funds.pdf", "slot": "partyfunds", "name": "Party Funds" },
+
+        { "file": "Extra/Spell Book.pdf", "slot": "spellbook", "name": "Spellbook" },
+        { "file": "Extra/Spell Book (Large).pdf", "slot": "spellbook", "variant": "large", "name": "Large" },
+        { "file": "Extra/Spell Book (Dense).pdf", "slot": "spellbook", "variant": "small", "name": "Small" },
+
+        { "file": "Core/Animal Companion.pdf", "slot": "animalcompanion", "name": "Animal Companion" }
+    ],
+    
+    "gm": [ 
+        { "file": "GM/Party.pdf", "name": "Party" },
+        { "file": "GM/NPC.pdf", "name": "NPC" },
+        { "file": "GM/NPC Group.pdf", "name": "NPC Group" },
+        { "file": "GM/Grid.pdf", "name": "Map - Grid" },
+        { "file": "GM/Hex Grid.pdf", "name": "Map - Hex"},
+        { "file": "GM/Fine Hex Grid.pdf", "name": "Map - Hex (fine)" },
+        { "file": "GM/Isometric (Portrait).pdf", "name": "Map - Isometric (portrait)" },
+        { "file": "GM/Isometric (Landscape).pdf", "name": "Map - Isometric (landscape)" },
+        { "file": "GM/Fine Isometric (Portrait).pdf", "name": "Map - Isometric (fine portrait)" },
+        { "file": "GM/Fine Isometric (Landscape).pdf", "name": "Map - Isometric (fine landscape)" },
+
+        { "file": "GM/Timeline (Portrait).pdf", "name": "Timeline (Portrait)" },
+        { "file": "GM/Timeline (Portrait - continued).pdf", "name": "Timeline (Portrait - continued)" },
+        { "file": "GM/Timeline (Landscape).pdf", "name": "Timeline (Landscape)" },
+        { "file": "GM/Timeline (Landscape - continued).pdf", "name": "Timeline (Landscape - continued)" }
+     ],
+
+    "base": {
+        "pages": [ "core", "combat" ]
+    },
+
+    "layout": [
+        [ "Core Rulebook" ],
+        [ "Advanced Player's Guide", "Ultimate Magic", "Ultimate Combat", "Tome of Secrets" ],
+        [ "Psionics Unleashed", "NeoExodus"]
+    ],
+
+    "books": [
+        {
+            "name": "Core Rulebook",
+            "classes": [ "Barbarian", "Bard", "Cleric", "Druid", "Fighter", "Monk", "Paladin", "Ranger", "Rogue", "Sorcerer", "Wizard" ]
+        },
+
+        {
+            "name": "Advanced Player's Guide",
+            "classes": [ "Alchemist", "Cavalier", "Inquisitor", "Oracle", "Summoner", "Witch" ]
+        },
+
+        {
+            "name": "Ultimate Combat",
+            "classes": [ "Gunslinger", "Ninja", "Samurai"]
+        },
+
+        {
+            "name": "Ultimate Magic",
+            "classes": [ "Magus" ]
+        },
+
+        {
+            "name": "Ultimate Combat",
+            "classes": [ "Gunslinger", "Ninja", "Samurai" ]
+        },
+
+        {
+            "name": "Psionics Unleashed",
+            "classes": [ "Psion", "Psychic Warrior", "Soulknife", "Wilder" ]
+        },
+
+        {
+            "name": "Tome of Secrets",
+            "classes": [ "Artificer", "Priest", "Shaman", "Witch Hunter" ]
+        },
+
+        { 
+            "name": "NeoExodus",
+            "classes": [ "Apothecary", "Cleric of the Kaga", "Janissary", "Fist of the Dragon", "High Guard", "Imperial Man-at-arms", "Khalid Asad", "Panther Warrior", "Wyrdcaster" ]
+        }
+    ],
+
+    "classes": [
+        {
+            "name": "Barbarian",
+            "pages": [ "core/barbarian", "combat/barbarian", "barbarian", "inventory/without" ],
+            "variants": [
+                { "name": "Barbarian", "pages": [ ] },
+                { "name": "Armoured Hulk", "pages": [ "barbarian/armouredhulk" ] },
+                { "name": "Breaker", "pages": [ "barbarian/breaker" ] },
+                { "name": "Brutal Pugilist", "pages": [ "barbarian/brutalpugilist" ] },
+                { "name": "Drunken Brute", "pages": [ "barbarian/drunkenbrute" ] },
+                { "name": "Elemental Kin", "pages": [ "barbarian/elementalkin" ] },
+                { "name": "Hurler", "pages": [ "barbarian/hurler" ] },
+                { "name": "Invulnerable Rager", "pages": [ "barbarian/invulnerablerager" ] },
+                { "name": "Mounted Fury", "pages": [ "barbarian/mountedfury" ] },
+                { "name": "Savage Barbarian", "pages": [ "barbarian/savage" ] },
+                { "name": "Scarred Rager", "pages": [ "barbarian/scarredrager" ] },
+                { "name": "Sea Reaver", "pages": [ "barbarian/seareaver" ] },
+                { "name": "Superstitious Barbarian", "pages": [ "barbarian/superstitious" ] },
+                { "name": "Titan Mauler", "pages": [ "barbarian/titanmauler" ] },
+                { "name": "True Primitive", "pages": [ "barbarian/trueprimitive" ] },
+                { "name": "Urban Barbarian", "pages": [ "barbarian/urban" ] },
+                { "name": "Wild Rager", "pages": [ "barbarian/wildrager" ] }
+            ]
+        },
+
+        {
+            "name": "Bard",
+            "pages": [ "bard", "inventory", "spellbook" ],
+            "variants": [
+                { "name": "Bard", "pages": [ ] },
+                { "name": "Animal Speaker", "pages": [ "bard/animalspeaker" ] },
+                { "name": "Arcane Duelist", "pages": [ "bard/arcaneduelist" ] },
+                { "name": "Archaeologist", "pages": [ "bard/archaeologist" ] },
+                { "name": "Archivist", "pages": [ "bard/archivist" ] },
+                { "name": "Celebrity", "pages": [ "bard/celebrity" ] },
+                { "name": "Court Bard", "pages": [ "bard/courtbard" ] },
+                { "name": "Daredevil", "pages": [ "bard/daredevil" ] },
+                { "name": "Demagogue", "pages": [ "bard/demagogue" ] },
+                { "name": "Dervish Dancer", "pages": [ "bard/dervishdancer" ] },
+                { "name": "Detective", "pages": [ "bard/detective" ] },
+                { "name": "Dirge Bard", "pages": [ "bard/dirge" ] },
+                { "name": "Geisha", "pages": [ "bard/geisha" ] },
+                { "name": "Magician", "pages": [ "bard/magician" ] },
+                { "name": "Sandman", "pages": [ "bard/sandman" ] },
+                { "name": "Savage Skald", "pages": [ "bard/savageskald" ] },
+                { "name": "Sea Singer", "pages": [ "bard/seasinger" ] },
+                { "name": "Songhealer", "pages": [ "bard/songhealer" ] },
+                { "name": "Sound Striker", "pages": [ "bard/soundstriker" ] },
+                { "name": "Street Performer", "pages": [ "bard/streetperformer" ] }
+            ]
+        },
+
+        {
+            "name": "Cleric",
+            "pages": [ "cleric", "inventory", "spellbook" ],
+            "sections": [ "domain" ]
+        },
+
+        {
+            "name": "Druid",
+            "pages": [ "druid", "inventory/without", "wildshape", "spellbook" ],
+            "variants": [
+                { "name": "Druid (Animal Companion)", "pages": [ "druid/animalcompanion", "animalcompanion" ] },
+                { "name": "Druid (Domain)", "pages": [ "druid/domain" ] },
+                { "name": "Blight Druid (Familiar)", "pages": [ "druid/blight/familiar" , "animalcompanion" ] },
+                { "name": "Blight Druid (Domain)", "pages": [ "druid/blight/domain" ] }
+            ]
+        },
+
+        {
+            "name": "Fighter",
+            "pages": [ "fighter", "inventory" ]
+        },
+
+        {
+            "name": "Monk",
+            "pages": [ "combat/monk", "monk", "inventory" ]
+        },
+
+        {
+            "name": "Paladin",
+            "pages": [ "paladin", "inventory/without", "spellbook" ],
+            "variants": [
+                { "name": "Paladin", "pages": [ ] },
+                { "name": "Antipaladin", "pages": [ "paladin/antipaladin" ] }
+            ]
+        },
+
+        {
+            "name": "Ranger",
+            "pages": [ "core/ranger", "combat/ranger", "ranger", "inventory/without", "spellbook" ],
+            "variants": [
+                { "name": "Ranger", "pages": [ ] },
+                { "name": "Battle Scout", "pages": [ "ranger/battlescout" ] },
+                { "name": "Beast Master", "pages": [ "ranger/beastmaster" ] },
+                { "name": "Deep Walker", "pages": [ "ranger/deepwalker" ] },
+                { "name": "Falconer", "pages": [ "ranger/falconer" ] },
+                { "name": "Guide", "pages": [ "ranger/guide" ] },
+                { "name": "Horse Lord", "pages": [ "ranger/horselord" ] },
+                { "name": "Infiltrator", "pages": [ "ranger/infiltrator" ] },
+                { "name": "Shapeshifter", "pages": [ "ranger/shapeshifter" ] },
+                { "name": "Spirit Ranger", "pages": [ "ranger/spirit" ] },
+                { "name": "Trapper", "pages": [ "ranger/trapper" ] },
+                { "name": "Trophy Hunter", "pages": [ "ranger/trophyhunter" ] },
+                { "name": "Urban Ranger", "pages": [ "ranger/urban" ] },
+                { "name": "Warden", "pages": [ "ranger/warden" ] },
+                { "name": "Wild Stalker", "pages": [ "ranger/wildstalker" ] }
+            ]
+        },
+
+        {
+            "name": "Rogue",
+            "pages": [ "rogue", "inventory" ],
+            "variants": [
+                { "name": "Rogue", "pages": [ ] },
+                { "name": "Scout", "pages": [ "rogue/scout" ] }
+            ]
+        },
+
+        {
+            "name": "Sorcerer",
+            "pages": [ "sorcerer", "inventory/without", "spellbook" ]
+        },
+
+        {
+            "name": "Wizard",
+            "pages": [ "wizard", "inventory/without", "spellbook" ]
+        },
+
+        {
+            "name": "Alchemist",
+            "pages": [ "alchemist", "inventory", "spellbook" ]
+        },
+
+        {
+            "name": "Cavalier",
+            "pages": [ "cavalier", "inventory", "animalcompanion" ]
+        },
+
+         {
+            "name": "Inquisitor",
+            "pages": [ "inquisitor", "inventory", "spellbook" ]
+        },
+
+        {
+            "name": "Oracle",
+            "pages": [ "oracle", "inventory", "spellbook" ]
+        },
+
+        {
+            "name": "Summoner",
+            "pages": [ "summoner", "eidolon", "eidoloncombat", "inventory", "spellbook" ]
+        },
+
+        {
+            "name": "Witch",
+            "pages": [ "witch", "inventory", "animalcompanion", "spellbook" ]
+        },
+
+        {
+            "name": "Magus",
+            "pages": [ "magus", "inventory", "spellbook" ]
+        },
+
+        {
+            "name": "Gunslinger",
+            "pages": [ "gunslinger", "inventory" ]
+        },
+
+        {
+            "name": "Ninja",
+            "pages": [ "ninja", "inventory" ]
+        },
+
+        {
+            "name": "Samurai",
+            "pages": [ "samurai", "inventory" ],
+            "variants": [
+                { "name": "Samurai", "pages": [ ] },
+                { "name": "Ronin", "pages": [ "samurai/ronin" ] }
+            ]
+        },
+
+        {
+            "name": "Psion",
+            "pages": [ "psion", "core/psionic", "inventory/psionic" ]
+        },
+
+        {
+            "name": "Psychic Warrior",
+            "pages": [ "psychicwarrior", "core/psionic", "inventory/psionic" ]
+        },
+
+        {
+            "name": "Soulknife",
+            "pages": [ "soulknife", "core/psionic", "inventory/psionic" ]
+        },
+
+        {
+            "name": "Wilder",
+            "pages": [ "wilder", "core/psionic", "inventory/psionic" ]
+        },
+
+        {
+            "name": "Artificer",
+            "pages": [ "artificer", "inventory" ]
+        },
+
+        {
+            "name": "Priest",
+            "pages": [ "priest", "inventory", "spellbook" ]
+        },
+
+        {
+            "name": "Shaman",
+            "pages": [ "shaman", "inventory" ]
+        },
+
+        {
+            "name": "Witch Hunter",
+            "pages": [ "witchhunter", "inventory/without" ]
+        },
+
+        {
+            "name": "Apothecary",
+            "pages": [ "core/neoexodus", "alchemist/apothecary", "inventory", "spellbook" ]
+        },
+
+        {
+            "name": "Cleric of the Kaga",
+            "pages": [ "core/neoexodus", "cleric/clericofthekaga", "inventory", "spellbook" ]
+        },
+
+        {
+            "name": "Janissary",
+            "pages": [ "core/neoexodus", "combat/monk", "monk/janissary", "inventory" ]
+        },
+
+        {
+            "name": "Fist of the Dragon",
+            "pages": [ "core/neoexodus/barbarian", "combat/barbarian", "barbarian/fistofthedragon", "inventory/without" ]
+        },
+
+        {
+            "name": "High Guard",
+            "pages": [ "highguard", "inventory" ]
+        },
+
+        {
+            "name": "Imperial Man-at-arms",
+            "pages": [ "manatarms", "inventory" ]
+        },
+
+        {
+            "name": "Khalid Asad",
+            "pages": [ "khalidasad", "inventory" ]
+        },
+
+        {
+            "name": "Panther Warrior",
+            "pages": [ "pantherwarrior", "inventory" ]
+        },
+
+        {
+            "name": "Wyrdcaster",
+            "pages": [ "wyrdcaster", "inventory" ]
+        }
+    ],
+
+    "iconics": [
+        "Alchemist - Damiel",
+        "Barbarian - Amiri",
+        "Bard - Lem",
+        "Cavalier - Alian",
+        "Cleric - Kyra",
+        "Druid - Lini",
+        "Fighter - Valeros",
+        "Gunslinger - Lirianne",
+        "Inquisitor - Imrijka",
+        "Magus - Seltyiel",
+        "Monk - Sajan",
+        "Ninja - Reiko",
+        "Oracle - Alahazra",
+        "Paladin - Seelah",
+        "Ranger - Harsk",
+        "Rogue - Merisiel",
+        "Samurai - Hayato",
+        "Sorcerer - Seoni",
+        "Summoner - Balazar",
+        "Witch - Feiya",
+        "Wizard - Ezren"
+    ]
+}

@@ -1,0 +1,164 @@
+@(gameData: models.GameData, iconics: Map[String, List[models.IconicImage]])
+
+@main("Build My Character: "+gameData.name) {
+  <form action='/pdf/@gameData.game' method='post' id='build-my-character'>
+    <header id='bodyheader'>
+      <h1>Character Sheets by Dyslexic Studeos</h1>
+
+      <nav class='tabs'>
+        <ul>
+          <li><a href='/'>&laquo; Back to intro</a></li>
+          <li><a rel='#class-tab' class='selected'>Class</a></li>
+          @if(!gameData.isTest) {
+            <li><a rel='#options-tab'>Options</a></li>
+          }
+          <li><a rel='#download-tab'>Download</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <section class='tab selected' id='class-tab'>
+      <h2>@gameData.name</h2>
+      <!-- 
+        translations
+      -->
+
+      <fieldset>
+        <div class='yui3-g'>
+        @for(col <- gameData.layout) {
+          <div class='yui3-u-1-@gameData.layout.length'>
+          @for(bookName <- col; book <- gameData.bookByName(bookName)) {
+            <h3>@book.name</h3>
+            <ul>
+            @for(clsName <- book.classes; cls <- gameData.classByName(clsName)) {
+              <li>
+                <input type='checkbox' name='class-@cls.name' id='class-@cls.code'/>
+                <label for='class-@cls.code'>@cls.name</label>
+                @if(!cls.variants.isEmpty) {
+                  <select name='variant-@cls.code'>
+                  @for(variant: VariantClass <- cls.variants) {
+                    <option value='@variant.name'>@variant.name</option>
+                  }
+                  </select>
+                }
+              </li>
+            }
+            </ul>
+          }
+          </div>
+        }
+        </div>
+      </fieldset>
+
+      <h2>@(if(gameData.isDnd35) "Dungeon Master" else "Game Master")</h2>
+      <fieldset id='gm'>
+        <p><label><input type='checkbox' name='gm' id='gm' /> Include the Dungeon Master's pages</label></p>
+        <p class="indent">Maps, timelines, party summary and and NPC character sheets.</p>
+        <p><label><input type='checkbox' name='party-download' id='party-download' /> Prepare sheets for the whole party at once</label></p>
+        <p class="indent">This will include all possible sheets for the above classes, rather than selecting the sheets for a single character.
+          Use this to download all the pages you might need for an entire party.
+        </p>
+      </fieldset>
+
+      <nav class='wizardnav'>
+        &nbsp;
+        <a href='#options-tab'><img src='@routes.Assets.at("images/wiznext.png")'/></a>
+      </nav>
+    </section>
+
+    <section class='tab' id='options-tab'>
+      <aside id='iconic'>
+        <img src='@routes.Assets.at("images/iconics/generic.png")' id='iconic-default' class='selected' />
+        @for((group, images) <- iconics; image <- images) {
+          <img data-src='@routes.Assets.at(image.smallFile)' id='iconic_@image.id'/>
+        }
+      </aside>
+
+      <h2>Options</h2>
+
+      <fieldset>
+        @if(gameData.isDnd35) {
+          <label for="simple"><input type="checkbox" name="simple" id="simple">Simpler version</label>
+          <p>The simplified version does not have a separate sheet for inventory and equipment, instead merging these onto the core sheets. This is only recommended for low-level characters, and is not compatible with the Barbarian or Psionic characters.</p>
+        }
+
+        <p><label for="spellbook-size">Spellbook style</label>
+          <select name="spellbook-size" id="spellbook-size">
+              <option value="small">Small entries</option>
+              <option value="medium" selected>Normal entries</option>
+              <option value="large">Large entries</option>
+          </select></p>
+    
+        <p><label for="inventory-style">Inventory style</label>
+          <select name="inventory-style" id="inventory-style">
+              <option value="auto" selected>Auto-detect</option>
+              <option value="with">With wands, scrolls and potions</option>
+              <option value="without">Without wands, scrolls and potions</option>
+          </select></p>
+
+        <p><label for="inventory-iconic">Iconic character image</label>
+          <select name="inventory-iconic" id="inventory-iconic">
+            <option value='default' rel='#iconic-default'>Generic</option>
+            <option value='custom'>My own picture</option>
+            @for((folder, images) <- iconics) {
+              <optgroup label='@folder'>
+              @for(image <- images) {
+                <option value='@image.path' rel='#iconic_@image.id'>@image.name</option>
+              }
+              </optgroup>
+            }
+          </select> <img src='@routes.Assets.at("images/wiznext.png")'/></p>
+
+        <h3>Additional pages</h3>
+          <p><label for="include-background"><input type="checkbox" name="include-background" id="include-background" /> Include character background</label></p>
+          <p><label for="include-party-funds"><input type="checkbox" name="include-party-funds" id="include-party-funds" /> Include party funds</label></p>
+
+        <h3>Watermark</i>
+          <p><label for='has-watermark'><input type="checkbox" name="has-watermark" id="has-watermark" /> Watermark every page</label></p>
+          <p><input type='text' name='watermark' id='watermark'/></p>
+      </fieldset>
+
+      <nav class='wizardnav'>
+        <a href='#class-tab'><img src='@routes.Assets.at("images/wizprev.png")'/></a>
+        &nbsp;
+        <a href='#download-tab'><img src='@routes.Assets.at("images/wiznext.png")'/></a>
+      </nav>
+    </section>
+
+    <section class='tab' id='download-tab'>
+
+      <h2>Printing Colour</h2>
+      <fieldset id='colours'>
+        <div class="yui3-g">
+          <div class="yui3-u-1-3">
+              <label for="colour-light"><span><input type="radio" id="colour-light" name="colour" value="light"/></span> Lighter</label>
+              <label for="colour-normal"><span><input type="radio" id="colour-normal" name="colour" value="normal" checked/></span> Normal</label>
+              <label for="colour-dark"><span><input type="radio" id="colour-dark" name="colour" value="dark"></span> Darker</label>
+              <label for="colour-black"><span><input type="radio" id="colour-black" name="colour" value="black"></span> Black</label>
+          </div>
+          <div class="yui3-u-1-3">
+              <label for="colour-red"><span><input type="radio" id="colour-red" name="colour" value="red"></span> Red</label>
+              <label for="colour-orange"><span><input type="radio" id="colour-orange" name="colour" value="orange"></span> Orange</label>
+              <label for="colour-yellow"><span><input type="radio" id="colour-yellow" name="colour" value="yellow"></span> Yellow</label>
+              <label for="colour-green"><span><input type="radio" id="colour-green" name="colour" value="green"></span> Green</label>
+          </div>
+          <div class="yui3-u-1-3">
+              <label for="colour-cyan"><span><input type="radio" id="colour-cyan" name="colour" value="cyan"></span> Cyan</label>
+              <label for="colour-blue"><span><input type="radio" id="colour-blue" name="colour" value="blue"></span> Blue</label>
+              <label for="colour-purple"><span><input type="radio" id="colour-purple" name="colour" value="purple"></span> Purple</label>
+              <label for="colour-pink"><span><input type="radio" id="colour-pink" name="colour" value="pink"></span> Pink</label>
+          </div>
+        </div>
+      </fieldset>
+
+      <h2>Download</h2>
+        <p class='center'>
+          <input type="submit" value="Download"/>
+        </p>
+
+      <nav class='wizardnav'>
+        <a href='#options-tab'><img src='@routes.Assets.at("images/wizprev.png")'/></a>
+        &nbsp;
+      </nav>
+    </section>
+}
