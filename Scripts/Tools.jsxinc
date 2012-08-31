@@ -1,0 +1,321 @@
+// A bunch of useful functions
+//#include underscore.js
+
+
+Array.prototype.contains = function(obj) {
+    var i = this.length;
+    while (i--) {
+        if (this[i] === obj) {
+            return true;
+        }
+    }
+    return false;
+}
+
+Array.isArray = function(obj) {
+     return Object.prototype.toString.call(obj) == "[object Array]";
+}
+
+String.prototype.replaceAll = function(old, replacement) {
+     if (old == replacement) return this;
+     var mutant = this;
+     while (mutant.indexOf(old) != -1)
+          mutant = mutant.replace(old, replacement);
+     return String(mutant);
+}
+
+String.prototype.trim  = function () { return this.replace(/^\s\s*/, '').replace(/\s\s*$/, ''); }
+
+String.prototype.ltrim = function () { return this.replace(/^\s\s*/,''); }
+
+String.prototype.rtrim = function () { return this.replace(/\s\s*$/,''); }
+
+/*if (CMYKColor) {
+     CMYKColor.prototype.equals()
+}*/
+
+
+function isEqual(a, b) {
+     return _.isEqual(a, b);
+}
+
+function any2string(any, depth) {
+     depth = (typeof depth === "undefined") ? 0 : parseInt(depth);
+     var toplevel = depth == 0;
+     depth++;
+     if (depth > 3) return "... (too deep)";
+
+     var type = typeof any;
+     if (type === "undefined" || any == null) return '';
+     if (type === "string" || any instanceof String) return any;
+     if (type === "number" || any instanceof Number) return String(any);
+     if (type === "boolean" || any instanceof Boolean) return String(any);
+
+     if (type === "object") {
+          var objtype = Object.prototype.toString.call(any);
+
+          //  array
+          if (objtype === "[object Array]") {
+               //alert("start array");
+               var str = toplevel ? '' : '[';
+               var len = any.length;
+               var first = true;
+               for (var i = 0; i < len; i++) {
+                    var item = any2string(any[i], depth).substring(0,256);
+
+                    if (first) first = false;
+                    else str = str + ', ';
+
+                    str = str + item;
+               }
+               if (!toplevel) str = str + ']';
+               //alert("end array");
+               return str;
+          }
+
+          //  assicative object
+          //alert("start object "+objtype);
+          var str = objtype.substring(1, objtype.length - 1);
+          str = str + ' {';
+          var first = true;
+          var keys = any.keys;
+          for (var key in any) {
+               if (!Object.prototype.hasOwnProperty.call(any, key))
+                    alert("Unknown property "+key+" on "+str);
+               if (typeof key === "undefined")
+                    alert("Undefined key on "+str);
+               if (key == null)
+                    alert("Null key on "+str);
+               if (typeof any === "undefined")
+                    alert("Undefined object on "+str);
+               var value = any[key];
+
+               if (first) first = false;
+               else str = str+',';
+
+               key = any2string(value, depth).substring(0,64);
+               value = any2string(value, depth).substring(0,256);
+               str = str+any2string(key, depth)+': '+value;
+          }
+          str = str + '}';
+          //alert("end object "+objtype);
+          return str;
+     }
+
+     // huh?
+     return type;
+}
+
+
+// http://www.bennadel.com/blog/1504-Ask-Ben-Parsing-CSV-Strings-With-Javascript-Exec-Regular-Expression-Command.htm
+
+File.prototype.readCSV = function () {
+     this.open('r');
+     var data = this.read();
+ 
+     // Create a regular expression to parse the CSV values.
+     var objPattern = new RegExp(
+          (
+          "(\\,|\\r?\\n|\\r|^)" +
+          // Quoted fields.
+          "(?:\"([^\"]*(?:\"\"[^\"]*)*)\"|" +
+          // Standard fields.
+          "([^\"\\,\\r\\n]*))"
+          ),
+          "gi"
+     );
+ 
+     // Create an array to hold our data. Give the array
+     // a default empty first row.
+     var arrData = [[]];
+      
+     // Create an array to hold our individual pattern
+     // matching groups.
+     var arrMatches = null;
+      
+     // Keep looping over the regular expression matches
+     // until we can no longer find a match.
+     while (arrMatches = objPattern.exec( data )) {
+        alert("Matched object: "+arrMatches[1]+", "+arrMatches[2]+", "+arrMatches[3]+", "+arrMatches[4]+", "+arrMatches[5]);
+
+        if(arrMatches[1]) {
+          // Get the delimiter that was found.
+          var strMatchedDelimiter = arrMatches[ 1 ];
+           
+          // Check to see if the given delimiter has a length
+          // (is not the start of string) and if it matches
+          // field delimiter. If id does not, then we know
+          // that this delimiter is a row delimiter.
+          if (strMatchedDelimiter.length && (strMatchedDelimiter != ',')) {
+               // Since we have reached a new row of data,
+               // add an empty row to our data array.
+               arrData.push( [] );
+          }
+          
+          // Now that we have our delimiter out of the way,
+          // let's check to see which kind of value we
+          // captured (quoted or unquoted).
+          if (arrMatches[2]) {
+               // We found a quoted value. When we capture
+               // this value, unescape any double quotes.
+               var strMatchedValue = arrMatches[ 2 ].replace( new RegExp( "\"\"", "g" ), "\"" );
+          } else {
+               // We found a non-quoted value.
+               var strMatchedValue = arrMatches[ 3 ];
+          }      
+          if (strMatchedValue === "undefined") strMatchedValue = null;
+          
+          // Now that we have our value string, let's add
+          // it to the data array.
+          arrData[ arrData.length - 1 ].push( strMatchedValue );
+        }
+     }
+      
+     // Return the parsed data.
+     return( arrData );
+}
+
+
+
+File.prototype.writeCSV = function (data, bom) {
+     this.encoding = "UTF-8";
+     this.open('w');
+     this.write('\ufeff');
+
+     var len = data.length;
+     for (var i=0; i < len; i++) {
+          var item = data[i];
+          var line = '';
+
+          var first = true;
+          var len2 = item.length;
+          for (var j = 0; j < len2; j++) {
+              var value = item[j];
+              if (value instanceof File || value instanceof Folder) value = value.fullName;
+              value = String(value);
+              value = value.replaceAll('"', '""');
+              value = value.replaceAll('%20', ' ');
+
+              if (first) first = false;
+              else line = line+',';
+
+              line=line+'"'+value+'"';
+          }
+          this.writeln(line);
+     }
+     this.close();
+}
+
+
+Folder.prototype.getAllFiles = function () {
+  var fileList = [];
+  function recurse (folder) {
+    var files = folder.getFiles("*.ai");
+    for (var i = 0; i < files.length; i++)
+      fileList.push(files[i]);
+
+    var folders = folder.getFiles();
+    for (var i = 0; i < folders.length; i++) {
+      if (folders[i] instanceof Folder) {
+        recurse(folders[i]);
+      }
+    }
+  }
+  recurse(this);
+  return fileList;
+}
+
+//  transform a CSV-style 2D array with headings into an array of objects
+Array.prototype.associate = function () {
+  var template = this[0];
+  var cols = template.length;
+
+  var out = [];
+  for (var i = 1; i < this.length; i++) {
+    var line = this[i];
+    var obj = {};
+    for (var j = 0; j < cols; j++) {
+      if (line[j] !== null)
+        obj[template[j]] = line[j];
+    }
+    out.push(obj);
+  }
+  return out;
+}
+
+//  transform an array of objects into a CSV-style 2D array with headings
+//  optionally make sure the first few headings appear in a given order
+Array.prototype.dissociate = function (template) {
+     template = (typeof template === "undefined") ? [] : template;
+
+     // scan through looking for unknown headings
+     for (var i = 0; i < this.length; i++) {
+          var item = this[i];
+          for (var key in item) {
+               if (!template.contains(key))
+                    template.push(key);
+          }
+     }
+
+     // translate each item
+     var out = [template];
+     for (var i = 0; i < this.length; i++) {
+          var item = this[i];
+          var tuple = [];
+
+          var len = template.length;
+          for (var j = 0; j < len; j++) {
+               var key = template[j];
+               if (typeof item[key] === "undefined") tuple[j] = '';
+               else tuple[j] = item[key];
+          }
+          out.push(tuple);
+     }
+     return out;
+}
+
+Array.prototype.selectFields = function (fields) {
+     var data = [];
+     for (var i = 0; i < this.length; i++) {
+          var item = this[i];
+          var newitem = {};
+          for (var field in fields) {
+               newitem[field] = item[field];
+          }
+          data.push(newitem);
+     }
+     return data;
+}
+
+
+//  logging
+
+var logFile = new File("~/Illustrator script log.csv");
+//var logEntries = logFile.readCSV().associate();
+//if (logEntries.length > 1000) logEntries = logEntries.slice(logEntries.length - 1000);
+var logEntries = [];
+
+// function logString(value) {
+//   if (value === undefined) return '';
+//   if (value instanceof File) return value.fullName;
+//   if (value instanceof Folder) return value.fullName;
+//   return value.toString();
+// }
+
+function log(action, file, tuple) {
+  if (!tuple) tuple = {};
+  //for (var field in tuple)
+  //  tuple[field] = logString(tuple[field]);
+
+  tuple['Time'] = new Date().toUTCString();
+  tuple['Action'] = action;
+
+  if (file) {
+    if (file instanceof File) file = file.fullName;
+    if (file instanceof Folder) file = file.fullName;
+    tuple['File'] = file;
+  }
+
+  logEntries.push(tuple);
+  logFile.writeCSV(logEntries.dissociate(['Time', 'Action', 'File']));
+}
