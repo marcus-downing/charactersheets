@@ -8,10 +8,7 @@
 
         { "file": "Core/Character Info.pdf", "slot": "core", "name": "Character Info" },
         { "file": "Core/Extended Combat.pdf", "slot": "combat", "name": "Combat" },
-
         { "file": "Core/Extended Inventory.pdf", "slot": "inventory", "name": "Inventory", "position": 83 },
-        { "file": "Core/Extended Inventory.pdf", "slot": "inventory", "variant": "with", "name": "with accessories", "position": 83 },
-        { "file": "Core/Inventory.pdf", "slot": "inventory", "variant": "without", "name": "without accessories", "position": 83 },
 
         { "file": "Psionics/Psionic Character Info.pdf", "slot": "core", "variant": "psionic", "name": "Psionic Character Info", "position": 15 },
         { "file": "Psionics/Psionic Combat.pdf", "slot": "combat", "variant": "psionic", "name": "Psionic Combat", "position": 16 },

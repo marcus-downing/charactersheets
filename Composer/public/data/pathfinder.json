@@ -120,14 +120,9 @@
         { "file": "Tome of Secrets/Shaman.pdf", "slot": "shaman", "name": "Shaman" },
         { "file": "Tome of Secrets/Witch Hunter.pdf", "slot": "witchhunter", "name": "Witch Hunter" },
 
-        { "file": "NeoExodus/Core/Character Info.pdf", "slot": "core", "variant": "neoexodus", "name": "Character Info" },
-        { "file": "NeoExodus/Core/Ranger/Ranger - Character Info.pdf", "slot": "core", "variant": "neoexodus/ranger", "name": "Character Info" },
-        { "file": "NeoExodus/Core/Ranger/Ranger - Combat.pdf", "slot": "combat", "variant": "neoexodus/ranger", "name": "Combat" },
-
         { "file": "NeoExodus/Archetypes/Apothecary.pdf", "slot": "alchemist", "variant": "apothecary", "name": "Apothecary" },
         { "file": "NeoExodus/Archetypes/Cleric of the Kaga.pdf", "slot": "cleric", "variant": "clericofthekaga", "name": "Cleric of the Kaga" },
         { "file": "NeoExodus/Archetypes/Janissary.pdf", "slot": "monk", "variant": "janissary", "name": "Janissary" },
-        { "file": "NeoExodus/Archetypes/Barbarian/Barbarian - Character Info.pdf", "slot": "core", "variant": "neoexodus/barbarian", "name": "Character Info" },
         { "file": "NeoExodus/Archetypes/Barbarian/Fist of the Dragon.pdf", "slot": "barbarian", "variant": "fistofthedragon", "name": "Fist of the Dragon" },
 
         { "file": "NeoExodus/Prestige Classes/High Guard.pdf", "slot": "highguard", "name": "High Guard" },
@@ -441,22 +436,22 @@
 
         {
             "name": "Apothecary",
-            "pages": [ "core/neoexodus", "alchemist/apothecary", "inventory", "spellbook" ]
+            "pages": [ "core", "alchemist/apothecary", "inventory", "spellbook" ]
         },
 
         {
             "name": "Cleric of the Kaga",
-            "pages": [ "core/neoexodus", "cleric/clericofthekaga", "inventory", "spellbook" ]
+            "pages": [ "core", "cleric/clericofthekaga", "inventory", "spellbook" ]
         },
 
         {
             "name": "Janissary",
-            "pages": [ "core/neoexodus", "combat/monk", "monk/janissary", "inventory" ]
+            "pages": [ "core", "combat/monk", "monk/janissary", "inventory" ]
         },
 
         {
             "name": "Fist of the Dragon",
-            "pages": [ "core/neoexodus/barbarian", "combat/barbarian", "barbarian/fistofthedragon", "inventory/without" ]
+            "pages": [ "core/barbarian", "combat/barbarian", "barbarian/fistofthedragon", "inventory/without" ]
         },
 
         {
