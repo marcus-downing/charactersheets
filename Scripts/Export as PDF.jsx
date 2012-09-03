@@ -8,7 +8,7 @@ var pdfSaveOpts = new PDFSaveOptions();
 // for a description of these properties.
 // Add more properties here if you like
 pdfSaveOpts.acrobatLayers = false;
-pdfSaveOpts.colorBars = true;
+pdfSaveOpts.colorBars = false;
 pdfSaveOpts.compatibility = PDFCompatibility.ACROBAT5;
 pdfSaveOpts.colorCompression = CompressionQuality.AUTOMATICJPEGHIGH;
 //pdfSaveOpts.compatibility = 
@@ -37,20 +37,28 @@ log("Exporting "+files.length+" Illustrator files as PDFs", sourceFolder, { "Des
 
 userInteractionLevel = UserInteractionLevel.DONTDISPLAYALERTS;
 
+var success = 0;
+var failure = 0;
 for ( var i = 0; i < files.length; i++ ) {
-  var file = files[i];
-  var doc = app.open(file);
+  try {
+    var file = files[i];
+    var doc = app.open(file);
 
-  var filename = file.fullName;
-  var targetName = destinationFolder.fullName+filename.substring(sourceFolder.fullName.length, filename.length - 3)+".pdf";
-  var targetFile = new File(targetName);
+    var filename = file.fullName;
+    var targetName = destinationFolder.fullName+filename.substring(sourceFolder.fullName.length, filename.length - 3)+".pdf";
+    var targetFile = new File(targetName);
 
-  log("Exporting file as PDF", file);
-  doc.saveAs( targetFile, pdfSaveOpts );
-  doc.close();
+    log("Exporting file as PDF", file);
+    doc.saveAs( targetFile, pdfSaveOpts );
+    doc.close();
+    success++;
+  } catch (e) {
+    log("Error in file", file, { "Error": e.message } );
+    failure++;
+  }
 }
 
 userInteractionLevel = originalInteractionLevel;
 
-log("Exported "+count+" PDFs files");
+log("Exported "+files.length+" files", false, {'Success': success, 'Failed': failure});
 alert("Done!");

@@ -1,23 +1,30 @@
 #include Tools.jsxinc
 
-//var sourceFolder = new Folder( '/Users/Marcus Downing/Documents/Projects/Character Sheets/Pathfinder/Core/X' );
-//var destinationFolder = new Folder( '/Users/Marcus Downing/Documents/Projects/Character Sheets/Pathfinder/Core/X2' );
-var sourceFolder = Folder.selectDialog( 'Select the folder of Illustrator files in which you want to replace text' );
-var destinationFolder = Folder.selectDialog('Select a destination folder into which to save translated files');
-var messagesFile = File.openDialog("Translation CSV file", "*.csv");
+var sourceFolder = new Folder( '/Users/Marcus Downing/Documents/Projects/charactersheets/Pathfinder/Core/Barbarian' );
+var destinationFolder = new Folder( '/Users/Marcus Downing/Documents/Projects/charactersheets/Languages/Japanese' );
+var messagesFile = new File('/Users/Marcus Downing/Documents/Projects/charactersheets/Languages/Japanese/messages.csv')
+//var sourceFolder = Folder.selectDialog( 'Select the folder of Illustrator files in which you want to replace text' );
+//var destinationFolder = Folder.selectDialog('Select a destination folder into which to save translated files');
+//var messagesFile = File.openDialog("Translation CSV file", "*.csv");
 var messages = messagesFile.readCSV().associate();
 
+var messages2 = [];
 for (var i = 0; i < messages.length; i++) {
   messages[i]['Original'] = normalise(messages[i]['Original']);
   messages[i]['Translation'] = normalise(messages[i]['Translation']);
   messages[i]['Part of'] = normalise(messages[i]['Part of']);
 
-  // if (messages[i]['Translation'] && messages[i]['Translation'].length > 0)
-  //   alert("Message: "+messages[i]['Original']+" ("+messages[i]['Part of']+") -> "+messages[i]['Translation']);
+  if (messages[i]['Translation'] && messages[i]['Translation'].length > 0) {
+    messages2.push(messages[i]);
+    log("Message: "+messages[i]['Original']+" ("+messages[i]['Part of']+") -> "+messages[i]['Translation']);
+  } else {
+    log("Skipping message: "+messages[i]['Original']+" ("+messages[i]['Part of']+")");
+  }
 }
+messages = messages2;
 
 var files = sourceFolder.getAllFiles();
-log("Translating strings in "+files.length+" files.", sourceFolder, { 'Messages': messages, 'Destination': destinationFolder });
+log("Translating strings in "+files.length+" files.", sourceFolder, { 'Destination': destinationFolder });
 
 function trailingWhitespace(text) {
   var text = String(text);
@@ -133,9 +140,9 @@ for ( var i = 0; i < files.length; i++ ) {
       frameNum++;
     }
 
-    var destinationFile = new File(destinationFilename);
+    //var destinationFile = new File(destinationFilename);
     doc.saveAs(destinationFile);
-    doc.close();
+    //doc.close();
   } catch (e) {
     log("Error in file", file, { "Error": e.message } );
   }

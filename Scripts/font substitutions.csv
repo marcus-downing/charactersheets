@@ -1,10 +1,12 @@
-﻿"Family","Style","To family","To style"
-"Myriad Pro","Bold","Roboto","Bold Condensed"
-"Arial","Bold","Roboto","Bold Condensed"
-"BellGothic BT","Roman","Roboto","Condensed"
-"BellGothicStd Black","Black","Roboto","Bold Condensed"
-"Calibri","Bold","Roboto","Bold Condensed"
-"Calibri","Regular","Roboto","Condensed"
-"BellGothic Blk BT","Black","Roboto","Bold Condensed"
-"BellGothicStd Bold","Bold","Roboto","Condensed"
-"BellGothic BT","Bold","Roboto","Condensed"
+"Family","Style","To family","To style","To scale","To tracking"
+"Myriad Pro","Bold","Roboto","Bold Condensed","-",50
+"Arial","Bold","Roboto","Bold Condensed","-",50
+"BellGothic BT","Roman","Roboto","Condensed","-",50
+"BellGothicStd Black","Black","Roboto","Bold Condensed","-",50
+"Calibri","Bold","Roboto","Bold Condensed","-",50
+"Calibri","Regular","Roboto","Condensed","-",50
+"BellGothic Blk BT","Black","Roboto","Bold Condensed","-",50
+"BellGothicStd Bold","Bold","Roboto","Condensed","-",50
+"BellGothic BT","Bold","Roboto","Condensed","-",50
+"Chaparral Pro","Regular","Merriweather","Regular",0.87
+"Chaparral Pro","Bold","Merriweather","Heavy",0.87
