@@ -1,11 +1,11 @@
 #include Tools.jsxinc
 
-var sourceFolder = new Folder( '/Users/Marcus Downing/Documents/Projects/charactersheets/Pathfinder/Core/Barbarian' );
-var destinationFolder = new Folder( '/Users/Marcus Downing/Documents/Projects/charactersheets/Languages/Japanese' );
-var messagesFile = new File('/Users/Marcus Downing/Documents/Projects/charactersheets/Languages/Japanese/messages.csv')
-//var sourceFolder = Folder.selectDialog( 'Select the folder of Illustrator files in which you want to replace text' );
-//var destinationFolder = Folder.selectDialog('Select a destination folder into which to save translated files');
-//var messagesFile = File.openDialog("Translation CSV file", "*.csv");
+//var sourceFolder = new Folder( '/Users/Marcus Downing/Documents/Projects/charactersheets/Pathfinder/Core/Barbarian' );
+// var destinationFolder = new Folder( '/Users/Marcus Downing/Documents/Projects/charactersheets/Languages/Japanese' );
+// var messagesFile = new File('/Users/Marcus Downing/Documents/Projects/charactersheets/Languages/Japanese/messages.csv')
+var sourceFolder = Folder.selectDialog( 'Select the folder of Illustrator files in which you want to replace text' );
+var destinationFolder = Folder.selectDialog('Select a destination folder into which to save translated files');
+var messagesFile = File.openDialog("Translation CSV file", "*.csv");
 var messages = messagesFile.readCSV().associate();
 
 var messages2 = [];

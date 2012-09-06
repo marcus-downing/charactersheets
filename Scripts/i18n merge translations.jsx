@@ -8,8 +8,8 @@ Produce a single translations file
  - reference file: a file that contains useful translations but may not be complete or up to date
 */
 
-var masterFile = File.openDialog( 'Select "master" file', "*.csv" );
-var referenceFile = File.openDialog( 'Select "reference" file', "*.csv" );
+var masterFile = File.openDialog( 'Select "master" file with correct origins', "*.csv" );
+var referenceFile = File.openDialog( 'Select "reference" file with translations to merge', "*.csv" );
 var outfile = File.saveDialog( 'Save merged translation file', "*.csv" );
 
 var master = masterFile.readCSV().associate();

@@ -121,7 +121,7 @@ File.prototype.readCSV = function () {
       // Quoted fields.
       "(?:\"([^\"]*(?:\"\"[^\"]*)*)\"|" +
       // Standard fields.
-      "([^\"\\,\\r\\n]*))"
+      "([^\"\\,\\r\\n]*)|)"
       ),
     "gi"
     );
@@ -140,7 +140,8 @@ File.prototype.readCSV = function () {
     //alert("Matched object: "+arrMatches[1]+", "+arrMatches[2]+", "+arrMatches[3]+", "+arrMatches[4]+", "+arrMatches[5]);
 
     //if(arrMatches[1] || (atStart && arrMatches[2])) {
-    if (arrMatches[2] || arrMatches[3]) {
+    //if (arrMatches[2] || arrMatches[3]) {
+    if (arrMatches != null) {
       // Get the delimiter that was found.
       var strMatchedDelimiter = arrMatches[ 1 ];
 
