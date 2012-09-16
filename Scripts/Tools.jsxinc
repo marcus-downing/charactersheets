@@ -16,6 +16,7 @@ Array.isArray = function(obj) {
      return Object.prototype.toString.call(obj) == "[object Array]";
 }
 
+/*
 String.prototype.replaceAll = function(old, replacement) {
      if (old == replacement) return this;
      var mutant = this;
@@ -23,6 +24,7 @@ String.prototype.replaceAll = function(old, replacement) {
           mutant = mutant.replace(old, replacement);
      return String(mutant);
 }
+*/
 
 String.prototype.trim  = function () { return this.replace(/^\s\s*/, '').replace(/\s\s*$/, ''); }
 
@@ -46,8 +48,10 @@ function any2string(any, depth) {
      if (depth > 3) return "... (too deep)";
 
      var type = typeof any;
-     if (type === "undefined" || any == null) return '';
-     if (type === "string" || any instanceof String) return any;
+     if (type === "undefined" || any == null) return '-';
+     // if (type === "undefined") return "(undefined)";
+     // if (any == null) return "(null)";
+     if (type === "string" || any instanceof String) return '"'+any.replace(/"/g, "\\\"").replace(/\r/g, '\\r').replace(/\n/g, '\\n')+'"';
      if (type === "number" || any instanceof Number) return String(any);
      if (type === "boolean" || any instanceof Boolean) return String(any);
 
@@ -55,23 +59,42 @@ function any2string(any, depth) {
           var objtype = Object.prototype.toString.call(any);
 
           //  array
-          if (objtype === "[object Array]") {
-               //alert("start array");
+          if (objtype === "[object Array]" || any instanceof Array) {
                var str = toplevel ? '' : '[';
                var len = any.length;
                var first = true;
-               for (var i = 0; i < len; i++) {
-                    var item = any2string(any[i], depth).substring(0,256);
+
+               var keys = [];
+               for (key in any) {
+                  if (key != 'length' && key != 'index' && key != 'associate' && key != 'dissociate' && key != 'selectFields' && key != 'contains' && key != 'input')
+                    keys.push(key);
+               }
+               keys.sort();
+
+               //  is this an associative array or just a plain old list
+               var isSequential = true;
+               for (var i = 0; i < keys.length; i++) {
+                 if (keys[i] != i)
+                    isSequential = false;
+               }
+
+               for (var i = 0; i < keys.length; i++) {
+                    var key = keys[i];
+                    var item = any2string(any[key], depth).substring(0,256);
 
                     if (first) first = false;
                     else str = str + ', ';
 
-                    str = str + item;
+                    if (isSequential) str = str + item;
+                    else str = str + key+': '+item;
                }
                if (!toplevel) str = str + ']';
-               //alert("end array");
                return str;
           }
+
+          //  file or folder
+          if (any instanceof File) return any.fullName;
+          if (any instanceof Folder) return any.fullName;
 
           //  assicative object
           //alert("start object "+objtype);
@@ -110,21 +133,27 @@ function any2string(any, depth) {
 // http://www.bennadel.com/blog/1504-Ask-Ben-Parsing-CSV-Strings-With-Javascript-Exec-Regular-Expression-Command.htm
 
 File.prototype.readCSV = function () {
+  var debugCSV = false;
   this.open('r');
   var data = this.read();
 
+  var shortdata = data.length > 20 ? data.substring(0, 20)+"..." : data;
+  if (debugCSV) log("CSV: Reading data: "+shortdata);
+
   // Create a regular expression to parse the CSV values.
-  var atStart = true;
+  // var atStart = true;
   var objPattern = new RegExp(
       (
       "(\\,|\\r?\\n|\\r|^)" +
       // Quoted fields.
       "(?:\"([^\"]*(?:\"\"[^\"]*)*)\"|" +
       // Standard fields.
-      "([^\"\\,\\r\\n]*)|)"
+      "([^\"\\,\\r\\n]*))"
       ),
     "gi"
     );
+
+  var newlinePattern = new RegExp( "\\r?\\n|\\r", "gi" );
 
   // Create an array to hold our data. Give the array
   // a default empty first row.
@@ -137,36 +166,51 @@ File.prototype.readCSV = function () {
   // Keep looping over the regular expression matches
   // until we can no longer find a match.
   while (arrMatches = objPattern.exec( data )) {
-    //alert("Matched object: "+arrMatches[1]+", "+arrMatches[2]+", "+arrMatches[3]+", "+arrMatches[4]+", "+arrMatches[5]);
 
     //if(arrMatches[1] || (atStart && arrMatches[2])) {
     //if (arrMatches[2] || arrMatches[3]) {
     if (arrMatches != null) {
+      if (debugCSV) log("CSV: Matched object", arrMatches);
       // Get the delimiter that was found.
       var strMatchedDelimiter = arrMatches[ 1 ];
 
+      //  check for an omitted delimiter
+      if (typeof strMatchedDelimiter === "undefined" && arrMatches[3] && arrMatches[0].length != arrMatches[3].length) {
+        strMatchedDelimiter = arrMatches[0].substring(0, arrMatches[0].length - arrMatches[3].length);
+      }
+      if (debugCSV) log('CSV: Delimiter', strMatchedDelimiter);
+
       // Check to see if the given delimiter has a length (is not the start of string) and if it matches
       // field delimiter. If id does not, then we know that this delimiter is a row delimiter.
-      if (strMatchedDelimiter && strMatchedDelimiter.length && (strMatchedDelimiter != ',')) {
+      //if (strMatchedDelimiter && strMatchedDelimiter.length && (strMatchedDelimiter != ',')) {
+      if (typeof strMatchedDelimiter !== "undefined" && strMatchedDelimiter.match(newlinePattern)) {
         // Since we've reached a new row of data, add an empty row to our data array.
+        if (debugCSV) log("CSV: Push newline");
         arrData.push( [] );
       }
 
       // Now that we have our delimiter out of the way, let's check to see which kind of value we captured (quoted or unquoted).
+      var strMatchedValue;
       if (arrMatches[2]) {
         // We found a quoted value. When we capture this value, unescape any double quotes.
-        var strMatchedValue = arrMatches[ 2 ].replace( new RegExp( "\"\"", "g" ), "\"" );
-      } else {
+        strMatchedValue = arrMatches[ 2 ].replace(/\"\"/g, "\"" );
+        if (debugCSV) log("CSV: Quoted value", strMatchedValue);
+      } else if (arrMatches[3]){
         // We found a non-quoted value.
-        var strMatchedValue = arrMatches[ 3 ];
-      }      
+        strMatchedValue = arrMatches[ 3 ];
+        if (debugCSV) log("CSV: Unquoted value", strMatchedValue);
+      } else {
+        if (debugCSV) log("CSV: What value?");
+        strMatchedValue = '';
+      }
       if (strMatchedValue === "undefined") strMatchedValue = null;
 
       // Now that we have our value string, let's add it to the data array.
       arrData[ arrData.length - 1 ].push( strMatchedValue );
       // atStart = false;
-    // } else {
-    //   alert("No match! 0 ["+arrMatches[0]+"] 2 ["+arrMatches[2]+"] 3 ["+arrMatches[3]+"]");
+    } else {
+       //log("CSV: No match! 0 ["+arrMatches[0]+"] 2 ["+arrMatches[2]+"] 3 ["+arrMatches[3]+"]");
+       if (debugCSV) log("CSV: No match!");
     }
   }
 
@@ -191,8 +235,8 @@ File.prototype.writeCSV = function (data, bom) {
               var value = item[j];
               if (value instanceof File || value instanceof Folder) value = value.fullName;
               value = String(value);
-              value = value.replaceAll('"', '""');
-              value = value.replaceAll('%20', ' ');
+              value = value.replace(/"/g, '""');
+              value = value.replace(/%20/g, ' ');
 
               if (first) first = false;
               else line = line+',';
@@ -288,32 +332,26 @@ Array.prototype.selectFields = function (fields) {
 
 //  logging
 
-var logFile = new File("~/Illustrator script log.csv");
-//var logEntries = logFile.readCSV().associate();
-//if (logEntries.length > 1000) logEntries = logEntries.slice(logEntries.length - 1000);
+var logFile = new File("~/Illustrator script.log");
+logFile.open('w');
+logFile.writeln('');
 var logEntries = [];
 
-// function logString(value) {
-//   if (value === undefined) return '';
-//   if (value instanceof File) return value.fullName;
-//   if (value instanceof Folder) return value.fullName;
-//   return value.toString();
-// }
+var log = function() {
+  var args = Array.prototype.slice.call(arguments);
+  var action = args[0];
+  var time = new Date().toUTCString();
+  args = args.slice(1);
+  var message = time+" ("+args.length+"): "+String(action);
 
-function log(action, file, tuple) {
-  if (!tuple) tuple = {};
-  //for (var field in tuple)
-  //  tuple[field] = logString(tuple[field]);
-
-  tuple['Time'] = new Date().toUTCString();
-  tuple['Action'] = action;
-
-  if (file) {
-    if (file instanceof File) file = file.fullName;
-    if (file instanceof Folder) file = file.fullName;
-    tuple['File'] = file;
+  var first = true;
+  for (var i = 0; i < args.length; i++) {
+    var arg = args[i];
+    arg = any2string(arg);
+    message = message+(first ? ": " : ", ")+arg; first = false;
   }
 
-  logEntries.push(tuple);
-  logFile.writeCSV(logEntries.dissociate(['Time', 'Action', 'File']));
+  logFile.writeln(message);
 }
+
+log("Starting script", $.fileName);

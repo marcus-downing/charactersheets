@@ -1,12 +1,16 @@
 #include Tools.jsxinc
 
-//var sourceFolder = new Folder( '/Users/Marcus Downing/Documents/Projects/charactersheets/Pathfinder/Core/Barbarian' );
-// var destinationFolder = new Folder( '/Users/Marcus Downing/Documents/Projects/charactersheets/Languages/Japanese' );
-// var messagesFile = new File('/Users/Marcus Downing/Documents/Projects/charactersheets/Languages/Japanese/messages.csv')
-var sourceFolder = Folder.selectDialog( 'Select the folder of Illustrator files in which you want to replace text' );
-var destinationFolder = Folder.selectDialog('Select a destination folder into which to save translated files');
-var messagesFile = File.openDialog("Translation CSV file", "*.csv");
+var sourceFolder = new Folder( '/Users/Marcus Downing/Documents/Projects/charactersheets/Pathfinder/Core/Barbarian' );
+var destinationFolder = new Folder( '/Users/Marcus Downing/Documents/Projects/charactersheets/Languages/Italian' );
+var messagesFile = new File('/Users/Marcus Downing/Documents/Projects/charactersheets/Languages/Italian/Italian.csv')
+
+// var sourceFolder = Folder.selectDialog( 'Select the folder of Illustrator files in which you want to replace text' );
+// var destinationFolder = Folder.selectDialog('Select a destination folder into which to save translated files');
+// var messagesFile = File.openDialog("Translation CSV file", "*.csv");
+
+log("i18n: Reading messages file", messagesFile);
 var messages = messagesFile.readCSV().associate();
+log("i18n: Read "+messages.length+" messages");
 
 var messages2 = [];
 for (var i = 0; i < messages.length; i++) {
@@ -14,17 +18,17 @@ for (var i = 0; i < messages.length; i++) {
   messages[i]['Translation'] = normalise(messages[i]['Translation']);
   messages[i]['Part of'] = normalise(messages[i]['Part of']);
 
-  if (messages[i]['Translation'] && messages[i]['Translation'].length > 0) {
+  if (messages[i]['Translation'] && messages[i]['Translation'].length > 0 && messages[i]['Translation'] !== '-') {
     messages2.push(messages[i]);
-    log("Message: "+messages[i]['Original']+" ("+messages[i]['Part of']+") -> "+messages[i]['Translation']);
+    log("i18n: Message: "+messages[i]['Original']+" ("+messages[i]['Part of']+") -> "+messages[i]['Translation']);
   } else {
-    log("Skipping message: "+messages[i]['Original']+" ("+messages[i]['Part of']+")");
+    log("i18n: Skipping message: "+messages[i]['Original']+" ("+messages[i]['Part of']+")");
   }
 }
 messages = messages2;
 
 var files = sourceFolder.getAllFiles();
-log("Translating strings in "+files.length+" files.", sourceFolder, { 'Destination': destinationFolder });
+log("i18n: Translating "+messages.length+" strings in "+files.length+" files.");
 
 function trailingWhitespace(text) {
   var text = String(text);
@@ -35,15 +39,15 @@ function trailingWhitespace(text) {
 function normalise(text) {
   if (typeof text === "undefined") return '';
   text = String(text).trim();
-  text = text.replaceAll('\n', '|');
-  text = text.replaceAll('\r', '|');
+  text = text.replace(/\n|\r/g, '|');
   return text;
 }
 
-function denormalise(text) {
-  if (typeof text === "undefined") return '';
-  text = String(text).trim();
-  text = text.replaceAll('|', '\r');
+function denormalise(str) {
+  if (typeof str === "undefined") return '';
+  var text = String(str).trim();
+  text = text.replace(/\|/g, '\r');
+  //log('Denormalised', str, text);
   return text;
 }
 
@@ -108,6 +112,7 @@ for ( var i = 0; i < files.length; i++ ) {
         } else {
           var translation = translate(str, fullstr);
           if (translation) {
+            //log('Translating span', str, translation);
             var span = spanranges[0];
             var trailing = trailingWhitespace(str);
             for (var l = 1; l < spanranges.length; l++) {
@@ -140,13 +145,12 @@ for ( var i = 0; i < files.length; i++ ) {
       frameNum++;
     }
 
-    //var destinationFile = new File(destinationFilename);
     doc.saveAs(destinationFile);
-    //doc.close();
+    doc.close();
   } catch (e) {
-    log("Error in file", file, { "Error": e.message } );
+    log("i18n: Error in file", file, { "Error": e.message } );
   }
 }
 
-log("Translated "+count+" strings from "+files.length+" files");
+log("i18n: Translated "+count+" strings from "+files.length+" files");
 alert("Done!");
