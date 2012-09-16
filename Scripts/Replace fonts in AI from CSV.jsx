@@ -1,9 +1,9 @@
 #include Tools.jsxinc
 
-//var sourceFolder = Folder.selectDialog( 'Select the folder with Illustrator files in which you want to replace fonts');
-var sourceFolder = Folder("~/Documents/Projects/charactersheets/Pathfinder/Core/Barbarian");
-//var csvfile = File.openDialog("Select a CSV file of substitutions", "*.csv");
-var csvfile = new File("~/Documents/Projects/charactersheets/Scripts/font substitutions.csv")
+var sourceFolder = Folder.selectDialog( 'Select the folder with Illustrator files in which you want to replace fonts');
+//var sourceFolder = Folder("~/Documents/Projects/charactersheets/Pathfinder/Core/Barbarian");
+var csvfile = File.openDialog("Select a CSV file of substitutions", "*.csv");
+//var csvfile = new File("~/Documents/Projects/charactersheets/Scripts/font substitutions.csv")
 var substitutions = csvfile.readCSV();
 //new File("~/Desktop/dump.csv").writeCSV(substitutions);
 
