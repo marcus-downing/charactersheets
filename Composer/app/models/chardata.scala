@@ -38,7 +38,9 @@ object CharacterData {
       partyDownload = positive.contains("party-download"),
       hideInventory = false,
       includeCharacterBackground = positive.contains("include-background"),
-      includePartyFunds = positive.contains("include-party-funds")
+      includePartyFunds = positive.contains("include-party-funds"),
+
+      watermark = if (positive.contains("has-watermark")) data2.get("watermark").getOrElse("") else ""
       )
   }
 }
@@ -54,7 +56,9 @@ case class CharacterData (
   partyDownload: Boolean,
   hideInventory: Boolean,
   includeCharacterBackground: Boolean,
-  includePartyFunds: Boolean
+  includePartyFunds: Boolean,
+
+  watermark: String
 ) {
   def iconic: Option[IconicImage] = controllers.Application.getIconic(inventoryIconic)
 }

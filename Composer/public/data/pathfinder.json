@@ -62,6 +62,7 @@
 
         { "file": "Core/Monk/Monk - Combat.pdf", "slot": "combat", "variant": "monk", "name": "Monk", "position": 11 },
           { "file": "Core/Monk.pdf", "slot": "monk", "name": "Monk" },
+            { "file": "Archetypes/Monk/Flowing Monk.pdf", "slot": "monk", "variant": "flowing", "name": "Flowing Monk" },
 
         { "file": "Core/Paladin.pdf", "slot": "paladin", "name": "Paladin" },
           { "file": "Core/Paladin.pdf", "slot": "paladin", "variant": "paladin", "name": "Paladin" },
@@ -287,7 +288,10 @@
 
         {
             "name": "Monk",
-            "pages": [ "combat/monk", "monk", "inventory" ]
+            "pages": [ "combat/monk", "monk", "inventory" ],
+            "variants": [
+                { "name": "Flowing Monk", "pages": [ "monk/flowing" ] }
+            ]
         },
 
         {

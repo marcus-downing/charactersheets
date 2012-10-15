@@ -48,7 +48,7 @@ for ( var i = 0; i < files.length; i++ ) {
     success++;
   } catch (e) {
     log("Error in file", file, { "Error": e.message } );
-    failur++;
+    failure++;
   }
 }
 
