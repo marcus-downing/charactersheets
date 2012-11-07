@@ -46,27 +46,38 @@ object Application extends Controller {
   def buildDnd35 = Action { Ok(views.html.build(dnd35Data, iconics)) }
   def buildTest = Action { Ok(views.html.build(testData, iconics)) }
 
-  def iconics: Map[String, List[IconicImage]] = {
+  //  Group -> Set -> [] IconicImage
+  def iconics: Map[String, Map[String, List[IconicImage]]] = {
     val iconicsFolder = new File("public/images/iconics")
-    val groups = for (folder <- iconicsFolder.listFiles.toList if folder.isDirectory) yield {
-      val group = folder.getName
-      val largeFolder = new File(folder.getAbsolutePath+"/Large")
-      val files: List[IconicImage] = largeFolder.listFiles.toList.filter(_.isFile).flatMap { file =>
-        val filename = file.getName
-        if (filename.endsWith(".png")) {
-          val name = filename.substring(0, filename.length - 4)
-          Some(IconicImage(group, name))
+    if (!iconicsFolder.isDirectory) return Map.empty
+
+    val groups: List[(String, Map[String, List[IconicImage]])] = for (groupFolder <- iconicsFolder.listFiles.toList if groupFolder.isDirectory) yield {
+      val group = groupFolder.getName
+      val groupName = IconicImage.withoutNumber(group)
+
+      val sets: List[(String, List[IconicImage])] = for (setFolder <- groupFolder.listFiles.toList if setFolder.isDirectory) yield {
+        val set = setFolder.getName
+        val setName = IconicImage.withoutNumber(set)
+
+        val largeFolder = new File(setFolder.getAbsolutePath+"/Large")
+        val imageFiles: List[IconicImage] = largeFolder.listFiles.toList.filter(_.isFile).flatMap { file =>
+          val filename = file.getName
+          if (filename.endsWith(".png")) {
+            val imageName = filename.substring(0, filename.length - 4)
+            Some(IconicImage(group, set, imageName))
+          }
+          else None
         }
-        else None
+        (setName, imageFiles)
       }
-      (group, files)
+      (groupName, sets.toMap)
     }
     groups.toMap
   }
 
   def getIconic(path: String): Option[IconicImage] = {
     path.split("/").toList match {
-      case group :: name :: Nil => Some(IconicImage(group, name))
+      case group :: set :: name :: Nil => Some(IconicImage(group, set, name))
       case _ => None
     }
   }

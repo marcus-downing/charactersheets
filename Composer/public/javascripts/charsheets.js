@@ -51,11 +51,34 @@ $(function() {
   });
 
   function update_iconic() {
-    var rel = $("#inventory-iconic option:selected").attr('rel');
+    $("#options-tab .inventory-iconic-set").hide();
     $("#iconic img").removeClass("selected");
+    $('#inventory-iconic-custom').hide();
+
+    var option = $("#inventory-iconic-set option:selected");
+    var value = option.val();
+    if (value == "default") {
+      $('#inventory-iconic').val('default');
+      $('#iconic-default').addClass("selected");
+      return;
+    }
+
+    if (value == "custom") {
+      $('#inventory-iconic').val('custom');
+      $('#inventory-iconic-custom').show();
+      return;
+    }
+
+    var setSelect = $(option.attr('rel'));
+    setSelect.show();
+
+    option = setSelect.find("option:selected")
+    var rel = option.attr('rel');
     var img = $(rel).addClass("selected");
     img.attr('src', img.attr('data-src'));
+
+    $("#inventory-iconic").val(option.val());
   }
-  $("#inventory-iconic").change(update_iconic);
+  $("#inventory-iconic-set, .inventory-iconic-set").change(update_iconic);
   update_iconic();
 });

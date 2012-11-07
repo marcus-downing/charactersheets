@@ -194,7 +194,7 @@ object Composer extends Controller {
           println("Image: "+imgFile)
           val awtImage = java.awt.Toolkit.getDefaultToolkit().createImage(imgFile)
           val img = Image.getInstance(awtImage, null)
-          img.scaleToFit(200f,225f)
+          img.scaleToFit(200f,220f)
           img.setAbsolutePosition(315f - (img.getScaledWidth() / 2), 410f)
           canvas.addImage(img)
           canvas.endLayer()

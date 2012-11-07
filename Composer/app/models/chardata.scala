@@ -63,9 +63,23 @@ case class CharacterData (
   def iconic: Option[IconicImage] = controllers.Application.getIconic(inventoryIconic)
 }
 
-case class IconicImage(group: String, name: String) {
-  val path = group+"/"+name
-  val id = (group+"--"+name).toLowerCase.replaceAll("[^a-z]+", " ").trim.replace(" ", "-")
-  val largeFile = "public/images/iconics/"+group+"/Large/"+name+".png"
-  val smallFile = "images/iconics/"+group+"/Small/"+name+".png"
+case class IconicImage(group: String, set: String, name: String) {
+  import IconicImage.slug
+  val path = group+"/"+set+"/"+name
+  val id = slug(group)+"--"+slug(set)+"--"+slug(name)
+  val largeFile = "public/images/iconics/"+group+"/"+set+"/Large/"+name+".png"
+  val smallFile = "images/iconics/"+group+"/"+set+"/Small/"+name+".png"
+}
+
+object IconicImage {
+  def withoutNumber(name: String): String = {
+    val rex = """[0-9]+\s+(.*)""" r
+    
+    name match {
+      case rex(rem) => rem
+      case _ => name
+    }
+  }
+
+  def slug(str: String): String = str.toLowerCase.replaceAll("[^a-z]+", "-")
 }

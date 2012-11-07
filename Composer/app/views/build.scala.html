@@ -1,4 +1,6 @@
-@(gameData: models.GameData, iconics: Map[String, List[models.IconicImage]])
+@(gameData: models.GameData, iconics: Map[String, Map[String, List[models.IconicImage]]])
+
+@import IconicImage.slug
 
 @main("Build My Character: "+gameData.name) {
   <form action='/pdf/@gameData.game' method='post' id='build-my-character'>
@@ -69,7 +71,7 @@
     <section class='tab' id='options-tab'>
       <aside id='iconic'>
         <img src='@routes.Assets.at("images/iconics/generic.png")' id='iconic-default' class='selected' />
-        @for((group, images) <- iconics; image <- images) {
+        @for((groupName, groupSets) <- iconics; (setName, setImages) <- groupSets; image <- setImages) {
           <img data-src='@routes.Assets.at(image.smallFile)' id='iconic_@image.id'/>
         }
       </aside>
@@ -96,18 +98,33 @@
               <option value="without">Without wands, scrolls and potions</option>
           </select></p>
 
+        <input type='hidden' name='inventory-iconic' id='inventory-iconic' value='default'/>
+
         <p><label for="inventory-iconic">Iconic character image</label>
-          <select name="inventory-iconic" id="inventory-iconic">
-            <option value='default' rel='#iconic-default'>Generic</option>
+          <select name="inventory-iconic-set" id="inventory-iconic-set">
+            <option value='default' selected>Generic</option>
             <option value='custom'>My own picture</option>
-            @for((folder, images) <- iconics) {
-              <optgroup label='@folder'>
-              @for(image <- images) {
-                <option value='@image.path' rel='#iconic_@image.id'>@image.name</option>
-              }
+            @for((groupName, groupSets) <- iconics; if !groupSets.isEmpty) {
+              <optgroup label='@groupName'>
+                @for((setName, setImages) <- groupSets) {
+                  <option value='@{slug(groupName)+"--"+slug(setName)}' rel='#inventory-iconic-set-@{slug(groupName)+"--"+slug(setName)}'>@setName</option>
+                }
               </optgroup>
             }
-          </select> <img src='@routes.Assets.at("images/wiznext.png")'/></p>
+          </select></p>
+
+          @for((groupName, groupSets) <- iconics; (setName, setImages) <- groupSets; if !setImages.isEmpty) {
+            <p><select class='inventory-iconic-set' id='inventory-iconic-set-@{slug(groupName)+"--"+slug(setName)}' style='display: none;'>
+              @for(image <- setImages) {
+                <option value='@image.path' rel='#iconic_@image.id'>@image.name</option>
+              }
+            </select></p>
+          }
+
+          <fieldset id='inventory-iconic-custom' style='display: none;'>
+            <p><label for='iconic-custom-file'>File</label>
+              <input type='file' name='iconic-custom-file' id='iconic-custom-file'/></p>
+          </fieldset>
 
         <h3>Additional pages</h3>
           <p><label for="include-background"><input type="checkbox" name="include-background" id="include-background" /> Include character background</label></p>
