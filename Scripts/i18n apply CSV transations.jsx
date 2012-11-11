@@ -1,7 +1,7 @@
 #include Tools.jsxinc
 
-var sourceFolder = new Folder( '/Users/Marcus Downing/Documents/GitHub/charactersheets/Pathfinder/Core/Sample' );
-var destinationFolder = new Folder( '/Users/Marcus Downing/Documents/GitHub/charactersheets/Languages/Italian' );
+var sourceFolder = new Folder( '/Users/Marcus Downing/Documents/GitHub/charactersheets/Pathfinder/Core' );
+var destinationFolder = new Folder( '/Users/Marcus Downing/Documents/GitHub/charactersheets/Languages/Italian/Pathfinder/Core' );
 var messagesFile = new File('/Users/Marcus Downing/Documents/GitHub/charactersheets/Languages/Italian/Italian.csv');
 
 // var sourceFolder = Folder.selectDialog( 'Select the folder of Illustrator files in which you want to replace text' );
@@ -20,9 +20,10 @@ for (var i = 0; i < messages.length; i++) {
 
   if (messages[i]['Translation'] && messages[i]['Translation'].length > 0 && messages[i]['Translation'] !== '-') {
     messages2.push(messages[i]);
-    log("i18n: Message: "+messages[i]['Original']+" ("+messages[i]['Part of']+") -> "+messages[i]['Translation']);
+    if (messages[i]['Original'] == 'Stealth')
+      log("i18n: Message: "+messages[i]['Original']+" ("+messages[i]['Part of']+") -> "+messages[i]['Translation']);
   } else {
-    log("i18n: Skipping message: "+messages[i]['Original']+" ("+messages[i]['Part of']+")");
+    //log("i18n: Skipping message: "+messages[i]['Original']+" ("+messages[i]['Part of']+")");
   }
 }
 messages = messages2;
@@ -77,8 +78,8 @@ for ( var i = 0; i < files.length; i++ ) {
   var file = files[i];
   try {
     var destinationFile = new File(destinationFolder.fullName+file.fullName.substring(sourceFolder.fullName.length));
-    var destinationFolder = destinationFile.parent;
-    if (!destinationFolder.exists) destinationFolder.create();
+    log("i18n: Translating file", file, destinationFile);
+    destinationFile.ensureParentFolder();
 
     var doc = app.open(file);
 
@@ -88,6 +89,7 @@ for ( var i = 0; i < files.length; i++ ) {
       var fullstr = frame.contents;
       var fulltranslation = translate(fullstr);
       if (fulltranslation) {
+        frame.language = LanguageType.ITALIAN;
         frame.contents = fulltranslation;
         count++;
         continue;
@@ -119,6 +121,7 @@ for ( var i = 0; i < files.length; i++ ) {
               spanranges[l].remove();
             }
             span.characters.addBefore(translation+trailing);
+            span.characterAttributes.language = LanguageType.ITALIAN;
             span.contents = span.contents.substring(0, span.contents.length - 1);
 
             count++;
@@ -137,6 +140,7 @@ for ( var i = 0; i < files.length; i++ ) {
             spanranges[l].remove();
           }
           span.characters.addBefore(translation+trailing);
+          span.characterAttributes.language = LanguageType.ITALIAN;
           span.contents = span.contents.substring(0, span.contents.length - 1);
 
           count++;
