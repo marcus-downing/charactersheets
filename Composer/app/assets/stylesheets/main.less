@@ -237,11 +237,11 @@ aside#messageme {
 table#example {
   width: 100%;
   td, th { width: 25%; text-align: center; font-size: 18px; padding: 4px; }
-  th { font-weight: bold; color: @fg-hilight; }
+  th { font-family: 'Chunk Five'; font-weight: normal; color: @fg-hilight; }
   a { cursor: pointer; }
   .top-row td { vertical-align: bottom; }
   .bottom-row td { vertical-align: top; }
-  img { .drop-shadow(0px, 5px, 10px, 0.6); }
+  a img { .drop-shadow(0px, 5px, 10px, 0.6); }
 }
 
 
@@ -253,6 +253,11 @@ div.lightbox {
   position: fixed; top: 0px; bottom: 0px; left: 0px; right: 0px;
   z-index: 10;
   background: rgba(0,0,0,0.5);
+
+  img {
+    display: block; margin-left: auto; margin-right: auto; margin-top: 30px;
+    .drop-shadow(0px, 10px, 30px, 0.8); 
+  }
 
   section.note {
     width: 1024px; height: 768px;

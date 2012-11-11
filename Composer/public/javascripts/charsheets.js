@@ -5,6 +5,16 @@ $(function() {
     var id = $(this).attr('rel');
     var lightbox = $(id);
     if (lightbox) {
+      var img = lightbox.find("img");
+      var src = img.attr('src');
+      img.attr('src', '');
+      img.attr('src', src).load(function () {
+        console.log("image loaded!");
+        var outer = lightbox.innerHeight();
+        var inner = img.outerHeight();
+        var margin = (outer - inner) / 2;
+        lightbox.find("> *").css("margin-top", margin+"px");
+      });
       lightbox.fadeIn("fast");
       return false;
     }
@@ -29,6 +39,11 @@ $(function() {
       // select the tab label
       $("nav.tabs a").removeClass('selected');
       $(this).addClass('selected');
+
+      // april fool
+      if ($("body").is(".april-fool") && cornify_add && Math.random() > 0.8) {
+        cornify_add();
+      }
       return false;
     }
     return true;
@@ -45,6 +60,11 @@ $(function() {
       // select the tab label
       $("nav.tabs a").removeClass('selected');
       $("nav.tabs a[rel='"+href+"']").addClass('selected');
+
+      // april fool
+      if ($("body").is(".april-fool") && cornify_add && Math.random() > 0.8) {
+        cornify_add();
+      }
       return false;
     }
     return true;

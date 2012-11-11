@@ -54,8 +54,8 @@
         { "file": "Core/Cleric.pdf", "slot": "cleric", "name": "Cleric" },
 
         { "file": "Core/Druid/Duid.pdf", "slot": "druid", "name": "Druid" },
-          { "file": "Core/Druid (Animal Companion).pdf", "slot": "druid", "variant": "animalcompanion", "name": "Druid with Animal Companion" },
-          { "file": "Core/Druid (Domain).pdf", "slot": "druid", "variant": "domain", "name": "Domain Druid" },
+          { "file": "Core/Druid/Druid (Animal Companion).pdf", "slot": "druid", "variant": "animalcompanion", "name": "Druid with Animal Companion" },
+          { "file": "Core/Druid/Druid (Domain).pdf", "slot": "druid", "variant": "domain", "name": "Domain Druid" },
           { "file": "Core/Druid/Wild Shape.pdf", "slot": "wildshape", "name": "Wild Shape", "position": 47 },
             { "file": "Archetypes/Druid/Blight Druid (Familiar).pdf", "slot": "druid", "variant": "blight/familiar", "name": "Blight Druid (Familiar)" },
             { "file": "Archetypes/Druid/Blight Druid (Domain).pdf", "slot": "druid", "variant": "blight/domain", "name": "Blight Druid (Domain)" },

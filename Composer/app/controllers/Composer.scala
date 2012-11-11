@@ -20,14 +20,19 @@ object Composer extends Controller {
   def downloadDnd35 = downloadAction(dnd35Data)
   def downloadTest = downloadAction(testData)
 
-  def downloadAction(gameData: GameData) = Action { request =>
-    val data = request.body.asFormUrlEncoded.get
+  def downloadAction(gameData: GameData) = Action(parse.multipartFormData) { request =>
+    val iconic = request.body.file("iconic-custom-file").map{ filepart =>
+      for (contentType <- filepart.contentType)
+        println("File uploaded with content type: "+contentType)
+      filepart.ref.file
+    }
+    val data = request.body.asFormUrlEncoded
     val chardata = CharacterData.parse(data, gameData)
 
     val pages = new CharacterInterpretation(gameData, chardata).pages
 
     val sourceFolder = new File("public/pdf/"+gameData.game)
-    val pdf = composePDF(chardata, gameData, sourceFolder, pages)
+    val pdf = composePDF(chardata, gameData, sourceFolder, pages, iconic)
     val filename = chardata.classes.toList.map(_.name).mkString(", ")+".pdf"
 
     Ok(pdf).as("application/pdf").withHeaders(
@@ -35,7 +40,7 @@ object Composer extends Controller {
     )
   }
 
-  def composePDF(character: CharacterData, gameData: GameData, folder: File, pages: List[Page]): Array[Byte] = {
+  def composePDF(character: CharacterData, gameData: GameData, folder: File, pages: List[Page], customIconic: Option[File]): Array[Byte] = {
     val out = new ByteArrayOutputStream()
     val document = new Document
     val writer = PdfWriter.getInstance(document, out)
@@ -97,7 +102,7 @@ object Composer extends Controller {
       canvas.endText
 
       //  generic image
-      if (page.slot == "inventory" && !iconic.isDefined) {
+      if (page.slot == "inventory" && !iconic.isDefined && customIconic.isEmpty) {
         canvas.setGState(defaultGstate)
         val imgLayer = new PdfLayer("Iconic image", writer)
         canvas.beginLayer(imgLayer)
@@ -177,27 +182,43 @@ object Composer extends Controller {
         val awtImage = java.awt.Toolkit.getDefaultToolkit().createImage(imgFile)
         val img = Image.getInstance(awtImage, null)
         img.scaleToFit(170f,50f)
-        //img.setAbsolutePosition(pageSize.getHeight - 100f, 40f)
         img.setAbsolutePosition(45f, 775f)
         canvas.addImage(img)
         canvas.endLayer()
       }
 
       //  iconics
-      if (page.slot == "inventory" && iconic.isDefined) {
-        for (i <- iconic) {
-          println("Adding inventory image")
-          canvas.setGState(defaultGstate)
-          val imgLayer = new PdfLayer("Iconic image", writer)
-          canvas.beginLayer(imgLayer)
-          val imgFile = i.largeFile
-          println("Image: "+imgFile)
-          val awtImage = java.awt.Toolkit.getDefaultToolkit().createImage(imgFile)
-          val img = Image.getInstance(awtImage, null)
-          img.scaleToFit(200f,220f)
-          img.setAbsolutePosition(315f - (img.getScaledWidth() / 2), 410f)
-          canvas.addImage(img)
-          canvas.endLayer()
+      if (page.slot == "inventory") {
+        if (iconic.isDefined) {
+          for (i <- iconic) {
+            println("Adding inventory image")
+            canvas.setGState(defaultGstate)
+            val imgLayer = new PdfLayer("Iconic image", writer)
+            canvas.beginLayer(imgLayer)
+            val imgFile = i.largeFile
+            println("Image: "+imgFile)
+            val awtImage = java.awt.Toolkit.getDefaultToolkit().createImage(imgFile)
+            val img = Image.getInstance(awtImage, null)
+            img.scaleToFit(190f,220f)
+            img.setAbsolutePosition(315f - (img.getScaledWidth() / 2), 410f)
+            canvas.addImage(img)
+            canvas.endLayer()
+          }
+        } else if (!customIconic.isEmpty) {
+          for (i <- customIconic) {
+            println("Adding custom inventory image")
+            canvas.setGState(defaultGstate)
+            val imgLayer = new PdfLayer("Custom iconic image", writer)
+            canvas.beginLayer(imgLayer)
+            val filename = i.getAbsolutePath
+            println("Image: "+filename)
+            val awtImage = java.awt.Toolkit.getDefaultToolkit().createImage(filename)
+            val img = Image.getInstance(awtImage, null)
+            img.scaleToFit(180f,220f)
+            img.setAbsolutePosition(315f - (img.getScaledWidth() / 2), 410f)
+            canvas.addImage(img)
+            canvas.endLayer()
+          }
         }
       }
     fis.close
@@ -248,6 +269,7 @@ class CharacterInterpretation(gameData: GameData, character: CharacterData) {
     name.split("/", 2).toList match {
       case page :: Nil => PageSlot(page, None)
       case page :: variant :: _ => PageSlot(page, Some(variant))
+      case _ => throw new Exception("Wow. I guess that match really wasn't exhaustive.")
     }
 
   def selectCharacterPages(classes: List[GameClass]): List[Page] = {

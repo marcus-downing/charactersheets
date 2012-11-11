@@ -5,11 +5,19 @@ import play.api.mvc._
 
 import java.io.File
 import scala.io.Source
+import org.joda.time._
 
 import models._
 
 object Application extends Controller {
   
+  def isAprilFool = {
+    val today = new DateTime().toLocalDate
+    //println("Today is "+today.getDayOfMonth+" of "+today.getMonthOfYear)
+    //today.getDayOfMonth == 1 && today.getMonthOfYear == 4
+    true
+  }
+
   // index
   def index = Action { Ok(views.html.index()) }
 

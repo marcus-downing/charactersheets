@@ -1,9 +1,10 @@
 @(gameData: models.GameData, iconics: Map[String, Map[String, List[models.IconicImage]]])
 
 @import IconicImage.slug
+@import controllers.Application.isAprilFool
 
-@main("Build My Character: "+gameData.name) {
-  <form action='/pdf/@gameData.game' method='post' id='build-my-character'>
+@main(if (isAprilFool) "Pimp My Character!" else "Build My Character: "+gameData.name) {
+  <form action='/pdf/@gameData.game' method='post' id='build-my-character' enctype='multipart/form-data'>
     <header id='bodyheader'>
       <h1>Character Sheets by Dyslexic Studeos</h1>
 
@@ -133,6 +134,10 @@
         <h3>Watermark</i>
           <p><label for='has-watermark'><input type="checkbox" name="has-watermark" id="has-watermark" /> Watermark every page</label></p>
           <p><input type='text' name='watermark' id='watermark'/></p>
+
+        @if(isAprilFool) {
+          <p><label for='no-april-fool'><input type="checkbox" name="no-april-fool" id="no-april-fool" /> Suppress modifications for 1st April</label></p>
+        }
       </fieldset>
 
       <nav class='wizardnav'>
