@@ -130,10 +130,25 @@ function any2string(any, depth) {
 }
 
 
+Folder.prototype.ensureFolder = function () {
+  if (!this.exists) {
+    if (this.parent)
+      this.parent.ensureFolder();
+    this.create();
+  }
+}
+
+File.prototype.ensureParentFolder = function () {
+  if (this.parent)
+    this.parent.ensureFolder();
+}
+
+
 // http://www.bennadel.com/blog/1504-Ask-Ben-Parsing-CSV-Strings-With-Javascript-Exec-Regular-Expression-Command.htm
 
 File.prototype.readCSV = function () {
   var debugCSV = false;
+  this.encoding = "UTF-8";
   this.open('r');
   var data = this.read();
 
@@ -333,6 +348,7 @@ Array.prototype.selectFields = function (fields) {
 //  logging
 
 var logFile = new File("~/Illustrator script.log");
+logFile.encoding = "UTF-8";
 logFile.open('w');
 logFile.writeln('');
 var logEntries = [];

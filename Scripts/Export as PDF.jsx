@@ -29,8 +29,10 @@ pdfSaveOpts.colorDownsampling = 150.0;
 var originalInteractionLevel = userInteractionLevel;
 userInteractionLevel = UserInteractionLevel.DISPLAYALERTS;
 
-var sourceFolder = Folder.selectDialog( 'Select the folder of Illustrator files you want to export as PDFs' );
-var destinationFolder = Folder.selectDialog( 'Select the destination folder into which PDFs will be saved' );
+var sourceFolder = new Folder( '/Users/Marcus Downing/Documents/GitHub/charactersheets/Pathfinder/Archetypes/Monk' );
+var destinationFolder = new Folder( '/Users/Marcus Downing/Documents/GitHub/charactersheets/Composer/public/pdf/pathfinder/Archetypes/Monk' );
+// var sourceFolder = Folder.selectDialog( 'Select the folder of Illustrator files you want to export as PDFs' );
+// var destinationFolder = Folder.selectDialog( 'Select the destination folder into which PDFs will be saved' );
 var files = sourceFolder.getAllFiles();
 
 log("Exporting "+files.length+" Illustrator files as PDFs", sourceFolder, { "Destination": destinationFolder });
@@ -47,13 +49,15 @@ for ( var i = 0; i < files.length; i++ ) {
     var filename = file.fullName;
     var targetName = destinationFolder.fullName+filename.substring(sourceFolder.fullName.length, filename.length - 3)+".pdf";
     var targetFile = new File(targetName);
+    targetFile.ensureParentFolder();
+    log("i18n: Exporting file", file, targetFile);
 
     log("Exporting file as PDF", file);
     doc.saveAs( targetFile, pdfSaveOpts );
     doc.close();
     success++;
   } catch (e) {
-    log("Error in file", file, { "Error": e.message } );
+    log("Error in file", file, e.message );
     failure++;
   }
 }
