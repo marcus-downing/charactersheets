@@ -10,6 +10,7 @@ import com.itextpdf.text.pdf._
 import com.itextpdf.text.{Paragraph, BaseColor, Document, Image, Element}
 
 import models._
+import controllers.Application.isAprilFool
 
 object Composer extends Controller {
   lazy val pathfinderData = Application.pathfinderData
@@ -115,6 +116,18 @@ object Composer extends Controller {
         canvas.endLayer
       }
 
+      // april fool
+      if (page.slot == "core" && isAprilFool) {
+        val pageFile = new File(folder.getPath+"/Extra/Special Overlays/Character Info.pdf")
+        val fis = new FileInputStream(pageFile)
+        val reader = new PdfReader(fis)
+        val template = writer.getImportedPage(reader, 1)
+        canvas.setGState(defaultGstate)
+
+        //  the page
+        canvas.addTemplate(template, 0, 0)
+      }
+
       //  watermark
       if (character.watermark != "") {
         println("Adding watermark: "+character.watermark)
@@ -189,7 +202,20 @@ object Composer extends Controller {
 
       //  iconics
       if (page.slot == "inventory") {
-        if (iconic.isDefined) {
+        if (isAprilFool) {
+            println("Adding april fool image")
+            canvas.setGState(defaultGstate)
+            val imgLayer = new PdfLayer("Iconic image", writer)
+            canvas.beginLayer(imgLayer)
+            val imgFile = "public/images/iconics/1 Paizo/3 Advanced Races/Large/Goblin - d20.png"
+            println("Image: "+imgFile)
+            val awtImage = java.awt.Toolkit.getDefaultToolkit().createImage(imgFile)
+            val img = Image.getInstance(awtImage, null)
+            img.scaleToFit(190f,220f)
+            img.setAbsolutePosition(315f - (img.getScaledWidth() / 2), 410f)
+            canvas.addImage(img)
+            canvas.endLayer()
+        } else if (iconic.isDefined) {
           for (i <- iconic) {
             println("Adding inventory image")
             canvas.setGState(defaultGstate)
