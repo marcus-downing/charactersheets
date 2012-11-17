@@ -124,12 +124,12 @@
         { "file": "Ultimate Combat/Ronin.pdf", "slot": "samurai", "variant": "ronin", "name": "Samurai" },
 		
 		
-        { "file": "Psionics Unleashed/Psionics - Character Info.pdf", "slot": "core", "variant": "psionic", "name": "Character Info (Psionic)", "position": 10 },
-        { "file": "Psionics Unleashed/Psionics - Inventory.pdf", "slot": "inventory", "variant": "psionic", "name": "Inventory (Psionic)", "position": 53 },
-        { "file": "Psionics Unleashed/Psion.pdf", "slot": "psion", "name": "Psion" },
-        { "file": "Psionics Unleashed/Psychic Warrior.pdf", "slot": "psychicwarrior", "name": "Psychic Warrior" },
-        { "file": "Psionics Unleashed/Soulknife.pdf", "slot": "soulknife", "name": "Soulknife" },
-        { "file": "Psionics Unleashed/Wilder.pdf", "slot": "wilder", "name": "Wilder" },
+        { "file": "Psionics/Psionics - Character Info.pdf", "slot": "core", "variant": "psionic", "name": "Character Info (Psionic)", "position": 10 },
+        { "file": "Psionics/Psionics - Inventory.pdf", "slot": "inventory", "variant": "psionic", "name": "Inventory (Psionic)", "position": 53 },
+        { "file": "Psionics/Psion.pdf", "slot": "psion", "name": "Psion" },
+        { "file": "Psionics/Psychic Warrior.pdf", "slot": "psychicwarrior", "name": "Psychic Warrior" },
+        { "file": "Psionics/Soulknife.pdf", "slot": "soulknife", "name": "Soulknife" },
+        { "file": "Psionics/Wilder.pdf", "slot": "wilder", "name": "Wilder" },
 		
         { "file": "Tome of Secrets/Artificer.pdf", "slot": "artificer", "name": "Artificer" },
         { "file": "Tome of Secrets/Priest.pdf", "slot": "priest", "name": "Priest" },

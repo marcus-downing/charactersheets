@@ -14,12 +14,13 @@ object ApplicationBuild extends Build {
     
     val appDependencies = Seq(
       // Add your project dependencies here
-      "org.mindrot" % "jbcrypt" % "0.3m",
+      //"org.mindrot" % "jbcrypt" % "0.3m",
       "joda-time" % "joda-time" % "2.1",
-      "com.mongodb.casbah" %% "casbah" % "2.1.5-1",
-      "com.novus" %% "salat-core" % "1.9.0",
+      //"com.mongodb.casbah" %% "casbah" % "2.1.5-1",
+      "org.mongodb" %% "casbah" % "2.4.1",
+      "com.novus" %% "salat-core" % "1.9.1",
       //"com.lowagie" % "itext" % "2.1.7"
-      "com.itextpdf" % "itextpdf" % "5.2.0"
+      "com.itextpdf" % "itextpdf" % "5.3.2"
       //"net.debasishg" %% "sjson" % "0.17"
       //"com.codahale" %% "jerkson" % "0.5.0"
     )
