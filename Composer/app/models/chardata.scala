@@ -1,11 +1,18 @@
 package models
 
+import java.io.File
+
 object CharacterData {
-  def parse(data: Map[String, Seq[String]], gameData: GameData): CharacterData = {
-    val data2 = data.map { case (key, list) => key -> list.head }
-    //println("Data 2 "+data2)
+
+  def positiveData(data: Map[String, String]): List[String] = {
     val keys = data.keys.toList
-    val positive = keys.filter(key => data2.get(key) == Some("on"))
+    keys.filter(key => data.get(key) == Some("on"))
+  }
+
+  def parse(data: Map[String, String], gameData: GameData, customIconic: Option[File]): CharacterData = {
+    //val data2 = data.flatMap { case (key, list) => key -> list.headOption }
+    //println("Data 2 "+data2)
+    val positive = positiveData(data)
 
     // classes
     val classNames = positive
@@ -14,7 +21,7 @@ object CharacterData {
     val baseClasses: List[BaseClass] = classNames.flatMap(name => gameData.classByName(name)).toList
     
     val classes: List[GameClass] = baseClasses.map { cls =>
-      data2.get("variant-"+cls.name) match {
+      data.get("variant-"+cls.name) match {
         case Some(variantName) => 
           //println("Variant name "+variantName)
           //println("Variant found "+cls.variantByName(variantName))
@@ -22,28 +29,52 @@ object CharacterData {
         case _ => cls
       }
     }
-    
-    //val classes = baseClasses
-    //println("Class names: "+classes.map(_.name).mkString(", "))
 
     // data
     CharacterData(
       classes, 
-      colour = data2.get("colour").getOrElse("normal"),
-      spellbookSize = data2.get("spellbook-size").getOrElse("medium"),
-      inventoryStyle = data2.get("inventory-style").getOrElse("auto"),
-      inventoryIconic = data2.get("inventory-iconic").getOrElse("default"),
+      colour = data.get("colour").getOrElse("normal"),
+      spellbookSize = data.get("spellbook-size").getOrElse("medium"),
+      inventoryStyle = data.get("inventory-style").getOrElse("auto"),
+      inventoryIconic = data.get("inventory-iconic").getOrElse("default"),
+      customIconic = customIconic,
 
       includeGM = positive.contains("gm"),
       partyDownload = positive.contains("party-download"),
-      hideInventory = false,
+      hideInventory = positive.contains("simple"),
       includeCharacterBackground = positive.contains("include-background"),
       includePartyFunds = positive.contains("include-party-funds"),
 
-      watermark = if (positive.contains("has-watermark")) data2.get("watermark").getOrElse("") else ""
+      watermark = if (positive.contains("has-watermark")) data.get("watermark").getOrElse("") else ""
+      )
+  }
+
+  def parseParty(data: Map[String, String], gameData: GameData): List[CharacterData] = {
+    val charids = data.get("charids").getOrElse("").split(",").map(_.trim).filter(_ != "").toList
+    println("Stashed character IDs: "+charids.mkString(", "))
+    val stashedCharacters = charids.map { charid =>
+      val prefix = "char-"+charid+"-"
+      val subdata: Map[String, String] = data.filterKeys(_.startsWith(prefix)).map { case (key, value) => key.substring(prefix.length) -> value } toMap;
+      parse(subdata, gameData, None)
+    }
+    val finalCharacter = parse(data, gameData, None)
+    stashedCharacters ::: (finalCharacter :: Nil)
+  }
+
+  def parseGM(data: Map[String, String], gameData: GameData): GMData = {
+    val positive = positiveData(data)
+
+    GMData(
+      colour = data.get("colour").getOrElse("normal"),
+      watermark = if (positive.contains("has-watermark")) data.get("watermark").getOrElse("") else ""
       )
   }
 }
+
+case class GMData (
+  colour: String,
+  watermark: String
+  )
 
 case class CharacterData (
   classes: List[GameClass],
@@ -51,6 +82,7 @@ case class CharacterData (
   spellbookSize: String,
   inventoryStyle: String,
   inventoryIconic: String,
+  customIconic: Option[File],
 
   includeGM: Boolean,
   partyDownload: Boolean,

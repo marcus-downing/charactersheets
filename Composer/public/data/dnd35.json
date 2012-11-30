@@ -8,7 +8,10 @@
 
         { "file": "Core/Character Info.pdf", "slot": "core", "name": "Character Info" },
         { "file": "Core/Extended Combat.pdf", "slot": "combat", "name": "Combat" },
-        { "file": "Core/Extended Inventory.pdf", "slot": "inventory", "name": "Inventory", "position": 83 },
+
+        { "file": "Core/Inventory.pdf", "slot": "inventory", "name": "Inventory", "position": 53 },
+        { "file": "Core/Inventory.pdf", "slot": "inventory", "variant": "with", "name": "with accessories", "position": 53 },
+        { "file": "Core/Inventory without.pdf", "slot": "inventory", "variant": "without", "name": "without accessories", "position": 53 },
 
         { "file": "Psionics/Psionic Character Info.pdf", "slot": "core", "variant": "psionic", "name": "Psionic Character Info", "position": 15 },
         { "file": "Psionics/Psionic Combat.pdf", "slot": "combat", "variant": "psionic", "name": "Psionic Combat", "position": 16 },
@@ -218,6 +221,7 @@
             "name": "Cleric",
             "pages": [ "cleric", "inventory/without", "spellbook" ],
             "variants": [
+                { "name": "Cleric", "pages": [ ] },
                 {
                     "name": "Extended Cleric",
                     "variantName": "Extended",
@@ -245,6 +249,7 @@
             "name": "Paladin",
             "pages": [ "paladin", "inventory/without", "spellbook" ],
             "variants": [
+                { "name": "Paladin", "pages": [ ] },
                 {
                     "name": "Extended Paladin",
                     "variantName": "Extended",
@@ -267,6 +272,7 @@
             "name": "Sorcerer",
             "pages": [ "sorcerer", "inventory/without", "spellbook" ],
             "variants": [
+                { "name": "Sorcerer", "pages": [ ] },
                 {
                     "name": "Sorcerer (Metamagic Specialist)",
                     "pages": [ "sorcerer/metamagic" ]
@@ -276,8 +282,9 @@
 
         {
             "name": "Wizard",
-            "pages": [ "wizard", "inventory/without", "spellbook" ],
+            "pages": [ "wizard", "inventory/without", "spellbook", "animalcompanion" ],
             "variants": [
+                { "name": "Wizard", "pages": [ ] },
                 {
                     "name": "Wizard (Focus Specialist)",
                     "pages": [ "wizard/focus" ]

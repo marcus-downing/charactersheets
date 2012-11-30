@@ -25,7 +25,6 @@
 
 body, html {
   background: @bg;
-  //background: @bg url(/assets/images/bg.jpg) 50% 50% no-repeat;
   margin: 0px; padding: 0px;
   .body-font();
 }
@@ -59,6 +58,7 @@ button, .button, input[type=button], input[type=submit] {
   border-bottom: 1px solid #20261b; border-top: 1px solid #81996b;
   border-left: 0px none; border-right: 0px none;
   .rounded(4px); .drop-shadow(0, 2px, 2px, 0.5);
+  cursor: pointer;
 
   &:after {
     content: "";
@@ -101,6 +101,8 @@ nav.tabs {
         text-decoration: none; line-height: @h; padding: @p 30px; margin-right: 20px;
         border-top-left-radius: 6px; border-top-right-radius: 6px; 
         cursor: pointer; .header-font(); text-transform: uppercase;
+
+        &.start-hidden { display: none; }
 
         &.selected, &.selected:hover { 
           color: @fg; background: @article;
@@ -201,9 +203,10 @@ img.float {
 
 //  specifics
 
-p.introduction {
+.introduction {
   padding-left: 55px;
   &:first-letter {
+    font-family: 'Linux Libertine', Georgia, serif;
     //font-weight : bold;
     font-style: italic; font-size : 250%;
     //color : @fg-hilight;
@@ -242,6 +245,32 @@ table#example {
   .top-row td { vertical-align: bottom; }
   .bottom-row td { vertical-align: top; }
   a img { .drop-shadow(0px, 5px, 10px, 0.6); }
+}
+
+#messageform {
+  width: 1024px; height: 768px;
+  background: url(/assets/images/note-big.png) top left no-repeat;
+  margin-top: -70px;
+  margin-bottom: -130px;
+
+  h1 { margin-top: 10px; }
+
+  .inner {
+    .rotation(-5deg); padding: 75px 240px 50px 200px;
+    label { display: block; margin: 12px 0px 6px 0px; font-size: 18px; }
+    #human-line {
+      font-size: 18px; padding-left: 30px;
+      label { display: inline; margin-left: 20px; }
+    }
+    #human-alert { display: none; }
+    textarea, input[type=text], input[type=email], input[type=password] { 
+      display: block; margin: 6px 0px; padding: 2px 4px; width: 590px; border: 0px none;
+      background: rgba(255,255,255,0.7);
+      font-family: 'Reenie Beanie', cursive; font-weight: normal; color: #238; font-size: 24px;
+    }
+    textarea { height: 280px; font-size: 36px; }
+  }
+  .submitbutton { margin-left: auto; margin-right: auto; width: 980px; text-align: right; }
 }
 
 
@@ -333,5 +362,49 @@ form#build-my-character {
     border-top: 1px solid @fg; margin-top: 12px; padding-top: 8px;
     text-align: center;
     a { color: @drop-cap; }
+  }
+
+  #start-tab-title {
+    float: left;
+    margin: 9px 60px 30px 0;
+  }
+
+  #start-options {
+    clear: both;
+    text-align: center;
+    a {
+      display: inline-block; cursor: pointer;
+      margin: 0 25px;
+      text-align: center;
+      .header-font(); font-size: 16px; text-transform: uppercase;
+      img { display: block; margin-bottom: 10px; }
+    }
+  }
+
+  #party-readout {
+    display: block; margin-bottom: 10px;
+    padding: 15px; height: 300px;
+    border-radius: 3px; border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.6) url(/assets/images/white-spot.png) 50% 50% no-repeat; 
+    background-size: 100%;
+    box-shadow: inset 0px 2px 3px #676;
+    text-align: center;
+
+    li {
+      display: inline-block;
+      padding: 10px;
+      img {
+        height: 200px;
+        display: block;
+      }
+      span {
+        display: block;
+        .header-font();
+      }
+    }
+  }
+
+  #party-nav {
+    text-align: center;
   }
 }

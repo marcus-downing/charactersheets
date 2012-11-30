@@ -20,7 +20,8 @@ object ApplicationBuild extends Build {
       "org.mongodb" %% "casbah" % "2.4.1",
       "com.novus" %% "salat-core" % "1.9.1",
       //"com.lowagie" % "itext" % "2.1.7"
-      "com.itextpdf" % "itextpdf" % "5.3.2"
+      "com.itextpdf" % "itextpdf" % "5.3.2",
+      "org.apache.commons" % "commons-email" % "1.2"
       //"net.debasishg" %% "sjson" % "0.17"
       //"com.codahale" %% "jerkson" % "0.5.0"
     )

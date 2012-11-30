@@ -18,6 +18,8 @@ object Application extends Controller {
     //true
   }
 
+  def useLanguages = true
+
   // index
   def index = Action { Ok(views.html.index()) }
 
@@ -53,6 +55,45 @@ object Application extends Controller {
   def buildPathfinder = Action { Ok(views.html.build(pathfinderData, iconics)) }
   def buildDnd35 = Action { Ok(views.html.build(dnd35Data, iconics)) }
   def buildTest = Action { Ok(views.html.build(testData, iconics)) }
+
+  //  messages
+
+  def leaveMessageForm = Action { Ok(views.html.messageForm()) }
+  def leaveMessagePost = Action { request =>
+    //  get the data
+    val post: Map[String, Seq[String]] = request.body.asFormUrlEncoded.getOrElse(Map.empty)
+    val message = post("message").head
+    val author = post("author").head
+    val email = post("email").head
+    val human = post("human").head
+
+    //  send it
+    try {
+      if (human == "sure") {
+        import org.apache.commons.mail.SimpleEmail
+
+        val mail = new SimpleEmail()
+        mail.setHostName("localhost")
+        mail.addTo("marcus@basingstokeanimesociety.com")
+        mail.setFrom("charactersheets@minotaur.cc")
+        mail.setSubject("Charactersheets: Message from "+author)
+        if (email != "") {
+          mail.addReplyTo(email)
+          mail.setMsg(message+"\n\n\nFrom: "+email)
+        } else {
+          mail.setMsg(message)
+        }
+                    
+        println("Sending message: "+author+" <"+email+">: "+message)
+        mail.send()
+      }
+
+      //  say thank you
+      Ok(views.html.messageThanks(message, author))
+    } catch {
+      case _ => Ok(views.html.messageError(message, author))
+    }
+  }
 
   //  Group -> Set -> [] IconicImage
   def iconics: Map[String, Map[String, List[IconicImage]]] = {

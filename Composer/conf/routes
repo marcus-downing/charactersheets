@@ -4,9 +4,8 @@
 
 # Home page
 GET     /                           controllers.Application.index
-#GET     /message                    controllers.Application.leaveMessageForm
-#POST    /message                    controllers.Application.leaveMessage
-#GET     /message/thanks             controllers.Application.messageThanks
+GET     /message                    controllers.Application.leaveMessageForm
+POST    /message                    controllers.Application.leaveMessagePost
 
 GET     /build/pathfinder           controllers.Application.buildPathfinder
 GET     /build/dnd35                controllers.Application.buildDnd35

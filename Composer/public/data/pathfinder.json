@@ -8,7 +8,7 @@
 
         { "file": "Core/Inventory.pdf", "slot": "inventory", "name": "Inventory", "position": 53 },
         { "file": "Core/Inventory.pdf", "slot": "inventory", "variant": "with", "name": "with accessories", "position": 53 },
-        { "file": "Core/Inventory 2.pdf", "slot": "inventory", "variant": "without", "name": "without accessories", "position": 53 },
+        { "file": "Core/Inventory without.pdf", "slot": "inventory", "variant": "without", "name": "without accessories", "position": 53 },
 
         { "file": "Core/Barbarian/Barbarian - Character Info.pdf", "slot": "core", "variant": "barbarian", "name": "Barbarian", "position": 10 },
           { "file": "Core/Barbarian/Barbarian - Combat.pdf", "slot": "combat", "variant": "barbarian", "name": "Barbarian", "position": 11 },

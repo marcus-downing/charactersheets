@@ -1,0 +1,34 @@
+
+@main("Leave a message") {
+
+    <header id='bodyheader'>
+      <h1>Character Sheets by Dyslexic Studeos</h1>
+
+      <nav class='tabs'>
+        <ul>
+          <li><a href='/'>&laquo; Back to intro</a></li>
+          <li><a rel='#message-tab' class='selected'>Leave a message</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <section class='tab selected' id='message-tab'>
+      <div id='messageform'>
+        <form action="/message" method="post">
+          <div class='inner'>
+            <textarea id='message' name='message' placeholder='All the best!'></textarea>
+            <label for='author'>Your name:<input id='author' name='author' type='text' placeholder='The Internet' class='box' /></label>
+            <label for='email'>Optionally, your email address:<input id='email' name='email' type='email' placeholder='But only if you feel like it' class='box' /></label>
+            <div id='human-alert'>
+              Do you want to reconsider?
+            </div>
+            <p id='human-line'>Are you a human being? 
+              <label for='human-sure'><input type='radio' name='human' id='human-sure' value='sure'/> That's right</label> 
+              <label for='human-nah'><input type='radio' name='human' id='human-nah' value='nah'/> Actually, I'm not</label>
+            </p>
+          </div>
+          <div class='submitbutton'><input type='submit' value='Send the message'/></div>
+        </form>
+      </div>
+    </section>
+}

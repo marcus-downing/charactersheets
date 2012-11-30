@@ -27,28 +27,121 @@ object Composer extends Controller {
         println("File uploaded with content type: "+contentType)
       filepart.ref.file
     }
-    val data = request.body.asFormUrlEncoded
-    val chardata = CharacterData.parse(data, gameData)
-
-    val pages = new CharacterInterpretation(gameData, chardata).pages
-
+    val bodydata = request.body.asFormUrlEncoded
+    //val data: Map[String, String] = bodydata.flatMap { case (key, list) => key -> list.headOption } toMap
+    val data: Map[String, String] = bodydata.mapValues { _.head }
     val sourceFolder = new File("public/pdf/"+gameData.game)
-    val pdf = composePDF(chardata, gameData, sourceFolder, pages, iconic)
-    val filename = chardata.classes.toList.map(_.name).mkString(", ")+".pdf"
 
-    Ok(pdf).as("application/pdf").withHeaders(
-      "Content-disposition" -> ("attachment; filename=\""+filename+"\"")
-    )
+    data.get("start-type") match {
+      case Some("single") =>
+        val character = CharacterData.parse(data, gameData, iconic)
+
+        val pdf = composePDF(character, gameData, sourceFolder)
+        val filename = character.classes.toList.map(_.name).mkString(", ")+".pdf"
+
+        Ok(pdf).as("application/pdf").withHeaders(
+          "Content-disposition" -> ("attachment; filename=\""+filename+"\"")
+        )
+
+      case Some("party") =>
+        val characters = CharacterData.parseParty(data, gameData)
+        val pdf = composeParty(characters, gameData, sourceFolder)
+        val filename = characters.map(_.classes.toList.map(_.name).mkString("-")).mkString(", ")+".pdf"
+
+        Ok(pdf).as("application/pdf").withHeaders(
+          "Content-disposition" -> ("attachment; filename=\""+filename+"\"")
+        )
+
+      case Some("gm") =>
+        val gmdata = CharacterData.parseGM(data, gameData)
+        val pdf = composeGM(gmdata, gameData, sourceFolder)
+        Ok(pdf).as("application/pdf").withHeaders(
+          "Content-disposition" -> ("attachment; filename=\""+(if(gameData.isDnd35) "Dungeon Master" else "Game Master")+"\"")
+        )
+
+      case _ => NotFound
+    }
   }
 
-  def composePDF(character: CharacterData, gameData: GameData, folder: File, pages: List[Page], customIconic: Option[File]): Array[Byte] = {
+  def composeGM(gmdata: GMData, gameData: GameData, folder: File): Array[Byte] = {
     val out = new ByteArrayOutputStream()
     val document = new Document
     val writer = PdfWriter.getInstance(document, out)
     writer.setRgbTransparencyBlending(true)
     document.open
 
+    val colour = gmdata.colour
+
+    val pages = gameData.gm
+    for (page <- pages) {
+      val pageFile = new File(folder.getPath+"/"+page.file)
+      val fis = new FileInputStream(pageFile)
+      val reader = new PdfReader(fis)
+
+      // get the right page size
+      val template = writer.getImportedPage(reader, 1)
+      val pageSize = reader.getPageSize(1)
+      document.setPageSize(pageSize)
+      document.newPage
+
+      //  fill with white so the blend has something to work on
+      val canvas = writer.getDirectContent
+      val baseLayer = new PdfLayer("Character Sheet", writer);
+      canvas.beginLayer(baseLayer)
+      canvas.setColorFill(BaseColor.WHITE)
+      canvas.rectangle(0f, 0f, 1000f, 1000f)
+      canvas.fill
+
+      val defaultGstate = new PdfGState
+      defaultGstate.setBlendMode(PdfGState.BM_NORMAL)
+      defaultGstate.setFillOpacity(1.0f)
+      canvas.setGState(defaultGstate)
+
+      //  the page
+      canvas.addTemplate(template, 0, 0)
+      writeCopyright(canvas, writer, gameData)
+      writeColourOverlay(canvas, colour)
+
+      //  done
+      canvas.endLayer()
+      fis.close
+    }
+    document.close
+    out.toByteArray
+  }
+
+  def composeParty(characters: List[CharacterData], gameData: GameData, folder: File): Array[Byte] = {
+    val out = new ByteArrayOutputStream()
+    val document = new Document
+    val writer = PdfWriter.getInstance(document, out)
+    writer.setRgbTransparencyBlending(true)
+    document.open
+
+    for (character <- characters) {
+      println("START OF CHARACTER")
+      addCharacterPages(character, gameData, folder, document, writer)
+    }
+
+    document.close
+    out.toByteArray
+  }
+
+  def composePDF(character: CharacterData, gameData: GameData, folder: File): Array[Byte] = {
+    val out = new ByteArrayOutputStream()
+    val document = new Document
+    val writer = PdfWriter.getInstance(document, out)
+    writer.setRgbTransparencyBlending(true)
+    document.open
+
+    addCharacterPages(character, gameData, folder, document, writer)
+
+    document.close
+    out.toByteArray
+  }
+
+  def addCharacterPages(character: CharacterData, gameData: GameData, folder: File, document: Document, writer: PdfWriter) {
     val iconic = character.iconic
+    val pages = new CharacterInterpretation(gameData, character).pages
 
     val colour = character.colour
     for (page <- pages) {
@@ -79,31 +172,10 @@ object Composer extends Controller {
       canvas.addTemplate(template, 0, 0)
 
       //  copyright notice
-      canvas.setColorFill(new BaseColor(0.5f, 0.5f, 0.5f))
-      val font = BaseFont.createFont(BaseFont.HELVETICA, BaseFont.CP1252, BaseFont.EMBEDDED)
-
-      canvas.beginText
-      val copyrightLayer = new PdfLayer("Iconic image", writer)
-      canvas.beginLayer(copyrightLayer)
-      canvas.setFontAndSize(font, 5)
-      canvas.showTextAligned(Element.ALIGN_LEFT, "Copyright \u00A9 Marcus Downing 2012        http://charactersheets.minotaur.cc", 30, 21, 0)
-      if (gameData.isPathfinder) {
-        canvas.setFontAndSize(font, 4)
-
-        canvas.showTextAligned(Element.ALIGN_LEFT, "This character sheet uses trademarks and/or copyrights owned by Paizo Publishing, LLC, which are used under Paizo's Community Use Policy. We are expressly prohibited from charging you to use or", 206, 21, 0)
-        canvas.showTextAligned(Element.ALIGN_LEFT, "access this content. This character sheet is not published, endorsed, or specifically approved by Paizo Publishing. For more information about Paizo's Community Use Policy, please visit paizo.com/communityuse. For more information about Paizo Publishing and Paizo products, please visit paizo.com.", 30, 16, 0)
-      } else if (gameData.isDnd35) {
-        canvas.setFontAndSize(font, 4)
-
-        canvas.showTextAligned(Element.ALIGN_LEFT, "This character sheet is not affiliated with, endorsed, sponsored, or specifically approved by Wizards of the Coast LLC. This character sheet may use the trademarks and other intellectual property of", 206, 21, 0)
-        canvas.showTextAligned(Element.ALIGN_LEFT, "Wizards of the Coast LLC, which is permitted under Wizards' Fan Site Policy. For example, DUNGEONS & DRAGONS®, D&D®, PLAYER'S HANDBOOK 2®, and DUNGEON MASTER'S GUIDE® are trademark[s] of Wizards of the Coast and D&D® core rules, game mechanics, characters and their distinctive likenesses are the", 30, 16, 0)
-        canvas.showTextAligned(Element.ALIGN_LEFT, "property of the Wizards of the Coast. For more information about Wizards of the Coast or any of Wizards' trademarks or other intellectual property, please visit their website.", 30, 11, 0)
-      }
-      canvas.endLayer
-      canvas.endText
+      writeCopyright(canvas, writer, gameData)
 
       //  generic image
-      if (page.slot == "inventory" && !iconic.isDefined && customIconic.isEmpty) {
+      if (page.slot == "inventory" && !character.iconic.isDefined && character.customIconic.isEmpty) {
         canvas.setGState(defaultGstate)
         val imgLayer = new PdfLayer("Iconic image", writer)
         canvas.beginLayer(imgLayer)
@@ -130,58 +202,10 @@ object Composer extends Controller {
 
       //  watermark
       if (character.watermark != "") {
-        println("Adding watermark: "+character.watermark)
-
-        val watermarkGstate = new PdfGState
-        watermarkGstate.setBlendMode(PdfGState.BM_NORMAL)
-        watermarkGstate.setFillOpacity(0.1f)
-        canvas.setGState(watermarkGstate)
-
-        canvas.beginText
-        val watermarkLayer = new PdfLayer("Watermark", writer)
-        canvas.beginLayer(watermarkLayer)
-        canvas.setFontAndSize(font, (900f / character.watermark.length).toInt)
-        canvas.setColorFill(new BaseColor(0f, 0f, 0f))
-        canvas.showTextAligned(Element.ALIGN_CENTER, character.watermark, 365f, 400f, 60f)
-        canvas.endLayer
-        canvas.endText
-
-        canvas.setGState(defaultGstate)
+        writeWatermark(canvas, writer, character.watermark)
       }
 
-      // the colour overlay
-      if (colour == "black") {
-        val gstate = new PdfGState
-        
-        gstate.setBlendMode(PdfGState.BM_OVERLAY)
-        //gstate.setFillOpacity(0.5f)
-        canvas.setGState(gstate)
-        canvas.setColorFill(new BaseColor(0.1f, 0.1f, 0.1f))
-        canvas.rectangle(0f, 0f, 1000f, 1000f)
-        canvas.fill
-        
-        val gstate2 = new PdfGState
-        gstate2.setBlendMode(PdfGState.BM_COLORDODGE)
-        gstate2.setFillOpacity(0.5f)
-        canvas.setGState(gstate2)
-        canvas.setColorFill(new BaseColor(0.2f, 0.2f, 0.2f))
-        canvas.rectangle(0f, 0f, 1000f, 1000f)
-        canvas.fill
-        
-        //  correct hilights
-      } else if (colour != "normal") {
-        val gstate = new PdfGState
-        gstate.setBlendMode(colour match {
-            case "light" => PdfGState.BM_SCREEN
-            case "dark" => PdfGState.BM_OVERLAY
-            case "black" => PdfGState.BM_COLORBURN
-            case _ => new PdfName("Color")
-        })
-        canvas.setGState(gstate)
-        canvas.setColorFill(interpretColour(colour))
-        canvas.rectangle(0f, 0f, 1000f, 1000f)
-        canvas.fill
-      }
+      writeColourOverlay(canvas, colour)
 
       canvas.endLayer()
 
@@ -194,8 +218,8 @@ object Composer extends Controller {
         println("Adding logo: "+imgFile)
         val awtImage = java.awt.Toolkit.getDefaultToolkit().createImage(imgFile)
         val img = Image.getInstance(awtImage, null)
-        img.scaleToFit(170f,50f)
-        img.setAbsolutePosition(45f, 775f)
+        img.scaleToFit(170f,35f)
+        img.setAbsolutePosition(127f - (img.getScaledWidth() / 2), 785f)
         canvas.addImage(img)
         canvas.endLayer()
       }
@@ -215,8 +239,8 @@ object Composer extends Controller {
             img.setAbsolutePosition(315f - (img.getScaledWidth() / 2), 410f)
             canvas.addImage(img)
             canvas.endLayer()
-        } else if (iconic.isDefined) {
-          for (i <- iconic) {
+        } else if (character.iconic.isDefined) {
+          for (i <- character.iconic) {
             println("Adding inventory image")
             canvas.setGState(defaultGstate)
             val imgLayer = new PdfLayer("Iconic image", writer)
@@ -230,8 +254,8 @@ object Composer extends Controller {
             canvas.addImage(img)
             canvas.endLayer()
           }
-        } else if (!customIconic.isEmpty) {
-          for (i <- customIconic) {
+        } else if (!character.customIconic.isEmpty) {
+          for (i <- character.customIconic) {
             println("Adding custom inventory image")
             canvas.setGState(defaultGstate)
             val imgLayer = new PdfLayer("Custom iconic image", writer)
@@ -249,8 +273,86 @@ object Composer extends Controller {
       }
     fis.close
     }
-    document.close
-    out.toByteArray
+  }
+
+  def writeCopyright(canvas: PdfContentByte, writer: PdfWriter, gameData: GameData) {
+    //  copyright notice
+    canvas.setColorFill(new BaseColor(0.5f, 0.5f, 0.5f))
+    val font = BaseFont.createFont(BaseFont.HELVETICA, BaseFont.CP1252, BaseFont.EMBEDDED)
+
+    canvas.beginText
+    val copyrightLayer = new PdfLayer("Iconic image", writer)
+    canvas.beginLayer(copyrightLayer)
+    canvas.setFontAndSize(font, 5)
+    canvas.showTextAligned(Element.ALIGN_LEFT, "Copyright \u00A9 Marcus Downing 2012        http://charactersheets.minotaur.cc", 30, 21, 0)
+    if (gameData.isPathfinder) {
+      canvas.setFontAndSize(font, 4)
+
+      canvas.showTextAligned(Element.ALIGN_LEFT, "This character sheet uses trademarks and/or copyrights owned by Paizo Publishing, LLC, which are used under Paizo's Community Use Policy. We are expressly prohibited from charging you to use or", 206, 21, 0)
+      canvas.showTextAligned(Element.ALIGN_LEFT, "access this content. This character sheet is not published, endorsed, or specifically approved by Paizo Publishing. For more information about Paizo's Community Use Policy, please visit paizo.com/communityuse. For more information about Paizo Publishing and Paizo products, please visit paizo.com.", 30, 16, 0)
+    } else if (gameData.isDnd35) {
+      canvas.setFontAndSize(font, 4)
+
+      canvas.showTextAligned(Element.ALIGN_LEFT, "This character sheet is not affiliated with, endorsed, sponsored, or specifically approved by Wizards of the Coast LLC. This character sheet may use the trademarks and other intellectual property of", 206, 21, 0)
+      canvas.showTextAligned(Element.ALIGN_LEFT, "Wizards of the Coast LLC, which is permitted under Wizards' Fan Site Policy. For example, DUNGEONS & DRAGONS®, D&D®, PLAYER'S HANDBOOK 2®, and DUNGEON MASTER'S GUIDE® are trademark[s] of Wizards of the Coast and D&D® core rules, game mechanics, characters and their distinctive likenesses are the", 30, 16, 0)
+      canvas.showTextAligned(Element.ALIGN_LEFT, "property of the Wizards of the Coast. For more information about Wizards of the Coast or any of Wizards' trademarks or other intellectual property, please visit their website.", 30, 11, 0)
+    }
+    canvas.endLayer
+    canvas.endText
+  }
+
+  def writeWatermark(canvas: PdfContentByte, writer: PdfWriter, watermark: String) {
+    println("Adding watermark: "+watermark)
+
+    val watermarkGstate = new PdfGState
+    watermarkGstate.setBlendMode(PdfGState.BM_NORMAL)
+    watermarkGstate.setFillOpacity(0.1f)
+    canvas.setGState(watermarkGstate)
+
+    canvas.beginText
+    val watermarkLayer = new PdfLayer("Watermark", writer)
+    canvas.beginLayer(watermarkLayer)
+    val font = BaseFont.createFont(BaseFont.HELVETICA, BaseFont.CP1252, BaseFont.EMBEDDED)
+    canvas.setFontAndSize(font, (900f / watermark.length).toInt)
+    canvas.setColorFill(new BaseColor(0f, 0f, 0f))
+    canvas.showTextAligned(Element.ALIGN_CENTER, watermark, 365f, 400f, 60f)
+    canvas.endLayer
+    canvas.endText
+  }
+
+  def writeColourOverlay(canvas: PdfContentByte, colour: String) {
+    if (colour == "black") {
+      val gstate = new PdfGState
+      
+      gstate.setBlendMode(PdfGState.BM_OVERLAY)
+      //gstate.setFillOpacity(0.5f)
+      canvas.setGState(gstate)
+      canvas.setColorFill(new BaseColor(0.1f, 0.1f, 0.1f))
+      canvas.rectangle(0f, 0f, 1000f, 1000f)
+      canvas.fill
+      
+      val gstate2 = new PdfGState
+      gstate2.setBlendMode(PdfGState.BM_COLORDODGE)
+      gstate2.setFillOpacity(0.5f)
+      canvas.setGState(gstate2)
+      canvas.setColorFill(new BaseColor(0.2f, 0.2f, 0.2f))
+      canvas.rectangle(0f, 0f, 1000f, 1000f)
+      canvas.fill
+      
+      //  ...correct hilights...
+    } else if (colour != "normal") {
+      val gstate = new PdfGState
+      gstate.setBlendMode(colour match {
+          case "light" => PdfGState.BM_SCREEN
+          case "dark" => PdfGState.BM_OVERLAY
+          case "black" => PdfGState.BM_COLORBURN
+          case _ => new PdfName("Color")
+      })
+      canvas.setGState(gstate)
+      canvas.setColorFill(interpretColour(colour))
+      canvas.rectangle(0f, 0f, 1000f, 1000f)
+      canvas.fill
+    }
   }
 
   def interpretColour(colour: String): BaseColor = colour match {
@@ -318,7 +420,9 @@ class CharacterInterpretation(gameData: GameData, character: CharacterData) {
     //  special cases
     if (character.hideInventory) {
       pages = PageSlot("core", Some("simple")) :: PageSlot("combat", Some("simple")) :: pages
+      println("Slot names (before): "+slotNames.mkString(", "))
       slotNames = slotNames.filter(_ != "inventory")
+      println("Slot names (simplified): "+slotNames.mkString(", "))
     }
 
     if (slotNames.contains("spellbook")) {
