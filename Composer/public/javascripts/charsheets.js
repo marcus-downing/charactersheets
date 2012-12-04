@@ -98,6 +98,29 @@ $(function() {
     return true;
   });
 
+  function update_character() {
+    if ($("#simple-section").length) {
+      if ($("#class-Barbarian, #class-Ranger, #class-Ardent, #class-Divine-Mind, #class-Lurk, #class-Psion, #class-Psychic-Warrior, #class-Soulknife, #class-Wilder").is(":checked")) {
+        $("#simple-section").addClass("disabled");
+        $("#simple").attr("disabled", true).removeAttr("checked");
+      } else {
+        $("#simple-section").removeClass("disabled");
+        $("#simple").removeAttr("disabled");
+      }
+
+      if ($("#simple").is(":checked")) {
+        $("#iconic-section").addClass("disabled");
+        $("#inventory-iconic-set").val('default').attr("disabled", true);
+      } else {
+        $("#iconic-section").removeClass("disabled");
+        $("#inventory-iconic-set").removeAttr("disabled");
+      }
+
+      update_iconic();
+    }
+  }
+  $("#class-tab input, #class-tab select, #simple").change(update_character);
+
   var current_inventory_src;
   function update_iconic() {
     $("#options-tab .inventory-iconic-set").hide();

@@ -357,6 +357,12 @@ form#build-my-character {
     img { display: none; &.selected { display: inline; } }
   }
 
+  div.disabled {
+    @disabled-color: #554;
+    color: @disabled-color;
+    p { color: @disabled-color; }
+  }
+
   nav.wizardnav {
     clear: both;
     border-top: 1px solid @fg; margin-top: 12px; padding-top: 8px;
@@ -383,7 +389,7 @@ form#build-my-character {
 
   #party-readout {
     display: block; margin-bottom: 10px;
-    padding: 15px; height: 300px;
+    padding: 15px; height: 250px;
     border-radius: 3px; border-bottom: 1px solid rgba(255, 255, 255, 0.5);
     background: rgba(255, 255, 255, 0.6) url(/assets/images/white-spot.png) 50% 50% no-repeat; 
     background-size: 100%;
@@ -394,12 +400,13 @@ form#build-my-character {
       display: inline-block;
       padding: 10px;
       img {
-        height: 200px;
+        height: 220px;
         display: block;
       }
       span {
         display: block;
         .header-font();
+        padding: 10px 0;
       }
     }
   }

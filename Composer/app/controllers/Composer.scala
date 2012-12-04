@@ -218,8 +218,8 @@ object Composer extends Controller {
         println("Adding logo: "+imgFile)
         val awtImage = java.awt.Toolkit.getDefaultToolkit().createImage(imgFile)
         val img = Image.getInstance(awtImage, null)
-        img.scaleToFit(170f,35f)
-        img.setAbsolutePosition(127f - (img.getScaledWidth() / 2), 785f)
+        img.scaleToFit(170f,50f)
+        img.setAbsolutePosition(127f - (img.getScaledWidth() / 2), 800f - (img.getScaledHeight() / 2))
         canvas.addImage(img)
         canvas.endLayer()
       }
@@ -284,18 +284,18 @@ object Composer extends Controller {
     val copyrightLayer = new PdfLayer("Iconic image", writer)
     canvas.beginLayer(copyrightLayer)
     canvas.setFontAndSize(font, 5)
-    canvas.showTextAligned(Element.ALIGN_LEFT, "Copyright \u00A9 Marcus Downing 2012        http://charactersheets.minotaur.cc", 30, 21, 0)
+    canvas.showTextAligned(Element.ALIGN_LEFT, "Copyright \u00A9 Marcus Downing 2012        http://charactersheets.minotaur.cc", 30, 22, 0)
     if (gameData.isPathfinder) {
       canvas.setFontAndSize(font, 4)
 
-      canvas.showTextAligned(Element.ALIGN_LEFT, "This character sheet uses trademarks and/or copyrights owned by Paizo Publishing, LLC, which are used under Paizo's Community Use Policy. We are expressly prohibited from charging you to use or", 206, 21, 0)
-      canvas.showTextAligned(Element.ALIGN_LEFT, "access this content. This character sheet is not published, endorsed, or specifically approved by Paizo Publishing. For more information about Paizo's Community Use Policy, please visit paizo.com/communityuse. For more information about Paizo Publishing and Paizo products, please visit paizo.com.", 30, 16, 0)
+      canvas.showTextAligned(Element.ALIGN_LEFT, "This character sheet uses trademarks and/or copyrights owned by Paizo Publishing, LLC, which are used under Paizo's Community Use Policy. We are expressly prohibited from charging you to use or", 206, 22, 0)
+      canvas.showTextAligned(Element.ALIGN_LEFT, "access this content. This character sheet is not published, endorsed, or specifically approved by Paizo Publishing. For more information about Paizo's Community Use Policy, please visit paizo.com/communityuse. For more information about Paizo Publishing and Paizo products, please visit paizo.com.", 30, 17, 0)
     } else if (gameData.isDnd35) {
       canvas.setFontAndSize(font, 4)
 
-      canvas.showTextAligned(Element.ALIGN_LEFT, "This character sheet is not affiliated with, endorsed, sponsored, or specifically approved by Wizards of the Coast LLC. This character sheet may use the trademarks and other intellectual property of", 206, 21, 0)
-      canvas.showTextAligned(Element.ALIGN_LEFT, "Wizards of the Coast LLC, which is permitted under Wizards' Fan Site Policy. For example, DUNGEONS & DRAGONS®, D&D®, PLAYER'S HANDBOOK 2®, and DUNGEON MASTER'S GUIDE® are trademark[s] of Wizards of the Coast and D&D® core rules, game mechanics, characters and their distinctive likenesses are the", 30, 16, 0)
-      canvas.showTextAligned(Element.ALIGN_LEFT, "property of the Wizards of the Coast. For more information about Wizards of the Coast or any of Wizards' trademarks or other intellectual property, please visit their website.", 30, 11, 0)
+      canvas.showTextAligned(Element.ALIGN_LEFT, "This character sheet is not affiliated with, endorsed, sponsored, or specifically approved by Wizards of the Coast LLC. This character sheet may use the trademarks and other intellectual property of", 206, 22, 0)
+      canvas.showTextAligned(Element.ALIGN_LEFT, "Wizards of the Coast LLC, which is permitted under Wizards' Fan Site Policy. For example, DUNGEONS & DRAGONS®, D&D®, PLAYER'S HANDBOOK 2®, and DUNGEON MASTER'S GUIDE® are trademark[s] of Wizards of the Coast and D&D® core rules, game mechanics, characters and their", 30, 17, 0)
+      canvas.showTextAligned(Element.ALIGN_LEFT, "distinctive likenesses are the property of the Wizards of the Coast. For more information about Wizards of the Coast or any of Wizards' trademarks or other intellectual property, please visit their website.", 30, 12, 0)
     }
     canvas.endLayer
     canvas.endText

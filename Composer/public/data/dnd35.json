@@ -3,8 +3,8 @@
     "name": "Dungeons & Dragons 3.5",
 
     "pages": [
-        { "file": "Core/Character Info.pdf", "slot": "core", "variant": "simple", "name": "simplified", "position": 15 },
-        { "file": "Core/Combat.pdf", "slot": "combat", "variant": "simple", "name": "simplified", "position": 16 },
+        { "file": "Core/Character Info - simple.pdf", "slot": "core", "variant": "simple", "name": "simplified", "position": 15 },
+        { "file": "Core/Combat.pdf - simple", "slot": "combat", "variant": "simple", "name": "simplified", "position": 16 },
 
         { "file": "Core/Character Info.pdf", "slot": "core", "name": "Character Info" },
         { "file": "Core/Extended Combat.pdf", "slot": "combat", "name": "Combat" },

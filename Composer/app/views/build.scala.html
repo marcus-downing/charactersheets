@@ -133,8 +133,10 @@
 
       <fieldset>
         @if(gameData.isDnd35) {
-          <label for="simple"><input type="checkbox" name="simple" id="simple">Simpler version</label>
-          <p>The simplified version does not have a separate sheet for inventory and equipment, instead merging these onto the core sheets. This is only recommended for low-level characters, and is not compatible with the Barbarian or Psionic characters.</p>
+          <div id='simple-section'>
+            <label for="simple"><input type="checkbox" name="simple" id="simple">Simpler version</label>
+            <p>The simplified version does not have a separate sheet for inventory and equipment, instead merging these onto the core sheets. This is only recommended for low-level characters, and is not compatible with the Barbarian, Ranger or Psionic characters.</p>
+          </div>
         }
 
         <p><label for="spellbook-size">Spellbook style</label>
@@ -151,21 +153,22 @@
               <option value="without">Without wands, scrolls and potions</option>
           </select></p>
 
-        <input type='hidden' name='inventory-iconic' id='inventory-iconic' value='default'/>
-        <input type='hidden' name='inventory-iconic-small-src' id='inventory-iconic-small-src' value='/assets/images/iconics/generic.png'/>
+        <div id='iconic-section'>
+          <input type='hidden' name='inventory-iconic' id='inventory-iconic' value='default'/>
+          <input type='hidden' name='inventory-iconic-small-src' id='inventory-iconic-small-src' value='/assets/images/iconics/generic.png'/>
 
-        <p><label for="inventory-iconic">Iconic character image</label>
-          <select name="inventory-iconic-set" id="inventory-iconic-set">
-            <option value='default' selected>Generic</option>
-            <option value='custom'>My own picture</option>
-            @for((groupName, groupSets) <- iconics; if !groupSets.isEmpty) {
-              <optgroup label='@groupName'>
-                @for((setName, setImages) <- groupSets) {
-                  <option value='@{slug(groupName)+"--"+slug(setName)}' rel='#inventory-iconic-set-@{slug(groupName)+"--"+slug(setName)}'>@setName</option>
-                }
-              </optgroup>
-            }
-          </select></p>
+          <p><label for="inventory-iconic">Iconic character image</label>
+            <select name="inventory-iconic-set" id="inventory-iconic-set">
+              <option value='default' selected>Generic</option>
+              <option value='custom'>My own picture</option>
+              @for((groupName, groupSets) <- iconics; if !groupSets.isEmpty) {
+                <optgroup label='@groupName'>
+                  @for((setName, setImages) <- groupSets) {
+                    <option value='@{slug(groupName)+"--"+slug(setName)}' rel='#inventory-iconic-set-@{slug(groupName)+"--"+slug(setName)}'>@setName</option>
+                  }
+                </optgroup>
+              }
+            </select></p>
 
           @for((groupName, groupSets) <- iconics; (setName, setImages) <- groupSets; if !setImages.isEmpty) {
             <p><select class='inventory-iconic-set' id='inventory-iconic-set-@{slug(groupName)+"--"+slug(setName)}' style='display: none;'>
@@ -179,6 +182,7 @@
             <p><label for='iconic-custom-file'>File</label>
               <input type='file' name='iconic-custom-file' id='iconic-custom-file'/></p>
           </fieldset>
+        </div>
 
         <h3>Additional pages</h3>
           <p><label for="include-background"><input type="checkbox" name="include-background" id="include-background" /> Include character background</label></p>
