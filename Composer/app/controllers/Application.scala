@@ -91,7 +91,9 @@ object Application extends Controller {
       //  say thank you
       Ok(views.html.messageThanks(message, author))
     } catch {
-      case _ => Ok(views.html.messageError(message, author))
+      case x => 
+        x.printStackTrace()
+        Ok(views.html.messageError(message, author))
     }
   }
 
