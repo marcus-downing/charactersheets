@@ -232,7 +232,7 @@
 
         {
             "name": "Druid",
-            "pages": [ "druid", "wildshape", "inventory/without", "spellbook" ]
+            "pages": [ "druid", "wildshape", "inventory/without", "animalcompanion", "spellbook" ]
         },
 
         {
@@ -260,7 +260,7 @@
 
         {
             "name": "Ranger",
-            "pages": [ "ranger", "spellbook" ]
+            "pages": [ "ranger", "animalcompanion", "spellbook" ]
         },
 
         {
