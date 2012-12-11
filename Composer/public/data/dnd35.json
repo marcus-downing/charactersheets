@@ -270,7 +270,7 @@
 
         {
             "name": "Sorcerer",
-            "pages": [ "sorcerer", "inventory/without", "spellbook" ],
+            "pages": [ "sorcerer", "inventory/without", "spellbook", "animalcompanion" ],
             "variants": [
                 { "name": "Sorcerer", "pages": [ ] },
                 {
