@@ -367,12 +367,12 @@
 
         {
             "name": "Sorcerer",
-            "pages": [ "sorcerer", "inventory/without", "spellbook" ]
+            "pages": [ "sorcerer", "inventory/without", "spellbook", "animalcompanion" ]
         },
 
         {
             "name": "Wizard",
-            "pages": [ "wizard", "inventory/without", "spellbook" ]
+            "pages": [ "wizard", "inventory/without", "spellbook", "animalcompanion" ]
         },
 
         {
