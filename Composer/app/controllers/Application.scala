@@ -23,6 +23,12 @@ object Application extends Controller {
   // index
   def index = Action { Ok(views.html.index()) }
 
+  //  how to
+  def howto = Action { Ok(views.html.howto()) }
+
+  //  legal
+  def legal = Action { Ok(views.html.legal()) }
+
   // quotes
   lazy val quotes: List[Quote] = {
     val quotesFile = new File("public/quotes.txt")

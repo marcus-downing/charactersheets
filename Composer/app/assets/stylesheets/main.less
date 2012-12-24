@@ -102,6 +102,7 @@ nav.tabs {
         border-top-left-radius: 6px; border-top-right-radius: 6px; 
         cursor: pointer; .header-font(); text-transform: uppercase;
 
+        span { text-transform: none; }
         &.start-hidden { display: none; }
 
         &.selected, &.selected:hover { 
@@ -200,6 +201,15 @@ img.float {
   z-index: 4;
 }
 
+ul, ol { margin-top: 8px; margin-bottom: 8px; }
+ol {
+  li { margin-top: 12px; }
+}
+
+dl {
+  dt { margin-top: 12px; font-weight: bold; }
+}
+
 
 //  specifics
 
@@ -273,6 +283,28 @@ table#example {
   .submitbutton { margin-left: auto; margin-right: auto; width: 980px; text-align: right; }
 }
 
+ul.filesystem {
+  margin: 0; padding: 0;
+  li {
+    margin: 0; padding: 5px 0 5px 30px;
+    list-style: none;
+    line-height: 18px;
+    img { float: left; margin-left: -30px; margin-top: -3px; }
+    b { font-family: Arial; font-size: 13px; padding-right: 5px; }
+    span { font-style: italic; color: #3E4D32; }
+  }
+  ul {
+    margin: 5px 0 -5px -16px; padding: 0 0 0 8px;
+    border-left: 2px dotted #3E4D32; border-bottom-left-radius: 4px;
+  }
+}
+
+pre {
+  background: rgba(240,250,240,0.45);
+  .rounded(5px); padding: 5px 6px 4px 6px;
+  overflow: hidden; font-size: 13px; font-weight: bold;
+  box-shadow: inset 0 3px 4px rgba(0, 0, 0, 0.4);
+}
 
 
 //  interaction
