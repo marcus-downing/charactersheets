@@ -7,19 +7,22 @@ var files = sourceFolder.getAllFiles();
 log('Scanning '+files.length+' files for translatable strings', sourceFolder);
 
 function normalise(text) {
-  if (typeof text === "undefined") return '';
+  if (typeof text === "undefined" || text == null) return '';
   text = String(text).trim();
-  text = text.replaceAll('\n', '|');
-  text = text.replaceAll('\r', '|');
+  text = text.replace(/[\n\r]+/g, '|');
+  //text = text.replaceAll('\n', '|');
+  //text = text.replaceAll('\r', '|');
   return text;
 }
 
 var data = [];
 function pushEntry(frameNum, text, partOf, filename) {
-  text = normalise(text);
+  var normal = normalise(text);
+  log("Push entry", frameNum, text, normal, partOf, filename);
+  text = normal;
   if (text.length <= 1) return;
 
-  var simpletext = text.replace(RegExp('[^a-zA-Z]*', 'g'), '');
+  var simpletext = text.replace(/[^a-zA-Z]*/g, '');
   if (simpletext.length == 0) return;
 
   partOf = normalise(partOf);
@@ -61,9 +64,9 @@ for ( var i = 0; i < files.length; i++ ) {
     var frames = doc.textFrames;
     for ( var j = 0; j < frames.length; j++ ) {
       var frame = frames[j];
+      var partspushed = 0;
       var fullrange = frame.textRange;
       var fullstr = fullrange.contents;
-      pushEntry(frameNum, fullstr, '', filename);
 
       // split range based on continuous font, size and colour
       var str = '';
@@ -79,11 +82,19 @@ for ( var i = 0; i < files.length; i++ ) {
           str = str+String(range.contents);
         } else {
           pushEntry(frameNum, str, fullstr, filename);
+          partspushed++;
           str = String(range.contents);
         }
         prev = range;
       }
-      if (str !== '') pushEntry(frameNum, str, fullstr, filename);
+      if (str !== '') {
+        pushEntry(frameNum, str, fullstr, filename);
+          partspushed++;
+      }
+
+      if (partspushed == 0) {
+        pushEntry(frameNum, fullstr, '', filename);
+      }
       frameNum++;
     }
     doc.close();

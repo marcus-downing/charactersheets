@@ -26,6 +26,10 @@ String.prototype.replaceAll = function(old, replacement) {
 }
 */
 
+String.prototype.replaceAll = function(target, replacement) {
+  return this.split(target).join(replacement);
+};
+
 String.prototype.trim  = function () { return this.replace(/^\s\s*/, '').replace(/\s\s*$/, ''); }
 
 String.prototype.ltrim = function () { return this.replace(/^\s\s*/,''); }
@@ -347,7 +351,13 @@ Array.prototype.selectFields = function (fields) {
 
 //  logging
 
-var logFile = new File("~/Illustrator script.log");
+//alert($.fileName);
+var parts = $.fileName.split(/[\\\/]/);
+parts.pop();
+var logFileName = parts.join('/') + "/Illustrator script.log";
+//alert(logFileName);
+var logFile = new File(logFileName);
+
 logFile.encoding = "UTF-8";
 logFile.open('w');
 logFile.writeln('');
@@ -368,6 +378,7 @@ var log = function() {
   }
 
   logFile.writeln(message);
+  $.writeln(message);
 }
 
 log("Starting script", $.fileName);

@@ -2,7 +2,7 @@
 
 /*
 i18n merge translations
-Produce a single translations file
+Reduce two CSVs to produce a single translations file
 
  - master file: a newly exported file with the right strings, or a bigger file with the full set of strings
  - reference file: a file that contains useful translations but may not be complete or up to date
