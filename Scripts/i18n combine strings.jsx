@@ -1,5 +1,5 @@
 #include Tools.jsxinc
-
+#include i18n_tools.jsxinc
 
 /*
 i18n combine strings
@@ -9,13 +9,22 @@ Add two CSVs to produce a single translations file
  - second file: a file with some extra translations
 */
 
+i18n.init();
+
 var firstFile = File.openDialog( 'Select the first messages file', "*.csv" );
 var secondFile = File.openDialog( 'Select a second messages file', "*.csv" );
-var outfile = File.saveDialog( 'Save merged messages file', "*.csv" );
+var outFile = File.saveDialog( 'Save merged messages file', "*.csv" );
 
-var messages = firstFile.readCSV().associate();
-var second = secondFile.readCSV().associate();
+i18n.messages = i18n.loadCSV(firstFile);
+var second = i18n.loadCSV(secondFile);
 
+i18n.combine(second);
+i18n.renumber();
+i18n.saveCSV(outFile);
+
+alert("Done!");
+
+/*
 // merge the files
 second:
 for (var i = 0; i < second.length; i++) {
@@ -43,3 +52,4 @@ for (var i = 0; i < messages.length; i++) {
 
 outfile.writeCSV(messages.dissociate());
 alert("Done!");
+*/

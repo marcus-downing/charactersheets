@@ -16,6 +16,29 @@ Array.isArray = function(obj) {
      return Object.prototype.toString.call(obj) == "[object Array]";
 }
 
+function isString (obj) {
+  //return Object.prototype.toString.call(obj) == '[object String]';
+  return typeof obj == "string";
+}
+
+function deepCopy(obj) {
+  if (Object.prototype.toString.call(obj) === '[object Array]') {
+    var out = [], i = 0, len = obj.length;
+    for ( ; i < len; i++ ) {
+      out[i] = arguments.callee(obj[i]);
+    }
+    return out;
+  }
+  if (typeof obj === 'object') {
+    var out = {}, i;
+    for ( i in obj ) {
+      out[i] = arguments.callee(obj[i]);
+    }
+    return out;
+  }
+  return obj;
+}
+
 /*
 String.prototype.replaceAll = function(old, replacement) {
      if (old == replacement) return this;
@@ -45,92 +68,95 @@ function isEqual(a, b) {
      return _.isEqual(a, b);
 }
 
-function any2string(any, depth) {
-     depth = (typeof depth === "undefined") ? 0 : parseInt(depth);
-     var toplevel = depth == 0;
-     depth++;
-     if (depth > 3) return "... (too deep)";
+function any2string(any, depth, unquoted) {
+  depth = (typeof depth === "undefined") ? 0 : parseInt(depth);
+  var toplevel = depth == 0;
+  depth++;
+  if (depth > 3) return "... (too deep)";
 
-     var type = typeof any;
-     if (type === "undefined" || any == null) return '-';
-     // if (type === "undefined") return "(undefined)";
-     // if (any == null) return "(null)";
-     if (type === "string" || any instanceof String) return '"'+any.replace(/"/g, "\\\"").replace(/\r/g, '\\r').replace(/\n/g, '\\n')+'"';
-     if (type === "number" || any instanceof Number) return String(any);
-     if (type === "boolean" || any instanceof Boolean) return String(any);
+  var type = typeof any;
+    if (type === "undefined" || any == null) return '-';
+    if (type === "string" || any instanceof String) {
+    if (unquoted)
+      return +any.replace(/"/g, "\\\"").replace(/\r/g, '\\r').replace(/\n/g, '\\n');
+    else
+      return '"'+any.replace(/"/g, "\\\"").replace(/\r/g, '\\r').replace(/\n/g, '\\n')+'"';
+  }
+  if (type === "number" || any instanceof Number) return String(any);
+  if (type === "boolean" || any instanceof Boolean) return String(any);
 
-     if (type === "object") {
-          var objtype = Object.prototype.toString.call(any);
+  if (type === "object") {
+    var objtype = Object.prototype.toString.call(any);
 
-          //  array
-          if (objtype === "[object Array]" || any instanceof Array) {
-               var str = toplevel ? '' : '[';
-               var len = any.length;
-               var first = true;
+    //  array
+    if (objtype === "[object Array]" || any instanceof Array) {
+      var str = toplevel ? '' : '[';
+      var len = any.length;
+      var first = true;
 
-               var keys = [];
-               for (key in any) {
-                  if (key != 'length' && key != 'index' && key != 'associate' && key != 'dissociate' && key != 'selectFields' && key != 'contains' && key != 'input')
-                    keys.push(key);
-               }
-               keys.sort();
+      var keys = [];
+      for (key in any) {
+      if (key != 'length' && key != 'index' && key != 'associate' && key != 'dissociate' && key != 'selectFields' && key != 'contains' && key != 'input')
+        keys.push(key);
+      }
+      keys.sort();
 
-               //  is this an associative array or just a plain old list
-               var isSequential = true;
-               for (var i = 0; i < keys.length; i++) {
-                 if (keys[i] != i)
-                    isSequential = false;
-               }
+      //  is this an associative array or just a plain old list
+      var isSequential = true;
+      for (var i = 0; i < keys.length; i++) {
+      if (keys[i] != i)
+        isSequential = false;
+      }
 
-               for (var i = 0; i < keys.length; i++) {
-                    var key = keys[i];
-                    var item = any2string(any[key], depth).substring(0,256);
+      for (var i = 0; i < keys.length; i++) {
+        var key = keys[i];
+        var item = any2string(any[key], depth).substring(0,256);
 
-                    if (first) first = false;
-                    else str = str + ', ';
+        if (first) first = false;
+        else str = str + ', ';
 
-                    if (isSequential) str = str + item;
-                    else str = str + key+': '+item;
-               }
-               if (!toplevel) str = str + ']';
-               return str;
-          }
+        if (isSequential || unquoted) str = str + item;
+        else str = str + key+': '+item;
+      }
+      if (!toplevel) str = str + ']';
+      return str;
+    }
 
-          //  file or folder
-          if (any instanceof File) return any.fullName;
-          if (any instanceof Folder) return any.fullName;
+    //  file or folder
+    if (any instanceof File) return any.fullName;
+    if (any instanceof Folder) return any.fullName;
 
-          //  assicative object
-          //alert("start object "+objtype);
-          var str = objtype.substring(1, objtype.length - 1);
-          str = str + ' {';
-          var first = true;
-          var keys = any.keys;
-          for (var key in any) {
-               if (!Object.prototype.hasOwnProperty.call(any, key))
-                    alert("Unknown property "+key+" on "+str);
-               if (typeof key === "undefined")
-                    alert("Undefined key on "+str);
-               if (key == null)
-                    alert("Null key on "+str);
-               if (typeof any === "undefined")
-                    alert("Undefined object on "+str);
-               var value = any[key];
+    //  assicative object
+    //alert("start object "+objtype);
+    var str = objtype.substring(1, objtype.length - 1);
+    str = str + ' {';
+    var first = true;
+    var keys = any.keys;
+    for (var key in any) {
+         if (!Object.prototype.hasOwnProperty.call(any, key))
+              alert("Unknown property "+key+" on "+str);
+         if (typeof key === "undefined")
+              alert("Undefined key on "+str);
+         if (key == null)
+              alert("Null key on "+str);
+         if (typeof any === "undefined")
+              alert("Undefined object on "+str);
+         var value = any[key];
 
-               if (first) first = false;
-               else str = str+',';
+         if (first) first = false;
+         else str = str+',';
 
-               key = any2string(value, depth).substring(0,64);
-               value = any2string(value, depth).substring(0,256);
-               str = str+any2string(key, depth)+': '+value;
-          }
-          str = str + '}';
-          //alert("end object "+objtype);
-          return str;
-     }
+         key = any2string(value, depth).substring(0,64);
+         value = any2string(value, depth).substring(0,256);
+         str = str+any2string(key, depth)+': '+value;
+    }
+    str = str + '}';
+    //alert("end object "+objtype);
+    return str;
+  }
 
-     // huh?
-     return type;
+  // huh?
+  return type;
 }
 
 

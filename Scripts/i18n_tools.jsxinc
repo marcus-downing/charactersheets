@@ -1,0 +1,227 @@
+var i18n = {
+  messages: [],
+  frameNum: 1,
+  frameNumBoost: 0,
+
+  init: function () {
+    i18n.messages = [];
+    i18n.frameNum = 1;
+    i18n.frameNumBoost = 0;
+  },
+
+  normalise: function (text) {
+    if (typeof text === "undefined" || text == null) return '';
+    text = String(text).trim();
+    // text = text.replaceAll('\n', '|');
+    // text = text.replaceAll('\r', '|');
+    // text = text.replace(/[\n\r]+/g, '|');
+    text = text.replace(/\n|\r/g, '|');
+    return text;
+  },
+
+  denormalise: function (str) {
+    if (typeof str === "undefined") return '';
+    var text = String(str).trim();
+    text = text.replace(/\|/g, '\r');
+    //log('Denormalised', str, text);
+    return text;
+  },
+
+  isTranslatable: function (str) {
+    if (str === "") return false;
+    if (str.match(/^[0-9]+(\.[0-9]+)?$/)) return false;
+    if (str.match(/^[0-9]*d[0-9]+$/)) return false;
+
+    var t = str.replaceAll(/[^a-z]/g, '');
+    if (t == "") return false;
+    return true;
+  },
+
+  pushEntry: function (frameNum, text, partOf, filename) {
+    if (!isString(filename)) {
+      alert("Filename not string!");
+      log("Filename not string!", frameNum, text, partOf, filename);
+    }
+
+    var normal = i18n.normalise(text);
+    log("Push entry", frameNum, text, normal, partOf, filename);
+    text = normal;
+    if (text.length <= 1) return;
+
+    var simpletext = text.replace(/[^a-zA-Z]*/g, '');
+    if (simpletext.length == 0) return;
+
+    partOf = i18n.normalise(partOf);
+    if (partOf == text) partOf = '';
+
+    filename = filename.substring(0, filename.length - 3);
+
+    var entry = {
+      'Frame number': frameNum,
+      'Original': text,
+      'Translation': '',
+      'Part of': partOf,
+      'Count': 1,
+      'Files': [ filename ]
+    };
+
+    // check if the item has been stored before, and merge if necessary
+    var len = i18n.messages.length;
+    for (var e = 0; e < len; e++) {
+      if (text === i18n.messages[e]['Original'] && partOf === i18n.messages[e]['Part of']) {
+        i18n.messages[e]['Count']++;
+        if (!i18n.messages[e]['Files'].contains(filename)) i18n.messages[e]['Files'].push( filename );
+        return;
+      }
+    }
+    i18n.messages.push(entry);
+  },
+
+  //  prod this on every item, to stop the script from timeout
+  tick: function () {
+    i18n.tickNum++;
+    i18n.totalTick++;
+    if (i18n.tickNum >= 50) {
+      log("Interaction required: #"+i18n.totalTick);
+      alert("Tick #"+i18n.totalTick);
+      i18n.tickNum = 0;
+    }
+  },
+
+  tickNum: 0,
+  totalTick: 0,
+
+  extractFile: function (file) {
+    try {
+      var filename = file.name;
+      var doc = app.open(file);
+
+      var frames = doc.textFrames;
+      for ( var j = 0; j < frames.length; j++ ) {
+        var frame = frames[j];
+        var partspushed = 0;
+        var fullrange = frame.textRange;
+        var fullstr = fullrange.contents;
+
+        // split range based on continuous font, size and colour
+        var str = '';
+        var ranges = frame.textRanges;
+        var prev = false;
+        for ( var k = 0; k < ranges.length; k++ ) {
+          var range = ranges[k];
+          if (prev == false || 
+            (  isEqual(range.characterAttributes.fillColor, prev.characterAttributes.fillColor)
+            && isEqual(range.characterAttributes.textFont, prev.characterAttributes.textFont)
+            && isEqual(range.characterAttributes.size, prev.characterAttributes.size)
+            )) {
+            str = str+String(range.contents);
+          } else {
+            i18n.pushEntry(i18n.frameNum, str, fullstr, filename);
+            partspushed++;
+            str = String(range.contents);
+          }
+          prev = range;
+        }
+        if (str !== '') {
+          i18n.pushEntry(i18n.frameNum, str, fullstr, filename);
+          partspushed++;
+        }
+
+        if (partspushed == 0) {
+          i18n.pushEntry(i18n.frameNum, fullstr, "", filename);
+        }
+        i18n.frameNum++;
+      }
+      doc.close();
+    } catch (e) {
+      log("Error in file", file, { "Error": e.message } );
+    }
+    i18n.tick();
+  },
+
+  extractFolder: function (sourceFolder) {
+    var num = i18n.messages.length;
+    var files = sourceFolder.getAllFiles();
+    log('Scanning '+files.length+' files for translatable strings', sourceFolder);
+
+    for ( var i = 0; i < files.length; i++ ) {
+      var file = files[i];
+      log("Scanning file "+(i+1)+" of "+files.length, file);
+      i18n.extractFile(file);
+    }
+    num = i18n.messages.length - num;
+    log("Extracted "+num+" strings from "+files.length+" files", false, {'Success': files.length});
+  },
+
+  loadCSV: function (infile) {
+    var data = infile.readCSV().associate();
+    for (var i = 0; i < data.length; i++) {
+      var files = data[i]['Files'].split(',');
+      for (var j = 0; j < files.length; j++) {
+        files[j] = files[j].replace(/\\"/g, '"');
+        files[j] = files[j].replace(/^ *"*/, '');
+        files[j] = files[j].replace(/"+$/, '');
+      }
+      data[i]['Files'] = files;
+    }
+    return data;
+  },
+
+  saveCSV: function (outFile) {
+    var data = deepCopy(i18n.messages); // make sure we're copying the data, so we don't alter the original
+    for (var i = 0; i < data.length; i++) {
+      data[i]['File count'] = data[i]['Files'].length;
+      data[i]['Files'] = any2string(data[i]['Files'], 0, true);
+    }
+
+    data = data.dissociate(['Frame number', 'Original', 'Translation', 'Count', 'Part of', 'File count', 'Files']);
+    outFile.writeCSV(data);
+  },
+
+  reduce: function (reference) {
+    for (var i = 0; i < i18n.messages.length; i++) {
+      var translation = false;
+      for (var j = 0; j < reference.length; j++) {
+        if (i18n.messages[i]['Original'] == reference[j]['Original'] && i18n.messages[i]['Part of'] == reference[j]['Part of']) {
+          i18n.messages[i]['Translation'] = reference[j]['Translation'];
+          break;
+        }
+      }
+    }
+  },
+
+  combine: function (second) {
+    i18n.frameNumBoost += 1000;
+
+    second:
+    for (var i = 0; i < second.length; i++) {
+      var entry = second[i];
+      for (var j = 0; j < i18n.messages.length; j++) {
+        if (i18n.messages[j]['Original'] == entry['Original'] && i18n.messages[j]['Part of'] == entry['Part of']) {
+          i18n.messages[j]['Count'] = i18n.messages[j]['Count'] + entry['Count'];
+          for (var k = 0; k < entry['Files'].length; k++) {
+            i18n.messages[j]['Files'].push(entry['Files'][k]);
+          }
+          continue second;
+        }
+      }
+
+      var add = second[i];
+      add['Frame number'] += i18n.frameNumBoost;
+      i18n.messages.push(add);
+    }
+  },
+
+  renumber: function () {
+    var frames = [];
+    var nframe = 0;
+    var lastframe = null;
+    for (var i = 0; i < i18n.messages.length; i++) {
+      if (i18n.messages[i]['Frame number'] !== lastframe)
+        nframe++;
+      log("Comparing frame numbers", i18n.messages[i]['Frame number'], lastframe);
+      lastframe = i18n.messages[i]['Frame number'];
+      i18n.messages[i]['Frame number'] = nframe;
+    }
+  }
+}

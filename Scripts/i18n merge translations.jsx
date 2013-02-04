@@ -1,4 +1,5 @@
 #include Tools.jsxinc
+#include i18n_tools.jsxinc
 
 /*
 i18n merge translations
@@ -8,13 +9,21 @@ Reduce two CSVs to produce a single translations file
  - reference file: a file that contains useful translations but may not be complete or up to date
 */
 
+i18n.init();
+
 var masterFile = File.openDialog( 'Select "master" file with correct origins', "*.csv" );
 var referenceFile = File.openDialog( 'Select "reference" file with translations to merge', "*.csv" );
-var outfile = File.saveDialog( 'Save merged translation file', "*.csv" );
+var outFile = File.saveDialog( 'Save merged translation file', "*.csv" );
 
-var master = masterFile.readCSV().associate();
-var reference = referenceFile.readCSV().associate();
+i18n.messages = i18n.loadCSV(masterFile);
+var reference = i18n.loadCSV(referenceFile);
 
+i18n.reduce(reference);
+i18n.saveCSV(outFile);
+
+alert("Done!");
+
+/*
 for (var i = 0; i < master.length; i++) {
   var translation = false;
   for (var j = 0; j < reference.length; j++) {
@@ -26,3 +35,4 @@ for (var i = 0; i < master.length; i++) {
 }
 
 outfile.writeCSV(master.dissociate());
+*/
