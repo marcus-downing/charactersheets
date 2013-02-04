@@ -32,11 +32,19 @@ object Composer extends Controller {
     val data: Map[String, String] = bodydata.mapValues { _.head }
     val sourceFolder = new File("public/pdf/"+gameData.game)
 
+    val language = data.get("language").getOrElse("default")
+    val sourceFolders = if (language != "default") {
+      println("Language: "+language)
+      val langFolder = new File("public/pdf/languages/"+language+"/"+gameData.game)
+      langFolder :: sourceFolder :: Nil
+    } else
+      sourceFolder :: Nil
+
     data.get("start-type") match {
       case Some("single") =>
         val character = CharacterData.parse(data, gameData, iconic)
 
-        val pdf = composePDF(character, gameData, sourceFolder)
+        val pdf = composePDF(character, gameData, sourceFolders)
         val filename = character.classes.toList.map(_.name).mkString(", ")+".pdf"
 
         Ok(pdf).as("application/pdf").withHeaders(
@@ -45,7 +53,7 @@ object Composer extends Controller {
 
       case Some("party") =>
         val characters = CharacterData.parseParty(data, gameData)
-        val pdf = composeParty(characters, gameData, sourceFolder)
+        val pdf = composeParty(characters, gameData, sourceFolders)
         val filename = characters.map(_.classes.toList.map(_.name).mkString("-")).mkString(", ")+".pdf"
 
         Ok(pdf).as("application/pdf").withHeaders(
@@ -54,7 +62,7 @@ object Composer extends Controller {
 
       case Some("gm") =>
         val gmdata = CharacterData.parseGM(data, gameData)
-        val pdf = composeGM(gmdata, gameData, sourceFolder)
+        val pdf = composeGM(gmdata, gameData, sourceFolders)
         Ok(pdf).as("application/pdf").withHeaders(
           "Content-disposition" -> ("attachment; filename=\""+(if(gameData.isDnd35) "Dungeon Master" else "Game Master")+"\"")
         )
@@ -63,7 +71,7 @@ object Composer extends Controller {
     }
   }
 
-  def composeGM(gmdata: GMData, gameData: GameData, folder: File): Array[Byte] = {
+  def composeGM(gmdata: GMData, gameData: GameData, folders: List[File]): Array[Byte] = {
     val out = new ByteArrayOutputStream()
     val document = new Document
     val writer = PdfWriter.getInstance(document, out)
@@ -73,8 +81,8 @@ object Composer extends Controller {
     val colour = gmdata.colour
 
     val pages = gameData.gm
-    for (page <- pages) {
-      val pageFile = new File(folder.getPath+"/"+page.file)
+    for (page <- pages; pageFile <- locatePage(folders, page)) {
+      //val pageFile = new File(folder.getPath+"/"+page.file)
       val fis = new FileInputStream(pageFile)
       val reader = new PdfReader(fis)
 
@@ -110,7 +118,7 @@ object Composer extends Controller {
     out.toByteArray
   }
 
-  def composeParty(characters: List[CharacterData], gameData: GameData, folder: File): Array[Byte] = {
+  def composeParty(characters: List[CharacterData], gameData: GameData, folders: List[File]): Array[Byte] = {
     val out = new ByteArrayOutputStream()
     val document = new Document
     val writer = PdfWriter.getInstance(document, out)
@@ -119,33 +127,37 @@ object Composer extends Controller {
 
     for (character <- characters) {
       println("START OF CHARACTER")
-      addCharacterPages(character, gameData, folder, document, writer)
+      addCharacterPages(character, gameData, folders, document, writer)
     }
 
     document.close
     out.toByteArray
   }
 
-  def composePDF(character: CharacterData, gameData: GameData, folder: File): Array[Byte] = {
+  def composePDF(character: CharacterData, gameData: GameData, folders: List[File]): Array[Byte] = {
     val out = new ByteArrayOutputStream()
     val document = new Document
     val writer = PdfWriter.getInstance(document, out)
     writer.setRgbTransparencyBlending(true)
     document.open
 
-    addCharacterPages(character, gameData, folder, document, writer)
+    addCharacterPages(character, gameData, folders, document, writer)
 
     document.close
     out.toByteArray
   }
 
-  def addCharacterPages(character: CharacterData, gameData: GameData, folder: File, document: Document, writer: PdfWriter) {
+  def locatePage(folders: List[File], page: Page): Option[File] = locatePageFile(folders, page.file)
+
+  def locatePageFile(folders: List[File], filename: String): Option[File] = folders.map(folder => new File(folder.getPath+"/"+filename)).filter(_.exists).headOption
+
+  def addCharacterPages(character: CharacterData, gameData: GameData, folders: List[File], document: Document, writer: PdfWriter) {
     val iconic = character.iconic
     val pages = new CharacterInterpretation(gameData, character).pages
 
     val colour = character.colour
-    for (page <- pages) {
-      val pageFile = new File(folder.getPath+"/"+page.file)
+    for (page <- pages; pageFile <- locatePage(folders, page)) {
+      //val pageFile = new File(folder.getPath+"/"+page.file)
       val fis = new FileInputStream(pageFile)
       val reader = new PdfReader(fis)
 
@@ -188,8 +200,17 @@ object Composer extends Controller {
         canvas.endLayer
       }
 
+      // variant rules
+      if (!character.variantRules.isEmpty) {
+        if (character.variantRules.contains("wounds-vigour")) {
+          overlayPage(canvas, writer, folders, "Pathfinder/Variant Rules/Wounds and Vigour.pdf")
+        }
+      }
+
       // april fool
       if (page.slot == "core" && isAprilFool) {
+        overlayPage(canvas, writer, folders, "Extra/Special Overlays/Character Info.pdf")
+        /*
         val pageFile = new File(folder.getPath+"/Extra/Special Overlays/Character Info.pdf")
         val fis = new FileInputStream(pageFile)
         val reader = new PdfReader(fis)
@@ -198,6 +219,7 @@ object Composer extends Controller {
 
         //  the page
         canvas.addTemplate(template, 0, 0)
+        */
       }
 
       //  watermark
@@ -275,7 +297,26 @@ object Composer extends Controller {
     }
   }
 
+  def overlayPage(canvas: PdfContentByte, writer: PdfWriter, folders: List[File], fileName: String) {
+    for (pageFile <- locatePageFile(folders, fileName)) {
+      // val pageFile = new File(folder.getPath+"/"+fileName)
+      val fis = new FileInputStream(pageFile)
+      val reader = new PdfReader(fis)
+      val template = writer.getImportedPage(reader, 1)
+
+      val defaultGstate = new PdfGState
+      defaultGstate.setBlendMode(PdfGState.BM_NORMAL)
+      defaultGstate.setFillOpacity(1.0f)
+      canvas.setGState(defaultGstate)
+
+      //  the page
+      canvas.addTemplate(template, 0, 0)
+    }
+  }
+
   def writeCopyright(canvas: PdfContentByte, writer: PdfWriter, gameData: GameData) {
+    val year = new LocalDate().getYear()
+
     //  copyright notice
     canvas.setColorFill(new BaseColor(0.5f, 0.5f, 0.5f))
     val font = BaseFont.createFont(BaseFont.HELVETICA, BaseFont.CP1252, BaseFont.EMBEDDED)
@@ -284,7 +325,7 @@ object Composer extends Controller {
     val copyrightLayer = new PdfLayer("Iconic image", writer)
     canvas.beginLayer(copyrightLayer)
     canvas.setFontAndSize(font, 5)
-    canvas.showTextAligned(Element.ALIGN_LEFT, "Copyright \u00A9 Marcus Downing 2012        http://charactersheets.minotaur.cc", 30, 22, 0)
+    canvas.showTextAligned(Element.ALIGN_LEFT, "\u00A9 Marcus Downing "+year+"        http://charactersheets.minotaur.cc", 30, 22, 0)
     if (gameData.isPathfinder) {
       canvas.setFontAndSize(font, 4)
 

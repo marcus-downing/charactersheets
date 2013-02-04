@@ -33,7 +33,7 @@
       @if(useLanguages) {
         <p>
           <label for="language">Language</label>
-          <select name="language">
+          <select name="language" id="language">
             <option value='' selected>English</option>
             <option value='italian'>Italiano</option>
             <option value='french'>Français</option>
@@ -188,6 +188,14 @@
         <h3>Additional pages</h3>
           <p><label for="include-background"><input type="checkbox" name="include-background" id="include-background" /> Include character background</label></p>
           <p><label for="include-party-funds"><input type="checkbox" name="include-party-funds" id="include-party-funds" /> Include party funds</label></p>
+
+        @if(gameData.isPathfinder) {
+          <h3>Variant Rules</h3>
+            <p><label for="variant-wounds-vigour"><input type="checkbox" name="variant-wounds-vigour" id="variant-wounds-vigour" /> Wounds &amp; Vigour</label></p>
+            <p><label for="variant-armour-damage-reduction"><input type="checkbox" name="variant-armour-damage-reduction" id="variant-armour-damage-reduction" /> Armour as Damage Reduction</label></p>
+            <p><label for="variant-piecemeal-armour"><input type="checkbox" name="variant-piecemeal-armour" id="variant-piecemeal-armour" /> Piecemeal Armour</label></p>
+            <p><label for="variant-called-shots"><input type="checkbox" name="variant-called-shots" id="variant-called-shots" /> Called Shots</label></p>
+        }
 
         <h3>Watermark</i>
           <p><label for='has-watermark'><input type="checkbox" name="has-watermark" id="has-watermark" /> Watermark every page</label></p>

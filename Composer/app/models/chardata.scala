@@ -30,6 +30,8 @@ object CharacterData {
       }
     }
 
+    val variantRules: List[String] = positive.filter(_.startsWith("variant-")).map(_.substring("variant-".length))
+
     // data
     CharacterData(
       classes, 
@@ -45,7 +47,9 @@ object CharacterData {
       includeCharacterBackground = positive.contains("include-background"),
       includePartyFunds = positive.contains("include-party-funds"),
 
-      watermark = if (positive.contains("has-watermark")) data.get("watermark").getOrElse("") else ""
+      watermark = if (positive.contains("has-watermark")) data.get("watermark").getOrElse("") else "",
+
+      variantRules = variantRules
       )
   }
 
@@ -90,7 +94,9 @@ case class CharacterData (
   includeCharacterBackground: Boolean,
   includePartyFunds: Boolean,
 
-  watermark: String
+  watermark: String,
+
+  variantRules: List[String]
 ) {
   def iconic: Option[IconicImage] = controllers.Application.getIconic(inventoryIconic)
 }
