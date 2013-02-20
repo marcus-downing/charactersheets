@@ -157,24 +157,29 @@
 
         { "file": "Core/Animal Companion.pdf", "slot": "animalcompanion", "name": "Animal Companion" }
     ],
-    
-    "gm": [ 
-        { "file": "GM/Party.pdf", "name": "Party" },
-        { "file": "GM/NPC.pdf", "name": "NPC" },
-        { "file": "GM/NPC Group.pdf", "name": "NPC Group" },
-        { "file": "GM/Grid.pdf", "name": "Map - Grid" },
-        { "file": "GM/Hex Grid.pdf", "name": "Map - Hex"},
-        { "file": "GM/Fine Hex Grid.pdf", "name": "Map - Hex (fine)" },
-        { "file": "GM/Isometric (Portrait).pdf", "name": "Map - Isometric (portrait)" },
-        { "file": "GM/Isometric (Landscape).pdf", "name": "Map - Isometric (landscape)" },
-        { "file": "GM/Fine Isometric (Portrait).pdf", "name": "Map - Isometric (fine portrait)" },
-        { "file": "GM/Fine Isometric (Landscape).pdf", "name": "Map - Isometric (fine landscape)" },
 
-        { "file": "GM/Timeline (Portrait).pdf", "name": "Timeline (Portrait)" },
-        { "file": "GM/Timeline (Portrait - continued).pdf", "name": "Timeline (Portrait - continued)" },
-        { "file": "GM/Timeline (Landscape).pdf", "name": "Timeline (Landscape)" },
-        { "file": "GM/Timeline (Landscape - continued).pdf", "name": "Timeline (Landscape - continued)" }
-     ],
+    "gm": {
+        "campaign": [
+            { "file": "GM/Party.pdf", "name": "Party" },
+            { "file": "GM/NPC.pdf", "name": "NPC" },
+            { "file": "GM/NPC Group.pdf", "name": "NPC Group" },
+            { "file": "GM/Timeline (Portrait).pdf", "name": "Timeline (Portrait)" },
+            { "file": "GM/Timeline (Portrait - continued).pdf", "name": "Timeline (Portrait - continued)" },
+            { "file": "GM/Timeline (Landscape).pdf", "name": "Timeline (Landscape)" },
+            { "file": "GM/Timeline (Landscape - continued).pdf", "name": "Timeline (Landscape - continued)" },
+            { "file": "GM/Notes.pdf", "name": "Notes" }
+        ],
+        "maps": [
+            { "file": "GM/Maps/Hex A4 (raster).pdf", "name": "Map - Hex A4 Portrait"},
+            { "file": "GM/Maps/Hex A4 Landscape (raster).pdf", "name": "Map - Hex A4 Landscape"},
+            { "file": "GM/Maps/Hex A5 (raster).pdf", "name": "Map - Hex A5 Portrait"},
+            { "file": "GM/Maps/Isometric A4 (raster).pdf", "name": "Map - Isometric A4 Portrait"}
+        ],
+        "apKingmaker": [
+        ],
+        "apSkullAndShackles": [
+        ]
+    },
 
     "base": {
         "pages": [ "core", "combat" ]
@@ -322,7 +327,7 @@
                 { "name": "Sensei", "pages": [ "monk/sensei" ] },
                 { "name": "Sohei", "pages": [ "monk/sohei" ] },
                 { "name": "Weapon Adept", "pages": [ "monk/weaponadept" ] },
-                { "name": "Zen Archer", "pages": [ "monk/zenarcher" ] },
+                { "name": "Zen Archer", "pages": [ "monk/zenarcher" ] }
             ]
         },
 
@@ -515,29 +520,5 @@
             "name": "Wyrdcaster",
             "pages": [ "wyrdcaster", "inventory" ]
         }
-    ],
-
-    "iconics": [
-        "Alchemist - Damiel",
-        "Barbarian - Amiri",
-        "Bard - Lem",
-        "Cavalier - Alian",
-        "Cleric - Kyra",
-        "Druid - Lini",
-        "Fighter - Valeros",
-        "Gunslinger - Lirianne",
-        "Inquisitor - Imrijka",
-        "Magus - Seltyiel",
-        "Monk - Sajan",
-        "Ninja - Reiko",
-        "Oracle - Alahazra",
-        "Paladin - Seelah",
-        "Ranger - Harsk",
-        "Rogue - Merisiel",
-        "Samurai - Hayato",
-        "Sorcerer - Seoni",
-        "Summoner - Balazar",
-        "Witch - Feiya",
-        "Wizard - Ezren"
     ]
 }

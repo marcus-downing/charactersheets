@@ -70,14 +70,22 @@ object CharacterData {
 
     GMData(
       colour = data.get("colour").getOrElse("normal"),
-      watermark = if (positive.contains("has-watermark")) data.get("watermark").getOrElse("") else ""
+      watermark = if (positive.contains("has-watermark")) data.get("watermark").getOrElse("") else "",
+      gmCampaign = positive.contains("gm-campaign"),
+      gmMaps = positive.contains("gm-maps"),
+      apKingmaker = positive.contains("ap-kingmaker"),
+      apSkullAndShackles = positive.contains("ap-skull-shackles")
       )
   }
 }
 
 case class GMData (
   colour: String,
-  watermark: String
+  watermark: String,
+  gmCampaign: Boolean,
+  gmMaps: Boolean,
+  apKingmaker: Boolean,
+  apSkullAndShackles: Boolean
   )
 
 case class CharacterData (

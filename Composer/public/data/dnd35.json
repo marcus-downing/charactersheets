@@ -90,24 +90,25 @@
         { "file": "Core/Animal Companion.pdf", "slot": "animalcompanion", "name": "Animal Companion" },
         { "file": "Psionics/Psicrystal.pdf", "slot": "psicrystal", "name": "Psicrystal" }
     ],
-    
-    "gm": [
-        { "file": "DM/Party.pdf", "name": "Party" },
-        { "file": "DM/NPC.pdf", "name": "NPC" },
-        { "file": "DM/NPC Group.pdf", "name": "NPC Group" },
-        { "file": "DM/Grid.pdf", "name": "Map - Grid" },
-        { "file": "DM/Hex Grid.pdf", "name": "Map - Hex"},
-        { "file": "DM/Fine Hex Grid.pdf", "name": "Map - Hex (fine)" },
-        { "file": "DM/Isometric (Portrait).pdf", "name": "Map - Isometric (portrait)" },
-        { "file": "DM/Isometric (Landscape).pdf", "name": "Map - Isometric (landscape)" },
-        { "file": "DM/Fine Isometric (Portrait).pdf", "name": "Map - Isometric (fine portrait)" },
-        { "file": "DM/Fine Isometric (Landscape).pdf", "name": "Map - Isometric (fine landscape)" },
 
-        { "file": "DM/Timeline (Portrait).pdf", "name": "Timeline (Portrait)" },
-        { "file": "DM/Timeline (Portrait - continued).pdf", "name": "Timeline (Portrait - continued)" },
-        { "file": "DM/Timeline (Landscape).pdf", "name": "Timeline (Landscape)" },
-        { "file": "DM/Timeline (Landscape - continued).pdf", "name": "Timeline (Landscape - continued)" }
-    ],
+    "gm": {
+        "campaign": [
+            { "file": "GM/Party.pdf", "name": "Party" },
+            { "file": "GM/NPC.pdf", "name": "NPC" },
+            { "file": "GM/NPC Group.pdf", "name": "NPC Group" },
+            { "file": "GM/Timeline (Portrait).pdf", "name": "Timeline (Portrait)" },
+            { "file": "GM/Timeline (Portrait - continued).pdf", "name": "Timeline (Portrait - continued)" },
+            { "file": "GM/Timeline (Landscape).pdf", "name": "Timeline (Landscape)" },
+            { "file": "GM/Timeline (Landscape - continued).pdf", "name": "Timeline (Landscape - continued)" },
+            { "file": "GM/Notes.pdf", "name": "Notes" }
+        ],
+        "maps": [
+            { "file": "GM/Maps/Hex A4 (raster).pdf", "name": "Map - Hex A4 Portrait"},
+            { "file": "GM/Maps/Hex A4 Landscape (raster).pdf", "name": "Map - Hex A4 Landscape"},
+            { "file": "GM/Maps/Hex A5 (raster).pdf", "name": "Map - Hex A5 Portrait"},
+            { "file": "GM/Maps/Isometric A4 (raster).pdf", "name": "Map - Isometric A4 Portrait"}
+        ]
+    },
 
     "base": {
         "pages": [ "core", "combat", "inventory" ]

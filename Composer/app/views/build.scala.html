@@ -13,10 +13,11 @@
         <ul>
           <li><a href='/'>&laquo; Back to intro</a></li>
           <li><a rel='#start-tab' class='selected' id='start-tab-link'>Start</a></li>
-          <li><a rel='#party-tab' class='start-hidden' id='party-tab-link'>Party</a><li>
+          <li><a rel='#party-tab' class='start-hidden' id='party-tab-link'>Party</a></li>
           <li><a rel='#class-tab' class='start-hidden' id='class-tab-link'>Class</a></li>
           @if(!gameData.isTest) {
             <li><a rel='#options-tab' class='start-hidden' id='options-tab-link'>Options</a></li>
+            <li><a rel='#gm-tab' class='start-hidden' id='gm-tab-link'>Game Master</a></li>
           }
           <li><a rel='#download-tab' class='start-hidden' id='download-tab-link'>Download</a></li>
         </ul>
@@ -208,6 +209,36 @@
 
       <nav class='wizardnav'>
         <a href='#class-tab'><img src='@routes.Assets.at("images/wizprev.png")'/></a>
+        &nbsp;
+        <a href='#download-tab'><img src='@routes.Assets.at("images/wiznext.png")'/></a>
+      </nav>
+    </section>
+
+    <section class='tab' id='gm-tab'>
+      <h2>Game Master</h2>
+
+      <div class='yui3-g'>
+        <div class='yui3-u-1-2'><div class='col left'>
+          <h3><label for='gm-campaign'><input type="checkbox" name="gm-campaign" id="gm-campaign" /> Campaign Planning Sheets</label></h3>
+            <p>Party summary, NPC, timeline and other sheets for planning a game.</p>
+
+          <h3><label for='gm-maps'><input type="checkbox" name="gm-maps" id="gm-maps" /> Map Templates</label></h3>
+            <p>Blank hex maps, isometric maps, city maps and more.
+              @if(gameData.isPathfinder) { <span>Goes well with Kingmaker.</span> }</p>
+
+        </div></div>
+        <div class='yui3-u-1-2'><div class='col right'>
+          @if(gameData.isPathfinder) {
+            <h3>Adventure Path Sheets</h3>
+
+            <p><label for='ap-kingmaker'><input type="checkbox" name="ap-kingmaker" id="ap-kingmaker" /> Kingmaker</label></p>
+            <p><label for='ap-skull-shackles'><input type="checkbox" name="ap-skull-shackles" id="ap-skull-shackles" /> Skull and Shackles</label></p>
+          }
+
+        </div></div>
+      </div>
+
+      <nav class='wizardnav'>
         &nbsp;
         <a href='#download-tab'><img src='@routes.Assets.at("images/wiznext.png")'/></a>
       </nav>

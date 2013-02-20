@@ -3,8 +3,8 @@ $(function() {
 
   $("#start-single").click(function () {
     $("#class-tab-link, #options-tab-link, #download-tab-link").show();
-    $("#start-tab-link, #party-tab-link").hide();
-    $("#class-tab-link").click();
+    $("#start-tab-link, #party-tab-link, #gm-tab-link").hide();
+    $("#class-tab-link").show().click();
     $("#add-to-party").hide();
     $("#party-readout").hide();
     $("#start-type").val('single');
@@ -13,7 +13,7 @@ $(function() {
 
   $("#start-party").click(function () {
     $("#class-tab-link, #options-tab-link, #party-tab-link, #download-tab-link").show();
-    $("#start-tab-link").hide();
+    $("#start-tab-link, #gm-tab-link").hide();
     $("#class-tab-link").click();
     $("#party-readout").show();
     $("#add-to-party").show();
@@ -22,8 +22,9 @@ $(function() {
   });
 
   $("#start-gm").click(function () {
-    $("#download-tab-link").show().click();
+    $("#gm-tab-link, #download-tab-link").show();
     $("#start-tab-link, #party-tab-link, #class-tab-link, #options-tab-link").hide();
+    $("#gm-tab-link").click();
     $("#add-to-party").hide();
     $("#party-readout").hide();
     $("#start-type").val('gm');

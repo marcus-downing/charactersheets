@@ -78,42 +78,51 @@ object Composer extends Controller {
     writer.setRgbTransparencyBlending(true)
     document.open
 
-    val colour = gmdata.colour
+    def placeGMPages(pages: List[Page]) {
+      for (page <- pages; pageFile <- locatePage(folders, page)) {
+        //val pageFile = new File(folder.getPath+"/"+page.file)
+        val fis = new FileInputStream(pageFile)
+        val reader = new PdfReader(fis)
 
-    val pages = gameData.gm
-    for (page <- pages; pageFile <- locatePage(folders, page)) {
-      //val pageFile = new File(folder.getPath+"/"+page.file)
-      val fis = new FileInputStream(pageFile)
-      val reader = new PdfReader(fis)
+        // get the right page size
+        val template = writer.getImportedPage(reader, 1)
+        val pageSize = reader.getPageSize(1)
+        document.setPageSize(pageSize)
+        document.newPage
 
-      // get the right page size
-      val template = writer.getImportedPage(reader, 1)
-      val pageSize = reader.getPageSize(1)
-      document.setPageSize(pageSize)
-      document.newPage
+        //  fill with white so the blend has something to work on
+        val canvas = writer.getDirectContent
+        val baseLayer = new PdfLayer("Character Sheet", writer);
+        canvas.beginLayer(baseLayer)
+        canvas.setColorFill(BaseColor.WHITE)
+        canvas.rectangle(0f, 0f, 1000f, 1000f)
+        canvas.fill
 
-      //  fill with white so the blend has something to work on
-      val canvas = writer.getDirectContent
-      val baseLayer = new PdfLayer("Character Sheet", writer);
-      canvas.beginLayer(baseLayer)
-      canvas.setColorFill(BaseColor.WHITE)
-      canvas.rectangle(0f, 0f, 1000f, 1000f)
-      canvas.fill
+        val defaultGstate = new PdfGState
+        defaultGstate.setBlendMode(PdfGState.BM_NORMAL)
+        defaultGstate.setFillOpacity(1.0f)
+        canvas.setGState(defaultGstate)
 
-      val defaultGstate = new PdfGState
-      defaultGstate.setBlendMode(PdfGState.BM_NORMAL)
-      defaultGstate.setFillOpacity(1.0f)
-      canvas.setGState(defaultGstate)
+        //  the page
+        canvas.addTemplate(template, 0, 0)
+        writeCopyright(canvas, writer, gameData)
+        writeColourOverlay(canvas, gmdata.colour)
 
-      //  the page
-      canvas.addTemplate(template, 0, 0)
-      writeCopyright(canvas, writer, gameData)
-      writeColourOverlay(canvas, colour)
-
-      //  done
-      canvas.endLayer()
-      fis.close
+        //  done
+        canvas.endLayer()
+        fis.close
+      }
     }
+
+    if (gmdata.gmCampaign)
+      placeGMPages(gameData.gm.campaign)
+    if (gmdata.gmMaps)
+      placeGMPages(gameData.gm.maps)
+    if (gmdata.apKingmaker)
+      placeGMPages(gameData.gm.apKingmaker)
+    if (gmdata.apSkullAndShackles)
+      placeGMPages(gameData.gm.apSkullAndShackles)
+    
     document.close
     out.toByteArray
   }
@@ -315,7 +324,7 @@ object Composer extends Controller {
   }
 
   def writeCopyright(canvas: PdfContentByte, writer: PdfWriter, gameData: GameData) {
-    val year = new LocalDate().getYear()
+    val year = new org.joda.time.LocalDate().getYear()
 
     //  copyright notice
     canvas.setColorFill(new BaseColor(0.5f, 0.5f, 0.5f))
@@ -501,18 +510,18 @@ class CharacterInterpretation(gameData: GameData, character: CharacterData) {
   }
 
   def pages = {
-    var clsPages =
+    // var clsPages =
       if (character.partyDownload)
         character.classes.flatMap( cls => selectCharacterPages(List(cls)) )
       else
         selectCharacterPages(character.classes)
 
-    var pages = 
-      if (character.includeGM) 
-        clsPages ::: gameData.gm
-      else
-        clsPages
+    // var pages = 
+    //   if (character.includeGM) 
+    //     clsPages ::: gameData.gm
+    //   else
+    //     clsPages
 
-    pages
+    // clsPages
   }
 }

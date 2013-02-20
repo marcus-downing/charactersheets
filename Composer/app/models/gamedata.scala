@@ -17,7 +17,7 @@ case class GameData (
   game: String,
   name: String,
   pages: List[Page],
-  gm: List[Page],
+  gm: GM,
   base: BaseData,
   layout: List[List[String]],
   books: List[Book],
@@ -33,6 +33,13 @@ case class GameData (
 
   def slugOf(str: String) = str.toLowerCase.replaceAll("[^a-z]+", " ").trim.replace(" ", "-")
 }
+
+case class GM (
+  campaign: List[Page],
+  maps: List[Page],
+  apKingmaker: List[Page] = Nil,
+  apSkullAndShackles: List[Page] = Nil
+  )
 
 case class Page (
   file: String,
