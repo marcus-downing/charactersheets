@@ -98,9 +98,6 @@ object Composer extends Controller {
         canvas.rectangle(0f, 0f, 1000f, 1000f)
         canvas.fill
 
-        val defaultGstate = new PdfGState
-        defaultGstate.setBlendMode(PdfGState.BM_NORMAL)
-        defaultGstate.setFillOpacity(1.0f)
         canvas.setGState(defaultGstate)
 
         //  the page
@@ -160,8 +157,17 @@ object Composer extends Controller {
 
   def locatePageFile(folders: List[File], filename: String): Option[File] = folders.map(folder => new File(folder.getPath+"/"+filename)).filter(_.exists).headOption
 
+  def defaultGstate: PdfGState = {
+    val defaultGstate = new PdfGState
+    defaultGstate.setBlendMode(PdfGState.BM_NORMAL)
+    defaultGstate.setFillOpacity(1.0f)
+    defaultGstate
+  }
+
   def addCharacterPages(character: CharacterData, gameData: GameData, folders: List[File], document: Document, writer: PdfWriter) {
-    val iconic = character.iconic
+    val iconic = if (isAprilFool) Some(IconicImage("1 Paizo", "3 Advanced Races", "Goblin - d20.png"))
+    else character.iconic
+
     val pages = new CharacterInterpretation(gameData, character).pages
 
     val colour = character.colour
@@ -184,10 +190,6 @@ object Composer extends Controller {
       canvas.rectangle(0f, 0f, 1000f, 1000f)
       canvas.fill
 
-      val defaultGstate = new PdfGState
-      defaultGstate.setBlendMode(PdfGState.BM_NORMAL)
-      defaultGstate.setFillOpacity(1.0f)
-      canvas.setGState(defaultGstate)
 
       //  the page
       canvas.addTemplate(template, 0, 0)
@@ -196,7 +198,11 @@ object Composer extends Controller {
       writeCopyright(canvas, writer, gameData)
 
       //  generic image
-      if (page.slot == "inventory" && !character.iconic.isDefined && character.customIconic.isEmpty) {
+      if (!iconic.isDefined && !character.customIconic.isDefined)
+        writeIconic(canvas, writer, page.slot, "public/images/iconics/generic.png")
+
+      /*
+      if ((page.slot == "inventory" || page.slot == "background") && !character.iconic.isDefined && character.customIconic.isEmpty) {
         canvas.setGState(defaultGstate)
         val imgLayer = new PdfLayer("Iconic image", writer)
         canvas.beginLayer(imgLayer)
@@ -204,10 +210,16 @@ object Composer extends Controller {
         val awtImage = java.awt.Toolkit.getDefaultToolkit().createImage(imgFile)
         val img = Image.getInstance(awtImage, null)
         img.scaleToFit(200f,220f)
-        img.setAbsolutePosition(315f - (img.getScaledWidth() / 2), 410f)
+        page.slot match {
+          case "inventory" => img.setAbsolutePosition(315f - (img.getScaledWidth() / 2), 410f)
+          case "background" => img.setAbsolutePosition(127f - (img.getScaledWidth() / 2), 420f)
+          case _ =>
+        }
+        // img.setAbsolutePosition(315f - (img.getScaledWidth() / 2), 410f)
         canvas.addImage(img)
         canvas.endLayer
       }
+      */
 
       // variant rules
       if (!character.variantRules.isEmpty) {
@@ -219,16 +231,6 @@ object Composer extends Controller {
       // april fool
       if (page.slot == "core" && isAprilFool) {
         overlayPage(canvas, writer, folders, "Extra/Special Overlays/Character Info.pdf")
-        /*
-        val pageFile = new File(folder.getPath+"/Extra/Special Overlays/Character Info.pdf")
-        val fis = new FileInputStream(pageFile)
-        val reader = new PdfReader(fis)
-        val template = writer.getImportedPage(reader, 1)
-        canvas.setGState(defaultGstate)
-
-        //  the page
-        canvas.addTemplate(template, 0, 0)
-        */
       }
 
       //  watermark
@@ -256,6 +258,12 @@ object Composer extends Controller {
       }
 
       //  iconics
+      if (character.customIconic.isDefined)
+        writeIconic(canvas, writer, page.slot, character.customIconic.get.getAbsolutePath)
+      else if (iconic.isDefined)
+        writeIconic(canvas, writer, page.slot, iconic.get.largeFile)
+
+      /*
       if (page.slot == "inventory") {
         if (isAprilFool) {
             println("Adding april fool image")
@@ -301,7 +309,7 @@ object Composer extends Controller {
             canvas.endLayer()
           }
         }
-      }
+      }*/
     fis.close
     }
   }
@@ -313,9 +321,6 @@ object Composer extends Controller {
       val reader = new PdfReader(fis)
       val template = writer.getImportedPage(reader, 1)
 
-      val defaultGstate = new PdfGState
-      defaultGstate.setBlendMode(PdfGState.BM_NORMAL)
-      defaultGstate.setFillOpacity(1.0f)
       canvas.setGState(defaultGstate)
 
       //  the page
@@ -349,6 +354,29 @@ object Composer extends Controller {
     }
     canvas.endLayer
     canvas.endText
+  }
+
+  def writeIconic(canvas: PdfContentByte, writer: PdfWriter, slot: String, imgFilename: String) {
+    slot match {
+      case "background" | "inventory" =>
+        println("Adding april fool image")
+        canvas.setGState(defaultGstate)
+        val imgLayer = new PdfLayer("Iconic image", writer)
+        canvas.beginLayer(imgLayer)
+        println("Image: "+imgFilename)
+        val awtImage = java.awt.Toolkit.getDefaultToolkit().createImage(imgFilename)
+        val img = Image.getInstance(awtImage, null)
+        img.scaleToFit(190f,220f)
+        slot match {
+          case "inventory" => img.setAbsolutePosition(315f - (img.getScaledWidth() / 2), 410f)
+          case "background" => img.setAbsolutePosition(127f - (img.getScaledWidth() / 2), 425f)
+          case _ =>
+        }
+        // img.setAbsolutePosition(315f - (img.getScaledWidth() / 2), 410f)
+        canvas.addImage(img)
+        canvas.endLayer()
+      case _ => 
+    }
   }
 
   def writeWatermark(canvas: PdfContentByte, writer: PdfWriter, watermark: String) {
