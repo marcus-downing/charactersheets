@@ -204,4 +204,26 @@ $(function() {
     // move along
     $("#party-tab-link").click();
   });
+
+  $("#build-my-character").submit(function () {/*
+    var path = "";
+    $("#class-tab input:checkbox:checked").each(function () {
+      var name = $(this).data('classname');
+
+      $("#variant-"+code+" option:selected").each(function () {
+        name = $(this).attr('value');
+      })
+
+      path = path+"/"+name;
+    });
+
+    var url = "https://flattr.com/submit/auto?user_id=marcusdowning&url=http://charactersheets.minotaur.cc"+path;
+    $("a#flattr").attr('href', url);*/
+
+    $("#blanket, #download-thanks").fadeIn("fast");
+  });
+
+  $("#close").click(function () {
+    $("#blanket, #download-thanks").fadeOut("fast");
+  });
 });

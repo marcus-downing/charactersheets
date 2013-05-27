@@ -84,6 +84,8 @@ object Composer extends Controller {
         val fis = new FileInputStream(pageFile)
         val reader = new PdfReader(fis)
 
+        println("GM page: "+page.name)
+
         // get the right page size
         val template = writer.getImportedPage(reader, 1)
         val pageSize = reader.getPageSize(1)
@@ -104,21 +106,37 @@ object Composer extends Controller {
         canvas.addTemplate(template, 0, 0)
         writeCopyright(canvas, writer, gameData)
         writeColourOverlay(canvas, gmdata.colour)
+        canvas.endLayer()
+
+        if (gmdata.aps.contains("kingmaker")) {
+          if (page.slot == "kingdom" || page.slot == "hex-a4") {
+            canvas.setGState(defaultGstate)
+            val imgLayer = new PdfLayer("Logo image", writer)
+            canvas.beginLayer(imgLayer)
+            val imgFile = "public/images/kingmaker-logo.png"
+            println("Adding logo: "+imgFile)
+            val awtImage = java.awt.Toolkit.getDefaultToolkit().createImage(imgFile)
+            val img = Image.getInstance(awtImage, null)
+            img.scaleToFit(170f,50f)
+            img.setAbsolutePosition(127f - (img.getScaledWidth() / 2), 800f - (img.getScaledHeight() / 2))
+            canvas.addImage(img)
+            canvas.endLayer()
+          }
+        }
 
         //  done
-        canvas.endLayer()
         fis.close
       }
     }
 
+    placeGMPages(gameData.gm.maps)
     if (gmdata.gmCampaign)
       placeGMPages(gameData.gm.campaign)
-    if (gmdata.gmMaps)
-      placeGMPages(gameData.gm.maps)
-    if (gmdata.apKingmaker)
-      placeGMPages(gameData.gm.apKingmaker)
-    if (gmdata.apSkullAndShackles)
-      placeGMPages(gameData.gm.apSkullAndShackles)
+    println("APs: "+gmdata.aps.mkString(", "))
+    for (ap <- gameData.gm.aps) {
+      if (gmdata.aps.contains(ap.code))
+        placeGMPages(ap.pages)
+    }
     
     document.close
     out.toByteArray

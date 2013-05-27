@@ -68,13 +68,15 @@ object CharacterData {
   def parseGM(data: Map[String, String], gameData: GameData): GMData = {
     val positive = positiveData(data)
 
+    val aps = for (ap <- gameData.gm.aps; if positive.contains("ap-"+ap.code)) yield ap.code
+    println("Game APs: "+gameData.gm.aps.map(_.code).mkString(", "))
+
     GMData(
       colour = data.get("colour").getOrElse("normal"),
       watermark = if (positive.contains("has-watermark")) data.get("watermark").getOrElse("") else "",
       gmCampaign = positive.contains("gm-campaign"),
       gmMaps = positive.contains("gm-maps"),
-      apKingmaker = positive.contains("ap-kingmaker"),
-      apSkullAndShackles = positive.contains("ap-skull-shackles")
+      aps = aps
       )
   }
 }
@@ -84,8 +86,7 @@ case class GMData (
   watermark: String,
   gmCampaign: Boolean,
   gmMaps: Boolean,
-  apKingmaker: Boolean,
-  apSkullAndShackles: Boolean
+  aps: List[String]
   )
 
 case class CharacterData (

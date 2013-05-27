@@ -37,8 +37,13 @@ case class GameData (
 case class GM (
   campaign: List[Page],
   maps: List[Page],
-  apKingmaker: List[Page] = Nil,
-  apSkullAndShackles: List[Page] = Nil
+  aps: List[AP]
+  )
+
+case class AP (
+  name: String,
+  code: String,
+  pages: List[Page]
   )
 
 case class Page (

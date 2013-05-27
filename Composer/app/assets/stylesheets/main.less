@@ -233,13 +233,19 @@ dl {
 
 aside.linkbar {
   position: fixed; z-index: 2;
-  top: 0px; right: 0px; height: 31px; width: 440px;
+  top: 0px; right: 0px; height: 31px; width: 528px;
   .border-radius(0px, 0px, 3px, 0px);
   background: #6E7864 url(pixel.png);
   background: rgba(110, 120, 100, 0.5);
   .drop-shadow(0px, 5px, 15px, 0.6);
 
   .addthis_toolbox { position: absolute; z-index: 3; top: 5px; right: 10px; width: 400px; }
+}
+
+#linkbar-flattr {
+  position: absolute;
+  top: 6px;
+  left: 8px;
 }
 
 aside#messageme {
@@ -447,4 +453,77 @@ form#build-my-character {
   #party-nav {
     text-align: center;
   }
+}
+
+#blanket {
+  display: none;
+  position: fixed;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  display: none;
+  background: @bg;
+  background: fade(@bg, 60%);
+  z-index: 999;
+}
+
+#download-thanks {
+  display: none;
+  position: fixed;
+  top: 50%;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+
+
+  .inner {
+    margin-top: -100px;
+    width: 500px;
+    height: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 3px 20px;
+    background: lighten(@bg, 10%);
+    background: fade(lighten(@bg, 10%), 90%);
+
+    .rounded(3px);
+    .drop-shadow(0, 5px, 15px, 0.5);
+  }
+
+  .progress {
+    vertical-align: middle;
+  }
+}
+
+#flattr img {
+  vertical-align: middle;
+}
+
+
+#language-box {
+  border-spacing: 4px;
+
+  th, td {
+    padding: 4px;
+  }
+
+  @fill-100: #25281a;
+  @fill-0: #ecf2ce;
+  @fill-75: mix(@fill-100, @fill-0, 75%);
+  @fill-50: mix(@fill-100, @fill-0, 50%);
+  @fill-25: mix(@fill-100, @fill-0, 25%);
+
+  .fill-100, .fill-75, .fill-50, .fill-25, .fill-0 {
+    text-align: center;
+    font-weight: bold;
+    width: 140px;
+  }
+
+  .fill-100 { .gradient(@fill-100, darken(@fill-100, 10%), lighten(@fill-100, 10%)); color: @fill-0; }
+  .fill-75 { background: @fill-75; color: @fill-0; }
+  .fill-50 { background: @fill-50; color: @fill-0; }
+  .fill-25 { background: @fill-25; color: @fill-100; }
+  .fill-0 { background: @fill-0; color: @fill-100; }
 }

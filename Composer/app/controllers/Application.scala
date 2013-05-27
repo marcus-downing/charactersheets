@@ -104,11 +104,11 @@ object Application extends Controller {
   }
 
   //  Group -> Set -> [] IconicImage
-  def iconics: Map[String, Map[String, List[IconicImage]]] = {
+  def iconics: List[(String, List[(String, List[IconicImage])])] = {
     val iconicsFolder = new File("public/images/iconics")
-    if (!iconicsFolder.isDirectory) return Map.empty
+    if (!iconicsFolder.isDirectory) return Nil
 
-    val groups: List[(String, Map[String, List[IconicImage]])] = for (groupFolder <- iconicsFolder.listFiles.toList if groupFolder.isDirectory) yield {
+    val groups: List[(String, List[(String, List[IconicImage])])] = for (groupFolder <- iconicsFolder.listFiles.toList if groupFolder.isDirectory) yield {
       val group = groupFolder.getName
       val groupName = IconicImage.withoutNumber(group)
 
@@ -125,11 +125,13 @@ object Application extends Controller {
           }
           else None
         }
+        //println("Set name: "+setName)
         (setName, imageFiles)
       }
-      (groupName, sets.toMap)
+      //println("Group name: "+groupName)
+      (groupName, sets)
     }
-    groups.toMap
+    groups
   }
 
   def getIconic(path: String): Option[IconicImage] = {
