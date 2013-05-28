@@ -519,11 +519,12 @@ form#build-my-character {
     text-align: center;
     font-weight: bold;
     width: 140px;
+    .rounded(2px);
   }
 
-  .fill-100 { .gradient(@fill-100, darken(@fill-100, 10%), lighten(@fill-100, 10%)); color: @fill-0; }
-  .fill-75 { background: @fill-75; color: @fill-0; }
-  .fill-50 { background: @fill-50; color: @fill-0; }
-  .fill-25 { background: @fill-25; color: @fill-100; }
-  .fill-0 { background: @fill-0; color: @fill-100; }
+  .fill-100 { .gradient(@fill-100, darken(@fill-100, 5%), lighten(@fill-100, 5%)); color: @fill-0; }
+  .fill-75 { .gradient(@fill-75, darken(@fill-75, 5%), lighten(@fill-75, 5%)); color: @fill-0; }
+  .fill-50 { .gradient(@fill-50, darken(@fill-50, 5%), lighten(@fill-50, 5%)); color: @fill-0; }
+  .fill-25 { .gradient(@fill-25, darken(@fill-25, 5%), lighten(@fill-25, 5%)); color: @fill-100; }
+  .fill-0 { background: fade(@fill-0, 50%); color: @fill-100; }
 }
