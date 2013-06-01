@@ -39,6 +39,7 @@ object Composer extends Controller {
       langFolder :: sourceFolder :: Nil
     } else
       sourceFolder :: Nil
+    println("Source folders: "+sourceFolders.map(_.getPath).mkString(", "))
 
     data.get("start-type") match {
       case Some("single") =>
@@ -173,7 +174,11 @@ object Composer extends Controller {
 
   def locatePage(folders: List[File], page: Page): Option[File] = locatePageFile(folders, page.file)
 
-  def locatePageFile(folders: List[File], filename: String): Option[File] = folders.map(folder => new File(folder.getPath+"/"+filename)).filter(_.exists).headOption
+  def locatePageFile(folders: List[File], filename: String): Option[File] = {
+    val availableFiles = folders.map(folder => new File(folder.getPath+"/"+filename)).filter(_.exists)
+    println("Locate file: "+availableFiles.map(_.getPath).mkString(", "))
+    availableFiles.headOption
+  }
 
   def defaultGstate: PdfGState = {
     val defaultGstate = new PdfGState
