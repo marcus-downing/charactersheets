@@ -382,7 +382,7 @@ object Composer extends Controller {
   def writeIconic(canvas: PdfContentByte, writer: PdfWriter, slot: String, imgFilename: String) {
     slot match {
       case "background" | "inventory" =>
-        println("Adding april fool image")
+        println("Adding iconic image to "+slot)
         canvas.setGState(defaultGstate)
         val imgLayer = new PdfLayer("Iconic image", writer)
         canvas.beginLayer(imgLayer)
