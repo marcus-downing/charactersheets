@@ -120,6 +120,12 @@
         [ "Magic of Incarnum", "Psionics Handbook", "Tome of Battle", "Tome of Magic", "Generic"]
     ],
 
+    "languages": [
+        { "code": "english", "name": "English", "ready": [1, 1, 1] },
+        { "code": "italian", "name": "Italiano", "ready": [0.75, 0.5, 0.25] },
+        { "code": "american", "name": "US English", "ready": [1, 1, 1] }
+    ],
+
     "books": [
         {
             "name": "Player's Handbook",
