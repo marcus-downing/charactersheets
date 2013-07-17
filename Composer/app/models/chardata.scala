@@ -21,12 +21,18 @@ object CharacterData {
     val baseClasses: List[BaseClass] = classNames.flatMap(name => gameData.classByName(name)).toList
     
     val classes: List[GameClass] = baseClasses.map { cls =>
-      data.get("variant-"+cls.name) match {
-        case Some(variantName) => 
-          //println("Variant name "+variantName)
-          //println("Variant found "+cls.variantByName(variantName))
-          cls.variantByName(variantName).getOrElse(cls)
-        case _ => cls
+      if (cls.axes.isEmpty)
+        data.get("variant-"+cls.name) match {
+          case Some(variantName) => 
+            //println("Variant name "+variantName)
+            //println("Variant found "+cls.variantByName(variantName))
+            cls.variantByName(variantName).getOrElse(cls)
+          case _ => cls
+        }
+      else {
+        val axisValues = (Range(0, cls.axes.length) flatMap { i => data.get("variant-"+cls.name+"-axis-"+i) }).toList
+        println("Axis values: "+axisValues.mkString(", "))
+        cls.variantByAxes(axisValues).getOrElse(cls)
       }
     }
 

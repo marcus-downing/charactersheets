@@ -76,11 +76,21 @@
                 <input type='checkbox' name='class-@cls.name' id='class-@cls.code' data-class='@cls.code' data-classname='@cls.name' />
                 <label for='class-@cls.code'>@cls.name</label>
                 @if(!cls.variants.isEmpty) {
-                  <select name='variant-@cls.code' id='variant-@cls.code'>
-                  @for(variant: VariantClass <- cls.variants) {
-                    <option value='@variant.name'>@variant.name</option>
+                  @if(cls.axes.isEmpty) {
+                    <select name='variant-@cls.code' id='variant-@cls.code'>
+                    @for(variant: VariantClass <- cls.variants) {
+                      <option value='@variant.name'>@variant.name</option>
+                    }
+                    </select>
+                  } else {
+                    @for(n <- Range(0, cls.axes.length)) {
+                      <select name='variant-@cls.code-axis-@n' class='axis-select'>
+                      @for(aval <- cls.axisValues(n)) {
+                        <option value='@aval'>@aval</option>
+                      }
+                      </select>
+                    }
                   }
-                  </select>
                 }
               </li>
             }
@@ -90,18 +100,6 @@
         }
         </div>
       </fieldset>
-
-      <!--
-      <h2>@(if(gameData.isDnd35) "Dungeon Master" else "Game Master")</h2>
-      <fieldset id='gm'>
-        <p><label><input type='checkbox' name='gm' id='gm' /> Include the Dungeon Master's pages</label></p>
-        <p class="indent">Maps, timelines, party summary and and NPC character sheets.</p>
-        <p><label><input type='checkbox' name='party-download' id='party-download' /> Prepare sheets for the whole party at once</label></p>
-        <p class="indent">This will include all possible sheets for the above classes, rather than selecting the sheets for a single character.
-          Use this to download all the pages you might need for an entire party.
-        </p>
-      </fieldset>
-      -->
 
       <nav class='wizardnav'>
         &nbsp;
