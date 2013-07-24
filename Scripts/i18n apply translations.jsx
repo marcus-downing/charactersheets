@@ -27,6 +27,8 @@ for (var i = 0; i < messages.length; i++) {
     messages2.push(messages[i]);
     if (messages[i]['Original'] == 'Stealth')
       log("i18n: Message: "+messages[i]['Original']+" ("+messages[i]['Part of']+") -> "+messages[i]['Translation']);
+    if (messages[i]['Original'] == 'd00' && messages[i]['Translation'])
+      i18n.d00 = messages[i]['Translation'];
   } else {
     //log("i18n: Skipping message: "+messages[i]['Original']+" ("+messages[i]['Part of']+")");
   }
@@ -64,14 +66,23 @@ function patternise(text) {
 }
 
 function translate(message, partof) {
-  message = i18n.normalise(message);
-  partof = i18n.normalise(partof);
+  var message = i18n.normalise(message);
+  var partof = i18n.normalise(partof);
+  var d00 = false;
   for (var i = 0; i < messages.length; i++) {
     if (messages[i]['Original'] == message && messages[i]['Part of'] == partof) {
       var translation = i18n.denormalise(messages[i]['Translation']);
       if (translation.length > 0)
         return translation;
     }
+  }
+  // default
+  if (i18n.d00) {
+    var d = i18n.d00.replace('/00$/', '');
+    log("i18n: Replacing dice");
+    var adjusted = message.replaceAll(/d([0-9])+/, d+'\1');
+    if (adjusted != message) 
+      return adjusted;
   }
   return false;
 }
