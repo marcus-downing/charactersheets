@@ -3,6 +3,7 @@
 
 var base = '/Users/Marcus Downing/Documents/GitHub/charactersheets/';
 i18n.init();
+i18n.pushEntry(0, 'd00', '', '');
 
 // Pathfinder Core
 i18n.extractFile(new File(base+'Pathfinder/Core/Character Info.ai'));
@@ -32,6 +33,7 @@ i18n.saveCSV(new File(base+'Languages/Template/Pathfinder - Everything.csv'));
 
 // 3.5 core
 i18n.init();
+i18n.pushEntry(0, 'd00', '', '');
 
 i18n.extractFile(new File(base+'3.5/Core/Character Info - Simple.ai'));
 i18n.extractFile(new File(base+'3.5/Core/Character Info.ai'));
@@ -50,6 +52,8 @@ i18n.extractFolder(new Folder(base+'3.5/Psionics'));
 i18n.extractFolder(new Folder(base+'3.5/Tomes'));
 i18n.saveCSV(new File(base+'Languages/Template/3.5 - Everything.csv'));
 
+
+//  Combine
 i18n.init();
 i18n.combine(i18n.loadCSV(new File(base+'Languages/Template/Pathfinder - Everything.csv')));
 i18n.combine(i18n.loadCSV(new File(base+'Languages/Template/3.5 - Everything.csv')));
