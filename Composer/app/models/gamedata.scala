@@ -21,6 +21,7 @@ case class GameData (
   base: BaseData,
   layout: List[List[String]],
   books: List[Book],
+  languages: List[LanguageInfo],
   classes: List[BaseClass],
   iconics: List[String] = Nil
 ) {
@@ -37,7 +38,7 @@ case class GameData (
 case class GM (
   campaign: List[Page],
   maps: List[Page],
-  aps: List[AP]
+  aps: List[AP] = Nil
   )
 
 case class AP (
@@ -75,14 +76,27 @@ trait GameClass {
 case class BaseClass (
   name: String,
   pages: List[String],
-  variants: List[VariantClass] = Nil
+  variants: List[VariantClass] = Nil,
+  axes: List[List[String]] = Nil
 ) extends GameClass {
   def variantByName(name: String): Option[GameClass] = variants.filter(_.name == name).map(_.mergeInto(this)).headOption
+  def axisValues: List[List[String]] = axes.zipWithIndex.map { case (axisValues,index) =>
+    if (!axisValues.isEmpty) axisValues 
+    else variants.map(_.axes(index)).distinct
+  }
+  def variantByAxes(axisValues: List[String]): Option[GameClass] = variants.filter(_.axes == axisValues).map(_.mergeInto(this)).headOption
 }
 
 case class VariantClass (
   name: String,
-  pages: List[String]
+  pages: List[String],
+  axes: List[String] = Nil
 ) extends GameClass {
   def mergeInto(base: BaseClass) = new BaseClass(name, base.pages ::: pages)
 }
+
+case class LanguageInfo (
+  code: String,
+  name: String,
+  ready: List[Float]
+)

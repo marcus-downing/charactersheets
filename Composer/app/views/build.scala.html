@@ -6,6 +6,7 @@
 @import IconicImage.slug
 @import controllers.Application.isAprilFool
 @import controllers.Application.useLanguages
+@import scala.math.round
 
 @main(if (isAprilFool) "Pimp My Character!" else "Build My Character: "+gameData.name) {
   <form action='/pdf/@gameData.game' method='post' id='build-my-character' enctype='multipart/form-data'>
@@ -76,11 +77,21 @@
                 <input type='checkbox' name='class-@cls.name' id='class-@cls.code' data-class='@cls.code' data-classname='@cls.name' />
                 <label for='class-@cls.code'>@cls.name</label>
                 @if(!cls.variants.isEmpty) {
-                  <select name='variant-@cls.code' id='variant-@cls.code'>
-                  @for(variant: VariantClass <- cls.variants) {
-                    <option value='@variant.name'>@variant.name</option>
+                  @if(cls.axes.isEmpty) {
+                    <select name='variant-@cls.code' id='variant-@cls.code'>
+                    @for(variant: VariantClass <- cls.variants) {
+                      <option value='@variant.name'>@variant.name</option>
+                    }
+                    </select>
+                  } else {
+                    @for(n <- Range(0, cls.axes.length)) {
+                      <select name='variant-@cls.code-axis-@n' class='axis-select'>
+                      @for(aval <- cls.axisValues(n)) {
+                        <option value='@aval'>@aval</option>
+                      }
+                      </select>
+                    }
                   }
-                  </select>
                 }
               </li>
             }
@@ -90,18 +101,6 @@
         }
         </div>
       </fieldset>
-
-      <!--
-      <h2>@(if(gameData.isDnd35) "Dungeon Master" else "Game Master")</h2>
-      <fieldset id='gm'>
-        <p><label><input type='checkbox' name='gm' id='gm' /> Include the Dungeon Master's pages</label></p>
-        <p class="indent">Maps, timelines, party summary and and NPC character sheets.</p>
-        <p><label><input type='checkbox' name='party-download' id='party-download' /> Prepare sheets for the whole party at once</label></p>
-        <p class="indent">This will include all possible sheets for the above classes, rather than selecting the sheets for a single character.
-          Use this to download all the pages you might need for an entire party.
-        </p>
-      </fieldset>
-      -->
 
       <nav class='wizardnav'>
         &nbsp;
@@ -266,43 +265,24 @@
       @if(useLanguages) {
         <h2>Language</h2>
         <fieldset>
-          @{
-            if(gameData.isPathfinder) {
-              <table id='language-box'>
-                <tr><td></td><th>Core Rulebook</th><th>Advanced Players' Guide</th><th>Ultimate Combat &amp; Ultimate Magic</th><th>Third Party</th></tr>
-                <tr><td><label for='language-english'><input type='radio' name='language' id='language-english' value='english' checked='checked' /> English</label></td>
-                  <td class='fill-100'>100%</td><td class='fill-100'>100%</td><td class='fill-100'>100%</td><td class='fill-100'>100%</td></tr>
-                <tr><td><label for='language-italian'><input type='radio' name='language' id='language-italian' value='italian' /> Italiano</label></td>
-                  <td class='fill-75'>75%</td><td class='fill-50'>50%</td><td class='fill-25'>25%</td><td class='fill-0'>0%</td></tr>
-                <!--
-                <tr><td><label for='language-french'><input type='radio' name='language' id='language-french' value='french' /> Français</label></td>
-                  <td class='fill-0'>0%</td><td class='fill-0'>0%</td><td class='fill-0'>0%</td><td class='fill-0'>0%</td></tr>
-                <tr><td><label for='language-spanish'><input type='radio' name='language' id='language-spanish' value='spanish' /> Español</label></td>
-                  <td class='fill-0'>0%</td><td class='fill-0'>0%</td><td class='fill-0'>0%</td><td class='fill-0'>0%</td></tr>
-                <tr><td><label for='language-german'><input type='radio' name='language' id='language-german' value='german' /> Deutsch</label></td>
-                  <td class='fill-0'>0%</td><td class='fill-0'>0%</td><td class='fill-0'>0%</td><td class='fill-0'>0%</td></tr>
-                -->
-                <tr><td><label for='language-american'><input type='radio' name='language' id='language-american' value='american' /> American English</label></td>
-                  <td class='fill-75'>75%</td><td class='fill-25'>25%</td><td class='fill-25'>25%</td><td class='fill-25'>25%</td></tr>
-              </table>
-            } else if (gameData.isDnd35) {
-
+          <table id='language-box'>
+            @if(gameData.isPathfinder) {
+              <tr><td></td><th>Core Rulebook</th><th>Advanced Players' Guide</th><th>Ultimate Combat &amp; Ultimate Magic</th><th>Third Party</th></tr>
             } else {
-              <p id="language-box">
-                <!--<label for="language">Language</label>-->
-                <select name="language" id="language">
-                  <option value='' selected='selected'>English</option>
-                  <option value='italian'>Italiano</option>
-                  <!--
-                  <option value='french'>Français</option>
-                  <option value='spanish'>Español</option>
-                  <option value='german'>Deutsch</option>
-                  <option value='american'>American English</option>
-                  -->
-                </select>
-              </p>
+              @if(gameData.isDnd35) {
+                <tr><td></td><th>Player's Handbook</th><th>Complete Series</th><th>Third Party</th></tr>
+              }
             }
-          }
+            @for(language <- gameData.languages) {
+              <tr><td><label for='language-@language.code'><input type='radio' name='language' id='language-@language.code' value='@language.code'
+                @if(language.code=="english") { checked } else {} /> 
+                @language.name</label></td>
+                @for(ready <- language.ready; percent = round(ready * 100f).toInt) {
+                  <td class='fill-@percent'>@percent%</td>
+                }
+              </tr>
+            }
+          </table>
         </fieldset>
       }
 

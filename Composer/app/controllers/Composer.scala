@@ -22,6 +22,7 @@ object Composer extends Controller {
   def downloadTest = downloadAction(testData)
 
   def downloadAction(gameData: GameData) = Action(parse.multipartFormData) { request =>
+    println("\n\nDownloading...")
     val iconic = request.body.file("iconic-custom-file").map{ filepart =>
       for (contentType <- filepart.contentType)
         println("File uploaded with content type: "+contentType)
@@ -256,14 +257,14 @@ object Composer extends Controller {
         overlayPage(canvas, writer, folders, "Extra/Special Overlays/Character Info.pdf")
       }
 
+      writeColourOverlay(canvas, colour)
+
+      canvas.endLayer()
+
       //  watermark
       if (character.watermark != "") {
         writeWatermark(canvas, writer, character.watermark)
       }
-
-      writeColourOverlay(canvas, colour)
-
-      canvas.endLayer()
 
       //  logo
       if (page.slot == "core" || page.slot == "eidolon") {
@@ -489,7 +490,7 @@ class CharacterInterpretation(gameData: GameData, character: CharacterData) {
       ps.headOption
     }
     override def toString = variant match {
-      case Some(v) => slot+" / "+v 
+      case Some(v) => slot+"/"+v 
       case None => slot
     }
   }
@@ -550,12 +551,13 @@ class CharacterInterpretation(gameData: GameData, character: CharacterData) {
         else
           overridingInstances.head
 
-      println("Page: "+slotName+" ~ " + selectedInstance.variant.getOrElse(""))
+      println("Selecting page: "+slotName.toString)
       selectedInstance
     }
     
-    println(" -- Selected pages: "+pages.map(_.toString).mkString(", "))
+    println(" -- Selected "+pages.length+" pages: "+pages.map(_.toString).mkString(", "))
     val printPages = pages.toList.flatMap(_.page)
+    println(" -- Printing "+printPages.length+" pages: "+printPages.map(_.name).mkString(", "))
     printPages
     //printPages.sortWith((a,b) => a.pagePosition < b.pagePosition)
   }
