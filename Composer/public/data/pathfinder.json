@@ -228,9 +228,9 @@
     ],
 
     "languages": [
-        { "code": "english", "name": "English", "ready": [1, 1, 1] },
-        { "code": "italian", "name": "Italiano", "ready": [0.75, 0.5, 0.25] },
-        { "code": "american", "name": "US English", "ready": [1, 1, 1] }
+        { "code": "english", "name": "English", "ready": [1, 1, 1, 1] },
+        { "code": "italian", "name": "Italiano", "ready": [0.75, 0.5, 0.25, 0] },
+        { "code": "american", "name": "US English", "ready": [1, 1, 1, 1] }
     ],
 
     "books": [

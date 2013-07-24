@@ -98,5 +98,5 @@ case class VariantClass (
 case class LanguageInfo (
   code: String,
   name: String,
-  ready: List[Int]
+  ready: List[Float]
 )
