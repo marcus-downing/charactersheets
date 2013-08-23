@@ -1,0 +1,236 @@
+
+@note() = {
+  @defining(controllers.Application.randomQuote) { quote =>
+    <aside class='float right top'>
+      <aside class='note'>
+        <blockquote class='@quote.noteClass'>@quote.quote</blockquote>
+        <cite>&mdash; @quote.author</cite>
+      </aside>
+    </aside>
+  }
+}
+
+@main("Character Sheets by Dyslexic Studeos") {
+
+    <header id='bodyheader'>
+      <h1>Character Sheets by Dyslexic Studeos</h1>
+
+      <nav class='tabs'>
+        <ul>
+          <li><a rel='#download-tab' class='selected'>Download</a></li>
+          <li><a rel='#tour-tab'>Tour</a></li>
+          <li><a rel='#faq-tab'>FAQ</a></li>
+          <li><a rel='#opensource-tab'>Open source</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <section class='tab selected' id='download-tab'>
+      @note()
+
+      <p class='introduction'>Roleplaying games are all about your character. Whatever your game, you spend a lot of time looking at your character sheet so it's worth having a good one.</p>
+      <p>We here present a surprisingly complete set of character sheets for Pathfinder RPG and for Dungeons and Dragons 3.5 <small>(see the small print below)</small>, covering hundreds of classes, along with familiars, spell books, NPCs and map templates.</p>
+      <p>Click one of the buttons below to build your character.</p>
+
+      <article class='box' id='main-buttons'>
+        <div class='yui3-g'>
+          <div class='yui3-u-1-2'>
+            <p><img src='@routes.Assets.at("images/pathfinder-stack.png")'/></p>
+          </div>
+          <div class='yui3-u-1-2'>
+            <p><img src='@routes.Assets.at("images/dnd35-stack.png")'/></p>
+          </div>
+        </div>
+
+        <div class='yui3-g'>
+          <div class='yui3-u-1-2'>
+            <p><img src='@routes.Assets.at("images/pathfinder.png")'/></p>
+          </div>
+          <div class='yui3-u-1-2'>
+            <p><img src='@routes.Assets.at("images/dnd35.png")'/></p>
+          </div>
+        </div>
+
+        <div class='yui3-g'>
+          <div class='yui3-u-1-2'>
+            <p><a class='button' href='/build/pathfinder'>Build my character</a></p>
+          </div>
+          <div class='yui3-u-1-2'>
+            <p><a class='button' href='/build/dnd35'>Build my character</a></p>
+          </div>
+        </div>
+      </article>
+    </section>
+
+
+
+    <section class='tab' id='tour-tab'>
+      @note()
+      
+      <p class='introduction'>When I started playing D&amp;D, I wasn’t satisfied with the character sheets it came with. In investigating the other options, I found many with features that were interesting, but none entirely to my satisfaction. I started compiling a list of desired features, and soon found myself designing my ideal character sheet.</p>
+      <p>The feature I was most certain of was that each class would have a sheet of its own. There are hundreds of classes you can play, each with their own rules and variants, and a one-size-fits-all sheet can’t possibly do them justice.</p>
+
+      <table id='example'>
+        <tr><th>Character Info</th><th>Class-Specific Sheets</th><th></th><th>Spellbook</th></tr>
+        <tr class='top-row'>
+          <td><a class='lightbox' rel='#charinfo-page'><img src='/assets/images/example/charinfo-min.png'/></a></td>
+          <td><a class='lightbox' rel='#class-page'><img src='/assets/images/example/class-min.png'/></a></td>
+          <td><a class='lightbox' rel='#animalcompanioninfo-page'><img src='/assets/images/example/animalcompanioninfo-min.png'/></a></td>
+          <td><a class='lightbox' rel='#spellbook-page'><img src='/assets/images/example/spellbook-min.png'/></a></td>
+        </tr>
+        <tr>
+          <td><img src='/assets/images/example/flip.png'/></td>
+          <td><img src='/assets/images/example/flip.png'/></td>
+          <td><img src='/assets/images/example/flip.png'/></td>
+          <td></td>
+        </tr>
+        <tr class='bottom-row'>
+          <td><a class='lightbox' rel='#combat-page'><img src='/assets/images/example/combat-min.png'/></a></td>
+          <td><a class='lightbox' rel='#inventory-page'><img src='/assets/images/example/inventory-min.png'/></a></td>
+          <td><a class='lightbox' rel='#animalcompanioncombat-page'><img src='/assets/images/example/animalcompanioncombat-min.png'/></a></td>
+          <td><a class='lightbox' rel='#wildshape-page'><img src='/assets/images/example/wildshape-min.png'/></a></td>
+        </tr>
+        <tr><th>Combat</th><th>Inventory</th><th>Animal Companion</th><th>Wildshape</th></tr>
+      </table>
+
+      </div></div></div>
+    </section>
+
+
+
+    <section class='tab' id='faq-tab'>
+      @note()
+      
+      <h3 class='introduction'>What's a character sheet?</h3>
+        <p>When you play a roleplaying game with friends, you each play a character. A character sheet is where you keep track of what your character knows, what they're capable of, what they're carrying and what state they're in.</p>
+        <p>These character sheets are for the <a href='http://paizo.com/pathfinder'>Pathfinder RPG</a> and <a href='http://www.wizards.com/default.asp?x=d20/article/srd35'>Dungeons &amp; Dragons 3.5</a>.</p>
+
+      <div class='yui3-g clear'><div class='yui3-u-1-2'><div class='col left'>
+
+        <h3>How are these different from the ones I already have?</h3>
+          <p>The standard character sheets for both D&amp;D 3.5 and Pathfinder try to cover all different classes and all possible characters with the same design, meaning a lot of space is wasted while important details get overlooked.</p>
+          <p>These sheets are different for every character. On top of the core pages each class gets a page of its own, as well as extra support pages for inventory, spells, animal companions etc. The result is a comprehensive set of sheets tailored to your character. You even get to pick a colour.</p>
+
+        <h3>How do I use this?</h3>
+          <p>First, go to the <a rel='#download-tab'>Download</a> tab and start building your character for either Pathfinder or Dungeons &amp; Dragons. After a few steps you'll be able to download a customised PDF containing exactly the pages you need.</p>
+          <p>The character sheets are made to be printed on A4 paper (or A5, which is A4 cut in half), not US Letter. Since they'll be written on in pencil and rubbed out a lot, I recommend printing them on thick paper (120gsm) or thin card (160gsm), and using both sides of the sheet.</p>
+          <p>Where a page has two A5 halves, you should be able to print the same page on both sides of A4 then cut it in half.</p>
+
+        <h3>Do I still need to buy the books?</h3>
+          <p>Yes, you'll still need the rulebooks to play the game. These character sheets don't replace them at all, they just make it easier to keep track of.</p>
+          <p>Both Paizo and Wizards of the Coast have created great stuff, and I wholeheartedly encourage you to go out and buy it. The same goes for any third party material you play with.</p>
+
+        <h3>Do I need a computer to play?</h3>
+          <p>No, these are made to be printed out and written on in pencil.</p>
+
+        <h3>Is there a version I can fill in with a computer then print out?</h3>
+          <p>No, because doing that for the entire set of hundreds of pages and making sure all the calculations are correct would be too much work.</p>
+          <p>Other people are free to take a copy of my sheets and add features like that, and several have made a start on it. Have a look around various forums to find them.</p>
+
+        <h3>Are these available in other languages?</h3>
+          <p>Yes, translations are in the works, but it's a very big job. There's currently an Italian translation available, and several other translations are progressing nicely. Check back in a year or two, or contact me if you'd be interested in helping to translate it into your own language.</p>
+
+        <h3>What's with the foreign spelling?</h3>
+          <p>I'm English. American spelling is available as a Language option, but it isn't and never will be the default.</p>
+
+      </div></div>
+      <div class='yui3-u-1-2'><div class='col right'>
+
+        <h3>What do they cost?</h3>
+          <p>Nothing.</p>
+          <p>These character sheets are free, and will always remain so. In fact, they're more than just free, they're open source. That means anybody can change them to suit their needs. Head over to the <a href='#opensource-tab'>Open Source</a> tab for more information.</p>
+
+        <h3>Can I donate something anyway?</h3>
+          <p>You can use Flattr to send me a little something if you like: &nbsp;
+            <a id='flattr' href='https://flattr.com/submit/auto?user_id=marcusdowning&amp;url=http://charactersheets.minotaur.cc'>
+              <img src='https://api.flattr.com/button/flattr-badge-large.png'/></a></p>
+          <p>Or if you're ever in southern England, drop me a line. I rarely say no to a pint of real ale.</p>
+
+        <h3>Will you do a sheet for my favourite class?</h3>
+          <p>Quite possibly, but my time is limited. My focus is on the most played classes, and I'm limited to ones where the information is legally available.</p>
+
+        <h3>Will you do sheets for alternate rules?</h3>
+          <p>Maybe, if they're reasonably popular, but it's not my priority.</p>
+
+        <h3>You made a mistake!</h3>
+          <p>This project has been much improved by the suggestions of hundreds of people. If you have feedback, suggestions or improvements, I'd love to hear them. Leave me a message with this button:</p>
+          <p class='center'><a rel='#message-lightbox' class='button lightbox' href='/message'>Leave a message</a></p>
+          <p>Or go to the threads on <a href='http://paizo.com/threads/rzs2lbkj?My-new-character-sheets-for-Pathfinder'>Paizo's forum</a> or <a href='http://community.wizards.com/go/thread/view/75882/24942117/3.5_Character_Sheets?sdb=1'>Wizards of the Coast</a> to discuss it.</p>
+
+        <h3>Are you going to make sheets for Dungeons and Dragons 2nd, 4th or 5th Edition, RuneQuest, Shadowrun, Legend, Savage Realms, Cortex, The Dresden Files, World of Darkness, Legend Of The Five Rings, Deathwatch, Traveller, Ars Magica, GURPS, Call of Cthulu, Hackmaster, Paranoia or Maid?</h3>
+          <p>No.</p>
+
+        <h3>I don't like them!</h3>
+          <p>Fair enough.</p>
+    </section>
+
+
+
+    <section class='tab' id='opensource-tab'>
+      @note()
+
+      <p class='introduction'>This project is more than just free. These sheets are everybody's to change and use. Anybody can take the building blocks and use them to create new versions or whole new works of their own based on this design.</p>
+      <br/>
+
+      <div class='yui3-g clear'><div class='yui3-u-1-2'><div class='col left' style='margin-top: -90px;'>
+        <h3>What does "Open Source" actually mean?</h3>
+          <p>It means everything that makes this project work has been published. All the artwork, script files, source code and other stuff are available for you to download.</p>
+          <p>It means that all this stuff has been released under a license that lets you change them and use them in new ways (provided you stick to a few simple rules).</p>
+          <p>It means you can contribute back to this project, and your work can be of benefit to others.</p>
+          <p>And it means that this project can continue even if the original creator (me) loses interest and takes it away, as long as a copy survives somewhere.</p>
+
+        <h3>What can I do with them?</h3>
+          <p>Anything covered by the license, including:</p>
+          <ul>
+            <li>Changing invididual pages to fit the way you play</li>
+            <li>Making character sheets for new or variant classes that I haven't covered.</li>
+            <li>Creating a new version of the whole project, with changes</li>
+            <li>Converting the project to a different game</li>
+          </ul>
+
+          <p>If you make useful changes, I encourage you to give them back to the community. Send me a message with your contact details, and if I like your work I'll incorporate it into the project. Even if I don't, you can still publish it on Paizo's forums or the web for others to see.</p>
+
+        <h3>What can't I do?</h3>
+          <p>You're not allowed to:</p>
+          <ul>
+            <li>Pretend you made them yourself</li>
+            <li>Charge money for them</li>
+            <li>Strip the OGL and other legal information out of the project</li>
+            <li>Anything not permitted by other publishers whose properties this project makes use of, including Wizards of the Coast and Paizo</li>
+          </ul>
+
+        <h3>What's to stop me stealing them?</h3>
+          <p>Using the sheets as you like isn't stealing them, it's permitted and encouraged.</p>
+          <p>The only way you could &ldquo;steal&rdquo; the sheets is to plagiarise them - to claim that you made them yourself. Don't do that.</p>
+
+      </div></div>
+      <div class='yui3-u-1-2'><div class='col right'>
+
+        <h3>How can I get involved?</h3>
+          <p>You can find much more information on this page:</p>
+          <p class='center'><a class='button' href='/howto'>Open Source Info</a></p>
+
+          <p>Or launch straight into it by downloading the files from the open source repository here (some technical knowledge may be required):</p>
+          <p class='center'><a class='button' href='http://www.github.com/marcusatbang/charactersheets'>Get the files</a></p>
+
+        <h3>Legal information</h3>
+          <p>These files have been released under the <a href='/legal'>Artistic License 2.0</a>, which a very permissive license. You can find more details on the legal information page:</p>
+          <p class='center'><a class='button' href='/legal'>Legal Information</a></p>
+          </ul>
+
+        <h3>Contact me</h3>
+          <p>If you need something not covered by the license, or have any questions, just ask.</p>
+          <p class='center'><a rel='#message-lightbox' class='button lightbox' href='/message'>Leave a message</a></p>
+
+      </div></div></div>
+    </section>
+
+    <div class='lightbox' id='charinfo-page'><img src='/assets/images/example/charinfo.png'/></div>
+    <div class='lightbox' id='combat-page'><img src='/assets/images/example/combat.png'/></div>
+    <div class='lightbox' id='class-page'><img src='/assets/images/example/class.png'/></div>
+    <div class='lightbox' id='inventory-page'><img src='/assets/images/example/inventory.png'/></div>
+    <div class='lightbox' id='animalcompanioninfo-page'><img src='/assets/images/example/animalcompanioninfo.png'/></div>
+    <div class='lightbox' id='animalcompanioncombat-page'><img src='/assets/images/example/animalcompanioncombat.png'/></div>
+    <div class='lightbox' id='spellbook-page'><img src='/assets/images/example/spellbook.png'/></div>
+    <div class='lightbox' id='wildshape-page'><img src='/assets/images/example/wildshape.png'/></div>
+}

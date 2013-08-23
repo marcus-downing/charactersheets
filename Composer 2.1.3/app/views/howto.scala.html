@@ -1,0 +1,343 @@
+
+@note() = {
+  @defining(controllers.Application.randomQuote) { quote =>
+    <aside class='float right top'>
+      <aside class='note'>
+        <blockquote class='@quote.noteClass'>@quote.quote</blockquote>
+        <cite>&mdash; @quote.author</cite>
+      </aside>
+    </aside>
+  }
+}
+
+@main("Character Sheets by Dyslexic Studeos") {
+	<header id='bodyheader'>
+	  <h1>Character Sheets by Dyslexic Studeos</h1>
+
+	  <nav class='tabs'>
+	    <ul>
+        <li><a href='/'>&laquo; Back to intro</a></li>
+	    	<li><a rel='#howto-tab' class='selected'>How to</a></li>
+	      <li><a rel='#layout-tab'>Edit pages</a></li>
+	      <li><a rel='#i18n-tab'>Translate</a></li>
+	      <li><a rel='#builder-tab'>Run the builder</a></li>
+	    </ul>
+	  </nav>
+	</header>
+
+  <section class='tab selected' id='howto-tab'>
+    <h2 id='howto-tab-title'>How to use the open source content</h2>
+
+    <div class='yui3-g'>
+      <div class='yui3-u-1-2'><div class='col left'>
+
+        <p>All the files for these character sheets can be found on the open source repository.</p>
+
+        <p class='center'><a class='button' href='https://github.com/marcusatbang/charactersheets'>Get the Files Here</a></p>
+
+        <p>You may find that a bit daunting though, so the following pages describe how to make best use of that resource.</p>
+
+        <h3>What can I do with them?</h3>
+        <p>You can:</p>
+        <ul>
+          <li>Edit any of the pages to fit your own needs</li>
+          <li>Create sheets for extra classes or archetypes (and submit those back to the project if you like)</li>
+          <li>Publish your own version of the project, or base another project off it</li>
+          <li>Help translate the sheets into different languages</li>
+          <li>Run your own copy of the website and Build My Character tool</li>
+        </ul>
+
+        <h3>Getting the files</h3>
+        <p>There are two ways to get the files:</p>
+        <ul>
+          <li>If you only need one or two files, you can download them directly from the repository. Find the file you want in the repository, and look for the option to "View Raw".</li>
+          <li>If you're likely to need complete directories or the whole project, or if you want to run a copy of the website, then use <b>Git</b> to grab the whole lot.</li>
+        </ul>
+        <p>If you're using Windows or a Mac, I recommend installing <a href='http://windows.github.com/'>GitHub for Windows</a> or <a href='http://mac.github.com/'>GitHub for Mac</a>, though there are plenty of other options. If you're on Linux you can use the command line or any number of other tools. What all these programs let you do is to download the entire project as a folder, then keep that folder up to date as changes get published.</p>
+
+        <h3>License</h3>
+          <p>These files have been released under the <a href='/legal'>Artistic License 2.0</a>, which a very permissive license. You're allowed to:</p>
+          <ul>
+            <li>Distribute copies of these files</li>
+            <li>Make modifications, publish those modifications for other people and incorporate other people's modifications</li>
+            <li>Run your own copy of the Build My Character tool</li>
+            <li>Include these character sheets within products of your own</li>
+          </ul>
+          <p>On condition that:</p>
+          <ul>
+            <li>You're honest about where the work came from, crediting this website, and don't remove any copyright notices from the files</li>
+            <li>You don't charge money for these sheets (except for a reasonable distribution fee)</li>
+            <li>You respect the intellectual property belonging to other companies (notably Paizo Publishing LLC and Wizards of the Coast LLC, as well as any third parties)</li>
+          </ul>
+          <p>For the purposes of the license, the artwork files are considered &ldquo;source&rdquo; while the complete PDF is considered an &ldquo;executable&rdquo;. The same license also covers this website and the Build My Character tool.</p>
+          <p>If you need something not covered by the license, or have any questions, just ask.</p>
+
+
+        <h3>Legal information</h3>
+          <p>Obviously, these character sheets are built on the work of a number of other companies and individuals.</p>
+
+          <p>I'm grateful to all the companies whose products I use, and you can find a more complete attribution on the <a href='/legal'>Legal Information</a> page. I'm also grateful to everyone who has helped out with feedback, fixes, improvements and contributions.</p>
+
+          <p style='text-align: center;'><a class='button' href='/legal'>Legal Information</a></p>
+
+      </div></div>
+      <div class='yui3-u-1-2'><div class='col right'>
+
+        <h3>Structure of the project</h3>
+        <ul class='filesystem'>
+          <li><img src='/assets/images/file.png'/> <b>OGLv1.0a.rtf</b> <span>the Open Gaming License</span></li>
+          <li><img src='/assets/images/folder.png'/> <b>Pathfinder</b> <span>pages for Pathfinder RPG</span><ul>
+            <li><img src='/assets/images/folder.png'/> <b>Core</b><ul>
+              <li><img src='/assets/images/file.png'/> <b>Character Info.ai</b> <span>the first page</span></li>
+              <li><img src='/assets/images/file.png'/> <b>Combat.ai</b> <span>the Combat page</span></li>
+              <li><img src='/assets/images/file.png'/> <b>Wizard.ai</b> <span>a class-specific page</span></li>
+              <li><img src='/assets/images/folder.png'/> <b>Barbarian</b><ul>
+                <li><img src='/assets/images/file.png'/> <b>Barbarian.ai</b></li>
+                <li><img src='/assets/images/file.png'/> <b>Character Info - Barbarian.ai</b> <span>special version of the first page</span></li>
+              </ul></li>
+            </ul></li>
+            <li><img src='/assets/images/folder.png'/> <b>Advanced</b><ul>
+              <li><img src='/assets/images/file.png'/> <b>Alchemist.ai</b> <span>another class-specific page</span></li>
+            </ul></li>
+            <li><img src='/assets/images/folder.png'/> <b>Archetypes</b><ul>
+              <li><img src='/assets/images/folder.png'/> <b>Monk</b><ul>
+                <li><img src='/assets/images/file.png'/> <b>Drunken Master.ai</b> <span>a Monk archetype</span></li>
+              </ul></li>
+            </ul></li>
+            <li><img src='/assets/images/folder.png'/> <b>Psionics</b> <span>from Dreamscarred Press</span></li>
+          </ul></li>
+          <li><img src='/assets/images/folder.png'/> <b>3.5</b> <span>pages for Dungeons &amp; Dragons 3.5</span></li>
+          <li><img src='/assets/images/folder.png'/> <b>NeoExodus</b> <span>from LJP Design</span></li>
+          <li><img src='/assets/images/folder.png'/> <b>Extra</b> <span>a few other pages</span></li>
+          <li><img src='/assets/images/folder.png'/> <b>Languages</b> <span>for translations</span><ul>
+            <li><img src='/assets/images/file.png'/> <b>messages.csv</b> <span>template messages file</span></li>
+            <li><img src='/assets/images/folder.png'/> <b>Italian</b> <span>pages for Dungeons &amp; Dragons 3.5</span><ul>
+              <li><img src='/assets/images/file.png'/> <b>Italian.csv</b> <span>translations into Italian</span></li>
+            </ul></li>
+          </ul></li>
+          <li><img src='/assets/images/folder.png'/> <b>Fonts</b></li>
+          <li><img src='/assets/images/folder.png'/> <b>Iconics</b> <span>character images to use on the Inventory page</span></li>
+
+          <li><img src='/assets/images/folder.png'/> <b>Scripts</b><ul>
+            <li><img src='/assets/images/file.png'/> <b>Check all files.jsx</b> <span>find out if any Illustrator files are broken</span></li>
+            <li><img src='/assets/images/file.png'/> <b>Export as PDF.jsx</b> <span>turn a whole folder of Illustrator files into PDFs</span></li>
+            <li><img src='/assets/images/file.png'/> <b>i18n apply CSV translations.jsx</b> <span>translate a set of Illustrator files using a CSV</span></li>
+            <li><img src='/assets/images/file.png'/> <b>i18n extract strings to CSV.jsx</b> <span>run through a set of Illustrator files, producing a template CSV</span></li>
+            <li><img src='/assets/images/file.png'/> <b>i18n merge translations.jsx</b> <span>combine translations from two CSV files into one</span></li>
+            <li><img src='/assets/images/file.png'/> <b>List installed fonts to CSV.jsx</b> <span>make a list of all the fonts on your system</span></li>
+            <li><img src='/assets/images/file.png'/> <b>List used fonts to CSV.jsx</b> <span>make a list of all fonts used in a set of Illustrator files</span></li>
+            <li><img src='/assets/images/file.png'/> <b>Replace fonts in AI from CSV.jsx</b> <span>change all the fonts used in a set of Illustrator files</span></li>
+          </ul></li>
+
+          <li><img src='/assets/images/folder.png'/> <b>Composer</b> <span>this website</span><ul>
+            <li><img src='/assets/images/folder.png'/> <b>app</b><ul>
+              <li><img src='/assets/images/folder.png'/> <b>controllers</b> <span>contain actions</span><ul>
+                <li><img src='/assets/images/file.png'/> <b>Application.scala</b> <span>the main controller for the website</span></li>
+                <li><img src='/assets/images/file.png'/> <b>Composer.scala</b> <span>actually builds the PDFs</span></li>
+              </ul></li>
+              <li><img src='/assets/images/folder.png'/> <b>models</b><ul>
+                <li><img src='/assets/images/file.png'/> <b>gamedata.scala</b> <span>corresponds to the JSON files in the <b>data</b> directory</span></li>
+                <li><img src='/assets/images/file.png'/> <b>chardata.scala</b> <span>data for a character</span></li>
+              </ul></li>
+              <li><img src='/assets/images/folder.png'/> <b>views</b><ul>
+                <li><img src='/assets/images/file.png'/> <b>main.scala.html</b> <span>the parent of all views, does heavy lifting</span></li>
+                <li><img src='/assets/images/file.png'/> <b>index.scala.html</b> <span>the front page</span></li>
+                <li><img src='/assets/images/file.png'/> <b>build.scala.html</b> <span>the Build My Character page</span></li>
+              </ul></li>
+            </ul></li>
+            <li><img src='/assets/images/folder.png'/> <b>conf</b> <span>configuration</span><ul>
+              <li><img src='/assets/images/file.png'/> <b>routes</b> <span>map URLs to actions</span></li>
+            </ul></li>
+            <li><img src='/assets/images/folder.png'/> <b>public</b><ul>
+              <li><img src='/assets/images/file.png'/> <b>OGLv1.0a.rtf</b> <span>website copy of the Open Gaming License</span></li>
+              <li><img src='/assets/images/folder.png'/> <b>images</b><ul>
+                <li><img src='/assets/images/file.png'/> <b>party.png</b> <span>an image used on the website</span></li>
+                <li><img src='/assets/images/folder.png'/> <b>iconics</b> <span>the character portraits, resized for the web</span></li>
+              </ul></li>
+              <li><img src='/assets/images/folder.png'/> <b>data</b><ul>
+                <li><img src='/assets/images/file.png'/> <b>pathfinder.json</b> <span>data file for Pathfinder</span></li>
+                <li><img src='/assets/images/file.png'/> <b>dnd35.json</b> <span>data file for Dungeons &amp; Dragons 3.5</span></li>
+              </ul></li>
+              <li><img src='/assets/images/folder.png'/> <b>pdf</b> <span>the actual pages in PDF</span><ul>
+                <li><img src='/assets/images/folder.png'/> <b>pathfinder</b><ul>
+                  <li><img src='/assets/images/folder.png'/> <b>Core</b><ul>
+                    <li><img src='/assets/images/file.png'/> <b>Character Info.pdf</b> <span>the first page</span></li>
+                    <li><img src='/assets/images/file.png'/> <b>Combat.pdf</b> <span>the Combat page</span></li>
+                    <li><img src='/assets/images/file.png'/> <b>Wizard.pdf</b> <span>a class-specific page</span></li>
+                    <li><img src='/assets/images/folder.png'/> <b>Barbarian</b><ul>
+                      <li><img src='/assets/images/file.png'/> <b>Barbarian.pdf</b></li>
+                      <li><img src='/assets/images/file.png'/> <b>Character Info - Barbarian.pdf</b> <span>special version of the first page</span></li>
+                    </ul></li>
+                  </ul></li>
+                </ul></li>
+                <li><img src='/assets/images/folder.png'/> <b>dnd35</b></li>
+                <li><img src='/assets/images/folder.png'/> <b>languages</b> <span>translated PDFs</span><ul>
+                  <li><img src='/assets/images/folder.png'/> <b>italian</b> <span>Italian translation</span><ul>
+                    <li><img src='/assets/images/folder.png'/> <b>pathfinder</b> <span>Italian translation of the Pathfinder page</span></li>
+                    <li><img src='/assets/images/folder.png'/> <b>dnd35</b> <span>Italian translation of the Dungeons &amp; Dragons 3.5 pages</span.</li>
+                  </ul></li>
+                </ul></li>
+              </ul></li>
+            </ul></li>
+          </ul></li>
+        </ul>
+
+      </div></div>
+    </div>
+  </section>
+
+  <section class='tab' id='layout-tab'>
+  	<h2 id='layout-tab-title'>How to edit the pages</h2>
+
+  	<p>There are nearly 300 separate pages in the repository now, covering classes and archetypes, core features and special cases. But if what you need is a little different from what I've provided, you can take my files and use them to create your own.</p>
+
+
+    <div class='yui3-g'>
+      <div class='yui3-u-1-2'><div class='col left'>
+
+    		<h3>You will need</h3>
+    		<p>The pages were created using Adobe Illustrator, and for best results you'll need either a copy of Illustrator or another program that can read Illustrator files directly. If you don't have one of those you can use a program that will open the PDF files, such as Inkscape, but the results won't be as good.</p>
+
+    		<h3>Before you start</h3>
+    		<p>Grab and install the fonts from the Fonts folder in the repository. They're all legal.</p>
+    		<p>Get a copy of at least the few files you want to edit, if not the entire project.</p>
+
+      </div></div>
+      <div class='yui3-u-1-2'><div class='col right'>
+
+      	<h3>Saving as PDF</h3>
+      	<p>You'll probably want to save the Illustrator
+
+      </div></div>
+    </div>
+
+  </section>
+
+  <section class='tab' id='i18n-tab'>
+  	<h2 id='i18n-tab-title'>How to translate the project into your own language</h2>
+
+  	<p>If your language isn't on the list of translations already supported, you can help the project by contributing a translation. You shouldn't need to touch the Illustrator files to translate them. Instead, you'll edit a simple spreadsheet.</p>
+
+
+    <div class='yui3-g'>
+      <div class='yui3-u-1-2'><div class='col left'>
+
+        <h3>How it works</h3>
+          <p>If you'd like to help translate, <a href='http://paizo.com/paizo/messageboards/paizoPublishing/pathfinder/pathfinderRPG/licensees/myNewCharacterSheetsForPathfinder&amp;page=last'>first check the thread on Paizo's forum</a> to see if somebody has already started. If they have, I recommend you work with them.</p>
+          <p>You don't need to do the whole thing yourself, lots of people can cooperate. For each language, I'll appoint one person to be in charge. They'll make sure that the translations other people send in make sense.</p>
+          <p>You get a spreadsheet containing all the fragments of text used across all the character sheets. Some fragments get used in many different places, but you only need to translate them once.</p>
+          <p>When you've done some translating, send the file back to me. I'll use my magic to apply those translations to the PDFs, and send them back to you to look at. Once the translation is nearing completness, I'll include it on the website.</p>
+
+      </div></div>
+      <div class='yui3-u-1-2'><div class='col right'>
+
+        <h3>You will need</h3>
+          <p>Software to edit a spreadsheet.</p>
+          <p>If you'd like to process your translations yourself, then a copy of Adobe Illustrator.</p>
+          <p>Get a copy of one of the translation templates from the <b>Languages</b> folder in the repository.</p>
+
+      	<h3>Open the file</h3>
+        	<p>Make absolutely certain you open the file using UTF-8 encoding, comma delimiters and <tt>"</tt> quotes.</p>
+        	<p>When you save the file, save it as CSV with the same settings. Be sure to include line 1 with the heading the same as when you opened it.</p>
+
+      </div></div>
+    </div>
+
+<pre>
+Frame number   Original          Translation   Count   Part of             File count   Files
+9              Alchemist|Level                 12                          1            Alchemist
+720            BASE|ATTACK                     7       BASE|ATTACK BONUS   5            Eidolon - Combat, Combat...
+720            BONUS                           7       BASE|ATTACK BONUS   5            Eidolon - Combat, Combat...
+</pre>
+
+
+    <div class='yui3-g'>
+      <div class='yui3-u-1-2'><div class='col left'>
+
+      	<h3>How to translate</h3>
+<pre>
+Original     Translation
+Swim Speed   <i>Velocità di Nuoto</i>
+</pre>
+      	<p>In each line, look at the <b>Original</b> and put the translated text in the <b>Translation</b> column. Don't change any columns except <b>Translation</b>.</p>
+
+<pre>
+Original         Translation
+Dodge|Modifier   <i>Modificatore|di Schivare</i>
+</pre>
+
+        <p>The vertical bar character <b>|</b> is used to represent a line break. If the original has a line break, then the translation should as well.</p>
+
+<pre>
+File count   Files
+10           Animal Companion, Combat, Wild Shape...
+</pre>
+        <p><b>File count</b> says how many different files the text is used in, and <b>Files</b> lists them. You can sort the rows by their <b>File count</b> to translate the most important lines first.</p>
+
+        <h3>Split text</h3>
+        <p>Sometimes a single text box uses more than one style. In this case the text will be split into several lines.</p>
+<pre>
+Frame number   Original           Part of
+16             COMBAT MANOEUVRE   COMBAT MANOEUVRE|DEFENCE
+16             DEFENCE            COMBAT MANOEUVRE|DEFENCE
+</pre>
+      	<p>The lines are grouped together using the <b>Frame number</b> column, and the whole text appears in the <b>Part of</b> column. When translating one of these, remember to translate them as a single sentence.</p>
+<pre>
+Frame number   Original     Translation   Part of
+63             INITIATIVE   BONUS DI      INITIATIVE BONUS
+63             BONUS        INIZIATIVA    INITIATIVE BONUS
+</pre>
+        <p>Each language uses words in a different order. When translating split text, you may need to change the order in which pieces of text appear.</p>
+
+      </div></div>
+      <div class='yui3-u-1-2'><div class='col right'>
+
+      	<h3>Turning spreadsheets into reality</h3>
+      	<p>If you have a copy of Adobe Illustrator, you can apply these changes to the character sheets directly.</p>
+      	<p>Get a copy of the entire project using Git, and make sure your translation file is saved as CSV, using Unicode format, with comma delimiters.
+      </div></div>
+    </div>
+  </section>
+
+  <section class='tab' id='builder-tab'>
+  	<h2 id='builder-tab-title'>How to run a copy of the website and character sheet builder</h2>
+
+  	<p>Having created your own pages, you probably want to build character sheets using them. To do this you'll need to run a copy of the website. You don't need to be a programmer, but I only recommend trying this if you're technically competent.</p>
+
+
+    <div class='yui3-g'>
+      <div class='yui3-u-1-2'><div class='col left'>
+
+    		<h3>You will need</h3>
+    		<p>First install a <a href='http://www.oracle.com/technetwork/java/javase/downloads/index.html'>Java JRE</a>, making sure it's a recent version. Then install <a href='http://www.playframework.org/'>the Play! Framework</a>, which you'll need to run the website itself. Make sure you've added the Play! Framework's folder (such as <tt>c:\play-2.0.4</tt>) to your path variable.</p>
+    		<p>Download at least the entire Composer directory from the open source repository.</p>
+
+    		<h3>Running the site</h3>
+    		<p>Bring up a command line. You can do this on Windows by hitting the Start button and typing <tt>cmd</tt>. Use <tt>cd</tt> and <tt>dir</tt> to make your way to the Composer directory. When you're there, type:</p>
+    		<pre>play run</pre>
+    		<p>It will then proceed to download all the different components needed to run the website (this bit can take a long time, and does require an internet connection) and eventually tell you that it's listening on port 9000. When it does, open up a web browser and navigate to <a href='http://localhost:9000'>localhost:9000</a>.</p>
+
+    		<h3>Troubleshooting</h3>
+    		<p>The mostly likely problem you'll have is that the Play! Framework isn't correctly installed.</p>
+
+      </div></div>
+      <div class='yui3-u-1-2'><div class='col right'>
+
+      	<h3>Adding pages</h3>
+      	<p>The pages for each game are controlled in JSON data files in <b>Composer/public/data</b>, either <b>pathfinder.json</b> or <b>dnd35.json</b>. You'll need to <a href='http://www.w3resource.com/JSON/introduction.php'>learn JSON</a>, which isn't complicated but can be temperamental. Each time you make a change, test it with <a href='http://jsonlint.com/'>JSON Lint</a> to see if you've made a mistake.</p>
+      	<p>The <tt>books</tt> section lists what classes are in which books; the <tt>classes</tt> section lists the pages that class needs; and the <tt>pages</tt> section connects class names to file names. To add a class, you'll need to add any new pages to the <tt>pages</tt> section, then add a new class entry to the <tt>classes</tt> section, then add it to a book in the <tt>books</tt> section.</p>
+      	<p>Pages belong in slots, with the rule that each slot gets printed only once. So each character only has one inventory page, but there are several different versions of the inventory that could be included.</p>
+
+      	<h3>Adding a web page</h3>
+      	<p>If you're not a programmer, the following may be a little difficult.</p>
+      	<p>To add a page to the site, you'll need to add one line into <b>Composer/conf/routes</b>, an action into <b>Composer/app/controllers/Application.scala</b> and a view into <b>Composer/app/views</b>. Use the existing routes, actions and views as examples.</p>
+      	<p>Views are written in a combination of Scala and HTML.</p>
+
+      	<h3>Adding a game system</h3>
+      	<p>To add a whole new game, you'll need to add a JSON file for it in the <b>Composer/public/data</b> folder, using the same format as <b>pathfinder.json</b>; create a route for the builder and a route for the PDF composer in <b>Composer/conf/routes</b>.</p>
+
+      </div></div>
+    </div>
+
+  </section>
+}
