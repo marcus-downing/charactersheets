@@ -373,7 +373,7 @@
                 { "name": "Swamp Druid (Domain)", "pages": [ "druid/swamp/domain" ], "axes": ["Swamp", "Domain"] },
                 { "name": "Urban Druid", "pages": [ "druid/urban" ], "axes": ["Urban", "Domain"] },
                 { "name": "World Walker (Animal Companion)", "pages": [ "core/worldwalker", "druid/worldwalker/animalcompanion", "animalcompanion" ], "axes": ["World Walker", "Animal Companion"] },
-                { "name": "World Walker (Domain)", "pages": [ "core/worldwalker", "druid/worldwalker/domain" ], "axes": ["World Walker", "Domain"] },
+                { "name": "World Walker (Domain)", "pages": [ "core/worldwalker", "druid/worldwalker/domain" ], "axes": ["World Walker", "Domain"] }
             ]
         },
 
