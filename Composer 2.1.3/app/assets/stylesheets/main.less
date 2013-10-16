@@ -390,12 +390,12 @@ form#build-my-character {
 
   aside#iconic {
     display: block; float: right; margin-bottom: 10px;
-    min-width: 300px; max-width: 550px; min-height: 505px;  padding: 15px;
+    min-width: 300px; max-width: 550px; min-height: 405px;  padding: 15px;
     border-radius: 3px; border-bottom: 1px solid rgba(255, 255, 255, 0.5);
     background: rgba(255, 255, 255, 0.6) url(/assets/images/white-spot.png) 50% 50% no-repeat; box-shadow: inset 0px 2px 3px #676;
     overflow: auto; text-align: center;
 
-    img { display: none; &.selected { display: inline; } }
+    img { display: none; &.selected { display: block; } }
   }
 
   div.disabled {
@@ -470,32 +470,124 @@ form#build-my-character {
   z-index: 999;
 }
 
-#download-thanks {
+.dialog {
   display: none;
   position: fixed;
-  top: 50%;
-  bottom: 0;
-  left: 0;
-  right: 0;
   z-index: 1000;
 
 
   .inner {
-    margin-top: -100px;
-    width: 500px;
-    height: 200px;
-    margin-left: auto;
-    margin-right: auto;
     padding: 3px 20px;
     background: lighten(@bg, 10%);
-    background: fade(lighten(@bg, 10%), 90%);
+    background: fade(lighten(@bg, 10%), 80%);
 
     .rounded(3px);
     .drop-shadow(0, 5px, 15px, 0.5);
   }
+}
 
+#download-thanks-dialog {
+  top: 50%;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  .inner {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -100px;
+    width: 500px;
+    height: 200px;
+  }
   .progress {
     vertical-align: middle;
+  }
+}
+
+#iconic-select-dialog {
+  @oo: 30px;
+  @hh: 65px;
+  @bb: 15px;
+  @ww: 310px;
+  @pp: 10px;
+
+  top: @oo;
+  bottom: @oo;
+  left: @oo;
+  right: @oo;
+  margin: 0;
+  width: auto;
+
+  .inner {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: fade(lighten(@bg, 10%), 70%);
+  }
+  #iconic-set-list {
+    position: absolute;
+    top: @hh+@bb;
+    bottom: @bb;
+    left: @bb;
+    width: @ww;
+
+    a {
+      display: block;
+      cursor: pointer;
+      height: 40px;
+      padding: @pp 0 @pp @pp;
+      margin-bottom: 8px;
+      border-radius: 4px 0 0 4px;
+      span.group { display: block; .body-font(); }
+      span.name { display: block; .header-font(); font-size: 20px; }
+      &.selected {
+        background: @fg;
+        //.gradient(@fg, @fg-hilight, @fg);
+        .drop-shadow(0, 1px, 1px, 0.5);
+        color: white;
+        span.name, span.group { color: white; }
+      }
+    }
+  }
+  #iconic-image-list {
+    position: absolute;
+    top: @bb;
+    bottom: @bb;
+    left: @ww+@bb;
+    right: @bb;
+      overflow-y: auto;
+
+    border-radius: 3px; border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.5) url(/assets/images/white-spot.png) 50% 50% no-repeat; box-shadow: inset 0px 2px 3px #676;
+    padding: 5px;
+    > div {
+      display: none;
+      padding-right: @bb;
+      &.selected {
+        display: block;
+      }
+    }
+    a {
+      display: block;
+      float: left;
+      height: 425px;
+      margin: @pp;
+
+      background: rgba(255, 255, 255, 0.3);
+      .body-font();
+      border: 2px solid fade(@bg, 30%);
+      border-radius: 5px;
+      padding: 6px;
+      &:hover {
+        border: 2px solid @bg;
+      }
+      img {
+        display: block;
+        margin-bottom: 6px;
+      }
+    }
   }
 }
 

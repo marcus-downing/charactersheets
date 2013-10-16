@@ -189,7 +189,7 @@ object Composer extends Controller {
   }
 
   def addCharacterPages(character: CharacterData, gameData: GameData, folders: List[File], document: Document, writer: PdfWriter) {
-    val iconic = if (isAprilFool) Some(IconicImage("1 Paizo", "3 Advanced Races", "Goblin - d20.png"))
+    val iconic = if (isAprilFool) Some(IconicImage(IconicSet("1-paizo/3-advanced-races", "1 Paizo/3 Advanced Races"), "goblin-d20.png", "Goblin - d20"))
     else character.iconic
 
     val pages = new CharacterInterpretation(gameData, character).pages

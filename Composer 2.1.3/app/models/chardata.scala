@@ -113,18 +113,92 @@ case class CharacterData (
 
   variantRules: List[String]
 ) {
-  def iconic: Option[IconicImage] = controllers.Application.getIconic(inventoryIconic)
+  def iconic: Option[IconicImage] = IconicImage.get(inventoryIconic)
 }
 
-case class IconicImage(group: String, set: String, name: String) {
+
+//  Iconics
+
+case class IconicSet(filePath: String, nicePath: String) {
+  val sortableName = filePath
+  val (groupName, setName) = IconicImage.splitPath(nicePath)
+  val id = IconicImage.slug(filePath)
+
+  lazy val iconics: List[IconicImage] = IconicImage.iconics.filter(_.set == this).sortBy(_.sortableName)
+}
+
+case class IconicImage(set: IconicSet, fileName: String, niceName: String) {
   import IconicImage.slug
-  val path = group+"/"+set+"/"+name
-  val id = slug(group)+"--"+slug(set)+"--"+slug(name)
-  val largeFile = "public/images/iconics/"+group+"/"+set+"/Large/"+name+".png"
-  val smallFile = "images/iconics/"+group+"/"+set+"/Small/"+name+".png"
+  val path = set.filePath+"/"+fileName
+  val id = set.id+"-"+slug(fileName)
+  val sortableName = id
+  val largeFile = "public/images/iconics/large/"+set.filePath+"/"+fileName+".png"
+  val smallFile = "public/images/iconics/large/"+set.filePath+"/"+fileName+".png"
+  val url = ("/images/iconics/small/"+set.filePath+"/"+fileName+".png").replaceAll(" ", "+")
 }
 
 object IconicImage {
+  lazy val iconics: List[IconicImage] = {
+    val iconicsFolder = new File("public/images/iconics")
+    if (!iconicsFolder.isDirectory) Nil
+    else {
+      /*
+      case class IconicFile(file: File, path: List[String]) {
+        val name = path.head
+      }
+
+      def iconicFilesInFolder(folder: File, path: List[String]): List[IconicFile] = {
+        folder.listFiles.toList.flatMap { file =>
+          if (file.isDirectory) iconicFilesInFolder(file, file.getName :: path)
+          else List(IconicFile(file, file.getName :: path))
+        }
+      }
+      val allFiles = iconicFilesInFolder(iconicsFolder, List())
+      println("Found "+allFiles.length+" files in iconics folder")
+
+      val images = allFiles.filter { _.name.endsWith(".png") }
+      println("Found "+images.length+" images in iconics folder")
+
+      val iconics = images.flatMap { iconicFile =>
+        iconicFile.path match {
+          case name :: "Small" :: reversePath => 
+            val set = IconicSet(reversePath.reverse.mkString("/"))
+            // println(" - Found iconic: "+set.path+" : "+name)
+            Some(IconicImage(set, name))
+          case _ => None
+        }
+      }
+      println("Found "+iconics.length+" iconics")
+
+    // ...
+      iconics.sortBy(_.sortableName)
+      */
+
+      val iconicsList = new File("public/images/iconics/iconics.txt")
+      val lines = scala.io.Source.fromFile(iconicsList).getLines.toList
+      val iconics = lines.flatMap { line =>
+        try {
+          val filePath :: nicePath :: _ = line.split("=").toList
+          val (fileBase, fileName) = splitPath(filePath)
+          val (niceBase, niceName) = splitPath(nicePath)
+          val set = IconicSet(fileBase, niceBase)
+          println(" - Found iconic: "+set.nicePath+" / "+niceName)
+          Some(IconicImage(set, fileName, niceName))
+        } catch {
+          case _: Exception => None
+        }
+      }
+
+      println("Found "+iconics.length+" iconics")
+
+      iconics.sortBy(_.sortableName)
+    }
+  }
+
+  def get(code: String): Option[IconicImage] = iconics.filter(_.id == code).headOption
+
+  lazy val sets: List[IconicSet] = iconics.map(_.set).distinct.sortBy(_.sortableName)
+
   def withoutNumber(name: String): String = {
     val rex = """[0-9]+\s+(.*)""" r
     
@@ -134,5 +208,13 @@ object IconicImage {
     }
   }
 
-  def slug(str: String): String = str.toLowerCase.replaceAll("[^a-z]+", "-")
+  def splitPath(path: String): (String, String) = {
+    val reversePath: List[String] = path.split("/").toList.reverse
+    val head = reversePath.head
+    val tail = reversePath.tail.reverse
+    val base = tail.mkString("/")
+    (base, head)
+  }
+
+  def slug(str: String): String = str.toLowerCase.replaceAll("/", "--").replaceAll("[^a-z/]+", "-").replaceAll("(\\.|-)png$", "").replaceAll("^-+", "").replaceAll("-+$", "")
 }

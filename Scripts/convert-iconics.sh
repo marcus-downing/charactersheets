@@ -1,7 +1,10 @@
+#!/bin/bash
 source /etc/init.d/functions.sh
 eval $(eval_ecolors)
 
-TARGET="../Composer/public/images/iconics";
+TARGET="../Composer 2.1.3/public/images/iconics";
+TXT="$TARGET/iconics.txt"
+echo -n "" > "$TXT"
 cd ../Iconics
 find . -type f | while read F
 do
@@ -10,11 +13,25 @@ do
   FN=$(basename "$(basename "$F" .jpg)" .png)
   if [ "$FB" != "." ]
   then
-    ebegin "$FB/${GOOD}$FN"
-    mkdir -p "../Composer/public/images/iconics/$FB/Large"
-    mkdir -p "../Composer/public/images/iconics/$FB/Small"
-    convert -bordercolor white -border 10x10 "$F" png:- | ../Scripts/magicwand 0,0 -t 4 -r outside -c trans png:- png:- | convert -trim png:- "$TARGET/$FB/Large/$FN.png"
+    NAME="$FB/$FN"
+    LOC=$(echo "$FB/$FN" | tr '[:upper:]' '[:lower:]' | sed 's/[^a-z0-9\/]\+/-/g')
+    LARGE="$TARGET/large/$LOC.png"
+    SMALL="$TARGET/small/$LOC.png"
+
+    einfo "$NAME"
+    eindent
+
+    ebegin "Large file: $LARGE"
+    mkdir -p "$(dirname "$LARGE")"
+    convert -bordercolor white -border 10x10 "$F" png:- | ../Scripts/magicwand 0,0 -t 4 -r outside -c trans png:- png:- | convert -trim png:- "$LARGE"
     eend $?
-    convert -resize 500x500 "$TARGET/$FB/Large/$FN.png" "$TARGET/$FB/Small/$FN.png"
+
+    ebegin "Small file: $SMALL"
+    mkdir -p "$(dirname "$SMALL")"
+    convert -resize 300x400 "$LARGE" "$SMALL"
+    eend $?
+
+    echo "$LOC=$NAME" >> "$TXT"
+    eoutdent
   fi
 done

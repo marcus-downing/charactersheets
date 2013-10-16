@@ -1,0 +1,18 @@
+:::bash
+description "Play Production"
+
+env USER=user
+env GROUP=group
+env HOME=/data/charsheets/htdocs
+env JAVA=/usr/bin/java
+env JAVA_OPTS="-cp ./staged/* play.core.server.NettyServer ./.."
+env PORT=8000
+env EXTRA="-Xms128M -Xmx512m -server"
+
+start on filesystem or runlevel [2345]
+stop on runlevel [!2345]
+
+respawn
+respawn limit 5 10
+
+exec start-stop-daemon --start --chuid $USER:$GROUP --chdir $HOME --exec /usr/bin/java -- -Dhttp.port=$PORT $EXTRA $JAVA_OPTS

@@ -1,6 +1,7 @@
 @(
-  gameData: models.GameData, 
-  iconics: List[(String, List[(String, List[models.IconicImage])])] 
+  gameData: models.GameData,
+  iconics: List[models.IconicImage],
+  iconicSets: List[models.IconicSet]
 )
 
 @import IconicImage.slug
@@ -34,13 +35,13 @@
       
       <div id='start-options'>
         <a id='start-single'>
-          <img src='@routes.Assets.at("images/single.png")'/>
+          <img src='@routes.Assets.at("/public/images", "single.png")'/>
           One character
         </a><a id='start-party'>
-          <img src='@routes.Assets.at("images/party.png")'/>
+          <img src='@routes.Assets.at("/public/images", "party.png")'/>
           A Whole party
         </a><a id='start-gm'>
-          <img src='@routes.Assets.at("images/gm.png")'/>
+          <img src='@routes.Assets.at("/public/images", "gm.png")'/>
           @(if(gameData.isDnd35) "Dungeon Master" else "Game Master")
         </a>
       </div>
@@ -104,16 +105,18 @@
 
       <nav class='wizardnav'>
         &nbsp;
-        <a href='#options-tab'><img src='@routes.Assets.at("images/wiznext.png")'/></a>
+        <a href='#options-tab'><img src='@routes.Assets.at("/public/images", "wiznext.png")'/></a>
       </nav>
     </section>
 
     <section class='tab' id='options-tab'>
       <aside id='iconic'>
-        <img src='@routes.Assets.at("images/iconics/generic.png")' id='iconic-default' class='selected' />
-        @for((groupName, groupSets) <- iconics; (setName, setImages) <- groupSets; image <- setImages) {
-          <img data-src='@routes.Assets.at(image.smallFile)' id='iconic_@image.id'/>
+        <input type='hidden' name='inventory-iconic' id='inventory-iconic' value='default'/>
+        <img src='/images/iconics/generic.png' id='iconic-generic' class='selected' />
+        @for(iconic <- iconics) {
+          <img data-src='@iconic.url' id='iconic-@iconic.id'/>
         }
+        <p><a class='button' href='javascript:void(0);' id='select-iconic-button'>Select portrait</a></p>
       </aside>
 
       <h2 id="options-tab-title">Options</h2>
@@ -140,32 +143,6 @@
               <option value="without">Without wands, scrolls and potions</option>
           </select></p>
 
-        <div id='iconic-section'>
-          <h3>Character image</h3>
-          <input type='hidden' name='inventory-iconic' id='inventory-iconic' value='default'/>
-          <input type='hidden' name='inventory-iconic-small-src' id='inventory-iconic-small-src' value='/assets/images/iconics/generic.png'/>
-
-          <p><label for="inventory-iconic">Image set</label>
-            <select name="inventory-iconic-set" id="inventory-iconic-set">
-              <option value='default' selected>Generic</option>
-              <option value='custom'>My own picture</option>
-              @for((groupName, groupSets) <- iconics; if !groupSets.isEmpty) {
-                <optgroup label='@groupName'>
-                  @for((setName, setImages) <- groupSets) {
-                    <option value='@{slug(groupName)+"--"+slug(setName)}' rel='#inventory-iconic-set-@{slug(groupName)+"--"+slug(setName)}'>@setName</option>
-                  }
-                </optgroup>
-              }
-            </select></p>
-
-          @for((groupName, groupSets) <- iconics; (setName, setImages) <- groupSets; if !setImages.isEmpty) {
-            <p><select class='inventory-iconic-set' id='inventory-iconic-set-@{slug(groupName)+"--"+slug(setName)}' style='display: none;'>
-              @for(image <- setImages) {
-                <option value='@image.path' rel='#iconic_@image.id'>@image.name</option>
-              }
-            </select></p>
-          }
-
           <fieldset id='inventory-iconic-custom' style='display: none;'>
             <p><label for='iconic-custom-file'>File</label>
               <input type='file' name='iconic-custom-file' id='iconic-custom-file'/></p>
@@ -190,15 +167,23 @@
           <p><label for='has-watermark'><input type="checkbox" name="has-watermark" id="has-watermark" /> Watermark every page</label></p>
           <p><input type='text' name='watermark' id='watermark'/></p>
 
+        <h3>Logo</h3>
+          <select name='logo' id='logo-select'>
+          </select>
+
+          <div id='logo-preview'>
+
+          </div>
+
         @if(isAprilFool) {
           <!--<p><label for='no-april-fool'><input type="checkbox" name="no-april-fool" id="no-april-fool" /> Suppress modifications for 1st April</label></p>-->
         }
       </fieldset>
 
       <nav class='wizardnav'>
-        <a href='#class-tab'><img src='@routes.Assets.at("images/wizprev.png")'/></a>
+        <a href='#class-tab'><img src='@routes.Assets.at("/public/images", "wizprev.png")'/></a>
         &nbsp;
-        <a href='#download-tab'><img src='@routes.Assets.at("images/wiznext.png")'/></a>
+        <a href='#download-tab'><img src='@routes.Assets.at("/public/images", "wiznext.png")'/></a>
       </nav>
     </section>
 
@@ -229,7 +214,7 @@
 
       <nav class='wizardnav'>
         &nbsp;
-        <a href='#download-tab'><img src='@routes.Assets.at("images/wiznext.png")'/></a>
+        <a href='#download-tab'><img src='@routes.Assets.at("/public/images", "wiznext.png")'/></a>
       </nav>
     </section>
 
@@ -294,7 +279,7 @@
         </p>
 
       <nav class='wizardnav'>
-        <a href='#options-tab'><img src='@routes.Assets.at("images/wizprev.png")'/></a>
+        <a href='#options-tab'><img src='@routes.Assets.at("/public/images", "wizprev.png")'/></a>
         &nbsp;
       </nav>
     </section>
@@ -304,10 +289,10 @@
 
   <div id='blanket'></div>
 
-  <section class='dialog' id='download-thanks'><div class='inner'>
+  <section class='dialog' id='download-thanks-dialog'><div class='inner'>
     <h2>Downloading...</h2>
 
-    <p><img src='@routes.Assets.at("images/progress.gif")' class='progress' /> &nbsp; Your download is starting. &nbsp; 
+    <p><img src='@routes.Assets.at("/public/images", "progress.gif")' class='progress' /> &nbsp; Your download is starting. &nbsp; 
       <a id='flattr' href='https://flattr.com/submit/auto?user_id=marcusdowning&amp;url=http://charactersheets.minotaur.cc'>
       <img src='https://api.flattr.com/button/flattr-badge-large.png'/></a></p>
     <p>&nbsp;</p>
@@ -315,5 +300,33 @@
     &nbsp;
 
     <p class='center'><a class='button' id='close'>Close</a></p>
+  </div></section>
+
+  <section class='dialog' id='iconic-select-dialog'><div class='inner'>
+    <h2>Select a character picture</h2>
+    <div id='iconic-set-list'>
+      <a id='iconic-select-generic' data-set-id='generic' class='selected'>
+        <span class='group'>Dyslexic Studeos</span>
+        <span class='name'>General purpose</span>
+      </a>
+      @for(set <- iconicSets) {
+        <a id='iconic-select-@set.id' data-set-id='@set.id'>
+          <span class='group'>@set.groupName</span>
+          <span class='name'>@set.setName</span>
+        </a>
+      }
+    </div>
+    <div id='iconic-image-list'>
+      <div id='iconic-image-list-generic' class='selected'>
+        <a data-id='generic'><img src='/images/iconics/generic.png'/>Generic</a>
+      </div>
+      @for(set <- iconicSets) {
+        <div id='iconic-image-list-@set.id'>
+          @for(iconic <- set.iconics) {
+            <a data-id='@iconic.id'><img data-src='@iconic.url'/>@iconic.niceName</a>
+          }
+        </div>
+      }
+    </div>
   </div></section>
 }

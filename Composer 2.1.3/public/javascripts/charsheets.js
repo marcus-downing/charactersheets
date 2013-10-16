@@ -122,40 +122,29 @@ $(function() {
   }
   $("#class-tab input, #class-tab select, #simple").change(update_character);
 
-  var current_inventory_src;
-  function update_iconic() {
-    $("#options-tab .inventory-iconic-set").hide();
+  $("#select-iconic-button").click(function () {
+    $("#blanket, #iconic-select-dialog").fadeIn("fast");
+  });
+
+  $("#iconic-set-list a").click(function () {
+    var setId = $(this).data('set-id');
+    $("#iconic-set-list a").removeClass("selected");
+    $(this).addClass("selected");
+    $("#iconic-image-list > div").removeClass("selected");
+    $("#iconic-image-list-"+setId).addClass("selected");
+    $("#iconic-image-list-"+setId+" img").each(function () {
+      $(this).attr("src", $(this).data("src"));
+    });
+  });
+
+  $("#iconic-image-list a").click(function () {
+    var iconic = $(this).data("id");
+    $("#inventory-iconic").val(iconic);
     $("#iconic img").removeClass("selected");
-    $('#inventory-iconic-custom').hide();
-
-    var option = $("#inventory-iconic-set option:selected");
-    var value = option.val();
-    if (value == "default") {
-      $('#inventory-iconic').val('default');
-      $('#iconic-default').addClass("selected");
-      return;
-    }
-
-    if (value == "custom") {
-      $('#inventory-iconic').val('custom');
-      $('#inventory-iconic-custom').show();
-      return;
-    }
-
-    var setSelect = $(option.attr('rel'));
-    setSelect.show();
-
-    option = setSelect.find("option:selected")
-    var rel = option.attr('rel');
-    var img = $(rel).addClass("selected");
-    var src = img.attr('data-src')
-    img.attr('src', src);
-    current_inventory_src = src;
-
-    $("#inventory-iconic").val(option.val());
-  }
-  $("#inventory-iconic-set, .inventory-iconic-set").change(update_iconic);
-  update_iconic();
+    $("#iconic-"+iconic).addClass("selected").attr('src', $("#iconic-"+iconic).data('src'));
+    // close
+    $("#blanket, #download-thanks-dialog, #iconic-select-dialog").fadeOut("fast");
+  });
 
   var nextcharid = 1;
   $("#add-to-party").click(function () {
@@ -220,10 +209,10 @@ $(function() {
     var url = "https://flattr.com/submit/auto?user_id=marcusdowning&url=http://charactersheets.minotaur.cc"+path;
     $("a#flattr").attr('href', url);*/
 
-    $("#blanket, #download-thanks").fadeIn("fast");
+    $("#blanket, #download-thanks-dialog").fadeIn("fast");
   });
 
   $("#close").click(function () {
-    $("#blanket, #download-thanks").fadeOut("fast");
+    $("#blanket, #download-thanks-dialog, #iconic-select-dialog").fadeOut("fast");
   });
 });

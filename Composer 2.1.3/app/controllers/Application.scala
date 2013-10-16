@@ -58,9 +58,9 @@ object Application extends Controller {
   lazy val dnd35Data: GameData = GameData.load("dnd35")
   lazy val testData: GameData = GameData.load("test")
 
-  def buildPathfinder = Action { Ok(views.html.build(pathfinderData, iconics)) }
-  def buildDnd35 = Action { Ok(views.html.build(dnd35Data, iconics)) }
-  def buildTest = Action { Ok(views.html.build(testData, iconics)) }
+  def buildPathfinder = Action { Ok(views.html.build(pathfinderData, iconics, iconicSets)) }
+  def buildDnd35 = Action { Ok(views.html.build(dnd35Data, iconics, iconicSets)) }
+  def buildTest = Action { Ok(views.html.build(testData, iconics, iconicSets)) }
 
   //  messages
 
@@ -104,6 +104,7 @@ object Application extends Controller {
   }
 
   //  Group -> Set -> [] IconicImage
+  /*
   def iconics: List[(String, List[(String, List[IconicImage])])] = {
     val iconicsFolder = new File("public/images/iconics")
     if (!iconicsFolder.isDirectory) return Nil
@@ -132,12 +133,15 @@ object Application extends Controller {
       (groupName, sets)
     }
     groups
-  }
+  }*/
+  def iconics: List[IconicImage] = IconicImage.iconics
+  def iconicSets: List[IconicSet] = IconicImage.sets
 
-  def getIconic(path: String): Option[IconicImage] = {
+  def getIconic(path: String): Option[IconicImage] = IconicImage.get(path)
+  /*{
     path.split("/").toList match {
-      case group :: set :: name :: Nil => Some(IconicImage(group, set, name))
+      case group :: set :: name :: Nil => Some(IconicImage(IconicSet(group+"/"+set), name))
       case _ => None
     }
-  }
+  }*/
 }

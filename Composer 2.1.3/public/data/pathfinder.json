@@ -160,11 +160,25 @@
         { "file": "Psionics/Psychic Warrior.pdf", "slot": "psychicwarrior", "name": "Psychic Warrior" },
         { "file": "Psionics/Soulknife.pdf", "slot": "soulknife", "name": "Soulknife" },
         { "file": "Psionics/Wilder.pdf", "slot": "wilder", "name": "Wilder" },
+
+        { "file": "Psionics/Aegis.pdf", "slot": "aegis", "name": "Aegis" },
+        { "file": "Psionics/Cryptic.pdf", "slot": "cryptic", "name": "Cryptic" },
+        { "file": "Psionics/Dread.pdf", "slot": "dread", "name": "Dread" },
+        { "file": "Psionics/Marksman.pdf", "slot": "marksman", "name": "Marksman" },
+        { "file": "Psionics/Tactician.pdf", "slot": "tactician", "name": "Tactician" },
+        { "file": "Psionics/Vitalist.pdf", "slot": "vitalist", "name": "Vitalist" },
 		
         { "file": "Tome of Secrets/Artificer.pdf", "slot": "artificer", "name": "Artificer" },
         { "file": "Tome of Secrets/Priest.pdf", "slot": "priest", "name": "Priest" },
         { "file": "Tome of Secrets/Shaman.pdf", "slot": "shaman", "name": "Shaman" },
         { "file": "Tome of Secrets/Witch Hunter.pdf", "slot": "witchhunter", "name": "Witch Hunter" },
+
+        { "file": "Mythic/Archmage.pdf", "slot": "mythic", "variant": "archmage", "name": "Archmage" },
+        { "file": "Mythic/Champion.pdf", "slot": "mythic", "variant": "champion", "name": "Champion" },
+        { "file": "Mythic/Guardian.pdf", "slot": "mythic", "variant": "guardian", "name": "Guardian" },
+        { "file": "Mythic/Hierophant.pdf", "slot": "mythic", "variant": "hierophant", "name": "Hierophant" },
+        { "file": "Mythic/Marshal.pdf", "slot": "mythic", "variant": "marshal", "name": "Marshal" },
+        { "file": "Mythic/Trickster.pdf", "slot": "mythic", "variant": "trickster", "name": "Trickster" },
 
         { "file": "NeoExodus/Archetypes/Apothecary.pdf", "slot": "alchemist", "variant": "apothecary", "name": "Apothecary" },
         { "file": "NeoExodus/Archetypes/Cleric of the Kaga.pdf", "slot": "cleric", "variant": "clericofthekaga", "name": "Cleric of the Kaga" },
@@ -223,8 +237,8 @@
 
     "layout": [
         [ "Core Rulebook" ],
-        [ "Advanced Player's Guide", "Ultimate Magic", "Ultimate Combat", "Tome of Secrets" ],
-        [ "Psionics Unleashed", "NeoExodus" ]
+        [ "Advanced Player's Guide", "Ultimate Magic", "Ultimate Combat", "Tome of Secrets", "Mythic Adventures" ],
+        [ "Psionics Unleashed", "Psionics Expanded", "NeoExodus" ]
     ],
 
     "languages": [
@@ -260,8 +274,18 @@
         },
 
         {
+            "name": "Mythic Adventures",
+            "classes": [ "Mythic" ]
+        },
+
+        {
             "name": "Psionics Unleashed",
             "classes": [ "Psion", "Psychic Warrior", "Soulknife", "Wilder" ]
+        },
+
+        {
+            "name": "Psionics Expanded",
+            "classes": [ "Aegis", "Cryptic", "Dread", "Marksman", "Tactician", "Vitalist" ]
         },
 
         {
@@ -512,6 +536,19 @@
         },
 
         {
+            "name": "Mythic",
+            "pages": [ "inventory" ],
+            "variants": [
+                { "name": "Archmage", "pages": [ "mythic/archmage" ] },
+                { "name": "Champion", "pages": [ "mythic/champion" ] },
+                { "name": "Guardian", "pages": [ "mythic/guardian" ] },
+                { "name": "Hierophant", "pages": [ "mythic/hierophant" ] },
+                { "name": "Marshal", "pages": [ "mythic/marshal" ] },
+                { "name": "Trickster", "pages": [ "mythic/trickster" ] }
+            ]
+        },
+
+        {
             "name": "Psion",
             "pages": [ "psion", "core/psionic", "inventory/psionic" ]
         },
@@ -529,6 +566,36 @@
         {
             "name": "Wilder",
             "pages": [ "wilder", "core/psionic", "inventory/psionic" ]
+        },
+
+        {
+            "name": "Aegis",
+            "pages": [ "aegis", "core/psionic", "inventory/psionic" ]
+        },
+
+        {
+            "name": "Cryptic",
+            "pages": [ "cryptic", "core/psionic", "inventory/psionic" ]
+        },
+
+        {
+            "name": "Dread",
+            "pages": [ "dread", "core/psionic", "inventory/psionic" ]
+        },
+
+        {
+            "name": "Marksman",
+            "pages": [ "marksman", "core/psionic", "inventory/psionic" ]
+        },
+
+        {
+            "name": "Tactician",
+            "pages": [ "tactician", "core/psionic", "inventory/psionic" ]
+        },
+
+        {
+            "name": "Vitalist",
+            "pages": [ "vitalist", "core/psionic", "inventory/psionic" ]
         },
 
         {
