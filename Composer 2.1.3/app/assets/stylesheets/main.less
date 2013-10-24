@@ -388,14 +388,30 @@ form#build-my-character {
     }
   }
 
-  aside#iconic {
-    display: block; float: right; margin-bottom: 10px;
-    min-width: 300px; max-width: 550px; min-height: 405px;  padding: 15px;
+  .well {
+    display: block; padding: 15px;
     border-radius: 3px; border-bottom: 1px solid rgba(255, 255, 255, 0.5);
-    background: rgba(255, 255, 255, 0.6) url(/assets/images/white-spot.png) 50% 50% no-repeat; box-shadow: inset 0px 2px 3px #676;
+    background: rgba(255, 255, 255, 0.6) url(/assets/images/white-spot.png) 50% 50% no-repeat;
+    box-shadow: inset 0px 2px 3px #676;
     overflow: auto; text-align: center;
 
-    img { display: none; &.selected { display: block; } }
+    &#iconic {
+      float: right; margin-bottom: 10px;
+      min-width: 300px; max-width: 550px; min-height: 405px;
+    }
+    &#logo {
+      width: 400px;
+      min-height: 100px;
+      img { max-width: 300px; }
+    }
+
+    img { display: none; &.selected { display: block; margin-left: auto; margin-right: auto; } }
+  }
+
+  #watermark {
+    font-size: 30px; font-weight: bold;
+    text-align: center; padding: 2px;
+    color: @fg;
   }
 
   div.disabled {
@@ -504,12 +520,12 @@ form#build-my-character {
   }
 }
 
-#iconic-select-dialog {
+.select-dialog {
   @oo: 30px;
   @hh: 65px;
   @bb: 15px;
   @ww: 310px;
-  @pp: 10px;
+  @pp: 8px;
 
   top: @oo;
   bottom: @oo;
@@ -526,6 +542,7 @@ form#build-my-character {
     right: 0;
     background: fade(lighten(@bg, 10%), 70%);
   }
+
   #iconic-set-list {
     position: absolute;
     top: @hh+@bb;
@@ -551,28 +568,15 @@ form#build-my-character {
       }
     }
   }
-  #iconic-image-list {
-    position: absolute;
-    top: @bb;
-    bottom: @bb;
-    left: @ww+@bb;
-    right: @bb;
-      overflow-y: auto;
-
+  .well {
+    overflow-y: auto;
     border-radius: 3px; border-bottom: 1px solid rgba(255, 255, 255, 0.5);
     background: rgba(255, 255, 255, 0.5) url(/assets/images/white-spot.png) 50% 50% no-repeat; box-shadow: inset 0px 2px 3px #676;
     padding: 5px;
-    > div {
-      display: none;
-      padding-right: @bb;
-      &.selected {
-        display: block;
-      }
-    }
+
     a {
       display: block;
       float: left;
-      height: 425px;
       margin: @pp;
 
       background: rgba(255, 255, 255, 0.3);
@@ -587,6 +591,39 @@ form#build-my-character {
         display: block;
         margin-bottom: 6px;
       }
+    }
+  }
+  #iconic-image-list {
+    position: absolute;
+    top: @bb;
+    bottom: @bb;
+    left: @ww+@bb;
+    right: @bb;
+    > div {
+      display: none;
+      padding-right: @bb;
+      &.selected {
+        display: block;
+      }
+    }
+    a {
+      height: 425px;
+    }
+  }
+
+  #logo-list {
+    position: absolute;
+    top: @hh+@bb;
+    left: @bb;
+    right: @bb;
+    bottom: @bb;
+
+    a {
+      height: 140px;
+    }
+    img {
+      max-height: 100px;
+      max-width: 400px;
     }
   }
 }

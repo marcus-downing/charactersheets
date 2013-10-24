@@ -122,6 +122,7 @@ $(function() {
   }
   $("#class-tab input, #class-tab select, #simple").change(update_character);
 
+  // iconics
   $("#select-iconic-button").click(function () {
     $("#blanket, #iconic-select-dialog").fadeIn("fast");
   });
@@ -145,6 +146,21 @@ $(function() {
     // close
     $("#blanket, #download-thanks-dialog, #iconic-select-dialog").fadeOut("fast");
   });
+
+  // logos
+  $("#select-logo-button").click(function () {
+    $("#blanket, #logo-select-dialog").fadeIn("fast");
+  });
+
+  $("#logo-list a").click(function () {
+    var logo = $(this).data("id");
+    $("#logo-select").val(logo);
+    $("#logo img").removeClass("selected");
+    $("#logo-"+logo).addClass("selected");
+    // close
+    $("#blanket, #logo-select-dialog").fadeOut("fast");
+  })
+
 
   var nextcharid = 1;
   $("#add-to-party").click(function () {

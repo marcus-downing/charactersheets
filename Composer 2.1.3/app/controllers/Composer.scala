@@ -115,7 +115,7 @@ object Composer extends Controller {
             canvas.setGState(defaultGstate)
             val imgLayer = new PdfLayer("Logo image", writer)
             canvas.beginLayer(imgLayer)
-            val imgFile = "public/images/kingmaker-logo.png"
+            val imgFile = "public/images/logos/kingmaker.png"
             println("Adding logo: "+imgFile)
             val awtImage = java.awt.Toolkit.getDefaultToolkit().createImage(imgFile)
             val img = Image.getInstance(awtImage, null)
@@ -225,26 +225,6 @@ object Composer extends Controller {
       if (!iconic.isDefined && !character.customIconic.isDefined)
         writeIconic(canvas, writer, page.slot, "public/images/iconics/generic.png")
 
-      /*
-      if ((page.slot == "inventory" || page.slot == "background") && !character.iconic.isDefined && character.customIconic.isEmpty) {
-        canvas.setGState(defaultGstate)
-        val imgLayer = new PdfLayer("Iconic image", writer)
-        canvas.beginLayer(imgLayer)
-        val imgFile = "public/images/iconics/generic.png"
-        val awtImage = java.awt.Toolkit.getDefaultToolkit().createImage(imgFile)
-        val img = Image.getInstance(awtImage, null)
-        img.scaleToFit(200f,220f)
-        page.slot match {
-          case "inventory" => img.setAbsolutePosition(315f - (img.getScaledWidth() / 2), 410f)
-          case "background" => img.setAbsolutePosition(127f - (img.getScaledWidth() / 2), 420f)
-          case _ =>
-        }
-        // img.setAbsolutePosition(315f - (img.getScaledWidth() / 2), 410f)
-        canvas.addImage(img)
-        canvas.endLayer
-      }
-      */
-
       // variant rules
       if (!character.variantRules.isEmpty) {
         if (character.variantRules.contains("wounds-vigour")) {
@@ -260,11 +240,6 @@ object Composer extends Controller {
       writeColourOverlay(canvas, colour)
 
       canvas.endLayer()
-
-      //  watermark
-      if (character.watermark != "") {
-        writeWatermark(canvas, writer, character.watermark)
-      }
 
       //  logo
       if (page.slot == "core" || page.slot == "eidolon") {
@@ -287,54 +262,12 @@ object Composer extends Controller {
       else if (iconic.isDefined)
         writeIconic(canvas, writer, page.slot, iconic.get.largeFile)
 
-      /*
-      if (page.slot == "inventory") {
-        if (isAprilFool) {
-            println("Adding april fool image")
-            canvas.setGState(defaultGstate)
-            val imgLayer = new PdfLayer("Iconic image", writer)
-            canvas.beginLayer(imgLayer)
-            val imgFile = "public/images/iconics/1 Paizo/3 Advanced Races/Large/Goblin - d20.png"
-            println("Image: "+imgFile)
-            val awtImage = java.awt.Toolkit.getDefaultToolkit().createImage(imgFile)
-            val img = Image.getInstance(awtImage, null)
-            img.scaleToFit(190f,220f)
-            img.setAbsolutePosition(315f - (img.getScaledWidth() / 2), 410f)
-            canvas.addImage(img)
-            canvas.endLayer()
-        } else if (character.iconic.isDefined) {
-          for (i <- character.iconic) {
-            println("Adding inventory image")
-            canvas.setGState(defaultGstate)
-            val imgLayer = new PdfLayer("Iconic image", writer)
-            canvas.beginLayer(imgLayer)
-            val imgFile = i.largeFile
-            println("Image: "+imgFile)
-            val awtImage = java.awt.Toolkit.getDefaultToolkit().createImage(imgFile)
-            val img = Image.getInstance(awtImage, null)
-            img.scaleToFit(190f,220f)
-            img.setAbsolutePosition(315f - (img.getScaledWidth() / 2), 410f)
-            canvas.addImage(img)
-            canvas.endLayer()
-          }
-        } else if (!character.customIconic.isEmpty) {
-          for (i <- character.customIconic) {
-            println("Adding custom inventory image")
-            canvas.setGState(defaultGstate)
-            val imgLayer = new PdfLayer("Custom iconic image", writer)
-            canvas.beginLayer(imgLayer)
-            val filename = i.getAbsolutePath
-            println("Image: "+filename)
-            val awtImage = java.awt.Toolkit.getDefaultToolkit().createImage(filename)
-            val img = Image.getInstance(awtImage, null)
-            img.scaleToFit(180f,220f)
-            img.setAbsolutePosition(315f - (img.getScaledWidth() / 2), 410f)
-            canvas.addImage(img)
-            canvas.endLayer()
-          }
-        }
-      }*/
-    fis.close
+      //  watermark
+      if (character.watermark != "") {
+        writeWatermark(canvas, writer, character.watermark, colour)
+      }
+
+      fis.close
     }
   }
 
@@ -403,12 +336,12 @@ object Composer extends Controller {
     }
   }
 
-  def writeWatermark(canvas: PdfContentByte, writer: PdfWriter, watermark: String) {
+  def writeWatermark(canvas: PdfContentByte, writer: PdfWriter, watermark: String, colour: String) {
     println("Adding watermark: "+watermark)
 
     val watermarkGstate = new PdfGState
     watermarkGstate.setBlendMode(PdfGState.BM_NORMAL)
-    watermarkGstate.setFillOpacity(0.1f)
+    watermarkGstate.setFillOpacity(0.3f)
     canvas.setGState(watermarkGstate)
 
     canvas.beginText
@@ -416,7 +349,8 @@ object Composer extends Controller {
     canvas.beginLayer(watermarkLayer)
     val font = BaseFont.createFont(BaseFont.HELVETICA, BaseFont.CP1252, BaseFont.EMBEDDED)
     canvas.setFontAndSize(font, (900f / watermark.length).toInt)
-    canvas.setColorFill(new BaseColor(0f, 0f, 0f))
+    //canvas.setColorFill(new BaseColor(0f, 0f, 0f))
+    canvas.setColorFill(interpretColour(colour))
     canvas.showTextAligned(Element.ALIGN_CENTER, watermark, 365f, 400f, 60f)
     canvas.endLayer
     canvas.endText
@@ -472,15 +406,22 @@ object Composer extends Controller {
     case "pink" => new BaseColor(1.0f, 0.60f, 0.65f)
   }
 
-  def logoImage(gameData: GameData, character: CharacterData) = gameData.game match {
-    case "pathfinder" =>
-      if (character.classes.exists(_.pages.exists(_.startsWith("core/neoexodus"))))
-        "public/images/neoexodus-logo.png"
-      else
-        "public/images/pathfinder-logo.png"
-    case "dnd35" => "public/images/dnd35-logo.png"
-    case _ => ""
+  def logoImage(gameData: GameData, character: CharacterData): String = {
+    val fileName: String = character.logo.flatMap(_.fileName).getOrElse(
+      gameData.game match {
+        case "pathfinder" =>
+          if (character.classes.exists(_.pages.exists(_.startsWith("core/neoexodus"))))
+            "neoexodus.png"
+          else
+            "pathfinder.png"
+        case "dnd35" => "dnd35.png"
+        case _ => ""
+      }
+    )
+    "public/images/logos/"+fileName
   }
+
+
 }
 
 class CharacterInterpretation(gameData: GameData, character: CharacterData) {

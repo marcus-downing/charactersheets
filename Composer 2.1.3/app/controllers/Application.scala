@@ -58,9 +58,9 @@ object Application extends Controller {
   lazy val dnd35Data: GameData = GameData.load("dnd35")
   lazy val testData: GameData = GameData.load("test")
 
-  def buildPathfinder = Action { Ok(views.html.build(pathfinderData, iconics, iconicSets)) }
-  def buildDnd35 = Action { Ok(views.html.build(dnd35Data, iconics, iconicSets)) }
-  def buildTest = Action { Ok(views.html.build(testData, iconics, iconicSets)) }
+  def buildPathfinder = Action { Ok(views.html.build(pathfinderData, iconics, iconicSets, logos)) }
+  def buildDnd35 = Action { Ok(views.html.build(dnd35Data, iconics, iconicSets, logos)) }
+  def buildTest = Action { Ok(views.html.build(testData, iconics, iconicSets, logos)) }
 
   //  messages
 
@@ -144,4 +144,6 @@ object Application extends Controller {
       case _ => None
     }
   }*/
+
+  def logos = Logo.logos
 }

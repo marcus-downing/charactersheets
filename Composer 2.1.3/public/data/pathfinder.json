@@ -93,7 +93,7 @@
           { "file": "Core/Monk.pdf", "slot": "monk", "name": "Monk" },
             { "file": "Archetypes/Monk/Drunken Master.pdf", "slot": "monk", "variant": "drunkenmaster", "name": "Drunken Master" },
             { "file": "Archetypes/Monk/Flowing Monk.pdf", "slot": "monk", "variant": "flowing", "name": "Flowing Monk" },
-            { "file": "Archetypes/Monk/Hungry Ghost Monk.pdf", "slot": "monk", "variant": "hungry ghost", "name": "Hungry Ghost Monk" },
+            { "file": "Archetypes/Monk/Hungry Ghost Monk.pdf", "slot": "monk", "variant": "hungryghost", "name": "Hungry Ghost Monk" },
             { "file": "Archetypes/Monk/Ki Mystic.pdf", "slot": "monk", "variant": "kimystic", "name": "Ki Mystic" },
             { "file": "Archetypes/Monk/Manoeuvre Master.pdf", "slot": "monk", "variant": "manoeuvremaster", "name": "Manoeuvre Master" },
             { "file": "Archetypes/Monk/Martial Artist.pdf", "slot": "monk", "variant": "martialartist", "name": "Marital Artist" },
@@ -237,7 +237,7 @@
 
     "layout": [
         [ "Core Rulebook" ],
-        [ "Advanced Player's Guide", "Ultimate Magic", "Ultimate Combat", "Tome of Secrets", "Mythic Adventures" ],
+        [ "Advanced Player's Guide", "Ultimate Magic", "Ultimate Combat", "Mythic Adventures", "Tome of Secrets" ],
         [ "Psionics Unleashed", "Psionics Expanded", "NeoExodus" ]
     ],
 

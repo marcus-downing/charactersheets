@@ -1,7 +1,8 @@
 @(
   gameData: models.GameData,
   iconics: List[models.IconicImage],
-  iconicSets: List[models.IconicSet]
+  iconicSets: List[models.IconicSet],
+  logos: List[models.Logo]
 )
 
 @import IconicImage.slug
@@ -110,14 +111,14 @@
     </section>
 
     <section class='tab' id='options-tab'>
-      <aside id='iconic'>
+      <div class='well' id='iconic'>
         <input type='hidden' name='inventory-iconic' id='inventory-iconic' value='default'/>
         <img src='/images/iconics/generic.png' id='iconic-generic' class='selected' />
         @for(iconic <- iconics) {
           <img data-src='@iconic.url' id='iconic-@iconic.id'/>
         }
         <p><a class='button' href='javascript:void(0);' id='select-iconic-button'>Select portrait</a></p>
-      </aside>
+      </div>
 
       <h2 id="options-tab-title">Options</h2>
 
@@ -165,19 +166,23 @@
 
         <h3>Watermark</i>
           <p><label for='has-watermark'><input type="checkbox" name="has-watermark" id="has-watermark" /> Watermark every page</label></p>
-          <p><input type='text' name='watermark' id='watermark'/></p>
+          <p><input type='text' name='watermark' id='watermark' class='well' /></p>
 
         <h3>Logo</h3>
-          <select name='logo' id='logo-select'>
-          </select>
+          <input type='hidden' name='logo' id='logo-select' />
 
-          <div id='logo-preview'>
-
+          <div class='well' id='logo'>
+            @for(logo <- logos) {
+              <img src='@logo.url' id='logo-@logo.code' class='@(if (logo.code == gameData.game) "selected" else "")' />
+            }
+            <p><a class='button' href='javascript:void(0);' id='select-logo-button'>Select logo</a></p>
           </div>
 
+        @**
         @if(isAprilFool) {
-          <!--<p><label for='no-april-fool'><input type="checkbox" name="no-april-fool" id="no-april-fool" /> Suppress modifications for 1st April</label></p>-->
+          <p><label for='no-april-fool'><input type="checkbox" name="no-april-fool" id="no-april-fool" /> Suppress modifications for 1st April</label></p>
         }
+        **@
       </fieldset>
 
       <nav class='wizardnav'>
@@ -302,7 +307,7 @@
     <p class='center'><a class='button' id='close'>Close</a></p>
   </div></section>
 
-  <section class='dialog' id='iconic-select-dialog'><div class='inner'>
+  <section class='dialog select-dialog' id='iconic-select-dialog'><div class='inner'>
     <h2>Select a character picture</h2>
     <div id='iconic-set-list'>
       <a id='iconic-select-generic' data-set-id='generic' class='selected'>
@@ -311,21 +316,32 @@
       </a>
       @for(set <- iconicSets) {
         <a id='iconic-select-@set.id' data-set-id='@set.id'>
-          <span class='group'>@set.groupName</span>
-          <span class='name'>@set.setName</span>
+          <span class='group'>@set.groupDisplayName</span>
+          <span class='name'>@set.setDisplayName</span>
         </a>
       }
     </div>
-    <div id='iconic-image-list'>
+    <div id='iconic-image-list' class='well'>
       <div id='iconic-image-list-generic' class='selected'>
         <a data-id='generic'><img src='/images/iconics/generic.png'/>Generic</a>
+        <a data-id='none'><img src='/images/iconics/none.png'/>None</a>
+        <a data-id='custom'><img src='/images/iconics/custom.png'/>Upload your own</a>
       </div>
       @for(set <- iconicSets) {
         <div id='iconic-image-list-@set.id'>
           @for(iconic <- set.iconics) {
-            <a data-id='@iconic.id'><img data-src='@iconic.url'/>@iconic.niceName</a>
+            <a data-id='@iconic.id'><img src='/images/progress.gif' data-src='@iconic.url'/>@iconic.niceName</a>
           }
         </div>
+      }
+    </div>
+  </div></section>
+
+  <section class='dialog select-dialog' id='logo-select-dialog'><div class='inner'>
+    <h2>Select a logo</h2>
+    <div id='logo-list' class='well'>
+      @for(logo <- logos) {
+        <a data-id='@logo.code'><img src='@logo.url'/>@logo.name</a>
       }
     </div>
   </div></section>
