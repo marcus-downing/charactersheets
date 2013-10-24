@@ -285,7 +285,7 @@
 
         {
             "name": "Psionics Expanded",
-            "classes": [ "Aegis", "Cryptic", "Dread", "Marksman", "Tactician", "Vitalist" ]
+            "classes": [ "Aegis", "Cryptic" ]
         },
 
         {
