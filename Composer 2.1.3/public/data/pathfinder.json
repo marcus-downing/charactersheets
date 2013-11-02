@@ -89,6 +89,8 @@
             { "file": "Archetypes/Druid/World Walker (Animal Companion).pdf", "slot": "druid", "variant": "worldwalker/animalcompanion", "name": "World Walker (Animal Companion)" },
             { "file": "Archetypes/Druid/World Walker (Domain).pdf", "slot": "druid", "variant": "worldwalker/domain", "name": "World Walker (Domain)" },
 
+        { "file": "Core/Fighter.pdf", "slot": "fighter", "name": "Fighter" },
+
         { "file": "Core/Monk/Monk - Combat.pdf", "slot": "combat", "variant": "monk", "name": "Monk", "position": 11 },
           { "file": "Core/Monk.pdf", "slot": "monk", "name": "Monk" },
             { "file": "Archetypes/Monk/Drunken Master.pdf", "slot": "monk", "variant": "drunkenmaster", "name": "Drunken Master" },

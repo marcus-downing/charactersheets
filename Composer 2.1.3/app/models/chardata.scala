@@ -37,6 +37,10 @@ object CharacterData {
     }
 
     val variantRules: List[String] = positive.filter(_.startsWith("variant-")).map(_.substring("variant-".length))
+    val inventoryIconic = data.get("inventory-iconic").getOrElse("default")
+
+    println("Given iconic: "+data.get("inventory-iconic").getOrElse("(none)"))
+    if (customIconic.isDefined) println("Custom iconic uploaded")
 
     // data
     CharacterData(
@@ -44,8 +48,8 @@ object CharacterData {
       colour = data.get("colour").getOrElse("normal"),
       spellbookSize = data.get("spellbook-size").getOrElse("medium"),
       inventoryStyle = data.get("inventory-style").getOrElse("auto"),
-      inventoryIconic = data.get("inventory-iconic").getOrElse("default"),
-      customIconic = customIconic,
+      inventoryIconic = inventoryIconic,
+      customIconic = if (inventoryIconic == "custom") customIconic else None,
       logo = Logo.get(data.get("logo").getOrElse(gameData.game)),
 
       includeGM = positive.contains("gm"),
@@ -53,6 +57,7 @@ object CharacterData {
       hideInventory = positive.contains("simple"),
       includeCharacterBackground = positive.contains("include-background"),
       includePartyFunds = positive.contains("include-party-funds"),
+      includeAnimalCompanion = positive.contains("include-animal-companion"),
 
       watermark = if (positive.contains("has-watermark")) data.get("watermark").getOrElse("") else "",
 
@@ -110,11 +115,13 @@ case class CharacterData (
   hideInventory: Boolean,
   includeCharacterBackground: Boolean,
   includePartyFunds: Boolean,
+  includeAnimalCompanion: Boolean,
 
   watermark: String,
 
   variantRules: List[String]
 ) {
+  def hasCustomIconic = customIconic.isDefined
   def iconic: Option[IconicImage] = IconicImage.get(inventoryIconic)
 }
 

@@ -114,6 +114,7 @@
       <div class='well' id='iconic'>
         <input type='hidden' name='inventory-iconic' id='inventory-iconic' value='default'/>
         <img src='/images/iconics/generic.png' id='iconic-generic' class='selected' />
+        <img src='/images/iconics/custom.png' id='iconic-custom' />
         @for(iconic <- iconics) {
           <img data-src='@iconic.url' id='iconic-@iconic.id'/>
         }
@@ -143,16 +144,13 @@
               <option value="with">With wands, scrolls and potions</option>
               <option value="without">Without wands, scrolls and potions</option>
           </select></p>
-
-          <fieldset id='inventory-iconic-custom' style='display: none;'>
-            <p><label for='iconic-custom-file'>File</label>
-              <input type='file' name='iconic-custom-file' id='iconic-custom-file'/></p>
-          </fieldset>
         </div>
 
         <h3>Additional pages</h3>
           <p><label for="include-background"><input type="checkbox" name="include-background" id="include-background" /> Include character background</label></p>
           <p><label for="include-party-funds"><input type="checkbox" name="include-party-funds" id="include-party-funds" /> Include party funds</label></p>
+          <p><label for="include-animal-companion"><input type="checkbox" name="include-animal-companion" id="include-animal-companion" /> Include animal companion</label></p>
+          <p class='info'>Wizards, Rangers, Witches etc get the animal companion automatically</p>
 
         @**
         @if(gameData.isPathfinder) {
@@ -289,60 +287,69 @@
       </nav>
     </section>
 
-  </form>
 
+    <div id='blanket'></div>
 
-  <div id='blanket'></div>
+    <section class='dialog' id='download-thanks-dialog'><div class='inner'>
+      <h2>Downloading...</h2>
 
-  <section class='dialog' id='download-thanks-dialog'><div class='inner'>
-    <h2>Downloading...</h2>
+      <p><img src='@routes.Assets.at("/public/images", "progress.gif")' class='progress' /> &nbsp; Your download is starting. &nbsp; 
+        <a id='flattr' href='https://flattr.com/submit/auto?user_id=marcusdowning&amp;url=http://charactersheets.minotaur.cc'>
+        <img src='https://api.flattr.com/button/flattr-badge-large.png'/></a></p>
+      <p>&nbsp;</p>
 
-    <p><img src='@routes.Assets.at("/public/images", "progress.gif")' class='progress' /> &nbsp; Your download is starting. &nbsp; 
-      <a id='flattr' href='https://flattr.com/submit/auto?user_id=marcusdowning&amp;url=http://charactersheets.minotaur.cc'>
-      <img src='https://api.flattr.com/button/flattr-badge-large.png'/></a></p>
-    <p>&nbsp;</p>
+      &nbsp;
 
-    &nbsp;
+      <p class='center'><a class='button' id='close'>Close</a></p>
+    </div></section>
 
-    <p class='center'><a class='button' id='close'>Close</a></p>
-  </div></section>
-
-  <section class='dialog select-dialog' id='iconic-select-dialog'><div class='inner'>
-    <h2>Select a character picture</h2>
-    <div id='iconic-set-list'>
-      <a id='iconic-select-generic' data-set-id='generic' class='selected'>
-        <span class='group'>Dyslexic Studeos</span>
-        <span class='name'>General purpose</span>
-      </a>
-      @for(set <- iconicSets) {
-        <a id='iconic-select-@set.id' data-set-id='@set.id'>
-          <span class='group'>@set.groupDisplayName</span>
-          <span class='name'>@set.setDisplayName</span>
+    <section class='dialog select-dialog' id='iconic-select-dialog'><div class='inner'>
+      <h2>Select a character picture</h2>
+      <div id='iconic-set-list'>
+        <a id='iconic-select-generic' data-set-id='generic' class='selected'>
+          <span class='group'>Dyslexic Studeos</span>
+          <span class='name'>General purpose</span>
         </a>
-      }
-    </div>
-    <div id='iconic-image-list' class='well'>
-      <div id='iconic-image-list-generic' class='selected'>
-        <a data-id='generic'><img src='/images/iconics/generic.png'/>Generic</a>
-        <a data-id='none'><img src='/images/iconics/none.png'/>None</a>
-        <a data-id='custom'><img src='/images/iconics/custom.png'/>Upload your own</a>
+        @for(set <- iconicSets) {
+          <a id='iconic-select-@set.id' data-set-id='@set.id'>
+            <span class='group'>@set.groupDisplayName</span>
+            <span class='name'>@set.setDisplayName</span>
+          </a>
+        }
       </div>
-      @for(set <- iconicSets) {
-        <div id='iconic-image-list-@set.id'>
-          @for(iconic <- set.iconics) {
-            <a data-id='@iconic.id'><img src='/images/progress.gif' data-src='@iconic.url'/>@iconic.niceName</a>
-          }
+      <div id='iconic-image-list' class='well'>
+        <div id='iconic-image-list-custom'>
+          <fieldset id='inventory-iconic-custom'>
+            <h2>Custom picture</h2>
+            <p><label for='iconic-custom-file'>Upload a picture</label>
+              <input type='file' name='iconic-custom-file' id='iconic-custom-file'/></p>
+            <p><a class='button' id='iconic-custom-file-ok-button'/>OK</a> &nbsp; 
+              <a class='button' id='iconic-custom-file-cancel-button'/>Cancel</a></p>
+          </fieldset>
         </div>
-      }
-    </div>
-  </div></section>
+        <div id='iconic-image-list-generic' class='image-select-set selected'>
+          <a data-id='generic'><img src='/images/iconics/generic.png'/>Generic</a>
+          <a data-id='none'><img src='/images/iconics/none.png'/>None</a>
+          <a data-id='custom'><img src='/images/iconics/custom.png'/>Upload your own</a>
+        </div>
+        @for(set <- iconicSets) {
+          <div id='iconic-image-list-@set.id' class='image-select-set'>
+            @for(iconic <- set.iconics) {
+              <a data-id='@iconic.id'><img src='/images/progress.gif' data-src='@iconic.url'/>@iconic.niceName</a>
+            }
+          </div>
+        }
+      </div>
+    </div></section>
 
-  <section class='dialog select-dialog' id='logo-select-dialog'><div class='inner'>
-    <h2>Select a logo</h2>
-    <div id='logo-list' class='well'>
-      @for(logo <- logos) {
-        <a data-id='@logo.code'><img src='@logo.url'/>@logo.name</a>
-      }
-    </div>
-  </div></section>
+    <section class='dialog select-dialog' id='logo-select-dialog'><div class='inner'>
+      <h2>Select a logo</h2>
+      <div id='logo-list' class='well image-select-set'>
+        @for(logo <- logos) {
+          <a data-id='@logo.code'><img src='@logo.url'/>@logo.name</a>
+        }
+      </div>
+    </div></section>
+
+  </form>
 }

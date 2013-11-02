@@ -140,11 +140,27 @@ $(function() {
 
   $("#iconic-image-list a").click(function () {
     var iconic = $(this).data("id");
-    $("#inventory-iconic").val(iconic);
+    if (iconic == "custom") {
+      $("#iconic-image-list > div").removeClass("selected");
+      $("#iconic-image-list-custom").addClass("selected");
+    } else {
+      $("#inventory-iconic").val(iconic);
+      $("#iconic img").removeClass("selected");
+      $("#iconic-"+iconic).addClass("selected").attr('src', $("#iconic-"+iconic).data('src'));
+      // close
+      $("#blanket, #download-thanks-dialog, #iconic-select-dialog").fadeOut("fast");
+    }
+  });
+
+  $("#iconic-custom-file-ok-button").click(function () {
+    $("#inventory-iconic").val("custom");
     $("#iconic img").removeClass("selected");
-    $("#iconic-"+iconic).addClass("selected").attr('src', $("#iconic-"+iconic).data('src'));
-    // close
-    $("#blanket, #download-thanks-dialog, #iconic-select-dialog").fadeOut("fast");
+    $("#iconic-custom").addClass("selected");
+    $("#blanket, #iconic-select-dialog").fadeOut("fast");
+  })
+
+  $("#iconic-custom-file-cancel-button").click(function () {
+    $("#blanket, #iconic-select-dialog").fadeOut("fast");
   });
 
   // logos

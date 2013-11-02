@@ -45,6 +45,7 @@ object Composer extends Controller {
     data.get("start-type") match {
       case Some("single") =>
         val character = CharacterData.parse(data, gameData, iconic)
+        if (character.hasCustomIconic) println("Custom iconic found")
 
         val pdf = composePDF(character, gameData, sourceFolders)
         val filename = character.classes.toList.map(_.name).mkString(", ")+".pdf"
@@ -116,12 +117,16 @@ object Composer extends Controller {
             val imgLayer = new PdfLayer("Logo image", writer)
             canvas.beginLayer(imgLayer)
             val imgFile = "public/images/logos/kingmaker.png"
-            println("Adding logo: "+imgFile)
-            val awtImage = java.awt.Toolkit.getDefaultToolkit().createImage(imgFile)
-            val img = Image.getInstance(awtImage, null)
-            img.scaleToFit(170f,50f)
-            img.setAbsolutePosition(127f - (img.getScaledWidth() / 2), 800f - (img.getScaledHeight() / 2))
-            canvas.addImage(img)
+            try {
+              println("Adding logo: "+imgFile)
+              val awtImage = java.awt.Toolkit.getDefaultToolkit().createImage(imgFile)
+              val img = Image.getInstance(awtImage, null)
+              img.scaleToFit(170f,50f)
+              img.setAbsolutePosition(127f - (img.getScaledWidth() / 2), 800f - (img.getScaledHeight() / 2))
+              canvas.addImage(img)
+            } catch {
+              case e: Exception => e.printStackTrace
+            }
             canvas.endLayer()
           }
         }
@@ -222,7 +227,7 @@ object Composer extends Controller {
       writeCopyright(canvas, writer, gameData)
 
       //  generic image
-      if (!iconic.isDefined && !character.customIconic.isDefined)
+      if (!iconic.isDefined && !character.hasCustomIconic)
         writeIconic(canvas, writer, page.slot, "public/images/iconics/generic.png")
 
       // variant rules
@@ -247,17 +252,21 @@ object Composer extends Controller {
         val imgLayer = new PdfLayer("Logo image", writer)
         canvas.beginLayer(imgLayer)
         val imgFile = logoImage(gameData, character)
-        println("Adding logo: "+imgFile)
-        val awtImage = java.awt.Toolkit.getDefaultToolkit().createImage(imgFile)
-        val img = Image.getInstance(awtImage, null)
-        img.scaleToFit(170f,50f)
-        img.setAbsolutePosition(127f - (img.getScaledWidth() / 2), 800f - (img.getScaledHeight() / 2))
-        canvas.addImage(img)
+        try {
+          println("Adding logo: "+imgFile)
+          val awtImage = java.awt.Toolkit.getDefaultToolkit().createImage(imgFile)
+          val img = Image.getInstance(awtImage, null)
+          img.scaleToFit(170f,50f)
+          img.setAbsolutePosition(127f - (img.getScaledWidth() / 2), 800f - (img.getScaledHeight() / 2))
+          canvas.addImage(img)
+        } catch {
+          case e: Exception => e.printStackTrace
+        }
         canvas.endLayer()
       }
 
       //  iconics
-      if (character.customIconic.isDefined)
+      if (character.hasCustomIconic)
         writeIconic(canvas, writer, page.slot, character.customIconic.get.getAbsolutePath)
       else if (iconic.isDefined)
         writeIconic(canvas, writer, page.slot, iconic.get.largeFile)
@@ -320,17 +329,21 @@ object Composer extends Controller {
         canvas.setGState(defaultGstate)
         val imgLayer = new PdfLayer("Iconic image", writer)
         canvas.beginLayer(imgLayer)
-        println("Image: "+imgFilename)
-        val awtImage = java.awt.Toolkit.getDefaultToolkit().createImage(imgFilename)
-        val img = Image.getInstance(awtImage, null)
-        img.scaleToFit(190f,220f)
-        slot match {
-          case "inventory" => img.setAbsolutePosition(315f - (img.getScaledWidth() / 2), 410f)
-          case "background" => img.setAbsolutePosition(127f - (img.getScaledWidth() / 2), 425f)
-          case _ =>
+        try {
+          println("Image: "+imgFilename)
+          val awtImage = java.awt.Toolkit.getDefaultToolkit().createImage(imgFilename)
+          val img = Image.getInstance(awtImage, null)
+          img.scaleToFit(190f,220f)
+          slot match {
+            case "inventory" => img.setAbsolutePosition(315f - (img.getScaledWidth() / 2), 410f)
+            case "background" => img.setAbsolutePosition(127f - (img.getScaledWidth() / 2), 425f)
+            case _ =>
+          }
+          // img.setAbsolutePosition(315f - (img.getScaledWidth() / 2), 410f)
+          canvas.addImage(img)
+        } catch {
+          case e: Exception => e.printStackTrace
         }
-        // img.setAbsolutePosition(315f - (img.getScaledWidth() / 2), 410f)
-        canvas.addImage(img)
         canvas.endLayer()
       case _ => 
     }
@@ -454,6 +467,8 @@ class CharacterInterpretation(gameData: GameData, character: CharacterData) {
       pages = pages ::: List(PageSlot("background", None))
     if (character.includePartyFunds)
       pages = pages ::: List(PageSlot("partyfunds", None))
+    if (character.includeAnimalCompanion)
+      pages = pages ::: List(PageSlot("animalcompanion", None))
 
     println(" -- Base pages: "+basePages.map(_.toString).mkString(", "))
     println(" -- Class pages: "+classPages.map(_.toString).mkString(", "))
