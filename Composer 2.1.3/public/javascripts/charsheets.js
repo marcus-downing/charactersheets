@@ -30,6 +30,17 @@ $(function() {
     $("#start-type").val('gm');
   });
 
+  $("#start-all").click(function () {
+    $("#download-tab-link").show();
+    $("#start-tab-link, #class-tab-link, #options-tab-link, #party-tab-link, #gm-tab-link").hide();
+    $("#download-tab-link").show().click();
+    $("#add-to-party").hide();
+    $("#party-readout").hide();
+    $(".wizardnav").hide();
+    $("#start-type").val('all');
+    return false;
+  });
+
   $("a.lightbox").click(function () {
     var id = $(this).attr('rel');
     var lightbox = $(id);

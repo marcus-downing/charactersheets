@@ -67,7 +67,14 @@ object Composer extends Controller {
         val gmdata = CharacterData.parseGM(data, gameData)
         val pdf = composeGM(gmdata, gameData, sourceFolders)
         Ok(pdf).as("application/pdf").withHeaders(
-          "Content-disposition" -> ("attachment; filename=\""+(if(gameData.isDnd35) "Dungeon Master" else "Game Master")+"\"")
+          "Content-disposition" -> ("attachment; filename=\""+(if(gameData.isDnd35) "Dungeon Master" else "Game Master")+".pdf\"")
+        )
+
+      case Some("all") =>
+        val character = CharacterData.parse(data, gameData, iconic)
+        val pdf = composeAll(character, gameData, sourceFolders)
+        Ok(pdf).as("application/pdf").withHeaders(
+          "Content-disposition" -> ("attachment; filename=\""+gameData.name+".pdf\"")
         )
 
       case _ => NotFound
@@ -435,6 +442,78 @@ object Composer extends Controller {
   }
 
 
+  def composeAll(character: CharacterData, gameData: GameData, folders: List[File]): Array[Byte] = {
+    val out = new ByteArrayOutputStream()
+    val document = new Document
+    val writer = PdfWriter.getInstance(document, out)
+    writer.setRgbTransparencyBlending(true)
+    document.open
+
+    println("Building all pages for: "+gameData.name)
+
+    val colour = character.colour
+    for (page <- gameData.pages; pageFile <- locatePage(folders, page)) {
+      println("Adding page: "+page.name)
+      //val pageFile = new File(folder.getPath+"/"+page.file)
+      val fis = new FileInputStream(pageFile)
+      val reader = new PdfReader(fis)
+
+      // get the right page size
+      val template = writer.getImportedPage(reader, 1)
+      val pageSize = reader.getPageSize(1)
+      document.setPageSize(pageSize)
+      document.newPage
+
+      val canvas = writer.getDirectContent
+      val baseLayer = new PdfLayer("Character Sheet", writer);
+      canvas.beginLayer(baseLayer)
+      canvas.setColorFill(BaseColor.WHITE)
+      canvas.rectangle(0f, 0f, 1000f, 1000f)
+      canvas.fill
+
+      //  the page
+      canvas.addTemplate(template, 0, 0)
+
+      //  copyright notice
+      writeCopyright(canvas, writer, gameData)
+
+      //  generic image
+      writeIconic(canvas, writer, page.slot, "public/images/iconics/generic.png")
+
+      writeColourOverlay(canvas, colour)
+
+      canvas.endLayer()
+
+      //  logo
+      if (page.slot == "core" || page.slot == "eidolon") {
+        canvas.setGState(defaultGstate)
+        val imgLayer = new PdfLayer("Logo image", writer)
+        canvas.beginLayer(imgLayer)
+        val imgFile = logoImage(gameData, character)
+        try {
+          println("Adding logo: "+imgFile)
+          val awtImage = java.awt.Toolkit.getDefaultToolkit().createImage(imgFile)
+          val img = Image.getInstance(awtImage, null)
+          img.scaleToFit(170f,50f)
+          img.setAbsolutePosition(127f - (img.getScaledWidth() / 2), 800f - (img.getScaledHeight() / 2))
+          canvas.addImage(img)
+        } catch {
+          case e: Exception => e.printStackTrace
+        }
+        canvas.endLayer()
+      }
+
+      //  watermark
+      if (character.watermark != "") {
+        writeWatermark(canvas, writer, character.watermark, colour)
+      }
+
+      fis.close
+    }
+
+    document.close
+    out.toByteArray
+  }
 }
 
 class CharacterInterpretation(gameData: GameData, character: CharacterData) {

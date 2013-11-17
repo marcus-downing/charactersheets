@@ -103,47 +103,10 @@ object Application extends Controller {
     }
   }
 
-  //  Group -> Set -> [] IconicImage
-  /*
-  def iconics: List[(String, List[(String, List[IconicImage])])] = {
-    val iconicsFolder = new File("public/images/iconics")
-    if (!iconicsFolder.isDirectory) return Nil
-
-    val groups: List[(String, List[(String, List[IconicImage])])] = for (groupFolder <- iconicsFolder.listFiles.toList if groupFolder.isDirectory) yield {
-      val group = groupFolder.getName
-      val groupName = IconicImage.withoutNumber(group)
-
-      val sets: List[(String, List[IconicImage])] = for (setFolder <- groupFolder.listFiles.toList if setFolder.isDirectory) yield {
-        val set = setFolder.getName
-        val setName = IconicImage.withoutNumber(set)
-
-        val largeFolder = new File(setFolder.getAbsolutePath+"/Large")
-        val imageFiles: List[IconicImage] = largeFolder.listFiles.toList.filter(_.isFile).flatMap { file =>
-          val filename = file.getName
-          if (filename.endsWith(".png")) {
-            val imageName = filename.substring(0, filename.length - 4)
-            Some(IconicImage(group, set, imageName))
-          }
-          else None
-        }
-        //println("Set name: "+setName)
-        (setName, imageFiles)
-      }
-      //println("Group name: "+groupName)
-      (groupName, sets)
-    }
-    groups
-  }*/
   def iconics: List[IconicImage] = IconicImage.iconics
   def iconicSets: List[IconicSet] = IconicImage.sets
 
   def getIconic(path: String): Option[IconicImage] = IconicImage.get(path)
-  /*{
-    path.split("/").toList match {
-      case group :: set :: name :: Nil => Some(IconicImage(IconicSet(group+"/"+set), name))
-      case _ => None
-    }
-  }*/
 
   def logos = Logo.logos
 }

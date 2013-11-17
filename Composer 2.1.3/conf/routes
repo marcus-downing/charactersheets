@@ -17,7 +17,6 @@ POST    /pdf/pathfinder             controllers.Composer.downloadPathfinder
 POST    /pdf/dnd35                  controllers.Composer.downloadDnd35
 
 
-
 # Map static resources from the /public folder to the /assets URL path
 GET		/images/*file				controllers.Assets.at(path="/public/images", file)
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
