@@ -2,6 +2,8 @@
 #include underscore.js
 
 
+var baseFolder = 'E:/Projects/Character Sheets/';
+
 Array.prototype.contains = function(obj) {
     var i = this.length;
     while (i--) {

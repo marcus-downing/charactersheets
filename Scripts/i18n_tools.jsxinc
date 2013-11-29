@@ -85,13 +85,14 @@ var i18n = {
   tick: function () {
     i18n.tickNum++;
     i18n.totalTick++;
-    if (i18n.tickNum >= 50) {
+    if (i18n.tickNum >= i18n.tickThreshold) {
       log("Interaction required: #"+i18n.totalTick);
       alert("Tick #"+i18n.totalTick);
       i18n.tickNum = 0;
     }
   },
 
+  tickThreshold: 50,
   tickNum: 0,
   totalTick: 0,
 

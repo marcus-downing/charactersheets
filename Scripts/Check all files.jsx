@@ -1,6 +1,6 @@
 #include Tools.jsxinc
 
-var sourceFolder = Folder.selectDialog( 'Select the folder of Illustrator files to check' );
+var sourceFolder = Folder.selectDialog( 'Select the folder of Illustrator files to check', baseFolder);
 var files = sourceFolder.getAllFiles();
 
 log('Starting check all files', sourceFolder);
