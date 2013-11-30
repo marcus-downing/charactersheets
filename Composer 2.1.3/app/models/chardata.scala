@@ -195,7 +195,7 @@ object IconicImage {
     (base, head)
   }
 
-  def slug(str: String): String = str.toLowerCase.replaceAll("/", "--").replaceAll("[^a-z/]+", "-").replaceAll("(\\.|-)png$", "").replaceAll("^-+", "").replaceAll("-+$", "")
+  def slug(str: String): String = str.toLowerCase.replaceAll("/", "--").replaceAll("[^a-z0-9/]+", "-").replaceAll("(\\.|-)png$", "").replaceAll("^-+", "").replaceAll("-+$", "")
 }
 
 case class Logo(code: String, name: String) {
