@@ -226,12 +226,19 @@ $(function() {
 
     // add the character to the list
     var readout = $("#party-readout ul");
-    var img = current_inventory_src;
-    $("<li><img src='"+img+"'/><span>"+classes.join(", ")+"</span></li>").appendTo(readout);
+    var img = $("#inventory-iconic").val();
+    var imgsrc = $("#iconic-"+img).attr('src');
+    $("<li><img src='"+imgsrc+"'/><span>"+classes.join(", ")+"</span></li>").appendTo(readout);
     var charids = $("#charids");
     var ids = charids.val().split(",");
     ids.push(charid);
     charids.val(ids.join(","));
+
+    // reset the data
+    $("#class-tab input[type=checkbox]").prop("checked", false);
+    $("#iconic img").removeClass("selected");
+    $("#iconic-generic").addClass("selected");
+    $("#inventory-iconic").val("generic");
 
     // move along
     $("#party-tab-link").click();
