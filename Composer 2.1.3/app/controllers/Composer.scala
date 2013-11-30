@@ -245,8 +245,11 @@ object Composer extends Controller {
       }
 
       // april fool
-      if (page.slot == "core" && isAprilFool) {
-        overlayPage(canvas, writer, folders, "Extra/Special Overlays/Character Info.pdf")
+      if (isAprilFool) {
+        page.slot match {
+          case "core" => overlayPage(canvas, writer, folders, "Extra/Special Overlays/Character Info.pdf")
+          case "inventory" => overlayPage(canvas, writer, folders, "Extra/Special Overlays/Inventory.pdf")
+        }
       }
 
       writeColourOverlay(canvas, colour)
@@ -424,6 +427,7 @@ object Composer extends Controller {
     case "blue" => new BaseColor(0.55f, 0.63f, 0.80f)
     case "purple" => new BaseColor(0.80f, 0.6f, 0.70f)
     case "pink" => new BaseColor(1.0f, 0.60f, 0.65f)
+    case _ => new BaseColor(0.3f, 0.3f, 0.3f)
   }
 
   def logoImage(gameData: GameData, character: CharacterData): String = {
