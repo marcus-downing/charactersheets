@@ -1,0 +1,57 @@
+{{ define "title" }}Account Settings{{ end }}
+
+{{ define "content" }}
+
+<div class='container'>
+
+<form method='post' action='/account' class='' role='form'>
+
+<p>&nbsp;</p>
+<div class='panel panel-primary'>
+  <div class="panel-heading"><h3 class="panel-title"><span class="glyphicon glyphicon-user"></span>&nbsp; Account settings</h3></div>
+  <div class="panel-body">
+
+    <div class='form-group'>
+      <label for='user-email'>Email address</label>
+      <p id='user-email'>{{ .CurrentUser.Email }}</p>
+    </div>
+
+    <div class='form-group'>
+      <label for='user-name'>Name</label>
+      <input type='text' name='name' id='user-name' class='form-control' value='{{ .CurrentUser.Name }}'>
+    </div>
+
+    <div class='form-group'>
+      <label for='user-avatar'>Avatar image </label>
+      <p>&nbsp;<img src='http://www.gravatar.com/avatar/{{ md5 .CurrentUser.Email }}?s=32'> &nbsp; 
+        <a href='http://www.gravatar.com' class='btn btn-link' id='user-avatar'><span class="glyphicon glyphicon-link"></span>&nbsp; Set my avatar at Gravatar.com</a></p>
+    </div>
+
+    <div class='form-group'>
+      <label for='user-password'>Password</label>
+      <p> &nbsp; 
+        <a href='/account/password' class='btn btn-link' id='user-password'><span class="glyphicon glyphicon-lock"></span>&nbsp; Set my password</a></p>
+    </div>
+
+      <label>Language</label> &nbsp; 
+    <p>
+      {{ $setLang := .CurrentUser.Language }}
+      {{ $languageNames := .LanguageNames }}
+      {{ range $lang := .Languages }}
+      <label class="checkbox-inline"><input type='radio' name='language' value='{{ $lang }}'>&nbsp;
+        <img src='/images/flags/{{ $lang }}.png'> &nbsp; {{ index $languageNames $lang }} &nbsp;
+      </label>
+      {{ end }}
+    </p>
+  </div>
+
+  <div class="panel-footer">
+    <button type='submit' class='btn btn-primary'><span class="glyphicon glyphicon-save"></span>&nbsp; Save</button>
+    <a href='/home' class='btn btn-link'><span class="glyphicon glyphicon-remove"></span> Cancel</a>
+  </div>
+</div>
+
+</form>
+
+</div>{{/* container */}}
+{{ end }}

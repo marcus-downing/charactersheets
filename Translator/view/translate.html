@@ -1,0 +1,69 @@
+{{ define "title" }}Translate{{ end }}
+
+{{ define "content" }}
+
+<form role='form' id='form-translate' class='form-inline'>
+	<input type='hidden' name='language' id='current-language' value='{{ .CurrentLanguage }}'>
+<table class='table table-striped table-hover'>
+
+
+<thead>
+	<tr>
+		<th><img src='/images/flags/gb.png'>&nbsp; Original</th>
+		<th>
+			{{ if .IsAdmin }}
+			<div class='dropdown' id="select-language">
+				<button class="btn dropdown-toggle" type="button" data-toggle="dropdown">
+					<img src='/images/flags/{{.CurrentLanguage}}.png'>&nbsp; {{ index .LanguageNames .CurrentLanguage }}
+					<span class="caret"></span>
+				</button>
+				<ul class='dropdown-menu'>
+					{{ $languageNames := .LanguageNames }}
+					{{ range $lang := .Languages }}
+					{{/* if $lang != "gb" */}}
+						<li role='presentation'>
+							<a href='/translate?language={{$lang}}' tabindex='-1' role='menuitem' data-lang='{{$lang}}'>
+								<img src='/images/flags/{{$lang}}.png'>&nbsp; {{ index $languageNames $lang }}
+							</a>
+						</li>
+					{{/* end */}}
+					{{ end }}
+				</ul>
+			</div>
+			{{ else }}
+			<img src='/images/flags/{{.CurrentLanguage}}.png'>{{ index .LanguageNames .CurrentLanguage }}
+			{{ end }}
+		</th>
+		<th><span class='glyphicon glyphicon-book'></span>&nbsp; Sources</th>
+	</tr>
+</thead>
+
+<tbody>
+{{ $lang := .CurrentLanguage }}
+{{ range $i, $entry := .Entries }}
+<tr>
+	<td>
+		{{ range $j, $part := $entry.Entries }}
+		<label class='part' for='part-{{ $i }}-{{ $j }}'>
+			{{ $part.Original }}
+		</label>
+		{{ end }}
+	</td>
+	<td class='{{ len $entry.Entries }}-parts'>
+		{{ range $j, $part := $entry.Entries }}
+		{{ $translation := translate $part.Original $part.PartOf $lang }}
+		<input type='text' id='part-{{ $i }}-{{ $j }}' class='form-control' value='{{ $translation }}' name='{{ $part.MD5 }}' />
+		{{ end }}
+	</td>
+	<td>
+		<a href='/sources/'>Character Info</a>, <a href='/sources/'>Barbarian - Character Info</a>, <a href='/sources/'>Ranger - Character Info</a>, <a href='/sources/'>Eidolon</a>, <a href='/sources/'>World Walker - Character Info</a>, <a href='/sources/'>Psionics - Character Info</a>
+	</td>
+</tr>
+{{ end }}
+</tbody>
+
+
+</table>
+</form>
+
+{{ end }}

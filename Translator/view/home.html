@@ -1,0 +1,130 @@
+{{ define "title" }}Dashboard{{ end }}
+
+{{ define "content" }}
+
+<div class='container'>
+<h1>Dyslexic Studeos Character Sheets Translator</h1>
+
+<div class='row'>
+
+
+
+<div class='col-sm-4'>
+<div class='panel panel-primary'>
+	<div class="panel-heading"><h3 class="panel-title"><span class="glyphicon glyphicon-stats"></span>&nbsp; Completion summary</h3></div>
+	<table class='table'>
+		{{ $languageNames := .LanguageNames }}
+		{{ $languageCompletions := .LanguageCompletion }}
+		{{ range $lang := .Languages }}
+		{{ $languageName := index $languageNames $lang }}
+		{{ $languageCompletion := index $languageCompletions $lang }}
+		<tr>
+			<td colspan='4'><img src='/images/flags/{{$lang}}.png'>&nbsp; {{ $languageName }}</td>
+		</tr>
+		<tr>
+			{{ range $complete := $languageCompletion }}
+			{{ $col := percentColour $complete }}
+			<td>
+				<div class="progress">
+				  <div class="progress-bar progress-bar-{{$col}}" role="progressbar" aria-valuenow="{{$complete}}" aria-valuemin="0" aria-valuemax="100" style="width: {{$complete}}%;">
+				    <span class="sr-only">{{$complete}}% Complete</span>
+				  </div>
+				</div>
+			</td>
+			{{ end }}
+		</tr>
+		{{ end }}
+	</table>
+</div>
+</div>
+
+
+
+
+<div class='col-sm-4'>
+<div class='panel panel-info'>
+	<div class="panel-heading"><h3 class="panel-title"><span class="glyphicon glyphicon-globe"></span>&nbsp; Recent Translations</h3></div>
+	<table class='table'>
+	<tr>
+		<td>Knowledge: Dungeoneering</td>
+		<td><img src='http://www.gravatar.com/avatar/85da34890f23a1fbd629bacc8b6bb81a?s=24'></td>
+		<td><img src='/images/flags/it.png'></td>
+		<td>Conoscenze: Dungeon</td>
+	</tr>
+	</table>
+	<div class='panel-footer'>
+		<a class='btn btn-primary btn-sm' href='/translate'><span class="glyphicon glyphicon-globe"></span>&nbsp; Translate</a> 
+	</div>
+</div>
+
+<div class='panel panel-success'>
+	<div class="panel-heading"><h3 class="panel-title"><span class="glyphicon glyphicon-comment"></span>&nbsp; Comments</h3></div>
+	<table class='table'>
+	<tr>
+		<td><a href=''>Inventory</a></td>
+		<td><img src='http://www.gravatar.com/avatar/85da34890f23a1fbd629bacc8b6bb81a?s=24'></td>
+		<td>Lorem ipsum dolor sit amet...</td>
+	</tr>
+	</table>
+</div>
+</div>
+
+
+
+
+<div class='col-sm-4'>
+
+<div class='panel panel-primary'>
+	<div class="panel-heading"><h3 class="panel-title"><span class="glyphicon glyphicon-question-sign"></span>&nbsp; Help</h3></div>
+	<div class='panel-body'>
+		<p><a href='/help/1'>How to translate</a></p>
+		<p><a href='/help/2'>How to compare translations</a></p>
+		<p><a href='/help/3'>How to comment on translations</a></p>
+		<p><a href='/help/4'>How to check my progress</a></p>
+	</div>
+	<div class="panel-footer">
+		<a class='btn btn-link btn-sm' href='/help'><span class="glyphicon glyphicon-question-sign"></span>&nbsp; More help</a> &nbsp; 
+		<a class='btn btn-link btn-sm' href='/help/ask'><span class="glyphicon glyphicon-comment"></span>&nbsp; Ask a question</a>
+	</div>
+</div>
+
+
+
+<div class='panel panel-info'>
+	<div class="panel-heading"><h3 class="panel-title"><span class="glyphicon glyphicon-user"></span>&nbsp; Your Account</h3></div>
+	<div class='panel-body'>
+		<p><img src='http://www.gravatar.com/avatar/{{ md5 .CurrentUser.Email }}?s=32'>&nbsp; <b>{{ .CurrentUser.Name }}</b></p>
+		<p>Preferred language: &nbsp; <img src='/images/flags/{{.CurrentUser.Language}}.png'> {{ index .LanguageNames .CurrentUser.Language }}</p>
+	</div>
+	<div class="panel-footer">
+		<a class='btn btn-link btn-sm' href='/account'><span class="glyphicon glyphicon-user"></span>&nbsp; Account settings</a> &nbsp; 
+		<a class='btn btn-danger btn-sm' href='/logout'><span class="glyphicon glyphicon-lock"></span>&nbsp; Log out</a>
+	</div>
+</div>
+
+
+
+{{ if .IsAdmin }}
+<div class='panel panel-info'>
+	<div class="panel-heading"><h3 class="panel-title"><span class="glyphicon glyphicon-user"></span>&nbsp; Logged in users</h3></div>
+	<table class='table'>
+	<tr>
+		<td><img src='http://www.gravatar.com/avatar/85da34890f23a1fbd629bacc8b6bb81a?s=32'></td>
+		<td>Marcus Downing</td>
+		<td><img src='/images/flags/gb.png'></td>
+	</tr>
+	</table>
+	<div class="panel-footer">
+		<a class='btn btn-primary btn-sm' href='/users/add'><span class="glyphicon glyphicon-plus"></span> <span class="glyphicon glyphicon-user"></span>&nbsp; Add a user</a> 
+		<a class='btn btn-link btm-sm' href='/users'><span class="glyphicon glyphicon-user"></span>&nbsp; Users</a>
+	</div>
+</div>
+{{ end }}
+</div>
+
+
+
+</div>{{/* row */}}
+
+</div>{{/* container */}}
+{{ end }}

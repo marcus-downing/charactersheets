@@ -1,0 +1,52 @@
+{{ define "title" }}Sources{{ end }}
+
+{{ define "content" }}
+
+<div class='container'>
+<h1><span class="glyphicon glyphicon-book"></span>&nbsp; Sources</h1>
+
+
+<table class='table table-striped table-hover'>
+
+	<thead>
+		<tr>
+			<td>Page</td>
+			{{ $languageNames := .LanguageNames }}
+			{{ range $lang := .Languages }}
+			<td>
+				<img src='/images/flags/{{$lang}}.png'>
+				{{ index $languageNames $lang }}</td>
+			{{ end }}
+		</tr>
+	</thead>
+
+	{{/* range $page := .Pages */}}
+	<tr>
+		<td>
+			<ol class="breadcrumb">
+			<li>Pathfinder</li>
+			<li>Core</a></li>
+			<li class="active">Character Info</li>
+			</ol>
+		</td>
+		{{/* $pageCompletion := $page.completion */}}
+		{{ range $lang := .Languages }}
+			{{ $complete := 70 }}
+			{{ $col := percentColour $complete }}
+			<td>
+				<div class="progress">
+				  <div class="progress-bar progress-bar-{{$col}}" role="progressbar" aria-valuenow="{{$complete}}" aria-valuemin="0" aria-valuemax="100" style="width: {{$complete}}%;">
+				    <span class="sr-only">{{$complete}}% Complete</span>
+				  </div>
+				</div>
+			</td>
+		{{ end }}
+	</tr>
+	{{/* end */}}
+
+</table>
+
+
+
+</div>{{/* container */}}
+{{ end }}
