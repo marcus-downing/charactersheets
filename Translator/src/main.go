@@ -45,31 +45,10 @@ func main() {
 	authHandler := AuthHandler{handler}
 	sessionHandler := seshcookie.NewSessionHandler(&authHandler, SESSIONKEY, nil)
 
-	if err := http.ListenAndServe(":8080", sessionHandler); err != nil {
+	if err := http.ListenAndServe(":9091", sessionHandler); err != nil {
 		fmt.Printf("Error in ListenAndServe:", err)
 	}
 
-	/*
-		http.HandleFunc("/", control.LoginHandler)
-		http.HandleFunc("/home", control.DashboardHandler)
-		http.HandleFunc("/sources", control.SourcesHandler)
-		http.HandleFunc("/translate", control.TranslationHandler)
-		http.HandleFunc("/import", control.ImportHandler)
-		http.HandleFunc("/export", control.ExportHandler)
-		http.HandleFunc("/users", control.UsersHandler)
-		http.HandleFunc("/users/add", control.UsersAddHandler)
-		http.HandleFunc("/account", control.AccountHandler)
-		http.HandleFunc("/account/password", control.SetPasswordHandler)
-
-		http.Handle("/css/", http.FileServer(http.Dir("../web")))
-		http.Handle("/bootstrap/", http.FileServer(http.Dir("../web")))
-		http.Handle("/images/", http.FileServer(http.Dir("../web")))
-		http.Handle("/js/", http.FileServer(http.Dir("../web")))
-
-		if err := http.ListenAndServe(":8080", nil); err != nil {
-			panic(err)
-		}
-	*/
 	fmt.Println("Done.")
 }
 
