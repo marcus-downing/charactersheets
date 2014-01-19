@@ -1,11 +1,10 @@
-/**
- *  The true identity of an Entry field is its Original and Part Of fields.
- *  But MySQL/Maria don't like using blobs as primary keys, so instead we've
- *  got a `Key` field with an md5 hash of it.
- *
- *  Maximum key length: 767 bytes -> 255 characters
- *  Timestamp = 4 bytes -> 2 characters
- */
+#  The true identity of an Entry field is its Original and Part Of fields.
+#  But MySQL/Maria don't like using blobs as primary keys, so instead we've
+#  got a `Key` field with an md5 hash of it.
+# 
+#  Maximum key length: 767 bytes -> 255 characters
+#  Timestamp = 4 bytes -> 2 characters
+
 
 create table Entries (
 	Original text not null,
