@@ -201,7 +201,7 @@ func parseUser(rows *sql.Rows) (Result, error) {
 }
 
 func GetUsers() []*User {
-	results := query("select Email, Password, Secret, Name, IsAdmin, Language from users order by IsAdmin desc, Language asc, Name asc").rows(parseUser)
+	results := query("select Email, Password, Secret, Name, IsAdmin, Language from Users order by IsAdmin desc, Language asc, Name asc").rows(parseUser)
 	users := make([]*User, len(results))
 	for i, result := range results {
 		if user, ok := result.(User); ok {
@@ -212,7 +212,7 @@ func GetUsers() []*User {
 }
 
 func GetUserByEmail(email string) *User {
-	result := query("select Email, Password, Secret, Name, IsAdmin, Language from users order by IsAdmin desc, Language asc, Name asc").row(parseUser)
+	result := query("select Email, Password, Secret, Name, IsAdmin, Language from Users order by IsAdmin desc, Language asc, Name asc").row(parseUser)
 	if user, ok := result.(User); ok {
 		return &user
 	}

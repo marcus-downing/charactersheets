@@ -12,7 +12,7 @@ create table Entries (
 	primary key entry_key (Original(128), PartOf(128))
 );
 
-create index Entries_PartOf on Entries (PartOf(255))
+create index Entries_PartOf on Entries (PartOf(255));
 
 create table Sources (
 	Filepath text not null,
