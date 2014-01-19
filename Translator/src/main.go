@@ -7,10 +7,10 @@ import (
 	"./control"
 	"code.google.com/p/go.crypto/bcrypt"
 	"github.com/bpowers/seshcookie"
-	"net/http"
-	"strings"
-	"net/smtp"
 	"html/template"
+	"net/http"
+	"net/smtp"
+	"strings"
 )
 
 const SESSIONKEY = "93Yb8c59aASAf3kfT5xU8wz2GmfP4CbSNdhuvLxAdUqZnThbxuAAZu5AVWUrpsmXz47SYnvDcqr7TfNgLP8CpEpAmzGXNvMu72Scd4EAZGuepTQ7kWENemqr"
@@ -24,6 +24,7 @@ func main() {
 	handler.HandleFunc("/master", control.MasterHandler)
 	handler.HandleFunc("/translate", control.TranslationHandler)
 	handler.HandleFunc("/import", control.ImportHandler)
+	handler.HandleFunc("/import/done", control.ImportDoneHandler)
 	handler.HandleFunc("/export", control.ExportHandler)
 	handler.HandleFunc("/users", control.UsersHandler)
 	handler.HandleFunc("/users/add", control.UsersAddHandler)
@@ -89,7 +90,7 @@ type AuthHandler struct {
 }
 
 type ReclaimFormData struct {
-	Email string
+	Email  string
 	Secret string
 }
 
@@ -139,19 +140,19 @@ func (h *AuthHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		http.Redirect(w, r, "/login", http.StatusFound)
 		return
 
-	case  "/account/reclaim/sent":
+	case "/account/reclaim/sent":
 		http.ServeFile(w, r, "../view/account_reclaim_sent.html")
 		return
 
-	case  "/account/reclaim/done":
+	case "/account/reclaim/done":
 		http.ServeFile(w, r, "../view/account_reclaim_done.html")
 		return
 
-	case  "/account/reclaim/incorrect":
+	case "/account/reclaim/incorrect":
 		http.ServeFile(w, r, "../view/account_reclaim_incorrect.html")
 		return
 
-	case  "/account/reclaim":
+	case "/account/reclaim":
 		err := r.ParseForm()
 		if err != nil {
 			fmt.Printf("Error '%s' parsing form for %#v\n", err, r)
@@ -205,7 +206,7 @@ func (h *AuthHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				if err := bcrypt.CompareHashAndPassword([]byte(user.Secret), []byte(secret)); err == nil {
 					fmt.Println("Account reclaim: Showing password form")
 					data := ReclaimFormData{
-						Email: email,
+						Email:  email,
 						Secret: secret,
 					}
 					t, _ := template.ParseFiles("../view/account_reclaim_set_password.html")
@@ -234,8 +235,6 @@ func (h *AuthHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	h.Handler.ServeHTTP(w, r)
 }
 
-
-
 func sendSecretEmail(user *model.User, secret string) {
 	host := "localhost:8080"
 	// secret := user.Secret
@@ -244,7 +243,7 @@ func sendSecretEmail(user *model.User, secret string) {
 	// 	user.Secret = secret
 	// }
 	email := user.Email
-	
+
 	msg := `
 Subject: Your account at the Character Sheets Translator
 

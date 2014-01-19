@@ -79,7 +79,7 @@ function translate(message, partof) {
   // default
   if (i18n.d00) {
     var d = i18n.d00.replace('/00$/', '');
-    log("i18n: Replacing dice");
+    //log("i18n: Replacing dice");
     var adjusted = message.replaceAll(/d([0-9])+/, d+'\1');
     if (adjusted != message) 
       return adjusted;

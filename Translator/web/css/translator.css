@@ -2,9 +2,31 @@
 	padding-top: 60px;
 }
 
+.page-options {
+  float: right;
+  margin-top: -40px;
+}
 
-#form-translate input {
+.pagination {
+  margin: 5px 0 5px 10px;
+}
+
+.pagination a {
+  margin: 0 5px;
+}
+
+.page-options label {
+  margin-top: -25px;
+  float: left;
+  width: 1px;
+}
+
+
+
+
+#form-translate td.translation {
   min-width: 300px;
+  white-space: nowrap;
 }
 
 #form-translate td, #form-translate th {
@@ -69,4 +91,28 @@ label.part {
 label.part:last-child {
   border-right: 0 none;
   margin-right: 0;
+}
+
+td.translate-2-parts input {
+  width: 50% !important;
+}
+
+td.translate-3-parts input {
+  width: 33% !important;
+}
+
+td.translate-4-parts input {
+  width: 25% !important;
+}
+
+td.translate-5-parts input {
+  width: 20% !important;
+}
+
+td.btn-cell {
+  width: 32px;
+}
+
+td.btn-cell a.no-comments {
+  color: #aaa;
 }

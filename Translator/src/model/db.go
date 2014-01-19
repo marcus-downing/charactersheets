@@ -27,8 +27,8 @@ func withDB(f func(db *sql.DB) interface{}) interface{} {
 }
 
 type Query struct {
-	sql string
-	args  []interface{}
+	sql  string
+	args []interface{}
 }
 
 type Result interface {
@@ -36,6 +36,22 @@ type Result interface {
 
 func query(query string, args ...interface{}) Query {
 	return Query{query, args}
+}
+
+func (query Query) exists() bool {
+	db, err := sql.Open("mymysql", dbname+"/"+dbuser+"/"+dbpassword)
+	if err != nil {
+		fmt.Println("Error connecting to database:", err)
+		return false
+	}
+	defer db.Close()
+
+	// fmt.Println("Exists: ", query.sql, query.args)
+	rows, err := db.Query(query.sql, query.args...)
+	if err != nil {
+		return false
+	}
+	return rows.Next()
 }
 
 func (query Query) exec(success func(lastInsertId int64)) bool {
@@ -84,7 +100,7 @@ func (query Query) rows(f func(*sql.Rows) (Result, error)) []Result {
 			results = append(results, result)
 		}
 	}
-	fmt.Println("Found", len(results), "results")
+	// fmt.Println("Found", len(results), "results")
 	return results
 }
 
@@ -114,12 +130,27 @@ func (query Query) row(f func(*sql.Rows) (Result, error)) Result {
 	return nil
 }
 
-func saveRecord(table string, keyfields, fields map[string]interface{}, update bool, success func (lastInsertId int64)) bool {
+func recordExists(table string, keyfields map[string]interface{}) bool {
+	conditions := make([]string, 0, len(keyfields))
+	args := make([]interface{}, 0, len(keyfields))
+	for key, value := range keyfields {
+		conditions = append(conditions, key+" = ?")
+		args = append(args, value)
+	}
+	sql := "select 1 from " + table + " where " + strings.Join(conditions, " and ")
+	fmt.Println("Checking ", table, ":", sql, args)
+	return query(sql, args).exists()
+}
+
+func saveRecord(table string, keyfields, fields map[string]interface{}, success func(lastInsertId int64)) bool {
 	fmt.Println("Saving record")
+
+	update := recordExists(table, keyfields)
 
 	var sql string
 	args := make([]interface{}, 0, len(keyfields)+len(fields))
 	if update {
+		fmt.Println("Record exists, updating")
 		names := make([]string, 0, len(fields))
 		for key, value := range fields {
 			names = append(names, key+" = ?")
@@ -133,6 +164,7 @@ func saveRecord(table string, keyfields, fields map[string]interface{}, update b
 
 		sql = "update " + table + " set " + strings.Join(names, ", ") + " where " + strings.Join(conditions, " and ")
 	} else {
+		fmt.Println("Record doesn't exist, inserting")
 		names := make([]string, 0, len(keyfields)+len(fields))
 		qs := make([]string, 0, len(keyfields)+len(fields))
 		for key, value := range keyfields {

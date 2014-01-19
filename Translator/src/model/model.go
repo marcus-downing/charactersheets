@@ -1,9 +1,11 @@
 package model
 
 import (
-	"math/rand"
 	"code.google.com/p/go.crypto/bcrypt"
 	"fmt"
+	"math/rand"
+	"sort"
+	"strings"
 	// "time"
 )
 
@@ -56,16 +58,59 @@ func GetLanguageCompletion() map[string][4]int {
 	return completion
 }
 
-
 type StackedEntry struct {
-	FullText string	
-	Entries []*Entry
-	Sources []*Source
+	FullText string
+	Entries  []*Entry
+	EntrySources  []*EntrySource
+	Count int
 }
 
 func GetStackedEntries() []*StackedEntry {
 	entries := GetEntries()
 	return stackEntries(entries)
+}
+
+// sort entries by index
+type entriesByIndex []*Entry
+
+func (this entriesByIndex) Len() int {
+    return len(this)
+}
+func (this entriesByIndex) Less(i, j int) bool {
+    return strings.Index(this[i].PartOf, this[i].Original) < strings.Index(this[j].PartOf, this[j].Original)
+}
+func (this entriesByIndex) Swap(i, j int) {
+    this[i], this[j] = this[j], this[i]
+}
+
+// sort stacked entries by name
+type stacksByName []*StackedEntry
+
+func (this stacksByName) Len() int {
+	return len(this)
+}
+
+func (this stacksByName) Less(i, j int) bool {
+	return this[i].FullText < this[j].FullText
+}
+
+func (this stacksByName) Swap(i, j int) {
+	this[i], this[j] = this[j], this[i]
+}
+
+// sort stacked entries by number of uses
+type stacksByCount []*StackedEntry
+
+func (this stacksByCount) Len() int {
+	return len(this)
+}
+
+func (this stacksByCount) Less(i, j int) bool {
+	return this[i].Count > this[j].Count
+}
+
+func (this stacksByCount) Swap(i, j int) {
+	this[i], this[j] = this[j], this[i]
 }
 
 func stackEntries(entries []*Entry) []*StackedEntry {
@@ -75,32 +120,49 @@ func stackEntries(entries []*Entry) []*StackedEntry {
 	for _, entry := range entries {
 		if entry.PartOf != "" {
 			if stacks[entry.PartOf] == nil {
-				fmt.Println("Creating stack:", entry.PartOf)
 				stacks[entry.PartOf] = make([]*Entry, 0, 10)
 			}
-			fmt.Println("Adding to stack:", entry.PartOf)
 			stacks[entry.PartOf] = append(stacks[entry.PartOf], entry)
 		} else {
 			unstacked = append(unstacked, entry)
 		}
 	}
 
-	fmt.Println("Making", len(stacks), "and", len(unstacked), "stacks")
+	//
 	values := make([]*StackedEntry, 0, len(stacks)+len(unstacked))
-	i := 0
 	for _, stack := range stacks {
-		values[i] = &StackedEntry{
+		sort.Sort(entriesByIndex(stack))
+		values = append(values, &StackedEntry{
 			FullText: stack[0].PartOf,
-			Entries: stack,
-		}
-		i++
+			Entries:  stack,
+		})
 	}
 	for _, entry := range unstacked {
 		values = append(values, &StackedEntry{
 			FullText: entry.Original,
-			Entries: []*Entry{entry},
+			Entries:  []*Entry{entry},
 		})
 	}
+
+	// calculate totals
+	for _, se := range values {
+		entrySources := make(map[string]*EntrySource, len(se.Entries) * 10)
+		for _, entry := range se.Entries {
+			for _, es := range GetSourcesForEntry(entry) {
+				entrySources[es.Source.Filepath] = es
+			}
+		}
+		count := 0
+		esv := make([]*EntrySource, 0, len(entrySources))
+		for _, es := range entrySources {
+			esv = append(esv, es)
+			count += es.Count
+		}
+		se.EntrySources = esv
+		se.Count = count
+	}
+	sort.Sort(stacksByName(values))
+	sort.Sort(stacksByCount(values))
 	return values
 }
 
@@ -116,6 +178,7 @@ func (user *User) GenerateSecret() string {
 	bytes, err := bcrypt.GenerateFromPassword([]byte(base), bcrypt.MinCost)
 	if err != nil {
 		fmt.Println("Error generating secret hash:", err)
+		return ""
 	}
 	secret := string(bytes)
 	secret = secret[7:]

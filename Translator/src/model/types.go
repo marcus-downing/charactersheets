@@ -1,43 +1,27 @@
 package model
 
 import (
-	"github.com/ziutek/mymysql/mysql"
+	// "crypto/md5"
 	"database/sql"
-	"crypto/md5"
-	"encoding/hex"
+	// "encoding/hex"
+	"github.com/ziutek/mymysql/mysql"
 )
 
-type DBRow struct {
-	Loaded bool
-}
-
-
-// ** Master Entries
+// ** Entries
 
 type Entry struct {
-	DBRow
-	MD5 string
 	Original string
 	PartOf   string
-}
-
-// 32-hex MD5 hash of the Original and PartOf fields
-func entryMD5(original, partOf string) string {
-	hasher := md5.New()
-	hasher.Write([]byte(original))
-	hasher.Write([]byte(partOf))
-	return hex.EncodeToString(hasher.Sum(nil))
 }
 
 func parseEntry(rows *sql.Rows) (Result, error) {
 	e := Entry{}
 	err := rows.Scan(&e.Original, &e.PartOf)
-	e.MD5 = entryMD5(e.Original, e.PartOf)
 	return e, err
 }
 
 func GetEntries() []*Entry {
-	results := query("select Original, PartOf from entries").rows(parseEntry)
+	results := query("select Original, PartOf from Entries").rows(parseEntry)
 
 	entries := make([]*Entry, len(results))
 	for i, result := range results {
@@ -48,40 +32,111 @@ func GetEntries() []*Entry {
 	return entries
 }
 
+func (entry *Entry) Save() {
+	keyfields := map[string]interface{}{
+		"Original": entry.Original,
+		"PartOf":   entry.PartOf,
+	}
+	fields := map[string]interface{}{}
+	saveRecord("Entries", keyfields, fields, nil)
+}
 
 // ** Sources
 
-type EntrySource struct {
-	DBRow
-	Entry  int
-	Source int
-}
-
 type Source struct {
-	DBRow
-	ID     int
-	Page   string
-	Volume string
-	Group  string
-	Game   string
+	Filepath string
+	Page     string
+	Volume   string
+	Level    int
+	Game     string
 }
 
 func parseSource(rows *sql.Rows) (Result, error) {
 	s := Source{}
-	err := rows.Scan(&s.ID, &s.Page, &s.Volume, &s.Group, &s.Game)
+	err := rows.Scan(&s.Filepath, &s.Page, &s.Volume, &s.Level, &s.Game)
 	return s, err
 }
-/*
+
 func GetSources() []*Source {
+	results := query("select Filepath, Page, Volume, Level, Game from Sources").rows(parseSource)
 
-}*/
+	sources := make([]*Source, len(results))
+	for i, result := range results {
+		if source, ok := result.(Source); ok {
+			sources[i] = &source
+		}
+	}
+	return sources
+}
 
+func (source *Source) Save() {
+	keyfields := map[string]interface{}{
+		"Filepath": source.Filepath,
+	}
+	fields := map[string]interface{}{
+		"Page": source.Page,
+		"Volume": source.Volume,
+		"Level": source.Level,
+		"Game": source.Game,
+	}
+	saveRecord("Sources", keyfields, fields, nil)
+}
+
+type EntrySource struct {
+	Entry  Entry
+	Source Source
+	Count  int
+}
+
+func parseEntrySource(rows *sql.Rows) (Result, error) {
+	es := EntrySource{}
+	err := rows.Scan(&es.Entry.Original, &es.Entry.PartOf, &es.Source.Filepath, &es.Source.Page, &es.Source.Volume, &es.Source.Level, &es.Source.Game, &es.Count)
+	return es, err
+}
+
+func GetEntrySources() []*EntrySource {
+	results := query("select EntryOriginal, EntryPartOf, SourcePath, Sources.Page, Sources.Volume, Sources.Level, Sources.Game, Count "+
+		"from EntrySources inner join Sources on EntrySources.SourcePath = Sources.Filepath").rows(parseEntrySource)
+
+	sources := make([]*EntrySource, len(results))
+	for i, result := range results {
+		if source, ok := result.(EntrySource); ok {
+			sources[i] = &source
+		}
+	}
+	return sources
+}
+
+func GetSourcesForEntry(entry *Entry) []*EntrySource {
+	results := query("select EntryOriginal, EntryPartOf, SourcePath, Page, Volume, Level, Game, Count "+
+		"from EntrySources inner join Sources on SourcePath = Filepath "+
+		"where EntryOriginal = ? and EntryPartOf = ?", entry.Original, entry.PartOf).rows(parseEntrySource)
+
+	sources := make([]*EntrySource, len(results))
+	for i, result := range results {
+		if source, ok := result.(EntrySource); ok {
+			sources[i] = &source
+		}
+	}
+	return sources
+}
+
+func (es *EntrySource) Save() {
+	keyfields := map[string]interface{}{
+		"EntryOriginal": es.Entry.Original,
+		"EntryPartOf":   es.Entry.PartOf,
+		"SourcePath": es.Source.Filepath,
+	}
+	fields := map[string]interface{}{
+		"Count": es.Count,
+	}
+	saveRecord("EntrySources", keyfields, fields, nil)
+}
 
 // ** Translations
 
 type Translation struct {
-	DBRow
-	Entry       string
+	Entry       Entry
 	Language    string
 	Translation string
 	Translator  string
@@ -89,12 +144,12 @@ type Translation struct {
 
 func parseTranslation(rows *sql.Rows) (Result, error) {
 	t := Translation{}
-	err := rows.Scan(&t.Entry, &t.Language, &t.Translation, &t.Translator)
+	err := rows.Scan(&t.Entry.Original, &t.Entry.PartOf, &t.Language, &t.Translation, &t.Translator)
 	return t, err
 }
 
 func GetTranslations() []*Translation {
-	results := query("select Entry, Language, Translation, Translator from Translations").rows(parseTranslation)
+	results := query("select EntryOriginal, EntryPartOf, Language, Translation, Translator from Translations").rows(parseTranslation)
 	translations := make([]*Translation, len(results))
 	for i, result := range results {
 		if translation, ok := result.(Translation); ok {
@@ -105,8 +160,7 @@ func GetTranslations() []*Translation {
 }
 
 func GetPartTranslations(original, partOf, language string) []*Translation {
-	md5 := entryMD5(original, partOf)
-	results := query("select Entry, Language, Translation, Translator from Translations where Entry = ? and Language = ?", md5, language).rows(parseTranslation)
+	results := query("select EntryOriginal, EntryPartOf, Language, Translation, Translator from Translations where EntryOriginal = ? and EntryPartOf = ? and Language = ?", original, partOf, language).rows(parseTranslation)
 	translations := make([]*Translation, len(results))
 	for i, result := range results {
 		if translation, ok := result.(Translation); ok {
@@ -116,33 +170,22 @@ func GetPartTranslations(original, partOf, language string) []*Translation {
 	return translations
 }
 
-func AddTranslation(md5, language, translation string, translator *User) {
+func AddTranslation(entry *Entry, language, translation string, translator *User) {
 	keyfields := map[string]interface{}{
-		"Entry": md5,
-		"Language": language,
-		"Translator": translator.Email,
+		"EntryOriginal": entry.Original,
+		"EntryPartOf":   entry.PartOf,
+		"Language":      language,
+		"Translator":    translator.Email,
 	}
 	fields := map[string]interface{}{
 		"Translation": translation,
 	}
-	loaded := false
-	saveRecord("translations", keyfields, fields, loaded, nil);
+	saveRecord("Translations", keyfields, fields, nil)
 }
-
-type Comment struct {
-	DBRow
-	Entry       string
-	Language    string
-	Commenter   string
-	Comment     string
-	CommentDate mysql.Timestamp
-}
-
 
 // ** Users
 
 type User struct {
-	DBRow
 	Email    string
 	Password string
 	Secret   string
@@ -182,10 +225,20 @@ func (user *User) Save() bool {
 	}
 	fields := map[string]interface{}{
 		"Password": user.Password,
-		"Secret": user.Secret,
-		"Name": user.Name,
-		"IsAdmin": user.IsAdmin,
+		"Secret":   user.Secret,
+		"Name":     user.Name,
+		"IsAdmin":  user.IsAdmin,
 		"Language": user.Language,
 	}
-	return saveRecord("users", keyfields, fields, user.Loaded, nil)
+	return saveRecord("Users", keyfields, fields, nil)
+}
+
+// ** Comments
+
+type Comment struct {
+	Entry       Entry
+	Language    string
+	Commenter   string
+	Comment     string
+	CommentDate mysql.Timestamp
 }

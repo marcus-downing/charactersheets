@@ -4,46 +4,51 @@
  *  got a `Key` field with an md5 hash of it.
  *
  *  Maximum key length: 767 bytes -> 255 characters
+ *  Timestamp = 4 bytes -> 2 characters
  */
 
 create table Entries (
 	Original text not null,
 	PartOf text not null,
-	Key char(32) unique not null primary key
+	primary key entry_key (Original(128), PartOf(128))
 );
 
 create index Entries_PartOf on Entries (PartOf(255))
-
-create table EntrySources (
-	Entry char(32) not null,
-	SourcePath text not null,
-	primary key (Entry, SourcePath(240))
-);
 
 create table Sources (
 	Filepath text not null,
 	Page varchar(255) not null,
 	Volume varchar(255) not null,
-	SourceGroup varchar(255) not null,
-	Game varchar(255) not null,
+	Level int not null,
+	Game varchar(64) not null,
 	primary key source_filepath (Filepath(255))
 );
 
+create table EntrySources (
+	EntryOriginal text not null,
+	EntryPartOf text not null,
+	SourcePath text not null,
+	Count int not null,
+	primary key (EntryOriginal(85), EntryPartOf(85), SourcePath(85))
+);
+
 create table Translations (
-	Entry char(32) not null,
+	EntryOriginal text not null,
+	EntryPartOf text not null,
 	Language char(2) not null,
 	Translator varchar(128) not null,
 	Translation text not null,
-	primary key (Entry, Language, Translator)
+	primary key (EntryOriginal(84), EntryPartOf(84), Language, Translator(84))
 );
 
 create table Comments (
-	Entry char(32) not null,
+	EntryOriginal text not null,
+	EntryPartOf text not null,
 	Language char(2) not null,
 	Commenter varchar(128) not null,
 	Comment text not null,
 	CommentDate timestamp not null,
-	primary key (Entry, Language, Commenter, CommentDate)
+	primary key (EntryOriginal(83), EntryPartOf(83), Language, Commenter(83), CommentDate)
 );
 
 create table Users (
