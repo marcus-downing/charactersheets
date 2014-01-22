@@ -154,6 +154,8 @@
         { "file": "Ultimate Combat/Ninja.pdf", "slot": "ninja", "name": "Ninja" },
         { "file": "Ultimate Combat/Samurai.pdf", "slot": "samurai", "name": "Samurai" },
         { "file": "Ultimate Combat/Ronin.pdf", "slot": "samurai", "variant": "ronin", "name": "Samurai" },
+
+        { "file": "Advanced Class Guide/Arcanist.pdf", "slot": "arcanist", "name": "Arcanist" },
 		
 		
         { "file": "Psionics/Psionics - Character Info.pdf", "slot": "core", "variant": "psionic", "name": "Character Info (Psionic)", "position": 10 },
@@ -239,7 +241,7 @@
 
     "layout": [
         [ "Core Rulebook" ],
-        [ "Advanced Player's Guide", "Ultimate Magic", "Ultimate Combat", "Mythic Adventures", "Tome of Secrets" ],
+        [ "Advanced Player's Guide", "Ultimate Magic", "Ultimate Combat", "Advanced Class Guide", "Mythic Adventures", "Tome of Secrets" ],
         [ "Psionics Unleashed", "Psionics Expanded", "NeoExodus" ]
     ],
 
@@ -273,6 +275,11 @@
         {
             "name": "Ultimate Combat",
             "classes": [ "Gunslinger", "Ninja", "Samurai" ]
+        },
+
+        {
+            "name": "Advanced Class Guide",
+            "classes": [ "Arcanist" ]
         },
 
         {
@@ -526,6 +533,11 @@
         {
             "name": "Ninja",
             "pages": [ "ninja", "inventory" ]
+        },
+
+        {
+            "name": "Arcanist",
+            "pages": [ "arcanist", "inventory" ]
         },
 
         {
