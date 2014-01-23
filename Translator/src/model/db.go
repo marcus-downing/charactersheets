@@ -46,9 +46,10 @@ func (query Query) exists() bool {
 	}
 	defer db.Close()
 
-	// fmt.Println("Exists: ", query.sql, query.args)
+	fmt.Println("Exists: ", query.sql, query.args)
 	rows, err := db.Query(query.sql, query.args...)
 	if err != nil {
+		fmt.Println("Exists: error:", err)
 		return false
 	}
 	return rows.Next()
@@ -139,7 +140,7 @@ func recordExists(table string, keyfields map[string]interface{}) bool {
 	}
 	sql := "select 1 from " + table + " where " + strings.Join(conditions, " and ")
 	fmt.Println("Checking ", table, ":", sql, args)
-	return query(sql, args).exists()
+	return query(sql, args...).exists()
 }
 
 func saveRecord(table string, keyfields, fields map[string]interface{}, success func(lastInsertId int64)) bool {

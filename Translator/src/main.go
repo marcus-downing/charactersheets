@@ -131,6 +131,10 @@ func (h *AuthHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		http.ServeFile(w, r, "../view/account_reclaim_incorrect.html")
 		return
 
+	case "/account/reclaim/nouser":
+		http.ServeFile(w, r, "../view/account_reclaim_nouser.html")
+		return
+
 	case "/account/reclaim":
 		err := r.ParseForm()
 		if err != nil {
@@ -139,68 +143,76 @@ func (h *AuthHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		email := r.Form.Get("email")
 		secret := r.Form.Get("secret")
 		user := model.GetUserByEmail(email)
+		fmt.Println("Account reclaim: User at", email)
 
 		if r.Method == "POST" {
-			if user != nil {
-				if secret != "" {
-					fmt.Println("Account reclaim: Comparing secret", secret)
-					fmt.Println("Account reclaim: Against hash", user.Secret)
-					if err := bcrypt.CompareHashAndPassword([]byte(user.Secret), []byte(secret)); err == nil {
-						password := r.Form.Get("password")
-						password2 := r.Form.Get("password2")
-						if password != "" && password == password2 {
-							fmt.Println("Account reclaim: Setting password")
-							hash, err := bcrypt.GenerateFromPassword([]byte(password), 12)
-							if err == nil {
-								user.Password = string(hash)
-								user.Secret = ""
-								user.Save()
-							}
-							http.Redirect(w, r, "/account/reclaim/done", http.StatusFound)
-							return
-						} else {
-							fmt.Println("Account reclaim: Redirecting to password form")
-							http.Redirect(w, r, "/account/reclaim?email="+email+"&secret="+secret, http.StatusFound)
-							return
-						}
-						return
-					} else {
-						fmt.Println("Account reclaim: Incorrect:", err)
-						http.Redirect(w, r, "/account/reclaim/incorrect", http.StatusFound)
-						return
-					}
-				}
-
+			if user == nil {
+				fmt.Println("Account reclaim: Unknown user:", email)
+				http.Redirect(w, r, "/account/reclaim/nouser", http.StatusFound)
+				return
+			}
+			if secret == "" {
 				secret := user.GenerateSecret()
 				sendSecretEmail(user, secret)
 				http.Redirect(w, r, "/account/reclaim/sent", http.StatusFound)
 				return
 			}
-			http.Redirect(w, r, "/login", http.StatusFound)
-			return
-		} else if r.Method == "GET" {
-			if user != nil && secret != "" {
-				fmt.Println("Account reclaim: Comparing secret", secret)
-				fmt.Println("Account reclaim: Against hash", user.Secret)
-				if err := bcrypt.CompareHashAndPassword([]byte(user.Secret), []byte(secret)); err == nil {
-					fmt.Println("Account reclaim: Showing password form")
-					data := ReclaimFormData{
-						Email:  email,
-						Secret: secret,
+
+			fmt.Println("Account reclaim: Comparing secret", secret)
+			fmt.Println("Account reclaim: Against hash", user.Secret)
+			if err := bcrypt.CompareHashAndPassword([]byte(user.Secret), []byte(secret)); err == nil {
+				password := r.Form.Get("password")
+				password2 := r.Form.Get("password2")
+				if password != "" && password == password2 {
+					fmt.Println("Account reclaim: Setting password")
+					hash, err := bcrypt.GenerateFromPassword([]byte(password), 12)
+					if err == nil {
+						user.Password = string(hash)
+						user.Secret = ""
+						user.Save()
 					}
-					t, _ := template.ParseFiles("../view/account_reclaim_set_password.html")
-					t.Execute(w, data)
-					// http.ServeFile(w, r, "../view/account_reclaim_set_password.html")
+					http.Redirect(w, r, "/account/reclaim/done", http.StatusFound)
 					return
 				} else {
-					fmt.Println("Account reclaim: Incorrect:", err)
-					http.Redirect(w, r, "/account/reclaim/incorrect", http.StatusFound)
+					fmt.Println("Account reclaim: Redirecting to password form")
+					http.Redirect(w, r, "/account/reclaim?email="+email+"&secret="+secret, http.StatusFound)
 					return
 				}
+				return
+			} else {
+				fmt.Println("Account reclaim: Incorrect:", err)
+				http.Redirect(w, r, "/account/reclaim/incorrect", http.StatusFound)
+				return
+			}
+		} else if r.Method == "GET" {
+			if secret == "" {
+				http.ServeFile(w, r, "../view/account_reclaim.html")
+				return
 			}
 
-			http.ServeFile(w, r, "../view/account_reclaim.html")
-			return
+			if user == nil {
+				fmt.Println("Account reclaim: Unknown user:", email)
+				http.Redirect(w, r, "/account/reclaim/nouser", http.StatusFound)
+				return
+			}
+
+			fmt.Println("Account reclaim: Comparing secret", secret)
+			fmt.Println("Account reclaim: Against hash", user.Secret)
+			if err := bcrypt.CompareHashAndPassword([]byte(user.Secret), []byte(secret)); err == nil {
+				fmt.Println("Account reclaim: Showing password form")
+				data := ReclaimFormData{
+					Email:  email,
+					Secret: secret,
+				}
+				t, _ := template.ParseFiles("../view/account_reclaim_set_password.html")
+				t.Execute(w, data)
+				// http.ServeFile(w, r, "../view/account_reclaim_set_password.html")
+				return
+			} else {
+				fmt.Println("Account reclaim: Incorrect:", err)
+				http.Redirect(w, r, "/account/reclaim/incorrect", http.StatusFound)
+				return
+			}
 		}
 	}
 
@@ -215,12 +227,7 @@ func (h *AuthHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 }
 
 func sendSecretEmail(user *model.User, secret string) {
-	host := "localhost:8080"
-	// secret := user.Secret
-	// if secret == "" {
-	// 	secret = control.RandomSecret()
-	// 	user.Secret = secret
-	// }
+	host := "localhost:9091"
 	email := user.Email
 
 	msg := `

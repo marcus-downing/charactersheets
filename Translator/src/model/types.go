@@ -212,7 +212,7 @@ func GetUsers() []*User {
 }
 
 func GetUserByEmail(email string) *User {
-	result := query("select Email, Password, Secret, Name, IsAdmin, Language from Users order by IsAdmin desc, Language asc, Name asc").row(parseUser)
+	result := query("select Email, Password, Secret, Name, IsAdmin, Language from Users where Email = ?", email).row(parseUser)
 	if user, ok := result.(User); ok {
 		return &user
 	}

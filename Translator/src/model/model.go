@@ -181,7 +181,7 @@ func (user *User) GenerateSecret() string {
 		return ""
 	}
 	secret := string(bytes)
-	secret = secret[7:]
+	// secret = secret[7:]
 	fmt.Println("Generate secret:", secret)
 
 	hash, err := bcrypt.GenerateFromPassword([]byte(secret), 12)
@@ -191,8 +191,6 @@ func (user *User) GenerateSecret() string {
 	fmt.Println("Generate secret: hash:", string(hash))
 	user.Secret = string(hash)
 	user.Save()
-
-	// time.Sleep(5000 * time.Millisecond)
 
 	return secret
 }
