@@ -13,11 +13,12 @@ import (
 	"net/http"
 	"path"
 	"strings"
+	"time"
 	"strconv"
 )
 
 const(
-	PageSize = 10
+	PageSize = 20
 )
 
 func SourcesHandler(w http.ResponseWriter, r *http.Request) {
@@ -55,8 +56,11 @@ func TranslationHandler(w http.ResponseWriter, r *http.Request) {
 	})
 }
 
-func importMasterData(data []map[string]string, clean bool) {
+func importMasterData(data []map[string]string) {
+	sleepTime, _ := time.ParseDuration("5ms")
+	fmt.Println("Importing", len(data), "master records")
 	for _, record := range data {
+		// fmt.Println("Inserting translation:", record["Original"], ";", record["Part of"])
 		entry := &model.Entry{
 			Original: record["Original"],
 			PartOf:   record["Part of"],
@@ -84,17 +88,40 @@ func importMasterData(data []map[string]string, clean bool) {
 			Count: count,
 		}
 		entrySource.Save()
+		time.Sleep(sleepTime)
 	}
+	fmt.Println("Import complete")
 }
 
-func importTranslationData(data []map[string]string, clean bool) {
-
+func importTranslationData(data []map[string]string, language string, translator *model.User) {
+	sleepTime, _ := time.ParseDuration("5ms")
+	fmt.Println("Importing", len(data), "translation records")
+	num := 0
+	for _, record := range data {
+		t := record["Translation"]
+		if t == "" {
+			continue;
+		}
+		translation := &model.Translation{
+			Entry: model.Entry{
+				Original: record["Original"],
+				PartOf:   record["Part of"],
+			},
+			Language:     language,
+			Translation:  t,
+			Translator:   translator.Email,
+		}
+		translation.Save()
+		time.Sleep(sleepTime)
+		num++
+	}
+	fmt.Println("Import complete:", num, "of", len(data))
 }
 
 func ImportHandler(w http.ResponseWriter, r *http.Request) {
 	if r.Method == "POST" {
 		fmt.Println("POST import")
-		clean := r.FormValue("clean-import") == "on"
+		// clean := r.FormValue("clean-import") == "on"
 		importType := r.FormValue("type")
 		if importType != "master" && importType != "translations" {
 			fmt.Println("Missing type")
@@ -123,14 +150,17 @@ func ImportHandler(w http.ResponseWriter, r *http.Request) {
 		fmt.Println("Found", len(data), "lines")
 
 		if importType == "master" {
-			go importMasterData(data, clean)
+			go importMasterData(data)
 		} else {
-			go importTranslationData(data, clean)
+			language := r.FormValue("language")
+			translator := model.GetUserByEmail(r.FormValue("translator"))
+			go importTranslationData(data, language, translator)
 		}
 
 		http.Redirect(w, r, "/import/done", 303)
 	} else {
 		renderTemplate("import", w, r, func(data TemplateData) TemplateData {
+			data.Users = model.GetUsers()
 			return data
 		})
 	}

@@ -38,7 +38,7 @@ func (entry *Entry) Save() {
 		"PartOf":   entry.PartOf,
 	}
 	fields := map[string]interface{}{}
-	saveRecord("Entries", keyfields, fields, nil)
+	saveRecord("Entries", keyfields, fields)
 }
 
 // ** Sources
@@ -74,12 +74,12 @@ func (source *Source) Save() {
 		"Filepath": source.Filepath,
 	}
 	fields := map[string]interface{}{
-		"Page": source.Page,
+		"Page":   source.Page,
 		"Volume": source.Volume,
-		"Level": source.Level,
-		"Game": source.Game,
+		"Level":  source.Level,
+		"Game":   source.Game,
 	}
-	saveRecord("Sources", keyfields, fields, nil)
+	saveRecord("Sources", keyfields, fields)
 }
 
 type EntrySource struct {
@@ -95,7 +95,7 @@ func parseEntrySource(rows *sql.Rows) (Result, error) {
 }
 
 func GetEntrySources() []*EntrySource {
-	results := query("select EntryOriginal, EntryPartOf, SourcePath, Sources.Page, Sources.Volume, Sources.Level, Sources.Game, Count "+
+	results := query("select EntryOriginal, EntryPartOf, SourcePath, Sources.Page, Sources.Volume, Sources.Level, Sources.Game, Count " +
 		"from EntrySources inner join Sources on EntrySources.SourcePath = Sources.Filepath").rows(parseEntrySource)
 
 	sources := make([]*EntrySource, len(results))
@@ -125,12 +125,12 @@ func (es *EntrySource) Save() {
 	keyfields := map[string]interface{}{
 		"EntryOriginal": es.Entry.Original,
 		"EntryPartOf":   es.Entry.PartOf,
-		"SourcePath": es.Source.Filepath,
+		"SourcePath":    es.Source.Filepath,
 	}
 	fields := map[string]interface{}{
 		"Count": es.Count,
 	}
-	saveRecord("EntrySources", keyfields, fields, nil)
+	saveRecord("EntrySources", keyfields, fields)
 }
 
 // ** Translations
@@ -170,6 +170,19 @@ func GetPartTranslations(original, partOf, language string) []*Translation {
 	return translations
 }
 
+func (translation *Translation) Save() {
+	keyfields := map[string]interface{}{
+		"EntryOriginal": translation.Entry.Original,
+		"EntryPartOf":   translation.Entry.PartOf,
+		"Language":      translation.Language,
+		"Translator":    translation.Translator,
+	}
+	fields := map[string]interface{}{
+		"Translation": translation.Translation,
+	}
+	saveRecord("Translations", keyfields, fields)
+}
+/*
 func AddTranslation(entry *Entry, language, translation string, translator *User) {
 	keyfields := map[string]interface{}{
 		"EntryOriginal": entry.Original,
@@ -180,28 +193,29 @@ func AddTranslation(entry *Entry, language, translation string, translator *User
 	fields := map[string]interface{}{
 		"Translation": translation,
 	}
-	saveRecord("Translations", keyfields, fields, nil)
-}
+	saveRecord("Translations", keyfields, fields)
+}*/
 
 // ** Users
 
 type User struct {
-	Email    string
-	Password string
-	Secret   string
-	Name     string
-	IsAdmin  bool
-	Language string
+	Email          string
+	Password       string
+	Secret         string
+	Name           string
+	IsAdmin        bool
+	Language       string
+	IsLanguageLead bool
 }
 
 func parseUser(rows *sql.Rows) (Result, error) {
 	u := User{}
-	err := rows.Scan(&u.Email, &u.Password, &u.Secret, &u.Name, &u.IsAdmin, &u.Language)
+	err := rows.Scan(&u.Email, &u.Password, &u.Secret, &u.Name, &u.IsAdmin, &u.Language, &u.IsLanguageLead)
 	return u, err
 }
 
 func GetUsers() []*User {
-	results := query("select Email, Password, Secret, Name, IsAdmin, Language from Users order by IsAdmin desc, Language asc, Name asc").rows(parseUser)
+	results := query("select Email, Password, Secret, Name, IsAdmin, Language, IsLanguageLead from Users order by IsAdmin desc, Language asc, Name asc").rows(parseUser)
 	users := make([]*User, len(results))
 	for i, result := range results {
 		if user, ok := result.(User); ok {
@@ -212,11 +226,22 @@ func GetUsers() []*User {
 }
 
 func GetUserByEmail(email string) *User {
-	result := query("select Email, Password, Secret, Name, IsAdmin, Language from Users where Email = ?", email).row(parseUser)
+	result := query("select Email, Password, Secret, Name, IsAdmin, Language, IsLanguageLead from Users where Email = ?", email).row(parseUser)
 	if user, ok := result.(User); ok {
 		return &user
 	}
 	return nil
+}
+
+func GetUsersByLanguage(language string) []*User {
+	results := query("select Email, Password, Secret, Name, IsAdmin, Language, IsLanguageLead from Users where Language = ? order by IsLanguageLead desc, Name asc").rows(parseUser)
+        users := make([]*User, len(results))
+        for i, result := range results {
+                if user, ok := result.(User); ok {
+                        users[i] = &user
+                }
+        }
+        return users
 }
 
 func (user *User) Save() bool {
@@ -230,7 +255,7 @@ func (user *User) Save() bool {
 		"IsAdmin":  user.IsAdmin,
 		"Language": user.Language,
 	}
-	return saveRecord("Users", keyfields, fields, nil)
+	return saveRecord("Users", keyfields, fields)
 }
 
 // ** Comments

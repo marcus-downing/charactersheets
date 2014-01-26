@@ -95,6 +95,8 @@
 	<div class='panel-body'>
 		<p><img src='http://www.gravatar.com/avatar/{{ md5 .CurrentUser.Email }}?s=32'>&nbsp; <b>{{ .CurrentUser.Name }}</b></p>
 		<p>Preferred language: &nbsp; <img src='/images/flags/{{.CurrentUser.Language}}.png'> {{ index .LanguageNames .CurrentUser.Language }}</p>
+		{{ if .CurrentUser.IsLanguageLead }}<p><span class='glyphicon glyphicon-chevron-up'></span>&nbsp; You are language lead for {{ index .LanguageNames .CurrentUser.Language }}</p>{{ end }}
+		{{ if .CurrentUser.IsAdmin }}<p><span class='glyphicon glyphicon-star'></span>&nbsp; You are administrator</p>{{ end }}
 	</div>
 	<div class="panel-footer">
 		<a class='btn btn-link btn-sm' href='/account'><span class="glyphicon glyphicon-user"></span>&nbsp; Account settings</a> &nbsp; 
@@ -106,13 +108,15 @@
 
 {{ if .IsAdmin }}
 <div class='panel panel-info'>
-	<div class="panel-heading"><h3 class="panel-title"><span class="glyphicon glyphicon-user"></span>&nbsp; Logged in users</h3></div>
+	<div class="panel-heading"><h3 class="panel-title"><span class="glyphicon glyphicon-user"></span>&nbsp; Recent users</h3></div>
 	<table class='table'>
+	{{ range $loggedin := .LoggedInUsers }}
 	<tr>
-		<td><img src='http://www.gravatar.com/avatar/85da34890f23a1fbd629bacc8b6bb81a?s=32'></td>
-		<td>Marcus Downing</td>
-		<td><img src='/images/flags/gb.png'></td>
+		<td><img src='http://www.gravatar.com/avatar/{{ md5 $loggedin.User.Email }}?s=32'></td>
+		<td>{{ $loggedin.User.Name }}<br/>{{ $loggedin.LoggedInFor }}</td>
+		<td><img src='/images/flags/{{ $loggedin.User.Language }}.png'></td>
 	</tr>
+	{{ end }}
 	</table>
 	<div class="panel-footer">
 		<a class='btn btn-primary btn-sm' href='/users/add'><span class="glyphicon glyphicon-plus"></span> <span class="glyphicon glyphicon-user"></span>&nbsp; Add a user</a> 

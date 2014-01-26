@@ -14,6 +14,7 @@ import (
 	"math"
 	"strings"
 	"strconv"
+	"time"
 )
 
 type TemplateData struct {
@@ -21,6 +22,7 @@ type TemplateData struct {
 	CurrentUser     *model.User
 	IsAdmin         bool
 	CurrentLanguage string
+	RecentUsers     []RecentUser
 
 	Page               *Pagination
 	Languages          []string
@@ -124,6 +126,18 @@ func GetCurrentUser(r *http.Request) *model.User {
 
 func GetTemplateData(r *http.Request, bodyClass string) TemplateData {
 	currentUser := GetCurrentUser(r)
+	recentUsers := GetRecentUsers()
+
+	if currentUser == nil {
+		return TemplateData{
+		BodyClass:       bodyClass,
+		IsAdmin:         false,
+		CurrentLanguage: "gb",
+		Languages:       model.Languages,
+		LanguageNames:   model.LanguageNames,
+		RecentUsers:	 recentUsers,
+		}
+	}
 	return TemplateData{
 		BodyClass:       bodyClass,
 		CurrentUser:     currentUser,
@@ -131,7 +145,25 @@ func GetTemplateData(r *http.Request, bodyClass string) TemplateData {
 		CurrentLanguage: currentUser.Language,
 		Languages:       model.Languages,
 		LanguageNames:   model.LanguageNames,
+		RecentUsers:	 recentUsers,
 	}
+}
+
+func DurString(dur time.Duration) string {
+	minutes := int(dur.Minutes())
+	hours := int(dur.Hours())
+	days := int(hours / 24);
+
+	if days > 0 {
+		return fmt.Sprintf("%d days ago", days)
+	}
+	if hours > 0 {
+		return fmt.Sprintf("%d hours ago", hours)
+	}
+	if minutes > 0 {
+		return fmt.Sprintf("%d minutes ago", minutes)
+	}
+	return "just now"
 }
 
 func percentColour(pc int) string {
@@ -212,4 +244,48 @@ func renderTemplate(name string, w http.ResponseWriter, r *http.Request, datapro
 		fmt.Fprint(w, "Error:", err)
 		fmt.Println("Error:", err)
 	}
+}
+
+
+
+//  Recent users
+
+type RecentUser struct {
+	User         *model.User
+	LoggedInFor  string
+}
+
+var recentUsers map[string]time.Time = make(map[string]time.Time, 100)
+
+func PingUser(email string) {
+	recentUsers[email] = time.Now()
+}
+
+func PingCurrentUser(r *http.Request) {
+	session := seshcookie.Session.Get(r)
+	if session == nil {
+		return
+	}
+	if id, ok := session["user"].(string); ok && id != "" {
+		recentUsers[id] = time.Now()
+	}
+}
+
+func GetRecentUsers() []RecentUser {
+	threshold, _ := time.ParseDuration("168h")  // 7 days
+	recent := make([]RecentUser, 0, len(recentUsers))
+	for email, t := range recentUsers {
+		user := model.GetUserByEmail(email)
+		if user == nil {
+			continue;
+		}
+		dur := time.Since(t)
+		if dur.Hours() > threshold.Hours() {
+			continue;
+		}
+
+		durstr := DurString(dur)
+		recent = append(recent, RecentUser{user, durstr})
+	}
+	return recent
 }

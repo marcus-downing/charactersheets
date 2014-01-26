@@ -194,3 +194,12 @@ func (user *User) GenerateSecret() string {
 
 	return secret
 }
+
+func (user *User) SetLanguageLead() {
+	query("update Users set IsLanguageLead = 0 where Language = ?", user.Language).exec()
+	query("update Users set IsLanguageLead = 1 where Email = ?", user.Email).exec()
+}
+
+func (user *User) ClearLanguageLead() {
+	query("update Users set IsLanguageLead = 0 where Email = ?", user.Email).exec()
+}

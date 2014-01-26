@@ -11,6 +11,7 @@
 
 	<thead>
 		<tr>
+			<td colspan='3'>Language</td>
 			<td></td>
 			<td>User</td>
 			{{ if $isAdmin }}<td>Email</td>{{ end }}
@@ -22,7 +23,11 @@
 	{{ range .Users }}
 
 	<tr>
-		<td><img src='/images/flags/{{ .Language }}.png'>{{ if .IsAdmin }} &nbsp; <span class='glyphicon glyphicon-star'></span>{{ end }}</td>
+		<td><img src='/images/flags/{{ .Language }}.png'></td>
+		<td>{{ if .IsLanguageLead }}<span class='glyphicon glyphicon-chevron-up'></span>{{ end }}</td>
+		<td>{{ if $isAdmin }}<a class='api' href='/api/setlead?user={{ .Email }}'><span class='glyphicon glyphicon-arrow-up'></span></a>{{ end }}
+			{{ if $isAdmin }}<a class='api' href='/api/clearlead?user={{ .Email }}'><span class='glyphicon glyphicon-arrow-down'></span></a>{{ end }}</td>
+		<td>{{ if .IsAdmin }}<span class='glyphicon glyphicon-star'></span>{{ end }}</td>
 		<td><img src='http://www.gravatar.com/avatar/{{ md5 .Email }}?s=24'>&nbsp; {{ .Name }}</td>
 		{{ if $isAdmin }}<td><a href='mailto:{{ .Email }}'>{{ .Email }}</a></td>{{ end }}
 		<td>...</td>

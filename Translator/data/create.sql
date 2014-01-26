@@ -56,5 +56,6 @@ create table Users (
 	Secret varchar(255) not null,
 	Name varchar(255) not null,
 	IsAdmin boolean not null,
-	Language char(2) not null
+	Language char(2) not null,
+	IsLanguageLead boolean not null
 );

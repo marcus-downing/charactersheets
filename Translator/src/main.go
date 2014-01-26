@@ -15,6 +15,7 @@ import (
 
 const SESSIONKEY = "93Yb8c59aASAf3kfT5xU8wz2GmfP4CbSNdhuvLxAdUqZnThbxuAAZu5AVWUrpsmXz47SYnvDcqr7TfNgLP8CpEpAmzGXNvMu72Scd4EAZGuepTQ7kWENemqr"
 
+
 func main() {
 	fmt.Println("Starting web server")
 
@@ -32,6 +33,8 @@ func main() {
 	handler.HandleFunc("/account/password", control.SetPasswordHandler)
 	handler.HandleFunc("/account/reclaim", control.AccountReclaimHandler)
 
+	handler.HandleFunc("/api/setlead", control.APISetLeadHandler)
+	handler.HandleFunc("/api/clearlead", control.APIClearLeadHandler)
 	handler.HandleFunc("/api/master", control.APIMasterHandler)
 	handler.HandleFunc("/api/translate", control.APITranslateHandler)
 
@@ -110,11 +113,15 @@ func (h *AuthHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 
-		fmt.Printf("Authorized %s\n", user)
+		fmt.Printf("Authorized %s\n", user.Name)
+		control.PingUser(user.Email)
 		session["user"] = user.Email
 		http.Redirect(w, r, "/home", http.StatusFound)
 		return
 	case "/logout":
+		if email, ok := session["user"].(string); ok {
+			fmt.Printf("Logging out %s\n", email)
+		}
 		delete(session, "user")
 		http.Redirect(w, r, "/login", http.StatusFound)
 		return
@@ -223,6 +230,7 @@ func (h *AuthHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	}
 
 	fmt.Println("Delivering")
+	control.PingCurrentUser(r)
 	h.Handler.ServeHTTP(w, r)
 }
 
@@ -230,8 +238,8 @@ func sendSecretEmail(user *model.User, secret string) {
 	host := "localhost:9091"
 	email := user.Email
 
-	msg := `
-Subject: Your account at the Character Sheets Translator
+	msg := `Subject: Your account at the Character Sheets Translator
+Content-Type: text/plain; charset="UTF-8"
 
 To set your password, click here:
 

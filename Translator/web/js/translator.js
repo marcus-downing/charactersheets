@@ -17,4 +17,11 @@ jQuery(function ($) {
 	pageOptions.find("input, select").change(function () {
 		pageOptions.submit();
 	});
+
+	$("a.api").click(function () {
+		var a = $(this);
+		var href = a.attr('href');
+		$.get(href);
+		return false;
+	});
 });
