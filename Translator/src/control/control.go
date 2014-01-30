@@ -12,8 +12,8 @@ import (
 	"net/http"
 	// "net/url"
 	"math"
-	"strings"
 	"strconv"
+	"strings"
 	"time"
 )
 
@@ -35,29 +35,29 @@ type TemplateData struct {
 }
 
 type Pagination struct {
-	Page      int
-	Size      int
+	Page int
+	Size int
 
-	Offset    int
-	Slice     int
+	Offset int
+	Slice  int
 
-	PrevPage  int
-	NextPage  int
-	LastPage  int
+	PrevPage int
+	NextPage int
+	LastPage int
 
-	Url       string
+	Url string
 }
 
 func Paginate(r *http.Request, size, datasize int) *Pagination {
 	page, err := strconv.Atoi(r.FormValue("page"))
-	if err !=  nil {
+	if err != nil {
 		page = 1
 	}
 	fmt.Println("Paginating: page", page, "size =", size, "data size =", datasize)
 	if page < 1 {
 		page = 1
 	}
-	lastPage := int(math.Floor(float64(datasize) / float64(size)) + 1)
+	lastPage := int(math.Floor(float64(datasize)/float64(size)) + 1)
 	if page > lastPage {
 		page = lastPage
 	}
@@ -88,13 +88,13 @@ func Paginate(r *http.Request, size, datasize int) *Pagination {
 		Size: size,
 
 		Offset: offset,
-		Slice: slice,
+		Slice:  slice,
 
 		PrevPage: prevPage,
 		NextPage: nextPage,
 		LastPage: lastPage,
 
-		Url:   baseUrl.String(),
+		Url: baseUrl.String(),
 	}
 }
 
@@ -130,12 +130,12 @@ func GetTemplateData(r *http.Request, bodyClass string) TemplateData {
 
 	if currentUser == nil {
 		return TemplateData{
-		BodyClass:       bodyClass,
-		IsAdmin:         false,
-		CurrentLanguage: "gb",
-		Languages:       model.Languages,
-		LanguageNames:   model.LanguageNames,
-		RecentUsers:	 recentUsers,
+			BodyClass:       bodyClass,
+			IsAdmin:         false,
+			CurrentLanguage: "gb",
+			Languages:       model.Languages,
+			LanguageNames:   model.LanguageNames,
+			RecentUsers:     recentUsers,
 		}
 	}
 	return TemplateData{
@@ -145,14 +145,14 @@ func GetTemplateData(r *http.Request, bodyClass string) TemplateData {
 		CurrentLanguage: currentUser.Language,
 		Languages:       model.Languages,
 		LanguageNames:   model.LanguageNames,
-		RecentUsers:	 recentUsers,
+		RecentUsers:     recentUsers,
 	}
 }
 
 func DurString(dur time.Duration) string {
 	minutes := int(dur.Minutes())
 	hours := int(dur.Hours())
-	days := int(hours / 24);
+	days := int(hours / 24)
 
 	if days > 0 {
 		return fmt.Sprintf("%d days ago", days)
@@ -184,21 +184,68 @@ func md5sum(email string) string {
 	return hex.EncodeToString(hasher.Sum(nil))
 }
 
-func translateEntry(original, partOf, language string) string {
-	translations := model.GetPartTranslations(original, partOf, language)
-	// fmt.Println("Found", len(translations), "translations of:", original)
-	if len(translations) > 0 {
-		return translations[len(translations)-1].Translation
+// func translateEntry(entry *model.StackedEntry, language string) string {
+// 	translations := entry.GetTranslations(language)
+// 	// fmt.Println("Found", len(translations), "translations of:", original)
+// 	if len(translations) > 0 {
+// 		return translations[len(translations)-1].Translation
+// 	}
+// 	return ""
+// }
+
+func myTranslation(entry *model.StackedEntry, language string, me *model.User) *model.StackedTranslation {
+	translation := entry.GetTranslationBy(language, me.Email)
+	if translation == nil {
+		parts := make([]*model.Translation, len(entry.Entries))
+		for i, e := range entry.Entries {
+			parts[i] = &model.Translation{
+				Entry:       *e,
+				Language:    language,
+				Translation: "",
+				Translator:  me.Email,
+			}
+		}
+		st := model.StackedTranslation{
+			Entry:      entry,
+			Language:   language,
+			Translator: me.Email,
+			Parts:      parts,
+			Count:      len(parts),
+		}
+		return &st
 	}
-	return ""
+	return translation
+}
+
+func otherTranslations(entry *model.StackedEntry, language string, me *model.User) []*model.StackedTranslation {
+	translations := entry.GetTranslations(language)
+	otherTranslations := make([]*model.StackedTranslation, 0, len(translations))
+	for _, translation := range translations {
+		if translation != nil && translation.Translator != me.Email {
+			otherTranslations = append(otherTranslations, translation)
+		}
+	}
+	return otherTranslations
+}
+
+func entryClass(entry *model.StackedEntry, language string, me *model.User) string {
+	classes := make([]string, 0, 20)
+
+	translations := entry.GetTranslations(language)
+	if len(translations) == 0 {
+		classes = append(classes, "untranslated")
+	}
+
+	//  TODO more classes
+	return strings.Join(classes, " ")
 }
 
 func paginateTemplate(page *Pagination) template.HTML {
 	url := page.Url
 	if strings.Index(url, "?") != -1 {
-		url = url+"&"
+		url = url + "&"
 	} else {
-		url = url+"?"
+		url = url + "?"
 	}
 
 	format := "<a href='%spage=%d' class='btn btn-default'>%s</a>"
@@ -217,14 +264,16 @@ func paginateTemplate(page *Pagination) template.HTML {
 		last = fmt.Sprintf(format, url, page.LastPage, "Last <span class='glyphicon glyphicon-arrow-right'></span>")
 	}
 
-	return template.HTML("<span class='pagination'>"+first+back+next+last+"</span>")
+	return template.HTML("<span class='pagination'>" + first + back + next + last + "</span>")
 }
 
 var templateFuncs = template.FuncMap{
-	"percentColour": percentColour,
-	"md5":           md5sum,
-	"translate": translateEntry,
-	"pagination": paginateTemplate,
+	"percentColour":     percentColour,
+	"md5":               md5sum,
+	"otherTranslations": otherTranslations,
+	"myTranslation":     myTranslation,
+	"entryClass":        entryClass,
+	"pagination":        paginateTemplate,
 }
 
 func renderTemplate(name string, w http.ResponseWriter, r *http.Request, dataproc func(data TemplateData) TemplateData) {
@@ -246,13 +295,11 @@ func renderTemplate(name string, w http.ResponseWriter, r *http.Request, datapro
 	}
 }
 
-
-
 //  Recent users
 
 type RecentUser struct {
-	User         *model.User
-	LoggedInFor  string
+	User        *model.User
+	LoggedInFor string
 }
 
 var recentUsers map[string]time.Time = make(map[string]time.Time, 100)
@@ -272,16 +319,16 @@ func PingCurrentUser(r *http.Request) {
 }
 
 func GetRecentUsers() []RecentUser {
-	threshold, _ := time.ParseDuration("168h")  // 7 days
+	threshold, _ := time.ParseDuration("168h") // 7 days
 	recent := make([]RecentUser, 0, len(recentUsers))
 	for email, t := range recentUsers {
 		user := model.GetUserByEmail(email)
 		if user == nil {
-			continue;
+			continue
 		}
 		dur := time.Since(t)
 		if dur.Hours() > threshold.Hours() {
-			continue;
+			continue
 		}
 
 		durstr := DurString(dur)

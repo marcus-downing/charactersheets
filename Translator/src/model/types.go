@@ -159,8 +159,8 @@ func GetTranslations() []*Translation {
 	return translations
 }
 
-func GetPartTranslations(original, partOf, language string) []*Translation {
-	results := query("select EntryOriginal, EntryPartOf, Language, Translation, Translator from Translations where EntryOriginal = ? and EntryPartOf = ? and Language = ?", original, partOf, language).rows(parseTranslation)
+func (entry *Entry) GetTranslations(language string) []*Translation {
+	results := query("select EntryOriginal, EntryPartOf, Language, Translation, Translator from Translations where EntryOriginal = ? and EntryPartOf = ? and Language = ?", entry.Original, entry.PartOf, language).rows(parseTranslation)
 	translations := make([]*Translation, len(results))
 	for i, result := range results {
 		if translation, ok := result.(Translation); ok {
@@ -168,6 +168,14 @@ func GetPartTranslations(original, partOf, language string) []*Translation {
 		}
 	}
 	return translations
+}
+
+func (entry *Entry) GetTranslationBy(language, translator string) *Translation {
+	result := query("select EntryOriginal, EntryPartOf, Language, Translation, Translator from Translations where EntryOriginal = ? and EntryPartOf = ? and Language = ? and Translator = ?", entry.Original, entry.PartOf, language, translator).row(parseTranslation)
+	if translation, ok := result.(Translation); ok {
+		return &translation
+	}
+	return nil
 }
 
 func (translation *Translation) Save() {
@@ -182,6 +190,7 @@ func (translation *Translation) Save() {
 	}
 	saveRecord("Translations", keyfields, fields)
 }
+
 /*
 func AddTranslation(entry *Entry, language, translation string, translator *User) {
 	keyfields := map[string]interface{}{
@@ -235,13 +244,13 @@ func GetUserByEmail(email string) *User {
 
 func GetUsersByLanguage(language string) []*User {
 	results := query("select Email, Password, Secret, Name, IsAdmin, Language, IsLanguageLead from Users where Language = ? order by IsLanguageLead desc, Name asc").rows(parseUser)
-        users := make([]*User, len(results))
-        for i, result := range results {
-                if user, ok := result.(User); ok {
-                        users[i] = &user
-                }
-        }
-        return users
+	users := make([]*User, len(results))
+	for i, result := range results {
+		if user, ok := result.(User); ok {
+			users[i] = &user
+		}
+	}
+	return users
 }
 
 func (user *User) Save() bool {

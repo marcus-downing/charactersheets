@@ -23,6 +23,13 @@
 
 
 
+#form-translate tr.untranslated td {
+  background: #fff0c0;
+}
+
+#form-translate td.original {
+  width: 50%;
+}
 
 #form-translate td.translation {
   min-width: 300px;
@@ -31,6 +38,10 @@
 
 #form-translate td, #form-translate th {
   vertical-align: middle;
+}
+
+p.other-translation {
+  margin-bottom: 4px;
 }
 
 

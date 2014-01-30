@@ -43,7 +43,7 @@ func APITranslateHandler(w http.ResponseWriter, r *http.Request) {
 	}
 	fmt.Println("Adding", language, "translation for:", entry.Original)
 
-	t := &model.Translation{ entry, language, translation, user.Email }
+	t := &model.Translation{entry, language, translation, user.Email}
 	t.Save()
 
 	fmt.Fprint(w, "OK")

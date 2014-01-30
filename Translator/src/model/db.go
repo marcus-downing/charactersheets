@@ -8,11 +8,11 @@ import (
 	_ "github.com/ziutek/mymysql/godrv"
 )
 
-const(
-	dbname = "chartrans"
-	dbuser = "chartrans"
+const (
+	dbname     = "chartrans"
+	dbuser     = "chartrans"
 	dbpassword = "fiddlesticks"
-	debug = false
+	debug      = false
 )
 
 //  users
@@ -62,11 +62,10 @@ func (query Query) exists() bool {
 		fmt.Println("Exists:", query.sql, query.args)
 	}
 	exists := false
-	WithDB(func (db *sql.Tx) {
+	WithDB(func(db *sql.Tx) {
 		rows, err := db.Query(query.sql, query.args...)
 		if err != nil {
 			fmt.Println("Exists: error:", err)
-			exists = false
 			return
 		}
 		exists = rows.Next()
@@ -75,12 +74,31 @@ func (query Query) exists() bool {
 	return exists
 }
 
+func (query Query) count() int {
+	if debug {
+		fmt.Println("Count:", query.sql, query.args)
+	}
+	count := 0
+	WithDB(func(db *sql.Tx) {
+		rows, err := db.Query(query.sql, query.args...)
+		if err != nil {
+			fmt.Println("Count: error:", err)
+			return
+		}
+		if rows.Next() {
+			rows.Scan(&count)
+		}
+		rows.Close()
+	})
+	return count
+}
+
 func (query Query) exec() bool {
 	if debug {
 		fmt.Println("Exec:", query.sql, query.args)
 	}
 	success := false
-	WithDB(func (db *sql.Tx) {
+	WithDB(func(db *sql.Tx) {
 		_, err := db.Exec(query.sql, query.args...)
 		if err != nil {
 			fmt.Println("Error executing:", err)
@@ -96,7 +114,7 @@ func (query Query) rows(f func(*sql.Rows) (Result, error)) []Result {
 		fmt.Println("Query:", query.sql, query.args)
 	}
 	results := make([]Result, 0, 100)
-	WithDB(func (db *sql.Tx) {
+	WithDB(func(db *sql.Tx) {
 		rows, err := db.Query(query.sql, query.args...)
 		if err != nil {
 			fmt.Println("Error querying database:", err)
@@ -124,7 +142,7 @@ func (query Query) row(f func(*sql.Rows) (Result, error)) Result {
 		fmt.Println("Query:", query.sql, query.args)
 	}
 	var result Result = nil
-	WithDB(func (db *sql.Tx) {
+	WithDB(func(db *sql.Tx) {
 		rows, err := db.Query(query.sql, query.args...)
 		if err != nil {
 			fmt.Println("Error querying database:", err)

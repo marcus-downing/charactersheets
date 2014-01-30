@@ -48,21 +48,39 @@ func ExportCSV() {
 
 func GetLanguageCompletion() map[string][4]int {
 	var completion = make(map[string][4]int, len(Languages))
+	var totals [4]int
+	for i := 1; i <= 4; i++ {
+		totals[i-1] = query("select count(distinct Original, PartOf) from Entries "+
+			"inner join EntrySources on Original = EntryOriginal and PartOf = EntryPartOf "+
+			"inner join Sources on SourcePath = Filepath "+
+			"where Level = ?", i).count()
+	}
+
 	for _, lang := range Languages {
-		if lang == "gb" || lang == "us" {
+		if lang == "gb" {
 			completion[lang] = [4]int{100, 100, 100, 100}
 		} else {
-			completion[lang] = [4]int{90, 60, 40, 20}
+			var values [4]int
+			for i := 1; i <= 4; i++ {
+				count := query("select count(distinct Translations.EntryOriginal, Translations.EntryPartOf) from Translations "+
+					"inner join EntrySources on Translations.EntryOriginal = EntrySources.EntryOriginal and Translations.EntryPartOf = EntrySources.EntryPartOf "+
+					"inner join Sources on SourcePath = Filepath "+
+					"where Level = ? and Language = ?", i, lang).count()
+				if totals[i-1] > 0 {
+					values[i-1] = 100 * count / totals[i-1]
+				}
+			}
+			completion[lang] = values
 		}
 	}
 	return completion
 }
 
 type StackedEntry struct {
-	FullText string
-	Entries  []*Entry
-	EntrySources  []*EntrySource
-	Count int
+	FullText     string
+	Entries      []*Entry
+	EntrySources []*EntrySource
+	Count        int
 }
 
 func GetStackedEntries() []*StackedEntry {
@@ -70,17 +88,86 @@ func GetStackedEntries() []*StackedEntry {
 	return stackEntries(entries)
 }
 
+func (se *StackedEntry) GetTranslations(language string) []*StackedTranslation {
+	length := len(se.Entries)
+	translations := make(map[string][]*Translation, 30)
+
+	for i, entry := range se.Entries {
+		entryTranslations := entry.GetTranslations(language)
+		for _, translation := range entryTranslations {
+			if _, ok := translations[translation.Translator]; !ok {
+				translations[translation.Translator] = make([]*Translation, length)
+			}
+			translations[translation.Translator][i] = translation
+		}
+	}
+
+	stackedTranslations := make([]*StackedTranslation, len(translations))
+	for translator, parts := range translations {
+		stacked := StackedTranslation{
+			Entry:      se,
+			Language:   language,
+			Translator: translator,
+			Parts:      parts,
+		}
+		if !stacked.Empty() {
+			stackedTranslations = append(stackedTranslations, &stacked)
+		}
+	}
+	return stackedTranslations
+}
+
+func (se *StackedEntry) GetTranslationBy(language, translator string) *StackedTranslation {
+	parts := make([]*Translation, len(se.Entries))
+	for i, entry := range se.Entries {
+		parts[i] = entry.GetTranslationBy(language, translator)
+		if parts[i] == nil {
+			parts[i] = &Translation{
+				Entry:       *entry,
+				Language:    language,
+				Translation: "",
+				Translator:  translator,
+			}
+		}
+	}
+	stacked := StackedTranslation{
+		Entry:      se,
+		Language:   language,
+		Translator: translator,
+		Parts:      parts,
+		Count:      len(parts),
+	}
+	return &stacked
+}
+
+type StackedTranslation struct {
+	Entry      *StackedEntry
+	Language   string
+	Translator string
+	Parts      []*Translation
+	Count      int
+}
+
+func (st *StackedTranslation) Empty() bool {
+	for _, part := range st.Parts {
+		if part != nil && strings.TrimSpace(part.Translation) != "" {
+			return false
+		}
+	}
+	return true
+}
+
 // sort entries by index
 type entriesByIndex []*Entry
 
 func (this entriesByIndex) Len() int {
-    return len(this)
+	return len(this)
 }
 func (this entriesByIndex) Less(i, j int) bool {
-    return strings.Index(this[i].PartOf, this[i].Original) < strings.Index(this[j].PartOf, this[j].Original)
+	return strings.Index(this[i].PartOf, this[i].Original) < strings.Index(this[j].PartOf, this[j].Original)
 }
 func (this entriesByIndex) Swap(i, j int) {
-    this[i], this[j] = this[j], this[i]
+	this[i], this[j] = this[j], this[i]
 }
 
 // sort stacked entries by name
@@ -146,7 +233,7 @@ func stackEntries(entries []*Entry) []*StackedEntry {
 
 	// calculate totals
 	for _, se := range values {
-		entrySources := make(map[string]*EntrySource, len(se.Entries) * 10)
+		entrySources := make(map[string]*EntrySource, len(se.Entries)*10)
 		for _, entry := range se.Entries {
 			for _, es := range GetSourcesForEntry(entry) {
 				entrySources[es.Source.Filepath] = es
@@ -165,7 +252,6 @@ func stackEntries(entries []*Entry) []*StackedEntry {
 	sort.Sort(stacksByCount(values))
 	return values
 }
-
 
 //
 

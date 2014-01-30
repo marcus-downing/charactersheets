@@ -72,10 +72,11 @@
 </thead>
 
 <tbody>
+{{ $currentUser := .CurrentUser }}
 {{ $lang := .CurrentLanguage }}
 {{ range $i, $entry := .Entries }}
-<tr>
-	<td>
+<tr class='{{ entryClass $entry $lang $currentUser }}'>
+	<td class='original'>
 		{{ range $j, $part := $entry.Entries }}
 		<label class='part' for='part-{{ $i }}-{{ $j }}'>
 			<input type='hidden' id='part-{{ $i }}-{{ $j }}-original' name='part-{{ $i }}-{{ $j }}-original' class='form-control' value='{{ $part.Original }}' />
@@ -85,9 +86,20 @@
 		{{ end }}
 	</td>
 	<td class='translation translate-{{ len $entry.Entries }}-parts'>
-		{{ range $j, $part := $entry.Entries }}
-		{{ $translation := translate $part.Original $part.PartOf $lang }}
-		<input type='text' id='part-{{ $i }}-{{ $j }}' name='part-{{ $i }}-{{ $j }}' class='form-control' value='{{ $translation }}' />
+		{{ $translations := otherTranslations $entry $lang $currentUser }}
+		{{ range $translation := $translations }}
+			<p class='other-translation'>
+				<img src='http://www.gravatar.com/avatar/{{ md5 $translation.Translator }}?s=24'> &nbsp; 
+				{{ range $part := $translation.Parts }}
+					<label class='part'>{{ $part.Translation }}</label>
+				{{ end }}
+			</p>
+
+		{{ end }}
+
+		{{ $translation := myTranslation $entry $lang $currentUser }}
+		{{ range $j, $part := $translation.Parts }}
+			<input type='text' id='part-{{ $i }}-{{ $j }}' name='part-{{ $i }}-{{ $j }}' class='form-control' value='{{ $part.Translation }}' />
 		{{ end }}
 	</td>
 	<td class='btn-cell'><a class='reveal reveal-comments no-comments' data-line='{{ $i }}'><span class='glyphicon glyphicon-comment'></a></a></td>

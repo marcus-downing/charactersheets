@@ -110,11 +110,11 @@
 <div class='panel panel-info'>
 	<div class="panel-heading"><h3 class="panel-title"><span class="glyphicon glyphicon-user"></span>&nbsp; Recent users</h3></div>
 	<table class='table'>
-	{{ range $loggedin := .LoggedInUsers }}
+	{{ range $recent := .RecentUsers }}
 	<tr>
-		<td><img src='http://www.gravatar.com/avatar/{{ md5 $loggedin.User.Email }}?s=32'></td>
-		<td>{{ $loggedin.User.Name }}<br/>{{ $loggedin.LoggedInFor }}</td>
-		<td><img src='/images/flags/{{ $loggedin.User.Language }}.png'></td>
+		<td><img src='http://www.gravatar.com/avatar/{{ md5 $recent.User.Email }}?s=32'></td>
+		<td>{{ $recent.User.Name }}<br/>{{ $recent.LoggedInFor }}</td>
+		<td><img src='/images/flags/{{ $recent.User.Language }}.png'></td>
 	</tr>
 	{{ end }}
 	</table>

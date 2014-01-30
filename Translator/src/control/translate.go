@@ -12,12 +12,12 @@ import (
 	"fmt"
 	"net/http"
 	"path"
+	"strconv"
 	"strings"
 	"time"
-	"strconv"
 )
 
-const(
+const (
 	PageSize = 20
 )
 
@@ -74,18 +74,18 @@ func importMasterData(data []map[string]string) {
 		level, _ := strconv.Atoi(record["Level"])
 		source := &model.Source{
 			Filepath: filepath,
-			Page: name,
-			Volume: record["Volume"],
-			Level: level,
-			Game: record["Game"],
+			Page:     name,
+			Volume:   record["Volume"],
+			Level:    level,
+			Game:     record["Game"],
 		}
 		source.Save()
 
 		count, _ := strconv.Atoi(record["Count"])
 		entrySource := &model.EntrySource{
-			Entry: *entry,
+			Entry:  *entry,
 			Source: *source,
-			Count: count,
+			Count:  count,
 		}
 		entrySource.Save()
 		time.Sleep(sleepTime)
@@ -100,16 +100,16 @@ func importTranslationData(data []map[string]string, language string, translator
 	for _, record := range data {
 		t := record["Translation"]
 		if t == "" {
-			continue;
+			continue
 		}
 		translation := &model.Translation{
 			Entry: model.Entry{
 				Original: record["Original"],
 				PartOf:   record["Part of"],
 			},
-			Language:     language,
-			Translation:  t,
-			Translator:   translator.Email,
+			Language:    language,
+			Translation: t,
+			Translator:  translator.Email,
 		}
 		translation.Save()
 		time.Sleep(sleepTime)
