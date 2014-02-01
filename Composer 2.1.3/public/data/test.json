@@ -2,9 +2,16 @@
     "game": "test",
     "name": "Test",
     "pages": [],
-    "gm": [],
-    "base": {},
+    "gm": {
+    	"campaign": [],
+    	"maps": [],
+    	"aps": []
+    },
+    "base": {
+    	"pages": []
+    },
     "layout": [],
     "books": [],
-    "classes": []
+    "classes": [],
+    "languages": []
 }
