@@ -40,11 +40,13 @@
 
 <thead>
 	<tr>
+		<th></th>
+		<th></th>
 		<th><img src='/images/flags/gb.png'>&nbsp; Original</th>
 		<th>
 			{{ if .IsAdmin }}
 			<div class='dropdown' id="select-language">
-				<button class="btn dropdown-toggle" type="button" data-toggle="dropdown">
+				<button class="btn btn-link dropdown-toggle" type="button" data-toggle="dropdown">
 					<img src='/images/flags/{{.CurrentLanguage}}.png'>&nbsp; {{ index .LanguageNames .CurrentLanguage }}
 					<span class="caret"></span>
 				</button>
@@ -66,8 +68,6 @@
 			{{ end }}
 		</th>
 		<th></th>
-		<th></th>
-		<th></th>
 	</tr>
 </thead>
 
@@ -75,7 +75,9 @@
 {{ $currentUser := .CurrentUser }}
 {{ $lang := .CurrentLanguage }}
 {{ range $i, $entry := .Entries }}
-<tr class='{{ entryClass $entry $lang $currentUser }}'>
+<tr class='{{ entryClass $entry $lang $currentUser }}' data-line='{{ $i }}'>
+	<td class='btn-cell'><a class='reveal reveal-sources' data-line='{{ $i }}'><span class='glyphicon glyphicon-book'></a></a></td>
+	<td class='btn-cell'><span class='badge'>{{ $entry.Count }}</span></td>
 	<td class='original'>
 		{{ range $j, $part := $entry.Entries }}
 		<label class='part' for='part-{{ $i }}-{{ $j }}'>
@@ -98,13 +100,15 @@
 		{{ end }}
 
 		{{ $translation := myTranslation $entry $lang $currentUser }}
-		{{ range $j, $part := $translation.Parts }}
-			<input type='text' id='part-{{ $i }}-{{ $j }}' name='part-{{ $i }}-{{ $j }}' class='form-control' value='{{ $part.Translation }}' />
-		{{ end }}
+		<p class='my-translation'>
+			<img src='http://www.gravatar.com/avatar/{{ md5 $currentUser.Email }}?s=24'> &nbsp; 
+			{{ range $j, $part := $translation.Parts }}
+				<input type='text' id='part-{{ $i }}-{{ $j }}' name='part-{{ $i }}-{{ $j }}' class='form-control' value='{{ $part.Translation }}' />
+			{{ end }}
+		</p>
 	</td>
-	<td class='btn-cell'><a class='reveal reveal-comments no-comments' data-line='{{ $i }}'><span class='glyphicon glyphicon-comment'></a></a></td>
-	<td class='btn-cell'><span class='badge'>{{ $entry.Count }}</span></td>
-	<td class='btn-cell'><a class='reveal reveal-sources' data-line='{{ $i }}'><span class='glyphicon glyphicon-book'></a></a></td>
+	<td class='btn-cell'><a class='reveal reveal-my-translation'><span class='glyphicon glyphicon-plus'></span> <img src='http://www.gravatar.com/avatar/{{ md5 $currentUser.Email }}?s=24'></td>
+	<td class='btn-cell'><a class='reveal reveal-comments no-comments'><span class='glyphicon glyphicon-comment'></span></a></td>
 </tr>
 {{ end }}
 </tbody>

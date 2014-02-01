@@ -92,17 +92,17 @@ func (se *StackedEntry) GetTranslations(language string) []*StackedTranslation {
 	length := len(se.Entries)
 	translations := make(map[string][]*Translation, 30)
 
-	for i, entry := range se.Entries {
+	for _, entry := range se.Entries {
 		entryTranslations := entry.GetTranslations(language)
 		for _, translation := range entryTranslations {
 			if _, ok := translations[translation.Translator]; !ok {
-				translations[translation.Translator] = make([]*Translation, length)
+				translations[translation.Translator] = make([]*Translation, 0, length)
 			}
-			translations[translation.Translator][i] = translation
+			translations[translation.Translator] = append(translations[translation.Translator], translation)
 		}
 	}
 
-	stackedTranslations := make([]*StackedTranslation, len(translations))
+	stackedTranslations := make([]*StackedTranslation, 0, len(translations))
 	for translator, parts := range translations {
 		stacked := StackedTranslation{
 			Entry:      se,
@@ -140,6 +140,16 @@ func (se *StackedEntry) GetTranslationBy(language, translator string) *StackedTr
 	return &stacked
 }
 
+func WhereNotMe(in chan string) <- chan string {
+	out := make(chan string)
+	for s := range in {
+		if s != "me" {
+			out <- s
+		}
+	}
+	return out
+}
+
 type StackedTranslation struct {
 	Entry      *StackedEntry
 	Language   string
@@ -155,6 +165,14 @@ func (st *StackedTranslation) Empty() bool {
 		}
 	}
 	return true
+}
+
+func (st *StackedTranslation) FullText() string {
+	text := make([]string, len(st.Parts))
+	for i, part := range st.Parts {
+		text[i] = part.Translation
+	}
+	return strings.Join(text, "")
 }
 
 // sort entries by index

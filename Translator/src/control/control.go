@@ -235,6 +235,11 @@ func entryClass(entry *model.StackedEntry, language string, me *model.User) stri
 	if len(translations) == 0 {
 		classes = append(classes, "untranslated")
 	}
+	for _, translation := range translations {
+		if translation.Translator == me.Email {
+			classes = append(classes, "my-translation")
+		}
+	}
 
 	//  TODO more classes
 	return strings.Join(classes, " ")

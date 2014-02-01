@@ -1,6 +1,24 @@
+/* General */
+
 #body {
 	padding-top: 60px;
 }
+
+body.home #nav-home a,
+body.sources #nav-sources a,
+body.master #nav-master a,
+body.translate #nav-translate a,
+body.import #nav-import a,
+body.export #nav-export a,
+body.users #nav-users a
+{
+  color: #80e0f8;
+  border-bottom: 5px solid #80e0f8;
+  margin-bottom: -1px;
+}
+
+
+/* Navigation */
 
 .page-options {
   float: right;
@@ -22,28 +40,7 @@
 }
 
 
-
-#form-translate tr.untranslated td {
-  background: #fff0c0;
-}
-
-#form-translate td.original {
-  width: 50%;
-}
-
-#form-translate td.translation {
-  min-width: 300px;
-  white-space: nowrap;
-}
-
-#form-translate td, #form-translate th {
-  vertical-align: middle;
-}
-
-p.other-translation {
-  margin-bottom: 4px;
-}
-
+/* Registration and Sign In */
 
 .form-signin {
   max-width: 330px;
@@ -80,23 +77,50 @@ p.other-translation {
   border-top-right-radius: 0;
 }
 
-body.home #nav-home a,
-body.sources #nav-sources a,
-body.master #nav-master a,
-body.translate #nav-translate a,
-body.import #nav-import a,
-body.export #nav-export a,
-body.users #nav-users a
-{
-  color: #80e0f8;
-  border-bottom: 5px solid #80e0f8;
-  margin-bottom: -1px;
+
+
+
+
+
+
+/* Translation form */
+
+#form-translate tr.untranslated td {
+  background: #fff2b0;
+  border-top-color: #d0b880;
 }
+#form-translate tr.untranslated + tr td {
+  border-top-color: #d0b880;
+}
+
+#form-translate tr.untranslated .badge {
+  background: #d8a800;
+}
+
+#form-translate td.original {
+  width: 50%;
+}
+
+#form-translate td.translation {
+  min-width: 300px;
+  white-space: nowrap;
+}
+
+#form-translate td, #form-translate th {
+  vertical-align: middle;
+}
+
+
+
 
 label.part {
   border-right: 1px solid #d0d0d0;
-  padding-right: 10px;
+  padding-right: 14px;
   margin-right: 10px;
+}
+
+tr.untranslated label.part {
+  border-right-color: #d0b060;
 }
 
 label.part:last-child {
@@ -122,8 +146,24 @@ td.translate-5-parts input {
 
 td.btn-cell {
   width: 32px;
+  white-space: nowrap;
 }
 
 td.btn-cell a.no-comments {
   color: #aaa;
+}
+
+
+p.other-translation {
+  margin-bottom: 4px;
+}
+p.my-translation {
+  display: none;
+  margin-bottom: 0;
+}
+tr.my-translation p.my-translation {
+  display: block;
+}
+tr.my-translation a.reveal-my-translation {
+  display: none;
 }

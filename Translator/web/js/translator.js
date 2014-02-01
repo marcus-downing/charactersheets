@@ -10,6 +10,8 @@ jQuery(function ($) {
 			original: original,
 			partOf: partOf,
 			translation: translation
+		}, function () {
+			input.closest("tr").removeClass("untranslated");
 		});
 	});
 
@@ -23,5 +25,9 @@ jQuery(function ($) {
 		var href = a.attr('href');
 		$.get(href);
 		return false;
+	});
+
+	$("a.reveal-my-translation").click(function () {
+		$(this).closest("tr").addClass("my-translation");
 	});
 });
