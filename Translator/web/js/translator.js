@@ -23,7 +23,11 @@ jQuery(function ($) {
 	$("a.api").click(function () {
 		var a = $(this);
 		var href = a.attr('href');
-		$.get(href);
+		$.get(href, a.data(), function () {
+			if (a.is(".reload")) {
+				location.reload(true);
+			}
+		});
 		return false;
 	});
 

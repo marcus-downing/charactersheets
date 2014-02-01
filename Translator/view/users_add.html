@@ -21,17 +21,10 @@
     <label>Language</label> &nbsp; 
     {{ $languageNames := .LanguageNames }}
     {{ range $lang := .Languages }}
-    <label class="checkbox-inline"><input type='radio' name='language' value='{{ $lang }}'>&nbsp;
+    <label class="checkbox-inline"><input type='radio' name='language' value='{{ $lang }}' {{ if eq $lang "gb" }}checked{{ end }}>&nbsp;
       <img src='/images/flags/{{ $lang }}.png'> &nbsp; {{ index $languageNames $lang }} &nbsp;
     </label>
     {{ end }}
-  </p>
-
-  <p>
-    <label for='add-user-send-invite' class='checkbox-inline'>
-      <input type='checkbox' name='send-invite' id='add-user-send-invite'>
-      Send invitation email
-    </label>
   </p>
 
   <p>

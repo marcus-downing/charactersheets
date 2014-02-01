@@ -20,9 +20,11 @@ func UsersHandler(w http.ResponseWriter, r *http.Request) {
 	if r.Method == "POST" {
 		email := r.FormValue("email")
 		name := r.FormValue("name")
+		language := r.FormValue("language")
 		user := &model.User{
 			Email:    email,
 			Name:     name,
+			Language: language,
 			Password: "",
 			Secret:   "",
 		}

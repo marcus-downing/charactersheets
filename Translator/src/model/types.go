@@ -263,6 +263,7 @@ func (user *User) Save() bool {
 		"Name":     user.Name,
 		"IsAdmin":  user.IsAdmin,
 		"Language": user.Language,
+		"IsLanguageLead": user.IsLanguageLead,
 	}
 	return saveRecord("Users", keyfields, fields)
 }
