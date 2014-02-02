@@ -32,6 +32,37 @@ func GetEntries() []*Entry {
 	return entries
 }
 
+func GetEntriesAt(game string, level int) []*Entry {
+	if game == "" && level == 0 {
+		return GetEntries()
+	}
+	sql := "select Original, PartOf from Entries "+
+		"inner join EntrySources on Original = EntryOriginal and PartOf = EntryPartOf "+
+		"inner join Sources on SourcePath = Filepath "+
+		"where 1 = 1"
+	args := make([]interface{}, 0, 2)
+
+	if game != "" {
+		sql = sql+" and Game = ?"
+		args = append(args, game)
+	}
+	if level != 0 {
+		sql = sql+" and Level = ?"
+		args = append(args, level)
+	}
+
+	sql = sql+" group by Original, PartOf"
+	results := query(sql, args...).rows(parseEntry)
+
+	entries := make([]*Entry, len(results))
+	for i, result := range results {
+		if entry, ok := result.(Entry); ok {
+			entries[i] = &entry
+		}
+	}
+	return entries
+}
+
 func (entry *Entry) Save() {
 	keyfields := map[string]interface{}{
 		"Original": entry.Original,

@@ -6,12 +6,13 @@ import (
 	"math/rand"
 	"sort"
 	"strings"
+	"strconv"
 	// "time"
 )
 
 // Languages
 var Languages []string = []string{
-	"gb", "it", "fr", "de", "es", "pt", "us",
+	"gb", "it", "fr", "de", "es", "pt", "kl", "us",
 }
 
 var LanguageNames map[string]string = map[string]string{
@@ -21,6 +22,7 @@ var LanguageNames map[string]string = map[string]string{
 	"de": "Deutch",
 	"es": "Español",
 	"pt": "Português",
+	"kl": "Klingon",
 	"us": "US English",
 }
 
@@ -83,8 +85,12 @@ type StackedEntry struct {
 	Count        int
 }
 
-func GetStackedEntries() []*StackedEntry {
-	entries := GetEntries()
+func GetStackedEntries(game, level string) []*StackedEntry {
+	leveln, err := strconv.Atoi(level)
+	if err != nil || leveln > 4 || leveln < 1 {
+		leveln = 0
+	}
+	entries := GetEntriesAt(game, leveln)
 	return stackEntries(entries)
 }
 

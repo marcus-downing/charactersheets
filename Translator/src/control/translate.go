@@ -34,7 +34,11 @@ func MasterHandler(w http.ResponseWriter, r *http.Request) {
 		if data.CurrentLanguage == "" {
 			data.CurrentLanguage = "gb"
 		}
-		data.Entries = model.GetStackedEntries()
+
+		data.CurrentGame = r.FormValue("game")
+		data.CurrentLevel = r.FormValue("level")
+
+		data.Entries = model.GetStackedEntries(data.CurrentGame, data.CurrentLevel)
 		data.Page = Paginate(r, PageSize, len(data.Entries))
 		data.Entries = data.Entries[data.Page.Offset:data.Page.Slice]
 		return data
@@ -47,11 +51,15 @@ func TranslationHandler(w http.ResponseWriter, r *http.Request) {
 		if rlang != "" {
 			data.CurrentLanguage = rlang
 		}
-		data.Entries = model.GetStackedEntries()
+
+		data.CurrentGame = r.FormValue("game")
+		data.CurrentLevel = r.FormValue("level")
+
+		data.Entries = model.GetStackedEntries(data.CurrentGame, data.CurrentLevel)
 		data.Page = Paginate(r, PageSize, len(data.Entries))
 		data.Entries = data.Entries[data.Page.Offset:data.Page.Slice]
 
-		data.Translations = model.GetTranslations()
+		// data.Translations = model.GetTranslations()
 		return data
 	})
 }

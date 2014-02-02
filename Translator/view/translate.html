@@ -12,19 +12,20 @@
 	<div class="form-group">
 		<label for='options-game'>Game</label>
 		<select id='options-game' name='game' class='form-control'>
-			<option value='all'>All</option>
-			<option value='pathfinder'>Pathfinder</option>
-			<option value='dnd35'>Dungeons &amp; Dragons 3.5</option>
+			<option value='' {{ if eq .CurrentGame "" }}selected{{ end }}>All</option>
+			<option value='pathfinder' {{ if eq .CurrentGame "pathfinder" }}selected{{ end }}>Pathfinder</option>
+			<option value='dnd35' {{ if eq .CurrentGame "dnd35" }}selected{{ end }}>Dungeons &amp; Dragons 3.5</option>
 		</select>
 	</div>
 
 	<div class="form-group">
 		<label for='options-level'>Sources</label>
 		<select id='options-level' name='level' class='form-control'>
-			<option value='1'>Core Rules</option>
-			<option value='2'>Advanced Rules</option>
-			<option value='3'>Further Rules</option>
-			<option value='3'>Third Party and Extended</option>
+			<option value='0' {{ if eq .CurrentLevel "0" }}selected{{ end }}>All Sources</option>
+			<option value='1' {{ if eq .CurrentLevel "1" }}selected{{ end }}>Core Rules</option>
+			<option value='2' {{ if eq .CurrentLevel "2" }}selected{{ end }}>Advanced Rules</option>
+			<option value='3' {{ if eq .CurrentLevel "3" }}selected{{ end }}>Further Rules</option>
+			<option value='4' {{ if eq .CurrentLevel "4" }}selected{{ end }}>Third Party and Extended</option>
 		</select>
 	</div>
 
@@ -76,7 +77,7 @@
 {{ $lang := .CurrentLanguage }}
 {{ range $i, $entry := .Entries }}
 <tr class='{{ entryClass $entry $lang $currentUser }}' data-line='{{ $i }}'>
-	<td class='btn-cell'><a class='reveal reveal-sources' data-line='{{ $i }}'><span class='glyphicon glyphicon-book'></a></a></td>
+	<td class='btn-cell'>{{/*<a class='reveal reveal-sources' data-line='{{ $i }}'><span class='glyphicon glyphicon-book'></span></a>*/}}</td>
 	<td class='btn-cell'><span class='badge'>{{ $entry.Count }}</span></td>
 	<td class='original'>
 		{{ range $j, $part := $entry.Entries }}
@@ -108,7 +109,7 @@
 		</p>
 	</td>
 	<td class='btn-cell'><a class='reveal reveal-my-translation'><span class='glyphicon glyphicon-plus'></span> <img src='http://www.gravatar.com/avatar/{{ md5 $currentUser.Email }}?s=24'></td>
-	<td class='btn-cell'><a class='reveal reveal-comments no-comments'><span class='glyphicon glyphicon-comment'></span></a></td>
+	<td class='btn-cell'>{{/*<a class='reveal reveal-comments no-comments'><span class='glyphicon glyphicon-comment'></span></a>*/}}</td>
 </tr>
 {{ end }}
 </tbody>

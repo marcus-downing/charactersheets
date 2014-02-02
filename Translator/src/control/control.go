@@ -32,6 +32,8 @@ type TemplateData struct {
 	Sources            []*model.Source
 	Entries            []*model.StackedEntry
 	Translations       []*model.Translation
+	CurrentGame        string
+	CurrentLevel       string
 }
 
 type Pagination struct {
