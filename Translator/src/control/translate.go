@@ -15,6 +15,8 @@ import (
 	"strconv"
 	"strings"
 	"time"
+	"bufio"
+	"mime/multipart"
 )
 
 const (
@@ -103,7 +105,7 @@ func importMasterData(data []map[string]string) {
 
 func importTranslationData(data []map[string]string, language string, translator *model.User) {
 	sleepTime, _ := time.ParseDuration("5ms")
-	fmt.Println("Importing", len(data), "translation records")
+	fmt.Println("Importing", len(data), "translation records as", translator.Name)
 	num := 0
 	for _, record := range data {
 		t := record["Translation"]
@@ -148,12 +150,14 @@ func ImportHandler(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 
-		lines, err := csv.NewReader(file).ReadAll()
+		file2 := stripBOM(file)
+		lines, err := csv.NewReader(file2).ReadAll()
 		if err != nil {
 			fmt.Println("Error reading CSV:", err)
 			http.Redirect(w, r, "/import", 303)
 			return
 		}
+		file.Close()
 		data := associateData(lines)
 		fmt.Println("Found", len(data), "lines")
 
@@ -203,4 +207,13 @@ func associateData(in [][]string) []map[string]string {
 		out = append(out, linedata)
 	}
 	return out
+}
+
+func stripBOM(file multipart.File) *bufio.Reader {
+	br := bufio.NewReader(file)
+	rune, _, _ := br.ReadRune()
+	if rune != '\uFEFF' {
+        br.UnreadRune() // Not a BOM -- put the rune back
+    }
+    return br
 }

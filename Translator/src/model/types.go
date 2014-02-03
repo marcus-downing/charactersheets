@@ -299,6 +299,18 @@ func (user *User) Save() bool {
 	return saveRecord("Users", keyfields, fields)
 }
 
+func (user *User) CountTranslations() map[string]int {
+	counts := make(map[string]int, len(Languages))
+	query("select Language, Count(*) from Translations where Translator = ? group by Language", user.Email).rows(func (rows *sql.Rows) (Result, error) {
+		var language string
+		var count int
+		rows.Scan(&language, &count)
+		counts[language] = count
+		return nil, nil
+	})
+	return counts
+}
+
 // ** Comments
 
 type Comment struct {

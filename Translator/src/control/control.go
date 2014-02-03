@@ -230,6 +230,10 @@ func otherTranslations(entry *model.StackedEntry, language string, me *model.Use
 	return otherTranslations
 }
 
+func countUserTranslations(user *model.User) map[string]int {
+	return user.CountTranslations()
+}
+
 func entryClass(entry *model.StackedEntry, language string, me *model.User) string {
 	classes := make([]string, 0, 20)
 
@@ -279,6 +283,7 @@ var templateFuncs = template.FuncMap{
 	"md5":               md5sum,
 	"otherTranslations": otherTranslations,
 	"myTranslation":     myTranslation,
+	"countUserTranslations": countUserTranslations,
 	"entryClass":        entryClass,
 	"pagination":        paginateTemplate,
 }
