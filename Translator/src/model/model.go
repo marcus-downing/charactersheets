@@ -85,12 +85,12 @@ type StackedEntry struct {
 	Count        int
 }
 
-func GetStackedEntries(game, level string) []*StackedEntry {
+func GetStackedEntries(game, level, show, language string) []*StackedEntry {
 	leveln, err := strconv.Atoi(level)
 	if err != nil || leveln > 4 || leveln < 1 {
 		leveln = 0
 	}
-	entries := GetEntriesAt(game, leveln)
+	entries := GetEntriesAt(game, leveln, show, language)
 	return stackEntries(entries)
 }
 

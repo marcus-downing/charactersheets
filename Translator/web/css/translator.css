@@ -78,6 +78,17 @@ body.users #nav-users a
 }
 
 
+/* Users */
+
+.lang-count {
+  white-space: nowrap;
+  margin-right: 25px;
+}
+
+.lang-count .badge {
+  background: #4080d0;
+  margin-left: 5px;
+}
 
 
 

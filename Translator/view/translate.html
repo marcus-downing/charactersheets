@@ -29,6 +29,15 @@
 		</select>
 	</div>
 
+	<div class="form-group">
+		<label for='options-show'>Show</label>
+		<select id='options-show' name='show' class='form-control'>
+			<option value='' {{ if eq .CurrentShow "" }}selected{{ end }}>All lines</option>
+			<option value='translated' {{ if eq .CurrentShow "translated" }}selected{{ end }}>Translated</option>
+			<option value='untranslated' {{ if eq .CurrentShow "untranslated" }}selected{{ end }}>Untranslated</option>
+		</select>
+	</div>
+
 	{{ pagination .Page }}
 </form>
 

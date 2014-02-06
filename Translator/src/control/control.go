@@ -34,6 +34,7 @@ type TemplateData struct {
 	Translations       []*model.Translation
 	CurrentGame        string
 	CurrentLevel       string
+	CurrentShow        string
 }
 
 type Pagination struct {

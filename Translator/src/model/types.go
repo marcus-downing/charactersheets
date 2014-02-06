@@ -5,6 +5,7 @@ import (
 	"database/sql"
 	// "encoding/hex"
 	"github.com/ziutek/mymysql/mysql"
+	"fmt"
 )
 
 // ** Entries
@@ -32,14 +33,17 @@ func GetEntries() []*Entry {
 	return entries
 }
 
-func GetEntriesAt(game string, level int) []*Entry {
-	if game == "" && level == 0 {
+func GetEntriesAt(game string, level int, show, language string) []*Entry {
+	if game == "" && level == 0 && show == "" {
 		return GetEntries()
 	}
 	sql := "select Original, PartOf from Entries "+
-		"inner join EntrySources on Original = EntryOriginal and PartOf = EntryPartOf "+
-		"inner join Sources on SourcePath = Filepath "+
-		"where 1 = 1"
+		"inner join EntrySources on Original = EntrySources.EntryOriginal and PartOf = EntrySources.EntryPartOf "+
+		"inner join Sources on SourcePath = Filepath"
+	if show != "" {
+		sql = sql+" left join Translations on Original = Translations.EntryOriginal and PartOf = Translations.EntryPartOf"
+	}
+	sql = sql+" where 1 = 1"
 	args := make([]interface{}, 0, 2)
 
 	if game != "" {
@@ -50,14 +54,24 @@ func GetEntriesAt(game string, level int) []*Entry {
 		sql = sql+" and Level = ?"
 		args = append(args, level)
 	}
+	if show != "" {
+		sql = sql+" and Translations.Language = ?"
+		args = append(args, language)
+	}
 
 	sql = sql+" group by Original, PartOf"
+	if show == "translated" {
+		sql = sql+" having count(Translations.Translation) > 0"
+	} else if show == "untranslated" {
+		sql = sql+" having count(Translations.Translation) = 0"
+	}
+	fmt.Println("Get entries:", sql)
 	results := query(sql, args...).rows(parseEntry)
 
-	entries := make([]*Entry, len(results))
-	for i, result := range results {
+	entries := make([]*Entry, 0, len(results))
+	for _, result := range results {
 		if entry, ok := result.(Entry); ok {
-			entries[i] = &entry
+			entries = append(entries, &entry)
 		}
 	}
 	return entries

@@ -30,7 +30,12 @@
 		<td><img src='http://www.gravatar.com/avatar/{{ md5 $user.Email }}?s=24'>&nbsp; {{ $user.Name }}</td>
 		{{ if $isAdmin }}<td><a href='mailto:{{ $user.Email }}'>{{ $user.Email }}</a></td>{{ end }}
 		<td>
-			{{ $translations := countUserTranslations $user }}
+			{{ range $lang, $count := countUserTranslations $user }}
+			<span class='lang-count'>
+				<img src='/images/flags/{{ $lang }}.png'>
+				<span class='badge'>{{ $count }}</span>
+			</span>
+			{{ end }}
 
 			{{/*
 			<img src='/images/flags/gb.png'> All &nbsp; 

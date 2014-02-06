@@ -39,8 +39,9 @@ func MasterHandler(w http.ResponseWriter, r *http.Request) {
 
 		data.CurrentGame = r.FormValue("game")
 		data.CurrentLevel = r.FormValue("level")
+		data.CurrentShow = r.FormValue("show")
 
-		data.Entries = model.GetStackedEntries(data.CurrentGame, data.CurrentLevel)
+		data.Entries = model.GetStackedEntries(data.CurrentGame, data.CurrentLevel, data.CurrentShow, data.CurrentLanguage)
 		data.Page = Paginate(r, PageSize, len(data.Entries))
 		data.Entries = data.Entries[data.Page.Offset:data.Page.Slice]
 		return data
@@ -56,8 +57,9 @@ func TranslationHandler(w http.ResponseWriter, r *http.Request) {
 
 		data.CurrentGame = r.FormValue("game")
 		data.CurrentLevel = r.FormValue("level")
+		data.CurrentShow = r.FormValue("show")
 
-		data.Entries = model.GetStackedEntries(data.CurrentGame, data.CurrentLevel)
+		data.Entries = model.GetStackedEntries(data.CurrentGame, data.CurrentLevel, data.CurrentShow, data.CurrentLanguage)
 		data.Page = Paginate(r, PageSize, len(data.Entries))
 		data.Entries = data.Entries[data.Page.Offset:data.Page.Slice]
 
