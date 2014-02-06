@@ -81,6 +81,7 @@ body.users #nav-users a
 /* Users */
 
 .lang-count {
+  text-decoration: none !important;
   white-space: nowrap;
   margin-right: 25px;
 }

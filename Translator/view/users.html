@@ -31,10 +31,10 @@
 		{{ if $isAdmin }}<td><a href='mailto:{{ $user.Email }}'>{{ $user.Email }}</a></td>{{ end }}
 		<td>
 			{{ range $lang, $count := countUserTranslations $user }}
-			<span class='lang-count'>
+			<a class='lang-count' href='/translate?language={{ $lang }}'>
 				<img src='/images/flags/{{ $lang }}.png'>
 				<span class='badge'>{{ $count }}</span>
-			</span>
+			</a>
 			{{ end }}
 
 			{{/*
