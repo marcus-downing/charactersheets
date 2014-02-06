@@ -12,7 +12,7 @@ import (
 
 // Languages
 var Languages []string = []string{
-	"gb", "it", "fr", "de", "es", "pt", "kl", "us",
+	"gb", "it", "fr", "de", "es", "pt", "cy", "kl", "us",
 }
 
 var LanguageNames map[string]string = map[string]string{
@@ -22,6 +22,7 @@ var LanguageNames map[string]string = map[string]string{
 	"de": "Deutch",
 	"es": "Español",
 	"pt": "Português",
+	"cy": "Cymraeg",
 	"kl": "Klingon",
 	"us": "US English",
 }
@@ -71,6 +72,7 @@ func GetLanguageCompletion() map[string][4]int {
 				if totals[i-1] > 0 {
 					values[i-1] = 100 * count / totals[i-1]
 				}
+				fmt.Println("Completion of", LanguageNames[lang], "@", i, "=", count, "/", totals[i-1])
 			}
 			completion[lang] = values
 		}

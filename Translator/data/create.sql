@@ -37,17 +37,8 @@ create table Translations (
 	Language char(2) not null,
 	Translator varchar(128) not null,
 	Translation text not null,
+	IsPreferred boolean not null,
 	primary key (EntryOriginal(84), EntryPartOf(84), Language, Translator(84))
-);
-
-create table Comments (
-	EntryOriginal text not null,
-	EntryPartOf text not null,
-	Language char(2) not null,
-	Commenter varchar(128) not null,
-	Comment text not null,
-	CommentDate timestamp not null,
-	primary key (EntryOriginal(83), EntryPartOf(83), Language, Commenter(83), CommentDate)
 );
 
 create table Users (
