@@ -35,8 +35,8 @@
         <li id='nav-translate'><a href="/translate"><span class="glyphicon glyphicon-globe"></span> Translate</a></li>
         {{ if .IsAdmin }}
         <li id='nav-import'><a href="/import"><span class="glyphicon glyphicon-cloud-upload"></span> Import</a></li>
-        {{ end }}
         <li id='nav-export'><a href="/export"><span class="glyphicon glyphicon-cloud-download"></span> Export</a></li>
+        {{ end }}
         <li id='nav-users'><a href="/users"><span class="glyphicon glyphicon-user"></span> Users</a></li>
       </ul>
       <p class="navbar-text navbar-right">Signed in as &nbsp; <img src='http://www.gravatar.com/avatar/{{ md5 .CurrentUser.Email }}?s=24'>&nbsp; {{ .CurrentUser.Name }}</p>

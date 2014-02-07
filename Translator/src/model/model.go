@@ -27,25 +27,6 @@ var LanguageNames map[string]string = map[string]string{
 	"us": "US English",
 }
 
-// data
-
-var CurrentLanguage = "en"
-
-//  DB access
-
-func LoadEntries() {
-
-}
-
-//  import / export
-
-func ImportCSV() {
-
-}
-
-func ExportCSV() {
-
-}
 
 //  completion
 

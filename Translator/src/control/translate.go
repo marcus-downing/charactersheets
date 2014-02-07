@@ -187,9 +187,13 @@ func ImportDoneHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func ExportHandler(w http.ResponseWriter, r *http.Request) {
-	renderTemplate("export", w, r, func(data TemplateData) TemplateData {
-		return data
-	})
+	if r.Method == "POST" {
+		
+	} else {
+		renderTemplate("export", w, r, func(data TemplateData) TemplateData {
+			return data
+		})
+	}
 }
 
 func associateData(in [][]string) []map[string]string {

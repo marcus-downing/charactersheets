@@ -37,14 +37,15 @@ func GetEntriesAt(game string, level int, show, language string) []*Entry {
 	if game == "" && level == 0 && show == "" {
 		return GetEntries()
 	}
+	args := make([]interface{}, 0, 2)
 	sql := "select Original, PartOf from Entries "+
 		"inner join EntrySources on Original = EntrySources.EntryOriginal and PartOf = EntrySources.EntryPartOf "+
 		"inner join Sources on SourcePath = Filepath"
 	if show != "" {
-		sql = sql+" left join Translations on Original = Translations.EntryOriginal and PartOf = Translations.EntryPartOf"
+		sql = sql+" left join Translations on Original = Translations.EntryOriginal and PartOf = Translations.EntryPartOf and Translations.Language = ?"
+		args = append(args, language)
 	}
 	sql = sql+" where 1 = 1"
-	args := make([]interface{}, 0, 2)
 
 	if game != "" {
 		sql = sql+" and Game = ?"
@@ -54,10 +55,10 @@ func GetEntriesAt(game string, level int, show, language string) []*Entry {
 		sql = sql+" and Level = ?"
 		args = append(args, level)
 	}
-	if show != "" {
-		sql = sql+" and Translations.Language = ?"
-		args = append(args, language)
-	}
+	// if show != "" {
+	// 	sql = sql+" and Translations.Language = ?"
+	// 	args = append(args, language)
+	// }
 
 	sql = sql+" group by Original, PartOf"
 	if show == "translated" {
