@@ -27,7 +27,7 @@
 		<td>{{ if $isAdmin }}<a class='api reload' href='/api/setlead?user={{ .Email }}'><span class='glyphicon glyphicon-arrow-up'></span></a>{{ end }}
 			{{ if $isAdmin }}<a class='api reload' href='/api/clearlead?user={{ .Email }}'><span class='glyphicon glyphicon-arrow-down'></span></a>{{ end }}</td>
 		<td>{{ if $user.IsAdmin }}<span class='glyphicon glyphicon-star'></span>{{ end }}</td>
-		<td><img src='http://www.gravatar.com/avatar/{{ md5 $user.Email }}?s=24'>&nbsp; {{ $user.Name }}</td>
+		<td><img src='http://www.gravatar.com/avatar/{{ md5 $user.Email }}?s=32'>&nbsp; {{ $user.Name }}</td>
 		{{ if $isAdmin }}<td><a href='mailto:{{ $user.Email }}'>{{ $user.Email }}</a></td>{{ end }}
 		<td>
 			{{ range $lang, $count := countUserTranslations $user }}

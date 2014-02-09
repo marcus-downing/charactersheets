@@ -21,6 +21,10 @@ func parseEntry(rows *sql.Rows) (Result, error) {
 	return e, err
 }
 
+func CountEntries() int {
+	return query("select count(*) from Entries").count()
+}
+
 func GetEntries() []*Entry {
 	results := query("select Original, PartOf from Entries").rows(parseEntry)
 

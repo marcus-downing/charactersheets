@@ -296,3 +296,59 @@ func (user *User) SetLanguageLead() {
 func (user *User) ClearLanguageLead() {
 	query("update Users set IsLanguageLead = 0 where Email = ?", user.Email).exec()
 }
+
+
+//  Profile translations
+
+type TranslationProfile struct {
+	Language      string
+	TotalEntries  int
+
+	ByMe          int
+	ByMeAlone     int
+	ByOthers      int
+	ByOthersAlone int
+	ByMeAndOthers int
+	Remaining     int
+
+	ByMePercent          int
+	ByOthersPercent      int
+	ByMeAndOthersPercent int
+	RemainingPercent     int
+}
+
+func ProfileTranslations(user *User) map[string]*TranslationProfile {
+	total := CountEntries()
+	profiles := make(map[string]*TranslationProfile, len(Languages))
+
+	for _, lang := range Languages {
+		byme := query("select count(*) from (select count(*) from Translations where Language = ? and Translator = ? group by EntryOriginal, EntryPartOf) as sq", lang, user.Email).count()
+		if byme > 0 {
+			byothers := query("select count(*) from (select count(*) from Translations where Language = ? and Translator != ? group by EntryOriginal, EntryPartOf) as sq", lang, user.Email).count()
+			byboth := query("select count(*) from Translations A "+
+				"inner join Translations B on A.EntryOriginal = B.EntryOriginal and A.EntryPartOf = B.EntryPartOf and A.Language = B.Language "+
+				"where A.Language = ? and A.Translator = ? and B.Translator != ? "+
+				"group by A.EntryOriginal, A.EntryPartOf"+
+				"", lang, user.Email, user.Email).count()
+
+			fmt.Println(LanguageNames[lang], "-- by me = ", byme, "; by others =", byothers, "; by both =", byboth)
+			profile := TranslationProfile{
+				Language:      lang,
+				TotalEntries:  total,
+				ByMe:          byme,
+				ByMeAlone:     byme - byboth,
+				ByOthers:      byothers,
+				ByOthersAlone: byothers - byboth,
+				ByMeAndOthers: byboth,
+				Remaining:     total - (byme + byothers - byboth),
+
+				ByMePercent:          (100 * (byme - byboth)) / total,
+				ByOthersPercent:      (100 * (byothers - byboth)) / total,
+				ByMeAndOthersPercent: (100 * byboth) / total,
+				RemainingPercent:     (100 * (total - (byme + byothers - byboth))) / total,
+			}
+			profiles[lang] = &profile
+		}
+	}
+	return profiles
+}

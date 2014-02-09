@@ -83,7 +83,7 @@ body.users #nav-users a
 .lang-count {
   text-decoration: none !important;
   white-space: nowrap;
-  margin-right: 25px;
+  margin-right: 4px;
 }
 
 .lang-count .badge {
@@ -91,6 +91,14 @@ body.users #nav-users a
   margin-left: 5px;
 }
 
+.lang-count-mine { color: #449d44; }
+.lang-count-mine .badge { background-color: #449d44; }
+
+.lang-count-conflict { color: #ec971f; }
+.lang-count-conflict .badge { background-color: #ec971f; }
+
+.lang-count-other { color: #31b0d5; }
+.lang-count-other .badge { background-color: #31b0d5; }
 
 
 
@@ -159,6 +167,7 @@ td.translate-5-parts input {
 td.btn-cell {
   width: 32px;
   white-space: nowrap;
+  padding: 4px 8px !important;
 }
 
 td.btn-cell a.no-comments {
@@ -178,4 +187,28 @@ tr.my-translation p.my-translation {
 }
 tr.my-translation a.reveal-my-translation {
   display: none;
+}
+
+span.my-translation-arrow-score {
+  display: inline-block;
+  width: 0px;
+  height: 0px;
+  border-right: 9px solid #bbb;
+  border-top: 9px solid transparent;
+  border-bottom: 9px solid transparent;
+  margin-right: -8px;
+  position: relative;
+  top: 5px;
+}
+
+span.my-translation-arrow {
+  display: inline-block;
+  width: 0px;
+  height: 0px;
+  border-right: 8px solid white;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  margin-right: -5px;
+  position: relative;
+  top: 4px;
 }

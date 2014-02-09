@@ -112,13 +112,13 @@
 		{{ $translation := myTranslation $entry $lang $currentUser }}
 		<p class='my-translation'>
 			<img src='http://www.gravatar.com/avatar/{{ md5 $currentUser.Email }}?s=24'> &nbsp; 
+			<span class='my-translation-arrow-score'></span><span class='my-translation-arrow'></span>
 			{{ range $j, $part := $translation.Parts }}
 				<input type='text' id='part-{{ $i }}-{{ $j }}' name='part-{{ $i }}-{{ $j }}' class='form-control' value='{{ $part.Translation }}' />
 			{{ end }}
 		</p>
 	</td>
-	<td class='btn-cell'><a class='reveal reveal-my-translation'><span class='glyphicon glyphicon-plus'></span> <img src='http://www.gravatar.com/avatar/{{ md5 $currentUser.Email }}?s=24'></td>
-	<td class='btn-cell'>{{/*<a class='reveal reveal-comments no-comments'><span class='glyphicon glyphicon-comment'></span></a>*/}}</td>
+	<td class='btn-cell'><a class='reveal reveal-my-translation btn btn-default btn-sm'><span class='glyphicon glyphicon-plus'></span> <img src='http://www.gravatar.com/avatar/{{ md5 $currentUser.Email }}?s=24'></td>
 </tr>
 {{ end }}
 </tbody>
