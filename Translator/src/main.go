@@ -21,7 +21,7 @@ func main() {
 	handler := http.NewServeMux()
 	handler.HandleFunc("/home", control.DashboardHandler)
 	handler.HandleFunc("/sources", control.SourcesHandler)
-	handler.HandleFunc("/master", control.MasterHandler)
+	handler.HandleFunc("/entries", control.EntriesHandler)
 	handler.HandleFunc("/translate", control.TranslationHandler)
 	handler.HandleFunc("/import", control.ImportHandler)
 	handler.HandleFunc("/import/done", control.ImportDoneHandler)
@@ -34,7 +34,7 @@ func main() {
 
 	handler.HandleFunc("/api/setlead", control.APISetLeadHandler)
 	handler.HandleFunc("/api/clearlead", control.APIClearLeadHandler)
-	handler.HandleFunc("/api/master", control.APIMasterHandler)
+	handler.HandleFunc("/api/entries", control.APIEntriesHandler)
 	handler.HandleFunc("/api/translate", control.APITranslateHandler)
 
 	handler.Handle("/css/", http.FileServer(http.Dir("../web")))

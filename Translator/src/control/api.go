@@ -11,7 +11,7 @@ import (
 	"net/http"
 )
 
-func APIMasterHandler(w http.ResponseWriter, r *http.Request) {
+func APIEntriesHandler(w http.ResponseWriter, r *http.Request) {
 
 }
 

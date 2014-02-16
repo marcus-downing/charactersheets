@@ -120,13 +120,36 @@ func (se *StackedEntry) GetTranslationBy(language, translator string) *StackedTr
 		}
 	}
 	stacked := StackedTranslation{
-		Entry:      se,
-		Language:   language,
-		Translator: translator,
-		Parts:      parts,
-		Count:      len(parts),
+		Entry:       se,
+		Language:    language,
+		Translator:  translator,
+		Parts:       parts,
+		Count:       len(parts),
+		IsPreferred: false,
 	}
 	return &stacked
+}
+
+func (se *StackedEntry) CountTranslations() map[string]int {
+	entryCounts := make([]map[string]int, len(se.Entries))
+	for i, entry := range se.Entries {
+		entryCounts[i] = entry.CountTranslations()
+	}
+
+	langCounts := make(map[string]int, len(Languages))
+	for _, lang := range Languages {
+		min := 0
+		for _, counts := range entryCounts {
+			count := counts[lang]
+			if count < min || min == 0 {
+				min = count
+			}
+		}
+		if min > 0 {
+			langCounts[lang] = min
+		}
+	}
+	return langCounts
 }
 
 func GetPreferredTranslations(language string) []*Translation {
@@ -186,11 +209,12 @@ func WhereNotMe(in chan string) <- chan string {
 }
 
 type StackedTranslation struct {
-	Entry      *StackedEntry
-	Language   string
-	Translator string
-	Parts      []*Translation
-	Count      int
+	Entry       *StackedEntry
+	Language    string
+	Translator  string
+	Parts       []*Translation
+	Count       int
+	IsPreferred bool
 }
 
 func (st *StackedTranslation) Empty() bool {

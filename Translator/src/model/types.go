@@ -91,6 +91,18 @@ func (entry *Entry) Save() {
 	saveRecord("Entries", keyfields, fields)
 }
 
+func (entry *Entry) CountTranslations() map[string]int {
+	counts := make(map[string]int, len(Languages))
+	query("select Language, Count(*) from Translations where EntryOriginal = ? and EntryPartOf = ? group by Language", entry.Original, entry.PartOf).rows(func (rows *sql.Rows) (Result, error) {
+		var language string
+		var count int
+		rows.Scan(&language, &count)
+		counts[language] = count
+		return nil, nil
+	})
+	return counts
+}
+
 // ** Sources
 
 type Source struct {
@@ -182,6 +194,7 @@ func (es *EntrySource) Save() {
 	}
 	saveRecord("EntrySources", keyfields, fields)
 }
+
 
 // ** Translations
 

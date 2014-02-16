@@ -3,8 +3,7 @@
 {{ define "content" }}
 
 <div class='container'>
-<h1><span class="glyphicon glyphicon-globe"></span>&nbsp; Translate
-</h1>
+<h1><span class="glyphicon glyphicon-globe"></span>&nbsp; Translate</h1>
 
 <form class='form-inline page-options' name='page-options' action='/translate' role='form'>
 	<input type='hidden' name='language' value='{{ .CurrentLanguage }}'>
@@ -51,7 +50,6 @@
 <thead>
 	<tr>
 		<th></th>
-		<th></th>
 		<th><img src='/images/flags/gb.png'>&nbsp; Original</th>
 		<th>
 			{{ if .IsAdmin }}
@@ -86,7 +84,7 @@
 {{ $lang := .CurrentLanguage }}
 {{ range $i, $entry := .Entries }}
 <tr class='{{ entryClass $entry $lang $currentUser }}' data-line='{{ $i }}'>
-	<td class='btn-cell'>{{/*<a class='reveal reveal-sources' data-line='{{ $i }}'><span class='glyphicon glyphicon-book'></span></a>*/}}</td>
+	{{/*<td class='btn-cell'><a class='reveal reveal-sources' data-line='{{ $i }}'><span class='glyphicon glyphicon-book'></span></a></td>*/}}
 	<td class='btn-cell'><span class='badge'>{{ $entry.Count }}</span></td>
 	<td class='original'>
 		{{ range $j, $part := $entry.Entries }}
@@ -100,7 +98,7 @@
 	<td class='translation translate-{{ len $entry.Entries }}-parts'>
 		{{ $translations := otherTranslations $entry $lang $currentUser }}
 		{{ $myTranslation := myTranslation $entry $lang $currentUser }}
-		{{ $numTranslations := len $translations + 1 }}
+		
 
 		{{ range $translation := $translations }}
 			<p class='other-translation'>

@@ -226,6 +226,10 @@ func countUserTranslations(user *model.User) map[string]int {
 	return user.CountTranslations()
 }
 
+func countEntryTranslations(entry *model.StackedEntry) map[string]int {
+	return entry.CountTranslations()
+}
+
 func profileTranslations(user *model.User) map[string]*model.TranslationProfile {
 	return model.ProfileTranslations(user)
 }
@@ -275,15 +279,16 @@ func paginateTemplate(page *Pagination) template.HTML {
 }
 
 var templateFuncs = template.FuncMap{
-	"percentColour":         percentColour,
-	"md5":                   md5sum,
-	"otherTranslations":     otherTranslations,
-	"myTranslation":         myTranslation,
-	"countUserTranslations": countUserTranslations,
-	"profileTranslations":   profileTranslations,
-	"entryClass":            entryClass,
-	"pagination":            paginateTemplate,
-}
+	"percentColour":          percentColour,
+	"md5":                    md5sum,
+	"otherTranslations":      otherTranslations,
+	"myTranslation":          myTranslation,
+	"countUserTranslations":  countUserTranslations,
+	"countEntryTranslations": countEntryTranslations,
+	"profileTranslations":    profileTranslations,
+	"entryClass":             entryClass,
+	"pagination":             paginateTemplate,
+} 
 
 func renderTemplate(name string, w http.ResponseWriter, r *http.Request, dataproc func(data TemplateData) TemplateData) {
 	var data = GetTemplateData(r, name)

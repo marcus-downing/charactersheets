@@ -30,18 +30,13 @@ func SourcesHandler(w http.ResponseWriter, r *http.Request) {
 	})
 }
 
-func MasterHandler(w http.ResponseWriter, r *http.Request) {
-	renderTemplate("master", w, r, func(data TemplateData) TemplateData {
-		data.CurrentLanguage = r.FormValue("language")
-		if data.CurrentLanguage == "" {
-			data.CurrentLanguage = "gb"
-		}
-
+func EntriesHandler(w http.ResponseWriter, r *http.Request) {
+	renderTemplate("entries", w, r, func(data TemplateData) TemplateData {
 		data.CurrentGame = r.FormValue("game")
 		data.CurrentLevel = r.FormValue("level")
 		data.CurrentShow = r.FormValue("show")
 
-		data.Entries = model.GetStackedEntries(data.CurrentGame, data.CurrentLevel, data.CurrentShow, data.CurrentLanguage)
+		data.Entries = model.GetStackedEntries(data.CurrentGame, data.CurrentLevel, data.CurrentShow, "gb")
 		data.Page = Paginate(r, PageSize, len(data.Entries))
 		data.Entries = data.Entries[data.Page.Offset:data.Page.Slice]
 		return data
@@ -62,8 +57,6 @@ func TranslationHandler(w http.ResponseWriter, r *http.Request) {
 		data.Entries = model.GetStackedEntries(data.CurrentGame, data.CurrentLevel, data.CurrentShow, data.CurrentLanguage)
 		data.Page = Paginate(r, PageSize, len(data.Entries))
 		data.Entries = data.Entries[data.Page.Offset:data.Page.Slice]
-
-		// data.Translations = model.GetTranslations()
 		return data
 	})
 }
