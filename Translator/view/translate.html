@@ -99,23 +99,27 @@
 	</td>
 	<td class='translation translate-{{ len $entry.Entries }}-parts'>
 		{{ $translations := otherTranslations $entry $lang $currentUser }}
+		{{ $myTranslation := myTranslation $entry $lang $currentUser }}
+		{{ $numTranslations := len $translations + 1 }}
+
 		{{ range $translation := $translations }}
 			<p class='other-translation'>
 				<img src='http://www.gravatar.com/avatar/{{ md5 $translation.Translator }}?s=24'> &nbsp; 
 				{{ range $part := $translation.Parts }}
 					<label class='part'>{{ $part.Translation }}</label>
 				{{ end }}
+				{{ if $translations.IsPreferred }}<span class='glyphicon glyphicon-arrow-left'></span>{{ end }}
 			</p>
 
 		{{ end }}
 
-		{{ $translation := myTranslation $entry $lang $currentUser }}
 		<p class='my-translation'>
 			<img src='http://www.gravatar.com/avatar/{{ md5 $currentUser.Email }}?s=24'> &nbsp; 
 			<span class='my-translation-arrow-score'></span><span class='my-translation-arrow'></span>
-			{{ range $j, $part := $translation.Parts }}
+			{{ range $j, $part := $myTranslation.Parts }}
 				<input type='text' id='part-{{ $i }}-{{ $j }}' name='part-{{ $i }}-{{ $j }}' class='form-control' value='{{ $part.Translation }}' />
 			{{ end }}
+			{{ if $myTranslation.IsPreferred }}<span class='glyphicon glyphicon-arrow-left'></span>{{ end }}
 		</p>
 	</td>
 	<td class='btn-cell'><a class='reveal reveal-my-translation btn btn-default btn-sm'><span class='glyphicon glyphicon-plus'></span> <img src='http://www.gravatar.com/avatar/{{ md5 $currentUser.Email }}?s=24'></td>

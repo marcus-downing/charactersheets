@@ -190,16 +190,28 @@ type Translation struct {
 	Language    string
 	Translation string
 	Translator  string
+	IsPreferred bool
 }
 
 func parseTranslation(rows *sql.Rows) (Result, error) {
 	t := Translation{}
-	err := rows.Scan(&t.Entry.Original, &t.Entry.PartOf, &t.Language, &t.Translation, &t.Translator)
+	err := rows.Scan(&t.Entry.Original, &t.Entry.PartOf, &t.Language, &t.Translation, &t.Translator, &t.IsPreferred)
 	return t, err
 }
 
 func GetTranslations() []*Translation {
-	results := query("select EntryOriginal, EntryPartOf, Language, Translation, Translator from Translations").rows(parseTranslation)
+	results := query("select EntryOriginal, EntryPartOf, Language, Translation, Translator, IsPreferred from Translations").rows(parseTranslation)
+	translations := make([]*Translation, len(results))
+	for i, result := range results {
+		if translation, ok := result.(Translation); ok {
+			translations[i] = &translation
+		}
+	}
+	return translations
+}
+
+func GetTranslationsForLanguage(language string) []*Translation {
+	results := query("select EntryOriginal, EntryPartOf, Language, Translation, Translator, IsPreferred from Translations where Language = ?", language).rows(parseTranslation)
 	translations := make([]*Translation, len(results))
 	for i, result := range results {
 		if translation, ok := result.(Translation); ok {
@@ -210,7 +222,7 @@ func GetTranslations() []*Translation {
 }
 
 func (entry *Entry) GetTranslations(language string) []*Translation {
-	results := query("select EntryOriginal, EntryPartOf, Language, Translation, Translator from Translations where EntryOriginal = ? and EntryPartOf = ? and Language = ?", entry.Original, entry.PartOf, language).rows(parseTranslation)
+	results := query("select EntryOriginal, EntryPartOf, Language, Translation, Translator, IsPreferred from Translations where EntryOriginal = ? and EntryPartOf = ? and Language = ?", entry.Original, entry.PartOf, language).rows(parseTranslation)
 	translations := make([]*Translation, len(results))
 	for i, result := range results {
 		if translation, ok := result.(Translation); ok {
@@ -221,7 +233,7 @@ func (entry *Entry) GetTranslations(language string) []*Translation {
 }
 
 func (entry *Entry) GetTranslationBy(language, translator string) *Translation {
-	result := query("select EntryOriginal, EntryPartOf, Language, Translation, Translator from Translations where EntryOriginal = ? and EntryPartOf = ? and Language = ? and Translator = ?", entry.Original, entry.PartOf, language, translator).row(parseTranslation)
+	result := query("select EntryOriginal, EntryPartOf, Language, Translation, Translator, IsPreferred from Translations where EntryOriginal = ? and EntryPartOf = ? and Language = ? and Translator = ?", entry.Original, entry.PartOf, language, translator).row(parseTranslation)
 	if translation, ok := result.(Translation); ok {
 		return &translation
 	}
@@ -293,7 +305,7 @@ func GetUserByEmail(email string) *User {
 }
 
 func GetUsersByLanguage(language string) []*User {
-	results := query("select Email, Password, Secret, Name, IsAdmin, Language, IsLanguageLead from Users where Language = ? order by IsLanguageLead desc, Name asc").rows(parseUser)
+	results := query("select Email, Password, Secret, Name, IsAdmin, Language, IsLanguageLead from Users where Language = ? order by IsLanguageLead desc, Name asc", language).rows(parseUser)
 	users := make([]*User, len(results))
 	for i, result := range results {
 		if user, ok := result.(User); ok {
@@ -301,6 +313,21 @@ func GetUsersByLanguage(language string) []*User {
 		}
 	}
 	return users
+}
+
+func GetLanguageLead(language string) *User {
+	result := query("select Email, Password, Secret, Name, IsAdmin, Language, IsLanguageLead from Users where Language = ? and IsLanguageLead = 1", language).row(parseUser)
+	if result != nil {
+		if user, ok := result.(User); ok {
+			return &user
+		}
+	}
+
+	// users := GetUsersByLanguage(language)
+	// if len(users) > 0 {
+	// 	return users[0]
+	// }
+	return nil
 }
 
 func (user *User) Save() bool {

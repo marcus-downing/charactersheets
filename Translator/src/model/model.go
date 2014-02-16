@@ -129,6 +129,52 @@ func (se *StackedEntry) GetTranslationBy(language, translator string) *StackedTr
 	return &stacked
 }
 
+func GetPreferredTranslations(language string) []*Translation {
+	lead := GetLanguageLead(language)
+	var leadEmail string = ""
+	if lead != nil {
+		leadEmail = lead.Email
+	}
+
+	all := GetTranslationsForLanguage(language)
+	byentry := make(map[Entry][]*Translation, len(all))
+	for _, t := range all {
+		if _, ok := byentry[t.Entry]; !ok {
+			byentry[t.Entry] = make([]*Translation, 0, 10)
+		}
+		byentry[t.Entry] = append(byentry[t.Entry], t)
+	}
+	pref := make([]*Translation, 0, len(byentry))
+	for _, ts := range byentry {
+		t := SelectPreferredTranslation(ts, leadEmail)
+		if t != nil {
+			pref = append(pref, t)
+		}
+	}
+
+	return pref
+}
+
+func SelectPreferredTranslation(translations []*Translation, lead string) *Translation {
+	if len(translations) == 0 {
+		return nil
+	}
+	if len(translations) == 1 {
+		return translations[0]
+	}
+	for _, t := range translations {
+		if t.IsPreferred {
+			return t
+		}
+	}
+	for _, t := range translations {
+		if t.Translator == lead {
+			return t
+		}
+	}
+	return translations[0]
+}
+
 func WhereNotMe(in chan string) <- chan string {
 	out := make(chan string)
 	for s := range in {

@@ -188,7 +188,29 @@ func ImportDoneHandler(w http.ResponseWriter, r *http.Request) {
 
 func ExportHandler(w http.ResponseWriter, r *http.Request) {
 	if r.Method == "POST" {
-		
+		language := r.FormValue("language")
+		fmt.Println("Exporting in", language)
+		translations := model.GetPreferredTranslations(language)
+
+		w.Header().Set("Content-Encoding", "UTF-8")
+		w.Header().Set("Content-Type", "application/csv; charset=UTF-8")
+		w.Header().Set("Content-Disposition", "attachment; filename=\""+model.LanguageNames[language]+".csv\"")
+
+		out := csv.NewWriter(w)
+		out.Write([]string{
+			"Original",
+			"Part of",
+			"Translation",
+		})
+		for _, translation := range translations {
+			out.Write([]string{
+				translation.Entry.Original,
+				translation.Entry.PartOf,
+				translation.Translation,
+			})
+		}
+		out.Flush()
+		return
 	} else {
 		renderTemplate("export", w, r, func(data TemplateData) TemplateData {
 			return data

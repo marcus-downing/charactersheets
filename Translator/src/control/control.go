@@ -187,15 +187,6 @@ func md5sum(email string) string {
 	return hex.EncodeToString(hasher.Sum(nil))
 }
 
-// func translateEntry(entry *model.StackedEntry, language string) string {
-// 	translations := entry.GetTranslations(language)
-// 	// fmt.Println("Found", len(translations), "translations of:", original)
-// 	if len(translations) > 0 {
-// 		return translations[len(translations)-1].Translation
-// 	}
-// 	return ""
-// }
-
 func myTranslation(entry *model.StackedEntry, language string, me *model.User) *model.StackedTranslation {
 	translation := entry.GetTranslationBy(language, me.Email)
 	if translation == nil {
