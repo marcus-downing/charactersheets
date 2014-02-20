@@ -25,7 +25,19 @@ const (
 
 func SourcesHandler(w http.ResponseWriter, r *http.Request) {
 	renderTemplate("sources", w, r, func(data TemplateData) TemplateData {
-		data.Sources = nil
+		data.CurrentGame = r.FormValue("game")
+		data.CurrentLevel = r.FormValue("level")
+		data.CurrentShow = r.FormValue("show")
+
+		leveln, err := strconv.Atoi(data.CurrentLevel)
+		if err != nil || leveln > 4 || leveln < 1 {
+			leveln = 0
+		}
+		data.Sources = model.GetSourcesAt(data.CurrentGame, leveln, data.CurrentShow)
+		fmt.Println("Writing", len(data.Sources), "sources")
+
+		data.Page = Paginate(r, PageSize, len(data.Sources))
+		data.Sources = data.Sources[data.Page.Offset:data.Page.Slice]
 		return data
 	})
 }

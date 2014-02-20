@@ -130,6 +130,49 @@ func GetSources() []*Source {
 	}
 	return sources
 }
+func GetSourcesAt(game string, level int, show string) []*Source {
+	if game == "" && level == 0 && show == "" {
+		return GetSources()
+	}
+	args := make([]interface{}, 0, 2)
+	sql := "select Filepath, Page, Volume, Level, Game from Sources "
+		// "inner join EntrySources on Original = EntrySources.EntryOriginal and PartOf = EntrySources.EntryPartOf "+
+		// "inner join Sources on SourcePath = Filepath"
+	// if show != "" {
+	// 	sql = sql+" left join Translations on Original = Translations.EntryOriginal and PartOf = Translations.EntryPartOf"
+	// }
+	sql = sql+" where 1 = 1"
+
+	if game != "" {
+		sql = sql+" and Game = ?"
+		args = append(args, game)
+	}
+	if level != 0 {
+		sql = sql+" and Level = ?"
+		args = append(args, level)
+	}
+	// if show != "" {
+	// 	sql = sql+" and Translations.Language = ?"
+	// 	args = append(args, language)
+	// }
+
+	sql = sql+" group by Original, PartOf"
+	// if show == "translated" {
+	// 	sql = sql+" having count(Translations.Translation) > 0"
+	// } else if show == "untranslated" {
+	// 	sql = sql+" having count(Translations.Translation) = 0"
+	// }
+	fmt.Println("Get entries:", sql)
+	results := query(sql, args...).rows(parseSource)
+
+	sources := make([]*Source, 0, len(results))
+	for _, result := range results {
+		if source, ok := result.(Source); ok {
+			sources = append(sources, &source)
+		}
+	}
+	return sources
+}
 
 func (source *Source) Save() {
 	keyfields := map[string]interface{}{

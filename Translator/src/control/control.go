@@ -14,6 +14,7 @@ import (
 	"math"
 	"strconv"
 	"strings"
+	"path"
 	"time"
 )
 
@@ -278,6 +279,14 @@ func paginateTemplate(page *Pagination) template.HTML {
 	return template.HTML("<span class='pagination'>" + first + back + next + last + "</span>")
 }
 
+func sourcePath(source *model.Source) template.HTML {
+	ext := path.Ext(source.Filepath)
+	path := strings.TrimSuffix(source.Filepath, ext)
+	parts := strings.Split(path, "/")
+	lis := strings.Join(parts, "</li><li>")
+	return template.HTML("<ol class='breadcrumb'><li>" + lis + "</li></ol>")
+}
+
 var templateFuncs = template.FuncMap{
 	"percentColour":          percentColour,
 	"md5":                    md5sum,
@@ -288,6 +297,7 @@ var templateFuncs = template.FuncMap{
 	"profileTranslations":    profileTranslations,
 	"entryClass":             entryClass,
 	"pagination":             paginateTemplate,
+	"sourcePath":             sourcePath,
 } 
 
 func renderTemplate(name string, w http.ResponseWriter, r *http.Request, dataproc func(data TemplateData) TemplateData) {

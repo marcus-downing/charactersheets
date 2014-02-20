@@ -7,14 +7,14 @@
 <div class='container'>
 <h1><span class="glyphicon glyphicon-user"></span>&nbsp; Users</h1>
 
-<table class='table table-striped table-hover'>
+<table class='table table-striped table-hover' id='users-table'>
 
 	<thead>
 		<tr>
 			<td colspan='3'>Language</td>
 			<td></td>
 			<td>User</td>
-			{{ if $isAdmin }}<td>Email</td>{{ end }}
+			{{ if $isAdmin }}<td></td><td>Email</td>{{ end }}
 			<td>Translations</td>
 		</tr>
 	</thead>
@@ -28,6 +28,9 @@
 			{{ if $isAdmin }}<a class='api reload' href='/api/clearlead?user={{ .Email }}'><span class='glyphicon glyphicon-arrow-down'></span></a>{{ end }}</td>
 		<td>{{ if $user.IsAdmin }}<span class='glyphicon glyphicon-star'></span>{{ end }}</td>
 		<td><img src='http://www.gravatar.com/avatar/{{ md5 $user.Email }}?s=32'>&nbsp; {{ $user.Name }}</td>
+		{{ if $isAdmin }}<td>
+			{{ if eq $user.Password "" }}<span class='glyphicon glyphicon-remove-circle text-danger'></span>{{ else }}<span class='glyphicon glyphicon-ok-circle text-success'></span>{{ end }}
+		</td>{{ end }}
 		{{ if $isAdmin }}<td><a href='mailto:{{ $user.Email }}'>{{ $user.Email }}</a></td>{{ end }}
 		<td>
 			{{ range $lang, $count := countUserTranslations $user }}
