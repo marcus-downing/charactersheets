@@ -106,7 +106,7 @@
 				{{ range $part := $translation.Parts }}
 					<label class='part'>{{ $part.Translation }}</label>
 				{{ end }}
-				{{ if $translations.IsPreferred }}<span class='glyphicon glyphicon-arrow-left'></span>{{ end }}
+				{{ if $translation.IsPreferred }}<span class='glyphicon glyphicon-arrow-left'></span>{{ end }}
 			</p>
 
 		{{ end }}

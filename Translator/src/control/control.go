@@ -12,9 +12,9 @@ import (
 	"net/http"
 	// "net/url"
 	"math"
+	"path"
 	"strconv"
 	"strings"
-	"path"
 	"time"
 )
 
@@ -27,6 +27,7 @@ type TemplateData struct {
 
 	Page               *Pagination
 	Languages          []string
+	DisplayLanguages   []string
 	LanguageNames      map[string]string
 	LanguageCompletion map[string][4]int
 	Users              []*model.User
@@ -134,22 +135,24 @@ func GetTemplateData(r *http.Request, bodyClass string) TemplateData {
 
 	if currentUser == nil {
 		return TemplateData{
-			BodyClass:       bodyClass,
-			IsAdmin:         false,
-			CurrentLanguage: "gb",
-			Languages:       model.Languages,
-			LanguageNames:   model.LanguageNames,
-			RecentUsers:     recentUsers,
+			BodyClass:        bodyClass,
+			IsAdmin:          false,
+			CurrentLanguage:  "gb",
+			Languages:        model.Languages,
+			DisplayLanguages: model.DisplayLanguages,
+			LanguageNames:    model.LanguageNames,
+			RecentUsers:      recentUsers,
 		}
 	}
 	return TemplateData{
-		BodyClass:       bodyClass,
-		CurrentUser:     currentUser,
-		IsAdmin:         currentUser.IsAdmin,
-		CurrentLanguage: currentUser.Language,
-		Languages:       model.Languages,
-		LanguageNames:   model.LanguageNames,
-		RecentUsers:     recentUsers,
+		BodyClass:        bodyClass,
+		CurrentUser:      currentUser,
+		IsAdmin:          currentUser.IsAdmin,
+		CurrentLanguage:  currentUser.Language,
+		Languages:        model.Languages,
+		DisplayLanguages: model.DisplayLanguages,
+		LanguageNames:    model.LanguageNames,
+		RecentUsers:      recentUsers,
 	}
 }
 
@@ -287,6 +290,10 @@ func sourcePath(source *model.Source) template.HTML {
 	return template.HTML("<ol class='breadcrumb'><li>" + lis + "</li></ol>")
 }
 
+func sourceCompletion(source *model.Source) map[string]int {
+	return source.GetLanguageCompletion()
+}
+
 var templateFuncs = template.FuncMap{
 	"percentColour":          percentColour,
 	"md5":                    md5sum,
@@ -298,7 +305,8 @@ var templateFuncs = template.FuncMap{
 	"entryClass":             entryClass,
 	"pagination":             paginateTemplate,
 	"sourcePath":             sourcePath,
-} 
+	"sourceCompletion":       sourceCompletion,
+}
 
 func renderTemplate(name string, w http.ResponseWriter, r *http.Request, dataproc func(data TemplateData) TemplateData) {
 	var data = GetTemplateData(r, name)

@@ -4,8 +4,8 @@ import (
 	// "crypto/md5"
 	"database/sql"
 	// "encoding/hex"
-	"github.com/ziutek/mymysql/mysql"
 	"fmt"
+	"github.com/ziutek/mymysql/mysql"
 )
 
 // ** Entries
@@ -42,21 +42,21 @@ func GetEntriesAt(game string, level int, show, language string) []*Entry {
 		return GetEntries()
 	}
 	args := make([]interface{}, 0, 2)
-	sql := "select Original, PartOf from Entries "+
-		"inner join EntrySources on Original = EntrySources.EntryOriginal and PartOf = EntrySources.EntryPartOf "+
+	sql := "select Original, PartOf from Entries " +
+		"inner join EntrySources on Original = EntrySources.EntryOriginal and PartOf = EntrySources.EntryPartOf " +
 		"inner join Sources on SourcePath = Filepath"
 	if show != "" {
-		sql = sql+" left join Translations on Original = Translations.EntryOriginal and PartOf = Translations.EntryPartOf and Translations.Language = ?"
+		sql = sql + " left join Translations on Original = Translations.EntryOriginal and PartOf = Translations.EntryPartOf and Translations.Language = ?"
 		args = append(args, language)
 	}
-	sql = sql+" where 1 = 1"
+	sql = sql + " where 1 = 1"
 
 	if game != "" {
-		sql = sql+" and Game = ?"
+		sql = sql + " and Game = ?"
 		args = append(args, game)
 	}
 	if level != 0 {
-		sql = sql+" and Level = ?"
+		sql = sql + " and Level = ?"
 		args = append(args, level)
 	}
 	// if show != "" {
@@ -64,11 +64,11 @@ func GetEntriesAt(game string, level int, show, language string) []*Entry {
 	// 	args = append(args, language)
 	// }
 
-	sql = sql+" group by Original, PartOf"
+	sql = sql + " group by Original, PartOf"
 	if show == "translated" {
-		sql = sql+" having count(Translations.Translation) > 0"
+		sql = sql + " having count(Translations.Translation) > 0"
 	} else if show == "untranslated" {
-		sql = sql+" having count(Translations.Translation) = 0"
+		sql = sql + " having count(Translations.Translation) = 0"
 	}
 	fmt.Println("Get entries:", sql)
 	results := query(sql, args...).rows(parseEntry)
@@ -93,7 +93,7 @@ func (entry *Entry) Save() {
 
 func (entry *Entry) CountTranslations() map[string]int {
 	counts := make(map[string]int, len(Languages))
-	query("select Language, Count(*) from Translations where EntryOriginal = ? and EntryPartOf = ? group by Language", entry.Original, entry.PartOf).rows(func (rows *sql.Rows) (Result, error) {
+	query("select Language, Count(*) from Translations where EntryOriginal = ? and EntryPartOf = ? group by Language", entry.Original, entry.PartOf).rows(func(rows *sql.Rows) (Result, error) {
 		var language string
 		var count int
 		rows.Scan(&language, &count)
@@ -136,19 +136,25 @@ func GetSourcesAt(game string, level int, show string) []*Source {
 	}
 	args := make([]interface{}, 0, 2)
 	sql := "select Filepath, Page, Volume, Level, Game from Sources "
-		// "inner join EntrySources on Original = EntrySources.EntryOriginal and PartOf = EntrySources.EntryPartOf "+
-		// "inner join Sources on SourcePath = Filepath"
+
+	// "inner join EntrySources on Original = EntrySources.EntryOriginal and PartOf = EntrySources.EntryPartOf "+
 	// if show != "" {
-	// 	sql = sql+" left join Translations on Original = Translations.EntryOriginal and PartOf = Translations.EntryPartOf"
+	// 	"inner join EntrySources on SourcePath = Filepath"
+	// 	if show == "translated" {
+	// 		sql = sql + "inner"
+	// 	} else if show == "untranslated" {
+	// 		sql = sql + "left"
+	// 	}
+	// 	sql = sql + " join Translations on Original = Translations.EntryOriginal and PartOf = Translations.EntryPartOf"
 	// }
-	sql = sql+" where 1 = 1"
+	sql = sql + " where 1 = 1"
 
 	if game != "" {
-		sql = sql+" and Game = ?"
+		sql = sql + " and Game = ?"
 		args = append(args, game)
 	}
 	if level != 0 {
-		sql = sql+" and Level = ?"
+		sql = sql + " and Level = ?"
 		args = append(args, level)
 	}
 	// if show != "" {
@@ -156,12 +162,16 @@ func GetSourcesAt(game string, level int, show string) []*Source {
 	// 	args = append(args, language)
 	// }
 
-	sql = sql+" group by Original, PartOf"
-	// if show == "translated" {
-	// 	sql = sql+" having count(Translations.Translation) > 0"
-	// } else if show == "untranslated" {
-	// 	sql = sql+" having count(Translations.Translation) = 0"
-	// }
+	// sql = sql+" group by Original, PartOf"
+	if show == "translated" || show == "untranslated" {
+		sql = sql + " and Filepath"
+		if show == "untranslated" {
+			sql = sql + " not"
+		}
+		sql = sql + " in (select SourcePath from EntrySources" +
+			" inner join Translations on EntrySources.EntryOriginal = Translations.EntryOriginal and EntrySources.EntryPartOf = Translations.EntryPartOf)"
+	}
+
 	fmt.Println("Get entries:", sql)
 	results := query(sql, args...).rows(parseSource)
 
@@ -185,6 +195,21 @@ func (source *Source) Save() {
 		"Game":   source.Game,
 	}
 	saveRecord("Sources", keyfields, fields)
+}
+
+func (source *Source) GetLanguageCompletion() map[string]int {
+	var completion = make(map[string]int, len(Languages))
+
+	total := query("select count(distinct Original, PartOf) from Entries "+
+		"inner join EntrySources on Original = EntryOriginal and PartOf = EntryPartOf "+
+		"where SourcePath = ?", source.Filepath).count()
+	for _, lang := range Languages {
+		count := query("select count(distinct Translations.EntryOriginal, Translations.EntryPartOf) from Translations "+
+			"inner join EntrySources on Translations.EntryOriginal = EntrySources.EntryOriginal and Translations.EntryPartOf = EntrySources.EntryPartOf "+
+			"where SourcePath = ? and Language = ?", source.Filepath, lang).count()
+		completion[lang] = 100 * count / total
+	}
+	return completion
 }
 
 type EntrySource struct {
@@ -237,7 +262,6 @@ func (es *EntrySource) Save() {
 	}
 	saveRecord("EntrySources", keyfields, fields)
 }
-
 
 // ** Translations
 
@@ -391,11 +415,11 @@ func (user *User) Save() bool {
 		"Email": user.Email,
 	}
 	fields := map[string]interface{}{
-		"Password": user.Password,
-		"Secret":   user.Secret,
-		"Name":     user.Name,
-		"IsAdmin":  user.IsAdmin,
-		"Language": user.Language,
+		"Password":       user.Password,
+		"Secret":         user.Secret,
+		"Name":           user.Name,
+		"IsAdmin":        user.IsAdmin,
+		"Language":       user.Language,
 		"IsLanguageLead": user.IsLanguageLead,
 	}
 	return saveRecord("Users", keyfields, fields)
@@ -403,7 +427,7 @@ func (user *User) Save() bool {
 
 func (user *User) CountTranslations() map[string]int {
 	counts := make(map[string]int, len(Languages))
-	query("select Language, Count(*) from Translations where Translator = ? group by Language", user.Email).rows(func (rows *sql.Rows) (Result, error) {
+	query("select Language, Count(*) from Translations where Translator = ? group by Language", user.Email).rows(func(rows *sql.Rows) (Result, error) {
 		var language string
 		var count int
 		rows.Scan(&language, &count)

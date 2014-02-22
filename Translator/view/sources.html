@@ -60,11 +60,11 @@
 	{{ range $source := .Sources }}
 	<tr>
 		<td>
-			{{ sourcePath $source }}
+			<a href="http://charactersheets.minotaur.cc/public/pdf/{{ $source.Filepath }}.pdf">{{ sourcePath $source }}</a>
 		</td>
-		{{/* $pageCompletion := $page.completion */}}
+		{{ $sourceCompletion := sourceCompletion $source }}
 		{{ range $lang := $languages }}
-			{{ $complete := 70 }}
+			{{ $complete := index $sourceCompletion $lang }}
 			{{ $col := percentColour $complete }}
 			<td>
 				<div class="progress">

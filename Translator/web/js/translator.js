@@ -32,6 +32,6 @@ jQuery(function ($) {
 	});
 
 	$("a.reveal-my-translation").click(function () {
-		$(this).closest("tr").addClass("my-translation");
+		$(this).closest("tr").addClass("my-translation").find("p.my-translation input").first().focus();
 	});
 });

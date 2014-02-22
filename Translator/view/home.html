@@ -15,7 +15,7 @@
 	<table class='table'>
 		{{ $languageNames := .LanguageNames }}
 		{{ $languageCompletions := .LanguageCompletion }}
-		{{ range $lang := .Languages }}
+		{{ range $lang := .DisplayLanguages }}
 		{{ $languageName := index $languageNames $lang }}
 		{{ $languageCompletion := index $languageCompletions $lang }}
 		<tr>
@@ -76,7 +76,8 @@
 
 
 <div class='panel panel-success'>
-	<div class='panel-heading'><h3 class='panel-title'><span class="glyphicon glyphicon-globe"></span>&nbsp; My translations</h3></div>
+	<div class='panel-heading'><h3 class='panel-title'><span class="glyphicon glyphicon-globe"></span>&nbsp; 
+		{{ if .CurrentUser.IsAdmin }}Translation summary{{ else }}My translations{{ end }}</h3></div>
 	<div class='panel-body'>
 
 		{{ $currentUser := .CurrentUser }}
