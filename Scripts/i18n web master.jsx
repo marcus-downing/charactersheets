@@ -35,7 +35,7 @@ var webMaster = {
         'Original': text,
         'Part of': partOf,
         'Count': 1,
-        'File': [ filename ],
+        'File': filename,
         'Volume': this.volume,
         'Game': this.game,
         'Level': this.level
@@ -46,7 +46,7 @@ var webMaster = {
   extractFile: function(file) {
     var num = 0;
     try {
-      var filename = file.name;
+      var filename = file.fullName.substring(baseFolder.length);
       var doc = app.open(file);
 
       var frames = doc.textFrames;
@@ -121,7 +121,7 @@ var webMaster = {
 
 webMaster.game = "Pathfinder"
 webMaster.level = 1;
-webMaster.volumne = "Core Rulebook";
+webMaster.volume = "Core Rulebook";
 webMaster.extractFolder(new Folder(baseFolder+'Pathfinder/Core'));
 webMaster.extractFolder(new Folder(baseFolder+'Pathfinder/Extra'));
 webMaster.extractFolder(new Folder(baseFolder+'Pathfinder/GM'));
@@ -151,5 +151,31 @@ webMaster.volume = "NeoExodus"
 webMaster.extractFolder(new Folder(baseFolder+'Pathfinder/NeoExodus'));
 
 
-webMaster.saveCSV(new File(baseFolder+'Languages/Template/Master/Pathfinder.csv'));
+webMaster.game = "3.5";
+webMaster.level = 1;
+webMaster.volume = "Players Handbook"
+webMaster.extractFolder(new Folder(baseFolder+'3.5/Core'));
+webMaster.extractFolder(new Folder(baseFolder+'3.5/Barbarian'));
+webMaster.extractFolder(new Folder(baseFolder+'3.5/Variants'));
+webMaster.extractFolder(new Folder(baseFolder+'3.5/DM'));
+
+webMaster.level = 2;
+webMaster.volume = "";
+webMaster.extractFolder(new Folder(baseFolder+'3.5/Extended'));
+
+webMaster.level = 3;
+webMaster.volume = ""
+webMaster.extractFolder(new Folder(baseFolder+'All'));
+webMaster.extractFolder(new Folder(baseFolder+'Extra'));
+webMaster.volume = "Dragon Compendium";
+webMaster.extractFolder(new Folder(baseFolder+'3.5/Dragon Compendium'));
+
+webMaster.level = 4;
+webMaster.volume = "";
+webMaster.extractFolder(new Folder(baseFolder+'3.5/Psionics'));
+webMaster.extractFolder(new Folder(baseFolder+'3.5/Tomes'));
+webMaster.extractFolder(new Folder(baseFolder+'3.5/Incarnum'));
+
+webMaster.saveCSV(new File(baseFolder+'Languages/Template/Web Master.csv'));
 webMaster.clear();
+alert("Done");
