@@ -290,6 +290,13 @@ func sourcePath(source *model.Source) template.HTML {
 	return template.HTML("<ol class='breadcrumb'><li>" + lis + "</li></ol>")
 }
 
+func sourceURL(source *model.Source) template.HTML {
+	path = source.Filepath
+	path = strings.Replace(path, "3.5", "dnd35", 1)
+	path = strings.Replace(path, "Pathfinder", "pathfinder", 1)
+	return "http://charactersheets.minotaur.cc/assets/pdf/" + path + ".pdf"
+}
+
 func sourceCompletion(source *model.Source) map[string]int {
 	return source.GetLanguageCompletion()
 }
@@ -305,6 +312,7 @@ var templateFuncs = template.FuncMap{
 	"entryClass":             entryClass,
 	"pagination":             paginateTemplate,
 	"sourcePath":             sourcePath,
+	"sourceURL":              sourceURL,
 	"sourceCompletion":       sourceCompletion,
 }
 

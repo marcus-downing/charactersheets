@@ -60,7 +60,7 @@
 	{{ range $source := .Sources }}
 	<tr>
 		<td>
-			<a href="http://charactersheets.minotaur.cc/public/pdf/{{ $source.Filepath }}.pdf">{{ sourcePath $source }}</a>
+			<a href="{{ sourceURL $sources }}http://charactersheets.minotaur.cc/assets/pdf/{{ $source.Filepath }}.pdf">{{ sourcePath $source }}</a>
 		</td>
 		{{ $sourceCompletion := sourceCompletion $source }}
 		{{ range $lang := $languages }}
