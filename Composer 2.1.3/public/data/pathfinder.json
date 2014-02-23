@@ -216,13 +216,24 @@
             { "file": "GM/Timeline (Landscape - continued).pdf", "name": "Timeline (Landscape - continued)" },
             { "file": "GM/Notes.pdf", "name": "Notes" }
         ],
-        "maps": [
-            { "file": "GM/Maps/Hex A4 (raster).pdf", "name": "Map - Hex A4 Portrait", "slot": "hex-a4" },
-            { "file": "GM/Maps/Hex A4 Landscape (raster).pdf", "name": "Map - Hex A4 Landscape", "slot": "hex-landscape" },
-            { "file": "GM/Maps/Hex A5 (raster).pdf", "name": "Map - Hex A5 Portrait", "slot": "hex-a5" },
-            { "file": "GM/Maps/Isometric A4 (raster).pdf", "name": "Map - Isometric A4 Portrait", "slot": "iso-a4" },
-            { "file": "GM/Maps/Square (Portrait raster).pdf", "name": "Map - Isometric A4 Portrait", "slot": "grid-a4" }
-        ],
+        "maps": {
+            "2d": [
+                { "file": "GM/Maps/2D/Raster/Hex A3.pdf", "name": "Map - Hex A3 Portrait", "slot": "hex-a3" },
+                { "file": "GM/Maps/2D/Raster/Hex A4.pdf", "name": "Map - Hex A4 Portrait", "slot": "hex-a4" },
+                { "file": "GM/Maps/2D/Raster/Hex A4 Landscape.pdf", "name": "Map - Hex A4 Landscape", "slot": "hex-a4-landscape" },
+                { "file": "GM/Maps/2D/Raster/Hex A5.pdf", "name": "Map - Hex A5 Portrait", "slot": "hex-a5" },
+                { "file": "GM/Maps/2D/Raster/Isometric A4.pdf", "name": "Map - Isometric Grid A4 Portrait", "slot": "iso-a4" },
+                { "file": "GM/Maps/2D/Raster/Square A4.pdf", "name": "Map - Square Grid A4 Portrait", "slot": "grid-a4" }
+            ],
+            "3d": [
+                { "file": "GM/Maps/3D/Raster/Hex A3.pdf", "name": "Map - Hex A3 Portrait", "slot": "hex-a3" },
+                { "file": "GM/Maps/3D/Raster/Hex A4.pdf", "name": "Map - Hex A4 Portrait", "slot": "hex-a4" },
+                { "file": "GM/Maps/3D/Raster/Hex A4 Landscape.pdf", "name": "Map - Hex A4 Landscape", "slot": "hex-a4-landscape" },
+                { "file": "GM/Maps/3D/Raster/Hex A5.pdf", "name": "Map - Hex A5 Portrait", "slot": "hex-a5" },
+                { "file": "GM/Maps/3D/Raster/Isometric A4.pdf", "name": "Map - Isometric Grid A4 Portrait", "slot": "iso-a4" },
+                { "file": "GM/Maps/3D/Raster/Square A4.pdf", "name": "Map - Square Grid A4 Portrait", "slot": "grid-a4" }
+            ]
+        },
         "aps": [
             {
                 "name": "Kingmaker",
@@ -537,7 +548,7 @@
 
         {
             "name": "Arcanist",
-            "pages": [ "arcanist", "inventory" ]
+            "pages": [ "arcanist", "inventory", "spellbook" ]
         },
 
         {

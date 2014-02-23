@@ -87,7 +87,8 @@ object CharacterData {
       colour = data.get("colour").getOrElse("normal"),
       watermark = if (positive.contains("has-watermark")) data.get("watermark").getOrElse("") else "",
       gmCampaign = positive.contains("gm-campaign"),
-      gmMaps = positive.contains("gm-maps"),
+      maps = positive.contains("maps"),
+      maps3d = data.get("maps-view").getOrElse("3d") == "3d",
       aps = aps
       )
   }
@@ -97,7 +98,8 @@ case class GMData (
   colour: String,
   watermark: String,
   gmCampaign: Boolean,
-  gmMaps: Boolean,
+  maps: Boolean,
+  maps3d: Boolean,
   aps: List[String]
   )
 

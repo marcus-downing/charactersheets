@@ -37,8 +37,13 @@ object GameData {
 
   def parseGM(json: JsObject) = GM(
     campaign = (json \ "campaign").as[List[JsObject]].map(parsePage),
-    maps = (json \ "maps").as[List[JsObject]].map(parsePage),
+    maps = parseMaps((json \ "maps").as[JsObject]),
     aps = (json \ "aps").asOpt[List[JsObject]].getOrElse(Nil).map(parseAP)
+  )
+
+  def parseMaps(json: JsObject) = Maps(
+    maps2d = (json \ "2d").as[List[JsObject]].map(parsePage),
+    maps3d = (json \ "3d").as[List[JsObject]].map(parsePage)
   )
 
   def parseAP(json: JsObject) = AP(
@@ -99,8 +104,13 @@ case class GameData (
 
 case class GM (
   campaign: List[Page],
-  maps: List[Page],
+  maps: Maps,
   aps: List[AP] = Nil
+  )
+
+case class Maps (
+  maps2d: List[Page],
+  maps3d: List[Page]
   )
 
 case class AP (

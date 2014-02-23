@@ -143,7 +143,10 @@ object Composer extends Controller {
       }
     }
 
-    placeGMPages(gameData.gm.maps)
+    if (gmdata.maps) {
+      val maps = if (gmdata.maps3d) gameData.gm.maps.maps3d else gameData.gm.maps.maps2d
+      placeGMPages(maps)
+    }
     if (gmdata.gmCampaign)
       placeGMPages(gameData.gm.campaign)
     println("APs: "+gmdata.aps.mkString(", "))

@@ -205,9 +205,15 @@
       <div class='yui3-g'>
         <div class='yui3-u-1-2'><div class='col left'>
 
-          <h3><label for='gm-maps'><input type="checkbox" checked disabled name="gm-maps" id="gm-maps" /> Map Templates</label></h3>
+          <h3><label for='maps'><input type="checkbox" checked name="maps" id="maps" /> Map Templates</label></h3>
             <p>Blank hex maps, isometric maps, city maps and more.
-              @if(gameData.isPathfinder) { <span>Goes well with Kingmaker.</span> }</p>
+              @if(gameData.isPathfinder) { <span>Goes well with Kingmaker and Ultimate Campaign</span> }</p>
+            <p class="suboption">
+              <label for="maps-view-3d"><input type="radio" name="maps-view" value="3d" id="maps-view-3d" checked />
+                3D (perspective)</label>
+              <label for="maps-view-2d"><input type="radio" name="maps-view" value="2d" id="maps-view-2d"/>
+                2D (flat)</label>
+            </p>
           <h3><label for='gm-campaign'><input type="checkbox" name="gm-campaign" id="gm-campaign" /> Campaign Planning Sheets</label></h3>
             <p>Party summary, NPC, timeline and other sheets for planning a game.</p>
 
