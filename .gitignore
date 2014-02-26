@@ -4,5 +4,6 @@ target
 .fuse_*
 *(raster).ai
 *.log
-GM/Old
+**/*.log
+Pathfinder/GM/Old/*
 Languages/Numbered
