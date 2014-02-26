@@ -106,6 +106,30 @@ body.users #nav-users a
 
 
 
+/* Sources */
+
+body.sources ol.breadcrumb {
+  margin-bottom: 0;
+  background: none;
+}
+
+body.sources .progress {
+  margin-bottom: 0;
+}
+
+body.sources td {
+  vertical-align: middle !important;
+}
+
+body.sources tr:hover td {
+  background: #fff2b0 !important;
+}
+
+body.sources .breadcrumb > li + li:before {
+  padding-left: 10px;
+}
+
+
 
 /* Translation form */
 

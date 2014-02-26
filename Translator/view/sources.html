@@ -42,17 +42,18 @@
 
 </div>
 
-{{ $languages := .Languages }}
+{{ $languages := .DisplayLanguages }}
 <table class='table table-striped table-hover'>
 
 	<thead>
 		<tr>
-			<td>Page</td>
+			<th>Page</th>
 			{{ $languageNames := .LanguageNames }}
-			{{ range $lang := .Languages }}
-			<td>
-				<img src='/images/flags/{{$lang}}.png'>
-				{{ index $languageNames $lang }}</td>
+			{{ range $lang := .DisplayLanguages }}
+			<th>
+				<img src='/images/flags/{{$lang}}.png'>&nbsp; 
+				{{ index $languageNames $lang }}
+			</th>
 			{{ end }}
 		</tr>
 	</thead>
@@ -60,7 +61,7 @@
 	{{ range $source := .Sources }}
 	<tr>
 		<td>
-			<a href="{{ sourceURL $sources }}http://charactersheets.minotaur.cc/assets/pdf/{{ $source.Filepath }}.pdf">{{ sourcePath $source }}</a>
+			<a href="{{ sourceURL $source }}">{{ sourcePath $source }}</a>
 		</td>
 		{{ $sourceCompletion := sourceCompletion $source }}
 		{{ range $lang := $languages }}

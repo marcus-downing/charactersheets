@@ -291,10 +291,10 @@ func sourcePath(source *model.Source) template.HTML {
 }
 
 func sourceURL(source *model.Source) template.HTML {
-	path = source.Filepath
+	path := source.Filepath
 	path = strings.Replace(path, "3.5", "dnd35", 1)
 	path = strings.Replace(path, "Pathfinder", "pathfinder", 1)
-	return "http://charactersheets.minotaur.cc/assets/pdf/" + path + ".pdf"
+	return template.HTML("http://charactersheets.minotaur.cc/assets/pdf/" + path + ".pdf")
 }
 
 func sourceCompletion(source *model.Source) map[string]int {
