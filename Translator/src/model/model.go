@@ -12,11 +12,11 @@ import (
 
 // Languages
 var Languages []string = []string{
-	"gb", "it", "fr", "de", "es", "pt", "cy", "kl", "us",
+	"gb", "it", "fr", "de", "es", "pt", "ru", "cy", "kl", "us",
 }
 
 var DisplayLanguages []string = []string{
-	"it", "de", "es", "fr", "pt",
+	"it", "de", "es", "fr", "pt", "ru",
 }
 
 var LanguageNames map[string]string = map[string]string{
@@ -26,6 +26,7 @@ var LanguageNames map[string]string = map[string]string{
 	"de": "Deutch",
 	"es": "Español",
 	"pt": "Português",
+	"ru": "Ру́сский",
 	"cy": "Cymraeg",
 	"kl": "Klingon",
 	"us": "US English",

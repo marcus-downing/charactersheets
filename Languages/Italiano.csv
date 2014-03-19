@@ -1,0 +1,677 @@
+Original,Part of,Translation
+AC,Shield Wall    +1 / +2 to AC when both using shields,CA
+Base|Attack,"",Attacco Base
+Evasion,"",Eludere
+FOES,FOES|PER DAY,NEMICI
+USES,USES|PER DAY,USI| 
+VERSATILE PERFORMANCE,"",ESECUZIONE VERSATILE
+"Diplomacy, Intimidate","","Diplomazia, Intimidire"
+Fatigue|Modifier,"",Fatica|Modificatore
+RAGE!,RAGE!|Duration,IRA!
+Serious Wounds,"",Ferite Gravi
+(require,"",(richiede
+Cause an enemy to die of joy or sorrow,"",Provoca la morte di un nemico per gioia o tristezza
+CHARGES,"",CARICHE
+DEFENCE,COMBAT MANEUVRE|DEFENCE,MANOVRA in COMBATTIMENTO
+PORTRAIT,"",RITRATTO
+RAGE!,RAGE!|TODAY,IRA!
+WILL SAVE,WILL SAVE|BONUS,BONUS SALVEZZA
+AC,Charge  -2 to AC for the rest of the round,CA
+Arms / Wrists,"",Braccia / Polsi
+ATTACK,SINGLE ATTACK,SINGOLO
+CHA,"",CAR
+Duck and Cover,Duck and Cover    Take ally’s result on reflex save,Al Riparo
+Shield Wall,Shield Wall    +1 / +2 to AC when both using shields,Muro di Scudi
+Staggering Critical,"",Critico Incapacitante
+WILD EMPATHY,"",EMPATIA SELVAGGIA
+Doesn’t stack with magic bonus,Masterwork     Doesn’t stack with magic bonus,Non si cumula con il bonus magico
+MALE,"",MASCHIO
+TAKE 20,TAKE 20 PER DAY,PRENDERE 20
+ACTIONS,ATTACK ACTIONS,d'ATTACCO
+Bonus to attack and damage rolls,"",Bonus a tiri di attacco e danni
+Cavalry Formation,"Cavalry Formation    Share space, charge through allied mount",Formazione di Cavalleria
+Class|Skills,Class|Skills|+3,|+3
+CMD,"",DMC
+Deafening Critical,"",Critico Assordante
+Greater Vital Strike,"",Colpo Vitale Superiore
+INITIATIVE,"",INIZIATIVA
+Ride,"",Cavalcare
+SMITE EVIL,"",PUNIRE IL MALE
+WILL,WILL SAVE DC,CD SALVEZZA
+Apply this bonus to all knowledge skills,"",Applicare questo bonus a tutte le abil di conoscenza.
+BONUS,DAMAGE|BONUS,DANNI
+d10,"",d10
+DAMAGE,DAMAGE|BONUS,BONUS|
+Medium Load,"",Carico Medio
+Bards can wear light armour without risking|spell failure.,"",I bardi possono indossare armature leggere senza subire|perc.fallmnt.incant.arcani
+BUFFS & TEAMWORK,SUBTOTAL BUFFS & TEAMWORK,INCREMENTI & SQUADRA
+Coordinated Defence,Coordinated Defence    +2 to CMD,Difesa Coordinata
+Great Cleave,Great Cleave    Any number of extra attacks per round,Incalzare Potenziato
+to,Shield Wall    +1 / +2 to AC when both using shields,a
+Type,"",Tipo
+Monk|Level,"",Livello|da Monaco
+Trained,"",Con addestramento
+Uses|per day,"",Usi| al giorno
+Armour AC,"",CA Armatura
+DRUID,"",DRUIDO
+EQUIPMENT,"",EQUIPAGGIAMENTO
+to ally’s,Improved Back to Back    +2 to ally’s AC,alla CA
+Total Weight,"",Peso Totale
+Disguise,"",Camuffare
+for every 10ft of your standard move above 30ft,"",per ogni 3 m del tuo movimento standard sopra i 9 m
+Greater ),"",Superiore )
+Haste,Haste    One extra attack at full bonus,Velocità
+POWERS,RAGE! POWERS |KNOWN,POTERI
+Today,"",Oggi
+Use,Weapon Finesse  Use DEX for melee attack,Usa
+BONUS,CMD BONUS,BONUS
+CMB,"",BMC
+Debts,"",Debiti
+EFFECTS,"",EFFETTI
+Favoured class,"",Classe preferita
+HIT POINTS,"",PUNTI FERITA
+Non-lethal,"",Non-letali
+"Bluff, Intimidate","","Raggirare, Intimidire"
+Ranks,"",Gradi
+String,"",Corde
+ANIMAL COMPANION,"",COMPAGNO ANIMALE
+CON,"",COS
+DEFENCE,"",DIFESA 
+Precise Strike,Precise Strike    When flanking,Colpo Preciso
+SAVE DC,FORTITUDE|SAVE DC,CD SALVEZZA
+Unconcious,"",Inconscio
+(Round down),"",(Arrotondato per difetto)
+Broken Wing Gambit,"Broken Wing Gambit    Grant +2/+2, get attack of opportunity",Fingere debolezza
+FIGHTER,"",GUERRIERO
+Sing,"",Cantare
+Belts,"",Cinture
+Mass Spell Level,"",Livello Inc. Mass.
+MAX AFFECTED,INSPIRE GREATNESS  MAX AFFECTED,DA ISPIRARE GRANDEZZA
+MELEE|ATTACK,"",ATTACCO|in MISCHIA
+RAGE!,GREATER RAGE!,SUPERIORE!
+d10 / 3d6,"",d10 / 3d6
+Dodge,"",Schivare
+LANGUAGES,"",LINGUAGGI
+Times per day,"",Volte al giorno
+Two-handed weapon,"",Arma a due mani
+Base|Spells,"",Incantesimi|Base
+Campaign,"",Campagna
+CRITICAL,CRITICAL EFFECTS,EFFETTI
+DMG,"",DANNI
+PER DAY,DURATION|PER DAY,AL GIORNO
+Ring,"",Anello
+SAVE,WILL SAVE,VOLONTÀ
+BONUS,EVIL DAMAGE|BONUS,DANNI MALVAGI
+Check Penalty,"",Penalità alla prova
+CURE / INFLICT,"",CURARE / INFLIGGERE
+Power|Attack,"",Attacco|Poderoso
+RAGE!,RAGE!|Modifier,IRA! 
+Ranger|Level,"",Livello|da Ranger
+Buffs,"",INCREMENTI
+MAX AUDIENCE,FASCINATE|MAX AUDIENCE,DI AFFASCINARE
+Misc,"",Altro
+Racial,"",Razziale
+SAVE,REFLEX SAVE,RIFLESSI
+Temp AC,"",CA Temporanea
+Able to take 10 on any skill,"",Capace di prendere 10 su ogni abilità
+All skills are considered class skills,"",Tutte le abilità considerate abil di classe
+BAB,Use monk level in place of BAB for calculating CMB,BAB
+Base,"",Base
+Race,"",Razza
+Speed with Armour,"",Velocità con Armat.
+TEAMWORK,TEAMWORK|FEATS,TALENTO
+When adjacent,Paired Opportunists    When adjacent,Quando vicini
+Act,"",Recitare
+DISTRACTION,"",DISTRAZIONE
+FASCINATE,FASCINATE|MAX AUDIENCE,MASSIMO PUBBLICO|
+Improved Vital Strike,"",Colpo Vitale Migliorato
+Knowledge - INT|Profession - WIS,"",Conoscenza-INT|Professione-SAG
+Knowledge: The Planes,"",Conoscenze: I Piani
+(ROGUE),"",(LADRO)
+DEX,"Feint Partner    When ally feints, enemy loses DEX bonus to AC",DES
+Furious Focus,Furious Focus    Ignore power attack penalty for first attack,Furia Focalizzata
+Improved Critical or Keen weapon,"",Critico Migliorato o arma Affilata
+Notes,"",NOTE
+RAGE!,RAGE! POWERS |KNOWN,IRA!
+to,Back to Back    +2 to AC against flanking,alla 
+Value,"",Valore
+Diplomacy,"",Diplomazia
+Hands,"",Mani
+INSPIRE GREATNESS,INSPIRE GREATNESS  MAX AFFECTED,BERSAGLI MAX INFLUENZATI
+SNEAK ATTACK,"",ATTACCO FURTIVO
+Appraise,"",Valutare
+Size,"",Taglia
+Base|Attack Bonus,"",Bonus Attacco Base
+KNOWN,RAGE! POWERS |KNOWN,CONOSCIUTI
+AC,AC BONUS,CA
+BASE|ATTACK,BASE|ATTACK BONUS,BONUS|
+Distance,"",Distanza
+MAX AFFECTED,INSPIRE HEROICS  MAX AFFECTED,DA ISPIRARE EROISMO
+to confirm criticals,"",per confermare critici
+Acrobatics DC = Opponent’s,Acrobatics DC = Opponent’s CMD,CD Acrobazia = DMC
+Channel Positive Energy,"",INCANALARE ENERGIA POSITIVA
+Light Wounds,"",Ferite Leggere
+Off-hand weapon,Off-hand weapon    (2 less for a light weapon),Arma mano-secndria
+SPECIAL MOUNT,"",CAVALCATURA SPECIALE
+Subtype,"",Sottotipo
+Unlimited uses|per day,"",Usi illimitati|al giorno
+WIS - 4,"",SAG – 4
+Wounds,"",Ferite
+Double Slice,Double Slice    No damage penalty,Doppio Taglio
+FRIGHTENING TUNE,"",ACCORDO SPAVENTOSO
+Temp|Modifier,"",Modificatore|Temp
+Ammo,"",Munizioni
+INSPIRE HEROICS,INSPIRE HEROICS  MAX AFFECTED,BERSAGLI MAX INFLUENZATI
+Masterwork,Masterwork     Doesn’t stack with magic bonus,Perfetto
+Vital Strike,Vital Strike    Extra damage dice,Colpo Vitale
+BARDIC KNOWLEDGE,"",CONOSCENZE BARDICHE
+"Bluff, Sense Motive","","Raggirare, Intuizione"
+Cause enemies within 30ft to become shaken,"",Infligge status scosso a nemici entro 9mt
+DEADLY PERFORMANCE,"",MUSICA MORTALE
+Fly,"",Volare
+Natural|Armour,"",Armatura|Naturale
+Swim,"",Nuotare
+TOUCH,TOUCH ARMOUR CLASS,CLASSE ARMATURA
+WIS - 8,"",SAG – 8
+Properties,"",Proprietà
+step,Pack Attack    Ally’s attack allows you to take 5ft step,passo
+STR,"",FOR
+WIS - 12,"",SAG – 12
+MERCIES,"",INDULGENZE
+M’wk,"",Prft
+FORTITUDE,FORTITUDE SAVE,SALVEZZA DI
+Height,"",Altezza
+Increased critical range and always confirm critical hits,Weapon Mastery    Increased critical range and always confirm critical hits,Aumenta raggio di critc e conferma sempre colpi critici
+Temp Attack|Bonus,"",Bonus Attacco|Temporaneo
+(Round up),"",(Arrotond.per eccesso)
+ABILITIES,"",STATISTICHE
+BONUS,COMBAT MANOEUVRE|BONUS,IN COMBATTIMENTO
+"Diplomacy, Sense Motive","","Diplomazia, Intuizione"
+Evil Cleric,"",Chierico Malvagio
+for calculating,Use monk level in place of BAB for calculating CMB,per calcolare il
+Weight,"",Peso
++ Level,"",+ Livello
+Armour|& Shield,"",Armatura|& Scudo
+DC,FORTITUDE|SAVE DC,CD
+Inflict Wounds,"",Infliggere Ferite
+Percussion,"",Percussioni
+Sneaking Precision,Sneaking Precision    Apply a critical effect to the,Precisione Furtiva
+35ft,"","10,5 m"
+Rogue|Level,"",Livello|da Ladro
+Spell Failure,"",Fallimento Incantesimi
+SURVIVAL,"",Sopravvivenza
+Temp Damage|Bonus,"",Bonus Danno|Temporaneo
+Critical Mastery,Critical Mastery    Apply two critical effects at once,Critico Prodigioso
+per successive hit,"",con ogni colpo successivo
+Stable,"",Stabile
+Uncanny Dodge,"",Schivare Prodigioso
+Apply two critical effects at once,Critical Mastery    Apply two critical effects at once,Si applicano due effetti di critico insieme
+CLERIC,"",CHIERICO
+Handle Animal,"",Addestrare Animali
+Size|Modifier,"",Modificatore di Taglia
+WILL,"",VOL
+Death or Glory,"Death or Glory    +4 (+1 at levels 11, 16, 20)",Gloria o Morte
+REFLEX,REFLEX SAVE,SALVEZZA DI
+Times Today,"",Volte oggi
+Barbarian|Level,"",Livello|del Barbaro
+FEATS,TEAMWORK|FEATS,di SQUADRA
+25ft,"","7,5 m"
+50 coins weighs 1lb,"","50 monete pesano 0,5kg"
+Ability Modifier = (Total Ability Score - 10) ÷ 2,"",Modificatore di Statistica = (Punteggio Statist. Totale - 10) ÷ 2
+BARD,"",BARDO
+DEFLECTION,DEFLECTION|BONUS,BONUS|
+ENERGY,ENERGY|ROLL,TIRO
+PER DAY,CHANNEL|PER DAY,|AL GIORNO
+Take ally’s result on reflex save,Duck and Cover    Take ally’s result on reflex save,Si prende il risultato di un alleato a salvz su riflessi
+BONUS,INITIATIVE BONUS,INIZIATIVA
+COMBAT,"",COMBATTIMENTO
+Coordinated Manoeuvres,Coordinated Manoeuvres    +2 to CMB,Manovre Coordinate
+d8,"",d8
+LORE MASTER,"",MAESTRO DEL SAPERE
+Skill Ranks,"",Gradi Abilità
+Temp Attack,"",Attacco Temporaneo
+Bard|Level,"",Livello|Del Bardo
+BONUS,MAX ARMOUR|DEX BONUS,BONUS dell'ARMATURA
+CMD,FLAT-FOOTED|CMD,IMPREPARATO
+DURATION,RAGE!  DURATION|PER DAY,DURATA
+per extra die,Devastating Strike    +2 per extra die,per dado extra
+to,Coordinated Defence    +2 to CMD,a
+WILL,WILL SAVE,SALVEZZA DI
+BONUS,MELEE ATTACK|BONUS,BONUS  
+d6,"",d6
+HEALTH,"",SALUTE
+PER DAY,USES|PER DAY,AL GIORNO
+5ft,"","1,5 m"
+CHA - 4,"",CAR – 4
+d6 / 2d6,"",d6 / 2d6
+"Mass Cure Serious Wounds|Removes the fatigued, sickened and shaken conditions","","Cura ferite gravi di massa|Rimuove le condizioni affaticato,scosso e infermo"
+Shoulders,"",Spalle
+2d8,"",2d8
+AC,"Feint Partner    When ally feints, enemy loses DEX bonus to AC",CA
+Dispelling Critical,"",Critico Dissolvente
+FORTITUDE,FORTITUDE|SAVE DC,TEMPRA
+Sml / Lrg,"",Pcl/Grn
+CHARACTER,"",PERSONAGGIO
+COMBAT MANOEUVRES,"",MANOVRA in COMBATTIMENTO
+SAVING THROWS,"",TIRI SALVEZZA
+"Share space, charge through allied mount","Cavalry Formation    Share space, charge through allied mount","Condvdre spazio, caricare atrvrso cavlctre alleate"
+to,Charge  -2 to AC for the rest of the round,alla
++ 1d6,"",.+ 1d6
+4d8,"",4d8
+Cleric|Level,"",Livello|del Chierico
+WILL,WILL|SAVE DC,CD Salvezza
+at half speed,"",a metà velocità
+CHA - 8,"",CAR – 8
+Creature|Level,"",Livello|Della creatura
+DOMAINS,"",DOMINI
+INT,"",INT
+Max Speed,"",Velocità Massima
+15ft,"","4,5 m"
+Acrobatics DC = 5 + Opponent’s,Acrobatics DC = 5 + Opponent’s CMD,CD Acrobazia = 5 + DMC
+BONUS FEATS,"",TALENTI BONUS
+Carried Items,"",Oggetti Trasportati
+RAGE!,RAGE! POWERS,IRA!
+Tiring Critical,"",Critico Affaticante
+to,Coordinated Manoeuvres    +2 to CMB,a
+2d8 / 4d8,"",2d8 / 4d8
+45ft,"","13,5 m"
+against flanking,Back to Back    +2 to AC against flanking,contro fiancheggiamento
+Damage,"",Danno
+Exhausting Critical,"",Critico Inesorabile
+CMB,Use monk level in place of BAB for calculating CMB,BMC
+Effective|Character|Level,"",Livello|Effettivo|del Personaggio
+Improved Back to Back,Improved Back to Back    +2 to ally’s AC,Schiena contro Schiena Migliorato
+Ability|Modifier,"",Modificatore|Della statist.
+d8 / 2d8,"",d8 / 2d8
+DC,WILL|SAVE DC,CD
+Power Attack,"",Attacco Poderoso
+SPELLS,"",INCANTESIMI
+Summoned|Today,"",Evocazioni|Oggi
+Fly Speed,"",Velocità in Volo
+Knowledge: Dungeoneering,"",Conoscenze: Dungeon
+Platinum,"",Platino
+POWERS,RAGE! POWERS,POTERI
+Special properties,"",Proprietà speciali
+TODAY,RAGE!|TODAY,OGGI
+Weapon|Training,"",Addestramento|nelle Armi
+BRAVERY,"",AUDACIA
+FORT,"",TEM
+Heavy Load,"",Carico Pesante
+Ignore damage reduction up to 10/—,Greater Penetrating Strike    Ignore damage reduction up to 10/—,Ignora resistenza ai danni fino a 10/—
+Moderate Wounds,"",Ferite Moderate
+DIVINE BOND,"",LEGAME DIVINO
+INVENTORY,"",INVENTARIO
+Chest,"",Petto
+Knowledge: Nature,"",Conoscenze: Natura
+less for a light weapon),Off-hand weapon    (2 less for a light weapon),meno per un arma leggera)
+Paladin|Level,"",Liv|del Paladino
+Swim Speed,"",Velocità di Nuoto
+ARMOUR,"",ARMATURA
+Base Save,"",Salvezza base
+Burrow Speed,"",Velocità di Scavare
+Druid Level,"",Livello del Druido
+Favoured|Enemy,"",Nemico|Prescelto
+FEMALE,"",FEMMINA
+Linguistics,"",Linguistica
+sq,"",qs
+Back to Back,Back to Back    +2 to AC against flanking,Schiena contro Schiena 
+Heal / Harm,"",Guarire / Ferire
+Reduces penalty to:,Two-weapon fighting    Reduces penalty to:,Riduce la penalità a:
+SHIELD,"",SCUDO
+"Weapons, Ammo","","Armi, Munizioni"
+BONUS,AC BONUS,BONUS
+Caster|Level,"",Livello|Dell'incantatore
+GREATER,GREATER RAGE!,IRA
+HEALING,HEALING|HIT POINTS,GUARIRE
+KNOWN SPELLS,"",INCANTESIMI CONOSCIUTI
+Morale Bonus,Morale Bonus    Inspire Courage and similar,Bonus di Morale
+Worn Items,"",Oggetti Indossati
+Bonus against charm and compulsion effects,"",Bonus contro effetti d ammaliamento e costrizione
+CHAOTIC,"",CAOTICO
+EFFECTS,CRITICAL EFFECTS,sul CRITC.
+FAMILIAR,"",FAMIGLIO
+Knowledge: Religion,"",Conoscenze: Religioni
+LAWFUL,"",LEGALE
+Weapon Mastery,Weapon Mastery    Increased critical range and always confirm critical hits,Maestria nelle Armi
+AC,"",CA
+Dodge|Modifier,"",Modificatore di Schivare
+Hat / Mask,"",Cappello / Maschera
+Rounds|Today,"",Rounds|Oggi
+Spells|Known,"",Incantesimi|Conosciuti
+Temp CMB,"",BMC Temporaneo
+Cure Wounds,"",Curare Ferite
+Hit Die,"",Dado Vita
+PER DAY,FOES|PER DAY,AL GIORNO
+BONUS,ATTACK|BONUS,DI ATTACCO
+SAVE DC,WILL SAVE DC,DI VOLONTÀ
+Temp CMD,"",DMC Temporaneo
+Use any skill as if you were trained,"",Usare ogni abil come se fosse addestrata
+Basic|Damage,"",Danno|Base
+Cleave,Cleave    Extra attack if you hit,Incalzare
+"Racial, Feats","","Talenti, Razziali"
+RANGED ATTACK,RANGED ATTACK|BONUS,ATTACCO a DISTANZA
+Granted Power,"",Poteri Donati
+BASE ATTACK,"",Attacco Base
+DC,"",CD
+GOOD,"",BUONO
+Good Cleric,"",Chierico Buono
+Stunning Critical,"",Critico Stordente
+Domain Spell,"",Incntsm. di Dominio
+Extra damage dice,Vital Strike    Extra damage dice,Dadi danno extra
+MELEE,"",MISCHIA
+Oratory,"",Oratoria
+Paired Opportunists,Paired Opportunists    When adjacent,Doppi Opportunisti
+per level,+ INT| per level,per livello
+Weapon Specialisation:,"",Arma Specializzata:
+against larger foes,"",contro avversari più grandi
+BASIC SPEED,"",VELOCITÀ BASE
+dice,"",dadi
+Keyboard|Instruments,"",Strumenti|A tastiera
+Max AC DEX,"",Dest. Max CA
+MONK,"",MONACO
+Charge,Charge  -2 to AC for the rest of the round,Carica
+SPEED,"",VELOCITÀ 
+CLASSES,"",CLASSI
+INT,+ INT| per level,INT|
+JACK OF ALL TRADES,"",ECLETTICO
+Any number of extra attacks per round,Great Cleave    Any number of extra attacks per round,Qualsiasi numero di att extra per round
+ATTACK BONUSES,"",BONUSES d'ATTACCO
+Counter magical effects that depend on sight.|Allies within 30ft use Performance roll in place of a saving throw,"",Contrasta effetti magici che dipendono dalla vista.|Alleati entro 9mtr usano la prova di Esibizione al posto di un tiro salvezza.
+Feats,"",Talenti
+SOOTHING PERFORMANCE,"",MUSICA LENITIVA
+WEAPON,WEAPON BONUSES,ARMI
+WILD EMPATHY,WILD EMPATHY|BONUS,BONUS a
+Hammer the Gap,Hammer the Gap    On a successful attack,Martellamento
+Total,"",Totale
+Age,"",Età
+"Bluff, Diplomacy","","Raggirare, Diplomazia"
+Player,"",Giocatore
+TEAMWORK FEATS,"",TALENTO DI SQUADRA
+Base|Attack|Bonus,"",Bonus|Attacco|Base
+COMBAT ABILITIES,"",ABILITÀ di COMBATTIMENTO
+if you fail a jump by 4 or less,"",se fallisci un salto di 4 o meno
+Improved Impaling Critical,"",Critico Trafiggente
+Spell Level,"",Livello Incntsmo
+", get attack of opportunity","Broken Wing Gambit    Grant +2/+2, get attack of opportunity",", si ottiene attacco di opportunità"
+Acrobatics,"",Acrobazia
+BAB,"",BaB
+Climb,"",Scalare
+DEITY,"",DIVINITÀ
+EVIL DAMAGE,EVIL DAMAGE|BONUS,BONUS|
+INITIATIVE,INITIATIVE BONUS,BONUS DI
+Weapon Finesse,Weapon Finesse  Use DEX for melee attack,Arma Accurata
+BARBARIAN,"",BARBARO
+Channel Negative Energy,"",Incanalare Energia Negativa
+Feet,"",Piedi
+Other items,"",Altri oggetti
+SINGLE,SINGLE ATTACK,ATTACCO
+"Smiting damage bonus applies double for the|first successful strike against evil outsiders, |evil dragons and the undead.","",oltrepassa la riduz dei danni.
+Untrained,"",Senza addest.
+ARMOUR CHECK|PENALTY,ARMOUR CHECK|PENALTY REDUCTION,RIDUZIONE PENALITÀ|
+ATTACK FEATS,"",TALENTI di ATTACCO
+"Begin or switch a bardic performance as a move action,|rather than as a standard action.","","Inizia o cambia un esibizione bardica come azione di movim.,|invece che come azione standard"
+CHANNEL,CHANNEL|PER DAY,INCANALARE
+Copper,"",Rame
+Grant,"Broken Wing Gambit    Grant +2/+2, get attack of opportunity",Conferisce
+Inspire Courage and similar,Morale Bonus    Inspire Courage and similar,Ispirare Coraggio e simili
+Shield AC,"",CA Scudo
+Use bonus in place of...,"",Usare il bonus al posto di.....
+"Handle Animal, Intimidate","","Addestrare Animali, Intimidire"
+Knowledge: Arcana,"",Conoscenze: Arcane
+Comedy,"",Commedia
+Ignore power attack penalty for first attack,Furious Focus    Ignore power attack penalty for first attack,Ignora la penltà per atcco poder. al prm atcco
+MAX ARMOUR|DEX,MAX ARMOUR|DEX BONUS,MAX DEST|
+per die,Improved Devastating Strike  +2 per die,per dado
+Perception,"",Percezione
+REDUCTION,ARMOUR CHECK|PENALTY REDUCTION,a PROVA dell' ARMATURA
++ 4 to all saving throws|+ 4 to AC,"",+4 a tutti i tiri salvezza |+4 AC
+INSPIRE COURAGE,"",ISPIRARE CORAGGIO
+Other skills:|Craft - INT|Perform - CHA,"",Altre ablt:|Artigian.-INT|Intrattenere-CAR
+Armour|Check|Penalty,"",Penalità|a Prova|dell'Armat.
+CMD,CMD BONUS,DMC
+DEX,Weapon Finesse  Use DEX for melee attack,DES
+Improved Uncanny Dodge,"",Schivare Prodigioso Migliorato
+Track,"",Seguire tracce
+Use Magical Device,"",Usare Oggetti Magici
+WANDS,"",BACCHETTE
+HIT POINTS,HEALING|HIT POINTS,PUNTI FERITA
+POTIONS,"",POZIONI
+Temp,"",Temporaneo
+to attacks of opportunity,"",agli attacchi di opportunità
+Training,"",Addestramento
+"at levels 11, 16, 20)","Death or Glory    +4 (+1 at levels 11, 16, 20)","+4 (+1 al lvlo 11, 16, 20)"
+COUNTERSONG,"",CONTROCANTO
+MOUNT,"",CAVALCATURA
+Special Ammo,"",Munizioni Speciali
+WIS,"",SAG
+COMBAT MANOEUVRE,COMBAT MANOEUVRE|DEFENCE,DIFESA DA MANOVRA
+Greater Weapon Specialisation,"",Arma Specializzata Superiore
+second sneak attack in a round,"",secondo attacco furtivo in un round
+THRESHOLD,ARCANE SPELL FAILURE THRESHOLD,DEGLI INCNTSMI ARCANI
+TRICKS / FEATS / SPECIAL ABILITIES,"",TRUCCHI / TALENTI / CAPACITA' SPECIALI
+Weapon Specialisation  (,"",Arma Specializzata (
+Act in surprise round if ally can act,Lookout    Act in surprise round if ally can act,Agire in round sorpresa se può un alleato
+BARDIC PERFORMANCE,"",ESIBIZIONE BARDICA
+BONUS,COMBAT MANEUVRE|BONUS,IN COMBATTIMENTO
+CMD,Coordinated Defence    +2 to CMD,DMC
+for the rest of the round,Charge  -2 to AC for the rest of the round,per il resto del round
+Heal,"",Guarire
+Improved Devastating Strike,Improved Devastating Strike  +2 per die,Colpo Devastante Migliorato
+MONEY,"",SOLDI
+ROLL,ENERGY|ROLL,|per ENERGIA
+Spells|per day,"",Incantesimi|al giorno
+ARCANE SPELL FAILURE,ARCANE SPELL FAILURE THRESHOLD,SOGLIA DEL FALLIMENTO|
+Bleeding Critical,"",Critico Sanguinante
+Suggest actions to one already fascinated creature,"",Impone una suggestione ad una creatura già affascinata
+CON,+ CON| per level,COS|
+DR 5/— when wearing armour or using a shield,"",DR 5/—  indossando un armtura o usando un scudo
+FEATS & SPECIAL ABILITIES,"",TALENTI & CAPACITÀ SPECIALI
+Level,"",Livello
+Modifier,RAGE!|Modifier,Modificatore
+SCROLLS,"",PERGAMENE
+Wind Instruments,"",Strumenti a fiato
+30ft,Half of Ranger’s|Favoured Enemy|bonus granted to|allies within 30ft,9mt
+ARMOUR CLASS,FLAT-FOOTED ARMOUR CLASS,DA IMPREPARATO
+KNOWLEDGE,KNOWLEDGE |BONUS,BONUS 
+Temp|Bonus,"",Bonus|Temporaneo
+Valuables,"",Preziosi
+BONUS,KNOWLEDGE |BONUS,DI CONOSCENZA
+Bonus Spells,"",Incantesimi Bonus
+Greater Weapon Focus,"",Arma Focalizzata Superiore
+METAMAGIC,"",METAMAGIA
+Suggest actions to already fascinated creatures,"",Suggerisce delle azioni a creature già affascinate
+VALUABLE ITEMS,"",OGGETTI di VALORE
+Weapon type,"",Tipo di arma
+COMBAT MANEUVRE,COMBAT MANEUVRE|BONUS,BONUS A MANOVRA
+Dying,"",Morente
+Lookout,Lookout    Act in surprise round if ally can act,In Guardia
+REF,"",RIF
+ARMOUR CLASS,"",CLASSE ARMATURA
+bonus to,"Feint Partner    When ally feints, enemy loses DEX bonus to AC",bonus a
+COMBAT MANEUVRE,COMBAT MANEUVRE|DEFENCE,DIFESA DA
+SAVES,"",TIRI SALVEZZA
++1 hp or skill rank per level,"",+1 hp o grd ablt per livello
+BONUS,RANGED ATTACK|BONUS,BONUS  
+CHANNEL,CHANNEL|RANGE,DISTANZA|
+Fighter|Level,"",Livello|del Guerriero
+No damage penalty,Double Slice    No damage penalty,Nessuna penalità ai danni
+Radius centred|on the Cleric,"",Raggio centrato|sul Chierico
+Spell Save DC = 10 + WIS + Spell Level,"",Salvezza Incntsm. = 10 + SAG + Liv Incntsm
+"Bonus applies to saving throws against Bardic Performance, sonic|and language-dependent effects.","","Bonus applicato a salvezza contro Esibizione Bardica,per effetti|sonici e dipendenti dal linguaggio"
+COMBAT MANEUVRES,"",MANOVRA in COMBATTIMENTO
+Gold,"",Oro
+INIT,"",INIZ
+Spell Save DC = 10 + CHA + Spell Level,"",CD Tiro Salvz. Dell'incntsm. = 10 + CAR + Liv.Incntsm.
+when both using shields,Shield Wall    +1 / +2 to AC when both using shields,quando entrambi usano scudi
+AC,Improved Back to Back    +2 to ally’s AC,dell'alleato
+ATTACK,ATTACK|BONUS,BONUS|
+CMB,Coordinated Manoeuvres    +2 to CMB,BMC
+Concentration,"",Concentrazione
+DEX,"",DES
+DIRGE OF DOOM,"",ISPIRARE TERRORE
+Endurance,"",Resistenza 
+Ability Modifier = (Total Ability Score - 10) ÷ 2    (Round down),"",Modific Statistc = (Punteg totl statistc -10) ÷ 2    (Arrotnd difetto)
+Duration,RAGE!|Duration,Durata
+HIT|DICE,"",DADO|VITA
+Light Load,"",Carico Leggero
+Temp|Score,"",Punteggio|Temp
+Animal Companion’s Name,"",Nome del compagno animale
+ARMOUR CLASS,TOUCH ARMOUR CLASS,A CONTATTO
+Counter magical effects that depend on sound.|Allies within 30ft use Performance roll in place of a saving throw,"",Contrasta effetti magici che dipendono dal suono.|Alleati entro 9mtr usano la prova di Esibizione al posto di un tiro salvezza.
+Critical,"",Critico
+per level,+ CON| per level,per livello
+Silver,"",Argento
+Stealth,"",Furtività
+SUMMONED CREATURE,"",CREATURA EVOCATA
+Threat range,"",Raggio di minaccia
+When flanking,Precise Strike    When flanking,Durante fiancheggiamento
+BONUSES,WEAPON BONUSES,BONUS 
+CMD,Acrobatics DC = 5 + Opponent’s CMD,avversario
+Penetrating Strike,Penetrating Strike    Ignore damage reduction up to 5/—,Colpo Penetrante 
+TAKE 10,"",PRENDERE 10
+ATTACKS,"",ATTACCHI
+COMBAT MANOEUVRE,COMBAT MANOEUVRE|BONUS,BONUS A MANOVRA
+Enhancements,"",Aumenti
+Name,"",Nome
+Range,"",Gittata
+Climb Speed,"",Velocità di Scalare
+die,"",dado
+hp,"",pf
+Spellcraft,"",Sapienza Magica
+SUGGESTION,"",SUGGESTIONE
+Take 20 Today,"",Prendere 20 oggi
+Crippling Critical,"",Critico Menomante
+FORTITUDE|SAVE,FORTITUDE|SAVE DC,SALVEZZA|TEMPRA
+One extra attack at full bonus,Haste    One extra attack at full bonus,Un attacco extra a bonus pieno
+or,"",o
+rds,"",rds
+Temp Damage,"",Danno Temporaneo
+2d6 / 3d8,"",2d6 / 3d8
+Bards can use all knowledge skills untrained,"",I bardi possono usare tutte le abil di conoscenze senza addestramento.
+Weapon Focus  (,"",Arma Focalizzata (
+WELL-VERSED,"",AVVEZZO
+3d8,"",3d8
+Bluff,"",Raggirare
+Clothes / Body,"",Vestiti / Corpo
+Ignore damage reduction up to 5/—,Penetrating Strike    Ignore damage reduction up to 5/—,Ignora resistenza ai danni fino a 5/—
+"Scrolls, Potions,|Wands, Components","","Pergamene,Pozioni,|Bacchette,Componenti"
+Switch places with an ally,Swap Places    Switch places with an ally,Cambia posto con un alleato
+Two-weapon fighting,Two-weapon fighting    Reduces penalty to:,Combattere con due armi
+Use monk level in place of,Use monk level in place of BAB for calculating CMB,Usa il livello da monaco al posto del
+Blinding Critical,"",Critico Accecante
+Domain,"",Dominio
+Extra attack if you hit,Cleave    Extra attack if you hit,Attacco extra se si colpisce
+Sickening Critical,"",Critico Debilitante
+WEAPON TRAINING,"",ADDESTRAMENTO NELLE ARMI
+2 Bonus hit dice|+ 2d10 (including CON),"",2 dadi vita bonus|+2d10 (incluso bonus di Cos)
+d4 / d8,"",d4 / d8
+Morale|Bonus,"",Bonus di Morale
+Ability|Score,"",Punteggio|Della statist.
+"Acrobatics, Fly","","Acrobazia, Volare"
+BONUS,WILD EMPATHY|BONUS,|EMPATIA SELVAGGIA
+Deflection|Modifier,"",Modificatore di Deflettere
+EVIL,"",MALVAGIO
+ft,"",mtrs
+Intimidate,"",Intimidire
+MASS SUGGESTION,"",SUGGESTIONE DI MASSA
+PREPARED SPELLS,"",INCANTESIMI PREPARATI
+rks,"",grd
+SKILLS,"",ABILITÀ
+Sleight of Hand,"",Rapidità di mano
+cp,"",mr
+"Racial,|Feats","","Talento|Razziale,"
+RANGE,CHANNEL|RANGE,di INCANALARE
+20ft,"",6 m
+5ft,Pack Attack    Ally’s attack allows you to take 5ft step,"1,5mt"
+Apply a critical effect to the,Sneaking Precision    Apply a critical effect to the,Applicare un effetto critico al
+KI POOL,"",RISERVA KI
+SAVE,FORTITUDE SAVE,TEMPRA
+1d8,"",1d8
+30ft,"",9 m
+Bard Level,"",Livello del Bardo
+Creature Type,"",Tipo di creatura
+DURATION,DURATION|PER DAY,DURATA|
+Headband,"",Fascia
+40ft,"",12 m
+BONDED WEAPON,"",ARMA LEGATA
+Eyes,"",Occhi
+ATTACK,ATTACK ACTIONS,AZIONI 
+gp,"",mo
+Improved|Evasion,"",Eludere|Migliorato
+Level|Bonus,"",Livello|bonus
+PERFORMANCES,"",ESIBIZIONI
+RANGED|ATTACK,"",ATTACCO|a DISTANZA
+AC,Back to Back    +2 to AC against flanking,CA
+ARMOUR TRAINING,"",ADDESTRAMENTO NELLE ARMATURE
+CHA - 12,"",CAR - 12
+coins,"",Monete  
+Damage Reduction,"",Riduzione del Danno
+DEFENCE,COMBAT MANOEUVRE|DEFENCE,IN COMBATTIMENTO
+Enemies are frightened and flee your performance,"",I nemici sono spaventati e fuggono dalla tua esibizione
+Item|Bonus,"",Bonus|Dell'oggetto
+Rounds Today,"",Round oggi
+to overcome spell resistance,Allied Spellcaster    +2 to overcome spell resistance,per superare resist agli incntsmi
+A successful strike with smite evil|bypasses damage reduction.,"",Un attacco riuscito con punire il male|
+CHANNEL ENERGY,"",INCANALARE ENERGIA
+Monk Level,"",Livello del Monaco
+Trap|Sense,"",Percepire|Trappole
+WILL|SAVE,WILL|SAVE DC,SALVEZZA|VOLONTÀ
+Creature Name,"",Nome della creatura
+Disable Device,"",Disattivare Congegni
+Outflank,Outflank    When flanking,Grande Fiancheggiatore
+SAVE DC,WILL|SAVE DC,|di Volontà
+10ft,"",3 m
+15 Acrobatics,"",15 Acrobazia
+Penetrating Strike  (,"",Colpo Penetrante (
+to concentration checks,Shielded Caster    +4 to concentration checks,ai tiri di concentrazione
+Druid|Level,"",Livello|da Druido
+Greater Penetrating Strike,Greater Penetrating Strike    Ignore damage reduction up to 10/—,Colpo Penetrante Superiore
+Other:,"",Altre:
+PER DAY,RAGE!  DURATION|PER DAY,AL GIORNO
+Skill|Bonus,"",Bonus|a Abilità
+XP,"",Esperienza
+BONUS,DEFLECTION|BONUS,di DEFLESSIONE
+BONUS,WILL SAVE|BONUS,|su VOLONTÀ
+Critical Wounds,"",Ferite Critiche
+Devastating Strike,Devastating Strike    +2 per extra die,Colpo Devastante
+lb,"",kg
+RAGE!,"",IRA!
+Spell|Save DC,"",Incantesimi|DC Tiri Salvz.
+Attack Bonus,"",BONUS d'ATTACCO
+for melee attack,Weapon Finesse  Use DEX for melee attack,per attacchi in mischia
+INSPIRE COMPETENCE,"",ISPIRARE COMPETENZA
+MELEE ATTACK,MELEE ATTACK|BONUS,ATTACCO in MISCHIA
+RAGE!,RAGE!  DURATION|PER DAY,IRA!
+Spell Resistance,"",Resistenza agli Incantesimi
+Conditional Modifiers,"",Modificatori di Condizione
+Escape Artist,"",Artista della fuga
+Impaling Critical,"",Critico Trafiggente Migliorato
+Nerfs,"",Penalità 
+Weapon Focus:,"",Arma Focalizzata :
+When flanking,Outflank    When flanking,Durante fiancheggiamento
+"Armour, Shield","","Armatura, Scudo"
+Base Weapon,"",Arma Base
+Critical Focus,"",Critico Focalizzato
+Dance,"",Danza
+Half of Ranger’s|Favoured Enemy|bonus granted to|allies within,Half of Ranger’s|Favoured Enemy|bonus granted to|allies within 30ft,Metà del bonus|Nemico Prescelto del Ranger|dato agli alleati entro
+LAY ON HANDS,"",IMPOSIZIONE DELLE MANI
+Level|Adjustment,"",Adattamento|Per livello
+OF,"",DEL
+On a successful attack,Hammer the Gap    On a successful attack,Con un attacco riuscito
+Temp Speed,"",Velocità temporanea
+Weapon Mastery,""," MAESTRIA NELLE ARMI"
+Any number per round,Improved Cleaving Finish    Any number per round,Qualsiasi numero per round
+Neck / Throat,"",Collo / Gola
+Non-Monk|Levels,"",Livelli|non da Monaco
++ Size|  diff x4,"",+ Taglia| diff x4
+BONUS,BASE|ATTACK BONUS,Attacco Base
+PER DAY,TAKE 20 PER DAY,AL GIORNO
+sp,"",ma
+"Bluff, Disguise","","Raggirare, Camuffare"
+Bonus|Feats,"",Talenti|bonus
+CRIT,"",CRIT
+FLAT-FOOTED,FLAT-FOOTED ARMOUR CLASS,CLASSE ARMATURA
+Improved Critical / Keen weapon / Keen magical effect,"",Critico Migliorato / Arma affilata / Affilata -effetto magico-
+pp,"",mp
+Sense Motive,"",Intuizione
+SUBTOTAL,SUBTOTAL BUFFS & TEAMWORK,SOTTOTOTALE
