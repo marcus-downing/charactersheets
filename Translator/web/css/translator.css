@@ -17,6 +17,8 @@ body.users #nav-users a
   margin-bottom: -1px;
 }
 
+#footer {
+}
 
 /* Navigation */
 
@@ -111,6 +113,7 @@ body.users #nav-users a
 body.sources ol.breadcrumb {
   margin-bottom: 0;
   background: none;
+  white-space: nowrap;
 }
 
 body.sources .progress {
@@ -127,6 +130,11 @@ body.sources tr:hover td {
 
 body.sources .breadcrumb > li + li:before {
   padding-left: 10px;
+}
+
+.equal-th {
+  min-width: 150px;
+  white-space: nowrap;
 }
 
 

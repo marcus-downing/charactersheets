@@ -28,15 +28,6 @@
 		</select>
 	</div>
 
-	<div class="form-group">
-		<label for='options-show'>Show</label>
-		<select id='options-show' name='show' class='form-control'>
-			<option value='' {{ if eq .CurrentShow "" }}selected{{ end }}>All lines</option>
-			<option value='translated' {{ if eq .CurrentShow "translated" }}selected{{ end }}>Translated</option>
-			<option value='untranslated' {{ if eq .CurrentShow "untranslated" }}selected{{ end }}>Untranslated</option>
-		</select>
-	</div>
-
 	{{ pagination .Page }}
 </form>
 
@@ -47,19 +38,30 @@
 
 	<thead>
 		<tr>
-			<th>Page</th>
+			<th class='btn-cell'></th>
+			<th><span class="glyphicon glyphicon-book"></span>&nbsp; Page</th>
 			{{ $languageNames := .LanguageNames }}
 			{{ range $lang := .DisplayLanguages }}
 			<th>
-				<img src='/images/flags/{{$lang}}.png'>&nbsp; 
-				{{ index $languageNames $lang }}
+				<div class='equal-th'>
+					<img src='/images/flags/{{$lang}}.png'>&nbsp; 
+					{{ index $languageNames $lang }}
+				</div>
 			</th>
+			<th class='btn-cell'></th>
 			{{ end }}
 		</tr>
 	</thead>
 
+	<tfoot>
+		<tr><td colspan='2'></td><td colspan='{{ len $languages }}'></td><td colspan='{{ len $languages }}'></td><tr>
+	</tfoot>
+
 	{{ range $source := .Sources }}
 	<tr>
+		<td class='btn-cell'>
+			<a href="{{ sourceURL $source }}" class='btn btn-default btn-sm'><span class='glyphicon glyphicon-book'></span></a>
+		</td>
 		<td>
 			<a href="{{ sourceURL $source }}">{{ sourcePath $source }}</a>
 		</td>
@@ -73,6 +75,13 @@
 				    <span class="sr-only">{{$complete}}% Complete</span>
 				  </div>
 				</div>
+			</td>
+			<td class='btn-cell'>
+				{{ if previewExists $lang $source }}
+				<a href="{{ previewURL $lang $source }}" class='btn btn-default btn-sm'><span class='glyphicon glyphicon-share-alt'></span></a>
+				{{ else }}
+				<span class='glyphicon glyphicon-remove-circle text-danger'></span>
+				{{ end }}
 			</td>
 		{{ end }}
 	</tr>

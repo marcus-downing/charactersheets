@@ -1,0 +1,40 @@
+{{ define "title" }}Delete User{{ end }}
+
+{{ define "content" }}
+
+<div class='container'>
+<h1><span class="glyphicon glyphicon-remove"></span> <span class="glyphicon glyphicon-user"></span>&nbsp; Delete User</h1>
+
+<form method='post' action='/users/del' class='' role='form'>
+  <input type='hidden' name='user' value='{{ .User.Email }}'>
+  <input type='hidden' name='go' value='yes'>
+
+  <p>Are you really sure you want to delete this user?</p>
+
+  <div class='form-group'>
+    <label for='add-user-email'>Email address</label>
+    <p>{{ .User.Email }}</p>
+  </div>
+
+  <div class='form-group'>
+    <label for='add-user-name'>Name</label>
+    <p>{{ .User.Name }}</p>
+  </div>
+
+  <p>
+    <label>Language</label> &nbsp; 
+    {{ $languageNames := .LanguageNames }}
+    {{ $lang := .User.Language }}
+    <p><img src='/images/flags/{{ $lang }}.png'> &nbsp; {{ index $languageNames $lang }}</p>
+  </p>
+  <br/>
+
+  <p>
+    <button type='submit' class='btn btn-danger'><span class="glyphicon glyphicon-remove"></span> <span class="glyphicon glyphicon-user"></span>&nbsp; Delete User</button>
+    <a href='/users' class='btn btn-link'><span class="glyphicon glyphicon-arrow-left"></span> Cancel</a>
+  </p>
+
+</form>
+
+</div>{{/* container */}}
+{{ end }}

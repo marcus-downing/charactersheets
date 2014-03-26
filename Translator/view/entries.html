@@ -57,6 +57,10 @@
 	</tr>
 </thead>
 
+<tfoot>
+	<tr><td colspan='3'></td><td colspan='{{ len $languages }}'></td></tr>
+</tfoot>
+
 <tbody>
 {{ range $i, $entry := .Entries }}
 {{ $translations := countEntryTranslations $entry }}

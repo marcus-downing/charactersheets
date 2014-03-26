@@ -11,13 +11,18 @@
 
 	<thead>
 		<tr>
-			<td colspan='3'>Language</td>
-			<td></td>
-			<td>User</td>
-			{{ if $isAdmin }}<td></td><td>Email</td>{{ end }}
-			<td>Translations</td>
+			<th colspan='3'>Language</th>
+			<th></th>
+			<th>User</th>
+			{{ if $isAdmin }}<th></th><th>Email</th>{{ end }}
+			<th>Translations</th>
+			{{ if $isAdmin }}<th></th>{{ end }}
 		</tr>
 	</thead>
+
+	<tfoot>
+		<tr><td colspan='6'></td>{{ if $isAdmin }}<td colspan='3'>{{ end }}<tr>
+	</tfoot>
 
 	{{ range $user := .Users }}
 
@@ -40,6 +45,11 @@
 			</a>
 			{{ end }}
 		</td>
+		{{ if $isAdmin }}<td>
+			{{ if not $user.IsAdmin }}
+			<a class='btn btn-danger' href='/users/del?user={{ $user.Email }}'>Delete</a>
+			{{ end }}
+		</td>{{ end }}
 	</tr>
 
 	{{ end }}
@@ -50,7 +60,7 @@
 <p>
 	<a class='btn btn-primary' href='/users/add'><span class="glyphicon glyphicon-plus"></span> <span class="glyphicon glyphicon-user"></span>&nbsp; Add a user</a> &nbsp; 
 	<a class='btn btn-link' href='/account'><span class="glyphicon glyphicon-user"></span>&nbsp; Account settings</a>
-	<a class='btn btn-danger btn-sm' href='/logout'><span class="glyphicon glyphicon-lock"></span>&nbsp; Log out</a>
+	<a class='btn btn-warning btn-sm' href='/logout'><span class="glyphicon glyphicon-lock"></span>&nbsp; Log out</a>
 </p>
 {{ end }}
 </div>

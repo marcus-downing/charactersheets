@@ -43,6 +43,33 @@ func UsersAddHandler(w http.ResponseWriter, r *http.Request) {
 	renderTemplate("users_add", w, r, nil)
 }
 
+func UsersDelHandler(w http.ResponseWriter, r *http.Request) {
+	currentUser := GetCurrentUser(r)
+	if !currentUser.IsAdmin {
+		http.Redirect(w, r, "/users", 303)
+		return
+	}
+
+	email := r.FormValue("user")
+	user := model.GetUserByEmail(email)
+	if user == nil {
+		http.Redirect(w, r, "/users", 303)
+		return
+	}
+
+	gonow := r.FormValue("go")
+	if r.Method == "POST" && gonow == "yes" {
+		user.Delete()
+		http.Redirect(w, r, "/users", 303)
+		return
+	} else {
+		renderTemplate("users_del", w, r, func(data TemplateData) TemplateData {
+			data.User = user
+			return data
+		})
+	}
+}
+
 func AccountHandler(w http.ResponseWriter, r *http.Request) {
 	user := GetCurrentUser(r)
 

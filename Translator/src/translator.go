@@ -28,6 +28,7 @@ func main() {
 	handler.HandleFunc("/export", control.ExportHandler)
 	handler.HandleFunc("/users", control.UsersHandler)
 	handler.HandleFunc("/users/add", control.UsersAddHandler)
+	handler.HandleFunc("/users/del", control.UsersDelHandler)
 	handler.HandleFunc("/account", control.AccountHandler)
 	handler.HandleFunc("/account/password", control.SetPasswordHandler)
 	handler.HandleFunc("/account/reclaim", control.AccountReclaimHandler)
@@ -41,6 +42,8 @@ func main() {
 	handler.Handle("/bootstrap/", http.FileServer(http.Dir("../web")))
 	handler.Handle("/images/", http.FileServer(http.Dir("../web")))
 	handler.Handle("/js/", http.FileServer(http.Dir("../web")))
+
+	handler.Handle("/pdf/", http.FileServer(http.Dir("../../Composer 2.1.3/public")))
 
 	handler.HandleFunc("/", defaultHandler)
 
@@ -86,7 +89,7 @@ func (h *AuthHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	first := segments[0]
 	fmt.Println("Checking URL segment:", first)
 	switch first {
-	case "css", "bootstrap", "images", "js":
+	case "css", "bootstrap", "images", "js", "pdf":
 		fmt.Println("Bypassing auth for", first)
 		h.Handler.ServeHTTP(w, r)
 		return

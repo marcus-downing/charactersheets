@@ -32,6 +32,18 @@ var LanguageNames map[string]string = map[string]string{
 	"us": "US English",
 }
 
+var LanguagePaths map[string]string = map[string]string{
+	"it": "italian",
+	"fr": "french",
+	"de": "german",
+	"es": "spanish",
+	"pt": "portuguese",
+	"ru": "russian",
+	"cy": "welsh",
+	"kl": "klingon",
+	"us": "american",
+}
+
 //  completion
 
 func GetLanguageCompletion() map[string][4]int {

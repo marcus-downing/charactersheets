@@ -425,6 +425,13 @@ func (user *User) Save() bool {
 	return saveRecord("Users", keyfields, fields)
 }
 
+func (user *User) Delete() {
+	keyfields := map[string]interface{}{
+		"Email": user.Email,
+	}
+	deleteRecord("Users", keyfields)
+}
+
 func (user *User) CountTranslations() map[string]int {
 	counts := make(map[string]int, len(Languages))
 	query("select Language, Count(*) from Translations where Translator = ? group by Language", user.Email).rows(func(rows *sql.Rows) (Result, error) {

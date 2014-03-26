@@ -225,3 +225,15 @@ func saveRecord(table string, keyfields, fields map[string]interface{}) bool {
 
 	return query(sql, args...).exec()
 }
+
+func deleteRecord(table string, keyfields map[string]interface{}) {
+	conditions := make([]string, 0, len(keyfields))
+	args := make([]interface{}, 0, len(keyfields))
+	for key, value := range keyfields {
+		conditions = append(conditions, key+" = ?")
+		args = append(args, value)
+	}
+	sql := "delete from " + table + " where " + strings.Join(conditions, " and ")
+	fmt.Println("Deleting ", table, ":", sql, args)
+	query(sql, args...).exec()
+}

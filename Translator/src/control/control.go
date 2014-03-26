@@ -12,6 +12,7 @@ import (
 	"net/http"
 	// "net/url"
 	"math"
+	"os"
 	"path"
 	"strconv"
 	"strings"
@@ -25,6 +26,7 @@ type TemplateData struct {
 	CurrentLanguage string
 	RecentUsers     []RecentUser
 
+	User               *model.User
 	Page               *Pagination
 	Languages          []string
 	DisplayLanguages   []string
@@ -294,7 +296,32 @@ func sourceURL(source *model.Source) template.HTML {
 	path := source.Filepath
 	path = strings.Replace(path, "3.5", "dnd35", 1)
 	path = strings.Replace(path, "Pathfinder", "pathfinder", 1)
-	return template.HTML("http://charactersheets.minotaur.cc/assets/pdf/" + path + ".pdf")
+	return template.HTML("/pdf/" + path + ".pdf")
+}
+
+func previewURL(language string, source *model.Source) template.HTML {
+	languagePath := model.LanguagePaths[language]
+	if languagePath != "" {
+		languagePath = "languages/" + languagePath
+	}
+	path := source.Filepath
+	path = strings.Replace(path, "3.5", "dnd35", 1)
+	path = strings.Replace(path, "Pathfinder", "pathfinder", 1)
+	return template.HTML("/pdf/" + languagePath + "/" + path + ".pdf")
+}
+
+func previewExists(language string, source *model.Source) bool {
+	languagePath := model.LanguagePaths[language]
+	if languagePath != "" {
+		languagePath = "languages/" + languagePath
+	}
+	path := source.Filepath
+	path = strings.Replace(path, "3.5", "dnd35", 1)
+	path = strings.Replace(path, "Pathfinder", "pathfinder", 1)
+	fullPath := "../../Composer 2.1.3/public/pdf/" + languagePath + "/" + path + ".pdf"
+
+	fi, err := os.Stat(fullPath)
+	return err == nil && !fi.IsDir()
 }
 
 func sourceCompletion(source *model.Source) map[string]int {
@@ -314,6 +341,8 @@ var templateFuncs = template.FuncMap{
 	"sourcePath":             sourcePath,
 	"sourceURL":              sourceURL,
 	"sourceCompletion":       sourceCompletion,
+	"previewURL":             previewURL,
+	"previewExists":          previewExists,
 }
 
 func renderTemplate(name string, w http.ResponseWriter, r *http.Request, dataproc func(data TemplateData) TemplateData) {
