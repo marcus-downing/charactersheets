@@ -52,6 +52,14 @@
             { "file": "Archetypes/Bard/Street Performer.pdf", "slot": "bard", "variant": "streetperformer", "name": "Street Performer" },
 
         { "file": "Core/Cleric.pdf", "slot": "cleric", "name": "Cleric" },
+            { "file": "Archetypes/Cleric/Cloistered Cleric.pdf", "slot": "cleric", "variant": "cloistered", "name": "Cloistered Cleric" },
+            { "file": "Archetypes/Cleric/Crusader.pdf", "slot": "cleric", "variant": "crusader", "name": "Crusader" },
+            { "file": "Archetypes/Cleric/Divine Strategist.pdf", "slot": "cleric", "variant": "divinestrategist", "name": "Divine Strategist" },
+            { "file": "Archetypes/Cleric/Evangelist.pdf", "slot": "cleric", "variant": "evangelist", "name": "Evangelist" },
+            { "file": "Archetypes/Cleric/Merciful Healer.pdf", "slot": "cleric", "variant": "mercifulhealer", "name": "Merciful Healer" },
+            { "file": "Archetypes/Cleric/Separatist.pdf", "slot": "cleric", "variant": "separatist", "name": "Separatist" },
+            { "file": "Archetypes/Cleric/Theologian.pdf", "slot": "cleric", "variant": "theologian", "name": "Theologian" },
+            { "file": "Archetypes/Cleric/Undead Lord.pdf", "slot": "cleric", "variant": "undeadlord", "name": "Undead Lord" },
 
         { "file": "Core/Druid/Druid.pdf", "slot": "druid", "name": "Druid" },
           { "file": "Core/Druid/Druid (Animal Companion).pdf", "slot": "druid", "variant": "animalcompanion", "name": "Druid with Animal Companion" },
@@ -196,7 +204,12 @@
         { "file": "NeoExodus/Prestige Classes/Wyrdcaster.pdf", "slot": "wyrdcaster", "name": "Wyrdcaster" },
 
         { "file": "Extra/Character Background.pdf", "slot": "background", "name": "Character Background" },
+        { "file": "Extra/Lycanthrope.pdf", "slot": "lycanthrope", "name": "Lycanthrope" },
         { "file": "Core/Party Funds.pdf", "slot": "partyfunds", "name": "Party Funds" },
+        
+        { "file": "Extra/Blank Spellcaster.pdf", "slot": "caster", "variant": "spontaneous", "name": "Spontaneous Caster" },
+        { "file": "Extra/Blank Spellcaster 2.pdf", "slot": "caster", "variant": "vancian", "name": "Vancian Caster" },
+        { "file": "Extra/Blank Spellcaster 3.pdf", "slot": "caster", "variant": "lesser", "name": "Lesser Caster" },
 
         { "file": "Extra/Spell Book.pdf", "slot": "spellbook", "name": "Spellbook" },
         { "file": "Extra/Spell Book (Large).pdf", "slot": "spellbook", "variant": "large", "name": "Large" },
@@ -253,7 +266,7 @@
     "layout": [
         [ "Core Rulebook" ],
         [ "Advanced Player's Guide", "Ultimate Magic", "Ultimate Combat", "Advanced Class Guide", "Mythic Adventures", "Tome of Secrets" ],
-        [ "Psionics Unleashed", "Psionics Expanded", "NeoExodus" ]
+        [ "Psionics Unleashed", "Psionics Expanded", "NeoExodus", "Generic" ]
     ],
 
     "languages": [
@@ -316,6 +329,11 @@
         { 
             "name": "NeoExodus",
             "classes": [ "Apothecary", "Cleric of the Kaga", "Janissary", "Fist of the Dragon", "High Guard", "Imperial Man-at-arms", "Khalid Asad", "Panther Warrior", "Wyrdcaster" ]
+        },
+
+        {
+            "name": "Generic",
+            "classes": [ "Spellcaster" ]
         }
     ],
 
@@ -374,7 +392,18 @@
         {
             "name": "Cleric",
             "pages": [ "cleric", "inventory", "spellbook" ],
-            "sections": [ "domain" ]
+            "sections": [ "domain" ],
+            "variants": [
+                { "name": "Cleric", "pages": [ ] },
+                { "name": "Cloistered Cleric", "pages": [ "cleric/cloistered" ] },
+                { "name": "Crusader", "pages": [ "cleric/crusader" ] },
+                { "name": "Divine Strategist", "pages": [ "cleric/divinestrategist" ] },
+                { "name": "Evangelist", "pages": [ "cleric/evangelist" ] },
+                { "name": "Merciful Healer", "pages": [ "cleric/mercifulhealer" ] },
+                { "name": "Separatist", "pages": [ "cleric/separatist" ] },
+                { "name": "Theologian", "pages": [ "cleric/theologian" ] },
+                { "name": "Undead Lord", "pages": [ "cleric/undeadlord" ] }
+            ]
         },
 
         {
@@ -493,7 +522,11 @@
 
         {
             "name": "Sorcerer",
-            "pages": [ "sorcerer", "inventory/without", "spellbook", "animalcompanion" ]
+            "pages": [ "sorcerer", "inventory/without", "spellbook", "animalcompanion" ],
+            "variants": [
+                { "name": "Sorcerer", "pages": [ ] },
+                { "name": "Crossblooded Sorcerer", "pages": [ "sorcerer/crossblooded" ] }
+            ]
         },
 
         {
@@ -686,6 +719,30 @@
         {
             "name": "Wyrdcaster",
             "pages": [ "wyrdcaster", "inventory" ]
+        }
+
+        {
+            "name": "Spellcaster",
+            "pages": [ ],
+            "variants": [
+                {
+                    "name": "Spontaneous Caster",
+                    "variantName": "Spontaneous",
+                    "pages": [ "caster/spontaneous", "inventory/without", "spellbook"]
+                },
+
+                {
+                    "name": "Vancian Caster",
+                    "variantName": "Vancian",
+                    "pages": [ "caster/vancian", "inventory/without", "spellbook"]
+                },
+
+                {
+                    "name": "Lesser Caster",
+                    "variantName": "Lesser",
+                    "pages": [ "caster/lesser", "inventory/without", "spellbook"]
+                }
+            ]
         }
     ]
 }

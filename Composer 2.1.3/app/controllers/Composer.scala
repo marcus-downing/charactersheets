@@ -551,6 +551,8 @@ class CharacterInterpretation(gameData: GameData, character: CharacterData) {
     var pages = basePages ::: classPages
     if (character.includeCharacterBackground)
       pages = pages ::: List(PageSlot("background", None))
+    if (character.includeLycanthrope)
+      pages = pages ::: List(PageSlot("lycanthrope", None))
     if (character.includePartyFunds)
       pages = pages ::: List(PageSlot("partyfunds", None))
     if (character.includeAnimalCompanion)
