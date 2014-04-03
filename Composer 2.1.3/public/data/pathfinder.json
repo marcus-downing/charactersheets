@@ -265,7 +265,7 @@
 
     "layout": [
         [ "Core Rulebook" ],
-        [ "Advanced Player's Guide", "Ultimate Magic", "Ultimate Combat", "Advanced Class Guide", "Mythic Adventures", "Tome of Secrets" ],
+        [ "Advanced Player's Guide", "Ultimate Magic", "Ultimate Combat", "Mythic Adventures", "Tome of Secrets" ],
         [ "Psionics Unleashed", "Psionics Expanded", "NeoExodus", "Generic" ]
     ],
 
@@ -719,7 +719,7 @@
         {
             "name": "Wyrdcaster",
             "pages": [ "wyrdcaster", "inventory" ]
-        }
+        },
 
         {
             "name": "Spellcaster",
