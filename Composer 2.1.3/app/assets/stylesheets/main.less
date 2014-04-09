@@ -233,13 +233,20 @@ dl {
 
 aside.linkbar {
   position: fixed; z-index: 2;
-  top: 0px; right: 0px; height: 31px; width: 528px;
+  top: 0px; right: 0px; height: 31px; width: 530px;
+  padding-left: 80px;
   .border-radius(0px, 0px, 3px, 0px);
   background: #6E7864 url(pixel.png);
   background: rgba(110, 120, 100, 0.5);
   .drop-shadow(0px, 5px, 15px, 0.6);
 
-  .addthis_toolbox { position: absolute; z-index: 3; top: 5px; right: 10px; width: 400px; }
+  .addthis_toolbox { position: absolute; z-index: 3; top: 5px; right: 10px; width: 410px; }
+
+  form {
+    position: absolute;
+    top: 5px;
+    left: 110px;
+  }
 }
 
 #linkbar-flattr {

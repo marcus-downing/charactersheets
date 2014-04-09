@@ -26,6 +26,8 @@ object Composer extends Controller {
     val iconic = request.body.file("iconic-custom-file").map{ filepart =>
       for (contentType <- filepart.contentType)
         println("File uploaded with content type: "+contentType)
+      println("File named "+filepart.filename)
+      println("File at "+filepart.ref.file.getAbsolutePath)
       filepart.ref.file
     }
     val bodydata = request.body.asFormUrlEncoded
