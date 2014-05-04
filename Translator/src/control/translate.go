@@ -9,14 +9,14 @@ import (
 	// "math/rand"
 	"encoding/csv"
 	// "io"
+	"bufio"
 	"fmt"
+	"mime/multipart"
 	"net/http"
 	"path"
 	"strconv"
 	"strings"
 	"time"
-	"bufio"
-	"mime/multipart"
 )
 
 const (
@@ -43,12 +43,13 @@ func SourcesHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func EntriesHandler(w http.ResponseWriter, r *http.Request) {
+	currentUser := GetCurrentUser(r)
 	renderTemplate("entries", w, r, func(data TemplateData) TemplateData {
 		data.CurrentGame = r.FormValue("game")
 		data.CurrentLevel = r.FormValue("level")
 		data.CurrentShow = r.FormValue("show")
 
-		data.Entries = model.GetStackedEntries(data.CurrentGame, data.CurrentLevel, data.CurrentShow, "gb")
+		data.Entries = model.GetStackedEntries(data.CurrentGame, data.CurrentLevel, data.CurrentShow, "gb", currentUser)
 		data.Page = Paginate(r, PageSize, len(data.Entries))
 		data.Entries = data.Entries[data.Page.Offset:data.Page.Slice]
 		return data
@@ -56,6 +57,7 @@ func EntriesHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func TranslationHandler(w http.ResponseWriter, r *http.Request) {
+	currentUser := GetCurrentUser(r)
 	renderTemplate("translate", w, r, func(data TemplateData) TemplateData {
 		rlang := r.FormValue("language")
 		if rlang != "" {
@@ -66,7 +68,7 @@ func TranslationHandler(w http.ResponseWriter, r *http.Request) {
 		data.CurrentLevel = r.FormValue("level")
 		data.CurrentShow = r.FormValue("show")
 
-		data.Entries = model.GetStackedEntries(data.CurrentGame, data.CurrentLevel, data.CurrentShow, data.CurrentLanguage)
+		data.Entries = model.GetStackedEntries(data.CurrentGame, data.CurrentLevel, data.CurrentShow, data.CurrentLanguage, currentUser)
 		data.Page = Paginate(r, PageSize, len(data.Entries))
 		data.Entries = data.Entries[data.Page.Offset:data.Page.Slice]
 		return data
@@ -246,7 +248,7 @@ func stripBOM(file multipart.File) *bufio.Reader {
 	br := bufio.NewReader(file)
 	rune, _, _ := br.ReadRune()
 	if rune != '\uFEFF' {
-        br.UnreadRune() // Not a BOM -- put the rune back
-    }
-    return br
+		br.UnreadRune() // Not a BOM -- put the rune back
+	}
+	return br
 }

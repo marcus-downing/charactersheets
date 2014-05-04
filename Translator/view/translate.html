@@ -34,6 +34,10 @@
 			<option value='' {{ if eq .CurrentShow "" }}selected{{ end }}>All lines</option>
 			<option value='translated' {{ if eq .CurrentShow "translated" }}selected{{ end }}>Translated</option>
 			<option value='untranslated' {{ if eq .CurrentShow "untranslated" }}selected{{ end }}>Untranslated</option>
+			<optgroup label=""></optgroup>
+			<option value='mine' {{ if eq .CurrentShow "mine" }}selected{{ end }}>My translations</option>
+			<option value='others' {{ if eq .CurrentShow "others" }}selected{{ end }}>Others' translations</option>
+			<option value='conflicts' {{ if eq .CurrentShow "conflicts" }}selected{{ end }}>Conflicts</option>
 		</select>
 	</div>
 
@@ -49,13 +53,13 @@
 
 <thead>
 	<tr>
-		<th></th>
+		<th colspan='2'><span class='glyphicon glyphicon-book'></span> &nbsp; Sources</th>
 		<th><img src='/images/flags/gb.png'>&nbsp; Original</th>
 		<th>
 			{{ if .IsAdmin }}
 			<div class='dropdown' id="select-language">
 				<button class="btn btn-link dropdown-toggle" type="button" data-toggle="dropdown">
-					<img src='/images/flags/{{.CurrentLanguage}}.png'>&nbsp; {{ index .LanguageNames .CurrentLanguage }}
+					<img src='/images/flags/{{.CurrentLanguage}}.png'>&nbsp; <b>{{ index .LanguageNames .CurrentLanguage }}</b>
 					<span class="caret"></span>
 				</button>
 				<ul class='dropdown-menu'>
@@ -88,13 +92,15 @@
 {{ $lang := .CurrentLanguage }}
 {{ range $i, $entry := .Entries }}
 <tr class='{{ entryClass $entry $lang $currentUser }}' data-line='{{ $i }}'>
-	{{/*<td class='btn-cell'><a class='reveal reveal-sources' data-line='{{ $i }}'><span class='glyphicon glyphicon-book'></span></a></td>*/}}
-	<td class='btn-cell'><span class='badge'>{{ $entry.Count }}</span></td>
+	<td class='btn-cell'><a class='btn btn-default reveal reveal-sources' data-line='{{ $i }}' data-toggle='modal' data-target='#entry-modal-{{ $i }}'>
+		<span class='glyphicon glyphicon-book'></span> <b>{{ len $entry.EntrySources }}</b>
+		</a></td>
+	<td><span class='label label-primary'>{{ $entry.Count }}</span></td>
 	<td class='original'>
 		{{ range $j, $part := $entry.Entries }}
 		<label class='part' for='part-{{ $i }}-{{ $j }}'>
-			<input type='hidden' id='part-{{ $i }}-{{ $j }}-original' name='part-{{ $i }}-{{ $j }}-original' class='form-control' value='{{ $part.Original }}' />
-			<input type='hidden' id='part-{{ $i }}-{{ $j }}-partof' name='part-{{ $i }}-{{ $j }}-partof' class='form-control' value='{{ $part.PartOf }}' />
+			<input type='hidden' id='part-{{ $i }}-{{ $j }}-original' name='part-{{ $i }}-{{ $j }}-original' class='form-control entry-original' value='{{ $part.Original }}' />
+			<input type='hidden' id='part-{{ $i }}-{{ $j }}-partof' name='part-{{ $i }}-{{ $j }}-partof' class='form-control entry-partof' value='{{ $part.PartOf }}' />
 			{{ $part.Original }}
 		</label>
 		{{ end }}
@@ -107,10 +113,16 @@
 		{{ range $translation := $translations }}
 			<p class='other-translation'>
 				<img src='http://www.gravatar.com/avatar/{{ md5 $translation.Translator }}?s=24'> &nbsp; 
-				{{ range $part := $translation.Parts }}
-					<label class='part'>{{ $part.Translation }}</label>
-				{{ end }}
+				<span class='translation-parts'>
+					{{ range $part := $translation.Parts }}
+						<label class='part'>{{ $part.Translation }}</label>
+					{{ end }}
+				</span>
 				{{ if $translation.IsPreferred }}<span class='glyphicon glyphicon-arrow-left'></span>{{ end }}
+				<span class='btn-group btn-group-xs vote'>
+					<a class='btn btn-xs btn-default vote vote-up {{ if isVotedUp $translation }}btn-success active{{ end }}' data-translation=''><span class="glyphicon glyphicon-ok"></span></a>
+					<a class='btn btn-xs btn-default vote vote-down {{ if isVotedDown $translation }}btn-danger active{{ end }}' data-translation=''><span class="glyphicon glyphicon-remove"></span></a>
+				</span>
 			</p>
 
 		{{ end }}
@@ -118,9 +130,11 @@
 		<p class='my-translation'>
 			<img src='http://www.gravatar.com/avatar/{{ md5 $currentUser.Email }}?s=24'> &nbsp; 
 			<span class='my-translation-arrow-score'></span><span class='my-translation-arrow'></span>
-			{{ range $j, $part := $myTranslation.Parts }}
-				<input type='text' id='part-{{ $i }}-{{ $j }}' name='part-{{ $i }}-{{ $j }}' class='form-control' value='{{ $part.Translation }}' />
-			{{ end }}
+			<span class='translation-parts'>
+				{{ range $j, $part := $myTranslation.Parts }}
+					<input type='text' id='part-{{ $i }}-{{ $j }}' name='part-{{ $i }}-{{ $j }}' class='form-control' value='{{ $part.Translation }}' />
+				{{ end }}
+			</span>
 			{{ if $myTranslation.IsPreferred }}<span class='glyphicon glyphicon-arrow-left'></span>{{ end }}
 		</p>
 	</td>
@@ -132,5 +146,48 @@
 
 </table>
 </form>
+
+{{ $lang := .Languages }}
+{{ range $i, $entry := .Entries }}
+
+<div class='modal fade' id='entry-modal-{{ $i }}' tabIndex="-1" aria-hidden="true">
+	<div class='modal-dialog'>
+		<div class='modal-content'>
+			<div class='modal-header'>
+				<h4 class="modal-title original">
+					{{ range $j, $part := $entry.Entries }}
+					<label class='part'>
+						{{ $part.Original }}
+					</label>
+					{{ end }}
+				</h4>
+			</div>
+
+			<div class='modal-body'>
+				<table>
+					{{ range $j, $source := $entry.EntrySources }}
+						<tr>
+							<td><a href="{{ sourceURL $source.Source }}" target='_blank'>{{ sourcePath $source.Source }}</a></td>
+							<td><span class='label label-primary'>{{ $source.Count }}</span></td>
+							<td>
+								{{ range $lang = $languages }}
+									{{ if previewExists $lang $source }}
+									<a href="{{ previewURL $lang $source }}" class='btn btn-default btn-sm' target='_blank'><span class='glyphicon glyphicon-share-alt'></span></a>
+									{{ else }}
+								{{ end }}
+							</td>
+						</tr>
+					{{ end }}
+				</table>
+			</div>
+
+			<div class="modal-footer">
+				<button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+{{ end }}
 
 {{ end }}

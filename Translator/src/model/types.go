@@ -37,7 +37,7 @@ func GetEntries() []*Entry {
 	return entries
 }
 
-func GetEntriesAt(game string, level int, show, language string) []*Entry {
+func GetEntriesAt(game string, level int, show, language string, translator *User) []*Entry {
 	if game == "" && level == 0 && show == "" {
 		return GetEntries()
 	}
@@ -45,7 +45,22 @@ func GetEntriesAt(game string, level int, show, language string) []*Entry {
 	sql := "select Original, PartOf from Entries " +
 		"inner join EntrySources on Original = EntrySources.EntryOriginal and PartOf = EntrySources.EntryPartOf " +
 		"inner join Sources on SourcePath = Filepath"
-	if show != "" {
+	if show == "conflicts" {
+		sql = sql + " inner join Translations Mine on Original = Mine.EntryOriginal and PartOf = Mine.EntryPartOf and Mine.Language = ? and Mine.Translator = ?" +
+			"inner join Translations Others on Original = Others.EntryOriginal and PartOf = Others.EntryPartOf and Others.Language = ? and Others.Translator != ?"
+		args = append(args, language)
+		args = append(args, translator.Email)
+		args = append(args, language)
+		args = append(args, translator.Email)
+	} else if show == "mine" {
+		sql = sql + " inner join Translations Mine on Original = Mine.EntryOriginal and PartOf = Mine.EntryPartOf and Mine.Language = ? and Mine.Translator = ?"
+		args = append(args, language)
+		args = append(args, translator.Email)
+	} else if show == "others" {
+		sql = sql + " inner join Translations Others on Original = Others.EntryOriginal and PartOf = Others.EntryPartOf and Others.Language = ? and Others.Translator = ?"
+		args = append(args, language)
+		args = append(args, translator.Email)
+	} else if show != "" {
 		sql = sql + " left join Translations on Original = Translations.EntryOriginal and PartOf = Translations.EntryPartOf and Translations.Language = ?"
 		args = append(args, language)
 	}
@@ -58,6 +73,9 @@ func GetEntriesAt(game string, level int, show, language string) []*Entry {
 	if level != 0 {
 		sql = sql + " and Level = ?"
 		args = append(args, level)
+	}
+	if show == "conflicts" {
+		sql = sql + " and Mine.Translation = Others.Translation"
 	}
 	// if show != "" {
 	// 	sql = sql+" and Translations.Language = ?"
@@ -279,8 +297,10 @@ func parseTranslation(rows *sql.Rows) (Result, error) {
 	return t, err
 }
 
+const translationFields = "EntryOriginal, EntryPartOf, Language, Translation, Translator, IsPreferred"
+
 func GetTranslations() []*Translation {
-	results := query("select EntryOriginal, EntryPartOf, Language, Translation, Translator, IsPreferred from Translations").rows(parseTranslation)
+	results := query("select " + translationFields + " from Translations").rows(parseTranslation)
 	translations := make([]*Translation, len(results))
 	for i, result := range results {
 		if translation, ok := result.(Translation); ok {
@@ -291,7 +311,7 @@ func GetTranslations() []*Translation {
 }
 
 func GetTranslationsForLanguage(language string) []*Translation {
-	results := query("select EntryOriginal, EntryPartOf, Language, Translation, Translator, IsPreferred from Translations where Language = ?", language).rows(parseTranslation)
+	results := query("select "+translationFields+" from Translations where Language = ?", language).rows(parseTranslation)
 	translations := make([]*Translation, len(results))
 	for i, result := range results {
 		if translation, ok := result.(Translation); ok {
@@ -302,7 +322,7 @@ func GetTranslationsForLanguage(language string) []*Translation {
 }
 
 func (entry *Entry) GetTranslations(language string) []*Translation {
-	results := query("select EntryOriginal, EntryPartOf, Language, Translation, Translator, IsPreferred from Translations where EntryOriginal = ? and EntryPartOf = ? and Language = ?", entry.Original, entry.PartOf, language).rows(parseTranslation)
+	results := query("select "+translationFields+" from Translations where EntryOriginal = ? and EntryPartOf = ? and Language = ?", entry.Original, entry.PartOf, language).rows(parseTranslation)
 	translations := make([]*Translation, len(results))
 	for i, result := range results {
 		if translation, ok := result.(Translation); ok {
@@ -313,7 +333,15 @@ func (entry *Entry) GetTranslations(language string) []*Translation {
 }
 
 func (entry *Entry) GetTranslationBy(language, translator string) *Translation {
-	result := query("select EntryOriginal, EntryPartOf, Language, Translation, Translator, IsPreferred from Translations where EntryOriginal = ? and EntryPartOf = ? and Language = ? and Translator = ?", entry.Original, entry.PartOf, language, translator).row(parseTranslation)
+	result := query("select "+translationFields+" from Translations where EntryOriginal = ? and EntryPartOf = ? and Language = ? and Translator = ?", entry.Original, entry.PartOf, language, translator).row(parseTranslation)
+	if translation, ok := result.(Translation); ok {
+		return &translation
+	}
+	return nil
+}
+
+func (entry *Entry) GetMatchingTranslation(language, translation string) *Translation {
+	result := query("select "+translationFields+" from Translations where EntryOriginal = ? and EntryPartOf = ? and Language = ? and Translation = ?", entry.Original, entry.PartOf, language, translation).row(parseTranslation)
 	if translation, ok := result.(Translation); ok {
 		return &translation
 	}
@@ -331,6 +359,76 @@ func (translation *Translation) Save() {
 		"Translation": translation.Translation,
 	}
 	saveRecord("Translations", keyfields, fields)
+	ClearVotes(translation)
+}
+
+// ** Votes
+
+type Vote struct {
+	Translation Translation
+	Voter       *User
+	Vote        bool
+}
+
+func parseVote(rows *sql.Rows) (Result, error) {
+	v := Vote{}
+	err := rows.Scan(&v.Vote)
+	return v, err
+}
+
+func GetVote(translation *Translation, voter *User) *Vote {
+	result := query("select Vote from Votes").row(parseVote)
+	if vote, ok := result.(Vote); ok {
+		vote.Translation = *translation
+		vote.Voter = voter
+		return &vote
+	}
+	return nil
+}
+
+func (vote *Vote) Save() {
+	keyfields := map[string]interface{}{
+		"EntryOriginal": vote.Translation.Entry.Original,
+		"EntryPartOf":   vote.Translation.Entry.PartOf,
+		"Language":      vote.Translation.Language,
+		"Translator":    vote.Translation.Translator,
+		"Voter":         vote.Voter.Email,
+	}
+	fields := map[string]interface{}{
+		"Vote": vote.Vote,
+	}
+	saveRecord("Votes", keyfields, fields)
+}
+
+func DeleteVote(vote *Vote) {
+	keyfields := map[string]interface{}{
+		"EntryOriginal": vote.Translation.Entry.Original,
+		"EntryPartOf":   vote.Translation.Entry.PartOf,
+		"Language":      vote.Translation.Language,
+		"Translator":    vote.Translation.Translator,
+		"Voter":         vote.Voter.Email,
+	}
+	deleteRecord("Votes", keyfields)
+}
+
+func ClearVotes(translation *Translation) {
+	keyfields := map[string]interface{}{
+		"EntryOriginal": translation.Entry.Original,
+		"EntryPartOf":   translation.Entry.PartOf,
+		"Language":      translation.Language,
+		"Translator":    translation.Translator,
+	}
+	deleteRecord("Votes", keyfields)
+}
+
+func ClearOtherVotes(translation *Translation) {
+	keyfields := map[string]interface{}{
+		"EntryOriginal": translation.Entry.Original,
+		"EntryPartOf":   translation.Entry.PartOf,
+		"Language":      translation.Language,
+		"Vote":          true,
+	}
+	deleteRecord("Votes", keyfields)
 }
 
 /*

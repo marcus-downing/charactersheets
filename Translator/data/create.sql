@@ -4,6 +4,7 @@
 # 
 #  Maximum key length: 767 bytes -> 255 characters
 #  Timestamp = 4 bytes -> 2 characters
+#  Language = 2 characters
 
 
 create table Entries (
@@ -49,4 +50,14 @@ create table Users (
 	IsAdmin boolean not null,
 	Language char(2) not null,
 	IsLanguageLead boolean not null
+);
+
+create table Votes (
+	EntryOriginal text not null,
+	EntryPartOf text not null,
+	Language char(2) not null,
+	Translator varchar(128) not null,
+	Voter varchar(128) not null,
+	Vote boolean not null,
+	primary key (EntryOriginal(63), EntryPartOf(63), Language, Translator(63), Voter(63))
 );

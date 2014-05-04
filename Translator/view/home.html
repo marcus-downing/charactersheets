@@ -12,6 +12,21 @@
 <div class='col-sm-4'>
 <div class='panel panel-primary'>
 	<div class="panel-heading"><h3 class="panel-title"><span class="glyphicon glyphicon-stats"></span>&nbsp; Completion summary</h3></div>
+	<form class='navbar-form panel-view-form'>
+		<select id='options-game' name='game' class='form-control input-sm'>
+			<option value='' {{ if eq .CurrentGame "" }}selected{{ end }}>All</option>
+			<option value='pathfinder' {{ if eq .CurrentGame "pathfinder" }}selected{{ end }}>Pathfinder</option>
+			<option value='dnd35' {{ if eq .CurrentGame "dnd35" }}selected{{ end }}>D&amp;D 3.5</option>
+		</select>
+
+		<select id='options-level' name='level' class='form-control input-sm'>
+			<option value='0' {{ if eq .CurrentLevel "0" }}selected{{ end }}>All</option>
+			<option value='1' {{ if eq .CurrentLevel "1" }}selected{{ end }}>Core</option>
+			<option value='2' {{ if eq .CurrentLevel "2" }}selected{{ end }}>Advanced</option>
+			<option value='3' {{ if eq .CurrentLevel "3" }}selected{{ end }}>Further</option>
+			<option value='4' {{ if eq .CurrentLevel "4" }}selected{{ end }}>Third Party</option>
+		</select>
+	</form>
 	<table class='table'>
 		{{ $languageNames := .LanguageNames }}
 		{{ $languageCompletions := .LanguageCompletion }}
@@ -78,40 +93,66 @@
 <div class='panel panel-success'>
 	<div class='panel-heading'><h3 class='panel-title'><span class="glyphicon glyphicon-globe"></span>&nbsp; 
 		{{ if .CurrentUser.IsAdmin }}Translation summary{{ else }}My translations{{ end }}</h3></div>
-	<div class='panel-body'>
 
+	<form class='navbar-form panel-view-form'>
+		<select id='options-game' name='game' class='form-control input-sm'>
+			<option value='' {{ if eq .CurrentGame "" }}selected{{ end }}>All</option>
+			<option value='pathfinder' {{ if eq .CurrentGame "pathfinder" }}selected{{ end }}>Pathfinder</option>
+			<option value='dnd35' {{ if eq .CurrentGame "dnd35" }}selected{{ end }}>D&amp;D 3.5</option>
+		</select>
+
+		<select id='options-level' name='level' class='form-control input-sm'>
+			<option value='0' {{ if eq .CurrentLevel "0" }}selected{{ end }}>All</option>
+			<option value='1' {{ if eq .CurrentLevel "1" }}selected{{ end }}>Core</option>
+			<option value='2' {{ if eq .CurrentLevel "2" }}selected{{ end }}>Advanced</option>
+			<option value='3' {{ if eq .CurrentLevel "3" }}selected{{ end }}>Further</option>
+			<option value='4' {{ if eq .CurrentLevel "4" }}selected{{ end }}>Third Party</option>
+		</select>
+	</form>
+
+	<div class='panel-body'>
 		{{ $currentUser := .CurrentUser }}
 		{{ range $lang, $profile := profileTranslations .CurrentUser }}
-			<p>
-				<img src='/images/flags/{{ $lang }}.png'> &nbsp; 
-				{{ index $languageNames $lang }}
-			</p>
-			<p>
-				{{ if $profile.ByMeAlone }}
-					<a class='lang-count lang-count-mine' href='/translate?language={{ $lang }}'>
-						<span class='badge'>{{ $profile.ByMeAlone }}</span> by me
-					</a>
-				{{ end }}
-				{{ if $profile.ByMeAndOthers }}
-					<a class='lang-count lang-count-conflict' href='/translate?language={{ $lang }}'>
-						<span class='badge'>{{ $profile.ByMeAndOthers }}</span> conflicts
-					</a>
-				{{ end }}
-				{{ if $profile.ByOthersAlone }}
-					<a class='lang-count lang-count-other' href='/translate?language={{ $lang }}'>
-						<span class='badge'>{{ $profile.ByOthersAlone }}</span> by others
-					</a>
-				{{ end }}
-			</p>
-			<div class="progress">
-				<div class="progress-bar progress-bar-success" style="width: {{ $profile.ByMePercent }}%">
-					<span class="sr-only">{{ $profile.ByMePercent }}% completed by me</span>
-				</div>
-				<div class="progress-bar progress-bar-warn" style="width: {{ $profile.ByMeAndOthersPercent }}%">
-					<span class="sr-only">{{ $profile.ByMeAndOthersPercent }}% completed by me</span>
-				</div>
-				<div class="progress-bar progress-bar-info" style="width: {{ $profile.ByOthersPercent }}%">
-					<span class="sr-only">{{ $profile.ByOthersPercent }}% completed by me</span>
+			<div class='lang-profile'>
+				<p>
+					<img src='/images/flags/{{ $lang }}.png'> &nbsp; 
+					{{ index $languageNames $lang }}
+				</p>
+				<p class='lang-counts'>
+					{{ if $profile.ByMeAlone }}
+						<a class='lang-count lang-count-mine' href='/translate?language={{ $lang }}&amp;show=mine'>
+							<span class='badge'>{{ $profile.ByMeAlone }}</span> by me
+						</a>
+					{{ end }}
+					{{ if $profile.ByOthersAlone }}
+						<a class='lang-count lang-count-other' href='/translate?language={{ $lang }}&amp;show=others'>
+							<span class='badge'>{{ $profile.ByOthersAlone }}</span> by others
+						</a>
+					{{ end }}
+					{{ if $profile.ByMeAndOthersNoConflict }}
+						<a class='lang-count lang-count-both' href='/translate?language={{ $lang }}&amp;show=both'>
+							<span class='badge'>{{ $profile.ByMeAndOthersNoConflict }}</span> by me and others
+						</a>
+					{{ end }}
+					{{ if $profile.ByMeAndOthersConflict }}
+						<a class='lang-count lang-count-conflict' href='/translate?language={{ $lang }}&amp;show=conflicts'>
+							<span class='badge'>{{ $profile.ByMeAndOthersConflict }}</span> conflicts
+						</a>
+					{{ end }}
+				</p>
+				<div class="progress">
+					<div class="progress-bar progress-bar-success" style="width: {{ $profile.ByMePercent }}%">
+						<span class="sr-only">{{ $profile.ByMePercent }}% completed by me</span>
+					</div>
+					<div class="progress-bar progress-bar-info" style="width: {{ $profile.ByOthersPercent }}%">
+						<span class="sr-only">{{ $profile.ByOthersPercent }}% completed by others</span>
+					</div>
+					<div class="progress-bar progress-bar-warn" style="width: {{ $profile.ByMeAndOthersNoConflictPercent }}%">
+						<span class="sr-only">{{ $profile.ByMeAndOthersNoConflictPercent }}% complete by me and others</span>
+					</div>
+					<div class="progress-bar progress-bar-danger" style="width: {{ $profile.ByMeAndOthersConflictPercent }}%">
+						<span class="sr-only">{{ $profile.ByMeAndOthersConflictPercent }}% conflicts</span>
+					</div>
 				</div>
 			</div>
 		{{ end }}

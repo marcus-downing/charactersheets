@@ -12,7 +12,7 @@ const (
 	dbname     = "chartrans"
 	dbuser     = "chartrans"
 	dbpassword = "fiddlesticks"
-	debug      = false
+	debug      = true
 )
 
 //  users

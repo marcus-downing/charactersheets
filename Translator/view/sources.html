@@ -60,10 +60,10 @@
 	{{ range $source := .Sources }}
 	<tr>
 		<td class='btn-cell'>
-			<a href="{{ sourceURL $source }}" class='btn btn-default btn-sm'><span class='glyphicon glyphicon-book'></span></a>
+			<a href="{{ sourceURL $source }}" class='btn btn-default btn-sm' target='_blank'><span class='glyphicon glyphicon-book'></span></a>
 		</td>
 		<td>
-			<a href="{{ sourceURL $source }}">{{ sourcePath $source }}</a>
+			<a href="{{ sourceURL $source }}" target='_blank'>{{ sourcePath $source }}</a>
 		</td>
 		{{ $sourceCompletion := sourceCompletion $source }}
 		{{ range $lang := $languages }}
@@ -78,7 +78,7 @@
 			</td>
 			<td class='btn-cell'>
 				{{ if previewExists $lang $source }}
-				<a href="{{ previewURL $lang $source }}" class='btn btn-default btn-sm'><span class='glyphicon glyphicon-share-alt'></span></a>
+				<a href="{{ previewURL $lang $source }}" class='btn btn-default btn-sm' target='_blank'><span class='glyphicon glyphicon-share-alt'></span></a>
 				{{ else }}
 				<span class='glyphicon glyphicon-remove-circle text-danger'></span>
 				{{ end }}

@@ -266,22 +266,29 @@ func paginateTemplate(page *Pagination) template.HTML {
 	}
 
 	format := "<a href='%spage=%d' class='btn btn-default'>%s</a>"
+	disabled := "<span class='btn btn-default' disabled='disabled'>%s</span>"
 
-	first := ""
-	back := ""
+	first := "<span class='glyphicon glyphicon-chevron-left'></span> First"
+	back := "<span class='glyphicon glyphicon-chevron-left'></span> Back"
 	if page.Page > 1 {
-		first = fmt.Sprintf(format, url, 1, "<span class='glyphicon glyphicon-arrow-left'></span> First")
-		back = fmt.Sprintf(format, url, page.PrevPage, "<span class='glyphicon glyphicon-arrow-left'></span> Back")
+		first = fmt.Sprintf(format, url, 1, first)
+		back = fmt.Sprintf(format, url, page.PrevPage, back)
+	} else {
+		first = fmt.Sprintf(disabled, first)
+		back = fmt.Sprintf(disabled, back)
 	}
 
-	next := ""
-	last := ""
+	next := "Next <span class='glyphicon glyphicon-chevron-right'></span>"
+	last := "Last <span class='glyphicon glyphicon-chevron-right'></span>"
 	if page.Page < page.LastPage {
-		next = fmt.Sprintf(format, url, page.NextPage, "Next <span class='glyphicon glyphicon-arrow-right'></span>")
-		last = fmt.Sprintf(format, url, page.LastPage, "Last <span class='glyphicon glyphicon-arrow-right'></span>")
+		next = fmt.Sprintf(format, url, page.NextPage, next)
+		last = fmt.Sprintf(format, url, page.LastPage, last)
+	} else {
+		next = fmt.Sprintf(disabled, next)
+		last = fmt.Sprintf(disabled, last)
 	}
 
-	return template.HTML("<span class='pagination'>" + first + back + next + last + "</span>")
+	return template.HTML("<span class='pagination btn-group'>" + first + back + next + last + "</span>")
 }
 
 func sourcePath(source *model.Source) template.HTML {
@@ -328,6 +335,15 @@ func sourceCompletion(source *model.Source) map[string]int {
 	return source.GetLanguageCompletion()
 }
 
+func isVotedUp(translation *model.StackedTranslation) bool {
+
+	return false
+}
+
+func isVotedDown(translation *model.StackedTranslation) bool {
+	return false
+}
+
 var templateFuncs = template.FuncMap{
 	"percentColour":          percentColour,
 	"md5":                    md5sum,
@@ -343,6 +359,8 @@ var templateFuncs = template.FuncMap{
 	"sourceCompletion":       sourceCompletion,
 	"previewURL":             previewURL,
 	"previewExists":          previewExists,
+	"isVotedUp":              isVotedUp,
+	"isVotedDown":            isVotedDown,
 }
 
 func renderTemplate(name string, w http.ResponseWriter, r *http.Request, dataproc func(data TemplateData) TemplateData) {

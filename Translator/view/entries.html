@@ -48,7 +48,7 @@
 {{ $languages := .DisplayLanguages }}
 <thead>
 	<tr>
-		<th></th>
+		<th colspan='2'><span class='glyphicon glyphicon-book'></span> &nbsp; Sources</th>
 		<th><img src='/images/flags/gb.png'>&nbsp; Original</th>
 		{{ range $lang := $languages }}
 		<th class='btn-cell'><img src='/images/flags/{{ $lang }}.png'></th>
@@ -65,7 +65,10 @@
 {{ range $i, $entry := .Entries }}
 {{ $translations := countEntryTranslations $entry }}
 <tr>
-	<td class='btn-cell'><span class='badge'>{{ $entry.Count }}</span></td>
+	<td class='btn-cell'><a class='btn btn-default reveal reveal-sources' data-line='{{ $i }}' data-toggle='modal' data-target='#entry-modal-{{ $i }}'>
+		<span class='glyphicon glyphicon-book'></span> <b>{{ len $entry.EntrySources }}</b>
+		</a></td>
+	<td><span class='label label-primary'>{{ $entry.Count }}</span></td>
 	<td class='original'>
 		{{ range $j, $part := $entry.Entries }}
 		<label class='part' for='part-{{ $i }}-{{ $j }}'>
@@ -94,4 +97,38 @@
 
 </table>
 
+{{ range $i, $entry := .Entries }}
+
+<div class='modal fade' id='entry-modal-{{ $i }}' tabIndex="-1" aria-hidden="true">
+	<div class='modal-dialog'>
+		<div class='modal-content'>
+			<div class='modal-header'>
+				<h4 class="modal-title original">
+					{{ range $j, $part := $entry.Entries }}
+					<label class='part'>
+						{{ $part.Original }}
+					</label>
+					{{ end }}
+				</h4>
+			</div>
+
+			<div class='modal-body'>
+				<table>
+					{{ range $j, $source := $entry.EntrySources }}
+						<tr>
+							<td><a href="{{ sourceURL $source.Source }}" target='_blank'>{{ sourcePath $source.Source }}</a></td>
+							<td><span class='badge'>{{ $source.Count }}</span></td>
+						</tr>
+					{{ end }}
+				</table>
+			</div>
+
+			<div class="modal-footer">
+				<button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+{{ end }}
 {{ end }}

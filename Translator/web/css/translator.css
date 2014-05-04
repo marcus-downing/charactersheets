@@ -32,13 +32,21 @@ body.users #nav-users a
 }
 
 .pagination a {
-  margin: 0 5px;
+  /* margin: 0 5px; */
 }
 
 .page-options label {
   margin-top: -25px;
   float: left;
   width: 1px;
+}
+
+form.panel-view-form {
+  margin: 0;
+  padding: 8px;
+  background: #f5f5f5;
+  border-bottom: 1px solid #ddd;
+  white-space: nowrap;
 }
 
 
@@ -86,6 +94,14 @@ body.users #nav-users a
   vertical-align: middle;
 }
 
+.lang-profile {
+  padding-bottom: 8px;
+}
+
+.lang-counts {
+  line-height: 2;
+}
+
 .lang-count {
   text-decoration: none !important;
   white-space: nowrap;
@@ -100,8 +116,11 @@ body.users #nav-users a
 .lang-count-mine { color: #449d44; }
 .lang-count-mine .badge { background-color: #449d44; }
 
-.lang-count-conflict { color: #ec971f; }
-.lang-count-conflict .badge { background-color: #ec971f; }
+.lang-count-both { color: #ec971f; }
+.lang-count-both .badge { background-color: #ec971f; }
+
+.lang-count-conflict { color: #c9302c; }
+.lang-count-conflict .badge { background-color: #c9302c; }
 
 .lang-count-other { color: #31b0d5; }
 .lang-count-other .badge { background-color: #31b0d5; }
@@ -137,6 +156,12 @@ body.sources .breadcrumb > li + li:before {
   white-space: nowrap;
 }
 
+.modal table ol.breadcrumb {
+  margin-bottom: 0;
+  background: none;
+  white-space: nowrap;
+}
+
 
 
 /* Translation form */
@@ -169,10 +194,18 @@ body.sources .breadcrumb > li + li:before {
 
 
 
+
 label.part {
   border-right: 1px solid #d0d0d0;
   padding-right: 14px;
   margin-right: 10px;
+  clear: both;
+}
+
+.vote {
+  float: right;
+  clear: right;
+  margin-bottom: 4px;
 }
 
 tr.untranslated label.part {
@@ -215,6 +248,7 @@ p.other-translation {
   margin-bottom: 4px;
 }
 p.my-translation {
+  clear: both;
   display: none;
   margin-bottom: 0;
 }

@@ -37,6 +37,7 @@ func main() {
 	handler.HandleFunc("/api/clearlead", control.APIClearLeadHandler)
 	handler.HandleFunc("/api/entries", control.APIEntriesHandler)
 	handler.HandleFunc("/api/translate", control.APITranslateHandler)
+	handler.HandleFunc("/api/vote", control.APIVoteHandler)
 
 	handler.Handle("/css/", http.FileServer(http.Dir("../web")))
 	handler.Handle("/bootstrap/", http.FileServer(http.Dir("../web")))

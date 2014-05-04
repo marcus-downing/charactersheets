@@ -84,12 +84,12 @@ type StackedEntry struct {
 	Count        int
 }
 
-func GetStackedEntries(game, level, show, language string) []*StackedEntry {
+func GetStackedEntries(game, level, show, language string, user *User) []*StackedEntry {
 	leveln, err := strconv.Atoi(level)
 	if err != nil || leveln > 4 || leveln < 1 {
 		leveln = 0
 	}
-	entries := GetEntriesAt(game, leveln, show, language)
+	entries := GetEntriesAt(game, leveln, show, language, user)
 	return stackEntries(entries)
 }
 
@@ -389,17 +389,23 @@ type TranslationProfile struct {
 	Language     string
 	TotalEntries int
 
-	ByMe          int
-	ByMeAlone     int
-	ByOthers      int
-	ByOthersAlone int
-	ByMeAndOthers int
-	Remaining     int
+	ByMe                    int
+	ByMeAlone               int
+	ByOthers                int
+	ByOthersAlone           int
+	ByMeAndOthers           int
+	ByMeAndOthersNoConflict int
+	ByMeAndOthersConflict   int
+	ByNobody                int
 
-	ByMePercent          int
-	ByOthersPercent      int
-	ByMeAndOthersPercent int
-	RemainingPercent     int
+	ByMePercent                    int
+	ByMeAlonePercent               int
+	ByOthersPercent                int
+	ByOthersAlonePercent           int
+	ByMeAndOthersPercent           int
+	ByMeAndOthersNoConflictPercent int
+	ByMeAndOthersConflictPercent   int
+	ByNobodyPercent                int
 }
 
 func ProfileTranslations(user *User) map[string]*TranslationProfile {
@@ -418,22 +424,31 @@ func ProfileTranslations(user *User) map[string]*TranslationProfile {
 				"where A.Language = ? and A.Translator = ? and B.Translator != ? "+
 				"group by A.EntryOriginal, A.EntryPartOf"+
 				"", lang, user.Email, user.Email).count()
+			conflict := query("select count(*) from Translations A "+
+				"inner join Translations B on A.EntryOriginal = B.EntryOriginal and A.EntryPartOf = B.EntryPartOf and A.Language = B.Language "+
+				"where A.Language = ? and A.Translator = ? and B.Translator != ? and A.Translation != B.Translation "+
+				"group by A.EntryOriginal, A.EntryPartOf"+
+				"", lang, user.Email, user.Email).count()
 
 			fmt.Println(LanguageNames[lang], "-- by me = ", byme, "; by others =", byothers, "; by both =", byboth)
 			profile := TranslationProfile{
-				Language:      lang,
-				TotalEntries:  total,
-				ByMe:          byme,
-				ByMeAlone:     byme - byboth,
-				ByOthers:      byothers,
-				ByOthersAlone: byothers - byboth,
-				ByMeAndOthers: byboth,
-				Remaining:     total - (byme + byothers - byboth),
+				Language:                lang,
+				TotalEntries:            total,
+				ByMe:                    byme,
+				ByMeAlone:               byme - byboth,
+				ByOthers:                byothers,
+				ByOthersAlone:           byothers - byboth,
+				ByMeAndOthers:           byboth,
+				ByMeAndOthersNoConflict: conflict,
+				ByMeAndOthersConflict:   byboth - conflict,
+				ByNobody:                total - (byme + byothers - byboth),
 
-				ByMePercent:          (100 * (byme - byboth)) / total,
-				ByOthersPercent:      (100 * (byothers - byboth)) / total,
-				ByMeAndOthersPercent: (100 * byboth) / total,
-				RemainingPercent:     (100 * (total - (byme + byothers - byboth))) / total,
+				ByMePercent:                    (100 * (byme - byboth)) / total,
+				ByOthersPercent:                (100 * (byothers - byboth)) / total,
+				ByMeAndOthersPercent:           (100 * byboth) / total,
+				ByMeAndOthersNoConflictPercent: (100 * (byboth - conflict)) / total,
+				ByMeAndOthersConflictPercent:   (100 * conflict) / total,
+				ByNobodyPercent:                (100 * (total - (byme + byothers - byboth))) / total,
 			}
 			profiles[lang] = &profile
 		}
