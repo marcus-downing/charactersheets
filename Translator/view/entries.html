@@ -100,7 +100,7 @@
 {{ range $i, $entry := .Entries }}
 
 <div class='modal fade' id='entry-modal-{{ $i }}' tabIndex="-1" aria-hidden="true">
-	<div class='modal-dialog'>
+	<div class='modal-dialog modal-lg'>
 		<div class='modal-content'>
 			<div class='modal-header'>
 				<h4 class="modal-title original">
@@ -116,8 +116,8 @@
 				<table>
 					{{ range $j, $source := $entry.EntrySources }}
 						<tr>
-							<td><a href="{{ sourceURL $source.Source }}" target='_blank'>{{ sourcePath $source.Source }}</a></td>
-							<td><span class='badge'>{{ $source.Count }}</span></td>
+							<td><a href="{{ sourceURL $source.Source }}" target='_blank'><span class='glyphicon glyphicon-book'></span> {{ sourcePath $source.Source }}</a></td>
+							<td><span class='label label-primary'>{{ $source.Count }}</span></td>
 						</tr>
 					{{ end }}
 				</table>

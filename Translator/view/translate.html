@@ -95,7 +95,7 @@
 	<td class='btn-cell'><a class='btn btn-default reveal reveal-sources' data-line='{{ $i }}' data-toggle='modal' data-target='#entry-modal-{{ $i }}'>
 		<span class='glyphicon glyphicon-book'></span> <b>{{ len $entry.EntrySources }}</b>
 		</a></td>
-	<td><span class='label label-primary'>{{ $entry.Count }}</span></td>
+	<td class='btn-cell'><span class='label label-primary'>{{ $entry.Count }}</span></td>
 	<td class='original'>
 		{{ range $j, $part := $entry.Entries }}
 		<label class='part' for='part-{{ $i }}-{{ $j }}'>
@@ -106,39 +106,46 @@
 		{{ end }}
 	</td>
 	<td class='translation translate-{{ len $entry.Entries }}-parts'>
-		{{ $translations := otherTranslations $entry $lang $currentUser }}
-		{{ $myTranslation := myTranslation $entry $lang $currentUser }}
+		{{ $translations := getTranslations $entry $lang $currentUser }}
+		{{ $otherTranslations := otherTranslations $translations }}
+		{{ $myTranslation := myTranslation $translations }}
 		
+		<table>
+			{{ range $translation := $otherTranslations }}
+				<tr class='other-translation'>
+					<td class='btn-cell'>{{ if $translation.IsPreferred }}<span class='glyphicon glyphicon-ok'></span>{{ end }}</td>
+					<td class='btn-cell'><img src='http://www.gravatar.com/avatar/{{ md5 $translation.Translator }}?s=24'></td>
+					<td class='translation-parts'>
+						{{ range $part := $translation.Parts }}
+							<label class='part'>{{ $part.Translation }}</label>
+						{{ end }}
+					</td>
+					
+					<td class='vote-cell'><span class='btn-group btn-group-xs vote'>
+						<a class='btn btn-xs btn-default vote vote-up {{ if isVotedUp $translation }}btn-success active{{ end }}' data-translation=''><span class="glyphicon glyphicon-ok"></span></a>
+						<a class='btn btn-xs btn-default vote vote-down {{ if isVotedDown $translation }}btn-danger active{{ end }}' data-translation=''><span class="glyphicon glyphicon-remove"></span></a>
+					</span></td>
+				</tr>
+			{{ end }}
 
-		{{ range $translation := $translations }}
-			<p class='other-translation'>
-				<img src='http://www.gravatar.com/avatar/{{ md5 $translation.Translator }}?s=24'> &nbsp; 
-				<span class='translation-parts'>
-					{{ range $part := $translation.Parts }}
-						<label class='part'>{{ $part.Translation }}</label>
+			<tr class='my-translation'>
+				<td class='btn-cell'>{{ if $myTranslation.IsPreferred }}<span class='glyphicon glyphicon-ok'></span>{{ end }}</td>
+				<td class='btn-cell'><img src='http://www.gravatar.com/avatar/{{ md5 $currentUser.Email }}?s=24'></td>
+				<td class='translation-parts'>
+					<span class='my-translation-arrow-score'></span><span class='my-translation-arrow'></span>
+					{{ range $j, $part := $myTranslation.Parts }}
+						<input type='text' id='part-{{ $i }}-{{ $j }}' name='part-{{ $i }}-{{ $j }}' class='form-control' value='{{ $part.Translation }}' />
 					{{ end }}
-				</span>
-				{{ if $translation.IsPreferred }}<span class='glyphicon glyphicon-arrow-left'></span>{{ end }}
-				<span class='btn-group btn-group-xs vote'>
-					<a class='btn btn-xs btn-default vote vote-up {{ if isVotedUp $translation }}btn-success active{{ end }}' data-translation=''><span class="glyphicon glyphicon-ok"></span></a>
-					<a class='btn btn-xs btn-default vote vote-down {{ if isVotedDown $translation }}btn-danger active{{ end }}' data-translation=''><span class="glyphicon glyphicon-remove"></span></a>
-				</span>
-			</p>
-
-		{{ end }}
-
-		<p class='my-translation'>
-			<img src='http://www.gravatar.com/avatar/{{ md5 $currentUser.Email }}?s=24'> &nbsp; 
-			<span class='my-translation-arrow-score'></span><span class='my-translation-arrow'></span>
-			<span class='translation-parts'>
-				{{ range $j, $part := $myTranslation.Parts }}
-					<input type='text' id='part-{{ $i }}-{{ $j }}' name='part-{{ $i }}-{{ $j }}' class='form-control' value='{{ $part.Translation }}' />
-				{{ end }}
-			</span>
-			{{ if $myTranslation.IsPreferred }}<span class='glyphicon glyphicon-arrow-left'></span>{{ end }}
-		</p>
+				</td>
+				<td class='vote-cell'></td>
+			</tr>
+		</table>
 	</td>
-	<td class='btn-cell'><a class='reveal reveal-my-translation btn btn-default btn-sm'><span class='glyphicon glyphicon-plus'></span> <img src='http://www.gravatar.com/avatar/{{ md5 $currentUser.Email }}?s=24'></td>
+	<td class='btn-cell'>
+		{{ if $translations.Untranslated }}
+		<a class='reveal reveal-my-translation btn btn-default btn-sm'><span class='glyphicon glyphicon-plus'></span> <img src='http://www.gravatar.com/avatar/{{ md5 $currentUser.Email }}?s=24'>
+		{{ end }}
+	</td>
 </tr>
 {{ end }}
 </tbody>
@@ -147,11 +154,11 @@
 </table>
 </form>
 
-{{ $lang := .Languages }}
+{{ $languages := .Languages }}
 {{ range $i, $entry := .Entries }}
 
 <div class='modal fade' id='entry-modal-{{ $i }}' tabIndex="-1" aria-hidden="true">
-	<div class='modal-dialog'>
+	<div class='modal-dialog modal-lg'>
 		<div class='modal-content'>
 			<div class='modal-header'>
 				<h4 class="modal-title original">
@@ -167,14 +174,16 @@
 				<table>
 					{{ range $j, $source := $entry.EntrySources }}
 						<tr>
-							<td><a href="{{ sourceURL $source.Source }}" target='_blank'>{{ sourcePath $source.Source }}</a></td>
+							<td><span class='glyphicon glyphicon-book'></span></td>
+							<td><a href="{{ sourceURL $source.Source }}" target='_blank'>{{/* sourcePath $source.Source */}}</a></td>
 							<td><span class='label label-primary'>{{ $source.Count }}</span></td>
 							<td>
-								{{ range $lang = $languages }}
-									{{ if previewExists $lang $source }}
-									<a href="{{ previewURL $lang $source }}" class='btn btn-default btn-sm' target='_blank'><span class='glyphicon glyphicon-share-alt'></span></a>
-									{{ else }}
+								{{/*
+								{{ if previewExists $lang $source.Source }}
+								<a href="{{ previewURL $lang $source.Source }}" class='btn btn-default btn-sm' target='_blank'>
+									<img src='/images/flags/{{$lang}}.png'>&nbsp; <span class='glyphicon glyphicon-share-alt'></span></a>
 								{{ end }}
+								*/}}
 							</td>
 						</tr>
 					{{ end }}

@@ -179,11 +179,12 @@ body.sources .breadcrumb > li + li:before {
 }
 
 #form-translate td.original {
-  width: 50%;
+  width: 40%;
+  min-width: 300px;
 }
 
 #form-translate td.translation {
-  min-width: 300px;
+  min-width: 600px;
   white-space: nowrap;
 }
 
@@ -191,6 +192,9 @@ body.sources .breadcrumb > li + li:before {
   vertical-align: middle;
 }
 
+#form-translate td.translation table {
+  width: 100%;
+}
 
 
 
@@ -202,10 +206,15 @@ label.part {
   clear: both;
 }
 
-.vote {
+/*.vote {
   float: right;
   clear: right;
   margin-bottom: 4px;
+}*/
+
+.vote-cell {
+  width: 60px;
+  text-align: right;
 }
 
 tr.untranslated label.part {
@@ -244,19 +253,20 @@ td.btn-cell a.no-comments {
 }
 
 
-p.other-translation {
+tr.other-translation {
   margin-bottom: 4px;
 }
-p.my-translation {
-  clear: both;
+tr.my-translation {
   display: none;
-  margin-bottom: 0;
 }
-tr.my-translation p.my-translation {
-  display: block;
+tr.with-translation tr.my-translation {
+  display: table-row;
 }
-tr.my-translation a.reveal-my-translation {
+tr.with-translation a.reveal-my-translation {
   display: none;
+}
+.my-translation input {
+  font-weight: bold;
 }
 
 span.my-translation-arrow-score {

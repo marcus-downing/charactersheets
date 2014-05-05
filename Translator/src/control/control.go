@@ -193,39 +193,46 @@ func md5sum(email string) string {
 	return hex.EncodeToString(hasher.Sum(nil))
 }
 
-func myTranslation(entry *model.StackedEntry, language string, me *model.User) *model.StackedTranslation {
-	translation := entry.GetTranslationBy(language, me.Email)
-	if translation == nil {
-		parts := make([]*model.Translation, len(entry.Entries))
-		for i, e := range entry.Entries {
-			parts[i] = &model.Translation{
-				Entry:       *e,
-				Language:    language,
-				Translation: "",
-				Translator:  me.Email,
-			}
-		}
-		st := model.StackedTranslation{
-			Entry:      entry,
-			Language:   language,
-			Translator: me.Email,
-			Parts:      parts,
-			Count:      len(parts),
-		}
-		return &st
-	}
-	return translation
+type TranslationSet struct {
+	Entry        *model.StackedEntry
+	Others       []*model.StackedTranslation
+	Mine         *model.StackedTranslation
+	Untranslated bool
 }
 
-func otherTranslations(entry *model.StackedEntry, language string, me *model.User) []*model.StackedTranslation {
+func getTranslations(entry *model.StackedEntry, language string, me *model.User) *TranslationSet {
 	translations := entry.GetTranslations(language)
-	otherTranslations := make([]*model.StackedTranslation, 0, len(translations))
+
+	others := make([]*model.StackedTranslation, 0, len(translations))
+	var mine *model.StackedTranslation = nil
+
 	for _, translation := range translations {
-		if translation != nil && translation.Translator != me.Email {
-			otherTranslations = append(otherTranslations, translation)
+		if translation != nil {
+			if translation.Translator == me.Email {
+				mine = translation
+			} else {
+				others = append(others, translation)
+			}
 		}
 	}
-	return otherTranslations
+
+	return &TranslationSet{
+		Entry:        entry,
+		Others:       others,
+		Mine:         mine,
+		Untranslated: mine == nil,
+	}
+}
+
+func myTranslation(set *TranslationSet) *model.StackedTranslation {
+	if set == nil || set.Mine == nil {
+		return &model.StackedTranslation{}
+	}
+	return set.Mine
+}
+
+func otherTranslations(set *TranslationSet) []*model.StackedTranslation {
+	return set.Others
 }
 
 func countUserTranslations(user *model.User) map[string]int {
@@ -249,7 +256,7 @@ func entryClass(entry *model.StackedEntry, language string, me *model.User) stri
 	}
 	for _, translation := range translations {
 		if translation.Translator == me.Email {
-			classes = append(classes, "my-translation")
+			classes = append(classes, "with-translation")
 		}
 	}
 
@@ -347,6 +354,7 @@ func isVotedDown(translation *model.StackedTranslation) bool {
 var templateFuncs = template.FuncMap{
 	"percentColour":          percentColour,
 	"md5":                    md5sum,
+	"getTranslations":        getTranslations,
 	"otherTranslations":      otherTranslations,
 	"myTranslation":          myTranslation,
 	"countUserTranslations":  countUserTranslations,
