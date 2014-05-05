@@ -460,7 +460,7 @@
             "pages": [ "combat/monk", "monk", "inventory" ],
             "variants": [
                 { "name": "Monk", "pages": [ ] },
-                { "name": "Drunken Monk", "pages": [ "monk/drunken" ] },
+                { "name": "Drunken Monk", "pages": [ "monk/drunkenmaster" ] },
                 { "name": "Flowing Monk", "pages": [ "monk/flowing" ] },
                 { "name": "Hungry Ghost Monk", "pages": [ "monk/hungryghost" ] },
                 { "name": "Ki Mystic", "pages": [ "monk/kimystic" ] },
