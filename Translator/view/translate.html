@@ -122,8 +122,10 @@
 					</td>
 					
 					<td class='vote-cell'><span class='btn-group btn-group-xs vote'>
+						{{ if $translations.IsVotable }}
 						<a class='btn btn-xs btn-default vote vote-up {{ if isVotedUp $translation $currentUser }}btn-success active{{ end }}' data-translation=''><span class="glyphicon glyphicon-ok"></span></a>
 						<a class='btn btn-xs btn-default vote vote-down {{ if isVotedDown $translation $currentUser }}btn-danger active{{ end }}' data-translation=''><span class="glyphicon glyphicon-remove"></span></a>
+						{{ end }}
 					</span></td>
 				</tr>
 			{{ end }}

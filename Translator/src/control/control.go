@@ -197,6 +197,8 @@ type TranslationSet struct {
 	Entry        *model.StackedEntry
 	Others       []*model.StackedTranslation
 	Mine         *model.StackedTranslation
+	Count        int
+	IsVotable    bool
 	Untranslated bool
 }
 
@@ -215,11 +217,17 @@ func getTranslations(entry *model.StackedEntry, language string, me *model.User)
 			}
 		}
 	}
+	count := len(others)
+	if mine != nil {
+		count++
+	}
 
 	return &TranslationSet{
 		Entry:        entry,
 		Others:       others,
 		Mine:         mine,
+		Count:        count,
+		IsVotable:    count > 1,
 		Untranslated: mine == nil,
 	}
 }
