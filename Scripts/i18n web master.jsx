@@ -176,6 +176,14 @@ webMaster.extractFolder(new Folder(baseFolder+'3.5/Psionics'));
 webMaster.extractFolder(new Folder(baseFolder+'3.5/Tomes'));
 webMaster.extractFolder(new Folder(baseFolder+'3.5/Incarnum'));
 
+
+webMaster.game = "Extra"
+webMaster.level = 2;
+webMaster.volume = "";
+webMaster.extractFolder(new Folder(baseFolder+'All'));
+webMaster.extractFolder(new Folder(baseFolder+'Extra'));
+
+
 webMaster.saveCSV(new File(baseFolder+'Languages/Template/Web Master.csv'));
 webMaster.clear();
 alert("Done");

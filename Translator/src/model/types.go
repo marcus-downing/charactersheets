@@ -15,19 +15,15 @@ type Entry struct {
 	PartOf   string
 }
 
+const entryFields = "Original, PartOf"
+
 func parseEntry(rows *sql.Rows) (Result, error) {
 	e := Entry{}
 	err := rows.Scan(&e.Original, &e.PartOf)
 	return e, err
 }
 
-func CountEntries() int {
-	return query("select count(*) from Entries").count()
-}
-
-func GetEntries() []*Entry {
-	results := query("select Original, PartOf from Entries").rows(parseEntry)
-
+func makeEntries(results []Result) []*Entry {
 	entries := make([]*Entry, len(results))
 	for i, result := range results {
 		if entry, ok := result.(Entry); ok {
@@ -35,6 +31,15 @@ func GetEntries() []*Entry {
 		}
 	}
 	return entries
+}
+
+func CountEntries() int {
+	return query("select count(*) from Entries").count()
+}
+
+func GetEntries() []*Entry {
+	results := query("select " + entryFields + " from Entries").rows(parseEntry)
+	return makeEntries(results)
 }
 
 func GetEntriesAt(game string, level int, show, language string, translator *User) []*Entry {
@@ -90,14 +95,7 @@ func GetEntriesAt(game string, level int, show, language string, translator *Use
 	}
 	fmt.Println("Get entries:", sql)
 	results := query(sql, args...).rows(parseEntry)
-
-	entries := make([]*Entry, 0, len(results))
-	for _, result := range results {
-		if entry, ok := result.(Entry); ok {
-			entries = append(entries, &entry)
-		}
-	}
-	return entries
+	return makeEntries(results)
 }
 
 func (entry *Entry) Save() {
@@ -119,6 +117,11 @@ func (entry *Entry) CountTranslations() map[string]int {
 		return nil, nil
 	})
 	return counts
+}
+
+func (entry *Entry) GetParts() []*Entry {
+	results := query("select "+entryFields+" from Entries where PartOf = ?", entry.PartOf).rows(parseEntry)
+	return makeEntries(results)
 }
 
 // ** Sources
@@ -370,20 +373,43 @@ type Vote struct {
 	Vote        bool
 }
 
+const voteFields = "EntryOriginal, EntryPartOf, Language, Translator, Voter, Vote"
+
 func parseVote(rows *sql.Rows) (Result, error) {
 	v := Vote{}
-	err := rows.Scan(&v.Vote)
+	e := Entry{}
+	var translator string
+	var voter string
+	var language string
+	err := rows.Scan(&e.Original, &e.PartOf, &language, &translator, &voter, &v.Vote)
+	if err != nil {
+		return nil, err
+	}
+
+	v.Translation = *e.GetTranslationBy(language, translator)
+	v.Voter = GetUserByEmail(voter)
 	return v, err
 }
 
-func GetVote(translation *Translation, voter *User) *Vote {
-	result := query("select Vote from Votes").row(parseVote)
+func (translation *Translation) GetVote(voter *User) *Vote {
+	result := query("select " + voteFields + " from Votes").row(parseVote)
 	if vote, ok := result.(Vote); ok {
 		vote.Translation = *translation
 		vote.Voter = voter
 		return &vote
 	}
 	return nil
+}
+
+func (entry *Entry) GetTranslationVotes(language string) []*Vote {
+	results := query("select " + voteFields + " from Votes where EntryOriginal = ? and EntryPartOf = ? and Language = ?").rows(parseVote)
+	votes := make([]*Vote, len(results))
+	for i, result := range results {
+		if vote, ok := result.(Vote); ok {
+			votes[i] = &vote
+		}
+	}
+	return votes
 }
 
 func (vote *Vote) Save() {

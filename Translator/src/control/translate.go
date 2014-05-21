@@ -210,11 +210,13 @@ func ExportHandler(w http.ResponseWriter, r *http.Request) {
 			"Translation",
 		})
 		for _, translation := range translations {
-			out.Write([]string{
-				translation.Entry.Original,
-				translation.Entry.PartOf,
-				translation.Translation,
-			})
+			for _, part := range translation.Parts {
+				out.Write([]string{
+					part.Entry.Original,
+					part.Entry.PartOf,
+					part.Translation,
+				})
+			}
 		}
 		out.Flush()
 		return

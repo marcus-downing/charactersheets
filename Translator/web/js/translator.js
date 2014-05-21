@@ -20,8 +20,8 @@ jQuery(function ($) {
 		var up = a.is('.vote-up');
 		var active = a.is('.active');
 
-		var original = a.closest('tr').find('input.entry-original').first().val();
-		var partOf = a.closest('tr').find('input.entry-partof').first().val();
+		var original = a.closest('tr.entry').find('input.entry-original').first().val();
+		var partOf = a.closest('tr.entry').find('input.entry-partof').first().val();
 		var translation = a.closest('.other-translation').find('label.part').first().text();
 
 		$.get('/api/vote', {

@@ -161,13 +161,17 @@ var i18n = {
   loadCSV: function (infile) {
     var data = infile.readCSV().associate();
     for (var i = 0; i < data.length; i++) {
-      var files = data[i]['Files'].split(',');
-      for (var j = 0; j < files.length; j++) {
-        files[j] = files[j].replace(/\\"/g, '"');
-        files[j] = files[j].replace(/^ *"*/, '');
-        files[j] = files[j].replace(/"+$/, '');
+      if (data[i]['Files']) {
+        var files = data[i]['Files'].split(',');
+        for (var j = 0; j < files.length; j++) {
+          files[j] = files[j].replace(/\\"/g, '"');
+          files[j] = files[j].replace(/^ *"*/, '');
+          files[j] = files[j].replace(/"+$/, '');
+        }
+        data[i]['Files'] = files;
+      } else {
+        data[i]['Files'] = [];
       }
-      data[i]['Files'] = files;
     }
     return data;
   },

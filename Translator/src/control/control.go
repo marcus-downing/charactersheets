@@ -342,12 +342,25 @@ func sourceCompletion(source *model.Source) map[string]int {
 	return source.GetLanguageCompletion()
 }
 
-func isVotedUp(translation *model.StackedTranslation) bool {
-
+func isVotedUp(translation *model.StackedTranslation, voter *model.User) bool {
+	votes := translation.GetVotes()
+	for _, vote := range votes {
+		fmt.Println("Vote by", vote.Voter.Email, "=", vote.Vote)
+		if vote.Voter.Email == voter.Email {
+			return vote.Vote
+		}
+	}
 	return false
 }
 
-func isVotedDown(translation *model.StackedTranslation) bool {
+func isVotedDown(translation *model.StackedTranslation, voter *model.User) bool {
+	votes := translation.GetVotes()
+	for _, vote := range votes {
+		fmt.Println("Vote by", vote.Voter.Email, "=", vote.Vote)
+		if vote.Voter.Email == voter.Email {
+			return !vote.Vote
+		}
+	}
 	return false
 }
 

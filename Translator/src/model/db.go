@@ -12,8 +12,9 @@ const (
 	dbname     = "chartrans"
 	dbuser     = "chartrans"
 	dbpassword = "fiddlesticks"
-	debug      = true
 )
+
+var Debug = 0
 
 //  users
 
@@ -58,7 +59,7 @@ func query(query string, args ...interface{}) Query {
 }
 
 func (query Query) exists() bool {
-	if debug {
+	if Debug >= 2 {
 		fmt.Println("Exists:", query.sql, query.args)
 	}
 	exists := false
@@ -75,7 +76,7 @@ func (query Query) exists() bool {
 }
 
 func (query Query) count() int {
-	if debug {
+	if Debug >= 2 {
 		fmt.Println("Count:", query.sql, query.args)
 	}
 	count := 0
@@ -94,7 +95,7 @@ func (query Query) count() int {
 }
 
 func (query Query) exec() bool {
-	if debug {
+	if Debug >= 2 {
 		fmt.Println("Exec:", query.sql, query.args)
 	}
 	success := false
@@ -110,7 +111,7 @@ func (query Query) exec() bool {
 }
 
 func (query Query) rows(f func(*sql.Rows) (Result, error)) []Result {
-	if debug {
+	if Debug >= 2 {
 		fmt.Println("Query:", query.sql, query.args)
 	}
 	results := make([]Result, 0, 100)
@@ -131,14 +132,14 @@ func (query Query) rows(f func(*sql.Rows) (Result, error)) []Result {
 		}
 		rows.Close()
 	})
-	if debug {
+	if Debug >= 2 {
 		fmt.Println("Found", len(results), "results")
 	}
 	return results
 }
 
 func (query Query) row(f func(*sql.Rows) (Result, error)) Result {
-	if debug {
+	if Debug >= 2 {
 		fmt.Println("Query:", query.sql, query.args)
 	}
 	var result Result = nil
@@ -168,12 +169,14 @@ func recordExists(table string, keyfields map[string]interface{}) bool {
 		args = append(args, value)
 	}
 	sql := "select 1 from " + table + " where " + strings.Join(conditions, " and ")
-	// fmt.Println("Checking ", table, ":", sql, args)
+	if Debug >= 2 {
+		fmt.Println("Checking ", table, ":", sql, args)
+	}
 	return query(sql, args...).exists()
 }
 
 func saveRecord(table string, keyfields, fields map[string]interface{}) bool {
-	if debug {
+	if Debug >= 2 {
 		fmt.Println("Saving record")
 	}
 
@@ -183,13 +186,13 @@ func saveRecord(table string, keyfields, fields map[string]interface{}) bool {
 	args := make([]interface{}, 0, len(keyfields)+len(fields))
 	if update {
 		if len(fields) == 0 {
-			if debug {
+			if Debug >= 2 {
 				fmt.Println("Record exists, skipping")
 			}
 			return true
 		}
 
-		if debug {
+		if Debug >= 2 {
 			fmt.Println("Record exists, updating")
 		}
 		names := make([]string, 0, len(fields))
@@ -205,7 +208,7 @@ func saveRecord(table string, keyfields, fields map[string]interface{}) bool {
 
 		sql = "update " + table + " set " + strings.Join(names, ", ") + " where " + strings.Join(conditions, " and ")
 	} else {
-		if debug {
+		if Debug >= 2 {
 			fmt.Println("Record doesn't exist, inserting")
 		}
 		names := make([]string, 0, len(keyfields)+len(fields))
@@ -234,6 +237,8 @@ func deleteRecord(table string, keyfields map[string]interface{}) {
 		args = append(args, value)
 	}
 	sql := "delete from " + table + " where " + strings.Join(conditions, " and ")
-	fmt.Println("Deleting ", table, ":", sql, args)
+	if Debug >= 2 {
+		fmt.Println("Deleting ", table, ":", sql, args)
+	}
 	query(sql, args...).exec()
 }

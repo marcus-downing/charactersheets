@@ -91,7 +91,7 @@
 {{ $currentUser := .CurrentUser }}
 {{ $lang := .CurrentLanguage }}
 {{ range $i, $entry := .Entries }}
-<tr class='{{ entryClass $entry $lang $currentUser }}' data-line='{{ $i }}'>
+<tr class='entry {{ entryClass $entry $lang $currentUser }}' data-line='{{ $i }}'>
 	<td class='btn-cell'><a class='btn btn-default reveal reveal-sources' data-line='{{ $i }}' data-toggle='modal' data-target='#entry-modal-{{ $i }}'>
 		<span class='glyphicon glyphicon-book'></span> <b>{{ len $entry.EntrySources }}</b>
 		</a></td>
@@ -122,8 +122,8 @@
 					</td>
 					
 					<td class='vote-cell'><span class='btn-group btn-group-xs vote'>
-						<a class='btn btn-xs btn-default vote vote-up {{ if isVotedUp $translation }}btn-success active{{ end }}' data-translation=''><span class="glyphicon glyphicon-ok"></span></a>
-						<a class='btn btn-xs btn-default vote vote-down {{ if isVotedDown $translation }}btn-danger active{{ end }}' data-translation=''><span class="glyphicon glyphicon-remove"></span></a>
+						<a class='btn btn-xs btn-default vote vote-up {{ if isVotedUp $translation $currentUser }}btn-success active{{ end }}' data-translation=''><span class="glyphicon glyphicon-ok"></span></a>
+						<a class='btn btn-xs btn-default vote vote-down {{ if isVotedDown $translation $currentUser }}btn-danger active{{ end }}' data-translation=''><span class="glyphicon glyphicon-remove"></span></a>
 					</span></td>
 				</tr>
 			{{ end }}
@@ -175,7 +175,7 @@
 					{{ range $j, $source := $entry.EntrySources }}
 						<tr>
 							<td><span class='glyphicon glyphicon-book'></span></td>
-							<td><a href="{{ sourceURL $source.Source }}" target='_blank'>{{/* sourcePath $source.Source */}}</a></td>
+							<td><a href="{{ sourceURL $source.Source }}" target='_blank'>{{ sourcePath $source.Source }}</a></td>
 							<td><span class='label label-primary'>{{ $source.Count }}</span></td>
 							<td>
 								{{/*

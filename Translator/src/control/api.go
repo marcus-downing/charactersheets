@@ -50,6 +50,9 @@ func APITranslateHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func APIVoteHandler(w http.ResponseWriter, r *http.Request) {
+	if model.Debug >= 1 {
+		fmt.Println("Vote handler")
+	}
 	user := GetCurrentUser(r)
 	if user == nil {
 		fmt.Println("Unknown user")

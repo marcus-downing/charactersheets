@@ -10,7 +10,7 @@ i18n.init();
 // var messagesFile = new File('/Users/Marcus Downing/Documents/GitHub/charactersheets/Languages/Italian/Italian.csv');
 
 var sourceFolder = Folder.selectDialog( 'Select the folder of Illustrator files in which you want to replace text', baseFolder);
-var destinationFolder = Folder.selectDialog('Select a destination folder into which to save translated files', baseFolder);
+var destinationFolder = Folder.selectDialog('Select a destination folder into which to save translated files', baseFolder+'Languages/');
 var messagesFile = File.openDialog("Translation CSV file", "*.csv");
 
 log("i18n: Reading messages file", messagesFile);
