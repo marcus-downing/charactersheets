@@ -31,8 +31,8 @@ userInteractionLevel = UserInteractionLevel.DISPLAYALERTS;
 
 // var sourceFolder = new Folder( '/Users/Marcus Downing/Documents/GitHub/charactersheets/Pathfinder/Archetypes/Monk' );
 // var destinationFolder = new Folder( '/Users/Marcus Downing/Documents/GitHub/charactersheets/Composer/public/pdf/pathfinder/Archetypes/Monk' );
-var sourceFolder = Folder.selectDialog( 'Select the folder of Illustrator files you want to export as PDFs' );
-var destinationFolder = Folder.selectDialog( 'Select the destination folder into which PDFs will be saved' );
+var sourceFolder = Folder.selectDialog( 'Select the folder of Illustrator files you want to export as PDFs', baseFolder );
+var destinationFolder = Folder.selectDialog( 'Select the destination folder into which PDFs will be saved', baseFolder+'Composer 2.1.3/public/pdf/' );
 var files = sourceFolder.getAllFiles();
 
 log("Exporting "+files.length+" Illustrator files as PDFs", sourceFolder, { "Destination": destinationFolder });
