@@ -207,10 +207,13 @@ func GetPreferredTranslations(language string) []*StackedTranslation {
 	}
 
 	entries := stackEntries(GetEntries())
-	pref := make([]*StackedTranslation, len(entries))
-	for i, entry := range entries {
+	pref := make([]*StackedTranslation, 0, len(entries))
+	for _, entry := range entries {
 		translations := entry.GetTranslations(language)
-		pref[i] = SelectPreferredTranslation(entry, language, translations, leadEmail)
+		selected := SelectPreferredTranslation(entry, language, translations, leadEmail)
+		if selected != nil {
+			pref = append(pref, selected)
+		}
 	}
 
 	return pref
