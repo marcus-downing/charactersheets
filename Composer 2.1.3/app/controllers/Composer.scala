@@ -228,7 +228,7 @@ object Composer extends Controller {
       val baseLayer = new PdfLayer("Character Sheet", writer);
       canvas.beginLayer(baseLayer)
       canvas.setColorFill(BaseColor.WHITE)
-      canvas.rectangle(0f, 0f, 1000f, 1000f)
+      canvas.rectangle(0f, 0f, 1500f, 1500f)
       canvas.fill
 
 
@@ -400,7 +400,7 @@ object Composer extends Controller {
       gstate2.setFillOpacity(0.5f)
       canvas.setGState(gstate2)
       canvas.setColorFill(new BaseColor(0.2f, 0.2f, 0.2f))
-      canvas.rectangle(0f, 0f, 1000f, 1000f)
+      canvas.rectangle(0f, 0f, 1500f, 1500f)
       canvas.fill
       
       //  ...correct hilights...
