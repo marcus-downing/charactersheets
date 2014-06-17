@@ -237,6 +237,10 @@
         { "file": "Extra/Spell Book (Large).pdf", "slot": "spellbook", "variant": "large", "name": "Large" },
         { "file": "Extra/Spell Book (Dense).pdf", "slot": "spellbook", "variant": "small", "name": "Small" },
 
+        { "file": "Extra/Minis (Small).pdf", "slot": "minis", "variant": "small", "name": "Minis (Small)" },
+        { "file": "Extra/Minis (Medium).pdf", "slot": "minis", "variant": "medium", "name": "Minis (Medium)" },
+        { "file": "Extra/Minis (Large).pdf", "slot": "minis", "variant": "large", "name": "Minis (Large)" },
+
         { "file": "Core/Animal Companion.pdf", "slot": "animalcompanion", "name": "Animal Companion" }
     ],
 
