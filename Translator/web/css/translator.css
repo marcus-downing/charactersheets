@@ -256,7 +256,7 @@ td.btn-cell a.no-comments {
 tr.other-translation {
   margin-bottom: 4px;
 }
-tr.my-translation {
+tr.entry tr.my-translation {
   display: none;
 }
 tr.with-translation tr.my-translation {
