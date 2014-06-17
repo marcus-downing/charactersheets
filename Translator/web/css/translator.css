@@ -259,10 +259,10 @@ tr.other-translation {
 tr.entry tr.my-translation {
   display: none;
 }
-tr.with-translation tr.my-translation {
+tr.my-translation tr.my-translation {
   display: table-row;
 }
-tr.with-translation a.reveal-my-translation {
+tr.my-translation a.reveal-my-translation {
   display: none;
 }
 .my-translation input {
