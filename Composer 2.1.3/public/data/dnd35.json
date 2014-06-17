@@ -36,6 +36,7 @@
         { "file": "Extended/Duskblade.pdf", "slot": "duskblade", "name": "Duskblade" },
         { "file": "Extended/Ninja.pdf", "slot": "ninja", "name": "Ninja" },
         { "file": "Extended/Spellthief.pdf", "slot": "spellthief", "name": "Spellthief" },
+        { "file": "Extended/Scout.pdf", "slot": "scout", "name": "Scout" },
         { "file": "Extended/Warlock.pdf", "slot": "warlock", "name": "Warock" },
         { "file": "Extended/Warmage.pdf", "slot": "warmage", "name": "Warmage" },
         { "file": "Extended/Wu Jen.pdf", "slot": "wujen", "name": "Wu Jen" },
@@ -152,7 +153,7 @@
 
         {
             "name": "Complete Adventurer",
-            "classes": [ "Ninja", "Spellthief" ]
+            "classes": [ "Ninja", "Spellthief", "Scout" ]
         },
 
         {
@@ -335,6 +336,11 @@
         {
             "name": "Spellthief",
             "pages": [ "spellthief", "spellbook" ]
+        },
+
+        {
+            "name": "Scout",
+            "pages": [ "scout", "spellbook" ]
         },
 
         {
