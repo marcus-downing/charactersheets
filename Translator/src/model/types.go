@@ -360,6 +360,7 @@ func (translation *Translation) Save() {
 	}
 	fields := map[string]interface{}{
 		"Translation": translation.Translation,
+		"IsPreferred": translation.IsPreferred,
 	}
 	saveRecord("Translations", keyfields, fields)
 	ClearVotes(translation)

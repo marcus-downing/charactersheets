@@ -197,12 +197,13 @@ type TranslationSet struct {
 	Entry        *model.StackedEntry
 	Others       []*model.StackedTranslation
 	Mine         *model.StackedTranslation
+	Language     string
 	Count        int
 	IsVotable    bool
 	Untranslated bool
 }
 
-func getTranslations(entry *model.StackedEntry, language string, me *model.User) *TranslationSet {
+func getTranslationSet(entry *model.StackedEntry, language string, me *model.User) *TranslationSet {
 	translations := entry.GetTranslations(language)
 
 	others := make([]*model.StackedTranslation, 0, len(translations))
@@ -226,6 +227,7 @@ func getTranslations(entry *model.StackedEntry, language string, me *model.User)
 		Entry:        entry,
 		Others:       others,
 		Mine:         mine,
+		Language:     language,
 		Count:        count,
 		IsVotable:    count > 1,
 		Untranslated: mine == nil,
@@ -234,7 +236,24 @@ func getTranslations(entry *model.StackedEntry, language string, me *model.User)
 
 func myTranslation(set *TranslationSet) *model.StackedTranslation {
 	if set == nil || set.Mine == nil {
-		return &model.StackedTranslation{}
+		// fmt.Printf("%#v", set.Entry)
+		parts := make([]*model.Translation, len(set.Entry.Entries))
+		for i, _ := range parts {
+			e := set.Entry.Entries[i]
+			if e == nil {
+				e = &model.Entry{set.Entry.FullText, ""}
+			}
+			parts[i] = &model.Translation{
+				Entry:       *e,
+				Language:    set.Language,
+				Translation: "",
+				Translator:  "",
+			}
+		}
+		return &model.StackedTranslation{
+			Entry: set.Entry,
+			Parts: parts,
+		}
 	}
 	return set.Mine
 }
@@ -375,7 +394,7 @@ func isVotedDown(translation *model.StackedTranslation, voter *model.User) bool 
 var templateFuncs = template.FuncMap{
 	"percentColour":          percentColour,
 	"md5":                    md5sum,
-	"getTranslations":        getTranslations,
+	"getTranslationSet":      getTranslationSet,
 	"otherTranslations":      otherTranslations,
 	"myTranslation":          myTranslation,
 	"countUserTranslations":  countUserTranslations,

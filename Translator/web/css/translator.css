@@ -259,10 +259,10 @@ tr.other-translation {
 tr.entry tr.my-translation {
   display: none;
 }
-tr.my-translation tr.my-translation {
+tr.with-translation tr.my-translation {
   display: table-row;
 }
-tr.my-translation a.reveal-my-translation {
+tr.with-translation a.reveal-my-translation {
   display: none;
 }
 .my-translation input {
@@ -291,4 +291,27 @@ span.my-translation-arrow {
   margin-right: -5px;
   position: relative;
   top: 4px;
+}
+
+#saved-notice {
+  position: fixed;
+  z-index: 1050;
+  top: 12px;
+  left: 0;
+  right: 0;
+}
+
+#saved-notice {
+  display: none;
+  margin-left: auto;
+  margin-right: auto;
+  width: 200px;
+
+  background: #fff2b0;
+  border: 1px solid #e4e0a0;
+  font-weight: bold;
+  color: #807020;
+  text-align: center;
+  border-radius: 3px;
+  padding: 3px;
 }

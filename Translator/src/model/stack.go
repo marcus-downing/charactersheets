@@ -32,7 +32,7 @@ func stackEntries(entries []*Entry) []*StackedEntry {
 		}
 	}
 
-	//
+	// put entries in order
 	values := make([]*StackedEntry, 0, len(stacks)+len(unstacked))
 	for _, stack := range stacks {
 		sort.Sort(entriesByIndex(stack))

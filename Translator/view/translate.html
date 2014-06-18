@@ -106,7 +106,7 @@
 		{{ end }}
 	</td>
 	<td class='translation translate-{{ len $entry.Entries }}-parts'>
-		{{ $translations := getTranslations $entry $lang $currentUser }}
+		{{ $translations := getTranslationSet $entry $lang $currentUser }}
 		{{ $otherTranslations := otherTranslations $translations }}
 		{{ $myTranslation := myTranslation $translations }}
 		
@@ -200,5 +200,7 @@
 </div>
 
 {{ end }}
+
+<div id='saved-notice'><span>Saved</span></div>
 
 {{ end }}

@@ -11,7 +11,8 @@ jQuery(function ($) {
 			partOf: partOf,
 			translation: translation
 		}, function () {
-			input.closest("tr").removeClass("untranslated");
+			input.closest("tr.entry").removeClass("untranslated");
+			$("#saved-notice").stop(true).show().fadeTo(0, 1.0).fadeOut(2500);
 		});
 	});
 
@@ -64,6 +65,6 @@ jQuery(function ($) {
 	});
 
 	$("a.reveal-my-translation").click(function () {
-		$(this).closest("tr").addClass("my-translation").find("p.my-translation input").first().focus();
+		$(this).closest("tr").addClass("with-translation").find("p.my-translation input").first().focus();
 	});
 });

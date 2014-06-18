@@ -37,10 +37,10 @@ func APITranslateHandler(w http.ResponseWriter, r *http.Request) {
 		fmt.Println("Unknown language:", language)
 		return
 	}
-	if translation == "" {
-		fmt.Println("Blank translation:", entry.Original)
-		return
-	}
+	// if translation == "" {
+	// 	fmt.Println("Blank translation:", entry.Original)
+	// 	return
+	// }
 	fmt.Println("Adding", language, "translation for:", entry.Original)
 
 	t := &model.Translation{entry, language, translation, user.Email, false}
