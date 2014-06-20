@@ -8,6 +8,12 @@
 <form class='form-inline page-options' name='page-options' action='/entries' role='form'>
 	<input type='hidden' name='language' value='{{ .CurrentLanguage }}'>
 
+	<div class='search-bar'>
+		<div class="form-group">
+			<input type='search' name='search' id='search' placeholder='Search...' class='form-control' size='50' value='{{ .CurrentSearch }}'/>
+		</div>
+	</div>
+	
 	<div class="form-group">
 		<label for='options-game'>Game</label>
 		<select id='options-game' name='game' class='form-control'>

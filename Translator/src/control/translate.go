@@ -28,6 +28,7 @@ func SourcesHandler(w http.ResponseWriter, r *http.Request) {
 		data.CurrentGame = r.FormValue("game")
 		data.CurrentLevel = r.FormValue("level")
 		data.CurrentShow = r.FormValue("show")
+		data.CurrentSearch = r.FormValue("search")
 
 		leveln, err := strconv.Atoi(data.CurrentLevel)
 		if err != nil || leveln > 4 || leveln < 1 {
@@ -48,8 +49,9 @@ func EntriesHandler(w http.ResponseWriter, r *http.Request) {
 		data.CurrentGame = r.FormValue("game")
 		data.CurrentLevel = r.FormValue("level")
 		data.CurrentShow = r.FormValue("show")
+		data.CurrentSearch = r.FormValue("search")
 
-		data.Entries = model.GetStackedEntries(data.CurrentGame, data.CurrentLevel, data.CurrentShow, "gb", currentUser)
+		data.Entries = model.GetStackedEntries(data.CurrentGame, data.CurrentLevel, data.CurrentShow, data.CurrentSearch, "gb", currentUser)
 		data.Page = Paginate(r, PageSize, len(data.Entries))
 		data.Entries = data.Entries[data.Page.Offset:data.Page.Slice]
 		return data
@@ -67,8 +69,12 @@ func TranslationHandler(w http.ResponseWriter, r *http.Request) {
 		data.CurrentGame = r.FormValue("game")
 		data.CurrentLevel = r.FormValue("level")
 		data.CurrentShow = r.FormValue("show")
+		data.CurrentSearch = r.FormValue("search")
+		if data.CurrentSearch != "" {
+			fmt.Println("Searching for:", data.CurrentSearch)
+		}
+		data.Entries = model.GetStackedEntries(data.CurrentGame, data.CurrentLevel, data.CurrentShow, data.CurrentSearch, data.CurrentLanguage, currentUser)
 
-		data.Entries = model.GetStackedEntries(data.CurrentGame, data.CurrentLevel, data.CurrentShow, data.CurrentLanguage, currentUser)
 		data.Page = Paginate(r, PageSize, len(data.Entries))
 		data.Entries = data.Entries[data.Page.Offset:data.Page.Slice]
 		return data

@@ -6,6 +6,7 @@ import (
 	// "encoding/hex"
 	"fmt"
 	"github.com/ziutek/mymysql/mysql"
+	"strings"
 )
 
 // ** Entries
@@ -42,8 +43,8 @@ func GetEntries() []*Entry {
 	return makeEntries(results)
 }
 
-func GetEntriesAt(game string, level int, show, language string, translator *User) []*Entry {
-	if game == "" && level == 0 && show == "" {
+func GetEntriesAt(game string, level int, show, search, language string, translator *User) []*Entry {
+	if game == "" && level == 0 && show == "" && search == "" {
 		return GetEntries()
 	}
 	args := make([]interface{}, 0, 2)
@@ -86,6 +87,15 @@ func GetEntriesAt(game string, level int, show, language string, translator *Use
 	// 	sql = sql+" and Translations.Language = ?"
 	// 	args = append(args, language)
 	// }
+	if search != "" {
+		searchTerms := strings.Split(search, " ")
+		fmt.Println("Searching for:", search)
+		for _, term := range searchTerms {
+			term = strings.ToLower(term)
+			sql = sql + " and lower(Original) like ?"
+			args = append(args, "%"+term+"%")
+		}
+	}
 
 	sql = sql + " group by Original, PartOf"
 	if show == "translated" {
@@ -181,6 +191,15 @@ func GetSourcesAt(game string, level int, show string) []*Source {
 	// if show != "" {
 	// 	sql = sql+" and Translations.Language = ?"
 	// 	args = append(args, language)
+	// }
+
+	// if search != "" {
+	// 	searchTerms := strings.Split(search, " ")
+	// 	for _, term := range searchTerms {
+	// 		term = strings.ToLower(term)
+	// 		sql = sql + " and lower(Original) like ?"
+	// 		args = append(args, "%"+term+"%")
+	// 	}
 	// }
 
 	// sql = sql+" group by Original, PartOf"

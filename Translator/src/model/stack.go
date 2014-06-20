@@ -70,12 +70,12 @@ func stackEntries(entries []*Entry) []*StackedEntry {
 	return values
 }
 
-func GetStackedEntries(game, level, show, language string, user *User) []*StackedEntry {
+func GetStackedEntries(game, level, show, search, language string, user *User) []*StackedEntry {
 	leveln, err := strconv.Atoi(level)
 	if err != nil || leveln > 4 || leveln < 1 {
 		leveln = 0
 	}
-	entries := GetEntriesAt(game, leveln, show, language, user)
+	entries := GetEntriesAt(game, leveln, show, search, language, user)
 	return stackEntries(entries)
 }
 

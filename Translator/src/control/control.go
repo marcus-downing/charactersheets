@@ -39,6 +39,7 @@ type TemplateData struct {
 	CurrentGame        string
 	CurrentLevel       string
 	CurrentShow        string
+	CurrentSearch      string
 }
 
 type Pagination struct {
@@ -135,27 +136,21 @@ func GetTemplateData(r *http.Request, bodyClass string) TemplateData {
 	currentUser := GetCurrentUser(r)
 	recentUsers := GetRecentUsers()
 
-	if currentUser == nil {
-		return TemplateData{
-			BodyClass:        bodyClass,
-			IsAdmin:          false,
-			CurrentLanguage:  "gb",
-			Languages:        model.Languages,
-			DisplayLanguages: model.DisplayLanguages,
-			LanguageNames:    model.LanguageNames,
-			RecentUsers:      recentUsers,
-		}
-	}
-	return TemplateData{
+	templateData := TemplateData{
 		BodyClass:        bodyClass,
 		CurrentUser:      currentUser,
-		IsAdmin:          currentUser.IsAdmin,
-		CurrentLanguage:  currentUser.Language,
+		IsAdmin:          false,
+		CurrentLanguage:  "gb",
 		Languages:        model.Languages,
 		DisplayLanguages: model.DisplayLanguages,
 		LanguageNames:    model.LanguageNames,
 		RecentUsers:      recentUsers,
 	}
+	if currentUser != nil {
+		templateData.IsAdmin = currentUser.IsAdmin
+		templateData.CurrentLanguage = currentUser.Language
+	}
+	return templateData
 }
 
 func DurString(dur time.Duration) string {

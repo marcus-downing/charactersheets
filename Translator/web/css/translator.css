@@ -22,6 +22,10 @@ body.users #nav-users a
 
 /* Navigation */
 
+.search-bar {
+  text-align: right;
+  padding-bottom: 10px;
+}
 .page-options {
   float: right;
   margin-top: -40px;
