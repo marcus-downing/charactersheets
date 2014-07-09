@@ -96,6 +96,7 @@
             { "file": "Archetypes/Druid/Urban Druid.pdf", "slot": "druid", "variant": "urban", "name": "Urban Druid" },
             { "file": "Archetypes/Druid/World Walker (Animal Companion).pdf", "slot": "druid", "variant": "worldwalker/animalcompanion", "name": "World Walker (Animal Companion)" },
             { "file": "Archetypes/Druid/World Walker (Domain).pdf", "slot": "druid", "variant": "worldwalker/domain", "name": "World Walker (Domain)" },
+                { "file": "Archetypes/Druid/World Walker - Character Info.pdf", "slot": "core", "variant": "worldwalker", "name": "Character Info" },
 
         { "file": "Core/Fighter.pdf", "slot": "fighter", "name": "Fighter" },
 
@@ -115,6 +116,7 @@
             { "file": "Archetypes/Monk/Monk of the Sacred Mountain.pdf", "slot": "monk", "variant": "sacredmountain", "name": "Monk of the Lotus" },
             { "file": "Archetypes/Monk/Sensei.pdf", "slot": "monk", "variant": "sensei", "name": "Sensei" },
             { "file": "Archetypes/Monk/Sohei.pdf", "slot": "monk", "variant": "sohei", "name": "Sohei" },
+            { "file": "Archetypes/Monk/Tetori.pdf", "slot": "monk", "variant": "tetori", "name": "Tetori" },
             { "file": "Archetypes/Monk/Weapon Adept.pdf", "slot": "monk", "variant": "weaponadept", "name": "Weapon Adept" },
             { "file": "Archetypes/Monk/Zen Archer.pdf", "slot": "monk", "variant": "zenarcher", "name": "Zen Archer" },
 
@@ -436,7 +438,7 @@
             "name": "Druid",
             "pages": [ "druid", "inventory/without", "wildshape", "spellbook" ],
             "axes": [
-                ["Druid", "Shaman", "Menhir Savant", "Mooncaller", "Pack Lord", "Reincarnated", "Aquatic", "Arctic", "Blight", "Cave", "Desert", "Jungle", "Mountain", "Plains", "Swamp", "Storm", "Urban"],
+                ["Druid", "Shaman", "Menhir Savant", "Mooncaller", "Pack Lord", "Reincarnated", "Aquatic", "Arctic", "Blight", "Cave", "Desert", "Jungle", "Mountain", "Plains", "Swamp", "Storm", "Urban", "World Walker"],
                 ["Animal Companion", "Domain"]
             ],
             "variants": [
@@ -500,6 +502,7 @@
                 { "name": "Monk of the Sacred Mountain", "pages": [ "monk/sacredmountain" ] },
                 { "name": "Sensei", "pages": [ "monk/sensei" ] },
                 { "name": "Sohei", "pages": [ "monk/sohei" ] },
+                { "name": "Tetori", "pages": [ "monk/tetori" ] },
                 { "name": "Weapon Adept", "pages": [ "monk/weaponadept" ] },
                 { "name": "Zen Archer", "pages": [ "monk/zenarcher" ] }
             ]
