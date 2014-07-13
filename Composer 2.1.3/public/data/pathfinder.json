@@ -167,8 +167,14 @@
 
         { "file": "Core/Rogue.pdf", "slot": "rogue", "name": "Rogue" },
             { "file": "Archetypes/Rogue/Scout.pdf", "slot": "rogue", "variant": "scout", "name": "Scout" },
+
         { "file": "Core/Sorcerer.pdf", "slot": "sorcerer", "name": "Sorcerer" },
             { "file": "Archetypes/Sorcerer/Crossblooded Sorcerer.pdf", "slot": "sorcerer", "variant": "crossblooded", "name": "Crossblooded Sorcerer" },
+            { "file": "Archetypes/Sorcerer/False Priest.pdf", "slot": "sorcerer", "variant": "falsepriest", "name": "False Priest" },
+            { "file": "Archetypes/Sorcerer/Seeker.pdf", "slot": "sorcerer", "variant": "seeker", "name": "Seeker" },
+            { "file": "Archetypes/Sorcerer/Tattooed Sorcerer.pdf", "slot": "sorcerer", "variant": "tattooed", "name": "Tattooed Sorcerer" },
+            { "file": "Archetypes/Sorcerer/Wildblooded.pdf", "slot": "sorcerer", "variant": "wildblooded", "name": "Wildblooded Sorcerer" },
+
         { "file": "Core/Wizard.pdf", "slot": "wizard", "name": "Wizard" },
 
         { "file": "Advanced/Alchemist.pdf", "slot": "alchemist", "name": "Alchemist`" },
@@ -577,7 +583,11 @@
             "pages": [ "sorcerer", "inventory/without", "spellbook", "animalcompanion" ],
             "variants": [
                 { "name": "Sorcerer", "pages": [ ] },
-                { "name": "Crossblooded Sorcerer", "pages": [ "sorcerer/crossblooded" ] }
+                { "name": "Crossblooded Sorcerer", "pages": [ "sorcerer/crossblooded" ] },
+                { "name": "False Priest", "pages": [ "sorcerer/falsepriest" ] },
+                { "name": "Seeker", "pages": [ "sorcerer/seeker" ] },
+                { "name": "Tattooed Sorcerer", "pages": [ "sorcerer/tattooed" ] },
+                { "name": "Wildblooded Sorcerer", "pages": [ "sorcerer/wildblooded" ] }
             ]
         },
 
