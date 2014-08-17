@@ -1,0 +1,1450 @@
+Original,Part of,Translation
+Level,"",Poziom
+Misc,"",Inne
+CHA,"",CHA
+WIS,"",RZT
+DEX,"",ZR
+INT,"",INT
+ft,"",m
+PREPARED SPELLS,"",PRZYGOTOWANE CZARY
+sq,"",cm
+Domain Spell,"",Czar Domenowy
+Caster|Level,"",Poziom Czarującego
+STR,"",S
+(Round down),"",(Zaokrąglane w dół)
+AC,"",KP
+Spell|Save DC,"",ST Rzutu Obronnego
+Base|Spells,"",Czary Dziennie
+SPELLS,"",CZARY
+Spells|per day,"",Czary na dzień
+rds,"",rund
+DC,"",ST
+Rogue|Level,"",Poziom Łotrzyka
+CON,"",BD
+Ranger|Level,"",Poziom Tropiciela
+Barbarian|Level,"",Poziom Barbarzyńcy
+Concentration,"",Koncentracja
+SCROLLS,"",ZWOJE
+POTIONS,"",MIKSTURY
+Monk|Level,"",Poziom Mnicha
+Druid|Level,"",Poziom Druida
+EVIL,"",ZŁY
+GOOD,"",DOBRY
+CHAOTIC,"",CHAOTYCZNY
+LAWFUL,"",PRAWORZĄDNY
+Paladin|Level,"",Poziom Paladyna
+lb,"",kg
+Attack Bonus,"",Premia do ataku
+Damage,"",Obrażenia
+Range,"",Zasięg
+(Round up),"",(Zaokrąglane w górę)
+Critical,"",Krytyk
+Bard|Level,"",Poziom Barda
+d6,"",k6
+Monk Level,"",Poziom Mnicha
+Spell Save DC = 10 + WIS + Spell Level,"",ST Rz. Obr. = 10 + RZT + Poziom Czaru
+Bonus Spells,"",Premiowe Czary
+Tier,"",Poziom
+Type,"",Rodzaj
+Size|Modifier,"",Modyfikator z Rozmiaru
+RAGE!,"",SZAŁ!
+CHARGES,"",ŁADUNKI
+Level|Bonus,"",Premiowe Poziomy
+hp,"",pw
+Granted Power,"",Zesłana Moc
+WANDS,"",RÓŻDŻKI
+Name,"",Imię
+Evasion,"",Uchylanie
+Uses|per day,"",Użycia na dzień
+WILD EMPATHY,"",WIĘŹ Z DZICZĄ
+Domain,"",Doemna
+WIS - 4,"",RZT - 4
+WIS - 12,"",RZT - 12
+WIS - 8,"",RZT - 8
+WILD EMPATHY,WILD EMPATHY|BONUS,WIĘŹ Z DZICZĄ
+BONUS,WILD EMPATHY|BONUS,PREMIA
+Manifester|Level,"",Poziom Manifestującego
+Druid Level,"",Poziom Druida
+ARCANE SPELL FAILURE,ARCANE SPELL FAILURE THRESHOLD,NIEPOWODZENIE CZARU WTAJEMNICZEŃ
+THRESHOLD,ARCANE SPELL FAILURE THRESHOLD,RYZYKO
+ANIMAL COMPANION,"",ZWIERZĘCY TOWARZYSZ
+Creature Type,"",Typ Potwora
+Speciality Spell,"",Czar Specjalizji
+No action this round|Lose,No action this round|Lose DEX bonus to AC; -2 AC,Brak akcji w tej rundzie
+DEX,No action this round|Lose DEX bonus to AC; -2 AC,ZR
+bonus to,No action this round|Lose DEX bonus to AC; -2 AC,premia do
+bonus to AC; -2,No action this round|Lose DEX bonus to AC; -2 AC,premia do KP; -2
+AC,No action this round|Lose DEX bonus to AC; -2 AC,KP
+Damage Reduction,"",Redukcja Obrażeń
+CMD,"",OMB
++ Level,"",+ Poziom
+Properties,"",Właściwości
+WILD SHAPE,"",KSZTAŁT NATURY
+Track,"",Tropienie
+Distance,"",Odległość
+KNOWN SPELLS,"",ZNANE CZARY
+10ft,"",3m
+Times per day,"",Użyć na dzień
+Spell Save DC = 10 + CHA + Spell Level,"",ST Rz. Obr. = 10 + CHA + Poziom CZaru
+Times Today,"",Użyć dzisiaj
++10 to move at full speed,"",+10 do poruszania się z pełną prędkością
+5ft,"","1,5m"
+Spells|Known,"",Znane Czary
+at half speed,"",z połową prędkośći
+ARMOUR CLASS,"",KLASA PANCERZA
+Bard Level,"",Poziom Barda
+Weight,"",Waga
+KI POOL,"",UDERZENIE KI
+NATURE BOND,"",WIĘŹ Z DZICZĄ
+Spell Resistance,"",Odporność na Czary
+Uncanny Dodge,"",Nieświadomy Unik
+Improved Uncanny Dodge,"",Doskonalszy Nieświadomy Unik
+CHA - 8,"",CHA - 8
+Nature Sense,Nature Sense|+2 to Knowledge (nature) and Survival,Zmysł natury
++2 to Knowledge (nature) and Survival,Nature Sense|+2 to Knowledge (nature) and Survival,+2 do Wiedzy (natura) oraz Sztuki Przetrwania
+BONUS FEATS,"",ATUTY PREMIOWE
+CHA - 12,"",CHA - 12
+or,"",lub
+CHA - 4,"",CHA - 4
+Timeless Body,"Timeless Body|No longer age, cannot be magically aged",Ponadczasowe ciało
+"No longer age, cannot be magically aged","Timeless Body|No longer age, cannot be magically aged","Nie starzeje się, nie może być postarzany za pomocą magii"
+Wild Empathy,Wild Empathy|Improve the attitude of an animal,Empatia z Dziczą
+Improve the attitude of an animal,Wild Empathy|Improve the attitude of an animal,Doskonali postępowanie ze zwierzętami
+Cleric|Level,"",Poziom Kapłana
+2d8,"",2k8
+d8,"",k8
+SPEED,"",Szybkość
+Wild Shape,Wild Shape|Become any small or medium animal,Kształt Natury
+Become any small or medium animal,Wild Shape|Become any small or medium animal,Może przemienić się zwierzę rozmiaru małego lub średniego
+FORTITUDE,FORTITUDE|SAVE DC,WYTRWAŁOŚĆ
+FORTITUDE|SAVE,FORTITUDE|SAVE DC,""
+DC,FORTITUDE|SAVE DC,ST
+Acrobatics,"",Zwinność
+2d6,"",2k6
+BAB,"",BPA
+Cost,"",Koszt
+Deflection|Modifier,"",Modyfikator z Odbicia
+Conditional Modifiers,"",Inne Modyfikatory
+DRUID,"",DRUID
+d10,"",k10
+ROGUE TALENTS,"",TALENTY TROPICIELA
+SKILLS,"",UMIEJĘTNOŚĆI
+TALENTS,TALENTS|KNOWN,TALENTY
+KNOWN,TALENTS|KNOWN,ZNANE
+Ammo,"",Amunicja
+SNEAK ATTACK,"",PODSTĘPNY ATAK
+Bonus Spells,Bonus Spells|WIS,Premiowe Czary
+WIS,Bonus Spells|WIS,RZT
+Racial,"",Rasowe
+Uses Today,"",Użycia Dzisiaj
+Base|Attack Bonus,"",Bazowa Premia do Ataku
+MASTER STRIKE,MASTER STRIKE|FORTITUDE DC,MISTRZOWSKIE UDERZENIE
+FORTITUDE DC,MASTER STRIKE|FORTITUDE DC,ST WYTRWAŁOŚĆ
+MASTER STRIKE,"",MISTRZOWSKIE UDERZENIE
+SNEAK DAMAGE,SNEAK DAMAGE|BONUS,PODSTĘPNE OBRAŻENIA
+BONUS,SNEAK DAMAGE|BONUS,PREMIA
+Survival|Bonus,"",Premia ze Sztuki Przetrwania
+Unarmed Strike,"",Uderzenie bez broni
+ABILITIES,"",ATRYBUTY
+Special Ammo,"",Specjalna Amunicja
+FORTITUDE,FORTITUDE SAVE,WYTRWAŁOŚĆ
+SAVE,FORTITUDE SAVE,RZUT OBRONNY
+A successful sneak attack can also deliver one of:| • Sleep for 1d4 hours| • Paralysed for 2d6 rounds| • Slain,"",Udany podstępny atak może również przynieść: Sen na 1k4 godzin Praliż na 2k6 rund Śmierć
+"Master strike cannot be used again on the same target within|24 hours, whether they pass the Fortitude save or not.","","Mistrzowskie uderzenie nie może być użyte na tym samym celu w ciągu 24 godzin, bez względu na wynik rzutu obronnego na Wytrwałość"
+Advanced Talents,"",Zaawansowane Talenty
+"From level 10, a Rogue|can take Advanced Talents","",Od 10 poziomu Tropiciel może korzystać z Zaawansowanych TAlentów
+DEITY,"",BÓG
+WILL,WILL SAVE DC,WOLA
+SAVE DC,WILL SAVE DC,ST Rz. Obr.
+FEMALE,"",KOBIETA
+MONK,"",MNICH
+REFLEX,REFLEX SAVE,REFLEKS
+SAVE,REFLEX SAVE,Rz. Obr.
+Climb,"",Wspinaczka
+Perception,"",Percepcja
+MALE,"",MĘŻCZYZNA 
+(ROGUE),"",(ŁOTRZYK)
+Bards can wear light armour without risking|spell failure.,"",Bard może nosić lekką zbroję bez ryzyka niepowodzenia czaru.
+FAVOURED ENEMIES,"",ULUBIENI WROGOWIE
+FAVOURED TERRAINS,"",ULUBIONE TERENY
+Ability|Modifier,"",Modyfikator z Atrybutu
+"Sneak attack damage can be applied when a target is flanked or|is denied their DEX bonus to AC.|On ranged attacks, it only applies within 30 ft.|It is not multiplied by critical hits.|It cannot be non-lethal unless using a non-lethal weapon.","",Obrażenia z podstępnego ataku można stosować gdy cel jest flankowany lub stracił premię ze ZR do KP. W przypadku ataków dystansowych stosuje je się tylko w zasięgu 9m. Nie ulegają zwiększeniu w wyniku uderzeń krytycznych. Obrażenia powodują śmierć tylko w przypadku używania zabójczej broni.
+Sense Motive,"",Wyczucie Pobudek
+Temp,"",Tymczasowy
+Treat unarmed attacks as adamantine weapons,"",Atak bez broni należy traktować jako oręż adamantytowy
+Fatigued,"",Zmęczony
+Swim,"",Pływanie
+TRAP SENSE,"",WYCZUCIE PUŁAPEK
+FORT,"",WYTRW
+Dodge,"",Uniki
+WILL,WILL SAVE,WOLA
+SAVE,WILL SAVE,Rz. Obr.
+Bonus|Points,"",Premiowe Punkty
+Use bonus in place of...,"",Użyj premii zamiast...
+DURATION,DURATION|PER DAY,CZAS TRWANIA
+PER DAY,DURATION|PER DAY,NA DZIEŃ
+MIGHTY,MIGHTY RAGE!,MĘŻNY
+RAGE!,MIGHTY RAGE!,SZAŁ!
+FAVOURED ENEMY BONUS,"",PREMIA Z PREFEROWANEGO WROGA
+Ability|Score,"",Wartość Atrybutu
+"Ranger bonus feats can be taken without the normal pre-requisites,|but only apply when not wearing heavy armour.","","Tropiciel dostaje premiowe atuty, nawet jeśli nie spełnia wymagań, jednak mogą być stosowane tylko gdy nie nosi ciężkiej zbroi."
+DISTRACTION,"",ROZPROSZENIE
+Channel Positive Energy,"",Kanał Pozytywnej Energii
+Cost:,Cost: 1 pt,Koszt:
+1 pt,Cost: 1 pt,1 ptk
+GREATER,GREATER RAGE!,POTĘŻNIEJSZY
+RAGE!,GREATER RAGE!,SZAŁ!
+Improved Evasion,"",Doskonalsze Uchylanie
+Rounds|Today,"",Rundy Dziś
+RAGE!,RAGE!|TODAY,SZAŁ!
+TODAY,RAGE!|TODAY,DZIŚ
+BONUS FEAT,"",PREMIOWY ATUT
+Ki Pool (lawful),"",Uderzenie Ki (praworządność)
+1d8,"",1k8
+ENERGY,ENERGY|ROLL,ENERGIA
+ROLL,ENERGY|ROLL,RZUT
+Ki Pool (adamantine),"",Uderzenie Ki (adamantyt
+CMB,"",PMB
+BARBARIAN,"",BARBARZYŃCA
+DAMAGE,DAMAGE|REDUCTION,Redukcja
+REDUCTION,DAMAGE|REDUCTION,Obrażeń
+WILL,WILL|SAVE DC,WOLA
+WILL|SAVE,WILL|SAVE DC,Rz. Obr. na WOLĘ
+SAVE DC,WILL|SAVE DC,ST Rz. Obr
+DC,WILL|SAVE DC,ST
+EMPTY BODY,"",PUSTE CIAŁO
+Bonus|Feats,"",Premiowe Atuty
+Mobility,"",Ruchliwość
+Treat unarmed attacks as lawful weapons,"",Atak bez broni jest traktowany jako oręż praworządna.
+Wild|Shape|Level,"",Poziom Kształtu Natury
+Item|Bonus,"",Premia z Przedmiotu
+Strength Score|Penalty:,Strength Score|Penalty: -2,Wartość Siły Kara:
+FATIGUED,FATIGUED|DURATION,ZMĘCZONY
+DURATION,FATIGUED|DURATION,CZAS
+"Begin or switch a bardic performance as a move action,|rather than as a standard action.","",Rozpoczyna lub zmienia występy bardów jako akcja ruchu zamist akcji standardowej.
+TRAP SENSE,TRAP SENSE|BONUS,WYCZUCIE PUŁAPEK
+BONUS,TRAP SENSE|BONUS,PREMIA
+PERFORMANCES,"",WYSTĘPY
+ATTACKS,"",ATAKI
+Deflect Arrows,"",Odbijanie Strzał
+TOUCH,TOUCH ARMOUR CLASS,DOTYK
+ARMOUR CLASS,TOUCH ARMOUR CLASS,KLASA PANCERZA
+FLAT-FOOTED,FLAT-FOOTED ARMOUR CLASS,NIEPRZYGOTOWANY
+ARMOUR CLASS,FLAT-FOOTED ARMOUR CLASS,KLASA PANCERZA
+Buffs,"",Premie
+FRIENDLY,"",PRZYJACIELSKI
+Temp AC,"",Tymczasowa KP
+Size,"",Rozmiar
+Dexterity Score|Penalty:,Dexterity Score|Penalty: -2,Wartość Zręczności Kara:
+SURVIVAL,"",SZTUKA PRZETRWANIA
+CONSTITUTION|SCORE,CONSTITUTION|SCORE|BONUS,BUDOWA
+BONUS,CONSTITUTION|SCORE|BONUS,PREMIA
+STRENTH|SCORE,STRENTH|SCORE|BONUS,WARTOŚĆ SIŁY
+BONUS,STRENTH|SCORE|BONUS,PREMIA
+Ability Modifier =|    (Total Ability Score - 10) ÷ 2,"",Modyfikator z Atrybutu = (Wartość Atrybutu - 10) / 2
+"Cannot rage, run or charge|while fatigued.","","Nie może wpadać w szał, biegać lub szarżować gdy zmęczony."
+REF,"",REF
+KI POOL,KI POOL|CAPACITY,UDERZENIE KI
+CAPACITY,KI POOL|CAPACITY,ILOŚĆ
+USES,USES|PER DAY,UŻYCIA
+PER DAY,USES|PER DAY,NA DZIEŃ
+9ft,"","2,7m"
+11ft,"","3,3m"
+55ft,"","16,5m"
+FASCINATE,FASCINATE|MAX AUDIENCE,FASCYNACJA
+MAX AUDIENCE,FASCINATE|MAX AUDIENCE,PEŁNA UWAGA
+FALL,"",UPADEK
+Spring Attack,"",Atak z Doskoku
+25ft,"","7,5m"
+Counter magical effects that depend on sight.|Allies within 30ft use Performance roll in place of a saving throw,"",Niweluje magiczne efekty oparte na wzroku. Sprzymierzeńcy w zasięgu 9m rzucają na Występy zamiast normalnych rzutów obronnych.
+2d10,"",2k10
+"Treat hands, feet, knees and elbows as weapons","","Dłonie, stopy, kolana i łokcie są traktowane jak broń"
+Morale|Bonus,"",Premia z Morali
+2ft,"","0,6m"
+Combat Reflexes,"",Zmysł Walki
+Acrobatics DC = 5 + Opponent’s,Acrobatics DC = 5 + Opponent’s CMD,ST Zwinności = 5 + Wrogie
+CMD,Acrobatics DC = 5 + Opponent’s CMD,OMB
+20 Reflex save,"",20 Rz. Obr. na Refleks
+20ft,"",6m
+to ignore 10ft of falling damage,"",Aby zignorować 3m obrażeń od upadku
+Acrobatics DC = Opponent’s,Acrobatics DC = Opponent’s CMD,ST Zwinności = Przeciwnika
+CMD,Acrobatics DC = Opponent’s CMD,OMB
+50ft,"",15m
+Mythic|Tier,"",Mityczny Poziom
+1ft,"","0,3m"
+Sml / Lrg,"",Mały / Duży
+LONG JUMP,"",DŁUGI SKOK
+RAGE!,RAGE!  DURATION|PER DAY,SZAŁ!
+DURATION,RAGE!  DURATION|PER DAY,CZAS
+PER DAY,RAGE!  DURATION|PER DAY,NA DZIEŃ
+HIGH JUMP,"",WYSOKI SKOK
+RAGE!,RAGE!|Duration,SZAŁ!
+Duration,RAGE!|Duration,CZAS
+ARMOUR CLASS BONUS,"",PREMIA DO KLASY PANCERZA
+COMBAT STYLE,"",STYL WALKI
+CATCH LEDGE,"",CHWYTANIE KRAWĘDZI
+Ki Pool (magic),"",Uderzenie Ki (magia)
+if you fail a jump by 4 or less,"",Jeśli nie powiedzie się test skoku o 4 lub mniej
+MOVE THROUGH THREATENED SQUARE,"",RUCH PRZEZ ZAGROŻONY OBSZAR
+Nerfs,"",Kary
+6ft,"","1,8"
+MOVE THROUGH ENEMY’S OWN SQUARE,"",RUCH PRZEZ POLE ZAJMOWANE PRZEZ WROGA
+ARMOUR|CLASS,ARMOUR|CLASS|PENALTY,KLASA PANCERZA
+PENALTY,ARMOUR|CLASS|PENALTY,KARA
+Value,"",Wartość
+7ft,"","2,1m"
+d4 / d8,"",k4 / k8
+INIT,"",INIC
+AC,AC BONUS,KP
+BONUS,AC BONUS,Premia
+INITIATIVE,INITIATIVE BONUS,INICJATYWA
+BONUS,INITIATIVE BONUS,PREMIA
+30ft,"",9m
+WHOLENESS OF BODY,"",JEDNOŚĆ CIAŁA
+15ft,"","4,5m"
+WILL,"",WOLA
+WILL|SAVE,WILL|SAVE|BONUS,Rz. Obr. na WOLĘ
+BONUS,WILL|SAVE|BONUS,PREMIA
+4ft,"","1,2m"
+HEALING|POINTS,"",PUNKTY LECZENIA
+Power,"",Moc
+BARDIC PERFORMANCE,"",WYSTĘPY BARDA
+8ft,"","2,4m"
+35ft,"","10,5m"
+Tireless,Tireless RAGE!,Niestrudzony
+RAGE!,Tireless RAGE!,SZAŁ!
+Indomitable Will,"",Niezłomna Wola
+SOOTHING PERFORMANCE,"",KOJĄCA PIEŚŃ
+15 Acrobatics,"",15 Zwinność
+POWER LEVELS,"",POZIOMY MOCY
+45ft,"","13,5m"
+40ft,"",12m
+3ft,"","0,9m"
+Campaign,"",Kampania
+Heal,"",Leczenie
+Flurry of Blows,"",Grad Ciosów
+Temp Speed,"",Tymczasowa Prędkość
+2d8 / 4d8,"",2k8 / 4k8
+Use monk level in place of,Use monk level in place of BAB for calculating CMB,Użyj poziomu mnicha zamiast
+BAB,Use monk level in place of BAB for calculating CMB,BPA
+for calculating,Use monk level in place of BAB for calculating CMB,aby obliczyć
+CMB,Use monk level in place of BAB for calculating CMB,OMB
+RAGE!,RAGE! POWERS |KNOWN,SZAŁ!
+POWERS,RAGE! POWERS |KNOWN,MOCE
+KNOWN,RAGE! POWERS |KNOWN,ZNANE
+Rounds Today,"",Rund Dzisiaj
+RAGE!,RAGE! POWERS,SZAŁ!
+POWERS,RAGE! POWERS,MOCE
+CMD,CMD BONUS,OMB
+BONUS,CMD BONUS,PREMIA
+Snatch Arrows,"",Chwytanie Strzał
+2d6 / 3d8,"",2k6 / 3k8
+Unarmed|Strike|Damage,"",Obrażenia z Ataku bez Broni
+Acrobatics skill +4,"",Zwinność +4
+Point|Cost,"",Koszt
+Animal Companion’s Name,"",Imię Zwierzęcego Towarzysza
+"Mass Cure Serious Wounds|Removes the fatigued, sickened and shaken conditions","",Zbiorowe Leczenie Poważnych Ran Usuwa zmęczenie oraz objawy chorów
+COUNTERSONG,"",KONTRAPIEŚŃ
+Escape Artist,"",Wyzwalanie się
+Feats,"",Atuty
+Treat unarmed attacks as magic weapons,"",Ataki bez broni są traktowane jak oręż magiczny
+d10 / 3d6,"",k10 / 3k6
+Timeless Body,"",Ponadczasowe Ciało
+PERFECT SELF,"",IDEALNE JA
+JACK OF ALL TRADES,"",CZŁOWIEK ORKIESTRA
+Scorpion Style,"",Styl Skorpiona
+d6 / 2d6,"",k6 /2k6
+d8 / 2d8,"",k8 / 2k8
+Disguise,"",Przebieranie
+Ride,"",Jeździectwo
+for every 10ft of your standard move above 30ft,"",na każde 3m twojego standardowego ruchu powyżej 9m
+Natural|Armour,"",Naturalny Pancerz
+Base|Points,"",Bazowe Punkty
+KNOWN POWERS,"",ZNANE MOCE
+Damage Reduction 1/,Damage Reduction 1/―,Redukcja obrażeń 1/
+Counter magical effects that depend on sound.|Allies within 30ft use Performance roll in place of a saving throw,"",Niweluje magiczne efekty oparte na dźwięku. Sprzymierzeńcy w zasięgu 9m
+Manoeuvre Training,"",Mistrz Manewrów
+Appraise,"",Szacowanie
+Fast Movement,Fast Movement +60 ft,Szybkie Poruszanie się
++60 ft,Fast Movement +60 ft,+18m
+Fast Movement,Fast Movement +50 ft,Szybkie Poruszanie się
++50 ft,Fast Movement +50 ft,+15m
+Fast Movement,Fast Movement +40 ft,Szybkie Poruszanie się
++40 ft,Fast Movement +40 ft,+12m
+Fast Movement,Fast Movement +30 ft,Szybkie Poruszanie się
++30 ft,Fast Movement +30 ft,+9m
+Fast Movement,Fast Movement +20 ft,Szybkie Poruszanie się
++20 ft,Fast Movement +20 ft,+6m
+Fast Movement,Fast Movement +10 ft,Szybkie Poruszanie się
++10 ft,Fast Movement +10 ft,+3m
+Abundant step,"",Daleki krok
+Damage Reduction 5/,Damage Reduction 5/―,Redukcja obrażeń 5/
+Avoid all damage on successful reflex save,"","Unika wszystkich obrażeń, jeśli powiedzie się rzut obronny na refleks"
+Damage Reduction 4/,Damage Reduction 4/―,Redukcja obrażeń 4/
+Race,"",Rasa
+Ranks,"",Rangi
+Damage Reduction 3/,Damage Reduction 3/―,Redukcja obrażeń 3/
+INSPIRE COMPETENCE,"",INSPIROWANIE BIEGŁOŚĆI
+INSPIRE GREATNESS,INSPIRE GREATNESS  MAX AFFECTED,INSPIROWANIE WIELKOŚCI
+MAX AFFECTED,INSPIRE GREATNESS  MAX AFFECTED,""
+PSIONICS,"",PSIONIKA
+INSPIRE HEROICS,INSPIRE HEROICS  MAX AFFECTED,INSPIROWANIE ODWAGI
+MAX AFFECTED,INSPIRE HEROICS  MAX AFFECTED,""
+POWERS,POWERS|KNOWN,MOCE
+KNOWN,POWERS|KNOWN,ZNANE
+Diplomacy,"",Dyplomacja
+BASE ATTACK,"",PREMIE DO ATAKU
+POWER POINTS,POWER POINTS|PER DAY,PUNKTY POCY
+PER DAY,POWER POINTS|PER DAY,NA DZIEŃ
+Add monk level to Acrobatics checks for jumping,"",Dodaj liczbę poziomów Mnicha do testów skakania opartych na Zwinności
+Able to take 10 on any skill,"",Może przyjąć 10 w teście dowolnej umiejętności
+SAVES,"",RZUTY OBRONNE
+Dodge|Modifier,"",Premia z Uników
+Improved Critical,"",Doskonalsze Trafienie Krytyczne
+Improved Disarm,"",Doskonalsze Rozbrajanie
+Improved Feint,"",Doskonalsza Finta
+Improved Grapple,"",Doskonalsza Walka w Zwarciu
+Improved Trip,"",Doskonalsze Obalanie
+DIAMOND SOUL,"",DIAMENTOWA DUSZA
+HUNTER’S BOND,"",WIĘŹ ŁOWCY
+SPELL,SPELL RESISTANCE,ODPORNOŚĆ
+RESISTANCE,SPELL RESISTANCE,NA CZARY
+to jump checks -,+20 to jump checks - 1 ki point,do testów skakania
+1 ki point,+20 to jump checks - 1 ki point,1 punkt ki
+EFFECTS,"",EFEKTY
+All skills are considered class skills,"",Wszystkie umiejętności są traktowane jako umiejętności klasowe
+Cause an enemy to die of joy or sorrow,"",Sprowadza przeciwnika do śmierci w 
+ETHERIAL,ETHERIAL|ROUNDS,ETERYCZNOŚĆ
+ROUNDS,ETHERIAL|ROUNDS,RUNDY
+DEADLY PERFORMANCE,"",ŚMIERTELNY WYSTĘP
+Non-Monk|Levels,"",Inne Poziomy
+Power|Level,"",Poziomy Mocy
+Power|Save DC,"",ST Rz. Obr. na Moc
+Use in place of Diplomacy to improve the attitude of an animal,"",Użyj zamiast Dyplomacji aby zyskać przychylność zwierzęcia
+Use any skill as if you were trained,"","Używaj dowolnej umiejętności, jak gdyby była wytrenowana"
+Use a full attack action for more attacks,"",Używa akcji ataku w celu uzyskania więcej ataków
+Handle Animal,"",Postępowanie ze Zwierzętami
+Check Penalty,"",Kara do Testów z Pancerza
+Slow Fall,Slow Fall 30 ft,Powolny Upadek
+30 ft,Slow Fall 30 ft,9m
+Slow Fall,Slow Fall 40 ft,Powolny Upadek
+40 ft,Slow Fall 40 ft,12m
+Slow Fall,Slow Fall 50 ft,Powolny Upadek
+50 ft,Slow Fall 50 ft,15m
+Slow Fall,Slow Fall 60 ft,Powolny Upadek
+60 ft,Slow Fall 60 ft,18m
+Slow Fall,Slow Fall 70 ft,Powolny Upadek
+70 ft,Slow Fall 70 ft,21m
+Slow Fall,Slow Fall 80 ft,Powolny Upadek
+80 ft,Slow Fall 80 ft,24m
+Slow Fall,Slow Fall 90 ft,Powolny Upadek
+90 ft,Slow Fall 90 ft,27m
+Slow Fall,Slow Fall Any distance,Powolny Upadek
+Any distance,Slow Fall Any distance,Dowolna Wysokość
+Spell Failure,"",Niepowodzenie CZaru
+Spellcraft,"",Czarostwo
+Treated as an Outsider,Treated as an Outsider|Immune to Charm Person and other effects that|target non-outsiders.|Damage reduction 10/chaotic,Traktowany jako Przybysz
+Immune to Charm Person and other effects that|target non-outsiders.|Damage reduction,Treated as an Outsider|Immune to Charm Person and other effects that|target non-outsiders.|Damage reduction 10/chaotic,Odporny na Zauroczenie Osoby i inne efekty które działają na nie-przybyszów.
+10/chaotic,Treated as an Outsider|Immune to Charm Person and other effects that|target non-outsiders.|Damage reduction 10/chaotic,10/chaos
+Total,"",Suma
+Today,"",Dziś
+MAX POWER,MAX POWER|LEVEL,MAKSYMALNA MOC
+LEVEL,MAX POWER|LEVEL,POZIOM
+FAVOURED TERRAIN BONUS,"",PREMIA Z ULUBIONEGO TERENU
+Bonus Points,"",Punkty Premiowe
+Damage Reduction 2/,Damage Reduction 2/―,Redukcja obrażeń 2/
+Heal your own wounds -,Heal your own wounds - 2 ki points,Ulecz swoje rany -
+2 ki points,Heal your own wounds - 2 ki points,2 punkty ki
+Wounds,"",Rany
+Shield AC,"",Tarcza
+Assume ethereal state for 1 minute -,Assume ethereal state for 1 minute - 3 ki points,Przechodzi w stan eteryczny na minutę - 
+3 ki points,Assume ethereal state for 1 minute - 3 ki points,3 punkty ki
+FRIGHTENING TUNE,"",PRZERAŻAJĄCY TON
+(BARD),"",(BARD)
+DIRGE OF DOOM,"",LAMENT ZAGŁADY
+Venom Immunity,Venom Immunity|Immune to all poisons,Odporność na jad
+Immune to all poisons,Venom Immunity|Immune to all poisons,Odporny na wszystkie trucizny
+bp,"",pb
+No age penalties or artificial ageing,"",Nie podlega karom wynikających ze starzenia się i nie może być postarzany za pomocą magii
+Delayed death,"",Opóźniona Śmierć
+School,"",Szkoła
+Base,"",Podstawowy
+KNOWLEDGE,KNOWLEDGE |BONUS,WIEDZA
+BONUS,KNOWLEDGE |BONUS,PREMIA
++ 4 to all saving throws|+ 4 to AC,"",+4 
+HEALTH,"",ŻYCIE
+Cause enemies within 30ft to become shaken,"",Wywołuje wstrząs u wrogów w zasięgu 9m
+Avoid half damage on failed reflex save,"",Unika połowy obrażeń w przypadku nieudanego rzutu obronnego na refleks
+Intimidate,"",Zastraszanie
+Endurance,"",Krzepa
+Tongue of the Sun and Moon,"",Język Słońca i Księżyca
+Gorgon’s Fist,"",Pięść Gorgony
+SHARE FAVOURED ENEMY,SHARE FAVOURED ENEMY|DURATION,DZIELENIE SIĘ PREMIĄ
+DURATION,SHARE FAVOURED ENEMY|DURATION,CZAS
+Armour AC,"",Pancerz
+Enemies are frightened and flee your performance,"",Przeciwnicy są przerażeni twoim występem i uciekają
+Medusa’s Wrath,"",Gniew Medusy
+2 × (d10 +,"2 × (d10 + CON) temporary hit points,|+2 attack, +1 fortitude save",2 x (k10 + 
+CON,"2 × (d10 + CON) temporary hit points,|+2 attack, +1 fortitude save",B
+") temporary hit points,|+2 attack, +1 fortitude save","2 × (d10 + CON) temporary hit points,|+2 attack, +1 fortitude save",) 
+Slip magically between spaces -,Slip magically between spaces - 2 ki points,Przemieszczaj się magicznie w przestrzeni -
+2 ki points,Slip magically between spaces - 2 ki points,2 punkty ki
+LANGUAGES,"",JĘZYKI
+pts,"",ptk
+"Bonus only applied when unarmoured,|unencumbered and not helpless","","Tylko gdy nieuzbrojony, nieobciążony lub nie pomaga"
+Improved Bull Rush,"",Doskonalsza Szarża Byka
+QUIVERING PALM,"",DRŻĄCA PIĘŚĆ
+MASS SUGGESTION,"",ZBIOROWA SUGESTIA
+Speak with any living creature,"",Może rozmawiać z dowolną żywą istotą
+Current Shape,"",Obecny Kształt
+Bluff,"",Blefowanie
+HIT POINTS,"",PUNKTY WYTRZYMAŁOŚĆI
+Sleight of Hand,"",Zręczna Dłoń
+Non-lethal,"",Stłuczenia
+INITIATIVE,"",INICJATYWA
+(which grants,(which grants +20 to Acrobatics),zapewnia
+to Acrobatics),(which grants +20 to Acrobatics),do Zwinności
+SHARE FAVOURED ENEMY,"",DZIELENIE SIĘ PREMIĄ
+Still Mind,"",Spokojny Umysł
+Stable,"",Stabilny
+XP,"",PD
+Trapfinding,"",Wykrywanie Pułapek
+Deafened,"",Głuchota
+Disable Device,"",Unieszkodliwianie Mechanizmów
+POWER STONES,"",KAMIENIE MOCY
+Blinded,"",Oślepiony
+Treated as outsider,"",Traktowany jako przybysz
+(which grants,(which grants +8 to Acrobatics),zapewnia
+to Acrobatics),(which grants +8 to Acrobatics),do Zwinności
+Base|Attack,"",Bazowa Premia
+A Thousand Faces,A Thousand Faces|Change appearance at will,Tysiac Twarzy
+Change appearance at will,A Thousand Faces|Change appearance at will,Zmienia wygląd na życzenie
+Dying,"",Umierający
+DAMAGE,DAMAGE|BONUS,OBRAŻENIA
+BONUS,DAMAGE|BONUS,PREMIA
+QUIVER,QUIVER DAYS,DRŻENIE
+DAYS,QUIVER DAYS,DNI
+BARDIC KNOWLEDGE,"",WIEDZA BARDÓW
+(which grants,(which grants +4 to Acrobatics),zapewnia
+to Acrobatics),(which grants +4 to Acrobatics),do Zwinności
+Woodland Stride,Woodland Stride|Move through undergrowth at normal speed|and taking no damage,Leśny Krok
+(which grants,(which grants +12 to Acrobatics),zapewnia
+to Acrobatics),(which grants +12 to Acrobatics),do Zwinności
+(which grants,(which grants +24 to Acrobatics),zapewnia
+to Acrobatics),(which grants +24 to Acrobatics),do Zwinności
+Reduce effective falling height using wall,"",Redukuje efekty spadania używając ściany
+TATTOOS,"",TATUAŻE
+(which grants,(which grants +16 to Acrobatics),zapewnia
+to Acrobatics),(which grants +16 to Acrobatics),do Zwinności
+INSPIRE COURAGE,"",INSPIROWANIE ODWAGI
+SUGGESTION,"",SUGESTIA
+Sickened,"",Chory
+Bonus Spells,Bonus Spells|CHA,Premiowe Czary
+CHA,Bonus Spells|CHA,CHA
+STUNNING FIST,"",OSZAŁAMIAJĄCA PIĘŚĆ
+Ring,"",Pierścień
+Staggered,"",Zataczający się
+(RANGER),"",(TROPICIEL)
+Stun (or other effects) target for one round,"",Ogłusza 
+Soulknife|Level,"",Poziom Ostrza Duszy
+Silver,"",Srebro
+Cavalier|Level,"",Poziom Kawalerzysty
+Bonus to attack and damage rolls,"",Premia do ataku i testów obrażeń
+Total Weight,"",Całkowity Ciężar
+WELL-VERSED,"",DOBRZE-POINFORMOWANY
+Slow Fall,Slow Fall 20 ft,Powolny upadek
+20 ft,Slow Fall 20 ft,6m
+Unconscious,"",Nieprzytomny
+Stunned,"",Oszołomiony
+(BARBARIAN),"",(BARBARZYŃCA)
+Mountebank|Level,"",Poziomy Hochsztaplera
+Purity of Body,"",Czystość Ciała
+Cannot run or charge|-2 Strength and Dexterity,"",Nie może biegać i szarżować -2 Siły i Zręczności
+EQUIPMENT,"",EKWIPUNEK
+"-2 to attack rolls, damage rolls,| saving throws, skill and ability checks","","-2 do testów ataku, obrażeń, umiejętności oraz rzutów obronnych"
+SPECIAL MOUNT,"",SPECJALNY WIERZCHOWIEC
+Take 20 Today,"",Przyjętych 20 dziś
+Immune to all diseases,"",Odporny na wszystkie choroby
+STUNNING FIST,STUNNING FIST|PER DAY,OSZAŁAMIAJĄCA PIĘŚĆ
+PER DAY,STUNNING FIST|PER DAY,NA DZIEŃ
+Level|Adjustment,"",Dostosowanie Poziomu
+-4 initiative; 20% miss chance when attacking|-4 on opposed Perception|automatically fail Perception checks for sound,"",-4 do inicjatywy; 20% szansy na 
+Alchemist|Level,"",Poziom Alchemika
+"Bonus applies to saving throws against Bardic Performance, sonic|and language-dependent effects.","","Bonus stosuje się do rzutów obronnych przeciwko Występom Barda, "
+STUNNING FIST,STUNNING FIST|TODAY,OSZAŁAMIAJĄCA PIĘŚĆ
+TODAY,STUNNING FIST|TODAY,DZIŚ
+Cleric Level,"",Poziom Kapłana
+Hit Die,"",Kość Wytrzymałości
+"May make a standard or move action,| but not both","","Może wykonywać akcję ruchu lub standardową, ale nie obydwie"
+1d6,"",1k6
+LAY ON HANDS,"",NAKŁADANIE RĄK
+Paralysed,"",Sparaliżowany
+Untrained,"",Niewyszkolona
+Temp|Bonus,"",Tymczasowa Premia
+PERSONALITY,"",OSOBOWOŚĆ
+Suggest actions to already fascinated creatures,"",Sugerowanie akcji zafascynowanym istotom
+Skill|Bonus,"",Premia z Umiejętności
+Power|Attack,"",Potężny Atak
+COMBAT MANOEUVRES,"",MANEWRY BOJOWE
+SMITE EVIL,"",UGODZENIE ZŁA
+saving throws against enchantment,+2 saving throws against enchantment,do rzutów obronnych przeciwko oczarowaniu
+Suggest actions to one already fascinated creature,"",Sugeruje akcję jednej zafascynowanej istocie
+TRAPS,"",PUŁAPKI
+Bonus against charm and compulsion effects,"",Premia przeciwko urokom i efektom przymusu
+Fly,"",Latanie
+Fly Speed,"",Prędkość Lotu
+days,"",dni
+Immune to all poisons,"",Odporny na wszystkie trucizny
+Bards can use all knowledge skills untrained,"",Bardowie używają każdej Wiedzy jako umiejętności wyszkolonej
+Swim Speed,"",Prędkosć Pływania
+Evil Cleric,"",Zły Kapłan
+Skill Ranks,"",Punkty Umiejętności
+Locate Traps,"",Wyszukiwanie Pułapek
+DEFLECTION,DEFLECTION|BONUS,ODBICIE
+BONUS,DEFLECTION|BONUS,PREMIA
+Temp|Modifier,"",Tymczasowy Modyfikator
+BONDED WEAPON,"",ZWIĄZANA BROŃ
+Summoned|Today,"",Przywołań Dziś
+COMBAT MANOEUVRE,COMBAT MANOEUVRE|DEFENCE,MANEWR BOJOWY
+DEFENCE,COMBAT MANOEUVRE|DEFENCE,OBRONA
+Spell Save DC = 10 + INT + Spell Level,"",ST Rzutu Obronnego = 10 + INT + Poziom Czaru
+Temp Damage|Bonus,"",Tymczasowa premia do Obrażeń
+Enhancements,"",Wzmocnienia
+LORE MASTER,"",MISTRZ WIEDZY
+Good Cleric,"",Dobry Kapłan
+pp,"",sp
+Channel Negative Energy,"",KANAŁ NEGATYWNEJ ENERGII
+Temp Attack|Bonus,"",Tymczasowa Premia do Ataku
+POWER POINTS,POWER POINTS|MAX COST,PUNKTY MOCY
+MAX COST,POWER POINTS|MAX COST,MAKSYMALNY KOSZT
+INVENTORY,"",EKWIPUNEK
+CLASSES,"",KLASY
+Spell Level,"",Poziom Czaru
+ATTACK,ATTACK|BONUS,ATAK
+BONUS,ATTACK|BONUS,PREMIA
+Hands,"",Dłonie
+MERCIES,"",ŁASKI
+Ability Modifier = (Total Ability Score - 10) ÷ 2    (Round down),"",Modyfikator Atrybutu = (Wartość Atrybutu - 10) / 2 (Zaokrąglane w dół)
+(DRUID),"",(DRUID)
+HOSTILE,"",WROGI
+TRAP SENSE,TRAP SENSE|REFLEX BONUS,WYCZUCIE PUŁAPEK
+REFLEX BONUS,TRAP SENSE|REFLEX BONUS,PREMIA DO RZ. OBR. NA REFLEKS
+Trackless Step,"Trackless Step|Leave no trail, unless deliberately",Wędrówka bez Śladów
+"Leave no trail, unless deliberately","Trackless Step|Leave no trail, unless deliberately",Nie pozostawia śladów
+Trap|Sense,"",Wykrywanie Pułapek
+Cryptic|Level,"",Poziomy Ukrytego
+Player,"",Gracz
+Wind Instruments,"",Instrumenty Dmuchane
+Oratory,"",Oratorium
+Gold,"",Złoto
+3d8,"",3k8
+Dance,"",Taniec
+"Diplomacy, Sense Motive","",Dyplomacja. Wyczucie Pobudek
+"Diplomacy, Intimidate","","Dyplomacja, Zastraszanie"
+"Diplomacy, Handle Animal","","Dyplomacja, Postępowanie ze Zwierzętami"
+Diamond Body,"",Diamentowe Ciało
+4d8,"",4k8
+INT - 8,"",INT - 8
+INT - 4,"",INT - 4
+INT - 12,"",INT - 12
+Copper,"",Miedź
+Balance,"",Zachowanie Równowagi
+cp,"",sm
+Percussion,"",Bębny
+OATHBOUND PALADIN,"",ZAPRZYSIĘŻONY PALADYN
+OATH,"",PRZYSIĘGA
+Notes,"",Notatki
+Effective|Character|Level,"",Efektywny Poziom Postaci
+Serious Wounds,"",Poważne Rany
+VERSATILE PERFORMANCE,"",WSZECHSTRONNY WYSTĘP
+WIS,(WIS minimum 1),RZT
+minimum 1),(WIS minimum 1),minimum 1)
+Channelling positive energy uses up two of today’s|uses of Lay On Hands.,"",Kierowanie pozytywnej energii zużywa 2 Nakładania Rąk
+CHANNEL ENERGY,"",Kanał Energii
+Keyboard|Instruments,"",Instrumenty Klawiszowe
+gp,"",sz
+Shoulders,"",Ramiona
+Act,"",Akt
+CHARACTER,"",POSTAĆ
+Sing,"",Śpiew
+Use Magical Device,"",Używanie Magicznych Urządzeń
+"Handle Animal, Intimidate","","Postępowanie ze Zwierzętami, Zastraszanie"
+COMBAT ABILITIES,"",ZDOLNOŚCI BOJOWE
+Unlimited uses|per day,"",Nielimitowane
+Hide,"",Ukrywanie się
+HEALING,HEALING|HIT POINTS,LECZENIE
+HIT POINTS,HEALING|HIT POINTS,PUNKTY WYTRZYMAŁOŚCI
+"Acrobatics, Fly","","Akrobatyka, Latanie"
+sp,"",ss
+"Bluff, Diplomacy","","Blefowanie, Dyplomacja"
+Foes|Today,"",Wrogowie Dzisiaj
+Light Wounds,"",Lekkie Rany
+Spell|Level,"",Poziom Czaru
+Mass Spell Level,"",Zbiorowy Poziom Czarów
+Listen,"",Nasłuchiwanie
+"Bluff, Disguise","","Blefowanie, Przebieranie się"
+"Bluff, Intimidate","","Blefowanie, Zastraszanie"
+"Bluff, Sense Motive","","Blefowanie, Wyczucie Pobudek"
+Comedy,"",Komedia
+Lose,"Lose DEX bonus to AC; -2 AC|-4 on STR and DEX skills, opposed Perception|50% miss chance when attacking|DC 10 Acrobatics to move more than half speed",Traci premię ze
+DEX,"Lose DEX bonus to AC; -2 AC|-4 on STR and DEX skills, opposed Perception|50% miss chance when attacking|DC 10 Acrobatics to move more than half speed",ZR
+bonus to,"Lose DEX bonus to AC; -2 AC|-4 on STR and DEX skills, opposed Perception|50% miss chance when attacking|DC 10 Acrobatics to move more than half speed",do
+AC,"Lose DEX bonus to AC; -2 AC|-4 on STR and DEX skills, opposed Perception|50% miss chance when attacking|DC 10 Acrobatics to move more than half speed",KP
+-4 on,"Lose DEX bonus to AC; -2 AC|-4 on STR and DEX skills, opposed Perception|50% miss chance when attacking|DC 10 Acrobatics to move more than half speed",-4 do umiejętnosci opartych na
+STR,"Lose DEX bonus to AC; -2 AC|-4 on STR and DEX skills, opposed Perception|50% miss chance when attacking|DC 10 Acrobatics to move more than half speed",S
+and,"Lose DEX bonus to AC; -2 AC|-4 on STR and DEX skills, opposed Perception|50% miss chance when attacking|DC 10 Acrobatics to move more than half speed",i
+"skills, opposed Perception|50% miss chance when attacking|DC 10 Acrobatics to move more than half speed","Lose DEX bonus to AC; -2 AC|-4 on STR and DEX skills, opposed Perception|50% miss chance when attacking|DC 10 Acrobatics to move more than half speed",przeciwko Percepcji
+Spot,"",Dostrzeganie
+Apply this bonus to all knowledge skills,"",Zastosuj tą premię do wszystkich umiejętności Wiedzy
+Stealth,"",Skradanie się
+Moderate Wounds,"",Średnie Rany
+TRAINING,"",WYSZKOLENIE
+Magus|Level,"",Poziom Maga
+String,"",Strunowe
+TAKE 20,TAKE 20 PER DAY,PRZYJMIJ 20
+PER DAY,TAKE 20 PER DAY,NA DZIEŃ
+FOES,FOES|PER DAY,WROGOWIE
+PER DAY,FOES|PER DAY,NA DZIEŃ
+Critical Wounds,"",Krytyczne Rany
+DORJES,"",DORDŻE
+DIVINE BOND,"",BOSKA WIĘŹ
+TAKE 10,"",PRZYJMIJ 10
+SAVE DC,"",ST Rz. Obr.
+PSICRYSTAL,"",PSIKRYSZTAŁ
+SPECIAL ABILITIES,"",SPECJALNE ZDOLNOŚCI
+Bonus,"",Premia
+ARMOUR,"",ZBROJA
+Move Silently,"",Ciche Poruszanie się
+Bonus|Spells,"",Premiowe Czary
+Bonus Spell,"",Czar Premiowy
+Heal / Harm,"",Leczenie / Zadawanie Ran
+Armour|Check|Penalty,"",Lara do Testów z Pancerza
+Disable Traps,"",Unieszkodliwianie Pułapek
+Speed with Armour,"",Prędkość w Zbroi
+EVIL DAMAGE,EVIL DAMAGE|BONUS,ZŁE OBRAŻENIA
+BONUS,EVIL DAMAGE|BONUS,PREMIA
+COMBAT MANOEUVRE,COMBAT MANOEUVRE|BONUS,MANEWRY BOJOWE
+BONUS,COMBAT MANOEUVRE|BONUS,PREMIA
+Linguistics,"",Języki
+INITIATIVE,INITIATIVE|BONUS,INICJATYWA
+BONUS,INITIATIVE|BONUS,PREMIA
+Climb Speed,"",Prędkość Wspinaczki
+Platinum,"",Platyna
+Antipaladin|Level,"",Poziom Antypaladyna
+Fast Movement,"",Szybkie Poruszanie się
+Disable|Device,"",Unieszkodliwianie Mechanizmów
+Code of Conduct,"",Kodeks Postępowania
+FEATS & SPECIAL ABILITIES,"",ATUTY I UMIEJĘTNOŚCI SPECJALNE
+Ninja|Level,"",Poziom Ninja
+Other:,"",Inne:
+BASE|ATTACK,BASE|ATTACK BONUS,BAZOWA PREMIA
+BONUS,BASE|ATTACK BONUS,DO ATAKU
+RANGED|ATTACK,"",ATAK ZASIĘGOWY
+Eyes,"",Oczy
+Feet,"",Stopy
+MELEE|ATTACK,"",ZWARCIE
+Medium Load,"",Średnie Obciążenie
+Light Load,"",Lekkie Obciążenie
+Max AC DEX,"",Maksymalna Premia do KP ze Zręczności
+Bully,"",Despotyczny
+Cure Wounds,"",Leczenie Ran
+Far Shot,"",Daleki Strzał
+Max Speed,"",Prędkość Maksymalna
+Sneaky,"",Podstępny
+Inflict Wounds,"",Zadawanie Ran
+Poised,"",Pewny Siebie
+QUICK DRAW,"",SZYBKIE DOBYWANIE
+/  Region,"",/ Religia
+Sympathetic,"",Współczujący
+Heavy Load,"",Ciężki Ładunek
+/  Town,"",/ Miasto
+Shot on the Run,"",Strzał w Biegu
+UNSTOPPABLE,"",NIEPOWSTRZYMANY
+Precise Shot,"",Precyzyjny Strzał
+GRAPPLE,GRAPPLE BONUS,ZWARCIE
+BONUS,GRAPPLE BONUS,PREMIA
+FAMILIAR,"",CHOWANIEC
+SHIELD,"",TARCZA
+Carried Items,"",Przechowywane Przedmioty
+Single-minded,"",Jednomyślny
+Resolved,"",Zdecydowany
+(CLERIC),"",(KAPŁAN)
+1/day,"",1/dzień
+Power Points used today,"",Punkty Mocy zużyte dzisiaj
+Sage,"",Mędrczy
+Power Points,"",Punkty Mocy
+Improved|Evasion,"",Doskonalsze Uniki
+BASE ATTACK|BONUS,"",Atak Podstawowy Premia
+PORTRAIT,"",PORTRET
+CHANNEL,CHANNEL|PER DAY,KIERUNKOWANIE
+PER DAY,CHANNEL|PER DAY,NA DZIEŃ
+Inquisitor|Level,"",Poziom Inkwizytora
+MONEY,"",PIENIĄDZE
+"Racial,|Feats,|Synergy","",Rasowe Atuty Synergia
+Trap Sense +4,"",Wyszukiwanie Pułapek +4
+Uses|Today,"",Użyć Dziś
+"Armour, Shield","","Zbroja, Tarcza"
+Trap Sense +5,"",Wyszukiwanie Pułapek +5
+Forgery,"",Fałszerstwo
+Trap Sense +6,"",Wyszukiwanie Pułapek +6
+d20 +,"",k20 +
+Worn Items,"",Noszone Przedmioty
+COMBAT,"",WALKA
+Arms / Wrists,"",Ręce / Nadgarstki
+Spellthief|Level,"",Poziom Złodzieja Czarów
+Search,"",Przeszukiwanie
+Use Magic Device,"",Używanie Magicznych Urządzeń
+Gather Information,"",Zbieranie Informacji
+Neck / Throat,"",Szyja
+Jump,"",Skakanie
+"Weapons, Ammo","","Bronie, Pociski"
+SPELL BOOK,"",KSIĘGA CARÓW
+(MONK),"",(MNICH)
+Decipher Script,"",Odszyfrowanie Zapisków
+Ranger Level,"",Poziom Tropiciela
+2d6 +,"",2k6+
+Other skills:|Craft - INT|Perform - CHA,"",Inne umiejętności: Rzemiosło - INT Występy - CHA
+Trained,"",Wyszkolona
+FORCE OF WILL,"",SIŁA WOLI
+Ability Modifier = (Total Ability Score - 10) ÷ 2,"",Modyfikator Atrybutu = (Wartość Atrybutu - 10) / 2
+DC,DC 20,ST
+Knowledge - INT|Profession - WIS,"",Wiedza - INT Zawód - RZT
+Trap Sense +1,"",Wyszukiwanie Pułapek +1
+Trap Sense +2,"",Wyszukiwanie Pułapek +2
+Trap Sense +3,"",Wyszukiwanie Pułapek +3
+CON,+ CON| per level,B
+per level,+ CON| per level,na poziom
+ROGUE,"",ŁOTRZYK
+Shaman|Level,"",Poziom Szamana
+FLAT-FOOTED,FLAT-FOOTED|CMD,NIEPRZYGOTOWANY
+CMD,FLAT-FOOTED|CMD,OMB
+Greater ),"",Potężniejsze )
+Page,"",Strona
+Ronin|Level,"",Poziom Ronina
+From level 2:,"",Od 2 poziomu:
+Kingdom,"",Królestwo
+Paladin Level,"",Poziom Paladyna
+Temp CMD,"",Tymczasowe OMB
+Knowledge: Arcana,"",Wiedza: Tajemna
+Knowledge: Dungeoneering,"",Wiedza: Lochoznawstwo
+Knowledge: Religion,"",Wiedza: Religia
+Knowledge: The Planes,"",Wiedza: Plany
+INT,+ INT| per level,INT
+per level,+ INT| per level,na poziom
+From Level 4,"",Od 4 poziomu
+Class skills,"",Umiejętności Klasowe
+Class|Skills,Class|Skills|+3,Umiejętności Klasowe
+Height,"",Wzrost
+Duration,"",Czas
+Tumble,"",Upadanie
+TWO-WEAPON FIGHTING,"",WALKA DWOMA ORĘŻAMI
+Age,"",Wiek
+Monk Level|÷ 4,"",Poziom Mnicha / 4
+Temp CMB,"",Tymczasowe PMB
+ARCHERY,"",ŁUCZNICTWO
+Knowledge: Nature,"",Wiedza: Natura
+FAVOURED ENEMY,"",PREFEROWANY WRÓG
+ft,30 ft,m
+DEFENCE,"",KLASA PANCERZA
+"Scrolls, Potions,|Wands, Components","","Zwoje, Mikstury, Różdżki, Komponenty"
+Chest,"",Skrzynia
+Headband,"",Opaska
+SAVING THROWS,"",RZUTY OBRONNE
+TURNING CHECK,"",TEST ODPĘDZANIA
+Favoured class,"",Ulubiona Klasa
+Valuables,"",Kosztowności
+Use Rope,"",Używanie Liny
+Belts,"",Pasy
+Temp Attack,"",Tymczasowy Atak
+- 1 per 5lb| carried,"","- 1 na 2,5kg obciążenia"
+Open Lock,"",Otwieranie Zamków
+= ECL + 3,"",= EPP + 3
+TOTAL HIT DICE,CREATURES AFFECTED TOTAL HIT DICE,SUMA KOŚCI WYTRZYMAŁOŚCI
+Temp Damage,"",Tymczasowe Obrażenia
+Misc|Modifier,"",Inne Modyfikatory
+GRAPPLE,"",ZWARCIE
+Max|Ranks,"",Maksymalna Liczba Rang
+TO TURN CREATURE,TO TURN CREATURE  MAX HIT DICE,BY ZMIENIĆ KREATURĘ
+MAX HIT DICE,TO TURN CREATURE  MAX HIT DICE,MAKSYMALNY LICZBA OCZEK WYTRZYMAŁOŚCI
+RANGER,"",TROPICIEL
+Temp|Score,"",Tymczasowa Wartość
+if larger/|smaller,"",jeśli większy/mniejszy
+TEAMWORK FEATS,"",ATUTY DRUŻYNOWE
+TO DESTROY CREATURE,TO DESTROY CREATURE  MAX HIT DICE,BY ZNISZCZYĆ KREATURĘ
+MAX HIT DICE,TO DESTROY CREATURE  MAX HIT DICE,MAKSYMALNY LICZBA OCZEK WYTRZYMAŁOŚCI
+CHANNEL,CHANNEL|RANGE,KANAŁ
+RANGE,CHANNEL|RANGE,ZASIĘG
+x 4,"",x 4
+DOMAINS,"",DOMENY
+MOUNT,"",WIERZCHOWIEC
+ECO,"",EKO
+USES PER DAY,"",UŻYĆ NA DZIEŃ
+Hat / Mask,"",Kapelusz / Maska
+CLERIC,"",KAPŁAN
++ Size|  diff x4,"",+ Różnica rozmiaru x4
+Debts,"",Długi
+Clothes / Body,"",Ubrania / Ciało
+LOY,"",LOJ
+Turning|Check,"",Test Odpędzania
+From Level 3:,"",Od 3 poziomu:
+Waist,"",Pas
+Max Load,"",Maksymalne Obciążenie
+Quirks,"",Dziwactwa
+EDICTS,"",EDYKTY
+per turn,"",na turę
+METAMAGIC,"",METAMAGIA
+DEFENCE & SAVING THROWS,"",KLASA PANCERZA I RZUTY OBRONNE
+Class|Level,"",Poziom Klasy
+Employer,"",Pracodawca
+Fears,"",Lęki
+AFFILIATIONS,"",PRZYNALEŻNOŚĆ
+CHARACTER|BACKGROUND,"",CHARAKTERYSTYKA POSTACI
+TOUCH,TOUCH AC,DOTYK
+AC,TOUCH AC,KP
+Parents,"",Rodzice
+BARD,"",BARD
+From level 4:,"",Od 4 poziomu:
+Religion,"",Religia
+Throat,"",Szyja
+Motivations,"",Motywacje
+Likes,"",Upodobania
+Current Country,"",Aktualne Państwo
+Origin,"",Historia
+Racial|bonus,"",Modyfikatory rasowe
+SORCERER,"",ZAKLINACZ
+- Size|  mod x4,"",- Mod. z Rozmiaru x4
+Region,"",Region
+Medium,"",Średnie
+FLAT-FOOTED,FLAT-FOOTED AC,NIEPRZYGOTOWANY
+AC,FLAT-FOOTED AC,KP
+Other items,"",Inne przedmioty
+Synergy,"",Synergia
+ORIGINS,"",KORZENIE
+Base Save,"",Bazowa Premia
+Country,"",Państwo
+Craft -,Craft - INT|Perform - CHA,Rzemiosło -
+INT,Craft - INT|Perform - CHA,INT
+Perform -,Craft - INT|Perform - CHA,Występy - 
+CHA,Craft - INT|Perform - CHA,CHA
+FRIENDS AND FOES,"",PRZYJACIELE I WROGOWIE
+Arms,"",Ręce
++1 per level,"",+1 na poziom
+CLASS,"",KLASA
+APPEARANCE,"",WYGLĄD
+NPC,"",BN
+Hair,"",Włosy
+ARMOUR,ARMOUR CLASS,KLASA PANCERZA
+CLASS,ARMOUR CLASS,KLASA
+1d4,"",1k4
+Preferred Clothing,"",Ulubione Ubranie
+Knowledge -,Knowledge - INT|Profession - WIS,Wiedza - 
+INT,Knowledge - INT|Profession - WIS,INT
+Profession -,Knowledge - INT|Profession - WIS,Zawód - 
+WIS,Knowledge - INT|Profession - WIS,WIS
+ARCANE BOND,"",TAJEMNA WIĘŹ
+Population,"",Populacja
+Head,"",Głowa
+CONTAINER,"",SKRZYNIA
+INSPIRE GREATNESS,"",INSPIROWANIE WIELKOŚCI
++2 to any one ability score,"",+2 do dowolnego Atrybutu
+BASIC SPEED,"",BAZOWA PRĘDKOŚĆ
+Round down,"",Zaokrąglane w dół
+SAVE,SAVE DC,RZ. OBR.
+DC,SAVE DC,ST
+BONDED OBJECT,"",WIĘŹ Z PRZEDMIOTEM
+SMITING DAMAGE,SMITING DAMAGE|BONUS,OBRAŻENIA Z UGODZENIA
+BONUS,SMITING DAMAGE|BONUS,PREMIA
+SMITINGS,SMITINGS|PER DAY,UGODZENIA
+PER DAY,SMITINGS|PER DAY,NA DZIEŃ
+SPECIALITY,SPECIALITY SCHOOL,SPECJALIZACJA
+SCHOOL,SPECIALITY SCHOOL,SZKOŁA
+SPELL SCHOOLS,"",SZKOŁY MAGII
+Knowledge:,"",Wiedza:
+LEVELS,"",POZIOMY
+Animal,"",Zwierzę
+Location,"",Lokacja
+DURATION,FEAT SHARING|DURATION,CZAS TRWANIA
+DURATION,MIND BLADE|DURATION,CZAS TRWANIA
+Body,"",Ciało
+Favoured|Enemy|Bonus,"",Premia z Preferowanego Wroga
+Fighter|Level,"",Poziom Wojownika
+Treat hands as weapons,"",Dłonie traktowane jako broń
+VALUABLE ITEMS,"",KOSZTOWNOŚCI
+None,"",Żadne
+Armour|& Shield,"",Zbroja i Tarcza
+WIZARD,"",CZARODZIEJ
+Weapon type,"",Rodzaj Broni
+Weapon|Damage|Bonus,"",Premia do Obrażeń z Broni
+PALADIN,"",PALADYN
+4d6,"",4k6
+50 coins weighs 1lb,"","50 monet waży 0,5kg"
+coins,"",monety
+dice,"",kość
++1d6,Damage +1d6,+ 1k6
+HEALING POINTS,HEALING POINTS|PER DAY,PUNKTY LECZENIA
+PER DAY,HEALING POINTS|PER DAY,NA DZIEŃ
+Creature Name,"",Nazwa Kreatury
+Summoned|Mount Today,"",Przyzwane Wierzchowce Dziś
+Creature|Level,"",Poziom Istoty
+MELEE ATTACK,MELEE ATTACK|BONUS,ZWARCIE
+BONUS,MELEE ATTACK|BONUS,PREMIA
+MEDIUM RANGE,"",ŚREDNI ZASIĘG
+CLOSE RANGE,"",BLISKI ZASIĘG
+Subtype,"",Podtyp
+FASCINATE,"",FASCYNACJA
+Torso,"",TORS
+QUEST ITEMS,"",PRZEDMIOTY FABULARNE
+Towns,"",Miasta
+Monk bonus applies when|unarmoured and unencumbered,"",Premie mnicha stosuje się gdy nieuzbrojony i nieobciążony
+to confirm criticals,"",by potwierdzić trafienia krytyczne
+Flurry|Attack,"",Grad Ciosów
+Mount Type,"",Rodzaj Wierzchowca
+Two-handed weapon,"",Broń dwuręczna
+Specialist|Spell,"",Czar Specjalisty
+Forbidden|During,Forbidden|During|RAGE!,Nie można stosować podczas
+RAGE!,Forbidden|During|RAGE!,SZAŁU!
+Special properties,"",Specjalne właściwości
+LYCANTHROPE,"",LIKANTROPIA
+LONG RANGE,"",DŁUGI ZASIĘG
+Smitings Today,"",Ugodzeń Dzisiaj
+NPC GROUP,"",GRUPA BN
+Knowledge: Geography,"",Wiedza: Geografia
+Skill,"",Umiejęstość
+Size Modifier|× 4,"",Modyfikator z Rozmiaru x4
+Size Modifier|x4,"",Modyfikator z Rozmiaru x4
+Basic|Damage,"",Podstawowe Obrażenia
+3.5e,"",3.5e
+Healing Points,"",Punkty Leczenia
+Character name,"",Imię Postaci
+DC 15,"",ST 15
+Base|Attack Bonus /|Monk Level,"",Bazowa Premia do Ataku / Poziom Mnicha
+Penetrating Strike  (,"",Przeszywające Uderzenie (
+No age penalties or artificial aging,"",Nie podlega karom wynikających ze starzenia się i nie może być magicznie postarzany
+Base Weapon,"",Podstawowa Broń
+Base Value,"",Bazowa Wartość
+Number of|Affected Allies,"",Liczba Sojuszników 
+DC MODIFIERS,"",MODYFIKATORY ST
+AC Penalty,"",Kara do Testów z Pancerza
+Item,"",Przedmiot
+BONUS,WILD EMPATHY BONUS,PREMIA
+SUMMONED CREATURE,"",PRZYZWANA ISTOTA
+Attained,"",Zdobyty
+BUILDINGS,"",BUDYNKI
+Cash,"",Gotówka
+Carried by / given to,"",Niesiony przez / Dany
+SMITING ATTACK,SMITING ATTACK|BONUS,UGODZENIE
+BONUS,SMITING ATTACK|BONUS,PREMIA
+Book,"",Książka
+Weapon Attack Bonus,"",Premia do ataku z broni
+DURATION,BONUS|DURATION,CZAS TRWANIA
+SKILL|RANKS,"",RANGI UMIEJĘTNOŚCI
+DURATION,SICKENED|DURATION,CZAS TRWANIA
+Weapon Specialisation  (,"",Specjalizacja Broni
+ATTACK,ATTACK ACTIONS,ATAK
+ACTIONS,ATTACK ACTIONS,PREMIA
+DURATION,SHADOW TWIN|DURATION,CZAS TRWANIA
+Points Healed,"",Punkty Wyleczone
+Organisation,"",Organizacja
+ATTRIBUTES,"",ATRYBUTY
+PARTY,"",DRUŻYNA
+PARTY FUNDS,"",DOBRA DRUŻYNY
+PARTY INVENTORY,"",EKWIPUNEK DRUŻYNY
++2 to saves against enchantments,"",+2 do rz. obr. przeciw oczarowaniom
+AUDIENCE,AUDIENCE|MAX FASCINATED,PUBLICZNOŚĆ
+MAX FASCINATED,AUDIENCE|MAX FASCINATED,ZAFASCYNOWANA
+Level,100’+ 10’ × Level,Poziom
+PF-RPG,"",PF-RPG
+Level,400’+ 40’ × Level,Poziom
+Damage Reduction:,"",Redukcja Obrażeń:
++4 to saves against water spells and creatures,Resist Ocean’s Fury|+4 to saves against water spells and creatures,+4 do rz. obr. przeciw wodnym istotom i czarom
+PROHIBITED,PROHIBITED SCHOOLS,ZAKAZANE
+SCHOOLS,PROHIBITED SCHOOLS,SZKOŁY
+BARBARIAN!,"",BARBAŻYŃCA!
+INSPIRE HEROICS,"",INSPIROWANIE HEROIZMU
+"Racial,|Feats","","Rasowe, Atuty"
+"Racial, Feats","","Rasowe, Atuty"
+USES PER DAY,RESOLVE|USES PER DAY,UŻYĆ NA DZIEŃ
+(From level 4),"",(Od 4 poziomu)
+COMBAT|MANOEUVRE,COMBAT|MANOEUVRE|BONUS,MANEWRY BOJOWE
+BONUS,COMBAT|MANOEUVRE|BONUS,PREMIA
+RANGED ATTACK,RANGED ATTACK|BONUS,DYSTANS
+BONUS,RANGED ATTACK|BONUS,PREMIA
+RAGE!,RAGE!|Modifier,SZAŁ!
+Modifier,RAGE!|Modifier,MODYFIKATOR
+Farms,"",Farmy
+Marshal,"",Zarządca
+Face,"",Twarz
+TURNS,TURNS PER DAY,TURY
+PER DAY,TURNS PER DAY,NA DZIEŃ
+TURNS / REBUKES,TURNS / REBUKES PER DAY,ODPĘDZANIA / KARCENIA
+PER DAY,TURNS / REBUKES PER DAY,NA DZIEŃ
+TURN UNDEAD,"",ODPĘDZANIE NIEUMARŁYCH
+TURN / REBUKE UNDEAD,"",ODPĘDZANIE / KARCENIE NIEUMARŁYCH
+Fatigue|Modifier,"",Modyfikator Zmęczenia
+Level,25’+ 5’ × (Level ÷ 2),Poziom
+Temporary|Hit Points,"",Tymczasowe Punkty Wytrzymałości
+Max Weight,"",Maksymalny Ciężar
+RACIAL ABILITIES,"",ZDOLNOŚCI RASOWE
+FLURRY ATTACK,FLURRY ATTACK BONUS,GRAD CIOSÓW
+BONUS,FLURRY ATTACK BONUS,PREMIA
+Leadership,"",Dowództwo
+Level|Penalty,"",Ujemne Poziomy
+Long,"",Długi
+BONUS,MAX ARMOUR|DEX BONUS,PREMIA
+DURATION,MAX EFFECT|DURATION,CZAS TRWANIA
+METAMAGIC SPECIALIST,"",SPECJALISTA METAMAGII
+DURATION,MISLEAD: GREATER|INVISIBILITY|DURATION,CZAS TRWANIA
+Modifier,"",Modyfikator
+Modifier = (Ability Score - 10) ÷ 2,"",Modyfikator = (Wartość Atrybutu - 10) / 2
+Modifiers,"",Modyfikatory
+Morale Bonus,Morale Bonus    Inspire Courage and similar,Premia z Morali
+Inspire Courage and similar,Morale Bonus    Inspire Courage and similar,Inspiruje odwagę i podobne
+Multiplier,"",Mnożnik
+DURATION,NAUSEATED|DURATION,CZAS TRWANIA
+Nerf,"",Kary
+OTHER INCOME,"",INNE PRZYCHODY
+One hit|point,"",Jeden punkt wytrzymałości
+One skill|rank,"",Jeden punkt umiejętności
+Overwhelming,"",Druzgocące
+POPULACE,"",LUDNOŚĆ
+5ft,Pack Attack    Ally’s attack allows you to take 5ft step,"1,5m"
+Penetrating Strike,Penetrating Strike    Ignore damage reduction up to 5/—,Penetrujący Cios
+Ignore damage reduction up to,Penetrating Strike    Ignore damage reduction up to 5/—,Ignoruje redukcję obrażeń do
+Perform|Ranks,"",Występy Rangi
+Pick a class,"",Wybierz klasę
+Power Attack,"",Potężny Atak
+DURATION,RAGE  DURATION|PER DAY,CZAS TRWANIA
+RAGE!,RAGE! 1/day,SZAŁ!
+1/day,RAGE! 1/day,1/dzień
+RAGE!,RAGE! DURATION,SZAŁ!
+DURATION,RAGE! DURATION,CZAS TRWANIA
+RAGE!,RAGE!|PER DAY,SZAŁ!
+PER DAY,RAGE!|PER DAY,NA DZIEŃ
+Duration,RAGE|Duration,Czas Trwania
+DURATION,RESISTANCE|DURATION,CZAS TRWANIA
+Race (including subtypes or customisations),"",Rasa (włączając podtypy lub dostosowania)
+Rage 2/day,"",Szał 2/dzień
+Rage 3/day,"",Szał 3/dzień
+Rage 4/day,"",Szał 4/dzień
+Rage 5/day,"",Szał 5/dzień
+Rage 6/day,"",Szał 6/dzień
+Range:,"",Zasięg:
+Reflex,"",Refleks
+Remember to role-play your character traits.,"",pamiętaj o odgrywaniu cech twojej postaci
+Roll hit points and allocate skill ranks,"",Wylosuj punkty wytrzymałości i rozdaj punkty umiejętności
+SAVING THROW DC,"",ST RZUTU OBRONNEGO
+DURATION,SCENT ABIILITY|DURATION,CZAS TRWANIA
+DURATION,SERENITY|DURATION,CZAS TRWANIA
+SPELL RANGES,"",ZASIĘG CZARÓW
+SPELL|RANGE,"",ZASIĘG CZARU
+BUFFS & TEAMWORK,SUBTOTAL BUFFS & TEAMWORK,PREMIE I PRACA ZESPOŁOWA
+DURATION,SURGING|EUPHORIA|DURATION,CZAS TRWANIA
+Saving throw = 10 + Casting Stat + Spell Level,"",Rzut Obronny = 10 + Poziom Czarującego + Poziom Czaru
+Settlement name,"",Nazwa Osady
+to concentration checks,Shielded Caster    +4 to concentration checks,do testów koncentracji
+Attack at any point during your move,Shot on the Run    Attack at any point during your move,Atakuj w dowolnym momencie ruchu
+Sixth Sense +4,"",Szósty Zmysł +4
+Size|Modifier x4,"",Modyfikator Rozmiaru x4
+Slow Fall 20 ft,"",Powolny Upadek 6m
+Slow Fall 30 ft,"",Powolny Upadek 9m
+Slow Fall 40 ft,"",Powolny Upadek 12m
+Slow Fall 50 ft,"",Powolny Upadek 15m
+Slow Fall 60 ft,"",Powolny Upadek 18m
+Slow Fall 70 ft,"",Powolny Upadek 21m
+Slow Fall 80 ft,"",Powolny Upadek 24m
+Slow Fall 90 ft,"",Powolny Upadek 27m
+Song of Freedom,"",Pieśń Wolności
+Specialist|Spells,"",Czary Specjalisty
+Spell|Resistance,"",Odporność na Czary
+Strength,"",Siła
+Stunning Critical,"",Ogłuszający Krytyk
+TAKE A CLASS LEVEL,"",WEŹ POZIOM W KLASIE
+TAX,"",PODATEK
+TAXATION,"",OPODATKOWANIE
+FEATS,TEAMWORK|FEATS,ATUTY
+Take only half damage even on failed reflex,"",Połowa obrażeń w przypadku nieudanego rzutu na refleks
+Threat range,"",Obszar zagrożenia
+Tiring Critical,"",Męczący Krytyk
+Total hit|points,"",Suma Punktów Wytrzymałośći
+Total skill|ranks,"",Suma rang umiejętności
+Total|Level,"",Poziom Postaci
+Treat unarmed attacks as  lawful weapons,"",Cios bez broni traktowany jako broń praworządna
+STR,"Two-weapon Rend    If you hit with both weapons, do an extra 1d10 + (STR × 1½) damage",S
+Reduces penalty to:,Two-weapon fighting    Reduces penalty to:,Redukuje kary do:
+BONUS,UNARMED ATTACK BONUS,PREMIA
+LEVEL,UNREST LEVEL,POZIOM
+Unconcious,"",Nieprzytomny
+Extra damage dice,Vital Strike    Extra damage dice,Dodatkowa kość obrażeń
+BONUSES,WEAPON BONUSES,PREMIE
+DEX,Weapon Finesse  Use DEX for melee attack,ZR
+Weapon Specialisation:,"",Specjalizacja w Broni:
+"Weapons, Ammo, Scrolls, Potions","","Broń, Pociski, Zwoje, Mikstury"
+Your base speed (measured in feet per six seconds),"",Twoja bazowa prędkość (mierzona w metrach na 6 sekund)
+Your size and size modifier,"",Twój rozmiar i modyfikator rozmiaru
+Your starting languages,"",Twoje początkowe języki
+"round down,|minimum 1","","zaokrąglane w dół, przynajmniej 1"
+to attacks of opportunity,"",do ataków okazyjnych
+x 2,"",x 2
+(Use adjusted CON),"",Użyj dostosowanej B)
++ 10 to speed|unless wearing|heavy armour,"",+ 10 do prędkości dopóki nie nosi ciężkiej zbroi
++ 1d6,"",+ 1k6
++ 4 to all saving throws|+ 4 dodge bonus to,+ 4 to all saving throws|+ 4 dodge bonus to AC,+4 do wszystkich rzutów obronnych +4 premii unikowej do
++1bp,"+1 loyalty, +1bp consumption",+1pb
+consumption,"+1 loyalty, +1bp consumption",konsumpcji
++1bp,"+1 stability, +1bp consumption",+1pb
+consumption,"+1 stability, +1bp consumption",konsumpcji
++2 WIS,+2 WIS and -2 CHA in all three forms.,+2 RZT
+-2 CHA,+2 WIS and -2 CHA in all three forms.,-2 CHA
+in all three forms.,+2 WIS and -2 CHA in all three forms.,we wszystkich trzech formach.
+"economy,","+2 economy, -2 loyalty","ekonomii,"
++2bp,"+2 loyalty, +2bp consumption",+2pb
+consumption,"+2 loyalty, +2bp consumption",konsumpcji
++2bp,"+2 stability, +2bp consumption",+2pb
+consumption,"+2 stability, +2bp consumption",konsumpcji
+"economy,","+3 economy, -4 loyalty","ekonomii,"
++4bp,"+3 loyalty, +4bp consumption",+4pb
+consumption,"+3 loyalty, +4bp consumption",konsumpcji
++4bp,"+3 stability, +4bp consumption",+4pb
+consumption,"+3 stability, +4bp consumption",konsumpcji
++4 Strength  +4 Constitution  +2 Will  -2 AC,"",+4 Siły +4 Budowy +2 Woli -2 KP
+"economy,","+4 economy, -8 loyalty","ekonomii,"
++8bp,"+4 loyalty, +8bp consumption",+8pb
+consumption,"+4 loyalty, +8bp consumption",konsumpcji
++8bp,"+4 stability, +8bp consumption",+8pb
+consumption,"+4 stability, +8bp consumption",konsumpcji
++6 Strength  +6 Constitution  +3 Will  -2 AC,"",+6 Siły +6 Budowy +2 Woli -2 KP
++8 Strength  +8 Constitution  +4 Will  -2 AC,"",+8 Siły +8 Budowy +4 Woli -2 KP
+-2 Strength  -2 Dexterity    Can’t charge or run,"",-2 Siły -2 Zręczności Nie może szarżować lub biec
+DURATION,ALTER SELF|DURATION,CZAS TRWANIA
+ANIMAL FORM,"",ZWIERZĘCA FORMA
+ARCHETYPE,"",ARCHETYP
+ARMOUR CHECK|PENALTY,ARMOUR CHECK|PENALTY REDUCTION,KARA DO TESTÓW Z PANCERZA
+REDUCTION,ARMOUR CHECK|PENALTY REDUCTION,REDUKCJA
+ATTACK FEATS,"",ATUTY BOJOWE
+DURATION,AURAS|DURATION,CZAS TRWANIA
+DURATION,AURA|DURATION,CZAS TRWANIA
+Add any bonus or penalty from your race:,"",Dodaj rasowe premie lub kary:
+Any other racial abilities,"",Wszystkie inne rasowe umiejętności
+Area / Target,"",Obszar / Cel
+"Armour, Shield, Protective Items","","Zbroja, Tarcza, Przedmioty Ochronne"
+"Ask your GM how to create your basis scores. He might give you a|fixed array, ask you to roll dice, or use a point buy system.","","Zapytaj swojego MP jak wygenerować podstawowe statystyki. Może dać Ci gotowe wartości, kazać rzucać kością lub użyć systemu punktowego."
+Assets,"",Majątek
+Assume ethereal state,"",Przechodzi w stan eteryczny
+At levels,"At levels 4, 8, 12 and 16 you get to add 1 to a single ability score.|If that score was an odd number, this mean an increase in the ability modifier.",Na poziomach
+"and 16 you get to add 1 to a single ability score.|If that score was an odd number, this mean an increase in the ability modifier.","At levels 4, 8, 12 and 16 you get to add 1 to a single ability score.|If that score was an odd number, this mean an increase in the ability modifier.","i 16 dodajesz 1 punkt do wartości atrybuty. Jeśli wartość była liczbą nieparzystą, oznacza to, że modyfikator atrybutu również wzrasta."
+"At odd-numbered levels, you get to pick a feat.|Make sure your character qualifies for the feat’s preconditions.","","Na nieparzystych poziomach, "
+Attribute|modifiers,"",Modyfikatory Atrybutów
+Attribute|scores,"",Wartości Atrybutów
+Avoid all damage on successful reflex,"",Unika wszystkich obrażeń w przypadku udanego rz. obr. na refleks
+BARDIC KNOWLEDGE,BARDIC KNOWLEDGE |BONUS,WIEDZA BARDÓW
+BONUS,BARDIC KNOWLEDGE |BONUS,PREMIA
+BASE ATTACK & SAVING THROWS,"",BAZOWA PREMIA I RZUTY OBRONNE
+BASE ATTACK,BASE ATTACK BONUS,BAZOWA PREMIA
+BONUS,BASE ATTACK BONUS,DO ATAKU
+BASE|ATTACK,BASE|ATTACK|BONUS,BAZOWA PREMIA
+BONUS,BASE|ATTACK|BONUS,DO ATAKU
+BLOODLINE,"",WIĘZY KRWI
+BRAVERY,"",ODWAGA
+DURATION,BREATH|DURATION,CZAS TRWANIA
+BUILD A CHARACTER,"",SKONSTRUUJ POSTAĆ
+BUILDINGS,BUILDINGS    Add buildings to towns,BUDYNKI
+Add buildings to towns,BUILDINGS    Add buildings to towns,Dodaje budynki do miast
+Back to Back,Back to Back    +2 to AC against flanking,Plecy do Pleców
+to,Back to Back    +2 to AC against flanking,do
+AC,Back to Back    +2 to AC against flanking,KP
+against flanking,Back to Back    +2 to AC against flanking,przeciwko flankowaniu
+Background,"",Tło
+"Baron, Duke, King or Queen","Baron, Duke, King or Queen – If vacant, kingdom fails all command rolls and cannot claim or develop hexes","Baron, Książę, Król lub Królowa"
+"– If vacant, kingdom fails all command rolls and cannot claim or develop hexes","Baron, Duke, King or Queen – If vacant, kingdom fails all command rolls and cannot claim or develop hexes","Jeśli wolne, królestwu automatycznie nie powodzi się rzut na rozkazy oraz nie może zdobywać i rozwijać hexów."
+Barony,"",Baronia
+Base attack bonus and saving throws,"",Bazowa Premia do Ataku i Rzuty Obronne
+Base|Attack|Bonus,"",Bazowa Premia do Ataku
+Base|Speed,"",Bazowa Prędkość
+Base|Value,"",Bazowa Wartość
+Basic Value,"",Bazowa Wartość
+Basic attributes,"",Bazowe Atrybuty
+Bleeding Critical,"",Krwawy Krytyk
+Blinding Critical,"",Oślepiający Krytyk
+Buff,"",Premie
+Burrow,"",Rycie
+Burrow Speed,"",Prędkość Rycia
+CASTER,CASTER LEVEL,POZIOM CZARUJĄCEGO
+LEVEL,CASTER LEVEL,""
+CHANGE SHAPE,"",ZMIANA KSZTAŁTU
+CHOICES,"",WYBORY
+CITY,"",MIASTO
+CLASS ABILITIES,"",ZDOLNOŚCI KLASOWE
+COMBAT|MANEUVRE,COMBAT|MANEUVRE|BONUS,MANEWRY BOJOWE
+BONUS,COMBAT|MANEUVRE|BONUS,PREMIA
+COMBAT|MANEUVRE,COMBAT|MANEUVRE|DEFENCE,MANEWRY BOJOWE
+DEFENCE,COMBAT|MANEUVRE|DEFENCE,OBRONNE
+COMMAND DC,"",ST ROZKAZÓW
+DURATION,CONFUSION|DURATION,CZAS TRWANIA
+CONSUMPTION,"",KONSUPCJA
+CON|Increase,"",B Wzrost
+CRIT,"",KRYTYK
+CRITICAL,CRITICAL EFFECTS,KRYTYCZNE
+EFFECTS,CRITICAL EFFECTS,EFEKTY
+CURSE OF LYCANTHROPY,"",KLĄTWA LIKANTROPII
+Calculate your six ability modifiers,"",Oblicz twoje modyfikatory z atrybutów
+Can communicate with related animals.,"",Może porozumiewać się ze spokrewnionymi zwierzętami.
+Caster Levels,"",Poziomy Czarującego
+Casting time,"",Czas rzucania
+Change shape as a move action.,"",Zmienia kształt jako akcję ruchu
+Chaotic:,Chaotic: +2 Loyalty,Chaos:
+Loyalty,Chaotic: +2 Loyalty,Lojalność
+Character traits,"",Cechy postaci
+Charge,Charge  -2 to AC for the rest of the round,Szarża
+to,Charge  -2 to AC for the rest of the round,do
+AC,Charge  -2 to AC for the rest of the round,KP
+for the rest of the round,Charge  -2 to AC for the rest of the round,przez resztę rundy
+Charisma,"",Charyzma
+Class|Skill,"",Umiejętnośći Klasowe
+Cleave,Cleave    Extra attack if you hit,Rozszczepienie
+Extra attack if you hit,Cleave    Extra attack if you hit,Dodatkowy atak jeśli trafisz
+Colour Spray,"",Deszcz Kolorów
+"Come up with a cool idea for your character. Figure out where they|come from, how their background shaped them and why they’ve|chosen to be an adventurer.|Use extra pages if necessary.","","Zastanów się nad ciekawym konceptem twojej postaci. Pomyśl skąd pochodzi, jaka była jej przeszłość i dlaczego wybrała poszukiwanie przygód. Użyj dodatkowych stron, jęśli będziesz potrzebował."
+Components,"",Komponenty
+Components / Focus,"",Komponenty
+Concept,"",Koncept
+Constitution,"",Budowa
+Consult the book to find out:,"",Sprawdź w książce aby określić:
+Consult the book to see what increase you get to your|Base Attack Bonus and Saving Throws at this level.,"",Sprawdź w książce jakie są wartości twoich Rzutów Obronnych i Podstawowej Premii do Ataku
+Councilor,"",Radny
+Courage Bonus,"",Premia za Odwagę
+Credit,"",Kredyt
+Crippling Critical,"",Okaleczający Krytyk
+Critical Focus,"",Krytyczne Skupienie
+Critical Focus,Critical Focus),Krytyczne Skupienie
+Critical Mastery,Critical Mastery    Apply two critical effects at once,Mistrzostwo Krytyków
+Apply two critical effects at once,Critical Mastery    Apply two critical effects at once,Stosuje dwa krytyczne efekty na raz
+DC 10,"",ST 10
+DC 20,"",ST 20
+DC 25,"",ST 25
+DEPOSIT,DEPOSIT    4000gp in trade goods and treasure nets 1bp,DEPOZYT
+4000gp in trade goods and treasure nets 1bp,DEPOSIT    4000gp in trade goods and treasure nets 1bp,4000sz w dobrach handlowych i skarbach przynosi 1pb
+DIPLOMACY MODIFIERS,"",MODYFIKATORY DYPLOMACJI
+DURATION,DISPLACEMENT|DURATION,CZAS TRWANIA
+DMG,"",OBR
+DR 5/— when wearing armour or using a shield,"",RO 5/ - kiedy nosi zbroję lub używa tarczy
+DURATION,DURATION ROUNDS,CZAS TRWANIA
+Deafening Critical,"",Ogłuszający Krytyk
+Death or Glory,"Death or Glory    +4 (+1 at levels 11, 16, 20)",Śmierć lub Chwała
+"at levels 11, 16, 20)","Death or Glory    +4 (+1 at levels 11, 16, 20)","na 11, 16 i 20 poziomie)"
+Debit,"",Debet
+"Decipher Script, Knowledge|  and Spellcraft","","Odszyfrowywanie Zapisków, Wiedza i Czarostwo"
+"Delayed death by days equal to monk level, once a week","","Opóźnia śmierć na ilość dni równych poziomowi mnicha, raz na tydzień"
+"Depending on your race, you typically get to pick one favoured class,|which provides you a slight bonus at each level.|Your favoured class does not have to be the first class you take.","","Zależnie od twojej rasy, wybierasz jedną ulubioną klasę, zapewniającą niewielką premię na każdym poziomie. Twoja ulubiona klasa nie musi być pierwszą klasą którą weźmiesz."
+Devastating Strike,Devastating Strike    +2 per extra die,Druzgocące Uderzenie
+per extra die,Devastating Strike    +2 per extra die,na dodatkową kość
+Dexterity,"",Zręczność
+Diseased,"",Chory
+Disguise Self,"",Przebranie
+Disguise self as similarily shaped creature,"",Przebiera Cię za podobnie ukształtowaną istotę
+Disintegrate,"",Dezintegracja
+Disruptive Attack,"",Niszczący Atak
+Distract,"Distract  DC 20|The bird flutters distractingly around an enemy. On a successful attack, the enemy is shaken.",Rozproszenie
+"DC 20|The bird flutters distractingly around an enemy. On a successful attack, the enemy is shaken.","Distract  DC 20|The bird flutters distractingly around an enemy. On a successful attack, the enemy is shaken.",ST 20 Ptaki rozpraszająco trzepocą wokół wroga. Przy udanym ataku wróg jest wstrząśnięty.
+"Distraction, Ridiculous attire","","Rozpraszanie, Śmieszny Strój"
+Districts,"",Dzielnice
+Double Slice,Double Slice    Add your full STR to damage with an off-hand weapon,Podwójne Cięcie
+Add your full,Double Slice    Add your full STR to damage with an off-hand weapon,Dodaj pełną premię z
+STR,Double Slice    Add your full STR to damage with an off-hand weapon,S
+to damage with an off-hand weapon,Double Slice    Add your full STR to damage with an off-hand weapon,do obrażeń korzystając z improwizowanej broni. 
+Double Slice,Double Slice    No damage penalty,Podwójne Cięcie
+No damage penalty,Double Slice    No damage penalty,Brak kar do obrażeń
+Duchy,"",Księstwo
+Duration,Duration +1 round,Czas Trwania
+Dwarf,"",Krasnolud
+ECONOMY,"",EKONOMIA
+EFFECTIVE|CHARACTER LEVEL,"",EFEKTYWNY POZIOM POSTACI
+EXOTIC WEAPON ATTACK,EXOTIC WEAPON ATTACK BONUS,ATAK BRONIĄ EGZOTYCZNĄ
+BONUS,EXOTIC WEAPON ATTACK BONUS,PREMIA
+Economy|Roll,"",Rzut na Ekonomię
+Effective|Level,"",Efektywny Poziom
+Elf,"",Elf
+Etherealness,"",Eteryczność
+Events,"",Wydarzenia
+Evil Paladin,"",Zły Paladyn
+Evil:,Evil: +2 Economy,Zło:
+Economy,Evil: +2 Economy,Ekonomia
+Exhausting Critical,"",Wyczerpujący Krytyk
+Exorcism,"",EGZORCYZM
+Expansionist,"",Ekspansjonizm
+Extend Spell,Extend Spell  +1,Poszerzenie Czaru
+FAVOURED|CLASS BONUS,"",PREMIA Z ULUBIONEJ KLASY
+FEAR EFFECT,FEAR EFFECTWILL BONUS,RZ. OBR. NA STRACH
+WILL BONUS,FEAR EFFECTWILL BONUS,PREMIA DO WOLI
+FEAT,"",ATUT
+"FEATS, TRAITS AND|SPECIAL ABILITIES","","ATUTY, CECHY I SPECJALNE ZDOLNOŚCI"
+FIGHTER,"",WOJOWNIK
+FLURRY OF BLOWS,FLURRY OF BLOWS|BASE ATTACK BONUS,GRAD CIOSÓW
+BASE ATTACK BONUS,FLURRY OF BLOWS|BASE ATTACK BONUS,BAZOWA PREMIA DO ATAKU
+FRIEND,"",PRZYJACIEL
+DURATION,FRIENDLY ATTITUDE|DURATION,CZAS TRWANIA
+DURATION,FRIGHTENED|DURATION,CZAS TRWANIA
+Far Shot,Far Shot    Attack penalty per range increment decreases from -2 to -1,Daleki Strzał
+Favoured|     Enemy|     Terrain,"",Preferowany Wróg Teren
+Favoured|Enemy,"",preferowany Wróg
+DEX,"Feint Partner    When ally feints, enemy loses DEX bonus to AC",ZR
+bonus to,"Feint Partner    When ally feints, enemy loses DEX bonus to AC",premia do
+AC,"Feint Partner    When ally feints, enemy loses DEX bonus to AC",KP
+Festivals,"",Festiwale
+"Fill in the class’s hit die, skill ranks per level, and class skills","","Uzupełnij klasową KW, punkty umiejętności na poziom i umiejętności klasowe"
+Flurry of Blows Attack Bonus,"",Premia do Ataku z Gradu Ciosów
+Fortitude,"",Wytrwałość
+Full|Moon,"",Pełnia
+General,"",Generał
+Gifts,"",Prezenty
+Gnome,"",Gnom
+Any number of extra attacks per round,Great Cleave    Any number of extra attacks per round,Dowolna liczba dodatkowych ataków na rundę
+Greater Flurry,"",Potężniejszy Grad Ciosów
+Greater Penetrating Strike,Greater Penetrating Strike    Ignore damage reduction up to 10/—,Lepsze Przeszywające Uderzenie
+Ignore damage reduction up to,Greater Penetrating Strike    Ignore damage reduction up to 10/—,Zignoruj redukcję obrażeń o 
+Greater Two-weapon Fighting,Greater Two-weapon Fighting    Third attack with your off-hand weapon,Lepsza Walka Dwoma Broniami
+Third attack with your off-hand weapon,Greater Two-weapon Fighting    Third attack with your off-hand weapon,Trzeci atak twoją improwizowaną bronią
+Greater Vital Strike,"",Potężniejsze Witalne Uderzenie
+Greater Weapon Focus,"",Doskonalsze Skupienie na Broni
+Greater Weapon Specialisation,"",Doskonalsza Specjalizacja w Broni
+HEXES,HEXES    Claim and abandon hexes,HEXY
+Claim and abandon hexes,HEXES    Claim and abandon hexes,Zdobywanie i porzucanie hexów
+HIT POINTS & SKILL RANKS,"",PUNKTY WYTRZYMAŁOŚCI I RANGI UMIEJĘTNOŚĆI
+HIT|DICE,"",KOŚĆ WYTRZYMAŁOŚCI
+HIT|POINTS,"",PUNKTY WYTRZYMAŁOŚĆI
+30ft,Half of Ranger’s|Favoured Enemy|bonus granted to|allies within 30ft,9m
+Half-elf,"",Półelf
+Half-orc,"",Półork
+Halfling,"",Niziołek
+One extra attack at full bonus,Haste    One extra attack at full bonus,Jeden dodatkowy atak z pełną premią
+Heal wounds,"",Leczenie ran
+Heir,"",Dziedzic
+Hit|Die,"",Kość Wytrzymałści
+Human,"",CZłowiek
+IN SUMMER,"",LATEM
+IN WINTER,"",ZIMĄ
+USES PER DAY,INSTANT METAMAGIC|USES PER DAY,UŻYĆ NA DZIEŃ
+Illiteracy,"",Niepiśmienność
+Imdomitable Will,"",Niezłomna Wola
+Improved Back to Back,Improved Back to Back    +2 to ally’s AC,Doskonalsze Plecy w Plecy
+AC,Improved Back to Back    +2 to ally’s AC,KP
+Improved Cleaving Finish,Improved Cleaving Finish    Any number per round,Ulepszone Rozłupujące Wykończenie 
+Any number per round,Improved Cleaving Finish    Any number per round,Jakikolwiek numer na runde
+Improved Critical / Keen weapon / Keen magical effect,"",Ulepszone Uderzenia Krytyczne Cięta broń Przenikliwe magiczne efekty
+Improved Devastating Strike,Improved Devastating Strike  +2 per die,Ulepszone Dewastujące Uderzenie
+per die,Improved Devastating Strike  +2 per die,za śmierć
+Improved Precise Shot,Improved Precise Shot    Ignore the penalties for partial cover or partial concealment,Ulepszony Precyzyjny Strzał
+Ignore the penalties for partial cover or partial concealment,Improved Precise Shot    Ignore the penalties for partial cover or partial concealment,Zignoruj kary za częściową osłonę lub częściowe ukrywanie
+Improved Shield Bash,Improved Shield Bash    Use Shield Bash and keep your shield bonus to AC,Ulepszone Grzmotnięcie Tarczą
+Use Shield Bash and keep your shield bonus to,Improved Shield Bash    Use Shield Bash and keep your shield bonus to AC,Użyj Grzmotnięcia Tarczą i zachowaj swój bonus tarczy do
+AC,Improved Shield Bash    Use Shield Bash and keep your shield bonus to AC,KP
+Intelligence,"",Inteligencja
+Intelligence,"Intelligence – If vacant, -4 economy and +1 unrest at upkeep",Inteligencja
+Is this a favoured class?,"",Czu jest to ulubiona klasa?
+KINGDOM SIZE,"",WIELKOŚĆ KRÓLESTWA
+KINGDOM|POPULATION,"",POPULACJA KRÓLESTWA
+Ki Strike (adamantine),"",Uderzenie Ki (Adamantyt)
+Ki Strike (lawful),"",Uderzenie Ki (praworządność)
+Ki Strike (magic),"",Uderzenie Ki (magia)
+Kingdom’s|Income,"",Przychody Królestwa
+Knowledge,"",Wiedza
+LOYALTY,"",LOJALNOŚĆ
