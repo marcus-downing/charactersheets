@@ -280,9 +280,10 @@
             @for(language <- gameData.languages) {
               <tr><td><label for='language-@language.code'><input type='radio' name='language' id='language-@language.code' value='@language.code'
                 @if(language.code=="english") { checked } else {} /> 
+                <img class="flag" src="/images/flags/@{language.short}.png"/>&nbsp;
                 @language.name</label></td>
                 @for(ready <- language.ready; percent = round(ready * 100f).toInt) {
-                  <td class='fill-@percent'>@percent%</td>
+                  <td class='fill-percent fill-@percent'>@percent%</td>
                 }
               </tr>
             }
