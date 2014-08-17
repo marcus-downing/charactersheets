@@ -63,6 +63,7 @@ object GameData {
 
   def parseLanguageInfo(json: JsObject) = LanguageInfo(
     code = (json \ "code").as[String],
+    short = (json \ "short").as[String],
     name = (json \ "name").as[String],
     ready = (json \ "ready").as[List[Float]]
   )
@@ -169,6 +170,7 @@ case class VariantClass (
 
 case class LanguageInfo (
   code: String,
+  short: String,
   name: String,
   ready: List[Float]
 )
