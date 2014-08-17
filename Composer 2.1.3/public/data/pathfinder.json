@@ -194,6 +194,15 @@
         { "file": "Ultimate Combat/Ronin.pdf", "slot": "samurai", "variant": "ronin", "name": "Samurai" },
 
         { "file": "Advanced Class Guide/Arcanist.pdf", "slot": "arcanist", "name": "Arcanist" },
+        { "file": "Advanced Class Guide/Bloodrager.pdf", "slot": "bloodrager", "name": "Bloodrager" },
+        { "file": "Advanced Class Guide/Brawler.pdf", "slot": "brawler", "name": "Brawler" },
+        { "file": "Advanced Class Guide/Hunter.pdf", "slot": "hunter", "name": "Hunter" },
+        { "file": "Advanced Class Guide/Investigator.pdf", "slot": "investigator", "name": "Investigator" },
+        { "file": "Advanced Class Guide/Shaman.pdf", "slot": "shaman", "name": "Shaman" },
+        { "file": "Advanced Class Guide/Skald.pdf", "slot": "skald", "name": "Skald" },
+        { "file": "Advanced Class Guide/Slayer.pdf", "slot": "slayer", "name": "Slayer" },
+        { "file": "Advanced Class Guide/Swashbuckler.pdf", "slot": "swashbuckler", "name": "Swashbuckler" },
+        { "file": "Advanced Class Guide/Warpriest.pdf", "slot": "warpriest", "name": "Warpriest" },
 		
 		
         { "file": "Psionics/Psionics - Character Info.pdf", "slot": "core", "variant": "psionic", "name": "Character Info (Psionic)", "position": 10 },
@@ -234,6 +243,7 @@
         { "file": "NeoExodus/Prestige Classes/Wyrdcaster.pdf", "slot": "wyrdcaster", "name": "Wyrdcaster" },
 
         { "file": "Extra/Character Background.pdf", "slot": "background", "name": "Character Background" },
+        { "file": "Extra/Character Background - Pathfinder Society.pdf", "slot": "background", "variant": "pathfindersociety", "name": "Character Background (Pathfinder Society)" },
         { "file": "Extra/Lycanthrope.pdf", "slot": "lycanthrope", "name": "Lycanthrope" },
         { "file": "Core/Party Funds.pdf", "slot": "partyfunds", "name": "Party Funds" },
         
@@ -298,8 +308,8 @@
     },
 
     "layout": [
-        [ "Core Rulebook" ],
-        [ "Advanced Player's Guide", "Ultimate Magic", "Ultimate Combat", "Mythic Adventures", "Tome of Secrets" ],
+        [ "Core Rulebook", "Advanced Player's Guide" ],
+        [ "Ultimate Magic", "Ultimate Combat", "Advanced Class Guide", "Mythic Adventures", "Tome of Secrets" ],
         [ "Psionics Unleashed", "Psionics Expanded", "NeoExodus", "Generic" ]
     ],
 
@@ -339,7 +349,7 @@
 
         {
             "name": "Advanced Class Guide",
-            "classes": [ "Arcanist" ]
+            "classes": [ "Arcanist", "Bloodrager", "Brawler", "Hunter", "Investigator", "Shaman", "Skald", "Slayer", "Swashbuckler", "Warpriest" ]
         },
 
         {
@@ -646,6 +656,51 @@
         {
             "name": "Arcanist",
             "pages": [ "arcanist", "inventory", "spellbook" ]
+        },
+
+        {
+            "name": "Bloodrager",
+            "pages": [ "core/barbarian", "combat/barbarian", "bloodrager", "inventory", "spellbook" ]
+        },
+
+        {
+            "name": "Brawler",
+            "pages": [ "brawler", "inventory" ]
+        },
+
+        {
+            "name": "Hunter",
+            "pages": [ "hunter", "inventory" ]
+        },
+
+        {
+            "name": "Investigator",
+            "pages": [ "investigator", "inventory" ]
+        },
+
+        {
+            "name": "Shaman",
+            "pages": [ "shaman", "inventory", "spellbook" ]
+        },
+
+        {
+            "name": "Skald",
+            "pages": [ "skald", "inventory" ]
+        },
+
+        {
+            "name": "Slayer",
+            "pages": [ "slayer", "inventory" ]
+        },
+
+        {
+            "name": "Swashbuckler",
+            "pages": [ "swashbuckler", "inventory" ]
+        },
+
+        {
+            "name": "Warpriest",
+            "pages": [ "warpriest", "inventory", "spellbook" ]
         },
 
         {
