@@ -135,9 +135,12 @@
       <fieldset>
         @if(gameData.isDnd35) {
           <div id='simple-section'>
-            <label for="simple"><input type="checkbox" name="simple" id="simple">Simpler version</label>
-            <p>The simplified version does not have a separate sheet for inventory and equipment, instead merging these onto the core sheets. This is only recommended for low-level characters, and is not compatible with the Barbarian, Ranger or Psionic characters.</p>
+            <label for="simple"><input type="checkbox" name="simple" id="simple"> Simpler version</label>
+            <p class="info">The simplified version does not have a separate sheet for inventory and equipment, instead merging these onto the core sheets. This is only recommended for low-level characters, and is not compatible with the Barbarian, Ranger or Psionic characters.</p>
           </div>
+          
+          <label for="more"><input type="checkbox" name="more" id="more"> More classes</label>
+          <p class="info">Includes space for 7 classes rather than 5.</p>
         }
 
         <p><label for="spellbook-size">Spellbook style</label>

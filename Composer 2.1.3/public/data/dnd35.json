@@ -7,6 +7,7 @@
         { "file": "Core/Combat.pdf - simple", "slot": "combat", "variant": "simple", "name": "simplified", "position": 16 },
 
         { "file": "Core/Character Info.pdf", "slot": "core", "name": "Character Info" },
+        { "file": "Core/Character Info - More.pdf", "slot": "core", "variant": "more", "name": "Character Info (more classes)" },
         { "file": "Core/Extended Combat.pdf", "slot": "combat", "name": "Combat" },
 
         { "file": "Core/Inventory.pdf", "slot": "inventory", "name": "Inventory", "position": 53 },

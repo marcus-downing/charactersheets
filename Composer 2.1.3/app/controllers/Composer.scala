@@ -658,6 +658,8 @@ class CharacterInterpretation(gameData: GameData, character: CharacterData) {
       println("Slot names (before): "+slotNames.mkString(", "))
       slotNames = slotNames.filter(_ != "inventory")
       println("Slot names (simplified): "+slotNames.mkString(", "))
+    } else if (character.moreClasses) {
+      pages = PageSlot("core", Some("more")) :: pages
     }
 
     if (slotNames.contains("spellbook")) {

@@ -47,8 +47,20 @@ $(function() {
     }
   });
 
+  $("#simple").change(function () {
+    if ($(this).is(":checked")) {
+      $("#more").prop('checked', false);
+    }
+  });
+
+  $("#more").change(function () {
+    if ($(this).is(":checked")) {
+      $("#simple").prop('checked', false);
+    }
+  });
+
   $("input[name=mini-size]").change(function () {
-    
+
   });
 
   $("a.lightbox").click(function () {
