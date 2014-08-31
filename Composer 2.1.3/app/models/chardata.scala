@@ -56,9 +56,12 @@ object CharacterData {
       partyDownload = positive.contains("party-download"),
       hideInventory = positive.contains("simple"),
       includeCharacterBackground = positive.contains("include-background"),
+      isPathfinderSociety = gameData.isPathfinder && positive.contains("include-pathfinder-society"),
       includeLycanthrope = positive.contains("include-lycanthrope"),
       includePartyFunds = positive.contains("include-party-funds"),
       includeAnimalCompanion = positive.contains("include-animal-companion"),
+      includeMini = positive.contains("include-mini"),
+      miniSize = data.get("mini-size").getOrElse("medium"),
 
       watermark = if (positive.contains("has-watermark")) data.get("watermark").getOrElse("") else "",
 
@@ -117,9 +120,12 @@ case class CharacterData (
   partyDownload: Boolean,
   hideInventory: Boolean,
   includeCharacterBackground: Boolean,
+  isPathfinderSociety: Boolean,
   includeLycanthrope: Boolean,
   includePartyFunds: Boolean,
   includeAnimalCompanion: Boolean,
+  includeMini: Boolean,
+  miniSize: String,
 
   watermark: String,
 

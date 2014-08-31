@@ -81,12 +81,17 @@
         { "file": "Extended/Blank Spellcaster 2.pdf", "slot": "caster", "variant": "vancian", "name": "Vancian Caster" },
         { "file": "Extended/Blank Spellcaster 3.pdf", "slot": "caster", "variant": "lesser", "name": "Lesser Caster" },
 
-        { "file": "Extended/Character Background.pdf", "slot": "background", "name": "Character Background" },
+        { "file": "Extra/Character Background.pdf", "slot": "background", "name": "Character Background" },
+        { "file": "Extra/Lycanthrope.pdf", "slot": "lycanthrope", "name": "Lycanthrope" },
         { "file": "Core/Party Funds.pdf", "slot": "partyfunds", "name": "Party Funds" },
 
         { "file": "Core/Spell Book.pdf", "slot": "spellbook", "name": "Spellbook" },
         { "file": "Core/Spell Book (Large).pdf", "slot": "spellbook", "variant": "large", "name": "Large" },
         { "file": "Core/Spell Book (Dense).pdf", "slot": "spellbook", "variant": "small", "name": "Small" },
+
+        { "file": "Extra/Mini (Small).pdf", "slot": "mini", "variant": "small", "name": "Mini (Small)" },
+        { "file": "Extra/Mini (Medium).pdf", "slot": "mini", "variant": "medium", "name": "Mini (Medium)" },
+        { "file": "Extra/Mini (Large).pdf", "slot": "mini", "variant": "large", "name": "Mini (Large)" },
 
         { "file": "Core/Animal Companion.pdf", "slot": "animalcompanion", "name": "Animal Companion" },
         { "file": "Psionics/Psicrystal.pdf", "slot": "psicrystal", "name": "Psicrystal" }
@@ -129,15 +134,17 @@
     },
 
     "layout": [
-        [ "Player's Handbook", "Player's Handbook II", "Complete Adventurer", "Complete Arcane", "Complete Divine" ],
-        [ "Complete Psionic", "Complete Warrior", "Dragon Compendium", "Dragon Magic", "Dungeonscape", "Eberron Campaign Setting", "Heroes of Horror" ],
-        [ "Magic of Incarnum", "Psionics Handbook", "Tome of Battle", "Tome of Magic", "Generic"]
+        [ "Player's Handbook", "Player's Handbook II", "Complete Adventurer", "Complete Arcane" ],
+        [ "Complete Divine", "Complete Psionic", "Complete Warrior", "Dragon Compendium", "Dragon Magic", "Dungeonscape", "Eberron Campaign Setting" ],
+        [ "Heroes of Horror", "Magic of Incarnum", "Psionics Handbook", "Tome of Battle", "Tome of Magic", "Generic"]
     ],
 
     "languages": [
-        { "code": "english", "name": "English", "ready": [1, 1, 1] },
-        { "code": "italian", "name": "Italiano", "ready": [0.75, 0.5, 0.25] },
-        { "code": "american", "name": "US English", "ready": [1, 1, 1] }
+        { "code": "english",  "short": "gb", "name": "English",     "ready": [1, 1, 1, 1] },
+        { "code": "italian",  "short": "it", "name": "Italiano",    "ready": [0.75, 0.5, 0.25, 0.3] },
+        { "code": "spanish",  "short": "es", "name": "Español",     "ready": [0.9, 0.35, 0.4, 0.4] },
+        { "code": "polish",   "short": "pl", "name": "Polski",      "ready": [0.8, 0.2, 0.25, 0.3] },
+        { "code": "american", "short": "us", "name": "US English",  "ready": [1, 1, 1, 1] }
     ],
 
     "books": [

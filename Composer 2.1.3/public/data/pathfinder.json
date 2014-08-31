@@ -255,9 +255,9 @@
         { "file": "Extra/Spell Book (Large).pdf", "slot": "spellbook", "variant": "large", "name": "Large" },
         { "file": "Extra/Spell Book (Dense).pdf", "slot": "spellbook", "variant": "small", "name": "Small" },
 
-        { "file": "Extra/Minis (Small).pdf", "slot": "minis", "variant": "small", "name": "Minis (Small)" },
-        { "file": "Extra/Minis (Medium).pdf", "slot": "minis", "variant": "medium", "name": "Minis (Medium)" },
-        { "file": "Extra/Minis (Large).pdf", "slot": "minis", "variant": "large", "name": "Minis (Large)" },
+        { "file": "Extra/Mini (Small).pdf", "slot": "mini", "variant": "small", "name": "Mini (Small)" },
+        { "file": "Extra/Mini (Medium).pdf", "slot": "mini", "variant": "medium", "name": "Mini (Medium)" },
+        { "file": "Extra/Mini (Large).pdf", "slot": "mini", "variant": "large", "name": "Mini (Large)" },
 
         { "file": "Core/Animal Companion.pdf", "slot": "animalcompanion", "name": "Animal Companion" }
     ],
@@ -506,7 +506,7 @@
             "pages": [ "combat/monk", "monk", "inventory" ],
             "variants": [
                 { "name": "Monk", "pages": [ ] },
-                { "name": "Drunken Monk", "pages": [ "monk/drunkenmaster" ] },
+                { "name": "Drunken Master", "pages": [ "monk/drunkenmaster" ] },
                 { "name": "Flowing Monk", "pages": [ "monk/flowing" ] },
                 { "name": "Hungry Ghost Monk", "pages": [ "monk/hungryghost" ] },
                 { "name": "Ki Mystic", "pages": [ "monk/kimystic" ] },

@@ -240,7 +240,7 @@ object Composer extends Controller {
 
       //  generic image
       if (!iconic.isDefined && !character.hasCustomIconic)
-        writeIconic(canvas, writer, page.slot, "public/images/iconics/generic.png")
+        writeIconic(canvas, writer, page.slot, "public/images/iconics/generic.png", character)
 
       // variant rules
       if (!character.variantRules.isEmpty) {
@@ -282,9 +282,9 @@ object Composer extends Controller {
 
       //  iconics
       if (character.hasCustomIconic)
-        writeIconic(canvas, writer, page.slot, character.customIconic.get.getAbsolutePath)
+        writeIconic(canvas, writer, page.slot, character.customIconic.get.getAbsolutePath, character)
       else if (iconic.isDefined)
-        writeIconic(canvas, writer, page.slot, iconic.get.largeFile)
+        writeIconic(canvas, writer, page.slot, iconic.get.largeFile, character)
 
       //  watermark
       if (character.watermark != "") {
@@ -337,7 +337,7 @@ object Composer extends Controller {
     canvas.endText
   }
 
-  def writeIconic(canvas: PdfContentByte, writer: PdfWriter, slot: String, imgFilename: String) {
+  def writeIconic(canvas: PdfContentByte, writer: PdfWriter, slot: String, imgFilename: String, character: CharacterData) {
     slot match {
       case "background" | "inventory" =>
         println("Adding iconic image to "+slot)
@@ -360,6 +360,87 @@ object Composer extends Controller {
           case e: Exception => e.printStackTrace
         }
         canvas.endLayer()
+
+      case "mini" =>
+        println("Adding iconic image to "+slot)
+        canvas.setGState(defaultGstate)
+        val imgLayer = new PdfLayer("Iconic image", writer)
+        canvas.beginLayer(imgLayer)
+        try {
+          println("Image: "+imgFilename)
+          val awtImage = java.awt.Toolkit.getDefaultToolkit().createImage(imgFilename)
+          val img = Image.getInstance(awtImage, null)
+
+          // stat tracker
+          img.scaleToFit(140f,150f)
+          img.setRotationDegrees(180)
+          img.setAbsolutePosition(122f - (img.getScaledWidth() / 2), 646f - (img.getScaledHeight() / 2))
+          canvas.addImage(img)
+
+          character.miniSize match {
+            case "small" => 
+              // stand-up figure
+              img.scaleToFit(48f, 62f)
+              img.setAbsolutePosition(335.6f - (img.getScaledWidth() / 2), 726 - (img.getScaledHeight() / 2))
+              canvas.addImage(img)
+
+              img.setRotationDegrees(0)
+              img.setAbsolutePosition(335.6f - (img.getScaledWidth() / 2), 656f - (img.getScaledHeight() / 2))
+              canvas.addImage(img)
+
+              // square token
+              img.scaleToFit(48f, 48f)
+              img.setAbsolutePosition(514.5f - (img.getScaledWidth() / 2), 127f - (img.getScaledHeight() / 2))
+              canvas.addImage(img)
+
+              img.setRotationDegrees(180)
+              img.setAbsolutePosition(514.5f - (img.getScaledWidth() / 2), 181f - (img.getScaledHeight() / 2))
+              canvas.addImage(img)
+
+            case "medium" =>
+              // stand-up figure
+              img.scaleToFit(66f, 89f)
+              img.setAbsolutePosition(335.6f - (img.getScaledWidth() / 2), 714 - (img.getScaledHeight() / 2))
+              canvas.addImage(img)
+
+              img.setRotationDegrees(0)
+              img.setAbsolutePosition(335.6f - (img.getScaledWidth() / 2), 620f - (img.getScaledHeight() / 2))
+              canvas.addImage(img)
+
+              // square token
+              img.scaleToFit(66f, 66f)
+              img.setAbsolutePosition(514.5f - (img.getScaledWidth() / 2), 126f - (img.getScaledHeight() / 2))
+              canvas.addImage(img)
+
+              img.setRotationDegrees(180)
+              img.setAbsolutePosition(514.5f - (img.getScaledWidth() / 2), 198f - (img.getScaledHeight() / 2))
+              canvas.addImage(img)
+
+            case "large" =>
+              // stand-up figure
+              img.scaleToFit(135f, 180f)
+              img.setAbsolutePosition(294f - (img.getScaledWidth() / 2), 632 - (img.getScaledHeight() / 2))
+              canvas.addImage(img)
+
+              img.setRotationDegrees(0)
+              img.setAbsolutePosition(294f - (img.getScaledWidth() / 2), 445f - (img.getScaledHeight() / 2))
+              canvas.addImage(img)
+
+              // square token
+              img.scaleToFit(135f, 135f)
+              img.setAbsolutePosition(475f - (img.getScaledWidth() / 2), 220f - (img.getScaledHeight() / 2))
+              canvas.addImage(img)
+
+              img.setRotationDegrees(180)
+              img.setAbsolutePosition(475f - (img.getScaledWidth() / 2), 364f - (img.getScaledHeight() / 2))
+              canvas.addImage(img)
+            case _ =>
+          }
+        } catch {
+          case e: Exception => e.printStackTrace
+        }
+        canvas.endLayer()
+
       case _ => 
     }
   }
@@ -487,7 +568,7 @@ object Composer extends Controller {
       writeCopyright(canvas, writer, gameData)
 
       //  generic image
-      writeIconic(canvas, writer, page.slot, "public/images/iconics/generic.png")
+      writeIconic(canvas, writer, page.slot, "public/images/iconics/generic.png", character)
 
       writeColourOverlay(canvas, colour)
 
@@ -551,14 +632,20 @@ class CharacterInterpretation(gameData: GameData, character: CharacterData) {
 
     //  additional pages
     var pages = basePages ::: classPages
-    if (character.includeCharacterBackground)
-      pages = pages ::: List(PageSlot("background", None))
+    if (character.includeCharacterBackground) {
+      if (character.isPathfinderSociety)
+        pages = pages ::: List(PageSlot("background", Some("pathfindersociety")))
+      else
+        pages = pages ::: List(PageSlot("background", None))
+    }
     if (character.includeLycanthrope)
       pages = pages ::: List(PageSlot("lycanthrope", None))
     if (character.includePartyFunds)
       pages = pages ::: List(PageSlot("partyfunds", None))
     if (character.includeAnimalCompanion)
       pages = pages ::: List(PageSlot("animalcompanion", None))
+    if (character.includeMini)
+      pages = pages ::: List(PageSlot("mini", Some(character.miniSize)))
 
     println(" -- Base pages: "+basePages.map(_.toString).mkString(", "))
     println(" -- Class pages: "+classPages.map(_.toString).mkString(", "))

@@ -156,11 +156,22 @@
         </div>
 
         <h3>Additional pages</h3>
-          <p><label for="include-background"><input type="checkbox" name="include-background" id="include-background" /> Include character background</label></p>
+          <p><label for="include-background"><input type="checkbox" name="include-background" id="include-background" /> Character background</label></p>
+          @if(gameData.isPathfinder) {
+            <p class='indent'><label for="include-pathfinder-society"><input type="checkbox" name="include-pathfinder-society" id="include-pathfinder-society" /> Pathfinder Society</label></p>
+          }
           <p><label for="include-lycanthrope"><input type="checkbox" name="include-lycanthrope" id="include-lycanthrope" /> Lycanthrope</label></p>
-          <p><label for="include-party-funds"><input type="checkbox" name="include-party-funds" id="include-party-funds" /> Include party funds</label></p>
-          <p><label for="include-animal-companion"><input type="checkbox" name="include-animal-companion" id="include-animal-companion" /> Include animal companion</label></p>
+          <p><label for="include-party-funds"><input type="checkbox" name="include-party-funds" id="include-party-funds" /> Party funds</label></p>
+          <p><label for="include-animal-companion"><input type="checkbox" name="include-animal-companion" id="include-animal-companion" /> Animal companion</label></p>
           <p class='info'>Wizards, Rangers, Witches etc get the animal companion automatically</p>
+
+          <p><label for="include-mini"><input type="checkbox" name="include-mini" id="include-mini" /> Map figure sheet</label></p>
+          <p class='info'>Includes stand-up map figure, square map token and stats card for initiative tracking.</p>
+          <p class='indent'>Size: 
+            <label for="mini-small"><input type="radio" name="mini-size" value="small" id="mini-small"> Small</label>&nbsp; 
+            <label for="mini-medium"><input type="radio" name="mini-size" value="medium" id="mini-medium" checked> Medium</label>&nbsp; 
+            <label for="mini-large"><input type="radio" name="mini-size" value="large" id="mini-large"> Large</label>
+          </p>
 
         @**
         @if(gameData.isPathfinder) {
