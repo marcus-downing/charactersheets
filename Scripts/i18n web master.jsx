@@ -133,12 +133,15 @@ webMaster.volume = "Ultimate Magic"
 webMaster.extractFolder(new Folder(baseFolder+'Pathfinder/Ultimate Magic'));
 webMaster.volume = "Ultimate Combat"
 webMaster.extractFolder(new Folder(baseFolder+'Pathfinder/Ultimate Combat'));
+webMaster.volume = "Advanced Class Guide"
+webMaster.extractFolder(new Folder(baseFolder+'Pathfinder/Advanced Class Guide'));
 
 webMaster.level = 3;
 webMaster.volume = ""
 webMaster.extractFolder(new Folder(baseFolder+'All'));
 webMaster.extractFolder(new Folder(baseFolder+'Extra'));
 webMaster.extractFolder(new Folder(baseFolder+'Pathfinder/Archetypes'));
+webMaster.extractFolder(new Folder(baseFolder+'Pathfinder/Prestige Classes'));
 webMaster.volume = "Mythic Adventures"
 webMaster.extractFolder(new Folder(baseFolder+'Pathfinder/Mythic'));
 
@@ -149,6 +152,8 @@ webMaster.volume = "Tome of Secrets"
 webMaster.extractFolder(new Folder(baseFolder+'Pathfinder/Tome of Secrets'));
 webMaster.volume = "NeoExodus"
 webMaster.extractFolder(new Folder(baseFolder+'Pathfinder/NeoExodus'));
+webMaster.volume = "TPK"
+webMaster.extractFolder(new Folder(baseFolder+'Pathfinder/TPK'));
 
 
 webMaster.game = "3.5";
