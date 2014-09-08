@@ -1,4 +1,4 @@
-"Family","Style","To family","To style","To scale","To tracking"
+"Family","Style","To family","To style","To scale","To tracking","To width"
 "Arial","Regular","Roboto","Condensed","-",25
 "Arial","Bold","Roboto","Bold Condensed","-",25
 "BellGothic Blk BT","Black","Roboto","Bold Condensed","-",25
@@ -14,4 +14,4 @@
 "Chaparral Pro","Regular","Merriweather","Regular",0.87
 "Merriweather Heavy","Heavy","Merriweather","Black"
 "Myriad Pro","Bold","Roboto","Bold Condensed","-",25
-"Dirty Duo","Regular","Amatic","Bold",1.3,50
+"Dirty Duo","Regular","Amatic","Bold",1.1,15,160
