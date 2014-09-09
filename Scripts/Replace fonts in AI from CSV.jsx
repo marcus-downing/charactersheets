@@ -72,6 +72,7 @@
     log('Replacing fonts in file', file);
     try {
       var doc = app.open(file);
+      var affected = false;
 
       // replace the font
       var frames = doc.textFrames;
@@ -89,6 +90,7 @@
                 range.characterAttributes.tracking = substitutions[f]['To tracking'];
               if (substitutions[f]['To width'])
                 range.characterAttributes.horizontalScale = substitutions[f]['To width'];
+              affected = true;
             }
           }
         }
@@ -96,9 +98,13 @@
       redraw();
             
       // Save the file
-      doc.save();
-      doc.close();
-      success++;
+      if (affected) {
+        doc.save();
+        doc.close();
+        success++;
+      } else {
+        doc.close(DONOTSAVECHANGES)
+      }
     } catch (e) {
       log("Error in file", file, { "Error": e.message } );
       failure++;

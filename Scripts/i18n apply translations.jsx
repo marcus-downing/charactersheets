@@ -1,22 +1,23 @@
 #include Tools.jsxinc
+
 #include i18n_tools.jsxinc
 
 
-(function () {
+// (function () {
   i18n.init();
 
   var sourceFolder = Folder.selectDialog( 'Select the folder of Illustrator files in which you want to replace text', baseFolder);
-  if (sourceFolder == null) {
-    return;
-  }
+  // if (sourceFolder === null) {
+  //   return;
+  // }
   var destinationFolder = Folder.selectDialog('Select a destination folder into which to save translated files', baseFolder+'Languages/');
-  if (destinationFolder == null) {
-    return;
-  }
+  // if (destinationFolder === null) {
+  //   return;
+  // }
   var messagesFile = File.openDialog("Translation CSV file", "*.csv");
-  if (messagesFile == null) {
-    return;
-  }
+  // if (messagesFile === null) {
+  //   return;
+  // }
 
   log("i18n: Reading messages file", messagesFile);
   var messages = i18n.loadCSV(messagesFile);
@@ -179,4 +180,4 @@
 
   log("i18n: Translated "+count+" strings from "+files.length+" files");
   alert("Done!");
-})();
+// })();
