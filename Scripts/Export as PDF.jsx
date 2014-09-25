@@ -1,6 +1,6 @@
 #include Tools.jsxinc
 
-
+/*
 // Create the PDFSaveOptions object to set the PDF options
 var pdfSaveOpts = new PDFSaveOptions();
 
@@ -63,6 +63,13 @@ for ( var i = 0; i < files.length; i++ ) {
 }
 
 userInteractionLevel = originalInteractionLevel;
+*/
 
-log("Exported "+files.length+" files", false, {'Success': success, 'Failed': failure});
+
+// var sourceFolder = new Folder( '/Users/Marcus Downing/Documents/GitHub/charactersheets/Pathfinder/Archetypes/Monk' );
+// var destinationFolder = new Folder( '/Users/Marcus Downing/Documents/GitHub/charactersheets/Composer/public/pdf/pathfinder/Archetypes/Monk' );
+var sourceFolder = Folder.selectDialog( 'Select the folder of Illustrator files you want to export as PDFs', baseFolder );
+var destinationFolder = Folder.selectDialog( 'Select the destination folder into which PDFs will be saved', baseFolder+'Composer 2.1.3/public/pdf/' );
+
+exportFolderAsPDF(sourceFolder, destinationFolder);
 alert("Done!");
