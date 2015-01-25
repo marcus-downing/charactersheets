@@ -9,7 +9,7 @@ import (
 )
 
 const (
-	dbname     = "chartrans"
+	dbname     = "chartrans2"
 	dbuser     = "chartrans"
 	dbpassword = "fiddlesticks"
 )

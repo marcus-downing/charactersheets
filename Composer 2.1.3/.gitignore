@@ -13,3 +13,15 @@ dist
 /.project
 /RUNNING_PID
 /.settings
+*.sublime-project
+*.sublime-workspace
+target
+.fuse_*
+*(raster).ai
+*.log
+**/*.log
+Pathfinder/GM/Old/*
+Languages/Numbered
+Isometric A4.ai
+Old
+Illustrator script.log

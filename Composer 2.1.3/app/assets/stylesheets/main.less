@@ -417,13 +417,13 @@ form#build-my-character {
       float: right; margin-bottom: 10px;
       min-width: 300px; max-width: 550px; min-height: 405px;
     }
-    &#logo {
+    &#logo, &#gm-logo {
       width: 400px;
       min-height: 100px;
       img { max-width: 300px; }
     }
 
-    &#iconic, &#logo {
+    &#iconic, &#logo, &#gm-logo {
       img { display: none; &.selected { display: block; margin-left: auto; margin-right: auto; } }
     }
   }
@@ -467,6 +467,15 @@ form#build-my-character {
       text-align: center;
       .header-font(); font-size: 16px; text-transform: uppercase;
       img { display: block; margin-bottom: 10px; }
+    }
+  }
+
+  #gm-start-options {
+    a {
+      cursor: pointer;
+      img {
+        border: 0 none;
+      }
     }
   }
 

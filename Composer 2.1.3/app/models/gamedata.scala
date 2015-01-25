@@ -36,8 +36,10 @@ object GameData {
   )
 
   def parseGM(json: JsObject) = GM(
+    characters = (json \ "characters").as[List[JsObject]].map(parsePage),
     campaign = (json \ "campaign").as[List[JsObject]].map(parsePage),
     maps = parseMaps((json \ "maps").as[JsObject]),
+    kingdom = (json \ "kingdom").as[List[JsObject]].map(parsePage),
     aps = (json \ "aps").asOpt[List[JsObject]].getOrElse(Nil).map(parseAP)
   )
 
@@ -94,6 +96,7 @@ case class GameData (
   classes: List[BaseClass]
 ) {
   def isPathfinder = game == "pathfinder"
+  def isDnd = isDnd35
   def isDnd35 = game == "dnd35"
   def isNeoexodus = game == "neoexodus"
   def isTest = game == "test"
@@ -104,8 +107,10 @@ case class GameData (
 }
 
 case class GM (
+  characters: List[Page],
   campaign: List[Page],
   maps: Maps,
+  kingdom: List[Page],
   aps: List[AP] = Nil
   )
 

@@ -22,13 +22,30 @@ $(function() {
   });
 
   $("#start-gm").click(function () {
-    $("#gm-tab-link, #download-tab-link").show();
-    $("#start-tab-link, #party-tab-link, #class-tab-link, #options-tab-link").hide();
-    $("#gm-tab-link").click();
+    $("#gm-start-tab-link").show();
+    $("#start-tab-link, #party-tab-link, #class-tab-link, #options-tab-link, #download-tab-link").hide();
+    $("#gm-start-tab-link").click();
     $("#add-to-party").hide();
     $("#party-readout").hide();
     $("#start-type").val('gm');
+    $("#download-tab-back-link").attr('href', '#gm-options-tab');
   });
+
+  $("#gm-start-options a").click(function () {
+    $("#gm-options-tab-link, #download-tab-link").show();
+    $("#gm-options-tab-link").click();
+
+    var rel = $(this).attr('rel');
+    var gmType = $(this).data('gm-type');
+    $("#gm-start-type").val(gmType);
+    $(".gm-options-section").hide();
+    $(rel).show();
+    if (gmType == "maps" || gmType == "kingdom") {
+      $("#gm-logo-section").show();
+    } else {
+      $("#gm-logo-section").hide();
+    }
+  })
 
   $("#start-all").click(function () {
     $("#download-tab-link").show();
@@ -197,15 +214,15 @@ $(function() {
   });
 
   // logos
-  $("#select-logo-button").click(function () {
+  $("#select-logo-button, #select-gm-logo-button").click(function () {
     $("#blanket, #logo-select-dialog").fadeIn("fast");
   });
 
   $("#logo-list a").click(function () {
     var logo = $(this).data("id");
     $("#logo-select").val(logo);
-    $("#logo img").removeClass("selected");
-    $("#logo-"+logo).addClass("selected");
+    $("#logo img, #gm-logo img").removeClass("selected");
+    $("#logo-"+logo+", #gm-logo-"+logo).addClass("selected");
     // close
     $("#blanket, #logo-select-dialog").fadeOut("fast");
   })

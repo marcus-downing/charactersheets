@@ -1,9 +1,9 @@
 package model
 
 import (
-	// "crypto/md5"
+	"crypto/md5"
 	"database/sql"
-	// "encoding/hex"
+	"encoding/hex"
 	"fmt"
 	"github.com/ziutek/mymysql/mysql"
 	"strings"
@@ -16,11 +16,26 @@ type Entry struct {
 	PartOf   string
 }
 
+func (entry *Entry) ID() string {
+	if entry == nil {
+		return ""
+	}
+
+	var str = entry.Original
+	if entry.PartOf != "" && entry.PartOf != entry.Original {
+		str = entry.Original + "  ----  " + entry.PartOf
+	}
+	hasher := md5.New()
+	hasher.Write([]byte(str))
+	return hex.EncodeToString(hasher.Sum(nil))
+}
+
 const entryFields = "Original, PartOf"
 
 func parseEntry(rows *sql.Rows) (Result, error) {
 	e := Entry{}
 	err := rows.Scan(&e.Original, &e.PartOf)
+	fmt.Println("Entry ID: " + e.ID() + " (" + string(len(e.ID())) + ")")
 	return e, err
 }
 
@@ -38,6 +53,14 @@ func CountEntries() int {
 	return query("select count(*) from Entries").count()
 }
 
+func GetEntryByID(id string) *Entry {
+	result := query("select "+entryFields+" from Entries where EntryID = ?", id).row(parseEntry)
+	if entry, ok := result.(Entry); ok {
+		return &entry
+	}
+	return nil
+}
+
 func GetEntries() []*Entry {
 	results := query("select " + entryFields + " from Entries").rows(parseEntry)
 	return makeEntries(results)
@@ -49,25 +72,25 @@ func GetEntriesAt(game string, level int, show, search, language string, transla
 	}
 	args := make([]interface{}, 0, 2)
 	sql := "select Original, PartOf from Entries " +
-		"inner join EntrySources on Original = EntrySources.EntryOriginal and PartOf = EntrySources.EntryPartOf " +
+		"inner join EntrySources on Entries.EntryID = EntrySources.EntryID " +
 		"inner join Sources on SourcePath = Filepath"
 	if show == "conflicts" {
-		sql = sql + " inner join Translations Mine on Original = Mine.EntryOriginal and PartOf = Mine.EntryPartOf and Mine.Language = ? and Mine.Translator = ?" +
-			"inner join Translations Others on Original = Others.EntryOriginal and PartOf = Others.EntryPartOf and Others.Language = ? and Others.Translator != ?"
+		sql = sql + " inner join Translations Mine on EntryID = Mine.EntryID and Mine.Language = ? and Mine.Translator = ?" +
+			"inner join Translations Others on EntryID = Others.EntryID and Others.Language = ? and Others.Translator != ?"
 		args = append(args, language)
 		args = append(args, translator.Email)
 		args = append(args, language)
 		args = append(args, translator.Email)
 	} else if show == "mine" {
-		sql = sql + " inner join Translations Mine on Original = Mine.EntryOriginal and PartOf = Mine.EntryPartOf and Mine.Language = ? and Mine.Translator = ?"
+		sql = sql + " inner join Translations Mine on EntryID = Mine.EntryID and Mine.Language = ? and Mine.Translator = ?"
 		args = append(args, language)
 		args = append(args, translator.Email)
 	} else if show == "others" {
-		sql = sql + " inner join Translations Others on Original = Others.EntryOriginal and PartOf = Others.EntryPartOf and Others.Language = ? and Others.Translator = ?"
+		sql = sql + " inner join Translations Others on EntryID = Others.EntryID and Others.Language = ? and Others.Translator = ?"
 		args = append(args, language)
 		args = append(args, translator.Email)
 	} else if show != "" {
-		sql = sql + " left join Translations on Original = Translations.EntryOriginal and PartOf = Translations.EntryPartOf and Translations.Language = ?"
+		sql = sql + " left join Translations on EntryID = Translations.EntryID and Translations.Language = ?"
 		args = append(args, language)
 	}
 	sql = sql + " where 1 = 1"
@@ -110,16 +133,18 @@ func GetEntriesAt(game string, level int, show, search, language string, transla
 
 func (entry *Entry) Save() {
 	keyfields := map[string]interface{}{
+		"EntryID": entry.ID(),
+	}
+	fields := map[string]interface{}{
 		"Original": entry.Original,
 		"PartOf":   entry.PartOf,
 	}
-	fields := map[string]interface{}{}
 	saveRecord("Entries", keyfields, fields)
 }
 
 func (entry *Entry) CountTranslations() map[string]int {
 	counts := make(map[string]int, len(Languages))
-	query("select Language, Count(*) from Translations where EntryOriginal = ? and EntryPartOf = ? group by Language", entry.Original, entry.PartOf).rows(func(rows *sql.Rows) (Result, error) {
+	query("select Language, Count(*) from Translations where EntryID = ? group by Language", entry.ID()).rows(func(rows *sql.Rows) (Result, error) {
 		var language string
 		var count int
 		rows.Scan(&language, &count)
@@ -150,8 +175,10 @@ func parseSource(rows *sql.Rows) (Result, error) {
 	return s, err
 }
 
+const sourceFields = "Filepath, Page, Volume, Level, Game"
+
 func GetSources() []*Source {
-	results := query("select Filepath, Page, Volume, Level, Game from Sources").rows(parseSource)
+	results := query("select " + sourceFields + " from Sources").rows(parseSource)
 
 	sources := make([]*Source, len(results))
 	for i, result := range results {
@@ -166,18 +193,8 @@ func GetSourcesAt(game string, level int, show string) []*Source {
 		return GetSources()
 	}
 	args := make([]interface{}, 0, 2)
-	sql := "select Filepath, Page, Volume, Level, Game from Sources "
+	sql := "select " + sourceFields + " from Sources "
 
-	// "inner join EntrySources on Original = EntrySources.EntryOriginal and PartOf = EntrySources.EntryPartOf "+
-	// if show != "" {
-	// 	"inner join EntrySources on SourcePath = Filepath"
-	// 	if show == "translated" {
-	// 		sql = sql + "inner"
-	// 	} else if show == "untranslated" {
-	// 		sql = sql + "left"
-	// 	}
-	// 	sql = sql + " join Translations on Original = Translations.EntryOriginal and PartOf = Translations.EntryPartOf"
-	// }
 	sql = sql + " where 1 = 1"
 
 	if game != "" {
@@ -188,19 +205,6 @@ func GetSourcesAt(game string, level int, show string) []*Source {
 		sql = sql + " and Level = ?"
 		args = append(args, level)
 	}
-	// if show != "" {
-	// 	sql = sql+" and Translations.Language = ?"
-	// 	args = append(args, language)
-	// }
-
-	// if search != "" {
-	// 	searchTerms := strings.Split(search, " ")
-	// 	for _, term := range searchTerms {
-	// 		term = strings.ToLower(term)
-	// 		sql = sql + " and lower(Original) like ?"
-	// 		args = append(args, "%"+term+"%")
-	// 	}
-	// }
 
 	// sql = sql+" group by Original, PartOf"
 	if show == "translated" || show == "untranslated" {
@@ -209,7 +213,7 @@ func GetSourcesAt(game string, level int, show string) []*Source {
 			sql = sql + " not"
 		}
 		sql = sql + " in (select SourcePath from EntrySources" +
-			" inner join Translations on EntrySources.EntryOriginal = Translations.EntryOriginal and EntrySources.EntryPartOf = Translations.EntryPartOf)"
+			" inner join Translations on EntrySources.EntryID = Translations.EntryID)"
 	}
 
 	fmt.Println("Get entries:", sql)
@@ -240,12 +244,12 @@ func (source *Source) Save() {
 func (source *Source) GetLanguageCompletion() map[string]int {
 	var completion = make(map[string]int, len(Languages))
 
-	total := query("select count(distinct Original, PartOf) from Entries "+
-		"inner join EntrySources on Original = EntryOriginal and PartOf = EntryPartOf "+
+	total := query("select count(distinct EntryID) from Entries "+
+		"inner join EntrySources on Entries.EntryID = EntrySources.EntryID "+
 		"where SourcePath = ?", source.Filepath).count()
 	for _, lang := range Languages {
-		count := query("select count(distinct Translations.EntryOriginal, Translations.EntryPartOf) from Translations "+
-			"inner join EntrySources on Translations.EntryOriginal = EntrySources.EntryOriginal and Translations.EntryPartOf = EntrySources.EntryPartOf "+
+		count := query("select count(distinct Translations.EntryID) from Translations "+
+			"inner join EntrySources on Translations.EntryID = EntrySources.EntryID "+
 			"where SourcePath = ? and Language = ?", source.Filepath, lang).count()
 		completion[lang] = 100 * count / total
 	}
@@ -260,12 +264,20 @@ type EntrySource struct {
 
 func parseEntrySource(rows *sql.Rows) (Result, error) {
 	es := EntrySource{}
-	err := rows.Scan(&es.Entry.Original, &es.Entry.PartOf, &es.Source.Filepath, &es.Source.Page, &es.Source.Volume, &es.Source.Level, &es.Source.Game, &es.Count)
+	var entryID string
+	err := rows.Scan(&entryID, &es.Source.Filepath, &es.Source.Page, &es.Source.Volume, &es.Source.Level, &es.Source.Game, &es.Count)
+	if entry := GetEntryByID(entryID); entry == nil {
+		return nil, nil
+	} else {
+		es.Entry = *entry
+	}
 	return es, err
 }
 
+const entrySourceFields = ""
+
 func GetEntrySources() []*EntrySource {
-	results := query("select EntryOriginal, EntryPartOf, SourcePath, Sources.Page, Sources.Volume, Sources.Level, Sources.Game, Count " +
+	results := query("select EntryID, SourcePath, Sources.Page, Sources.Volume, Sources.Level, Sources.Game, Count " +
 		"from EntrySources inner join Sources on EntrySources.SourcePath = Sources.Filepath").rows(parseEntrySource)
 
 	sources := make([]*EntrySource, len(results))
@@ -278,9 +290,9 @@ func GetEntrySources() []*EntrySource {
 }
 
 func GetSourcesForEntry(entry *Entry) []*EntrySource {
-	results := query("select EntryOriginal, EntryPartOf, SourcePath, Page, Volume, Level, Game, Count "+
+	results := query("select EntryID, SourcePath, Page, Volume, Level, Game, Count "+
 		"from EntrySources inner join Sources on SourcePath = Filepath "+
-		"where EntryOriginal = ? and EntryPartOf = ?", entry.Original, entry.PartOf).rows(parseEntrySource)
+		"where EntryID = ?", entry.ID()).rows(parseEntrySource)
 
 	sources := make([]*EntrySource, len(results))
 	for i, result := range results {
@@ -293,9 +305,8 @@ func GetSourcesForEntry(entry *Entry) []*EntrySource {
 
 func (es *EntrySource) Save() {
 	keyfields := map[string]interface{}{
-		"EntryOriginal": es.Entry.Original,
-		"EntryPartOf":   es.Entry.PartOf,
-		"SourcePath":    es.Source.Filepath,
+		"EntryID":    es.Entry.ID(),
+		"SourcePath": es.Source.Filepath,
 	}
 	fields := map[string]interface{}{
 		"Count": es.Count,
@@ -306,20 +317,38 @@ func (es *EntrySource) Save() {
 // ** Translations
 
 type Translation struct {
-	Entry       Entry
-	Language    string
-	Translation string
-	Translator  string
-	IsPreferred bool
+	Entry        Entry
+	Language     string
+	Translation  string
+	Translator   string
+	IsPreferred  bool
+	IsConflicted bool
+}
+
+func (translation *Translation) ID() string {
+	if translation == nil {
+		return ""
+	}
+
+	var str = translation.Entry.ID() + "  ---  " + translation.Language + "  ---  " + translation.Translator
+	hasher := md5.New()
+	hasher.Write([]byte(str))
+	return hex.EncodeToString(hasher.Sum(nil))
 }
 
 func parseTranslation(rows *sql.Rows) (Result, error) {
 	t := Translation{}
-	err := rows.Scan(&t.Entry.Original, &t.Entry.PartOf, &t.Language, &t.Translation, &t.Translator, &t.IsPreferred)
+	var entryID string
+	err := rows.Scan(&entryID, &t.Language, &t.Translation, &t.Translator, &t.IsPreferred, &t.IsConflicted)
+	if entry := GetEntryByID(entryID); entry == nil {
+		return nil, nil
+	} else {
+		t.Entry = *entry
+	}
 	return t, err
 }
 
-const translationFields = "EntryOriginal, EntryPartOf, Language, Translation, Translator, IsPreferred"
+const translationFields = "EntryID, Language, Translation, Translator, IsPreferred, IsConflicted"
 
 func GetTranslations() []*Translation {
 	results := query("select " + translationFields + " from Translations").rows(parseTranslation)
@@ -330,6 +359,14 @@ func GetTranslations() []*Translation {
 		}
 	}
 	return translations
+}
+
+func GetTranslationByID(id string) *Translation {
+	result := query("select "+translationFields+" from Translations where TranslationID = ?", id).row(parseTranslation)
+	if translation, ok := result.(Translation); ok {
+		return &translation
+	}
+	return nil
 }
 
 func GetTranslationsForLanguage(language string) []*Translation {
@@ -344,7 +381,7 @@ func GetTranslationsForLanguage(language string) []*Translation {
 }
 
 func (entry *Entry) GetTranslations(language string) []*Translation {
-	results := query("select "+translationFields+" from Translations where EntryOriginal = ? and EntryPartOf = ? and Language = ?", entry.Original, entry.PartOf, language).rows(parseTranslation)
+	results := query("select "+translationFields+" from Translations where EntryID = ? and Language = ?", entry.ID(), language).rows(parseTranslation)
 	translations := make([]*Translation, len(results))
 	for i, result := range results {
 		if translation, ok := result.(Translation); ok {
@@ -355,7 +392,7 @@ func (entry *Entry) GetTranslations(language string) []*Translation {
 }
 
 func (entry *Entry) GetTranslationBy(language, translator string) *Translation {
-	result := query("select "+translationFields+" from Translations where EntryOriginal = ? and EntryPartOf = ? and Language = ? and Translator = ?", entry.Original, entry.PartOf, language, translator).row(parseTranslation)
+	result := query("select "+translationFields+" from Translations where EntryID = ? and Language = ? and Translator = ?", entry.ID(), language, translator).row(parseTranslation)
 	if translation, ok := result.(Translation); ok {
 		return &translation
 	}
@@ -363,7 +400,7 @@ func (entry *Entry) GetTranslationBy(language, translator string) *Translation {
 }
 
 func (entry *Entry) GetMatchingTranslation(language, translation string) *Translation {
-	result := query("select "+translationFields+" from Translations where EntryOriginal = ? and EntryPartOf = ? and Language = ? and Translation = ?", entry.Original, entry.PartOf, language, translation).row(parseTranslation)
+	result := query("select "+translationFields+" from Translations where EntryID = ? and Language = ? and Translation = ?", entry.ID(), language, translation).row(parseTranslation)
 	if translation, ok := result.(Translation); ok {
 		return &translation
 	}
@@ -372,12 +409,11 @@ func (entry *Entry) GetMatchingTranslation(language, translation string) *Transl
 
 func (translation *Translation) Save() {
 	keyfields := map[string]interface{}{
-		"EntryOriginal": translation.Entry.Original,
-		"EntryPartOf":   translation.Entry.PartOf,
-		"Language":      translation.Language,
-		"Translator":    translation.Translator,
+		"TranslationID": translation.ID(),
 	}
 	fields := map[string]interface{}{
+		"Language":    translation.Language,
+		"Translator":  translation.Translator,
 		"Translation": translation.Translation,
 		"IsPreferred": translation.IsPreferred,
 	}
@@ -393,20 +429,22 @@ type Vote struct {
 	Vote        bool
 }
 
-const voteFields = "EntryOriginal, EntryPartOf, Language, Translator, Voter, Vote"
+const voteFields = "TranslationID, Voter, Vote"
 
 func parseVote(rows *sql.Rows) (Result, error) {
 	v := Vote{}
-	e := Entry{}
-	var translator string
-	var voter string
-	var language string
-	err := rows.Scan(&e.Original, &e.PartOf, &language, &translator, &voter, &v.Vote)
+	var translationID, voter string
+	err := rows.Scan(&translationID, &voter, &v.Vote)
 	if err != nil {
 		return nil, err
 	}
 
-	v.Translation = *e.GetTranslationBy(language, translator)
+	if translation := GetTranslationByID(translationID); translation == nil {
+		return nil, nil
+	} else {
+		v.Translation = *translation
+	}
+
 	v.Voter = GetUserByEmail(voter)
 	return v, err
 }
@@ -422,7 +460,7 @@ func (translation *Translation) GetVote(voter *User) *Vote {
 }
 
 func (entry *Entry) GetTranslationVotes(language string) []*Vote {
-	results := query("select " + voteFields + " from Votes where EntryOriginal = ? and EntryPartOf = ? and Language = ?").rows(parseVote)
+	results := query("select "+voteFields+" from Votes where EntryID = ? and Language = ?", entry.ID(), language).rows(parseVote)
 	votes := make([]*Vote, len(results))
 	for i, result := range results {
 		if vote, ok := result.(Vote); ok {
@@ -434,11 +472,10 @@ func (entry *Entry) GetTranslationVotes(language string) []*Vote {
 
 func (vote *Vote) Save() {
 	keyfields := map[string]interface{}{
-		"EntryOriginal": vote.Translation.Entry.Original,
-		"EntryPartOf":   vote.Translation.Entry.PartOf,
-		"Language":      vote.Translation.Language,
-		"Translator":    vote.Translation.Translator,
-		"Voter":         vote.Voter.Email,
+		"EntryID":    vote.Translation.Entry.ID(),
+		"Language":   vote.Translation.Language,
+		"Translator": vote.Translation.Translator,
+		"Voter":      vote.Voter.Email,
 	}
 	fields := map[string]interface{}{
 		"Vote": vote.Vote,
@@ -448,31 +485,28 @@ func (vote *Vote) Save() {
 
 func DeleteVote(vote *Vote) {
 	keyfields := map[string]interface{}{
-		"EntryOriginal": vote.Translation.Entry.Original,
-		"EntryPartOf":   vote.Translation.Entry.PartOf,
-		"Language":      vote.Translation.Language,
-		"Translator":    vote.Translation.Translator,
-		"Voter":         vote.Voter.Email,
+		"EntryID":    vote.Translation.Entry.ID(),
+		"Language":   vote.Translation.Language,
+		"Translator": vote.Translation.Translator,
+		"Voter":      vote.Voter.Email,
 	}
 	deleteRecord("Votes", keyfields)
 }
 
 func ClearVotes(translation *Translation) {
 	keyfields := map[string]interface{}{
-		"EntryOriginal": translation.Entry.Original,
-		"EntryPartOf":   translation.Entry.PartOf,
-		"Language":      translation.Language,
-		"Translator":    translation.Translator,
+		"EntryID":    translation.Entry.ID(),
+		"Language":   translation.Language,
+		"Translator": translation.Translator,
 	}
 	deleteRecord("Votes", keyfields)
 }
 
 func ClearOtherVotes(translation *Translation) {
 	keyfields := map[string]interface{}{
-		"EntryOriginal": translation.Entry.Original,
-		"EntryPartOf":   translation.Entry.PartOf,
-		"Language":      translation.Language,
-		"Vote":          true,
+		"EntryID":  translation.Entry.ID(),
+		"Language": translation.Language,
+		"Vote":     true,
 	}
 	deleteRecord("Votes", keyfields)
 }
@@ -480,8 +514,7 @@ func ClearOtherVotes(translation *Translation) {
 /*
 func AddTranslation(entry *Entry, language, translation string, translator *User) {
 	keyfields := map[string]interface{}{
-		"EntryOriginal": entry.Original,
-		"EntryPartOf":   entry.PartOf,
+		"EntryID":   entry.ID(),
 		"Language":      language,
 		"Translator":    translator.Email,
 	}
@@ -509,8 +542,10 @@ func parseUser(rows *sql.Rows) (Result, error) {
 	return u, err
 }
 
+const userFields = "Email, Password, Secret, Name, IsAdmin, Language, IsLanguageLead"
+
 func GetUsers() []*User {
-	results := query("select Email, Password, Secret, Name, IsAdmin, Language, IsLanguageLead from Users order by IsAdmin desc, Language asc, Name asc").rows(parseUser)
+	results := query("select " + userFields + " from Users order by IsAdmin desc, Language asc, Name asc").rows(parseUser)
 	users := make([]*User, len(results))
 	for i, result := range results {
 		if user, ok := result.(User); ok {
@@ -521,7 +556,7 @@ func GetUsers() []*User {
 }
 
 func GetUserByEmail(email string) *User {
-	result := query("select Email, Password, Secret, Name, IsAdmin, Language, IsLanguageLead from Users where Email = ?", email).row(parseUser)
+	result := query("select "+userFields+" from Users where Email = ?", email).row(parseUser)
 	if user, ok := result.(User); ok {
 		return &user
 	}
@@ -529,7 +564,7 @@ func GetUserByEmail(email string) *User {
 }
 
 func GetUsersByLanguage(language string) []*User {
-	results := query("select Email, Password, Secret, Name, IsAdmin, Language, IsLanguageLead from Users where Language = ? order by IsLanguageLead desc, Name asc", language).rows(parseUser)
+	results := query("select "+userFields+" from Users where Language = ? order by IsLanguageLead desc, Name asc", language).rows(parseUser)
 	users := make([]*User, len(results))
 	for i, result := range results {
 		if user, ok := result.(User); ok {
@@ -540,7 +575,7 @@ func GetUsersByLanguage(language string) []*User {
 }
 
 func GetLanguageLead(language string) *User {
-	result := query("select Email, Password, Secret, Name, IsAdmin, Language, IsLanguageLead from Users where Language = ? and IsLanguageLead = 1", language).row(parseUser)
+	result := query("select Email, "+userFields+" from Users where Language = ? and IsLanguageLead = 1", language).row(parseUser)
 	if result != nil {
 		if user, ok := result.(User); ok {
 			return &user

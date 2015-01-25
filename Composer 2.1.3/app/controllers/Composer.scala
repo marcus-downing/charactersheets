@@ -66,11 +66,28 @@ object Composer extends Controller {
         )
 
       case Some("gm") =>
-        val gmdata = CharacterData.parseGM(data, gameData)
-        val pdf = composeGM(gmdata, gameData, sourceFolders)
-        Ok(pdf).as("application/pdf").withHeaders(
-          "Content-disposition" -> ("attachment; filename=\""+(if(gameData.isDnd35) "Dungeon Master" else "Game Master")+".pdf\"")
-        )
+        val gm = if(gameData.isDnd35) "Dungeon Master" else "Game Master"
+        val gmPages = data.get("gm-start-type").getOrElse("")
+        val name = gmPages match {
+          case "characters" => "Characters and NPCs"
+          case "campaign" => "Campaign Planning"
+          case "maps" => "Maps"
+          case "kingdom" => "Kingdom Building"
+          case _ => ""
+        }
+
+        if (name == "") {
+          println("Unknown GM pages: "+gmPages)
+          NotFound
+        } else {
+          println("Showing "+gm+" - "+name)
+
+          val gmdata = CharacterData.parseGM(data, gameData)
+          val pdf = composeGM(gmdata, gameData, gmPages, sourceFolders)
+          Ok(pdf).as("application/pdf").withHeaders(
+            "Content-disposition" -> ("attachment; filename=\""+gm+" - "+name+".pdf\"")
+          )
+        }
 
       case Some("all") =>
         val character = CharacterData.parse(data, gameData, iconic)
@@ -83,7 +100,7 @@ object Composer extends Controller {
     }
   }
 
-  def composeGM(gmdata: GMData, gameData: GameData, folders: List[File]): Array[Byte] = {
+  def composeGM(gmdata: GMData, gameData: GameData, gmPages: String, folders: List[File]): Array[Byte] = {
     val out = new ByteArrayOutputStream()
     val document = new Document
     val writer = PdfWriter.getInstance(document, out)
@@ -92,6 +109,7 @@ object Composer extends Controller {
 
     def placeGMPages(pages: List[Page]) {
       for (page <- pages; pageFile <- locatePage(folders, page)) {
+        println("Adding page: "+page.name)
         //val pageFile = new File(folder.getPath+"/"+page.file)
         val fis = new FileInputStream(pageFile)
         val reader = new PdfReader(fis)
@@ -109,7 +127,7 @@ object Composer extends Controller {
         val baseLayer = new PdfLayer("Character Sheet", writer);
         canvas.beginLayer(baseLayer)
         canvas.setColorFill(BaseColor.WHITE)
-        canvas.rectangle(0f, 0f, 1000f, 1000f)
+        canvas.rectangle(0f, 0f, 2000f, 2000f)
         canvas.fill
 
         canvas.setGState(defaultGstate)
@@ -120,24 +138,30 @@ object Composer extends Controller {
         writeColourOverlay(canvas, gmdata.colour)
         canvas.endLayer()
 
-        if (gmdata.aps.contains("kingmaker")) {
-          if (page.slot == "kingdom" || page.slot == "hex-a4") {
-            canvas.setGState(defaultGstate)
-            val imgLayer = new PdfLayer("Logo image", writer)
-            canvas.beginLayer(imgLayer)
-            val imgFile = "public/images/logos/kingmaker.png"
-            try {
-              println("Adding logo: "+imgFile)
-              val awtImage = java.awt.Toolkit.getDefaultToolkit().createImage(imgFile)
-              val img = Image.getInstance(awtImage, null)
+        if (page.slot == "kingdom" || page.slot == "hex-a4" || page.slot == "hex-a3" || page.slot == "hex-a4-landscape" || page.slot == "iso-a4" || page.slot == "grid-a4") {
+          canvas.setGState(defaultGstate)
+          val imgLayer = new PdfLayer("Logo image", writer)
+          canvas.beginLayer(imgLayer)
+          val imgFile = logoImage(gameData, gmdata.logo)
+          try {
+            println("Adding logo: "+imgFile)
+            val awtImage = java.awt.Toolkit.getDefaultToolkit().createImage(imgFile)
+            val img = Image.getInstance(awtImage, null)
+            if (page.slot == "hex-a4-landscape") {
+              img.scaleToFit(120f, 35f)
+              img.setAbsolutePosition(80f - (img.getScaledWidth() / 2), 570f - (img.getScaledHeight() / 2))
+            } else if (page.slot == "iso-a4" || page.slot == "grid-a4") {
+              img.scaleToFit(120f, 35f)
+              img.setAbsolutePosition(90f - (img.getScaledWidth() / 2), 810f - (img.getScaledHeight() / 2))
+            } else {
               img.scaleToFit(170f,50f)
               img.setAbsolutePosition(127f - (img.getScaledWidth() / 2), 800f - (img.getScaledHeight() / 2))
-              canvas.addImage(img)
-            } catch {
-              case e: Exception => e.printStackTrace
             }
-            canvas.endLayer()
+            canvas.addImage(img)
+          } catch {
+            case e: Exception => e.printStackTrace
           }
+          canvas.endLayer()
         }
 
         //  done
@@ -145,17 +169,33 @@ object Composer extends Controller {
       }
     }
 
-    if (gmdata.maps) {
-      val maps = if (gmdata.maps3d) gameData.gm.maps.maps3d else gameData.gm.maps.maps2d
-      placeGMPages(maps)
+    val pages: List[Page] = gmPages match {
+      case "characters" => gameData.gm.characters
+      case "campaign" => gameData.gm.campaign
+      case "maps" => 
+        if (gmdata.maps3d) gameData.gm.maps.maps3d else gameData.gm.maps.maps2d
+      case "kingdom" => 
+        val kingdom = gameData.gm.kingdom.filter(_.slot == "kingdom")
+        println("Looking for settlement: "+gmdata.settlementStyle+"; "+gameData.gm.kingdom.map(p => p.slot+"/"+p.variant).mkString(", "))
+        val settlement = gameData.gm.kingdom.filter(p => p.slot == "settlement" && p.variant == Some(gmdata.settlementStyle))
+        kingdom ::: settlement ::: Nil
+      case _ => 
+        println("Unknown GM pages: "+gmPages)
+        Nil
     }
-    if (gmdata.gmCampaign)
-      placeGMPages(gameData.gm.campaign)
-    println("APs: "+gmdata.aps.mkString(", "))
-    for (ap <- gameData.gm.aps) {
-      if (gmdata.aps.contains(ap.code))
-        placeGMPages(ap.pages)
-    }
+    placeGMPages(pages)
+
+    // if (gmdata.maps) {
+    //   val maps = if (gmdata.maps3d) gameData.gm.maps.maps3d else gameData.gm.maps.maps2d
+    //   placeGMPages(maps)
+    // }
+    // if (gmdata.gmCampaign)
+    //   placeGMPages(gameData.gm.campaign)
+    // println("APs: "+gmdata.aps.mkString(", "))
+    // for (ap <- gameData.gm.aps) {
+    //   if (gmdata.aps.contains(ap.code))
+    //     placeGMPages(ap.pages)
+    // }
     
     document.close
     out.toByteArray
@@ -338,110 +378,113 @@ object Composer extends Controller {
   }
 
   def writeIconic(canvas: PdfContentByte, writer: PdfWriter, slot: String, imgFilename: String, character: CharacterData) {
-    slot match {
-      case "background" | "inventory" =>
-        println("Adding iconic image to "+slot)
-        canvas.setGState(defaultGstate)
-        val imgLayer = new PdfLayer("Iconic image", writer)
-        canvas.beginLayer(imgLayer)
-        try {
-          println("Image: "+imgFilename)
-          val awtImage = java.awt.Toolkit.getDefaultToolkit().createImage(imgFilename)
-          val img = Image.getInstance(awtImage, null)
-          img.scaleToFit(190f,220f)
-          slot match {
-            case "inventory" => img.setAbsolutePosition(315f - (img.getScaledWidth() / 2), 410f)
-            case "background" => img.setAbsolutePosition(127f - (img.getScaledWidth() / 2), 425f)
-            case _ =>
+    if (imgFilename != "") {
+      println("Iconic image file: "+imgFilename)
+      slot match {
+        case "background" | "inventory" =>
+          println("Adding iconic image to "+slot)
+          canvas.setGState(defaultGstate)
+          val imgLayer = new PdfLayer("Iconic image", writer)
+          canvas.beginLayer(imgLayer)
+          try {
+            println("Image: "+imgFilename)
+            val awtImage = java.awt.Toolkit.getDefaultToolkit().createImage(imgFilename)
+            val img = Image.getInstance(awtImage, null)
+            img.scaleToFit(190f,220f)
+            slot match {
+              case "inventory" => img.setAbsolutePosition(315f - (img.getScaledWidth() / 2), 410f)
+              case "background" => img.setAbsolutePosition(127f - (img.getScaledWidth() / 2), 425f)
+              case _ =>
+            }
+            // img.setAbsolutePosition(315f - (img.getScaledWidth() / 2), 410f)
+            canvas.addImage(img)
+          } catch {
+            case e: Exception => e.printStackTrace
           }
-          // img.setAbsolutePosition(315f - (img.getScaledWidth() / 2), 410f)
-          canvas.addImage(img)
-        } catch {
-          case e: Exception => e.printStackTrace
-        }
-        canvas.endLayer()
+          canvas.endLayer()
 
-      case "mini" =>
-        println("Adding iconic image to "+slot)
-        canvas.setGState(defaultGstate)
-        val imgLayer = new PdfLayer("Iconic image", writer)
-        canvas.beginLayer(imgLayer)
-        try {
-          println("Image: "+imgFilename)
-          val awtImage = java.awt.Toolkit.getDefaultToolkit().createImage(imgFilename)
-          val img = Image.getInstance(awtImage, null)
+        case "mini" =>
+          println("Adding iconic image to "+slot)
+          canvas.setGState(defaultGstate)
+          val imgLayer = new PdfLayer("Iconic image", writer)
+          canvas.beginLayer(imgLayer)
+          try {
+            println("Image: "+imgFilename)
+            val awtImage = java.awt.Toolkit.getDefaultToolkit().createImage(imgFilename)
+            val img = Image.getInstance(awtImage, null)
 
-          // stat tracker
-          img.scaleToFit(140f,150f)
-          img.setRotationDegrees(180)
-          img.setAbsolutePosition(122f - (img.getScaledWidth() / 2), 646f - (img.getScaledHeight() / 2))
-          canvas.addImage(img)
+            // stat tracker
+            img.scaleToFit(140f,150f)
+            img.setRotationDegrees(180)
+            img.setAbsolutePosition(122f - (img.getScaledWidth() / 2), 646f - (img.getScaledHeight() / 2))
+            canvas.addImage(img)
 
-          character.miniSize match {
-            case "small" => 
-              // stand-up figure
-              img.scaleToFit(48f, 62f)
-              img.setAbsolutePosition(335.6f - (img.getScaledWidth() / 2), 726 - (img.getScaledHeight() / 2))
-              canvas.addImage(img)
+            character.miniSize match {
+              case "small" => 
+                // stand-up figure
+                img.scaleToFit(48f, 62f)
+                img.setAbsolutePosition(335.6f - (img.getScaledWidth() / 2), 726 - (img.getScaledHeight() / 2))
+                canvas.addImage(img)
 
-              img.setRotationDegrees(0)
-              img.setAbsolutePosition(335.6f - (img.getScaledWidth() / 2), 656f - (img.getScaledHeight() / 2))
-              canvas.addImage(img)
+                img.setRotationDegrees(0)
+                img.setAbsolutePosition(335.6f - (img.getScaledWidth() / 2), 656f - (img.getScaledHeight() / 2))
+                canvas.addImage(img)
 
-              // square token
-              img.scaleToFit(48f, 48f)
-              img.setAbsolutePosition(514.5f - (img.getScaledWidth() / 2), 127f - (img.getScaledHeight() / 2))
-              canvas.addImage(img)
+                // square token
+                img.scaleToFit(48f, 48f)
+                img.setAbsolutePosition(514.5f - (img.getScaledWidth() / 2), 127f - (img.getScaledHeight() / 2))
+                canvas.addImage(img)
 
-              img.setRotationDegrees(180)
-              img.setAbsolutePosition(514.5f - (img.getScaledWidth() / 2), 181f - (img.getScaledHeight() / 2))
-              canvas.addImage(img)
+                img.setRotationDegrees(180)
+                img.setAbsolutePosition(514.5f - (img.getScaledWidth() / 2), 181f - (img.getScaledHeight() / 2))
+                canvas.addImage(img)
 
-            case "medium" =>
-              // stand-up figure
-              img.scaleToFit(66f, 89f)
-              img.setAbsolutePosition(335.6f - (img.getScaledWidth() / 2), 714 - (img.getScaledHeight() / 2))
-              canvas.addImage(img)
+              case "medium" =>
+                // stand-up figure
+                img.scaleToFit(66f, 89f)
+                img.setAbsolutePosition(335.6f - (img.getScaledWidth() / 2), 714 - (img.getScaledHeight() / 2))
+                canvas.addImage(img)
 
-              img.setRotationDegrees(0)
-              img.setAbsolutePosition(335.6f - (img.getScaledWidth() / 2), 620f - (img.getScaledHeight() / 2))
-              canvas.addImage(img)
+                img.setRotationDegrees(0)
+                img.setAbsolutePosition(335.6f - (img.getScaledWidth() / 2), 620f - (img.getScaledHeight() / 2))
+                canvas.addImage(img)
 
-              // square token
-              img.scaleToFit(66f, 66f)
-              img.setAbsolutePosition(514.5f - (img.getScaledWidth() / 2), 126f - (img.getScaledHeight() / 2))
-              canvas.addImage(img)
+                // square token
+                img.scaleToFit(66f, 66f)
+                img.setAbsolutePosition(514.5f - (img.getScaledWidth() / 2), 126f - (img.getScaledHeight() / 2))
+                canvas.addImage(img)
 
-              img.setRotationDegrees(180)
-              img.setAbsolutePosition(514.5f - (img.getScaledWidth() / 2), 198f - (img.getScaledHeight() / 2))
-              canvas.addImage(img)
+                img.setRotationDegrees(180)
+                img.setAbsolutePosition(514.5f - (img.getScaledWidth() / 2), 198f - (img.getScaledHeight() / 2))
+                canvas.addImage(img)
 
-            case "large" =>
-              // stand-up figure
-              img.scaleToFit(135f, 180f)
-              img.setAbsolutePosition(294f - (img.getScaledWidth() / 2), 632 - (img.getScaledHeight() / 2))
-              canvas.addImage(img)
+              case "large" =>
+                // stand-up figure
+                img.scaleToFit(135f, 180f)
+                img.setAbsolutePosition(294f - (img.getScaledWidth() / 2), 632 - (img.getScaledHeight() / 2))
+                canvas.addImage(img)
 
-              img.setRotationDegrees(0)
-              img.setAbsolutePosition(294f - (img.getScaledWidth() / 2), 445f - (img.getScaledHeight() / 2))
-              canvas.addImage(img)
+                img.setRotationDegrees(0)
+                img.setAbsolutePosition(294f - (img.getScaledWidth() / 2), 445f - (img.getScaledHeight() / 2))
+                canvas.addImage(img)
 
-              // square token
-              img.scaleToFit(135f, 135f)
-              img.setAbsolutePosition(475f - (img.getScaledWidth() / 2), 220f - (img.getScaledHeight() / 2))
-              canvas.addImage(img)
+                // square token
+                img.scaleToFit(135f, 135f)
+                img.setAbsolutePosition(475f - (img.getScaledWidth() / 2), 220f - (img.getScaledHeight() / 2))
+                canvas.addImage(img)
 
-              img.setRotationDegrees(180)
-              img.setAbsolutePosition(475f - (img.getScaledWidth() / 2), 364f - (img.getScaledHeight() / 2))
-              canvas.addImage(img)
-            case _ =>
+                img.setRotationDegrees(180)
+                img.setAbsolutePosition(475f - (img.getScaledWidth() / 2), 364f - (img.getScaledHeight() / 2))
+                canvas.addImage(img)
+              case _ =>
+            }
+          } catch {
+            case e: Exception => e.printStackTrace
           }
-        } catch {
-          case e: Exception => e.printStackTrace
-        }
-        canvas.endLayer()
+          canvas.endLayer()
 
-      case _ => 
+        case _ => 
+      }
     }
   }
 
@@ -524,6 +567,17 @@ object Composer extends Controller {
             "neoexodus.png"
           else
             "pathfinder.png"
+        case "dnd35" => "dnd35.png"
+        case _ => ""
+      }
+    )
+    "public/images/logos/"+fileName
+  }
+
+  def logoImage(gameData: GameData, logo: Option[Logo]): String = {
+    val fileName: String = logo.flatMap(_.fileName).getOrElse(
+      gameData.game match {
+        case "pathfinder" => "pathfinder.png"
         case "dnd35" => "dnd35.png"
         case _ => ""
       }

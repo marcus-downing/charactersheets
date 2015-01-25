@@ -121,14 +121,18 @@ func SetCurrentUser(user *model.User, r *http.Request) {
 func GetCurrentUser(r *http.Request) *model.User {
 	session := seshcookie.Session.Get(r)
 	if session == nil {
+		fmt.Println("Get current user: no session")
 		return nil
 	}
 	if id, ok := session["user"].(string); ok {
 		if id == "" {
+			fmt.Println("Get current user: nil session id")
 			return nil
 		}
+		fmt.Println("Get current user:", id)
 		return model.GetUserByEmail(id)
 	}
+	fmt.Println("Get current user: no session id")
 	return nil
 }
 

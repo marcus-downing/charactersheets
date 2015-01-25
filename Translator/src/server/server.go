@@ -115,6 +115,11 @@ func (h *AuthHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		user := model.GetUserByEmail(email)
 		password := r.Form.Get("password")
 
+		if user == nil {
+			fmt.Println("Unknown user, redirecting")
+			http.Redirect(w, r, "/login", 303)
+			return
+		}
 		if err := bcrypt.CompareHashAndPassword([]byte(user.Password), []byte(password)); err != nil {
 			fmt.Println("Password incorrect, redirecting", err)
 			http.Redirect(w, r, "/login", 303)

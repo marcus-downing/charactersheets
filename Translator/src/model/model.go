@@ -23,7 +23,7 @@ var LanguageNames map[string]string = map[string]string{
 	"gb": "English",
 	"it": "Italiano",
 	"fr": "Français",
-	"de": "Deutch",
+	"de": "Deutsch",
 	"es": "Español",
 	"pl": "Polski",
 	"pt": "Português",
@@ -53,7 +53,7 @@ func GetLanguageCompletion() map[string][4]int {
 	var totals [4]int
 	for i := 1; i <= 4; i++ {
 		totals[i-1] = query("select count(distinct Original, PartOf) from Entries "+
-			"inner join EntrySources on Original = EntryOriginal and PartOf = EntryPartOf "+
+			"inner join EntrySources on Entries.EntryID = EntrySources.EntryID "+
 			"inner join Sources on SourcePath = Filepath "+
 			"where Level = ?", i).count()
 	}
@@ -64,8 +64,8 @@ func GetLanguageCompletion() map[string][4]int {
 		} else {
 			var values [4]int
 			for i := 1; i <= 4; i++ {
-				count := query("select count(distinct Translations.EntryOriginal, Translations.EntryPartOf) from Translations "+
-					"inner join EntrySources on Translations.EntryOriginal = EntrySources.EntryOriginal and Translations.EntryPartOf = EntrySources.EntryPartOf "+
+				count := query("select count(distinct Translations.EntryID) from Translations "+
+					"inner join EntrySources on Translations.EntryID = EntrySources.EntryID "+
 					"inner join Sources on SourcePath = Filepath "+
 					"where Level = ? and Language = ?", i, lang).count()
 				if totals[i-1] > 0 {
@@ -172,18 +172,18 @@ func ProfileTranslations(user *User) map[string]*TranslationProfile {
 		if lang == "gb" {
 			continue
 		}
-		byme := query("select count(*) from (select count(*) from Translations where Language = ? and Translator = ? group by EntryOriginal, EntryPartOf) as sq", lang, user.Email).count()
+		byme := query("select count(*) from (select count(*) from Translations where Language = ? and Translator = ? group by EntryID) as sq", lang, user.Email).count()
 		if byme > 0 || user.IsAdmin {
-			byothers := query("select count(*) from (select count(*) from Translations where Language = ? and Translator != ? group by EntryOriginal, EntryPartOf) as sq", lang, user.Email).count()
+			byothers := query("select count(*) from (select count(*) from Translations where Language = ? and Translator != ? group by EntryID) as sq", lang, user.Email).count()
 			byboth := query("select count(*) from Translations A "+
-				"inner join Translations B on A.EntryOriginal = B.EntryOriginal and A.EntryPartOf = B.EntryPartOf and A.Language = B.Language "+
+				"inner join Translations B on A.EntryID = B.EntryID and A.Language = B.Language "+
 				"where A.Language = ? and A.Translator = ? and B.Translator != ? "+
-				"group by A.EntryOriginal, A.EntryPartOf"+
+				"group by A.EntryID"+
 				"", lang, user.Email, user.Email).count()
 			conflict := query("select count(*) from Translations A "+
-				"inner join Translations B on A.EntryOriginal = B.EntryOriginal and A.EntryPartOf = B.EntryPartOf and A.Language = B.Language "+
+				"inner join Translations B on A.EntryID = B.EntryID and A.Language = B.Language "+
 				"where A.Language = ? and A.Translator = ? and B.Translator != ? and A.Translation != B.Translation "+
-				"group by A.EntryOriginal, A.EntryPartOf"+
+				"group by A.EntryID"+
 				"", lang, user.Email, user.Email).count()
 
 			fmt.Println(LanguageNames[lang], "-- by me = ", byme, "; by others =", byothers, "; by both =", byboth)

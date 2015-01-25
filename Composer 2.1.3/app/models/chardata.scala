@@ -91,9 +91,12 @@ object CharacterData {
     GMData(
       colour = data.get("colour").getOrElse("normal"),
       watermark = if (positive.contains("has-watermark")) data.get("watermark").getOrElse("") else "",
+      logo = Logo.get(data.get("logo").getOrElse(gameData.game)),
+
       gmCampaign = positive.contains("gm-campaign"),
       maps = positive.contains("maps"),
       maps3d = data.get("maps-view").getOrElse("3d") == "3d",
+      settlementStyle = data.get("settlement-style").getOrElse("normal"),
       aps = aps
       )
   }
@@ -102,9 +105,12 @@ object CharacterData {
 case class GMData (
   colour: String,
   watermark: String,
+  logo: Option[Logo],
+
   gmCampaign: Boolean,
   maps: Boolean,
   maps3d: Boolean,
+  settlementStyle: String,
   aps: List[String]
   )
 
@@ -155,9 +161,9 @@ case class IconicImage(set: IconicSet, fileName: String, niceName: String) {
   val path = set.filePath+"/"+fileName
   val id = set.id+"-"+slug(fileName)
   val sortableName = id
-  val largeFile = "public/images/iconics/large/"+set.filePath+"/"+fileName+".png"
-  val smallFile = "public/images/iconics/large/"+set.filePath+"/"+fileName+".png"
-  val url = ("/images/iconics/small/"+set.filePath+"/"+fileName+".png").replaceAll(" ", "+")
+  val largeFile = if (fileName == "") "" else "public/images/iconics/large/"+set.filePath+"/"+fileName+".png"
+  val smallFile = if (fileName == "") "" else"public/images/iconics/small/"+set.filePath+"/"+fileName+".png"
+  val url = if (fileName == "") "" else ("/images/iconics/small/"+set.filePath+"/"+fileName+".png").replaceAll(" ", "+")
 }
 
 object IconicImage {
@@ -186,7 +192,12 @@ object IconicImage {
     }
   }
 
-  def get(code: String): Option[IconicImage] = iconics.filter(_.id == code).headOption
+  val emptyIconic = IconicImage(IconicSet("", ""), "", "")
+
+  def get(code: String): Option[IconicImage] = {
+    if (code == "none") Some(emptyIconic)
+    else iconics.filter(_.id == code).headOption
+  }
 
   lazy val sets: List[IconicSet] = iconics.map(_.set).distinct.sortBy(_.sortableName)
 

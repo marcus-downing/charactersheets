@@ -22,8 +22,9 @@
           <li><a rel='#party-tab' class='start-hidden' id='party-tab-link'>Party</a></li>
           <li><a rel='#class-tab' class='start-hidden' id='class-tab-link'>Class</a></li>
           @if(!gameData.isTest) {
+            <li><a rel='#gm-start-tab' class='start-hidden' id='gm-start-tab-link'>@(if(gameData.isDnd) "Dungeon Master" else "Game Master")</a></li>
+            <li><a rel='#gm-options-tab' class='start-hidden' id='gm-options-tab-link'>Options</a></li>
             <li><a rel='#options-tab' class='start-hidden' id='options-tab-link'>Options</a></li>
-            <li><a rel='#gm-tab' class='start-hidden' id='gm-tab-link'>Game Master</a></li>
           }
           <li><a rel='#download-tab' class='start-hidden' id='download-tab-link'>Download</a></li>
         </ul>
@@ -43,7 +44,7 @@
           A Whole party
         </a><a id='start-gm'>
           <img src='@routes.Assets.at("/public/images", "gm.png")'/>
-          @(if(gameData.isDnd35) "Dungeon Master" else "Game Master")
+          @(if(gameData.isDnd) "Dungeon Master" else "Game Master")
         </a>
       </div>
 
@@ -214,9 +215,98 @@
       </nav>
     </section>
 
-    <section class='tab' id='gm-tab'>
-      <h2>Game Master</h2>
 
+    <section class='tab' id='gm-start-tab'>
+      <h2>@(if(gameData.isDnd) "Dungeon Master" else "Game Master")</h2>
+
+      <div id='gm-start-options'>
+        <input type='hidden' id='gm-start-type' name='gm-start-type'/>
+
+        <div class='yui3-g'>
+          <div class='yui3-u-1-2'><div class='col left'>
+
+            <p><a id='gm-start-characters' rel='#gm-characters-options' data-gm-type='characters'>
+              <img src='/images/gm-characters.png'/>
+            </a></p>
+
+            <p><a id='gm-start-campaign' rel='#gm-campaign-options' data-gm-type='campaign'>
+              <img src='/images/gm-campaign.png'/>
+            </a></p>
+
+          </div></div>
+
+          <div class='yui3-u-1-2'><div class='col right'>
+            <p><a id='gm-start-maps' rel='#gm-maps-options' data-gm-type='maps'>
+              <img src='/images/gm-maps.png'/>
+            </a></p>
+
+            <p><a id='gm-start-kingdom' rel='#gm-kingdom-options' data-gm-type='kingdom'>
+              <img src='/images/gm-kingdom.png'/>
+            </a></p>
+          </div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class='tab' id='gm-options-tab'>
+
+      <div id='gm-characters-options' class='gm-options-section'>
+        <img src='/images/gm-characters.png' class='float'/>
+
+        <h2>Characters and NPCs</h2>
+        <p>Sheets for tracking the whole party, and NPCs.</p>
+      </div>
+
+      <div id='gm-campaign-options' class='gm-options-section'>
+        <img src='/images/gm-campaign.png' class='float'/>
+
+        <h2>Campaign Planning</h2>
+        <p>History timelines and other sheets for planning a game.</p>
+      </div>
+
+      <div id='gm-maps-options' class='gm-options-section'>
+        <img src='/images/gm-maps.png' class='float'/>
+
+        <h2>Exploration Maps</h2>
+        <p>Blank hex maps, isometric maps, city maps and more.
+          @if(gameData.isPathfinder) { <span>Goes well with Kingmaker and Ultimate Campaign</span> }</p>
+
+        <h3>Map style</h3>
+          <p><label for="maps-view-3d"><input type="radio" name="maps-view" value="3d" id="maps-view-3d" checked />
+              3D (perspective)</label></p>
+          <p><label for="maps-view-2d"><input type="radio" name="maps-view" value="2d" id="maps-view-2d"/>
+              2D (flat)</label></p>
+      </div>
+
+      <div id='gm-kingdom-options' class='gm-options-section'>
+        <img src='/images/gm-kingdom.png' class='float'/>
+        <h2>Kingdom Building</h2>
+        <p>Kingdom and city sheets.</p>
+
+        @if(gameData.isPathfinder) {
+          <h3>Settlement style</h3>
+            <p><label for="settlement-style-normal"><input type="radio" name="settlement-style" value="normal" id="settlement-style-normal" checked />
+              Normal</label></p>
+            <p><label for="settlement-style-large"><input type="radio" name="settlement-style" value="large" id="settlement-style-large" />
+              Large</label></p>
+            <p><label for="settlement-style-plain"><input type="radio" name="settlement-style" value="plain" id="settlement-style-plain" />
+              Without map</label></p>
+        }
+      </div>
+
+      <div id='gm-logo-section'>
+        <h3>Logo</h3>
+
+          <div class='well' id='gm-logo'>
+            @for(logo <- logos) {
+              <img src='@logo.url' id='gm-logo-@logo.code' class='@(if (logo.code == gameData.game) "selected" else "")' />
+            }
+            <p><a class='button' href='javascript:void(0);' id='select-gm-logo-button'>Select logo</a></p>
+          </div>
+      </div>
+
+
+      <!--
       <div class='yui3-g'>
         <div class='yui3-u-1-2'><div class='col left'>
 
@@ -244,6 +334,7 @@
 
         </div></div>
       </div>
+      -->
 
       <nav class='wizardnav'>
         &nbsp;
@@ -313,7 +404,7 @@
         </p>
 
       <nav class='wizardnav'>
-        <a href='#options-tab'><img src='@routes.Assets.at("/public/images", "wizprev.png")'/></a>
+        <a href='#options-tab' id='download-tab-back-link'><img src='@routes.Assets.at("/public/images", "wizprev.png")'/></a>
         &nbsp;
       </nav>
     </section>
