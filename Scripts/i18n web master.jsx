@@ -9,6 +9,54 @@ var webMaster = {
   game: "",
   level: 1,
 
+  additions: [
+    {
+      pages: [ 
+        "Pathfinder/Core/Character Info.ai", 
+        "Pathfinder/Core/Barbarian/Barbarian - Character Info.ai",
+        "Pathfinder/Core/Ranger/Ranger - Character Info.ai"
+        "Pathfinder/Archetypes/Druid/World Walker - Character Info.ai",
+      ],
+      additions: [
+        "Acrobatics", "Appraise", "Bluff", "Climb", "Diplomacy", "Disable Device", "Disarm Traps", "Disguise",
+        "Escape Artist", "Fly", "Handle Animal", "Heal", "Intimidate", "Linguistics", "Locate Traps", "Perception",
+        "Ride", "Sense Motive", "Sleight of Hand", "Spellcraft", "Stealth", "Survival", "Swim", "Track",
+        "Use Magic Device", "Knowledge (arcana)", "Knowledge (dungeoneering)", "Knowledge (engineering)", 
+        "Knowledge (geography)", "Knowledge (history)", "Knowledge (local)", "Knowledge (nature)", 
+        "Knowledge (nobility)", "Knowledge (planes)", "Knowledge (religion)", "Knowledge (psionics)"
+      ]
+    },
+    {
+      pages: [
+        "3.5/Core/Character Info.ai",
+        "3.5/Core/Character Info - simple.ai",
+        "3.5/Core/Character Info - More.ai",
+
+        "3.5/Barbarian/Character Info.ai"
+      ],
+      additions: [
+        "Appraise", "Balance", "Bluff", "Climb", "Decipher Script", "Diplomacy", "Disable Device", "Disguise", 
+        "Escape Artist", "Forgery", "Gather Information", "Handle Animal", "Heal", "Hide", "Intimidate", 
+        "Jump", "Listen", "Move Silently", "Open Lock", "Ride", "Search", "Sense Motive", "Sleight of Hand", 
+        "Spellcraft", "Spot", "Survival", "Swim", "Track", "Tumble", "Use Magic Device", "Use Rope",
+        "Knowledge (arcana)", "Knowledge (dungeoneering)", "Knowledge (engineering)", "Knowledge (geography)", 
+        "Knowledge (history)", "Knowledge (local)", "Knowledge (nature)", "Knowledge (nobility)", 
+        "Knowledge (religion)", "Knowledge (planes)", "Knowledge (psionics)"
+      ]
+    }
+  ],
+
+  getPageAdditions: function (filename) {
+    var slot = null;
+    for ( var i = 0; i < this.additions.length; i++ ) {
+      for (var j = 0; j < this.additions[i].pages.length; j++ ) {
+        if (filename == this.additions[i].pages[j]) 
+          return this.additions[i].additions
+      }
+    }
+    return [];
+  },
+
   clear: function() {
     entries = {};
   },
@@ -88,6 +136,12 @@ var webMaster = {
         }
       }
       doc.close();
+
+      var additions = this.getPageAdditions(filename);
+      for ( var i = 0; i < additions.length; i++ ) {
+        var add = additions
+        this.pushEntry()
+      }
     } catch (e) {
       log("Error in file", file, { "Error": e.message } );
     }
