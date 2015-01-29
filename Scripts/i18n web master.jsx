@@ -14,8 +14,8 @@ var webMaster = {
       pages: [ 
         "Pathfinder/Core/Character Info.ai", 
         "Pathfinder/Core/Barbarian/Barbarian - Character Info.ai",
-        "Pathfinder/Core/Ranger/Ranger - Character Info.ai"
-        "Pathfinder/Archetypes/Druid/World Walker - Character Info.ai",
+        "Pathfinder/Core/Ranger/Ranger - Character Info.ai",
+        "Pathfinder/Archetypes/Druid/World Walker - Character Info.ai"
       ],
       additions: [
         "Acrobatics", "Appraise", "Bluff", "Climb", "Diplomacy", "Disable Device", "Disarm Traps", "Disguise",
@@ -31,7 +31,6 @@ var webMaster = {
         "3.5/Core/Character Info.ai",
         "3.5/Core/Character Info - simple.ai",
         "3.5/Core/Character Info - More.ai",
-
         "3.5/Barbarian/Character Info.ai"
       ],
       additions: [
@@ -139,8 +138,8 @@ var webMaster = {
 
       var additions = this.getPageAdditions(filename);
       for ( var i = 0; i < additions.length; i++ ) {
-        var add = additions
-        this.pushEntry()
+        var add = additions[i]
+        this.pushEntry(add, add, filename)
       }
     } catch (e) {
       log("Error in file", file, { "Error": e.message } );
