@@ -12,21 +12,6 @@
 <div class='col-sm-4'>
 <div class='panel panel-primary'>
 	<div class="panel-heading"><h3 class="panel-title"><span class="glyphicon glyphicon-stats"></span>&nbsp; Completion summary</h3></div>
-	<form class='navbar-form panel-view-form'>
-		<select id='options-game' name='game' class='form-control input-sm'>
-			<option value='' {{ if eq .CurrentGame "" }}selected{{ end }}>All</option>
-			<option value='pathfinder' {{ if eq .CurrentGame "pathfinder" }}selected{{ end }}>Pathfinder</option>
-			<option value='dnd35' {{ if eq .CurrentGame "dnd35" }}selected{{ end }}>D&amp;D 3.5</option>
-		</select>
-
-		<select id='options-level' name='level' class='form-control input-sm'>
-			<option value='0' {{ if eq .CurrentLevel "0" }}selected{{ end }}>All</option>
-			<option value='1' {{ if eq .CurrentLevel "1" }}selected{{ end }}>Core</option>
-			<option value='2' {{ if eq .CurrentLevel "2" }}selected{{ end }}>Advanced</option>
-			<option value='3' {{ if eq .CurrentLevel "3" }}selected{{ end }}>Further</option>
-			<option value='4' {{ if eq .CurrentLevel "4" }}selected{{ end }}>Third Party</option>
-		</select>
-	</form>
 	<table class='table'>
 		{{ $languageNames := .LanguageNames }}
 		{{ $languageCompletions := .LanguageCompletion }}
@@ -95,47 +80,35 @@
 		{{ if .CurrentUser.IsAdmin }}Translation summary{{ else }}My translations{{ end }}</h3></div>
 
 	<form class='navbar-form panel-view-form'>
-		<select id='options-game' name='game' class='form-control input-sm'>
-			<option value='' {{ if eq .CurrentGame "" }}selected{{ end }}>All</option>
-			<option value='pathfinder' {{ if eq .CurrentGame "pathfinder" }}selected{{ end }}>Pathfinder</option>
-			<option value='dnd35' {{ if eq .CurrentGame "dnd35" }}selected{{ end }}>D&amp;D 3.5</option>
-		</select>
-
-		<select id='options-level' name='level' class='form-control input-sm'>
-			<option value='0' {{ if eq .CurrentLevel "0" }}selected{{ end }}>All</option>
-			<option value='1' {{ if eq .CurrentLevel "1" }}selected{{ end }}>Core</option>
-			<option value='2' {{ if eq .CurrentLevel "2" }}selected{{ end }}>Advanced</option>
-			<option value='3' {{ if eq .CurrentLevel "3" }}selected{{ end }}>Further</option>
-			<option value='4' {{ if eq .CurrentLevel "4" }}selected{{ end }}>Third Party</option>
-		</select>
+		
+			<img src='/images/flags/{{.CurrentUser.Language}}.png'> &nbsp;{{ index .LanguageNames .CurrentUser.Language }}
+		
 	</form>
 
-	<div class='panel-body'>
+
 		{{ $currentUser := .CurrentUser }}
-		{{ range $lang, $profile := profileTranslations .CurrentUser }}
-			<div class='lang-profile'>
-				<p>
-					<img src='/images/flags/{{ $lang }}.png'> &nbsp; 
-					{{ index $languageNames $lang }}
-				</p>
+		{{ range $profile := profileTranslations .CurrentUser }}
+	<div class='panel-body profile'>
+			<div class=''>
+				<p>{{ $profile.LevelName }}: <b>{{ $profile.CompletedPercent }}%</b></p>
 				<p class='lang-counts'>
 					{{ if $profile.ByMeAlone }}
-						<a class='lang-count lang-count-mine' href='/translate?language={{ $lang }}&amp;show=mine'>
-							<span class='badge'>{{ $profile.ByMeAlone }}</span> by me
+						<a class='lang-count lang-count-mine' href='/translate?level={{ $profile.Level }}&amp;show=mine'>
+							<span class='badge'>{{ $profile.ByMeAlone }}</span> by me alone
 						</a>
 					{{ end }}
 					{{ if $profile.ByOthersAlone }}
-						<a class='lang-count lang-count-other' href='/translate?language={{ $lang }}&amp;show=others'>
+						<a class='lang-count lang-count-other' href='/translate?level={{ $profile.Level }}&amp;show=others'>
 							<span class='badge'>{{ $profile.ByOthersAlone }}</span> by others
 						</a>
 					{{ end }}
 					{{ if $profile.ByMeAndOthersNoConflict }}
-						<a class='lang-count lang-count-both' href='/translate?language={{ $lang }}&amp;show=both'>
+						<a class='lang-count lang-count-both' href='/translate?level={{ $profile.Level }}&amp;show=both'>
 							<span class='badge'>{{ $profile.ByMeAndOthersNoConflict }}</span> by me and others
 						</a>
 					{{ end }}
 					{{ if $profile.ByMeAndOthersConflict }}
-						<a class='lang-count lang-count-conflict' href='/translate?language={{ $lang }}&amp;show=conflicts'>
+						<a class='lang-count lang-count-conflict' href='/translate?level={{ $profile.Level }}&amp;show=conflicts'>
 							<span class='badge'>{{ $profile.ByMeAndOthersConflict }}</span> conflicts
 						</a>
 					{{ end }}
@@ -147,7 +120,7 @@
 					<div class="progress-bar progress-bar-info" style="width: {{ $profile.ByOthersPercent }}%">
 						<span class="sr-only">{{ $profile.ByOthersPercent }}% completed by others</span>
 					</div>
-					<div class="progress-bar progress-bar-warn" style="width: {{ $profile.ByMeAndOthersNoConflictPercent }}%">
+					<div class="progress-bar progress-bar-warning" style="width: {{ $profile.ByMeAndOthersNoConflictPercent }}%">
 						<span class="sr-only">{{ $profile.ByMeAndOthersNoConflictPercent }}% complete by me and others</span>
 					</div>
 					<div class="progress-bar progress-bar-danger" style="width: {{ $profile.ByMeAndOthersConflictPercent }}%">
@@ -155,8 +128,8 @@
 					</div>
 				</div>
 			</div>
-		{{ end }}
 	</div>
+		{{ end }}
 	<div class="panel-footer">
 		<a class='btn btn-success' href='/translate'><span class="glyphicon glyphicon-globe"></span>&nbsp; Translate</a> &nbsp;
 		<a class='btn btn-link' href='/sources'><span class="glyphicon glyphicon-book"></span>&nbsp; Sources</a>
@@ -191,7 +164,9 @@
 	<div class='panel-body'>
 		<p><img src='http://www.gravatar.com/avatar/{{ md5 .CurrentUser.Email }}?s=32'>&nbsp; <b>{{ .CurrentUser.Name }}</b></p>
 		<p>Preferred language: &nbsp; <img src='/images/flags/{{.CurrentUser.Language}}.png'> {{ index .LanguageNames .CurrentUser.Language }}</p>
+		{{/*
 		{{ if .CurrentUser.IsLanguageLead }}<p><span class='glyphicon glyphicon-chevron-up'></span>&nbsp; You are language lead for {{ index .LanguageNames .CurrentUser.Language }}</p>{{ end }}
+		*/}}
 		{{ if .CurrentUser.IsAdmin }}<p><span class='glyphicon glyphicon-star'></span>&nbsp; You are administrator</p>{{ end }}
 	</div>
 	<div class="panel-footer">

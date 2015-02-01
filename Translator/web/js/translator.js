@@ -14,6 +14,10 @@ jQuery(function ($) {
 			input.closest("tr.entry").removeClass("untranslated");
 			$("#saved-notice").stop(true).show().fadeTo(0, 1.0).fadeOut(2500);
 		});
+	}).focus(function () {
+		$(this).closest('td.translation-parts').find('.my-translation-arrow-score').addClass('focus');
+	}).blur(function () {
+		$(this).closest('td.translation-parts').find('.my-translation-arrow-score').removeClass('focus');
 	});
 
 	$("body.translate a.vote").click(function () {

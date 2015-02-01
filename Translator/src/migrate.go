@@ -46,7 +46,9 @@ func main() {
 				fmt.Println("Error reading entry:", err)
 				continue
 			}
-			_, err = db2.Exec("insert into Entries(EntryID, Original, PartOf) values (?,?,?)", entry.ID(), entry.Original, entry.PartOf)
+
+			_, err = db2.Exec("insert into Entries(EntryID, Original, PartOf) values (?,?,?)",
+				entry.ID(), entry.Original, entry.PartOf)
 			if err != nil {
 				fmt.Println("Error writing entry:", err)
 				continue
@@ -59,13 +61,37 @@ func main() {
 
 	// sources
 	fmt.Print("Sources... ")
-	result, err := db2.Exec("insert into Sources (Filepath, Page, Volume, Level, Game) select Filepath, Page, Volume, Level, Game from " + dbname1 + ".Sources")
+	rows, err = db1.Query("select Filepath, Page, Volume, Level, Game from Sources")
 	if err != nil {
-		fmt.Println("Error transferring sources:", err)
+		fmt.Println("Error reading sources:", err)
 	} else {
-		n_sources, _ := result.RowsAffected()
+		n_sources := 0
+		for rows.Next() {
+			source := model.Source{}
+			err = rows.Scan(&source.Filepath, &source.Page, &source.Volume, &source.Level, &source.Game)
+			if err != nil {
+				fmt.Println("Error reading srouce:", err)
+				continue
+			}
+
+			_, err = db2.Exec("insert into Sources(SourceID, Filepath, Page, Volume, Level, Game) values (?, ?, ?, ?, ?, ?)",
+				source.ID(), source.Filepath, source.Page, source.Volume, source.Level, source.Game)
+			if err != nil {
+				fmt.Println("Error writing source:", err)
+				continue
+			}
+			n_sources++
+		}
 		fmt.Println(n_sources)
 	}
+
+	// result, err := db2.Exec("insert into Sources (SourceID, Filepath, Page, Volume, Level, Game) select Filepath, Page, Volume, Level, Game from " + dbname1 + ".Sources")
+	// if err != nil {
+	// 	fmt.Println("Error transferring sources:", err)
+	// } else {
+	// 	n_sources, _ := result.RowsAffected()
+	// 	fmt.Println(n_sources)
+	// }
 
 	fmt.Print("Source lines... ")
 	rows, err = db1.Query("select EntryOriginal, EntryPartOf, SourcePath, Count from EntrySources")
@@ -79,7 +105,7 @@ func main() {
 			if err != nil {
 				fmt.Println("Error reading source line:", err)
 			}
-			_, err = db2.Exec("insert into EntrySources(EntryID, SourcePath, Count) values (?,?,?)", es.Entry.ID(), es.Source.Filepath, es.Count)
+			_, err = db2.Exec("insert into EntrySources(EntryID, SourceID, Count) values (?,?,?)", es.Entry.ID(), es.Source.ID(), es.Count)
 			if err != nil {
 				fmt.Println("Error writing source line:", err)
 				continue
@@ -114,7 +140,7 @@ func main() {
 
 	// users
 	fmt.Print("Users... ")
-	result, err = db2.Exec("insert into Users (Email, Password, Secret, Name, IsAdmin, Language, IsLanguageLead) select Email, Password, Secret, Name, IsAdmin, Language, IsLanguageLead from " + dbname1 + ".Users")
+	result, err := db2.Exec("insert into Users (Email, Password, Secret, Name, IsAdmin, Language, IsLanguageLead) select Email, Password, Secret, Name, IsAdmin, Language, IsLanguageLead from " + dbname1 + ".Users")
 	if err != nil {
 		fmt.Println("Error transferring users:", err)
 	} else {

@@ -50,10 +50,10 @@ func stackEntries(entries []*Entry) []*StackedEntry {
 
 	// calculate totals
 	for _, se := range values {
-		entrySources := make(map[string]*EntrySource, len(se.Entries)*10)
+		entrySources := make(map[uint64]*EntrySource, len(se.Entries)*10)
 		for _, entry := range se.Entries {
 			for _, es := range GetSourcesForEntry(entry) {
-				entrySources[es.Source.Filepath] = es
+				entrySources[es.Source.ID()] = es
 			}
 		}
 		count := 0
@@ -182,13 +182,8 @@ func (se *StackedEntry) CountTranslations() map[string]int {
 }
 
 func (st *StackedTranslation) GetVotes() []*Vote {
-	entry := st.Entry.Entries[0]
-	var results []Result
-	if entry.PartOf == "" {
-		results = query("select "+voteFields+" from Votes where EntryOriginal = ? and EntryPartOf = '' and Language = ? and Translator = ?", entry.Original, st.Language, st.Translator).rows(parseVote)
-	} else {
-		results = query("select "+voteFields+" from Votes where EntryPartOf = ? and Language = ? and Translator = ?", entry.PartOf, st.Language, st.Translator).rows(parseVote)
-	}
+	// entry := st.Entry.Entries[0]
+	results := query("select "+voteFields+" from Votes where TranslationID = ?", st.Parts[0].ID()).rows(parseVote)
 
 	votes := make([]*Vote, len(results))
 	for i, result := range results {

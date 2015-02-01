@@ -269,7 +269,7 @@ func countEntryTranslations(entry *model.StackedEntry) map[string]int {
 	return entry.CountTranslations()
 }
 
-func profileTranslations(user *model.User) map[string]*model.TranslationProfile {
+func profileTranslations(user *model.User) [4]*model.TranslationProfile {
 	return model.ProfileTranslations(user)
 }
 

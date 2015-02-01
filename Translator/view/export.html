@@ -11,6 +11,8 @@
 		<div class="panel-heading"><h3 class="panel-title"><span class="glyphicon glyphicon-cloud-download"></span>&nbsp; Export translations</h3></div>
 		<div class="panel-body">
 
+			<p>Exports the full set of translations for feeding into Illustrator.</p>
+
 			<div class='form-group'>
 				<label for='language'>Language</label>
 				<select name='language' id='language'>
@@ -29,6 +31,21 @@
 	</div>
 </form>
 
+
+<form method='post' action='/live-export' enctype='multipart/form-data'>
+	<div class='panel panel-info'>
+		<div class="panel-heading"><h3 class="panel-title"><span class="glyphicon glyphicon-cloud-download"></span>&nbsp; Export live translations</h3></div>
+		<div class="panel-body">
+
+			<p>Exports only those translations needed by the live website to apply as sheets are built.</p>
+
+		</div>
+
+		<div class="panel-footer">
+			<button type='submit' class='btn btn-info'><span class="glyphicon glyphicon-cloud-download"></span>&nbsp; Download</button>
+		</div>
+	</div>
+</form>
 
 </div>
 

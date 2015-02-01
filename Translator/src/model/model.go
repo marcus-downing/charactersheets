@@ -46,6 +46,10 @@ var LanguagePaths map[string]string = map[string]string{
 	"us": "american",
 }
 
+var LevelNames []string = []string{
+	"All", "Core", "Advanced", "Further", "Third Party",
+}
+
 //  completion
 
 func GetLanguageCompletion() map[string][4]int {
@@ -54,8 +58,8 @@ func GetLanguageCompletion() map[string][4]int {
 	for i := 1; i <= 4; i++ {
 		totals[i-1] = query("select count(distinct Original, PartOf) from Entries "+
 			"inner join EntrySources on Entries.EntryID = EntrySources.EntryID "+
-			"inner join Sources on SourcePath = Filepath "+
-			"where Level = ?", i).count()
+			"inner join Sources on Sources.SourceID = EntrySources.SourceID "+
+			"where Sources.Level = ?", i).count()
 	}
 
 	for _, lang := range Languages {
@@ -66,8 +70,8 @@ func GetLanguageCompletion() map[string][4]int {
 			for i := 1; i <= 4; i++ {
 				count := query("select count(distinct Translations.EntryID) from Translations "+
 					"inner join EntrySources on Translations.EntryID = EntrySources.EntryID "+
-					"inner join Sources on SourcePath = Filepath "+
-					"where Level = ? and Language = ?", i, lang).count()
+					"inner join Sources on Sources.SourceID = EntrySources.SourceID "+
+					"where Sources.Level = ? and Language = ?", i, lang).count()
 				if totals[i-1] > 0 {
 					values[i-1] = 100 * count / totals[i-1]
 				}
@@ -137,77 +141,4 @@ func (user *User) SetLanguageLead() {
 
 func (user *User) ClearLanguageLead() {
 	query("update Users set IsLanguageLead = 0 where Email = ?", user.Email).exec()
-}
-
-//  Profile translations
-
-type TranslationProfile struct {
-	Language     string
-	TotalEntries int
-
-	ByMe                    int
-	ByMeAlone               int
-	ByOthers                int
-	ByOthersAlone           int
-	ByMeAndOthers           int
-	ByMeAndOthersNoConflict int
-	ByMeAndOthersConflict   int
-	ByNobody                int
-
-	ByMePercent                    int
-	ByMeAlonePercent               int
-	ByOthersPercent                int
-	ByOthersAlonePercent           int
-	ByMeAndOthersPercent           int
-	ByMeAndOthersNoConflictPercent int
-	ByMeAndOthersConflictPercent   int
-	ByNobodyPercent                int
-}
-
-func ProfileTranslations(user *User) map[string]*TranslationProfile {
-	total := CountEntries()
-	profiles := make(map[string]*TranslationProfile, len(DisplayLanguages))
-
-	for _, lang := range DisplayLanguages {
-		if lang == "gb" {
-			continue
-		}
-		byme := query("select count(*) from (select count(*) from Translations where Language = ? and Translator = ? group by EntryID) as sq", lang, user.Email).count()
-		if byme > 0 || user.IsAdmin {
-			byothers := query("select count(*) from (select count(*) from Translations where Language = ? and Translator != ? group by EntryID) as sq", lang, user.Email).count()
-			byboth := query("select count(*) from Translations A "+
-				"inner join Translations B on A.EntryID = B.EntryID and A.Language = B.Language "+
-				"where A.Language = ? and A.Translator = ? and B.Translator != ? "+
-				"group by A.EntryID"+
-				"", lang, user.Email, user.Email).count()
-			conflict := query("select count(*) from Translations A "+
-				"inner join Translations B on A.EntryID = B.EntryID and A.Language = B.Language "+
-				"where A.Language = ? and A.Translator = ? and B.Translator != ? and A.Translation != B.Translation "+
-				"group by A.EntryID"+
-				"", lang, user.Email, user.Email).count()
-
-			fmt.Println(LanguageNames[lang], "-- by me = ", byme, "; by others =", byothers, "; by both =", byboth)
-			profile := TranslationProfile{
-				Language:                lang,
-				TotalEntries:            total,
-				ByMe:                    byme,
-				ByMeAlone:               byme - byboth,
-				ByOthers:                byothers,
-				ByOthersAlone:           byothers - byboth,
-				ByMeAndOthers:           byboth,
-				ByMeAndOthersNoConflict: conflict,
-				ByMeAndOthersConflict:   byboth - conflict,
-				ByNobody:                total - (byme + byothers - byboth),
-
-				ByMePercent:                    (100 * (byme - byboth)) / total,
-				ByOthersPercent:                (100 * (byothers - byboth)) / total,
-				ByMeAndOthersPercent:           (100 * byboth) / total,
-				ByMeAndOthersNoConflictPercent: (100 * (byboth - conflict)) / total,
-				ByMeAndOthersConflictPercent:   (100 * conflict) / total,
-				ByNobodyPercent:                (100 * (total - (byme + byothers - byboth))) / total,
-			}
-			profiles[lang] = &profile
-		}
-	}
-	return profiles
 }

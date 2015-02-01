@@ -31,6 +31,7 @@ func RunTranslator(host string, debug int) {
 	handler.HandleFunc("/import", control.ImportHandler)
 	handler.HandleFunc("/import/done", control.ImportDoneHandler)
 	handler.HandleFunc("/export", control.ExportHandler)
+	handler.HandleFunc("/live-export", control.LiveExportHandler)
 	handler.HandleFunc("/users", control.UsersHandler)
 	handler.HandleFunc("/users/add", control.UsersAddHandler)
 	handler.HandleFunc("/users/del", control.UsersDelHandler)

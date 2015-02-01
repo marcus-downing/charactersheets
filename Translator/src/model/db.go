@@ -41,6 +41,9 @@ type Result interface {
 }
 
 func query(query string, args ...interface{}) Query {
+	if Debug >= 2 {
+		fmt.Println("Query:", query, args)
+	}
 	return Query{query, args}
 }
 

@@ -3,11 +3,25 @@ package model
 import (
 	"crypto/md5"
 	"database/sql"
-	"encoding/hex"
+	// "encoding/hex"
+	// "encoding/binary"
 	"fmt"
 	"github.com/ziutek/mymysql/mysql"
 	"strings"
 )
+
+func hash64(data string) uint64 {
+	hasher := md5.New()
+	hasher.Write([]byte(data))
+	hash := hasher.Sum(nil)
+
+	hash64 :=
+		uint64(hash[0])<<24 +
+			uint64(hash[1])<<16 +
+			uint64(hash[2])<<8 +
+			uint64(hash[3])
+	return hash64
+}
 
 // ** Entries
 
@@ -16,18 +30,16 @@ type Entry struct {
 	PartOf   string
 }
 
-func (entry *Entry) ID() string {
+func (entry *Entry) ID() uint64 {
 	if entry == nil {
-		return ""
+		return 0
 	}
 
 	var str = entry.Original
 	if entry.PartOf != "" && entry.PartOf != entry.Original {
 		str = entry.Original + "  ----  " + entry.PartOf
 	}
-	hasher := md5.New()
-	hasher.Write([]byte(str))
-	return hex.EncodeToString(hasher.Sum(nil))
+	return hash64(str)
 }
 
 const entryFields = "Original, PartOf"
@@ -35,7 +47,7 @@ const entryFields = "Original, PartOf"
 func parseEntry(rows *sql.Rows) (Result, error) {
 	e := Entry{}
 	err := rows.Scan(&e.Original, &e.PartOf)
-	fmt.Println("Entry ID: " + e.ID() + " (" + string(len(e.ID())) + ")")
+	// fmt.Println("Entry ID: " + e.ID() + " (" + string(len(e.ID())) + ")")
 	return e, err
 }
 
@@ -73,24 +85,24 @@ func GetEntriesAt(game string, level int, show, search, language string, transla
 	args := make([]interface{}, 0, 2)
 	sql := "select Original, PartOf from Entries " +
 		"inner join EntrySources on Entries.EntryID = EntrySources.EntryID " +
-		"inner join Sources on SourcePath = Filepath"
+		"inner join Sources on EntrySources.SourceID = Sources.SourceID"
 	if show == "conflicts" {
 		sql = sql + " inner join Translations Mine on EntryID = Mine.EntryID and Mine.Language = ? and Mine.Translator = ?" +
-			"inner join Translations Others on EntryID = Others.EntryID and Others.Language = ? and Others.Translator != ?"
+			"inner join Translations Others on Entries.EntryID = Others.EntryID and Others.Language = ? and Others.Translator != ?"
 		args = append(args, language)
 		args = append(args, translator.Email)
 		args = append(args, language)
 		args = append(args, translator.Email)
 	} else if show == "mine" {
-		sql = sql + " inner join Translations Mine on EntryID = Mine.EntryID and Mine.Language = ? and Mine.Translator = ?"
+		sql = sql + " inner join Translations Mine on Entries.EntryID = Mine.EntryID and Mine.Language = ? and Mine.Translator = ?"
 		args = append(args, language)
 		args = append(args, translator.Email)
 	} else if show == "others" {
-		sql = sql + " inner join Translations Others on EntryID = Others.EntryID and Others.Language = ? and Others.Translator = ?"
+		sql = sql + " inner join Translations Others on Entries.EntryID = Others.EntryID and Others.Language = ? and Others.Translator = ?"
 		args = append(args, language)
 		args = append(args, translator.Email)
 	} else if show != "" {
-		sql = sql + " left join Translations on EntryID = Translations.EntryID and Translations.Language = ?"
+		sql = sql + " left join Translations on Entries.EntryID = Translations.EntryID and Translations.Language = ?"
 		args = append(args, language)
 	}
 	sql = sql + " where 1 = 1"
@@ -169,6 +181,25 @@ type Source struct {
 	Game     string
 }
 
+func GetSourceByID(id string) *Source {
+	result := query("select "+sourceFields+" from Sources where SourceID = ?", id).row(parseSource)
+	if source, ok := result.(Source); ok {
+		return &source
+	}
+	return nil
+}
+
+func (source *Source) ID() uint64 {
+	if source == nil {
+		return 0
+	}
+
+	return hash64(source.Filepath)
+	// hasher := md5.New()
+	// hasher.Write([]byte(source.Filepath))
+	// return hex.EncodeToString(hasher.Sum(nil))
+}
+
 func parseSource(rows *sql.Rows) (Result, error) {
 	s := Source{}
 	err := rows.Scan(&s.Filepath, &s.Page, &s.Volume, &s.Level, &s.Game)
@@ -208,11 +239,11 @@ func GetSourcesAt(game string, level int, show string) []*Source {
 
 	// sql = sql+" group by Original, PartOf"
 	if show == "translated" || show == "untranslated" {
-		sql = sql + " and Filepath"
+		sql = sql + " and Sources.SourceID"
 		if show == "untranslated" {
 			sql = sql + " not"
 		}
-		sql = sql + " in (select SourcePath from EntrySources" +
+		sql = sql + " in (select EntrySources.SourceID from EntrySources" +
 			" inner join Translations on EntrySources.EntryID = Translations.EntryID)"
 	}
 
@@ -244,13 +275,13 @@ func (source *Source) Save() {
 func (source *Source) GetLanguageCompletion() map[string]int {
 	var completion = make(map[string]int, len(Languages))
 
-	total := query("select count(distinct EntryID) from Entries "+
+	total := query("select count(distinct Entries.EntryID) from Entries "+
 		"inner join EntrySources on Entries.EntryID = EntrySources.EntryID "+
-		"where SourcePath = ?", source.Filepath).count()
+		"where EntrySources.SourceID = ?", source.ID()).count()
 	for _, lang := range Languages {
 		count := query("select count(distinct Translations.EntryID) from Translations "+
 			"inner join EntrySources on Translations.EntryID = EntrySources.EntryID "+
-			"where SourcePath = ? and Language = ?", source.Filepath, lang).count()
+			"where EntrySources.SourceID = ? and Language = ?", source.ID(), lang).count()
 		completion[lang] = 100 * count / total
 	}
 	return completion
@@ -265,20 +296,26 @@ type EntrySource struct {
 func parseEntrySource(rows *sql.Rows) (Result, error) {
 	es := EntrySource{}
 	var entryID string
-	err := rows.Scan(&entryID, &es.Source.Filepath, &es.Source.Page, &es.Source.Volume, &es.Source.Level, &es.Source.Game, &es.Count)
+	var sourceID string
+	err := rows.Scan(&entryID, &sourceID, &es.Count)
 	if entry := GetEntryByID(entryID); entry == nil {
 		return nil, nil
 	} else {
 		es.Entry = *entry
 	}
+	if source := GetSourceByID(sourceID); source == nil {
+		return nil, nil
+	} else {
+		es.Source = *source
+	}
 	return es, err
 }
 
-const entrySourceFields = ""
+const entrySourceFields = "EntryID, SourceID, Count"
 
 func GetEntrySources() []*EntrySource {
-	results := query("select EntryID, SourcePath, Sources.Page, Sources.Volume, Sources.Level, Sources.Game, Count " +
-		"from EntrySources inner join Sources on EntrySources.SourcePath = Sources.Filepath").rows(parseEntrySource)
+	results := query("select EntryID, EntrySources.SourceID, Count" +
+		" from EntrySources inner join Sources on EntrySources.SourceID = Sources.SourceID").rows(parseEntrySource)
 
 	sources := make([]*EntrySource, len(results))
 	for i, result := range results {
@@ -290,8 +327,8 @@ func GetEntrySources() []*EntrySource {
 }
 
 func GetSourcesForEntry(entry *Entry) []*EntrySource {
-	results := query("select EntryID, SourcePath, Page, Volume, Level, Game, Count "+
-		"from EntrySources inner join Sources on SourcePath = Filepath "+
+	results := query("select EntryID, EntrySources.SourceID, Count"+
+		" from EntrySources inner join Sources on EntrySources.SourceID = Sources.SourceID "+
 		"where EntryID = ?", entry.ID()).rows(parseEntrySource)
 
 	sources := make([]*EntrySource, len(results))
@@ -325,15 +362,13 @@ type Translation struct {
 	IsConflicted bool
 }
 
-func (translation *Translation) ID() string {
+func (translation *Translation) ID() uint64 {
 	if translation == nil {
-		return ""
+		return 0
 	}
 
-	var str = translation.Entry.ID() + "  ---  " + translation.Language + "  ---  " + translation.Translator
-	hasher := md5.New()
-	hasher.Write([]byte(str))
-	return hex.EncodeToString(hasher.Sum(nil))
+	var str = translation.Language + "  ---  " + translation.Translator
+	return translation.Entry.ID() + hash64(str)
 }
 
 func parseTranslation(rows *sql.Rows) (Result, error) {

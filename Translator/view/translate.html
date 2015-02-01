@@ -17,7 +17,7 @@
 	<div class="form-group">
 		<label for='options-game'>Game</label>
 		<select id='options-game' name='game' class='form-control'>
-			<option value='' {{ if eq .CurrentGame "" }}selected{{ end }}>All</option>
+			<option value='' {{ if eq .CurrentGame "" }}selected{{ end }}>All games</option>
 			<option value='pathfinder' {{ if eq .CurrentGame "pathfinder" }}selected{{ end }}>Pathfinder</option>
 			<option value='dnd35' {{ if eq .CurrentGame "dnd35" }}selected{{ end }}>Dungeons &amp; Dragons 3.5</option>
 		</select>
@@ -26,7 +26,7 @@
 	<div class="form-group">
 		<label for='options-level'>Sources</label>
 		<select id='options-level' name='level' class='form-control'>
-			<option value='0' {{ if eq .CurrentLevel "0" }}selected{{ end }}>All Sources</option>
+			<option value='0' {{ if eq .CurrentLevel "0" }}selected{{ end }}>All sources</option>
 			<option value='1' {{ if eq .CurrentLevel "1" }}selected{{ end }}>Core Rules</option>
 			<option value='2' {{ if eq .CurrentLevel "2" }}selected{{ end }}>Advanced Rules</option>
 			<option value='3' {{ if eq .CurrentLevel "3" }}selected{{ end }}>Further Rules</option>
@@ -59,9 +59,9 @@
 
 <thead>
 	<tr>
-		<th colspan='2'><span class='glyphicon glyphicon-book'></span> &nbsp; Sources</th>
+		<th><span class='glyphicon glyphicon-book'></span> &nbsp; Sources</th>
 		<th><img src='/images/flags/gb.png'>&nbsp; Original</th>
-		<th>
+		<th style='padding-left: 50px;'>
 			{{ if .IsAdmin }}
 			<div class='dropdown' id="select-language">
 				<button class="btn btn-link dropdown-toggle" type="button" data-toggle="dropdown">
@@ -85,7 +85,6 @@
 			<img src='/images/flags/{{.CurrentLanguage}}.png'>&nbsp; {{ index .LanguageNames .CurrentLanguage }}
 			{{ end }}
 		</th>
-		<th></th>
 	</tr>
 </thead>
 
@@ -99,9 +98,9 @@
 {{ range $i, $entry := .Entries }}
 <tr class='entry {{ entryClass $entry $lang $currentUser }}' data-line='{{ $i }}'>
 	<td class='btn-cell'><a class='btn btn-default reveal reveal-sources' data-line='{{ $i }}' data-toggle='modal' data-target='#entry-modal-{{ $i }}'>
-		<span class='glyphicon glyphicon-book'></span> <b>{{ len $entry.EntrySources }}</b>
+		<span class='glyphicon glyphicon-book'></span>&nbsp; <b>{{ len $entry.EntrySources }}</b>
+		&nbsp; <span class='label label-primary'>{{ $entry.Count }}</span>
 		</a></td>
-	<td class='btn-cell'><span class='label label-primary'>{{ $entry.Count }}</span></td>
 	<td class='original'>
 		{{ range $j, $part := $entry.Entries }}
 		<label class='part' for='part-{{ $i }}-{{ $j }}'>
@@ -148,11 +147,6 @@
 				<td class='vote-cell'></td>
 			</tr>
 		</table>
-	</td>
-	<td class='btn-cell'>
-		{{ if $translations.Untranslated }}
-		<a class='reveal reveal-my-translation btn btn-default btn-sm'><span class='glyphicon glyphicon-plus'></span> <img src='http://www.gravatar.com/avatar/{{ md5 $currentUser.Email }}?s=24'>
-		{{ end }}
 	</td>
 </tr>
 {{ end }}

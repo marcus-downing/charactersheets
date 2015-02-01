@@ -233,6 +233,37 @@ func ExportHandler(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+func LiveExportHandler(w http.ResponseWriter, r *http.Request) {
+	if r.Method == "POST" {
+		fmt.Println("Exporting live translations")
+		translations := model.GetLiveTranslations()
+
+		w.Header().Set("Content-Encoding", "UTF-8")
+		w.Header().Set("Content-Type", "application/csv; charset=UTF-8")
+		w.Header().Set("Content-Disposition", "attachment; filename=\"live.csv\"")
+
+		out := csv.NewWriter(w)
+		out.Write([]string{
+			"Original",
+			"Part of",
+			"Language",
+			"Translation",
+		})
+		for _, translation := range translations {
+			for _, part := range translation.Parts {
+				out.Write([]string{
+					part.Entry.Original,
+					part.Entry.PartOf,
+					translation.Language,
+					part.Translation,
+				})
+			}
+		}
+		out.Flush()
+		return
+	}
+}
+
 func associateData(in [][]string) []map[string]string {
 	out := make([]map[string]string, 0, len(in)-1)
 	fields := in[0]

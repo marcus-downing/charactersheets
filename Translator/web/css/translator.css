@@ -129,6 +129,15 @@ form.panel-view-form {
 .lang-count-other { color: #31b0d5; }
 .lang-count-other .badge { background-color: #31b0d5; }
 
+.panel-body, .panel > table {
+  border-top: 1px solid #f2f2f2;
+  /*padding-top: 10px;*/
+  padding-bottom: 4px;
+}
+.panel:nth-child(2n+1) {
+  background: #fcfcfc;
+}
+
 
 
 /* Sources */
@@ -200,6 +209,11 @@ body.sources .breadcrumb > li + li:before {
   width: 100%;
 }
 
+a.reveal-sources {
+  width: 100%;
+  text-align: center;
+}
+
 
 
 
@@ -260,17 +274,12 @@ td.btn-cell a.no-comments {
 tr.other-translation {
   margin-bottom: 4px;
 }
-tr.entry tr.my-translation {
-  display: none;
-}
-tr.with-translation tr.my-translation {
-  display: table-row;
-}
-tr.with-translation a.reveal-my-translation {
-  display: none;
+tr.other-translation td.translation-parts {
+  padding-left: 18px;
 }
 .my-translation input {
   font-weight: bold;
+  padding: 6px;
 }
 
 span.my-translation-arrow-score {
@@ -285,16 +294,20 @@ span.my-translation-arrow-score {
   top: 5px;
 }
 
+span.my-translation-arrow-score.focus {
+  border-right-color: #28e;
+}
+
 span.my-translation-arrow {
   display: inline-block;
   width: 0px;
   height: 0px;
-  border-right: 8px solid white;
-  border-top: 8px solid transparent;
-  border-bottom: 8px solid transparent;
-  margin-right: -5px;
+  border-right: 10px solid white;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  margin-right: -7px;
   position: relative;
-  top: 4px;
+  top: 6px;
 }
 
 #saved-notice {
