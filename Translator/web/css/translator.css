@@ -24,11 +24,11 @@ body.users #nav-users a
 
 .search-bar {
   text-align: right;
-  padding-bottom: 10px;
+  padding-bottom: 25px;
 }
 .page-options {
   float: right;
-  margin-top: -40px;
+  margin-top: -60px;
 }
 
 .pagination {
