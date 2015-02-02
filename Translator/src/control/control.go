@@ -175,11 +175,11 @@ func DurString(dur time.Duration) string {
 }
 
 func percentColour(pc int) string {
-	if pc >= 90 {
+	if pc >= 95 {
 		return "success"
-	} else if pc >= 60 {
+	} else if pc >= 70 {
 		return "info"
-	} else if pc >= 30 {
+	} else if pc >= 40 {
 		return "warning"
 	} else {
 		return "danger"

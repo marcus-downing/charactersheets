@@ -12,7 +12,6 @@
 	<thead>
 		<tr>
 			<th colspan='3'>Language</th>
-			<th></th>
 			<th>User</th>
 			{{ if $isAdmin }}<th></th><th>Email</th>{{ end }}
 			<th>Translations</th>
@@ -28,10 +27,9 @@
 
 	<tr>
 		<td><img src='/images/flags/{{ .Language }}.png'></td>
-		<td>{{ if $user.IsLanguageLead }}<span class='glyphicon glyphicon-chevron-up'></span>{{ end }}</td>
+		<td>{{ if $user.IsAdmin }}<span class='glyphicon glyphicon-star'></span>{{ else if $user.IsLanguageLead }}<span class='glyphicon glyphicon-chevron-up'></span>{{ end }}</td>
 		<td>{{ if $isAdmin }}<a class='api reload' href='/api/setlead?user={{ .Email }}'><span class='glyphicon glyphicon-arrow-up'></span></a>{{ end }}
 			{{ if $isAdmin }}<a class='api reload' href='/api/clearlead?user={{ .Email }}'><span class='glyphicon glyphicon-arrow-down'></span></a>{{ end }}</td>
-		<td>{{ if $user.IsAdmin }}<span class='glyphicon glyphicon-star'></span>{{ end }}</td>
 		<td><img src='http://www.gravatar.com/avatar/{{ md5 $user.Email }}?s=32'>&nbsp; {{ $user.Name }}</td>
 		{{ if $isAdmin }}<td>
 			{{ if eq $user.Password "" }}<span class='glyphicon glyphicon-remove-circle text-danger'></span>{{ else }}<span class='glyphicon glyphicon-ok-circle text-success'></span>{{ end }}
