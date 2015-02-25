@@ -1,0 +1,189 @@
+Original,Part of,Translation
+Level,"",Уровень
+Misc,"",Прочее
+CHA,"",CHA
+WIS,"",WIS
+DEX,"",DEX
+INT,"",INT
+ft,"",ft
+PREPARED SPELLS,"",ПОДГОТОВЛЕННЫЕ ЗАКЛИНАНИЯ
+sq,"",кв
+Domain Spell,"",Доменное заклинание
+Caster|Level,"",Уровень|Заклинателя
+STR,"",STR
+(Round down),"",(Округлять к меньшему)
+AC,"",КЗ
+Spell|Save DC,"",КС|спасброска
+Base|Spells,"",Базовых|заклинаний
+SPELLS,"",Заклинания
+Spells|per day,"",Заклинаний|в день
+DC,"",КС
+Rogue|Level,"",Уровень|Жулика
+CON,"",CON
+Ranger|Level,"",Уровень|Рейнджера
+Barbarian|Level,"",Уровень|Варвара
+Concentration,"",Концентрация
+SCROLLS,"",СВИТКИ
+POTIONS,"",ЗЕЛЬЯ
+Monk|Level,"",Уровень|Монаха
+Druid|Level,"",Уровень|Друида
+EVIL,"",ЗЛО
+GOOD,"",ДОБРО
+CHAOTIC,"",ХАОС
+LAWFUL,"",ПОРЯДОК
+Paladin|Level,"",Уровень|Паладина
+lb,"",lb
+Attack Bonus,"",Бонус Атаки
+Damage,"",Урон
+Range,"",Дальность
+(Round up),"",(Округлять вверх)
+Critical,"",Крит
+Bard|Level,"",Уровень|Барда
+d6,"",d6
+Monk Level,"",Уровень монаха
+Spell Save DC = 10 + WIS + Spell Level,"",КС спаса заклинания = 10 + WIS + Уровень заклятия
+Bonus Spells,"",Бонусных заклятий
+Type,"",Тип
+Size|Modifier,"",Модификатор|размера
+RAGE!,"",ЯРОСТЬ!
+CHARGES,"",ЗАРЯДОВ
+Granted Power,"",Предоставляемые силы
+Name,"",Имя
+Evasion,"",Уклонение
+Uses|per day,"",Использований|в день
+WILD EMPATHY,"",СОПЕРЕЖИВАНИЕ ПРИРОДЕ
+Domain,"",Домен
+WIS - 4,"",WIS - 4
+WIS - 12,"",WIS - 12
+WIS - 8,"",WIS - 8
+WILD EMPATHY,WILD EMPATHY|BONUS,Бонус Дикого сопереживания
+Druid Level,"",Уровень друида
+ANIMAL COMPANION,"",Животное компаньён
+Creature Type,"",Вид существа
+Speciality Spell,"",Заклинание специализации
+No action this round|Lose,No action this round|Lose DEX bonus to AC; -2 AC,Нет действий в этом раунде|Теряет бонус
+DEX,No action this round|Lose DEX bonus to AC; -2 AC,DEX
+bonus to,No action this round|Lose DEX bonus to AC; -2 AC,к
+AC,No action this round|Lose DEX bonus to AC; -2 AC,КЗ
+Damage Reduction,"",Понижение урона
+CMD,"",ЗБМ
++ Level,"",+ Уровень
+WILD SHAPE,"",Дикая форма
+Properties,"",Свойства
+Track,"",Выслеживание
+Distance,"",Дальность
+KNOWN SPELLS,"",Изученные заклинания
+Times Today,"",Использовано сегодня
+Spell Save DC = 10 + CHA + Spell Level,"",КС спаса заклинания = 10 + CHA + Уровень заклятия
+Times per day,"",Использований в день
+10ft,"",10ft
+Spells|Known,"",Заклинаний|известно
+ARMOUR CLASS,"",КЛАСС ЗАЩИТЫ
+Bard Level,"",Уровнь барда
+Weight,"",Вес
+Spell Resistance,"",Сопротивление заклинаниям
+Uncanny Dodge,"",Необычайная увертливость
+Improved Uncanny Dodge,"",Улучшенная необычайная увертливость
+CHA - 12,"",CHA - 12
+CHA - 8,"",CHA - 8
+Nature Sense,Nature Sense|+2 to Knowledge (nature) and Survival,Чувство природы
++2 to Knowledge (nature) and Survival,Nature Sense|+2 to Knowledge (nature) and Survival,+2 к навыкам Знание (природа) и Выживание
+BONUS FEATS,"",Бонусные черты
+or,"",или
+CHA - 4,"",CHA - 4
+Timeless Body,"Timeless Body|No longer age, cannot be magically aged",Вечное тело
+"No longer age, cannot be magically aged","Timeless Body|No longer age, cannot be magically aged","Больше не стареет, не может быть магически состарен"
+Wild Empathy,Wild Empathy|Improve the attitude of an animal,Дикое сопереживание
+Improve the attitude of an animal,Wild Empathy|Improve the attitude of an animal,Улучшает отношение животных
+2d8,"",2d8
+Cleric|Level,"",Уровень|Жреца
+FORTITUDE|SAVE,FORTITUDE|SAVE DC,КС спаса
+DC,FORTITUDE|SAVE DC,Стойкости
+Wild Shape,Wild Shape|Become any small or medium animal,Дикая форма
+Become any small or medium animal,Wild Shape|Become any small or medium animal,Превращаться в любое маленькое или среднее животное
+SPEED,"",Скорость
+d8,"",d8
+Acrobatics,"",Акробатика
+BAB,"",ББА
+Deflection|Modifier,"",Бонус отражения
+2d6,"",2d6
+Cost,"",Цена
+Conditional Modifiers,"",Модификаторы особых условий
+DRUID,"",ДРУИД
+d10,"",d10
+SKILLS,"",НАВЫКИ
+SNEAK ATTACK,"",ПОДЛАЯ АТАКА
+TALENTS,TALENTS|KNOWN,Талантов
+KNOWN,TALENTS|KNOWN,известно
+ROGUE TALENTS,"",Таланты жулика
+Ammo,"",Аммуниция
+Bonus Spells,Bonus Spells|WIS,Бонусные заклятия
+WIS,Bonus Spells|WIS,WIS
+SNEAK DAMAGE,SNEAK DAMAGE|BONUS,"Подлый урон,"
+BONUS,SNEAK DAMAGE|BONUS,бонус
+Uses Today,"",Использовано сегодня
+Base|Attack Bonus,"",Базовый|бонус атаки
+Racial,"",Рассовый
+Special Ammo,"",Специальная аммуниция
+DEITY,"",БОЖЕСТВО
+Survival|Bonus,"",Бонус|Выживания
+Advanced Talents,"",Продвинутые Таланты
+Unarmed Strike,"",Безоружная атака
+"From level 10, a Rogue|can take Advanced Talents","",С 10го уровня Жулик|может брать Продвинутые Таланты
+ABILITIES,"",Параметры
+Perception,"",Восприятие
+MALE,"",МУЖЧИНА
+Climb,"",Взбирание
+MONK,"",МОНАХ
+FEMALE,"",ЖЕНЩИНА
+Bards can wear light armour without risking|spell failure.,"",Барды могут носить легкую броню без|риска провалить заклинание
+FAVOURED TERRAINS,"",Избранный ландшафт
+"Sneak attack damage can be applied when a target is flanked or|is denied their DEX bonus to AC.|On ranged attacks, it only applies within 30 ft.|It is not multiplied by critical hits.|It cannot be non-lethal unless using a non-lethal weapon.","","Урон подлой атаки может применяться только на когда цель окружени или|потеряла бонус ловкости к КЗ.|Для атак на расстоянии она работает только в пределах 30 футов.|Не умножается при критическом попадании.|Не может быть нелетальной, если используется летальное оружие"
+FAVOURED ENEMIES,"",Избранные враги
+Ability|Modifier,"",Модификатор|параметра
+Sense Motive,"",Чувство мотива
+Temp,"",Временный
+Treat unarmed attacks as adamantine weapons,"",Безоружные атаки считаются адамантиновым оружием
+Swim,"",Плавание
+TRAP SENSE,"",Предчуствие ловушек
+FORT,"",СТОЙК
+Dodge,"",Уворот
+DURATION,DURATION|PER DAY,ДЛИТЕЛЬНОСТЬ
+PER DAY,DURATION|PER DAY,В ДЕНЬ
+MIGHTY,MIGHTY RAGE!,МОГУЧАЯ
+RAGE!,MIGHTY RAGE!,ЯРОСТЬ!
+FAVOURED ENEMY BONUS,"",БОНУС ДЛЯ ИЗБРАННЫХ ВРАГОВ
+Ability|Score,"",Значение|параметра
+Channel Positive Energy,"",Направление Позитивной Энергии
+GREATER,GREATER RAGE!,БОЛЬШАЯ
+RAGE!,GREATER RAGE!,ЯРОСТЬ!
+Improved Evasion,"",Улучшенное Уклонение
+Ki Pool (lawful),"",Запас Ки (порядок)
+1d8,"",1d8
+Ki Pool (adamantine),"",Запас Ки (адамантин)
+CMB,"",ББМ
+BARBARIAN,"",ВАРВАР
+EMPTY BODY,"",ПУСТОЕ ТЕЛО
+Mobility,"",Мобильность
+Treat unarmed attacks as lawful weapons,"",Безоружные атаки считаются оружием порядка
+Strength Score|Penalty:,Strength Score|Penalty: -2,Штрав параметра|Силы:
+ATTACKS,"",АТАКИ
+Deflect Arrows,"",Отражение стрел
+Temp AC,"",Временный КЗ
+Size,"",Размер
+Dexterity Score|Penalty:,Dexterity Score|Penalty: -2,Штрав параметра|Ловкости:
+Ability Modifier =|    (Total Ability Score - 10) ÷ 2,"",Модификатор параметра =| (Суммарный показатель - 10) ÷ 2
+REF,"",РЕФ
+50ft,"",50ft
+11ft,"",11ft
+55ft,"",55ft
+Morale|Bonus,"",Бонус|Боевого духа
+Combat Reflexes,"",Боевые Рефлексы
+Sml / Lrg,"",Мал / Больш
+ARMOUR CLASS BONUS,"",БОНУС КЛАССА ЗАЩИТЫ
+Value,"",Значение
+d4 / d8,"",d4 / d8
+INIT,"",ИНИЦ
+4ft,"",4ft
+8ft,"",8ft
+35ft,"",35ft

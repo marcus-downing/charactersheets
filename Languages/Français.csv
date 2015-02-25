@@ -5,7 +5,7 @@ CHA,"",CHA
 WIS,"",SAG
 DEX,"",DEX
 INT,"",INT
-ft,"",pieds
+ft,"",m
 PREPARED SPELLS,"",SORTS PREPARES
 sq,"",cases
 Domain Spell,"",Sort de domaine
@@ -23,14 +23,14 @@ Rogue|Level,"",Roublard|Niveau
 CON,"",CON
 Ranger|Level,"",Rôdeur|Niveau
 Barbarian|Level,"",Barbare|Niveau
-Concentration,"",Concentration
 SCROLLS,"",PARCHEMINS
+Concentration,"",Concentration
 POTIONS,"",POTIONS
 Monk|Level,"",Moine|Niveau
 Druid|Level,"",Druide|Niveau
-LAWFUL,"",LOYAL
-EVIL,"",MAUVAIS
 CHAOTIC,"",CHAOTIQUE
+EVIL,"",MAUVAIS
+LAWFUL,"",LOYAL
 GOOD,"",BON
 Paladin|Level,"",Paladin|Niveau
 lb,"",livres
@@ -58,15 +58,21 @@ Evasion,"",Evasion
 Uses|per day,"",Utlisations|par jour
 WILD EMPATHY,"",EMPATHIE SAUVAGE
 Domain,"",Domaine
-WIS - 12,"",SAG - 12
 WIS - 4,"",SAG - 4
+WIS - 12,"",SAG - 12
 WIS - 8,"",SAG - 8
 WILD EMPATHY,WILD EMPATHY|BONUS,EMPATHIE SAUVAGE
 BONUS,WILD EMPATHY|BONUS,BONUS
 Druid Level,"",Niveau de druide
+ARCANE SPELL FAILURE,ARCANE SPELL FAILURE THRESHOLD,RISQUE D'ÉCHEC DES
+THRESHOLD,ARCANE SPELL FAILURE THRESHOLD,SORTS PROFANES
 ANIMAL COMPANION,"",COMPAGNON ANIMAL
 Creature Type,"",Type de créature
 Speciality Spell,"",Sort de Spécialisation
+No action this round|Lose,No action this round|Lose DEX bonus to AC; -2 AC,Pas d'action ce tour-ci|Per le bonus de
+DEX,No action this round|Lose DEX bonus to AC; -2 AC,DEX
+bonus to,No action this round|Lose DEX bonus to AC; -2 AC,à la
+AC,No action this round|Lose DEX bonus to AC; -2 AC,CA
 Damage Reduction,"",Réduction de dommage
 CMD,"",DMD
 WILD SHAPE,"",FORME ANIMALE
@@ -75,69 +81,107 @@ Properties,"",Propriétés
 Track,"",Traquer
 Distance,"",Distance
 KNOWN SPELLS,"",SORTS CONNUS
+at half speed,"",à la moitié de la vitesse
+10ft,"",3 m
++10 to move at full speed,"",+10 pour se déplacer à pleine vitesse
+Spells|Known,"",Sorts|Connus
+Times Today,"",Fois aujourd'hui
 Times per day,"",Fois par jour
 Spell Save DC = 10 + CHA + Spell Level,"",DD de jet de sauvegarde d'un sort = 10 + CHA + niveau de sort
 5ft,"","1,5 m"
-10ft,"",3 m
-at half speed,"",à la moitié de la vitesse
-Spells|Known,"",Sorts|Connus
-Times Today,"",Fois aujourd'hui
-ARMOUR CLASS,"",CLASSE D'ARMURE
-Bard Level,"",Niveau de barde
-Weight,"",Poids
 KI POOL,"",Réserve de ki
+Bard Level,"",Niveau de barde
+ARMOUR CLASS,"",CLASSE D'ARMURE
+Weight,"",Poids
 Spell Resistance,"",Résistance à la magie
-BONUS FEATS,"",DONS SUPPLEMENTAIRES
-CHA - 4,"",CHA - 4
-CHA - 12,"",CHA - 12
+NATURE BOND,"",PACTE AVEC LA NATURE
+Uncanny Dodge,"",Esquive instinctive
+Improved Uncanny Dodge,"",Esquive instinctive supérieure
+Wild Empathy,Wild Empathy|Improve the attitude of an animal,Empathie sauvage
+Improve the attitude of an animal,Wild Empathy|Improve the attitude of an animal,Améliore l'attitude d'un animal
 or,"",ou
+Timeless Body,"Timeless Body|No longer age, cannot be magically aged",Éternelle jeunesse
+"No longer age, cannot be magically aged","Timeless Body|No longer age, cannot be magically aged",Cesse de vieillir ; immunisé contre le vieillissement magique
+BONUS FEATS,"",DONS SUPPLEMENTAIRES
 CHA - 8,"",CHA - 8
+Nature Sense,Nature Sense|+2 to Knowledge (nature) and Survival,Instinct naturel
++2 to Knowledge (nature) and Survival,Nature Sense|+2 to Knowledge (nature) and Survival,+2 en Connaissances (Nature) et Survie
+CHA - 12,"",CHA - 12
+CHA - 4,"",CHA - 4
 Cleric|Level,"",Prêtre|Niveau
 2d8,"",2d8
 SPEED,"",VITESSE
+FORTITUDE|SAVE,FORTITUDE|SAVE DC,DD DU JET|DE
+DC,FORTITUDE|SAVE DC,VIGUEUR
 d8,"",d8
+Wild Shape,Wild Shape|Become any small or medium animal,Forme animale
+Become any small or medium animal,Wild Shape|Become any small or medium animal,Se transformer en un animal de taille P ou M
 Acrobatics,"",Acrobaties
+2d6,"",2d6
 Cost,"",Coût
 BAB,"",BBA
-2d6,"",2d6
-DRUID,"",DRUIDE
 d10,"",d10
 Conditional Modifiers,"",Modificateurs conditionnels
-Ammo,"",Munitions
-Bonus Spells,Bonus Spells|WIS,Sorts supplémentaires
-SNEAK ATTACK,"",ATTAQUE SOURNOISE
+DRUID,"",DRUIDE
 SKILLS,"",COMPETENCES
+WIS,Bonus Spells|WIS,SAG
+SNEAK ATTACK,"",ATTAQUE SOURNOISE
+TALENTS,TALENTS|KNOWN,TALENTS
+KNOWN,TALENTS|KNOWN,CONNUS
 ROGUE TALENTS,"",TALENTS DE ROUBLARD
+Ammo,"",Munitions
 MASTER STRIKE,MASTER STRIKE|FORTITUDE DC,COUP DE MAÎTRE
 Racial,"",Racial
+MASTER STRIKE,"",COUP DE MAÎTRE
 Base|Attack Bonus,"",Base|Bonus d'attaque
 Uses Today,"",Utilisations aujourd'hui
-MASTER STRIKE,"",COUP DE MAÎTRE
-ABILITIES,"",CARACTERISTIQUES
+SNEAK DAMAGE,SNEAK DAMAGE|BONUS,BONUS DE DÉGÂTS
+BONUS,SNEAK DAMAGE|BONUS,D'ATTAQUE SOURNOISE
+Advanced Talents,"",Talents de maître roublard
+DEITY,"",DEITE
+FORTITUDE,FORTITUDE SAVE,JET DE
+SAVE,FORTITUDE SAVE,VIGUEUR
+"From level 10, a Rogue|can take Advanced Talents","","À partir du niveau 10, un Roublard|peut choisir des talents de maître roublard"
+A successful sneak attack can also deliver one of:| • Sleep for 1d4 hours| • Paralysed for 2d6 rounds| • Slain,"",Une attaque sournoise réussie inflige un effet parmi : | • La cible est endormie pour 1d4 heures| • La cible est paralysée pour 2d6 rounds| • La cible est tuée
 Survival|Bonus,"",Survie|Bonus
+ABILITIES,"",CARACTERISTIQUES
+"Master strike cannot be used again on the same target within|24 hours, whether they pass the Fortitude save or not.","","Coup de maître ne peut pas être utilisé à nouveau sur la même cible endéans|24 heures, qu'elle passe son jet de vigueur ou non."
 WILL,WILL SAVE DC,VOLONTE
 SAVE DC,WILL SAVE DC,JET DE SAUVEGARDE
-"Master strike cannot be used again on the same target within|24 hours, whether they pass the Fortitude save or not.","","Coup de maître ne peut pas être utilisé à nouveau sur la même cible endéans|24 heures, qu'elle passe son jet de vigueur ou non."
-DEITY,"",DEITE
-Climb,"",Escalade
-REFLEX,REFLEX SAVE,RÉFLEXES
-SAVE,REFLEX SAVE,SAUVEGARDE
+Unarmed Strike,"",Combat à mains nues
+Special Ammo,"",Munitions spéciales
+Perception,"",Perception
 MONK,"",MOINE
+Climb,"",Escalade
 MALE,"",MALE
 FEMALE,"",FEMELLE
 (ROGUE),"",(ROUBLARD)
-Perception,"",Perception
+REFLEX,REFLEX SAVE,RÉFLEXES
+SAVE,REFLEX SAVE,SAUVEGARDE
+Ability|Modifier,"",Mod. de|Carac.
+FAVOURED ENEMIES,"",ENNEMIS JURÉS
+FAVOURED TERRAINS,"",ENVIRONNEMENTS DE PRÉDILECTION
+Bards can wear light armour without risking|spell failure.,"",Les bardes peuvent porter une armure légère|sans encourir de risque d’échec des sorts.
+"Sneak attack damage can be applied when a target is flanked or|is denied their DEX bonus to AC.|On ranged attacks, it only applies within 30 ft.|It is not multiplied by critical hits.|It cannot be non-lethal unless using a non-lethal weapon.","","Les dégâts d'attaque sournoise s'appliquent quand la cible est prise en tenaille|, ou perds son bonus de DEX à la CA.|Ils ne s'appliquent que jusque 9m lors d'une attaque à distance.|Ils ne sont pas multipliés en cas de coup critique.|Ils ne peuvent être non-létaux, sauf en utilisant une arme non létal."
 Sense Motive,"",Psychologie
 Temp,"",Temp
 Fatigued,"",Fatigué
 Swim,"",Natation
+TRAP SENSE,"",SENS DES PIEGES
 FORT,"",VIG
 Dodge,"",Esquive
 Bonus|Points,"",Bonus|Points
 DURATION,DURATION|PER DAY,DUREE
 PER DAY,DURATION|PER DAY,PAR JOUR
+FAVOURED ENEMY BONUS,"",BONUS CONTRE LES ENNEMIS JURÉS
+Ability|Score,"",Valeur|de Carac.
+"Ranger bonus feats can be taken without the normal pre-requisites,|but only apply when not wearing heavy armour.","","Les dons supplémentaires du rôdeur peuvent être pris sans satisfaire les prérequis,|mais ne s'appliquent pas lorsque le personnage porte une armure lourde."
+Cost:,Cost: 1 pt,Coût :
+1 pt,Cost: 1 pt,1 pt
 Channel Positive Energy,"",Canalisation d'énergie positive
 Rounds|Today,"",Tours|Aujourd'hui
+RAGE!,RAGE!|TODAY,RAGE !
+TODAY,RAGE!|TODAY,AUJOURD'HUI
 BONUS FEAT,"",DON SUPPLEMENTAIRE
 1d8,"",1d8
 BARBARIAN,"",BARBARE
@@ -145,58 +189,143 @@ CMB,"",BMO
 DAMAGE,DAMAGE|REDUCTION,DOMMAGES
 REDUCTION,DAMAGE|REDUCTION,REDUCTION
 Bonus|Feats,"",Bonus|Dons
+EMPTY BODY,"",DÉSERTION DE L'ÂME
+"Begin or switch a bardic performance as a move action,|rather than as a standard action.","","Activer ou changer de représentation bardique par une action de mouvement,|à la place d'une action simple."
 FATIGUED,FATIGUED|DURATION,FATIGUE
 DURATION,FATIGUED|DURATION,DUREE
+Treat unarmed attacks as lawful weapons,"",Considère les attaques à mains nues comme des armes Loyales
 SAVE DC,WILL|SAVE DC,JET DE SAUVEGARDE
-Mobility,"",Mobilité
 ATTACKS,"",ATTAQUES
+Mobility,"",Mobilité
 Item|Bonus,"",Objet|Bonus
+TRAP SENSE,TRAP SENSE|BONUS,SENS DES PIEGES
+BONUS,TRAP SENSE|BONUS,BONUS
 PERFORMANCES,"",PERFORMANCES
 Dexterity Score|Penalty:,Dexterity Score|Penalty: -2,Score de dextérité|Pénalité:
+SURVIVAL,"",SURVIE
 Size,"",Taille
 Temp AC,"",CA temp
 REF,"",REF
+USES,USES|PER DAY,UTILISATIONS
+PER DAY,USES|PER DAY,PAR JOUR
+9ft,"","2,70 m"
+11ft,"","3,30 m"
+55ft,"","16,50 m"
 FALL,"",CHUTE
+25ft,"","7,50 m"
 2d10,"",2d10
 "Treat hands, feet, knees and elbows as weapons","","Traiter les mains, pieds, genoux et coudes comme des armes"
 Morale|Bonus,"",Moral|Bonus
+2ft,"","0,60 m"
+20ft,"","6,00 m"
+50ft,"","15,00 m"
+1ft,"","0,30 m"
+RAGE!,RAGE!  DURATION|PER DAY,RAGE !
+DURATION,RAGE!  DURATION|PER DAY,DUREE
+PER DAY,RAGE!  DURATION|PER DAY,PAR JOUR
+HIGH JUMP,"",SAUT EN HAUTEUR
+RAGE!,RAGE!|Duration,RAGE !
+Duration,RAGE!|Duration,DUREE
 ARMOUR CLASS BONUS,"",BONUS DE CLASSE D'ARMURE
 COMBAT STYLE,"",STYLE DE COMBAT
+6ft,"","1,80 m"
 Value,"",Valeur
+7ft,"","2,10 m"
 d4 / d8,"",d4 / d8
 INIT,"",INIT
+INITIATIVE,INITIATIVE BONUS,BONUS D'
+BONUS,INITIATIVE BONUS,INITIATIVE
+30ft,"","9,00 m"
+15ft,"","4,50 m"
 WILL,"",VOL
+4ft,"","1,20 m"
+Power,"",Pouvoir
 BARDIC PERFORMANCE,"",PERFORMANCE DE BARDE
+8ft,"","2,40 m"
+35ft,"","10,50 m"
+45ft,"","13,50 m"
+40ft,"","12,00 m"
+3ft,"","0,90 m"
 Campaign,"",Campagne
 Heal,"",Premiers soins
 Flurry of Blows,"",Déluge de coups
 Temp Speed,"",Vitesse temp
 2d8 / 4d8,"",2d8 / 4d8
+RAGE!,RAGE! POWERS |KNOWN,POUVOIRS DE
+POWERS,RAGE! POWERS |KNOWN,RAGE !
+KNOWN,RAGE! POWERS |KNOWN,CONNUS
 Rounds Today,"",Tours aujourd'hui
+RAGE!,RAGE! POWERS,POUVOIRS DE
+POWERS,RAGE! POWERS,RAGE !
 2d6 / 3d8,"",2d6 / 3d8
 Acrobatics skill +4,"",Compétence d'acrobaties +4
 Animal Companion’s Name,"",Nom du compagnon animal
 Escape Artist,"",Evasion
+COUNTERSONG,"",CONTRE-CHANT
+PERFECT SELF,"",PERFECTION DE L'ÊTRE
 Feats,"",Dons
 d10 / 3d6,"",d10 / 3d6
+Timeless Body,"",ÉTERNELLE JEUNESSE
+JACK OF ALL TRADES,"",TOUCHE-À-TOUT
 d6 / 2d6,"",d6 / 2d6
 d8 / 2d8,"",d8 / 2d8
 Disguise,"",Déguisement
 Ride,"",Equitation
 Base|Points,"",Base|Points
+KNOWN POWERS,"",POUVOIRS CONNUS
+Damage Reduction 1/,Damage Reduction 1/―,Réduction de dégâts 1/
 Appraise,"",Evaluation
+Fast Movement,Fast Movement +60 ft,Déplacement accéléré
++60 ft,Fast Movement +60 ft,+18 m
+Fast Movement,Fast Movement +50 ft,Déplacement accéléré
++50 ft,Fast Movement +50 ft,+15 m
+Fast Movement,Fast Movement +40 ft,Déplacement accéléré
++40 ft,Fast Movement +40 ft,+12 m
+Fast Movement,Fast Movement +30 ft,Déplacement accéléré
++30 ft,Fast Movement +30 ft,+9 m
+Fast Movement,Fast Movement +20 ft,Déplacement accéléré
++20 ft,Fast Movement +20 ft,+6 m
+Fast Movement,Fast Movement +10 ft,Déplacement accéléré
++10 ft,Fast Movement +10 ft,+3 m
+Abundant step,"",Pas chassé
+Damage Reduction 5/,Damage Reduction 5/―,Réduction de dégâts 5/
+Avoid all damage on successful reflex save,"",Annule tout dégât en cas de jet de Réflexes réussi
+Damage Reduction 4/,Damage Reduction 4/―,Réduction de dégâts 4/
 Race,"",Race
 Ranks,"",Rangs
+Damage Reduction 3/,Damage Reduction 3/―,Réduction de dégâts 3/
 Diplomacy,"",Diplomatie
 BASE ATTACK,"",ATTAQUE DE BASE
 Dodge|Modifier,"",Esquive|Modificateur
+DIAMOND SOUL,"",CORPS DE DIAMANT
+HUNTER’S BOND,"",PACTE DU CHASSEUR
+SPELL,SPELL RESISTANCE,RÉSISTANCE
+RESISTANCE,SPELL RESISTANCE,À LA MAGIE
 EFFECTS,"",EFFETS
 All skills are considered class skills,"",Toutes les compétences sont des compétences de classe
 OF,"",DE
 Handle Animal,"",Dressage
+Slow Fall,Slow Fall 30 ft,Chute ralentie
+30 ft,Slow Fall 30 ft,9 m
+Slow Fall,Slow Fall 40 ft,Chute ralentie
+40 ft,Slow Fall 40 ft,12 m
+Slow Fall,Slow Fall 50 ft,Chute ralentie
+50 ft,Slow Fall 50 ft,15 m
+Slow Fall,Slow Fall 60 ft,Chute ralentie
+60 ft,Slow Fall 60 ft,18 m
+Slow Fall,Slow Fall 70 ft,Chute ralentie
+70 ft,Slow Fall 70 ft,21 m
+Slow Fall,Slow Fall 80 ft,Chute ralentie
+80 ft,Slow Fall 80 ft,24 m
+Slow Fall,Slow Fall 90 ft,Chute ralentie
+90 ft,Slow Fall 90 ft,27 m
+Slow Fall,Slow Fall Any distance,Chute ralentie
+Any distance,Slow Fall Any distance,Toute distances
 Spellcraft,"",Art de la magie
 Total,"",Total
 Today,"",Aujourd'hui
+FAVOURED TERRAIN BONUS,"",BONUS SUR LES ENVIRONNEMENTS DE PRÉDILECTION
+Damage Reduction 2/,Damage Reduction 2/―,Réduction de dégâts 2/
 School,"",Ecole
 Base,"",Base
 Wounds,"",Blessures
@@ -204,6 +333,7 @@ Wounds,"",Blessures
 HIT POINTS,"",POINTS DE VIE
 HEALTH,"",SANTE
 Bluff,"",Bluff
+QUIVERING PALM,"",PAUME VIBRATOIRE
 pts,"",pts
 LANGUAGES,"",LANGAGES
 Armour AC,"",CA d'armure
@@ -211,55 +341,69 @@ Intimidate,"",Intimidation
 Endurance,"",Endurance
 Shield AC,"",CA de bouclier
 Sleight of Hand,"",Escamotage
-XP,"",PX
+Stable,"",Stable
 Blinded,"",Aveuglé
-Deafened,"",Assourdi
-TATTOOS,"",TATOUAGES
+XP,"",PX
 Trapfinding,"",Détection de pièges
+Deafened,"",Assourdi
+INITIATIVE,"",INITIATIVE
+TATTOOS,"",TATOUAGES
 Disable Device,"",Sabotage
 Dying,"",Mourant
-INITIATIVE,"",INITIATIVE
-Stable,"",Stable
 Base|Attack,"",Base|Attaque
-Stunned,"",Etourdi
 Bonus Spells,Bonus Spells|CHA,Sorts supplémentaires
-Total Weight,"",Poids total
-(RANGER),"",(RODEUR)
-Ring,"",Anneau
+Slow Fall,Slow Fall 20 ft,Chute ralentie
+20 ft,Slow Fall 20 ft,6 m
+Stunned,"",Etourdi
 Bonus to attack and damage rolls,"",Bonus à l'attaque et aux dommages
+(RANGER),"",(RODEUR)
+Total Weight,"",Poids total
 Silver,"",Argent
+Ring,"",Anneau
 Unconscious,"",Inconscient
+TRAPS,"",PIÈGES
+SMITE EVIL,"",CHÂTIMENT DU MAL
 Fly,"",Vol
 Fly Speed,"",Vitesse de vol
 Immune to all poisons,"",Immunité à tous les poisons
 SPECIAL MOUNT,"",MONTURE SPECIALE
 Immune to all diseases,"",Immunité à toutes les maladies
-EQUIPMENT,"",EQUIPEMENT
+Power|Attack,"",Attaque|en puissance
+Level|Adjustment,"",Ajustement|de niveau
 Alchemist|Level,"",Alchémiste|Niveau
 Cleric Level,"",Niveau de prêtre
+EQUIPMENT,"",EQUIPEMENT
 (BARBARIAN),"",(BARBARE)
 Hit Die,"",Dés de vie
+LAY ON HANDS,"",IMPOSITION DES MAINS
+Paralysed,"",Paralysé
 days,"",jours
 PERSONALITY,"",PERSONNALITE
 Skill|Bonus,"",Compétence|Bonus
 COMBAT MANOEUVRES,"",MANOEUVRES DE COMBAT
 Channel Negative Energy,"",Canalisation d'énergie négative
-INVENTORY,"",INVENTAIRE
 BONDED WEAPON,"",ARME LIÉ 
+Spell Save DC = 10 + INT + Spell Level,"",DD de jet de sauvegarde d'un sort = 10 + INT + niveau de sort
 Swim Speed,"",Vitesse de nage
 Spell Level,"",Niveau de sort
-CLASSES,"",CLASSES
+Evil Cleric,"",Prêtre du Mal
 Locate Traps,"",Détection de pièges
 Skill Ranks,"",Rangs de compétence
 (DRUID),"",(DRUIDE)
-Spell Save DC = 10 + INT + Spell Level,"",DD de jet de sauvegarde d'un sort = 10 + INT + niveau de sort
-pp,"",pp
+Good Cleric,"",Prêtre du Bien
 Hands,"",Mains
+pp,"",pp
+INVENTORY,"",INVENTAIRE
+CLASSES,"",CLASSES
 Player,"",Joueur
 Wind Instruments,"",Instruments à vent
 Gold,"",Or
 3d8,"",3d8
 Dance,"",Dance
+"Diplomacy, Sense Motive","","Diplomatie, Psychologie"
+"Diplomacy, Intimidate","","Diplomatie, Intimidation"
+"Diplomacy, Handle Animal","","Diplomatie, Dressage"
+Diamond Body,"",Corps de diamant
 4d8,"",4d8
 INT - 8,"",INT - 8
 INT - 4,"",INT - 4
@@ -275,15 +419,22 @@ Shoulders,"",Epaules
 CHARACTER,"",PERSONNAGE
 Sing,"",Chant
 Use Magical Device,"",Utlisation d'objets magiques
+"Handle Animal, Intimidate","","Dressage, Intimidation"
 Unlimited uses|per day,"",Utilisations illimitées|par jour
+"Acrobatics, Fly","","Acrobaties, Vol"
 sp,"",pa
+"Bluff, Diplomacy","","Bluff, Diplomatie"
 Foes|Today,"",Ennemis|Aujourd'hui
 Spell|Level,"",Sort|Niveau
+"Bluff, Disguise","","Bluff, Déguisement"
+"Bluff, Intimidate","","Bluff, Intimidation"
+"Bluff, Sense Motive","","Bluff, Psychologie"
 Comedy,"",Comédie
 Apply this bonus to all knowledge skills,"",Appliquer ce bonus à toutes les compétences de connaissances
 Stealth,"",Discrétion
 Training,"",Entrainement
 String,"",Instruments à corde
+TAKE 10,"",FAIRE 10
 Platinum,"",Platine
 Ninja|Level,"",Ninja|Niveau
 Eyes,"",Yeux
@@ -297,8 +448,11 @@ Climb Speed,"",Vitesse d'escalade
 ARMOUR,"",ARMURE
 FEATS & SPECIAL ABILITIES,"",DONS ET CAPACITES SPECIALES
 PORTRAIT,"",PORTRAIT
+Heavy Load,"",Charge lourde
 /  Town,"",/ Ville
 Hero,"",Héros
+Light Load,"",Charge légère
+Medium Load,"",Charge intermédiaire
 MONEY,"",RICHESSES
 (CLERIC),"",(PRETRE)
 FAMILIAR,"",FAMILIER
@@ -310,58 +464,75 @@ DC,DC 20,DD
 Uses|Today,"",Utilisation|Aujourd'hui
 Neck / Throat,"","Nuque, cou"
 COMBAT,"",COMBAT
+Trap Sense +6,"",Sens des pièges +6
+Trap Sense +5,"",Sens des pièges +5
+Trap Sense +4,"",Sens des pièges +4
+Trap Sense +3,"",Sens des pièges +3
+Trap Sense +2,"",Sens des pièges +2
+Trap Sense +1,"",Sens des pièges +1
 "Weapons, Ammo","","Armes, munitions"
 Ranger Level,"",Niveau de rôdeur
 "Armour, Shield","","Armure, bouclier"
 (MONK),"",(MOINE)
-Page,"",Page
 Temp CMD,"",BMO temp
+Page,"",Page
 LEGENDARY HERO,"",HEROS LEGENDAIRE
-Class skills,"",Compétences de classe
+INT,+ INT| per level,INT
+per level,+ INT| per level,par niveau
 Age,"",Age
-Duration,"",Durée
 ROGUE,"",ROUBLARD
-DC,DC 15,DD
+Duration,"",Durée
+Class skills,"",Compétences de classe
 PRESTIGE CLASS,"",CLASSE DE PRESTIGE
-From Level 4,"",A partir du niveau 4
 Monk Level|÷ 4,"",Niveau de moine|÷ 4
-Height,"",Taille
 IMMORTAL,"",IMMORTEL
-Class|Skills,Class|Skills|+3,Classe|Compétences
+Height,"",Taille
+From Level 4,"",A partir du niveau 4
 Kingdom,"",Royaume
-d12,"",d12
 DEFENCE,"",DEFENSE
+d12,"",d12
+CON,+ CON| per level,CON
+per level,+ CON| per level,par niveau
 Temp CMB,"",BMO temp
+DC,DC 15,DD
 "Scrolls, Potions,|Wands, Components","","Parchemins, Potions,|Baguettes, Composants"
 Knowledge: Nature,"",Connaissances: Nature
 Knowledge: Dungeoneering,"",Connaissances: Exploration
 Knowledge: Arcana,"",Connaissances: Art de la magie
 Knowledge: Religion,"",Connaissances: Religion
 Knowledge: The Planes,"",Connaissances: Plans
+Class|Skills,Class|Skills|+3,Classe|Compétences
+TWO-WEAPON FIGHTING,"",COMBAT À DEUX ARMES
 Temp Damage,"",Dommages temp
-Attack|Bonus,"",Attaque|Bonus
 Round,"",Tour
+Attack|Bonus,"",Attaque|Bonus
+RANGER,"",RODEUR
 MOUNT,"",MONTURE
+Headband,"",Bandeau
 Attack|Penalty,"",Attaque|Pénalité
 Chest,"",Coffre
 SAVING THROWS,"",JETS DE SAUVEGARDE
+Debts,"",Dettes
 TEAMWORK FEATS,"",DONS D'EQUIPE
 Favoured class,"",Classe de prédilection
 Belts,"",Ceintures
 DOMAINS,"",DOMAINES
-Debts,"",Dettes
 Hat / Mask,"","Chapeau, masque"
 CLERIC,"",PRETRE
-RANGER,"",RODEUR
 Parents,"",Parents
 Region,"",Région
 Religion,"",Religion
 BARD,"",BARDE
+Knowledge -,Knowledge - INT|Profession - WIS,Connaissances - 
+INT,Knowledge - INT|Profession - WIS,INT
+Profession -,Knowledge - INT|Profession - WIS,Profession -
+WIS,Knowledge - INT|Profession - WIS,SAG
 per turn,"",par tour
 Employer,"",Employeur
 Current Country,"",Pays actuel
 Medium,"",Moyen
 Motivations,"",Motivations
+SORCERER,"",ENSORCELEUR
 Country,"",Pays
 FRIENDS AND FOES,"",AMIS ET ENNEMIS
 CLASS,"",CLASSE
@@ -370,7 +541,9 @@ Other items,"",Autres objets
 Origin,"",Origine
 APPEARANCE,"",APPARENCE
 DEFENCE & SAVING THROWS,"",DEFENSE & JETS DE SAUVEGARDE
+METAMAGIC,"",MÉTAMAGIE
 ORIGINS,"",ORIGINES
++1 per level,"",+1 par niveau
 Hair,"",Cheveux
 NPC,"",PNJ
 Population,"",Population
@@ -399,8 +572,8 @@ Special properties,"",Propriétés spéciales
 NPC GROUP,"",GROUPE DE PNJ
 Knowledge: Geography,"",Connaissances: Géographie
 Skill,"",Compétence
-DC 15,"",DD 15
 Character name,"",Nom de personnage
+DC 15,"",DD 15
 Base Weapon,"",Arme de base
 Base Value,"",Valeur de base
 AC Penalty,"",Pénalité à la CA
@@ -413,6 +586,7 @@ Level,100’+ 10’ × Level,Niveau
 PF-RPG,"",PF-JDR
 Level,400’+ 40’ × Level,Niveau
 Damage Reduction:,"",Réduction de dommages:
+CR,"",FP
 BARBARIAN!,"",BARBARE!
 per successive hit,"",par coup successif
 Farms,"",Fermes
