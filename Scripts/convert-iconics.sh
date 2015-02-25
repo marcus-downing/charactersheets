@@ -2,7 +2,8 @@
 source /etc/init.d/functions.sh
 eval $(eval_ecolors)
 
-TARGET="../Composer 2.1.3/public/images/iconics";
+SOURCE="../Iconics"
+TARGET="../../Character Sheets Website/public/images/iconics";
 TXT="$TARGET/iconics.txt"
 echo -n "" > "$TXT"
 cd ../Iconics

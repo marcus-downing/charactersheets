@@ -4,7 +4,7 @@
 // var sourceFolder = new Folder( '/Users/Marcus Downing/Documents/GitHub/charactersheets/Pathfinder/Archetypes/Monk' );
 // var destinationFolder = new Folder( '/Users/Marcus Downing/Documents/GitHub/charactersheets/Composer/public/pdf/pathfinder/Archetypes/Monk' );
 var sourceFolder = baseFolder;
-var destinationFolder = baseFolder+'../charactersheets-website/public/pdf/'
+var destinationFolder = baseFolder+'../..//Character Sheets Website/public/pdf/'
 
 exportFolderAsPDF(new Folder(sourceFolder+'Languages/Italian/Pathfinder'), new Folder(destinationFolder+'languages/italian/pathfinder'));
 exportFolderAsPDF(new Folder(sourceFolder+'Languages/Italian/3.5'), new Folder(destinationFolder+'languages/italian/dnd35'));

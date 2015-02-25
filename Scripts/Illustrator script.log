@@ -1,30 +1,34 @@
 
-Tuesday, 30 Dec 2014 17:22:08 GMT (1): Starting script: "/e/Projects/Character%20Sheets/Scripts/Tools.jsxinc"
-Tuesday, 30 Dec 2014 17:22:36 GMT (2): Exporting 13 Illustrator files as PDFs: /e/Projects/Character Sheets/Pathfinder/Prestige Classes, object Object {"/e/Projects/charactersheets-website/public/pdf/pathfinder/Presti": /e/Projects/charactersheets-website/public/pdf/pathfinder/Prestige Classes}
-Tuesday, 30 Dec 2014 17:22:37 GMT (2): i18n: Exporting file: /e/Projects/Character Sheets/Pathfinder/Prestige Classes/Arcane Archer.ai, /e/Projects/charactersheets-website/public/pdf/pathfinder/Prestige Classes/Arcane Archer.pdf
-Tuesday, 30 Dec 2014 17:22:37 GMT (1): Exporting file as PDF: /e/Projects/Character Sheets/Pathfinder/Prestige Classes/Arcane Archer.ai
-Tuesday, 30 Dec 2014 17:22:40 GMT (2): i18n: Exporting file: /e/Projects/Character Sheets/Pathfinder/Prestige Classes/Arcane Trickster.ai, /e/Projects/charactersheets-website/public/pdf/pathfinder/Prestige Classes/Arcane Trickster.pdf
-Tuesday, 30 Dec 2014 17:22:40 GMT (1): Exporting file as PDF: /e/Projects/Character Sheets/Pathfinder/Prestige Classes/Arcane Trickster.ai
-Tuesday, 30 Dec 2014 17:22:42 GMT (2): i18n: Exporting file: /e/Projects/Character Sheets/Pathfinder/Prestige Classes/Assassin.ai, /e/Projects/charactersheets-website/public/pdf/pathfinder/Prestige Classes/Assassin.pdf
-Tuesday, 30 Dec 2014 17:22:42 GMT (1): Exporting file as PDF: /e/Projects/Character Sheets/Pathfinder/Prestige Classes/Assassin.ai
-Tuesday, 30 Dec 2014 17:22:44 GMT (2): i18n: Exporting file: /e/Projects/Character Sheets/Pathfinder/Prestige Classes/Dragon Disciple.ai, /e/Projects/charactersheets-website/public/pdf/pathfinder/Prestige Classes/Dragon Disciple.pdf
-Tuesday, 30 Dec 2014 17:22:44 GMT (1): Exporting file as PDF: /e/Projects/Character Sheets/Pathfinder/Prestige Classes/Dragon Disciple.ai
-Tuesday, 30 Dec 2014 17:22:46 GMT (2): i18n: Exporting file: /e/Projects/Character Sheets/Pathfinder/Prestige Classes/Duelist.ai, /e/Projects/charactersheets-website/public/pdf/pathfinder/Prestige Classes/Duelist.pdf
-Tuesday, 30 Dec 2014 17:22:46 GMT (1): Exporting file as PDF: /e/Projects/Character Sheets/Pathfinder/Prestige Classes/Duelist.ai
-Tuesday, 30 Dec 2014 17:22:47 GMT (2): i18n: Exporting file: /e/Projects/Character Sheets/Pathfinder/Prestige Classes/Eldritch Knight.ai, /e/Projects/charactersheets-website/public/pdf/pathfinder/Prestige Classes/Eldritch Knight.pdf
-Tuesday, 30 Dec 2014 17:22:47 GMT (1): Exporting file as PDF: /e/Projects/Character Sheets/Pathfinder/Prestige Classes/Eldritch Knight.ai
-Tuesday, 30 Dec 2014 17:22:49 GMT (2): i18n: Exporting file: /e/Projects/Character Sheets/Pathfinder/Prestige Classes/Loremaster.ai, /e/Projects/charactersheets-website/public/pdf/pathfinder/Prestige Classes/Loremaster.pdf
-Tuesday, 30 Dec 2014 17:22:49 GMT (1): Exporting file as PDF: /e/Projects/Character Sheets/Pathfinder/Prestige Classes/Loremaster.ai
-Tuesday, 30 Dec 2014 17:22:51 GMT (2): i18n: Exporting file: /e/Projects/Character Sheets/Pathfinder/Prestige Classes/Mystic Theurge.ai, /e/Projects/charactersheets-website/public/pdf/pathfinder/Prestige Classes/Mystic Theurge.pdf
-Tuesday, 30 Dec 2014 17:22:51 GMT (1): Exporting file as PDF: /e/Projects/Character Sheets/Pathfinder/Prestige Classes/Mystic Theurge.ai
-Tuesday, 30 Dec 2014 17:22:53 GMT (2): i18n: Exporting file: /e/Projects/Character Sheets/Pathfinder/Prestige Classes/Pathfinder Chronicler - L4.ai, /e/Projects/charactersheets-website/public/pdf/pathfinder/Prestige Classes/Pathfinder Chronicler - L4.pdf
-Tuesday, 30 Dec 2014 17:22:53 GMT (1): Exporting file as PDF: /e/Projects/Character Sheets/Pathfinder/Prestige Classes/Pathfinder Chronicler - L4.ai
-Tuesday, 30 Dec 2014 17:22:56 GMT (2): i18n: Exporting file: /e/Projects/Character Sheets/Pathfinder/Prestige Classes/Pathfinder Chronicler - L5.ai, /e/Projects/charactersheets-website/public/pdf/pathfinder/Prestige Classes/Pathfinder Chronicler - L5.pdf
-Tuesday, 30 Dec 2014 17:22:56 GMT (1): Exporting file as PDF: /e/Projects/Character Sheets/Pathfinder/Prestige Classes/Pathfinder Chronicler - L5.ai
-Tuesday, 30 Dec 2014 17:22:59 GMT (2): i18n: Exporting file: /e/Projects/Character Sheets/Pathfinder/Prestige Classes/Pathfinder Chronicler.ai, /e/Projects/charactersheets-website/public/pdf/pathfinder/Prestige Classes/Pathfinder Chronicler.pdf
-Tuesday, 30 Dec 2014 17:22:59 GMT (1): Exporting file as PDF: /e/Projects/Character Sheets/Pathfinder/Prestige Classes/Pathfinder Chronicler.ai
-Tuesday, 30 Dec 2014 17:23:02 GMT (2): i18n: Exporting file: /e/Projects/Character Sheets/Pathfinder/Prestige Classes/Shadowdancer.ai, /e/Projects/charactersheets-website/public/pdf/pathfinder/Prestige Classes/Shadowdancer.pdf
-Tuesday, 30 Dec 2014 17:23:02 GMT (1): Exporting file as PDF: /e/Projects/Character Sheets/Pathfinder/Prestige Classes/Shadowdancer.ai
-Tuesday, 30 Dec 2014 17:23:04 GMT (2): i18n: Exporting file: /e/Projects/Character Sheets/Pathfinder/Prestige Classes/_Prestige Class.ai, /e/Projects/charactersheets-website/public/pdf/pathfinder/Prestige Classes/_Prestige Class.pdf
-Tuesday, 30 Dec 2014 17:23:04 GMT (1): Exporting file as PDF: /e/Projects/Character Sheets/Pathfinder/Prestige Classes/_Prestige Class.ai
-Tuesday, 30 Dec 2014 17:23:04 GMT (2): Exported 13 files: false, object Object {"13": 13,"0": 0}
+Wednesday, 25 Feb 2015 21:25:11 GMT (1): Starting script: "~/Documents/Projects/Character%20Sheets/Scripts/Tools.jsxinc"
+Wednesday, 25 Feb 2015 21:25:37 GMT (1): i18n: Reading messages file: ~/Documents/Projects/Character Sheets/Languages/Italian.csv
+Wednesday, 25 Feb 2015 21:25:37 GMT (0): i18n: Read 1753 messages
+Wednesday, 25 Feb 2015 21:25:37 GMT (0): i18n: Kept 1753 messages
+Wednesday, 25 Feb 2015 21:25:37 GMT (0): i18n: Translating 1753 strings in 27 files.
+Wednesday, 25 Feb 2015 21:25:37 GMT (2): i18n: Translating file: ~/Documents/Projects/Character Sheets/Pathfinder/Core/Animal Companion.ai, ~/Documents/Projects/Character Sheets/Languages/Italian/Pathfinder/Core/Animal Companion.ai
+Wednesday, 25 Feb 2015 21:25:41 GMT (2): i18n: Translating file: ~/Documents/Projects/Character Sheets/Pathfinder/Core/Bard.ai, ~/Documents/Projects/Character Sheets/Languages/Italian/Pathfinder/Core/Bard.ai
+Wednesday, 25 Feb 2015 21:25:43 GMT (2): i18n: Translating file: ~/Documents/Projects/Character Sheets/Pathfinder/Core/Character Info.ai, ~/Documents/Projects/Character Sheets/Languages/Italian/Pathfinder/Core/Character Info.ai
+Wednesday, 25 Feb 2015 21:25:44 GMT (2): i18n: Translating file: ~/Documents/Projects/Character Sheets/Pathfinder/Core/Cleric.ai, ~/Documents/Projects/Character Sheets/Languages/Italian/Pathfinder/Core/Cleric.ai
+Wednesday, 25 Feb 2015 21:25:46 GMT (2): i18n: Translating file: ~/Documents/Projects/Character Sheets/Pathfinder/Core/Combat.ai, ~/Documents/Projects/Character Sheets/Languages/Italian/Pathfinder/Core/Combat.ai
+Wednesday, 25 Feb 2015 21:25:49 GMT (2): i18n: Translating file: ~/Documents/Projects/Character Sheets/Pathfinder/Core/Fighter (Ranged).ai, ~/Documents/Projects/Character Sheets/Languages/Italian/Pathfinder/Core/Fighter (Ranged).ai
+Wednesday, 25 Feb 2015 21:25:54 GMT (2): i18n: Translating file: ~/Documents/Projects/Character Sheets/Pathfinder/Core/Fighter.ai, ~/Documents/Projects/Character Sheets/Languages/Italian/Pathfinder/Core/Fighter.ai
+Wednesday, 25 Feb 2015 21:26:00 GMT (2): i18n: Translating file: ~/Documents/Projects/Character Sheets/Pathfinder/Core/Inventory without.ai, ~/Documents/Projects/Character Sheets/Languages/Italian/Pathfinder/Core/Inventory without.ai
+Wednesday, 25 Feb 2015 21:26:01 GMT (2): i18n: Translating file: ~/Documents/Projects/Character Sheets/Pathfinder/Core/Inventory.ai, ~/Documents/Projects/Character Sheets/Languages/Italian/Pathfinder/Core/Inventory.ai
+Wednesday, 25 Feb 2015 21:26:02 GMT (2): i18n: Translating file: ~/Documents/Projects/Character Sheets/Pathfinder/Core/Paladin.ai, ~/Documents/Projects/Character Sheets/Languages/Italian/Pathfinder/Core/Paladin.ai
+Wednesday, 25 Feb 2015 21:26:04 GMT (2): i18n: Translating file: ~/Documents/Projects/Character Sheets/Pathfinder/Core/Party Funds.ai, ~/Documents/Projects/Character Sheets/Languages/Italian/Pathfinder/Core/Party Funds.ai
+Wednesday, 25 Feb 2015 21:26:06 GMT (2): i18n: Translating file: ~/Documents/Projects/Character Sheets/Pathfinder/Core/Rogue.ai, ~/Documents/Projects/Character Sheets/Languages/Italian/Pathfinder/Core/Rogue.ai
+Wednesday, 25 Feb 2015 21:26:07 GMT (2): i18n: Translating file: ~/Documents/Projects/Character Sheets/Pathfinder/Core/Sorcerer.ai, ~/Documents/Projects/Character Sheets/Languages/Italian/Pathfinder/Core/Sorcerer.ai
+Wednesday, 25 Feb 2015 21:26:09 GMT (2): i18n: Translating file: ~/Documents/Projects/Character Sheets/Pathfinder/Core/Wizard.ai, ~/Documents/Projects/Character Sheets/Languages/Italian/Pathfinder/Core/Wizard.ai
+Wednesday, 25 Feb 2015 21:26:10 GMT (2): i18n: Translating file: ~/Documents/Projects/Character Sheets/Pathfinder/Core/Barbarian/Barbarian - Character Info.ai, ~/Documents/Projects/Character Sheets/Languages/Italian/Pathfinder/Core/Barbarian/Barbarian - Character Info.ai
+Wednesday, 25 Feb 2015 21:26:11 GMT (2): i18n: Translating file: ~/Documents/Projects/Character Sheets/Pathfinder/Core/Barbarian/Barbarian - Combat.ai, ~/Documents/Projects/Character Sheets/Languages/Italian/Pathfinder/Core/Barbarian/Barbarian - Combat.ai
+Wednesday, 25 Feb 2015 21:26:14 GMT (2): i18n: Translating file: ~/Documents/Projects/Character Sheets/Pathfinder/Core/Barbarian/Barbarian.ai, ~/Documents/Projects/Character Sheets/Languages/Italian/Pathfinder/Core/Barbarian/Barbarian.ai
+Wednesday, 25 Feb 2015 21:26:17 GMT (2): i18n: Translating file: ~/Documents/Projects/Character Sheets/Pathfinder/Core/Druid/Druid (Animal Companion).ai, ~/Documents/Projects/Character Sheets/Languages/Italian/Pathfinder/Core/Druid/Druid (Animal Companion).ai
+Wednesday, 25 Feb 2015 21:26:18 GMT (2): i18n: Translating file: ~/Documents/Projects/Character Sheets/Pathfinder/Core/Druid/Druid (Domain).ai, ~/Documents/Projects/Character Sheets/Languages/Italian/Pathfinder/Core/Druid/Druid (Domain).ai
+Wednesday, 25 Feb 2015 21:26:20 GMT (2): i18n: Translating file: ~/Documents/Projects/Character Sheets/Pathfinder/Core/Druid/Wild Shape.ai, ~/Documents/Projects/Character Sheets/Languages/Italian/Pathfinder/Core/Druid/Wild Shape.ai
+Wednesday, 25 Feb 2015 21:26:23 GMT (2): i18n: Translating file: ~/Documents/Projects/Character Sheets/Pathfinder/Core/Monk/Monk - Combat.ai, ~/Documents/Projects/Character Sheets/Languages/Italian/Pathfinder/Core/Monk/Monk - Combat.ai
+Wednesday, 25 Feb 2015 21:26:26 GMT (2): i18n: Translating file: ~/Documents/Projects/Character Sheets/Pathfinder/Core/Monk/Monk.ai, ~/Documents/Projects/Character Sheets/Languages/Italian/Pathfinder/Core/Monk/Monk.ai
+Wednesday, 25 Feb 2015 21:26:30 GMT (2): i18n: Translating file: ~/Documents/Projects/Character Sheets/Pathfinder/Core/Ranger/Ranger - Archery.ai, ~/Documents/Projects/Character Sheets/Languages/Italian/Pathfinder/Core/Ranger/Ranger - Archery.ai
+Wednesday, 25 Feb 2015 21:26:32 GMT (2): i18n: Translating file: ~/Documents/Projects/Character Sheets/Pathfinder/Core/Ranger/Ranger - Character Info.ai, ~/Documents/Projects/Character Sheets/Languages/Italian/Pathfinder/Core/Ranger/Ranger - Character Info.ai
+Wednesday, 25 Feb 2015 21:26:33 GMT (2): i18n: Translating file: ~/Documents/Projects/Character Sheets/Pathfinder/Core/Ranger/Ranger - Combat.ai, ~/Documents/Projects/Character Sheets/Languages/Italian/Pathfinder/Core/Ranger/Ranger - Combat.ai
+Wednesday, 25 Feb 2015 21:26:36 GMT (2): i18n: Translating file: ~/Documents/Projects/Character Sheets/Pathfinder/Core/Ranger/Ranger - Two-weapon fighting.ai, ~/Documents/Projects/Character Sheets/Languages/Italian/Pathfinder/Core/Ranger/Ranger - Two-weapon fighting.ai
+Wednesday, 25 Feb 2015 21:26:38 GMT (2): i18n: Translating file: ~/Documents/Projects/Character Sheets/Pathfinder/Core/Ranger/Ranger.ai, ~/Documents/Projects/Character Sheets/Languages/Italian/Pathfinder/Core/Ranger/Ranger.ai
+Wednesday, 25 Feb 2015 21:26:39 GMT (0): i18n: Translated 2662 strings from 27 files

@@ -4,6 +4,9 @@ var i18n = {
   frameNumBoost: 0,
   d00: false,
 
+  countTranslatedLines: 0,
+  countTranslatedFiles: 0,
+
   init: function () {
     i18n.messages = [];
     i18n.frameNum = 1;
