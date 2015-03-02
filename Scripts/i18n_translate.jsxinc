@@ -31,7 +31,7 @@ i18n.loadTranslations = function (messagesFile) {
 		log("i18n: Kept "+messages2.length+" messages");
 	  i18n.messages = messages2;
   } catch (e) {
-    log("i18n: Error loading translations", messagesFile);
+    log("i18n: Error loading translations", messagesFile, { "Error": e.message } );
   }
 };
 
@@ -56,7 +56,7 @@ i18n.translate = function(message, partof) {
 	      return adjusted;
 	  }
   } catch (e) {
-    log("i18n: Error translating", message);
+    log("i18n: Error translating", message, { "Error": e.message } );
   }
   return false;
 }
@@ -153,6 +153,7 @@ i18n.applyTranslationsFile = function (srcFile, dstFile) {
     doc.saveAs(dstFile);
     doc.close();
     i18n.countTranslatedFiles++;
+    i18n.tick();
   } catch (e) {
     log("i18n: Error in file", srcFile, { "Error": e.message } );
   }
