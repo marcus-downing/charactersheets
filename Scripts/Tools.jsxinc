@@ -428,6 +428,7 @@ function exportFolderAsPDF(sourceFolder, destinationFolder) {
       log("Exporting file as PDF", file);
       doc.saveAs( targetFile, pdfSaveOpts );
       doc.close();
+      i18n.tick();
       success++;
     } catch (e) {
       log("Error in file", file, e.message );
