@@ -15,9 +15,9 @@ do
     NAME="$FB/$FN"
     LOC=$(echo "$FB/$FN" | tr '[:upper:]' '[:lower:]' | sed 's/[^a-z0-9\/]\+/-/g' | sed 's/^-\+//' | sed 's/-\+$//')
 
-    if "$F" | grep '.txt$'; then
+    if echo "$F" | grep '.txt$'; then
       echo " * $NAME"
-      DF="$TARGET/large/$LOC.txt"
+      DF="$TARGET/large/$(echo "$LOC" | sed 's/-txt$//').txt"
       echo 
       cp "$F" "$DF"
     else
