@@ -5,8 +5,8 @@ You can view this at [http://charactersheets.minotaur.cc]
 
 ## Website
 
-The website has been moved to this project: [https://github.com/marcusatbang/charactersheets-translator]
+The website has been moved to this project: [https://github.com/marcusatbang/charactersheets-website]
 
 ## Translator
 
-The translator app has been moved to this project: [https://github.com/marcusatbang/charactersheets]
+The translator app has been moved to this project: [https://github.com/marcusatbang/charactersheets-translator]
