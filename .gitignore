@@ -6,7 +6,7 @@ target
 *.log
 **/*.log
 Pathfinder/GM/Old/*
-Languages/Numbered
+Languages/**/*.ai
 Scripts/Illustrator script.log
 Isometric A4.ai
 Old
