@@ -83,8 +83,10 @@ i18n.applyTranslationsFile = function (srcFile, dstFile) {
     log("i18n: Translating file", srcFile, dstFile);
     dstFile.ensureParentFolder();
 
+    i18n.tickThreshold = 30;
     var doc = app.open(srcFile);
 
+    var countTranslatedFrames = 0;
     var frames = doc.textFrames;
     for ( var j = 0; j < frames.length; j++ ) {
       var frame = frames[j];
@@ -94,6 +96,7 @@ i18n.applyTranslationsFile = function (srcFile, dstFile) {
         frame.language = LanguageType.ITALIAN;
         frame.contents = fulltranslation;
         i18n.countTranslatedLines++;
+        countTranslatedFrames++;
         continue;
       }
 
@@ -127,6 +130,7 @@ i18n.applyTranslationsFile = function (srcFile, dstFile) {
             span.contents = span.contents.substring(0, span.contents.length - 1);
 
             i18n.countTranslatedLines++;
+            countTranslatedFrames++;
           }
           str = String(range.contents);
           spanranges = [ range ];
@@ -146,13 +150,16 @@ i18n.applyTranslationsFile = function (srcFile, dstFile) {
           span.contents = span.contents.substring(0, span.contents.length - 1);
 
           i18n.countTranslatedLines++;
+          countTranslatedFrames++;
         }
       }
     }
 
-    doc.saveAs(dstFile);
+    if (countTranslatedFrames > 0) {
+      doc.saveAs(dstFile);
+      i18n.countTranslatedFiles++;
+    }
     doc.close();
-    i18n.countTranslatedFiles++;
     i18n.tick();
   } catch (e) {
     log("i18n: Error in file", srcFile, { "Error": e.message } );
