@@ -1,5 +1,7 @@
 #include Tools.jsxinc
 
+#include i18n_tools.jsxinc
+
 /*
 // Create the PDFSaveOptions object to set the PDF options
 var pdfSaveOpts = new PDFSaveOptions();
