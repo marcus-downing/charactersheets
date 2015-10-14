@@ -1,6 +1,12 @@
 #include Tools.jsxinc
 #include i18n_tools.jsxinc
 
+/*
+i18n web master
+Walk the entire repo producing a CSV of all translatable strings in all files,
+in a format suitable for the Translator app
+*/
+
 i18n.init();
 
 var webMaster = {
@@ -9,60 +15,19 @@ var webMaster = {
   game: "",
   level: 1,
 
-  additions: [
-    {
-      pages: [ 
-        "Pathfinder/Core/Character Info.ai", 
-        "Pathfinder/Core/Barbarian/Barbarian - Character Info.ai",
-        "Pathfinder/Core/Ranger/Ranger - Character Info.ai",
-        "Pathfinder/Archetypes/Druid/World Walker - Character Info.ai"
-      ],
-      additions: [
-        "Acrobatics", "Appraise", "Bluff", "Climb", "Diplomacy", "Disable Device", "Disarm Traps", "Disguise",
-        "Escape Artist", "Fly", "Handle Animal", "Heal", "Intimidate", "Linguistics", "Locate Traps", "Perception",
-        "Ride", "Sense Motive", "Sleight of Hand", "Spellcraft", "Stealth", "Survival", "Swim", "Track",
-        "Use Magic Device", "Knowledge (arcana)", "Knowledge (dungeoneering)", "Knowledge (engineering)", 
-        "Knowledge (geography)", "Knowledge (history)", "Knowledge (local)", "Knowledge (nature)", 
-        "Knowledge (nobility)", "Knowledge (planes)", "Knowledge (religion)", "Knowledge (psionics)"
-      ]
-    },
-    {
-      pages: [
-        "3.5/Core/Character Info.ai",
-        "3.5/Core/Character Info - simple.ai",
-        "3.5/Core/Character Info - More.ai",
-        "3.5/Barbarian/Character Info.ai"
-      ],
-      additions: [
-        "Appraise", "Balance", "Bluff", "Climb", "Decipher Script", "Diplomacy", "Disable Device", "Disguise", 
-        "Escape Artist", "Forgery", "Gather Information", "Handle Animal", "Heal", "Hide", "Intimidate", 
-        "Jump", "Listen", "Move Silently", "Open Lock", "Ride", "Search", "Sense Motive", "Sleight of Hand", 
-        "Spellcraft", "Spot", "Survival", "Swim", "Track", "Tumble", "Use Magic Device", "Use Rope",
-        "Knowledge (arcana)", "Knowledge (dungeoneering)", "Knowledge (engineering)", "Knowledge (geography)", 
-        "Knowledge (history)", "Knowledge (local)", "Knowledge (nature)", "Knowledge (nobility)", 
-        "Knowledge (religion)", "Knowledge (planes)", "Knowledge (psionics)"
-      ]
-    }
-  ],
-
-  getPageAdditions: function (filename) {
-    var slot = null;
-    for ( var i = 0; i < this.additions.length; i++ ) {
-      for (var j = 0; j < this.additions[i].pages.length; j++ ) {
-        if (filename == this.additions[i].pages[j]) 
-          return this.additions[i].additions
-      }
-    }
-    return [];
-  },
+  baseURI: new Folder(baseFolder).absoluteURI+"/",
 
   clear: function() {
     entries = {};
   },
 
   pushEntry: function(text, partOf, filename) {
+    var replacement = i18n.getTranslationReplacement(text, partOf, filename);
+    text = replacement[0];
+    partOf = replacement[1];
+
     var normal = i18n.normalise(text);
-    log("Push entry", text, normal, partOf, filename);
+    // log("Push entry", text, normal, partOf, filename);
     text = normal;
     if (text.length <= 1) return;
 
@@ -93,7 +58,8 @@ var webMaster = {
   extractFile: function(file) {
     var num = 0;
     try {
-      var filename = file.fullName.substring(baseFolder.length);
+      var filename = file.absoluteURI.replace(webMaster.baseURI, '');
+      log("Extracting from file", file.fullName, filename)
       var doc = app.open(file);
 
       var frames = doc.textFrames;
@@ -136,7 +102,7 @@ var webMaster = {
       }
       doc.close();
 
-      var additions = this.getPageAdditions(filename);
+      var additions = i18n.getPageAdditions(filename);
       for ( var i = 0; i < additions.length; i++ ) {
         var add = additions[i]
         this.pushEntry(add, add, filename)
@@ -164,13 +130,15 @@ var webMaster = {
   saveCSV: function(file) {
     var entries = [];
     for(var key in this.entries) {
-        entries.push(this.entries[key]);
+      entries.push(this.entries[key]);
     }
 
     data = entries.dissociate(['Original', 'Part of', 'Count', 'File']);
     file.writeCSV(data);
   }
 }
+
+log("Base URI", webMaster.baseURI)
 
 webMaster.game = "Pathfinder"
 webMaster.level = 1;
@@ -242,6 +210,6 @@ webMaster.extractFolder(new Folder(baseFolder+'All'));
 webMaster.extractFolder(new Folder(baseFolder+'Extra'));
 
 
-webMaster.saveCSV(new File(baseFolder+'Languages/Template/Web Master.csv'));
+webMaster.saveCSV(new File(baseFolder+'Languages/Master.csv'));
 webMaster.clear();
 alert("Done");

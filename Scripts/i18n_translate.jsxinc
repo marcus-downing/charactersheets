@@ -85,13 +85,19 @@ i18n.applyTranslationsFile = function (srcFile, dstFile) {
 
     i18n.tickThreshold = 30;
     var doc = app.open(srcFile);
+    var baseURI = new Folder(baseFolder).absoluteURI+"/";
+    var filePath = srcFile.absoluteURI.replace(baseURI, "");
 
     var countTranslatedFrames = 0;
     var frames = doc.textFrames;
     for ( var j = 0; j < frames.length; j++ ) {
       var frame = frames[j];
       var fullstr = frame.contents;
-      var fulltranslation = i18n.translate(fullstr);
+      var replacement = i18n.getTranslationReplacment(fullstr, partOf, filePath);
+      fullstr = replacement[0];
+      var partOf = replacement[1];
+
+      var fulltranslation = i18n.translate(fullstr, partOf);
       if (fulltranslation) {
         frame.language = LanguageType.ITALIAN;
         frame.contents = fulltranslation;
@@ -117,7 +123,10 @@ i18n.applyTranslationsFile = function (srcFile, dstFile) {
           str = str+String(range.contents);
           spanranges.push(range);
         } else {
-          var translation = i18n.translate(str, fullstr);
+          var replacement = i18n.getTranslationReplacment(str, fullstr, filePath);
+          str = replacement[0];
+          var partOf = replacement[1];
+          var translation = i18n.translate(str, partOf);
           if (translation) {
             //log('Translating span', str, translation);
             var span = spanranges[0];
@@ -138,7 +147,10 @@ i18n.applyTranslationsFile = function (srcFile, dstFile) {
         prev = range;
       }
       if (str !== '') {
-        var translation = i18n.translate(str, fullstr);
+        var replacement = i18n.getTranslationReplacment(str, fullstr, filePath);
+        str = replacement[0];
+        var partOf = replacement[1];
+        var translation = i18n.translate(str, partOf);
         if (translation) {
           var span = spanranges[0];
           var trailing = i18n.trailingWhitespace(str);

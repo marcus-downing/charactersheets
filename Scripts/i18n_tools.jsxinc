@@ -235,5 +235,86 @@ var i18n = {
       lastframe = i18n.messages[i]['Frame number'];
       i18n.messages[i]['Frame number'] = nframe;
     }
+  },
+
+  additions: [
+    {
+      pages: [ 
+        "Pathfinder/Core/Character Info.ai", 
+        "Pathfinder/Core/Barbarian/Barbarian - Character Info.ai",
+        "Pathfinder/Core/Ranger/Ranger - Character Info.ai",
+        "Pathfinder/Archetypes/Druid/World Walker - Character Info.ai"
+      ],
+      additions: [
+        "Acrobatics", "Appraise", "Bluff", "Climb", "Diplomacy", "Disable Device", "Disarm Traps", "Disguise",
+        "Escape Artist", "Fly", "Handle Animal", "Heal", "Intimidate", "Linguistics", "Locate Traps", "Perception",
+        "Ride", "Sense Motive", "Sleight of Hand", "Spellcraft", "Stealth", "Survival", "Swim", "Track",
+        "Use Magic Device", "Knowledge (arcana)", "Knowledge (dungeoneering)", "Knowledge (engineering)", 
+        "Knowledge (geography)", "Knowledge (history)", "Knowledge (local)", "Knowledge (nature)", 
+        "Knowledge (nobility)", "Knowledge (planes)", "Knowledge (religion)", "Knowledge (psionics)"
+      ]
+    },
+    {
+      pages: [
+        "3.5/Core/Character Info.ai",
+        "3.5/Core/Character Info - simple.ai",
+        "3.5/Core/Character Info - More.ai",
+        "3.5/Barbarian/Character Info.ai"
+      ],
+      additions: [
+        "Appraise", "Balance", "Bluff", "Climb", "Decipher Script", "Diplomacy", "Disable Device", "Disguise", 
+        "Escape Artist", "Forgery", "Gather Information", "Handle Animal", "Heal", "Hide", "Intimidate", 
+        "Jump", "Listen", "Move Silently", "Open Lock", "Psycraft", "Ride", "Search", "Sense Motive", "Sleight of Hand", 
+        "Spellcraft", "Spot", "Survival", "Swim", "Track", "Tumble", "Use Magic Device", "Use Rope",
+        "Knowledge (arcana)", "Knowledge (dungeoneering)", "Knowledge (engineering)", "Knowledge (geography)", 
+        "Knowledge (history)", "Knowledge (local)", "Knowledge (nature)", "Knowledge (nobility)", 
+        "Knowledge (religion)", "Knowledge (planes)", "Knowledge (psionics)"
+      ]
+    }
+  ],
+
+  replacements: [
+    {
+      pages: [
+        "Pathfinder/GM/Kingdom/Kingdom.ai"
+      ],
+      replacements: [
+        { from: ["Light", ""], to: ["Light <weight>", ""] }
+      ]
+    },
+    {
+      pages: [
+        "3.5/Extended/Artificer.ai",
+        "3.5/Extended/Warmage"
+      ],
+      "replacements": [
+        { from: ["Light", ""], to: ["Light <illumination>", ""] }
+      ]
+    }
+  ],
+
+  getPageAdditions: function (filename) {
+    for ( var i = 0; i < this.additions.length; i++ ) {
+      for (var j = 0; j < this.additions[i].pages.length; j++ ) {
+        if (filename == this.additions[i].pages[j]) 
+          return this.additions[i].additions
+      }
+    }
+    return [];
+  },
+
+  getTranslationReplacement: function(text, partOf, filename) {
+    for ( var i = 0; i < this.replacements.length; i++ ) {
+      for ( var j = 0; j < this.replacements[i].pages.length; j++ ) {
+        if (filename == this.replacements[i].pages[j]) {
+          for ( var k = 0; k < this.replacements[i].replacements.length; k++ ) {
+            if (text == this.replacements[i].replacements[k].from[0] && partOf == this.replacements[i].replacements[k].from[1])
+              log("Replacing entry", this.replacements[i].replacements[k].from, this.replacements[i].replacements[k].to)
+              return this.replacements[i].replacements[k].to;
+          }
+        }
+      }
+    }
+    return [text, partOf];
   }
 }
