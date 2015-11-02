@@ -156,6 +156,10 @@ webMaster.volume = "Ultimate Combat"
 webMaster.extractFolder(new Folder(baseFolder+'Pathfinder/Ultimate Combat'));
 webMaster.volume = "Advanced Class Guide"
 webMaster.extractFolder(new Folder(baseFolder+'Pathfinder/Advanced Class Guide'));
+webMaster.volume = "Occult Adventures"
+webMaster.extractFolder(new Folder(baseFolder+'Pathfinder/Occult'));
+webMaster.volume = "Pathfinder Unchained"
+webMaster.extractFolder(new Folder(baseFolder+'Pathfinder/Unchained'));
 
 webMaster.level = 3;
 webMaster.volume = ""
@@ -165,6 +169,8 @@ webMaster.extractFolder(new Folder(baseFolder+'Pathfinder/Archetypes'));
 webMaster.extractFolder(new Folder(baseFolder+'Pathfinder/Prestige Classes'));
 webMaster.volume = "Mythic Adventures"
 webMaster.extractFolder(new Folder(baseFolder+'Pathfinder/Mythic'));
+webMaster.volume = "Pathfinder Unchained"
+webMaster.extractFolder(new Folder(baseFolder+'Pathfinder/Unchained'));
 
 webMaster.level = 4;
 webMaster.volume = "Psionics Unleashed"
