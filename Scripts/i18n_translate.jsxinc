@@ -1,3 +1,15 @@
+i18n.esLanguages = {
+  "Italian": LanguageType.ITALIAN,
+  // "Spanish": LanguageType.SPANISH,
+  // "Polish": LanguageType.POLISH,
+  "German": LanguageType.STANDARDGERMAN,
+  "French": LanguageType.STANDARDFRENCH,
+  "Portuguese": LanguageType.STANDARDPORTUGUESE,
+  "Russian": LanguageType.RUSSIAN,
+  // "Dutch": LanguageType.DUTCH,
+  "US English": LanguageType.ENGLISH
+};
+
 i18n.patternise = function (text) {
     text = i18n.denormalise(text);
     text = text.replaceAll('/', '\/');
@@ -21,6 +33,9 @@ i18n.loadTranslations = function (messagesFile) {
 	    messages[i]['Original'] = i18n.normalise(messages[i]['Original']);
 	    messages[i]['Translation'] = i18n.normalise(messages[i]['Translation']);
 	    messages[i]['Part of'] = i18n.normalise(messages[i]['Part of']);
+      if (messages[i]['Original'] == messages[i]['Part of'] || typeof messages[i]['Part of'] !== 'string') {
+        messages[i]['Part of'] = '';
+      }
 
 	    if (messages[i]['Translation'] && messages[i]['Translation'].length > 0 && messages[i]['Translation'] !== '-') {
 	      messages2.push(messages[i]);
@@ -39,6 +54,9 @@ i18n.translate = function(message, partof) {
 	try {
 	  var message = i18n.normalise(message);
 	  var partof = i18n.normalise(partof);
+    if (partof == message || typeof partof !== 'string') {
+      partof = '';
+    }
 	  var d00 = false;
 	  for (var i = 0; i < i18n.messages.length; i++) {
 	    if (i18n.messages[i]['Original'] == message && i18n.messages[i]['Part of'] == partof) {
@@ -47,13 +65,25 @@ i18n.translate = function(message, partof) {
 	        return translation;
 	    }
 	  }
-	  // default
+
+	  // translate dice
 	  if (i18n.d00) {
-	    var d = i18n.d00.replace('/00$/', '');
-	    //log("i18n: Replacing dice");
-	    var adjusted = message.replaceAll(/d([0-9])+/, d+'\1');
-	    if (adjusted != message) 
-	      return adjusted;
+      var diceRe = /d([0-9]+)/;
+      if (found = message.match(diceRe)) {
+        log("Found a die:", found[1]);
+        var number = parseint(found[1]);
+        if (!isNaN(number)) {
+          var translatedDie = i18n.d00.replace('/00$/', number);
+          var translation = message.replaceAll(diceRe, translatedDie);
+          log("i18n: Replacing dice", found[0], translation);
+          if (translation != message)
+            return translation;
+        }
+      } else if (message == "d") {
+        var translation = i18n.d00.replace('/00$/', '');
+        if (translation != message)
+          return translation;
+      }
 	  }
   } catch (e) {
     log("i18n: Error translating", message, { "Error": e.message } );
@@ -83,7 +113,7 @@ i18n.applyTranslationsFile = function (srcFile, dstFile) {
     log("i18n: Translating file", srcFile, dstFile);
     dstFile.ensureParentFolder();
 
-    i18n.tickThreshold = 30;
+    // i18n.tickThreshold = 30;
     var doc = app.open(srcFile);
     var baseURI = new Folder(baseFolder).absoluteURI+"/";
     var filePath = srcFile.absoluteURI.replace(baseURI, "");
@@ -93,13 +123,15 @@ i18n.applyTranslationsFile = function (srcFile, dstFile) {
     for ( var j = 0; j < frames.length; j++ ) {
       var frame = frames[j];
       var fullstr = frame.contents;
-      var replacement = i18n.getTranslationReplacment(fullstr, partOf, filePath);
+      log('Frame', fullstr);
+      var replacement = i18n.getTranslationReplacement(fullstr, partOf, filePath);
       fullstr = replacement[0];
       var partOf = replacement[1];
 
       var fulltranslation = i18n.translate(fullstr, partOf);
       if (fulltranslation) {
-        frame.language = LanguageType.ITALIAN;
+        log('Translating full frame', fullstr, fulltranslation);
+        frame.language = i18n.language; // LanguageType.ITALIAN;
         frame.contents = fulltranslation;
         i18n.countTranslatedLines++;
         countTranslatedFrames++;
@@ -123,12 +155,12 @@ i18n.applyTranslationsFile = function (srcFile, dstFile) {
           str = str+String(range.contents);
           spanranges.push(range);
         } else {
-          var replacement = i18n.getTranslationReplacment(str, fullstr, filePath);
+          var replacement = i18n.getTranslationReplacement(str, fullstr, filePath);
           str = replacement[0];
           var partOf = replacement[1];
           var translation = i18n.translate(str, partOf);
           if (translation) {
-            //log('Translating span', str, translation);
+            log('Translating span', str, translation);
             var span = spanranges[0];
             var trailing = i18n.trailingWhitespace(str);
             for (var l = 1; l < spanranges.length; l++) {
@@ -147,11 +179,12 @@ i18n.applyTranslationsFile = function (srcFile, dstFile) {
         prev = range;
       }
       if (str !== '') {
-        var replacement = i18n.getTranslationReplacment(str, fullstr, filePath);
+        var replacement = i18n.getTranslationReplacement(str, fullstr, filePath);
         str = replacement[0];
         var partOf = replacement[1];
         var translation = i18n.translate(str, partOf);
         if (translation) {
+          log('Translating span', str, translation);
           var span = spanranges[0];
           var trailing = i18n.trailingWhitespace(str);
           for (var l = 1; l < spanranges.length; l++) {

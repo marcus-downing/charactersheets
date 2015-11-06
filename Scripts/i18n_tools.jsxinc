@@ -84,18 +84,20 @@ var i18n = {
     i18n.messages.push(entry);
   },
 
-  //  prod this on every item, to stop the script from timeout
+  //  prod this on every item, to stop the script from hitting a Windows timeout
   tick: function () {
     i18n.tickNum++;
     i18n.totalTick++;
     if (i18n.tickNum >= i18n.tickThreshold) {
-      log("Interaction required: #"+i18n.totalTick);
-      alert("Tick #"+i18n.totalTick);
+      log("Sleeping: #"+i18n.totalTick);
+      // log("Interaction required: #"+i18n.totalTick);
+      // alert("Tick #"+i18n.totalTick);
+      $.sleep(5000);
       i18n.tickNum = 0;
     }
   },
 
-  tickThreshold: 50,
+  tickThreshold: 20,
   tickNum: 0,
   totalTick: 0,
 
