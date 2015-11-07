@@ -1,384 +1,401 @@
 Original,Part of,Translation
-Level,"",Nível
-Misc,"",Outros
-CHA,"",CAR
-WIS,"",SAB
-DEX,"",DES
-INT,"",INT
-ft,"",m
-PREPARED SPELLS,"",MAGIAS PREPARADAS
-sq,"",m²
-Domain Spell,"",Magia do Donínio
-Caster|Level,"",Conjurador|Nível
-STR,"",FOR
-(Round down),"",(Arredonda para Baixo)
-AC,"",CA
-Spell|Save DC,"",Teste de|Resistência CD
-Base|Spells,"",Base|Magia
-SPELLS,"",MAGIAS
-Spells|per day,"",Magias|por dia
-rds,"",rds
-DC,"",CD
-Rogue|Level,"",Nível de|Ladino
-CON,"",CON
-Ranger|Level,"",Nível de|Ranger
-Barbarian|Level,"",Nível de|Bárbaro
-SCROLLS,"",PERGAMINHOS
-Concentration,"",Concentração
-POTIONS,"",POÇÕES
-Monk|Level,"",Nível de|Monge
-Druid|Level,"",Nível de|Druida
-GOOD,"",BOM
-LAWFUL,"",LEAL
-CHAOTIC,"",CAÓTICO
-EVIL,"",MAL
-Paladin|Level,"",Nível de|Paladino
-lb,"",kg
-Attack Bonus,"",Bônus de Ataque
-Damage,"",Dano
-Range,"",Alcance
-(Round up),"",(Arredonda para Cima)
-Bard|Level,"",Nível de|Bardo
-Critical,"",Crítico
-d6,"",d6
-Monk Level,"",Nível de Monge
-Bonus Spells,"",Magias Bônus
-Spell Save DC = 10 + WIS + Spell Level,"",Teste de Resistência CD = 10 + SAB + Nível da Magia
-Tier,"",Nível
-Type,"",Tipo
-Size|Modifier,"",Modificador de|Tamanho
-RAGE!,"",FÚRIA!
-CHARGES,"",CARGAS
-Level|Bonus,"",Nível|Bônus
-hp,"",hp
-Granted Power,"",Poder Garantido
-WANDS,"",VARINHAS
-Name,"",Nome
-Uses|per day,"",Usos|Diários
-Evasion,"",Evasão
-WILD EMPATHY,"",EMPATIA COM A NATUREZA
-Domain,"",Domínio
-WIS - 4,"",SAB - 4
-WIS - 12,"",SAB - 12
-WIS - 8,"",SAB - 8
-WILD EMPATHY,WILD EMPATHY|BONUS,EMPATIA COM A NATUREZA
-BONUS,WILD EMPATHY|BONUS,BÔNUS
-Manifester|Level,"",Nível de|Manifestação
-Druid Level,"",Nível de Druida
-ANIMAL COMPANION,"",COMPANHEIRO ANIMAL
-ARCANE SPELL FAILURE,ARCANE SPELL FAILURE THRESHOLD,FALHA ARCANA
-THRESHOLD,ARCANE SPELL FAILURE THRESHOLD,LIMIAR
-Creature Type,"",Tipo da Criatura
-Speciality Spell,"",Magia Especializada
-Damage Reduction,"",Redução de Dano
-No action this round|Lose,No action this round|Lose DEX bonus to AC; -2 AC,Sem ação nesta rodada|Perde
-DEX,No action this round|Lose DEX bonus to AC; -2 AC,DES
-bonus to,No action this round|Lose DEX bonus to AC; -2 AC,e ganha
-AC,No action this round|Lose DEX bonus to AC; -2 AC,CA
-CMD,"",DMC
-WILD SHAPE,"",FORMA SELVAGEM
-+ Level,"",+ Nível
-Properties,"",Patrimônio
-Track,"",Rastrear
-Distance,"",Distância
-KNOWN SPELLS,"",MAGIAS CONHECIDAS
-Spell Save DC = 10 + CHA + Spell Level,"",Resistência a Magia CD = 10 + CAR + Nível da Magia
-5ft,"",1.5m
-Times Today,"",Hoje
-at half speed,"",com metade da velocidade
-Times per day,"",Vezes por dia
-+10 to move at full speed,"",+3m ao mover-se em velocidade máxima
-10ft,"",3m
-Spells|Known,"",Magias|Conhecidas
-ARMOUR CLASS,"",CLASSE DE ARMADURA
-Weight,"",Peso
-Bard Level,"",Nível de Bardo
-KI POOL,"",Piscina de KI
-NATURE BOND,"",LIGAÇÃO COM A NATUREZA
-Spell Resistance,"",Resistência Mágica
-Uncanny Dodge,"",Esquiva Sobrenatural
-Improved Uncanny Dodge,"",Esquiva Sobrenatural Aprimorada
-Wild Empathy,Wild Empathy|Improve the attitude of an animal,Empatia com a Natureza
-Improve the attitude of an animal,Wild Empathy|Improve the attitude of an animal,Melhora a Atitude de um Animal
-or,"",ou
-CHA - 8,"",CAR - 8
-Timeless Body,"Timeless Body|No longer age, cannot be magically aged",Corpo Atemporal
-"No longer age, cannot be magically aged","Timeless Body|No longer age, cannot be magically aged","Não envelhece, ignora magias de envelhecimento"
-BONUS FEATS,"",TALENTO BÔNUS
-CHA - 12,"",CHA - 12
-Nature Sense,Nature Sense|+2 to Knowledge (nature) and Survival,Senso da Natureza
-+2 to Knowledge (nature) and Survival,Nature Sense|+2 to Knowledge (nature) and Survival,+2 em Conhecimento (natureza) e em Sobrevivência
-CHA - 4,"",CHA - 4
-Cleric|Level,"",Nível de|Clérigo
-2d8,"",2d8
-SPEED,"",VELOCIDADE
-FORTITUDE|SAVE,FORTITUDE|SAVE DC,Fortitude|Resistência
-DC,FORTITUDE|SAVE DC,CD
-Wild Shape,Wild Shape|Become any small or medium animal,Forma Selvagem
-Become any small or medium animal,Wild Shape|Become any small or medium animal,Torna-se qualquer animal médio ou pequeno
-d8,"",d8
-Acrobatics,"",Acrobacia
-Deflection|Modifier,"",Modificador de|Deflexão
-Cost,"",Custo
-2d6,"",2d6
-BAB,"",BBA
-d10,"",d10
-DRUID,"",DRÚIDA
-Conditional Modifiers,"",Modificadores Condicionais
-ROGUE TALENTS,"",TALENTOS DE LADINO
-TALENTS,TALENTS|KNOWN,TALENTOS
-KNOWN,TALENTS|KNOWN,CONHECIDOS
-SKILLS,"",PERÍCIAS
-Ammo,"",Munição
-SNEAK ATTACK,"",ATAQUE FURTIVO
-Bonus Spells,Bonus Spells|WIS,Magias Bônus
-WIS,Bonus Spells|WIS,SAB
-Racial,"",Racial
-MASTER STRIKE,MASTER STRIKE|FORTITUDE DC,ATAQUE MESTRE
-FORTITUDE DC,MASTER STRIKE|FORTITUDE DC,Fortitude CD
-MASTER STRIKE,"",ATAQUE MESTRE
-SNEAK DAMAGE,SNEAK DAMAGE|BONUS,DANO FURTIVO
-BONUS,SNEAK DAMAGE|BONUS,BÔNUS
-Base|Attack Bonus,"",Bônus|Base de Ataque
-Uses Today,"",Hoje
-DEITY,"",DIVINDADE
-Advanced Talents,"",Talentos Avançados
-"Master strike cannot be used again on the same target within|24 hours, whether they pass the Fortitude save or not.","","Ataque mestre não pode ser usado novamente no mesmo alvo em|24h, passando ou não no teste de Fortitude."
-FORTITUDE,FORTITUDE SAVE,Fortitude
-SAVE,FORTITUDE SAVE,Resistência
-Special Ammo,"",Munição Especial
-Unarmed Strike,"",Ataque Desarmado
-Survival|Bonus,"",Sobrevivência|Bônus
-"From level 10, a Rogue|can take Advanced Talents","","No nível 10, um Ladino|pode adquirir Talentos Avançados"
-WILL,WILL SAVE DC,VONTADE
-SAVE DC,WILL SAVE DC,RESISTÊNCIA CD
-ABILITIES,"",Habilidades
-A successful sneak attack can also deliver one of:| • Sleep for 1d4 hours| • Paralysed for 2d6 rounds| • Slain,"",Um ataque furtivo bem sucedido pode causar um efeito:| •  Dormir por 1d4 horas| •  Paralizado por 2d6 rodadas| • Assassinado
-MONK,"",MONGE
-REFLEX,REFLEX SAVE,REFLEXO
-SAVE,REFLEX SAVE,RESISTÊNCIA
-(ROGUE),"",(LADINO)
-Perception,"",Percepção
-MALE,"",MASCULINO
-FEMALE,"",FEMININO
-Climb,"",Escalar
-"Sneak attack damage can be applied when a target is flanked or|is denied their DEX bonus to AC.|On ranged attacks, it only applies within 30 ft.|It is not multiplied by critical hits.|It cannot be non-lethal unless using a non-lethal weapon.","","O dano do ataque furtivo pode ser aplicado quando um inimigos esta flanqueado ou|não possui seu bônus de DES na CA.|Em ataques a distância, só é aplicado com 10m.|Não é multiplicado em hits críticos.|Não pode ser não-letal, a não ser que utilize uma arma não-letal."
-Bards can wear light armour without risking|spell failure.,"",Bardos podem vestir armaduras leves sem risco de|Falha Arcana.
-Ability|Modifier,"",Modificador de|Habilidade
-FAVOURED ENEMIES,"",INIMIGO FAVORITO
-FAVOURED TERRAINS,"",TERRENO FAVORITO
 Cost:,Cost: 1 pt,Custo:
 1 pt,Cost: 1 pt,1pt
-MIGHTY,MIGHTY RAGE!,FÚRIA
-RAGE!,MIGHTY RAGE!,PODEROSA!
-Swim,"",Nadar
-Ability|Score,"",Pontos de|Habilidade
-Fatigued,"",Fadiga
-Treat unarmed attacks as adamantine weapons,"",Trata o ataque desarmado como arma de adamante
-Dodge,"",Esquiva
-FAVOURED ENEMY BONUS,"",BÔNUS DE INIMIGO FAVORITO
-WILL,WILL SAVE,VONTADE
-SAVE,WILL SAVE,RESISTENCIA
-FORT,"",FORT
-DISTRACTION,"",DISTRAÇÃO
-Use bonus in place of...,"",Use bônus no lugar de...
-"Ranger bonus feats can be taken without the normal pre-requisites,|but only apply when not wearing heavy armour.","","O talento bônus de ranger pode ser adquirido sem os pre-requisitos,|mas são aplicados apenas quando não estiver vestindo armadura pesada."
-GREATER,GREATER RAGE!,FÚRIA
-RAGE!,GREATER RAGE!,MAIOR!
-Temp,"",Temporário
-TRAP SENSE,"",SENTIR ARMADILHAS
-Bonus|Points,"",Pontos|Bônus
-DURATION,DURATION|PER DAY,DURAÇÃO
-PER DAY,DURATION|PER DAY,POR DIA
-Improved Evasion,"",Evasão Aprimorada
-Sense Motive,"",Sentir Motivação
-Channel Positive Energy,"",Canal de Energia Positiva
-Bonus|Feats,"",Talento|Bônus
-Treat unarmed attacks as lawful weapons,"",Considera ataque desarmado como Arma Leal
-PERFORMANCES,"",PERFORMANCES
-CONSTITUTION|SCORE,CONSTITUTION|SCORE|BONUS,CONSTITUIÇÃO
-BONUS,CONSTITUTION|SCORE|BONUS,MODIFICADOR
-RAGE!,RAGE!|TODAY,FÚRIA!
-TODAY,RAGE!|TODAY,HOJE
-EMPTY BODY,"",CORPO VAZIO
-Item|Bonus,"",Item|Bônus
-FATIGUED,FATIGUED|DURATION,FATIGADO
-DURATION,FATIGUED|DURATION,DURAÇÃO
-"Begin or switch a bardic performance as a move action,|rather than as a standard action.","","Começar ou trocar uma performance de bardo como uma ação de movimento,|ao invés de ação padrão."
-"Cannot rage, run or charge|while fatigued.","","Não pode entrar em Fúria, Correr ou dar Investida|enquanto estiver fatigado."
-Wild|Shape|Level,"",Nível da|Forma|Selvagem
-Ability Modifier =|    (Total Ability Score - 10) ÷ 2,"",Modificador =|(Total de pontos - 10) ÷ 2
-KI POOL,KI POOL|CAPACITY,PISCINA DE KI
-CAPACITY,KI POOL|CAPACITY,CAPACIDADE
-REF,"",REF
-Temp AC,"",CA Temporária
-CMB,"",BMC
-WILL,WILL|SAVE DC,VONTADE
-WILL|SAVE,WILL|SAVE DC,VONTADE|RESISTÊNCIA
-SAVE DC,WILL|SAVE DC,CD DE RESISTÊNCIA
-DC,WILL|SAVE DC,CD
-FRIENDLY,"",AMIGAVEL
-SURVIVAL,"",SOBREVIVÊNVIA
-Ki Pool (lawful),"",Piscina de KI (leal)
+FORTITUDE|SAVE,FORTITUDE|SAVE DC,Fortitude|Resistência
+DC,FORTITUDE|SAVE DC,CD
 TRAP SENSE,TRAP SENSE|BONUS,SENTIR ARMADILHA
 BONUS,TRAP SENSE|BONUS,BÔNUS
-STRENTH|SCORE,STRENTH|SCORE|BONUS,FORÇA
-BONUS,STRENTH|SCORE|BONUS,MODIFICADOR
-Strength Score|Penalty:,Strength Score|Penalty: -2,Pontos de Força|Penalidade:
-Mobility,"",Mobilidade
-ENERGY,ENERGY|ROLL,ENERGIA
-ROLL,ENERGY|ROLL,ROLAGEM
-TOUCH,TOUCH ARMOUR CLASS,TOQUE
-ARMOUR CLASS,TOUCH ARMOUR CLASS,CLASSE DE ARMADURA
-BARBARIAN,"",BÁRBARO
-Ki Pool (adamantine),"",Piscina de KI (adamante)
-Rounds|Today,"",Rodadas|Hoje
-Size,"",Tamanho
-FLAT-FOOTED,FLAT-FOOTED ARMOUR CLASS,SURPRESA
-ARMOUR CLASS,FLAT-FOOTED ARMOUR CLASS,CLASSE DE ARMADURA
-Dexterity Score|Penalty:,Dexterity Score|Penalty: -2,Pontos de Destreza|Penalidade:
-BONUS FEAT,"",TALENTO BÔNUS
-DAMAGE,DAMAGE|REDUCTION,Redução de
-REDUCTION,DAMAGE|REDUCTION,Dano
-ATTACKS,"",ATAQUES
-1d8,"",1d8
-Buffs,"",Buffs
-Deflect Arrows,"",Desviar Objetos
-CATCH LEDGE,"",SEGURAR NA BORDA
+5ft,÷ 5 ) × 5ft,1.5m
+WILL,WILL SAVE DC,VONTADE
+SAVE DC,WILL SAVE DC,RESISTÊNCIA CD
 RAGE!,RAGE!|Duration,FÚRIA!
 Duration,RAGE!|Duration,Duração
-1ft,"",30cm
-ARMOUR CLASS BONUS,"",BÔNUS DE CLASSE DE ARMADURA
-HEALING|POINTS,"",PONTOS DE|VIDA
-COMBAT STYLE,"",ESTILO DE COMBATE
-USES,USES|PER DAY,USOS
-PER DAY,USES|PER DAY,POR DIA
-Acrobatics DC = Opponent’s,Acrobatics DC = Opponent’s CMD,CD de Acrobacia = do Oponente
-CMD,Acrobatics DC = Opponent’s CMD,MCD
-Ki Pool (magic),"",Piscina de KI (Magia)
-if you fail a jump by 4 or less,"",se falhar o pulo em 4 ou menos
-to ignore 10ft of falling damage,"",ignora 3m de dano por queda
-MOVE THROUGH THREATENED SQUARE,"",MOVER-SE POR QUADRADOS AMEAÇADOS
-Nerfs,"",Nerfs
-20ft,"",6m
-Acrobatics DC = 5 + Opponent’s,Acrobatics DC = 5 + Opponent’s CMD,CD de Acrobacia = 5 + do Oponente
-CMD,Acrobatics DC = 5 + Opponent’s CMD,MCD
-Combat Reflexes,"",Reflexos em Combate
-6ft,"",1.8m
-2ft,"",0.6m
-MOVE THROUGH ENEMY’S OWN SQUARE,"",MOVER-SE PELO QUADRADO DO INIMIGO
-ARMOUR|CLASS,ARMOUR|CLASS|PENALTY,CLASSE DE|ARMADURA
-PENALTY,ARMOUR|CLASS|PENALTY,PENALIDADE
-Morale|Bonus,"",Bônus de|Moral
-Value,"",Valor
-"Treat hands, feet, knees and elbows as weapons","","Trata mãos, pés, joelhos e cotovelos como armas"
-7ft,"",2.1m
-d4 / d8,"",d4 / d8
-INIT,"",INIC
-2d10,"",2d10
-INITIATIVE,INITIATIVE BONUS,INICIATIVA
-BONUS,INITIATIVE BONUS,BÔNUS
-30ft,"",10m
+70 ft,Slow Fall 70 ft,21m
+5ft,Pack Attack    Ally’s attack allows you to take 5ft step,1.5m
 AC,AC BONUS,CA
 BONUS,AC BONUS,BÔNUS
-25ft,"",7.5m
-WHOLENESS OF BODY,"",INTEGRIDADE CORPORAL
-Spring Attack,"",Ataque em Movimento
-15ft,"",4.5m
-WILL,"",VONTADE
-Campaign,"",Campanha
-FALL,"",QUEDA
-WILL|SAVE,WILL|SAVE|BONUS,Teste de|Vontade
-BONUS,WILL|SAVE|BONUS,Bônus
+KI POOL,KI POOL|CAPACITY,PISCINA DE KI
+CAPACITY,KI POOL|CAPACITY,CAPACIDADE
+ft,30 ft,m
+TOUCH,TOUCH ARMOUR CLASS,TOQUE
+ARMOUR CLASS,TOUCH ARMOUR CLASS,CLASSE DE ARMADURA
++30 ft,Fast Movement +30 ft,+9m
+REFLEX,REFLEX SAVE,REFLEXO
+SAVE,REFLEX SAVE,RESISTÊNCIA
+Darkvision 60ft,Darkvision 60ft| • Can see without any light at all| • Invisible objects are still invisible| • Darkvision is black and white,Visão no Escuro 18m
+FORTITUDE,FORTITUDE SAVE,Fortitude
+SAVE,FORTITUDE SAVE,Resistência
+ft,10 ft  2 sq,m
+50 ft,Slow Fall 50 ft,15m
++10 ft,Fast Movement +10 ft,+3m
++20 ft,Fast Movement +20 ft,+6m
+Strength Score|Penalty:,Strength Score|Penalty: -2,Pontos de Força|Penalidade:
+30ft,"Harm spirits, 1d6 /level, within 30ft",9m
 FASCINATE,FASCINATE|MAX AUDIENCE,FASCINAR
 MAX AUDIENCE,FASCINATE|MAX AUDIENCE,MÁXIMA AUDIÊNCIA
-4ft,"",1.2m
-55ft,"",16.5m
-RAGE!,RAGE!  DURATION|PER DAY,FÚRIA!
-DURATION,RAGE!  DURATION|PER DAY,DURAÇÃO
-PER DAY,RAGE!  DURATION|PER DAY,POR DIA
-BARDIC PERFORMANCE,"",PERFORMANCE DE BARDO
-35ft,"",10.5m
-8ft,"",2.4m
-Indomitable Will,"",Vontade Inabaláve
-Tireless,Tireless RAGE!,FÚRIA!
-RAGE!,Tireless RAGE!,Incansável
-SOOTHING PERFORMANCE,"",PERFORMANCE SUÁVE
-50ft,"",15m
-15 Acrobatics,"",15 de Acrobacia
-POWER LEVELS,"",NÍVEIS DE PODER
-3ft,"",1.2m
-45ft,"",13.5
-40ft,"",12m
-9ft,"",2.7m
-Sml / Lrg,"",peq / gde
-LONG JUMP,"",PULO LONGO
-11ft,"",3.3m
-CMD,CMD BONUS,MDC
-BONUS,CMD BONUS,Bônus
-2d6 / 3d8,"",2d6 / 3d8
-2d8 / 4d8,"",2d8 / 4d8
-Temp Speed,"",Deslocamento Temporário
-Timeless Body,"",Corpo Atemporal
-Natural|Armour,"",Armadura|Natural
-Flurry of Blows,"",Rajada de Golpes
-Heal,"",Curar
-+60 ft,Fast Movement +60 ft,+18m
-+50 ft,Fast Movement +50 ft,+15m
-+40 ft,Fast Movement +40 ft,+12m
-+30 ft,Fast Movement +30 ft,+9m
-+20 ft,Fast Movement +20 ft,+6m
-+10 ft,Fast Movement +10 ft,+3m
-30 ft,Slow Fall 30 ft,9m
-40 ft,Slow Fall 40 ft,12m
-50 ft,Slow Fall 50 ft,15m
-60 ft,Slow Fall 60 ft,18m
-70 ft,Slow Fall 70 ft,21m
-80 ft,Slow Fall 80 ft,24m
+Dexterity Score|Penalty:,Dexterity Score|Penalty: -2,Pontos de Destreza|Penalidade:
 90 ft,Slow Fall 90 ft,27m
-20 ft,Slow Fall 20 ft,6m
-ft,30 ft,m
-60 ft,"",18m
-30 ft,"",9m
-120 ft,"",36m
-ft,= 5 ft + ( 5 ft ×,m
-ft.,"",m.
+STRENTH|SCORE,STRENTH|SCORE|BONUS,FORÇA
+BONUS,STRENTH|SCORE|BONUS,MODIFICADOR
+ENERGY,ENERGY|ROLL,ENERGIA
+ROLL,ENERGY|ROLL,ROLAGEM
++60 ft,Fast Movement +60 ft,+18m
+2 × (d10 +,"2 × (d10 + CON) temporary hit points,|+2 attack, +1 fortitude save",2 × (d10 +
+WILL,WILL SAVE,VONTADE
+SAVE,WILL SAVE,RESISTENCIA
 30ft,"Attack range 30ft, half damage to targets of the wrong type",9m
-5ft,Pack Attack    Ally’s attack allows you to take 5ft step,1.5m
+SNEAK DAMAGE,SNEAK DAMAGE|BONUS,DANO FURTIVO
+BONUS,SNEAK DAMAGE|BONUS,BÔNUS
+WILL|SAVE,WILL|SAVE|BONUS,Teste de|Vontade
+BONUS,WILL|SAVE|BONUS,Bônus
+FATIGUED,FATIGUED|DURATION,FATIGADO
+DURATION,FATIGUED|DURATION,DURAÇÃO
++40 ft,Fast Movement +40 ft,+12m
+20ft aura of luck -,20ft aura of luck - 2 or more ki points,6m de Aura da Sorte - 
++10 ft,Speed +10 ft,+10m
+GREATER,GREATER RAGE!,FÚRIA
+RAGE!,GREATER RAGE!,MAIOR!
+30 ft,Slow Fall 30 ft,9m
+Timeless Body,"Timeless Body|No longer age, cannot be magically aged",Corpo Atemporal
+"No longer age, cannot be magically aged","Timeless Body|No longer age, cannot be magically aged","Não envelhece, ignora magias de envelhecimento"
+ft,20 ft  4 sq,m
+80 ft,Slow Fall 80 ft,24m
+ft,= 5 ft + ( 5 ft ×,m
+DURATION,DURATION|PER DAY,DURAÇÃO
+PER DAY,DURATION|PER DAY,POR DIA
 Scent 30ft,"Scent 30ft| • Detect enemies, determine direction as a move action| • Track creatures using Survival| • Range of 30ft, or 60ft downwind, 15ft upwind;strong smells double range, overpowering smells triple",Farejar 9m
 30ft,"Scent 30ft| • Detect enemies, determine direction as a move action| • Track creatures using Survival| • Range of 30ft, or 60ft downwind, 15ft upwind;strong smells double range, overpowering smells triple",9m
 60ft,"Scent 30ft| • Detect enemies, determine direction as a move action| • Track creatures using Survival| • Range of 30ft, or 60ft downwind, 15ft upwind;strong smells double range, overpowering smells triple",18m
 15ft,"Scent 30ft| • Detect enemies, determine direction as a move action| • Track creatures using Survival| • Range of 30ft, or 60ft downwind, 15ft upwind;strong smells double range, overpowering smells triple",4.5m
-Slow Fall 20 ft,"",Queda Leve 6m
-Slow Fall 30 ft,"",Queda Leve 9m
-Slow Fall 40 ft,"",Queda Leve 12m
-Slow Fall 50 ft,"",Queda Leve 15m
-Slow Fall 60 ft,"",Queda Leve 18m
-Slow Fall 70 ft,"",Queda Leve 21m
-Slow Fall 80 ft,"",Queda Leve 24m
-Slow Fall 90 ft,"",Queda Leve 27m
-+10 ft,Speed +10 ft,+10m
-30 ft / 6 sq,The default range increment of a |thrown mind blade is 30 ft / 6 sq.,9m / 6quad
+Nature Sense,Nature Sense|+2 to Knowledge (nature) and Survival,Senso da Natureza
++2 to Knowledge (nature) and Survival,Nature Sense|+2 to Knowledge (nature) and Survival,+2 em Conhecimento (natureza) e em Sobrevivência
+RAGE!,RAGE!  DURATION|PER DAY,FÚRIA!
+DURATION,RAGE!  DURATION|PER DAY,DURAÇÃO
+PER DAY,RAGE!  DURATION|PER DAY,POR DIA
+Acrobatics DC = Opponent’s,Acrobatics DC = Opponent’s CMD,CD de Acrobacia = do Oponente
+CMD,Acrobatics DC = Opponent’s CMD,MCD
 20ft,Treat unarmed attacks as magic weapons|Increase range of a thrown object 20ft - 1 ki point,6m
-UNCONTROLLED RAGE!,"",FÚRIA DESCONTROLADA!
-5ft,÷ 5 ) × 5ft,1.5m
-+ 100 ft.,"",+30m
-+10ft,"",+3m
-+20ft,"",+20m
-ft,10 ft  2 sq,m
-100 ft,"",30m
-15 ft,"",4.5m
-ft,15 ft  3 sq,m
-15ft.  Cone or|30ft. Line,"",Cone de 4.5m ou|Linha de 9m
-ft,20 ft  4 sq,m
-20ft aura of luck -,20ft aura of luck - 2 or more ki points,6m de Aura da Sorte - 
-"30ft cone of fire, deals 2d6 damage -","30ft cone of fire, deals 2d6 damage - 4 ki points","cone de fogo de 9m, dá 2d6 de dano -"
-30ft. Cone or|60ft. Line,"",Cone de 9m ou|Linha de 18m
-40 ft,"",12m
-50 ft,"",15m
-80 ft,"",24m
-Darkvision 60ft,"",Visão no Escuro 18m
-Darkvision 60ft,Darkvision 60ft| • Can see without any light at all| • Invisible objects are still invisible| • Darkvision is black and white,Visão no Escuro 18m
 30 ft / 6 sq,Default range increment|30 ft / 6 sq.,9m / 6 quad
+WILD EMPATHY,WILD EMPATHY|BONUS,EMPATIA COM A NATUREZA
+BONUS,WILD EMPATHY|BONUS,BÔNUS
+RAGE!,RAGE!|TODAY,FÚRIA!
+TODAY,RAGE!|TODAY,HOJE
+20 ft,Slow Fall 20 ft,6m
+Acrobatics DC = 5 + Opponent’s,Acrobatics DC = 5 + Opponent’s CMD,CD de Acrobacia = 5 + do Oponente
+CMD,Acrobatics DC = 5 + Opponent’s CMD,MCD
+ARMOUR|CLASS,ARMOUR|CLASS|PENALTY,CLASSE DE|ARMADURA
+PENALTY,ARMOUR|CLASS|PENALTY,PENALIDADE
+FLAT-FOOTED,FLAT-FOOTED ARMOUR CLASS,SURPRESA
+ARMOUR CLASS,FLAT-FOOTED ARMOUR CLASS,CLASSE DE ARMADURA
+CONSTITUTION|SCORE,CONSTITUTION|SCORE|BONUS,CONSTITUIÇÃO
+BONUS,CONSTITUTION|SCORE|BONUS,MODIFICADOR
+ARCANE SPELL FAILURE,ARCANE SPELL FAILURE THRESHOLD,FALHA ARCANA
+THRESHOLD,ARCANE SPELL FAILURE THRESHOLD,LIMIAR
+MIGHTY,MIGHTY RAGE!,FÚRIA
+RAGE!,MIGHTY RAGE!,PODEROSA!
+TALENTS,TALENTS|KNOWN,TALENTOS
+KNOWN,TALENTS|KNOWN,CONHECIDOS
+CMD,CMD BONUS,MDC
+BONUS,CMD BONUS,Bônus
+Tireless,Tireless RAGE!,FÚRIA!
+RAGE!,Tireless RAGE!,Incansável
+60 ft,Slow Fall 60 ft,18m
++50 ft,Fast Movement +50 ft,+15m
+"30ft cone of fire, deals 2d6 damage -","30ft cone of fire, deals 2d6 damage - 4 ki points","cone de fogo de 9m, dá 2d6 de dano -"
+40 ft,Slow Fall 40 ft,12m
+Wild Empathy,Wild Empathy|Improve the attitude of an animal,Empatia com a Natureza
+Improve the attitude of an animal,Wild Empathy|Improve the attitude of an animal,Melhora a Atitude de um Animal
+Wild Shape,Wild Shape|Become any small or medium animal,Forma Selvagem
+Become any small or medium animal,Wild Shape|Become any small or medium animal,Torna-se qualquer animal médio ou pequeno
+30 ft / 6 sq,The default range increment of a |thrown mind blade is 30 ft / 6 sq.,9m / 6quad
+WILL,WILL|SAVE DC,VONTADE
+WILL|SAVE,WILL|SAVE DC,VONTADE|RESISTÊNCIA
+SAVE DC,WILL|SAVE DC,CD DE RESISTÊNCIA
+DC,WILL|SAVE DC,CD
+No action this round|Lose,No action this round|Lose DEX bonus to AC; -2 AC,Sem ação nesta rodada|Perde
+DEX,No action this round|Lose DEX bonus to AC; -2 AC,DES
+bonus to,No action this round|Lose DEX bonus to AC; -2 AC,e ganha
+AC,No action this round|Lose DEX bonus to AC; -2 AC,CA
+ft,15 ft  3 sq,m
+MASTER STRIKE,MASTER STRIKE|FORTITUDE DC,ATAQUE MESTRE
+FORTITUDE DC,MASTER STRIKE|FORTITUDE DC,Fortitude CD
+Bonus Spells,Bonus Spells|WIS,Magias Bônus
+WIS,Bonus Spells|WIS,SAB
+DAMAGE,DAMAGE|REDUCTION,Redução de
+REDUCTION,DAMAGE|REDUCTION,Dano
+INITIATIVE,INITIATIVE BONUS,INICIATIVA
+BONUS,INITIATIVE BONUS,BÔNUS
+USES,USES|PER DAY,USOS
+PER DAY,USES|PER DAY,POR DIA
 30ft,Half of Ranger’s|Favoured Enemy|bonus granted to|allies within 30ft,9m
-30ft,"Harm spirits, 1d6 /level, within 30ft",9m
+Cleric|Level,"",Nível de|Clérigo
+Druid Level,"",Nível de Druida
+CHAOTIC,"",CAÓTICO
+Ki Pool (lawful),"",Piscina de KI (leal)
++10 to move at full speed,"",+3m ao mover-se em velocidade máxima
+Buffs,"",Buffs
+ROGUE TALENTS,"",TALENTOS DE LADINO
+UNCONTROLLED RAGE!,"",FÚRIA DESCONTROLADA!
+WHOLENESS OF BODY,"",INTEGRIDADE CORPORAL
+Unarmed Strike,"",Ataque Desarmado
+FAVOURED TERRAINS,"",TERRENO FAVORITO
+BARBARIAN,"",BÁRBARO
+40ft,"",12m
+Distance,"",Distância
+30ft,"",10m
+Ki Pool (magic),"",Piscina de KI (Magia)
+Racial,"",Racial
+30ft. Cone or|60ft. Line,"",Cone de 9m ou|Linha de 18m
+Nerfs,"",Nerfs
+Slow Fall 30 ft,"",Queda Leve 9m
+SURVIVAL,"",SOBREVIVÊNVIA
+MOVE THROUGH ENEMY’S OWN SQUARE,"",MOVER-SE PELO QUADRADO DO INIMIGO
+ft.,"",m.
+Damage Reduction,"",Redução de Dano
+LAWFUL,"",LEAL
+EVIL,"",MAL
+CHARGES,"",CARGAS
+WIS - 4,"",SAB - 4
++ Level,"",+ Nível
+CHA - 8,"",CAR - 8
+Size|Modifier,"",Modificador de|Tamanho
+Level|Bonus,"",Nível|Bônus
+rds,"",rds
+7ft,"",2.1m
+Timeless Body,"",Corpo Atemporal
+d10,"",d10
+"Treat hands, feet, knees and elbows as weapons","","Trata mãos, pés, joelhos e cotovelos como armas"
+Monk Level,"",Nível de Monge
+Cost,"",Custo
+Treat unarmed attacks as lawful weapons,"",Considera ataque desarmado como Arma Leal
+(Round up),"",(Arredonda para Cima)
+"Begin or switch a bardic performance as a move action,|rather than as a standard action.","","Começar ou trocar uma performance de bardo como uma ação de movimento,|ao invés de ação padrão."
+Natural|Armour,"",Armadura|Natural
+lb,"",kg
+Spell Save DC = 10 + WIS + Spell Level,"",Teste de Resistência CD = 10 + SAB + Nível da Magia
++20ft,"",+20m
+Acrobatics skill +4,"",Acrobacia +4
+60 ft,"",18m
+Critical,"",Crítico
+40 ft,"",12m
+15ft.  Cone or|30ft. Line,"",Cone de 4.5m ou|Linha de 9m
+15ft,"",4.5m
+Domain Spell,"",Magia do Donínio
+Bard|Level,"",Nível de|Bardo
+Manifester|Level,"",Nível de|Manifestação
+20 Reflex save,"",20 Reflexos
+ARMOUR CLASS BONUS,"",BÔNUS DE CLASSE DE ARMADURA
+Slow Fall 80 ft,"",Queda Leve 24m
+CHA - 12,"",CHA - 12
+d20 +,"",d20 +
+BONUS FEAT,"",TALENTO BÔNUS
++ 1d6,"",+ 1d6
+d6 / 2d6,"",d6 / 2d6
+EMPTY BODY,"",CORPO VAZIO
+ARMOUR CLASS,"",CLASSE DE ARMADURA
+Spell|Save DC,"",Teste de|Resistência CD
+HEALING|POINTS,"",PONTOS DE|VIDA
+Times per day,"",Vezes por dia
+Mobility,"",Mobilidade
+MONK,"",MONGE
+CHA - 4,"",CHA - 4
+Paladin|Level,"",Nível de|Paladino
+Slow Fall 40 ft,"",Queda Leve 12m
+LONG JUMP,"",PULO LONGO
+MASTER STRIKE,"",ATAQUE MESTRE
+Barbarian|Level,"",Nível de|Bárbaro
+"Master strike cannot be used again on the same target within|24 hours, whether they pass the Fortitude save or not.","","Ataque mestre não pode ser usado novamente no mesmo alvo em|24h, passando ou não no teste de Fortitude."
+STR,"",FOR
+AC,"",CA
+1ft,"",30cm
+GOOD,"",BOM
+d6,"",d6
+2d6 +,"",2d6 +
+FALL,"",QUEDA
+15 ft,"",4.5m
+Caster|Level,"",Conjurador|Nível
+Morale|Bonus,"",Bônus de|Moral
+ft,"",m
+Name,"",Nome
+Slow Fall 20 ft,"",Queda Leve 6m
+sq,"",m²
+FEMALE,"",FEMININO
+CATCH LEDGE,"",SEGURAR NA BORDA
+FAVOURED ENEMIES,"",INIMIGO FAVORITO
+"From level 10, a Rogue|can take Advanced Talents","","No nível 10, um Ladino|pode adquirir Talentos Avançados"
+5ft,"",1.5m
+DRUID,"",DRÚIDA
+Advanced Talents,"",Talentos Avançados
+Spell Resistance,"",Resistência Mágica
+50 ft,"",15m
+CON,"",CON
+INT,"",INT
+DEITY,"",DIVINDADE
+DEX,"",DES
+2d6 / 3d8,"",2d6 / 3d8
+15 Acrobatics,"",15 de Acrobacia
+80 ft,"",24m
+9ft,"",2.7m
+100 ft,"",30m
+2d8,"",2d8
+Ability Modifier =|    (Total Ability Score - 10) ÷ 2,"",Modificador =|(Total de pontos - 10) ÷ 2
+Disguise,"",disfarçar
+3d8,"",3d8
+30 ft,"",9m
+d8 / 2d8,"",d8 / 2d8
+DISTRACTION,"",DISTRAÇÃO
+(Round down),"",(Arredonda para Baixo)
+Ki Pool (adamantine),"",Piscina de KI (adamante)
+SPEED,"",VELOCIDADE
+BARDIC PERFORMANCE,"",PERFORMANCE DE BARDO
+Bonus Spells,"",Magias Bônus
+Slow Fall 70 ft,"",Queda Leve 21m
+"Cannot rage, run or charge|while fatigued.","","Não pode entrar em Fúria, Correr ou dar Investida|enquanto estiver fatigado."
+Value,"",Valor
+Climb,"",Escalar
+KNOWN SPELLS,"",MAGIAS CONHECIDAS
+Times Today,"",Hoje
+FORT,"",FORT
+Flurry of Blows,"",Rajada de Golpes
+Sense Motive,"",Sentir Motivação
+Size,"",Tamanho
+Slow Fall 90 ft,"",Queda Leve 27m
+2d10,"",2d10
+REF,"",REF
+Item|Bonus,"",Item|Bônus
+Misc,"",Outros
+Bonus|Points,"",Pontos|Bônus
+10ft,"",3m
+Uncanny Dodge,"",Esquiva Sobrenatural
+MALE,"",MASCULINO
+Use bonus in place of...,"",Use bônus no lugar de...
+55ft,"",16.5m
+35ft,"",10.5m
+Speciality Spell,"",Magia Especializada
+6ft,"",1.8m
+Wild|Shape|Level,"",Nível da|Forma|Selvagem
+FAVOURED ENEMY BONUS,"",BÔNUS DE INIMIGO FAVORITO
+d8,"",d8
+Spells|per day,"",Magias|por dia
+Range,"",Alcance
+PREPARED SPELLS,"",MAGIAS PREPARADAS
+Improved Evasion,"",Evasão Aprimorada
+Ability|Score,"",Pontos de|Habilidade
+Weight,"",Peso
+Bards can wear light armour without risking|spell failure.,"",Bardos podem vestir armaduras leves sem risco de|Falha Arcana.
+Spells|Known,"",Magias|Conhecidas
+Track,"",Rastrear
+Acrobatics,"",Acrobacia
+Tier,"",Nível
+Rounds|Today,"",Rodadas|Hoje
+"Ranger bonus feats can be taken without the normal pre-requisites,|but only apply when not wearing heavy armour.","","O talento bônus de ranger pode ser adquirido sem os pre-requisitos,|mas são aplicados apenas quando não estiver vestindo armadura pesada."
+BAB,"",BBA
+Escape Artist,"",Arte da Fuga
+Temp,"",Temporário
+Indomitable Will,"",Vontade Inabaláve
+WILD EMPATHY,"",EMPATIA COM A NATUREZA
+KI POOL,"",Piscina de KI
+Combat Reflexes,"",Reflexos em Combate
+NATURE BOND,"",LIGAÇÃO COM A NATUREZA
+Properties,"",Patrimônio
+50ft,"",15m
+Level,"",Nível
+1d8,"",1d8
+Type,"",Tipo
+CMD,"",DMC
+Slow Fall 50 ft,"",Queda Leve 15m
+ABILITIES,"",Habilidades
+SCROLLS,"",PERGAMINHOS
+Creature Type,"",Tipo da Criatura
+Base|Spells,"",Base|Magia
+Treat unarmed attacks as adamantine weapons,"",Trata o ataque desarmado como arma de adamante
+WILD SHAPE,"",FORMA SELVAGEM
+Darkvision 60ft,"",Visão no Escuro 18m
+Dodge,"",Esquiva
+SKILLS,"",PERÍCIAS
+at half speed,"",com metade da velocidade
+25ft,"",7.5m
+20ft,"",6m
+Damage,"",Dano
+Improved Uncanny Dodge,"",Esquiva Sobrenatural Aprimorada
+SNEAK ATTACK,"",ATAQUE FURTIVO
+CHA,"",CAR
+if you fail a jump by 4 or less,"",se falhar o pulo em 4 ou menos
+Slow Fall 60 ft,"",Queda Leve 18m
+Attack Bonus,"",Bônus de Ataque
+8ft,"",2.4m
++ 100 ft.,"",+30m
+Uses|per day,"",Usos|Diários
+WILL,"",VONTADE
+Unarmed|Strike|Damage,"",Dano de|Ataque|Desarmado
+RAGE!,"",FÚRIA!
+2d6,"",2d6
+POWER LEVELS,"",NÍVEIS DE PODER
+Ability|Modifier,"",Modificador de|Habilidade
+SOOTHING PERFORMANCE,"",PERFORMANCE SUÁVE
+Deflection|Modifier,"",Modificador de|Deflexão
+Ammo,"",Munição
+Concentration,"",Concentração
+Spring Attack,"",Ataque em Movimento
+ATTACKS,"",ATAQUES
+WIS,"",SAB
+WIS - 8,"",SAB - 8
+ANIMAL COMPANION,"",COMPANHEIRO ANIMAL
+d4 / d8,"",d4 / d8
+POTIONS,"",POÇÕES
+DC,"",CD
+Swim,"",Nadar
+Bard Level,"",Nível de Bardo
+Special Ammo,"",Munição Especial
+2d8 / 4d8,"",2d8 / 4d8
+hp,"",hp
+COMBAT STYLE,"",ESTILO DE COMBATE
+"Sneak attack damage can be applied when a target is flanked or|is denied their DEX bonus to AC.|On ranged attacks, it only applies within 30 ft.|It is not multiplied by critical hits.|It cannot be non-lethal unless using a non-lethal weapon.","","O dano do ataque furtivo pode ser aplicado quando um inimigos esta flanqueado ou|não possui seu bônus de DES na CA.|Em ataques a distância, só é aplicado com 10m.|Não é multiplicado em hits críticos.|Não pode ser não-letal, a não ser que utilize uma arma não-letal."
+Sml / Lrg,"",peq / gde
+4d8,"",4d8
+Bonus|Feats,"",Talento|Bônus
+Perception,"",Percepção
+Power,"",Poder
+WANDS,"",VARINHAS
+Fatigued,"",Fadiga
+PERFORMANCES,"",PERFORMANCES
+WIS - 12,"",SAB - 12
+Conditional Modifiers,"",Modificadores Condicionais
+120 ft,"",36m
+Ranger|Level,"",Nível de|Ranger
+45ft,"",13.5
+Temp Speed,"",Deslocamento Temporário
+Granted Power,"",Poder Garantido
+Rogue|Level,"",Nível de|Ladino
+Channel Positive Energy,"",Canal de Energia Positiva
+Deflect Arrows,"",Desviar Objetos
+MOVE THROUGH THREATENED SQUARE,"",MOVER-SE POR QUADRADOS AMEAÇADOS
+Uses Today,"",Hoje
+(ROGUE),"",(LADINO)
+d10 / 3d6,"",d10 / 3d6
+or,"",ou
++10ft,"",+3m
+Domain,"",Domínio
+Temp AC,"",CA Temporária
+BONUS FEATS,"",TALENTO BÔNUS
+4ft,"",1.2m
+SPELLS,"",MAGIAS
+Campaign,"",Campanha
+A successful sneak attack can also deliver one of:| • Sleep for 1d4 hours| • Paralysed for 2d6 rounds| • Slain,"",Um ataque furtivo bem sucedido pode causar um efeito:| •  Dormir por 1d4 horas| •  Paralizado por 2d6 rodadas| • Assassinado
+11ft,"",3.3m
+TRAP SENSE,"",SENTIR ARMADILHAS
+Heal,"",Curar
+to ignore 10ft of falling damage,"",ignora 3m de dano por queda
+FRIENDLY,"",AMIGAVEL
+Druid|Level,"",Nível de|Druida
+Monk|Level,"",Nível de|Monge
+2ft,"",0.6m
+Spell Save DC = 10 + CHA + Spell Level,"",Resistência a Magia CD = 10 + CAR + Nível da Magia
+Base|Attack Bonus,"",Bônus|Base de Ataque
+INIT,"",INIC
+Counter magical effects that depend on sight.|Allies within 30ft use Performance roll in place of a saving throw,"",Contra efeitos mágicos que dependem da visão.|Aliados com 10m usam rolam Performance no lugar de resistencias
+Survival|Bonus,"",Sobrevivência|Bônus
+Evasion,"",Evasão
+Snatch Arrows,"",Flechas Arrebatadoras
+3ft,"",1.2m
+CMB,"",BMC
