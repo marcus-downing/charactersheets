@@ -5,7 +5,7 @@
 // var sourceFolder = new Folder( '/Users/Marcus Downing/Documents/GitHub/charactersheets/Pathfinder/Archetypes/Monk' );
 // var destinationFolder = new Folder( '/Users/Marcus Downing/Documents/GitHub/charactersheets/Composer/public/pdf/pathfinder/Archetypes/Monk' );
 var sourceFolder = baseFolder;
-var destinationFolder = baseFolder+'../Character Sheets Website/public/pdf/'
+var destinationFolder = baseFolder+'../Character Sheets PDF/'
 
 i18n.init();
 

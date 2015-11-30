@@ -14,7 +14,7 @@ log("i18n: Preparing to translate into", languages);
 for (var i = 0; i < languages.length; i++) {
 	var language = languages[i];
 
-	i18n.language = i18n.esLanguaged[language];
+	i18n.language = i18n.esLanguages[language];
 	i18n.loadTranslations(new File(baseFolder + 'Languages/' + language + '.csv'));
 
 	for (var j = 0; j < folders.length; j++) {
@@ -23,6 +23,7 @@ for (var i = 0; i < languages.length; i++) {
 		var dstFolder = new Folder(baseFolder + 'Languages/' + language + '/' + folder);
 		i18n.applyTranslationsFolder(srcFolder, dstFolder);
 	}
+	alert(language+' finished');
 }
 
 log("i18n: Translated "+i18n.countTranslatedLines+" strings from "+i18n.countTranslatedFiles+" files");

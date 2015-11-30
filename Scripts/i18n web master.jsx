@@ -22,9 +22,15 @@ var webMaster = {
   },
 
   pushEntry: function(text, partOf, filename) {
+    if (partOf == text || typeof partOf !== 'string')
+      partOf = '';
     var replacement = i18n.getTranslationReplacement(text, partOf, filename);
     text = replacement[0];
     partOf = replacement[1];
+
+    if (partOf == '' && (text.match(/^d[0-9]+$/) || text == '0')) {
+      text = 'd00';
+    }
 
     var normal = i18n.normalise(text);
     // log("Push entry", text, normal, partOf, filename);
