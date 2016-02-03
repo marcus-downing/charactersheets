@@ -1,262 +1,264 @@
 Original,Part of,Translation
-Heal your own wounds -,Heal your own wounds - 2 ki points,Soigner ses blessures - 
-2 ki points,Heal your own wounds - 2 ki points,2 points de Ki
-STUNNING FIST,STUNNING FIST|TODAY,COUP ETOURDISSANT
-TODAY,STUNNING FIST|TODAY,AUJOURD'HUI
-Bonus Spells,Bonus Spells|WIS,Sorts supplémentaires
-ARMOUR|CLASS,ARMOUR|CLASS|PENALTY,CLASSE|D'ARMURE
-PENALTY,ARMOUR|CLASS|PENALTY,PENALITE
-POWERS,POWERS|KNOWN,POUVOIRS
-KNOWN,POWERS|KNOWN,CONNUS
-(which grants,(which grants +20 to Acrobatics),(qui donne 
-to Acrobatics),(which grants +20 to Acrobatics),à Acrobaties)
-POWER POINTS,POWER POINTS|PER DAY,POINTS DE POUVOIR
-PER DAY,POWER POINTS|PER DAY,PAR JOUR
-TOUCH,TOUCH ARMOUR CLASS,CONTACT
-ARMOUR CLASS,TOUCH ARMOUR CLASS,CLASSE D'ARMURE
-Wild Empathy,Wild Empathy|Improve the attitude of an animal,Empathie sauvage
-Improve the attitude of an animal,Wild Empathy|Improve the attitude of an animal,Améliore l'attitude d'un animal
-ATTACK,ATTACK|BONUS,ATTAQUE
-BONUS,ATTACK|BONUS,BONUS
-CON,+ CON| per level,CON
-per level,+ CON| per level,par niveau
-DC,DC 20,DD
-SNEAK DAMAGE,SNEAK DAMAGE|BONUS,BONUS DE DÉGÂTS
-BONUS,SNEAK DAMAGE|BONUS,D'ATTAQUE SOURNOISE
-FLAT-FOOTED,FLAT-FOOTED|CMD,PRIS AU DEPOURVU
-CMD,FLAT-FOOTED|CMD,DMD
-Level,400’+ 40’ × Level,Niveau
-Knowledge -,Knowledge - INT|Profession - WIS,Connaissances - 
-INT,Knowledge - INT|Profession - WIS,INT
-Profession -,Knowledge - INT|Profession - WIS,Profession -
-WIS,Knowledge - INT|Profession - WIS,SAG
-INITIATIVE,INITIATIVE|BONUS,INITIATIVE
-BONUS,INITIATIVE|BONUS,BONUS
-FLAT-FOOTED,FLAT-FOOTED ARMOUR CLASS,PRIS AU DEPOURVU
-ARMOUR CLASS,FLAT-FOOTED ARMOUR CLASS,CLASSE D'ARMURE
-FORTITUDE|SAVE,FORTITUDE|SAVE DC,DD DU JET|DE
-DC,FORTITUDE|SAVE DC,VIGUEUR
-SHARE FAVOURED ENEMY,SHARE FAVOURED ENEMY|DURATION,PARTAGER ENNEMI JURE
-DURATION,SHARE FAVOURED ENEMY|DURATION,DUREE
-Fast Movement,Fast Movement +20 ft,Déplacement accéléré
-+20 ft,Fast Movement +20 ft,+6 m
-Slow Fall,Slow Fall Any distance,Chute ralentie
-Any distance,Slow Fall Any distance,Toute distances
-CONSTITUTION|SCORE,CONSTITUTION|SCORE|BONUS,SCORE de|CONSTITUTION
-BONUS,CONSTITUTION|SCORE|BONUS,BONUS
-EVIL DAMAGE,EVIL DAMAGE|BONUS,BONUS AUX DOMMAGES
-BONUS,EVIL DAMAGE|BONUS,CONTRE LE MAL
-RAGE!,RAGE!|Duration,RAGE !
-Duration,RAGE!|Duration,DUREE
-DEFLECTION,DEFLECTION|BONUS,DEFLECTION
-BONUS,DEFLECTION|BONUS,BONUS
-INITIATIVE,INITIATIVE BONUS,BONUS D'
-BONUS,INITIATIVE BONUS,INITIATIVE
-BASE|ATTACK,BASE|ATTACK BONUS,BASE|A L'ATTAQUE
-BONUS,BASE|ATTACK BONUS,BONUS
 FORTITUDE,FORTITUDE SAVE,JET DE
 SAVE,FORTITUDE SAVE,VIGUEUR
-loyalty,-1 loyalty,loyauté
-Wild Shape,Wild Shape|Become any small or medium animal,Forme animale
-Become any small or medium animal,Wild Shape|Become any small or medium animal,Se transformer en un animal de taille P ou M
-Level,100’+ 10’ × Level,Niveau
-(which grants,(which grants +4 to Acrobatics),(qui donne 
-to Acrobatics),(which grants +4 to Acrobatics),à Acrobaties)
-SPELL,SPELL RESISTANCE,RÉSISTANCE
-RESISTANCE,SPELL RESISTANCE,À LA MAGIE
-Fast Movement,Fast Movement +30 ft,Déplacement accéléré
-+30 ft,Fast Movement +30 ft,+9 m
+WILD EMPATHY,WILD EMPATHY|BONUS,BONUS
+BONUS,WILD EMPATHY|BONUS,D'EMPATHIE SAUVAGE
+INITIATIVE,INITIATIVE|BONUS,INITIATIVE
+BONUS,INITIATIVE|BONUS,BONUS
 QUIVER,QUIVER DAYS,CARQUOIS
 DAYS,QUIVER DAYS,JOURS
-STRENTH|SCORE,STRENTH|SCORE|BONUS,FORCE|SCORE
-BONUS,STRENTH|SCORE|BONUS,BONUS
-Acrobatics DC = 5 + Opponent’s,Acrobatics DC = 5 + Opponent’s CMD,DD d'Acrobaties = 5 + Adversaire
-CMD,Acrobatics DC = 5 + Opponent’s CMD,DMD
-Woodland Stride,Woodland Stride|Move through undergrowth at normal speed|and taking no damage,Déplacement Facilité
-Move through undergrowth at normal speed|and taking no damage,Woodland Stride|Move through undergrowth at normal speed|and taking no damage,Progresse à vitesse normale dans les taillis|ne prenant aucun dégâts
-Damage Reduction 1/,Damage Reduction 1/―,Réduction de dégâts 1/
-Slow Fall,Slow Fall 40 ft,Chute ralentie
-40 ft,Slow Fall 40 ft,12 m
-TAKE 20,TAKE 20 PER DAY,FAIRE 20
-PER DAY,TAKE 20 PER DAY,PAR JOUR
 TRAP SENSE,TRAP SENSE|BONUS,SENS DES PIEGES
 BONUS,TRAP SENSE|BONUS,BONUS
-Fast Movement,Fast Movement +10 ft,Déplacement accéléré
-+10 ft,Fast Movement +10 ft,+3 m
-CHANNEL,CHANNEL|RANGE,CANALISATION
-RANGE,CHANNEL|RANGE,PORTEE
-MAX POWER,MAX POWER|LEVEL,POUVOIR MAX
-LEVEL,MAX POWER|LEVEL,NIVEAU
-Assume ethereal state for 1 minute -,Assume ethereal state for 1 minute - 3 ki points,Prend une forme éthérée pendant 1 minute -
-3 ki points,Assume ethereal state for 1 minute - 3 ki points,3 points de ki
-DAMAGE,DAMAGE|REDUCTION,DOMMAGES
-REDUCTION,DAMAGE|REDUCTION,REDUCTION
-Timeless Body,"Timeless Body|No longer age, cannot be magically aged",Éternelle jeunesse
-"No longer age, cannot be magically aged","Timeless Body|No longer age, cannot be magically aged",Cesse de vieillir ; immunisé contre le vieillissement magique
-Slow Fall,Slow Fall 60 ft,Chute ralentie
-60 ft,Slow Fall 60 ft,18 m
-GREATER,GREATER RAGE!,SUPERIEURE
-RAGE!,GREATER RAGE!,RAGE!
-Slow Fall,Slow Fall 90 ft,Chute ralentie
-90 ft,Slow Fall 90 ft,27 m
-Damage Reduction 5/,Damage Reduction 5/―,Réduction de dégâts 5/
-Bonus Spells,Bonus Spells|CHA,Sorts supplémentaires
-ARCANE SPELL FAILURE,ARCANE SPELL FAILURE THRESHOLD,RISQUE D'ÉCHEC DES
-THRESHOLD,ARCANE SPELL FAILURE THRESHOLD,SORTS PROFANES
-Tireless,Tireless RAGE!,Sans Fatigue
-RAGE!,Tireless RAGE!,RAGE!
-2 × (d10 +,"2 × (d10 + CON) temporary hit points,|+2 attack, +1 fortitude save",2 x (d10 + 
-CON,"2 × (d10 + CON) temporary hit points,|+2 attack, +1 fortitude save",CON
-") temporary hit points,|+2 attack, +1 fortitude save","2 × (d10 + CON) temporary hit points,|+2 attack, +1 fortitude save",") points de vie temporaires,|+2 à l'attaque, +1 aux jets de sauvegarde vigueur"
-Treated as an Outsider,Treated as an Outsider|Immune to Charm Person and other effects that|target non-outsiders.|Damage reduction 10/chaotic,Considéré comme Planaire
-Immune to Charm Person and other effects that|target non-outsiders.|Damage reduction,Treated as an Outsider|Immune to Charm Person and other effects that|target non-outsiders.|Damage reduction 10/chaotic,Immunisé à Charme Personne et autres effets qui|ciblent les non-planaires.|Réduction de Dommages
-10/chaotic,Treated as an Outsider|Immune to Charm Person and other effects that|target non-outsiders.|Damage reduction 10/chaotic,10/chaotique
-STUNNING FIST,STUNNING FIST|PER DAY,COUP ETOURDISSANT
-PER DAY,STUNNING FIST|PER DAY,PAR JOUR
-DC,DC 25,DD
-DC,DC 15,DD
-Fast Movement,Fast Movement +50 ft,Déplacement accéléré
-+50 ft,Fast Movement +50 ft,+15 m
-REFLEX,REFLEX SAVE,RÉFLEXES
-SAVE,REFLEX SAVE,SAUVEGARDE
-ETHERIAL,ETHERIAL|ROUNDS,ETHERE
-ROUNDS,ETHERIAL|ROUNDS,TOURS
-AC,AC BONUS,CA
-BONUS,AC BONUS,BONUS
-CMD,CMD BONUS,DMD
-BONUS,CMD BONUS,BONUS
-Acrobatics DC = Opponent’s,Acrobatics DC = Opponent’s CMD,DD Acrobaties = Adversaire
-CMD,Acrobatics DC = Opponent’s CMD,CMD
-COMBAT MANOEUVRE,COMBAT MANOEUVRE|BONUS,MANOEUVRE DE COMBAT
-BONUS,COMBAT MANOEUVRE|BONUS,BONUS
-(which grants,(which grants +16 to Acrobatics),(qui donne
-to Acrobatics),(which grants +16 to Acrobatics),à Acrobaties)
-(which grants,(which grants +12 to Acrobatics),(qui donne
-to Acrobatics),(which grants +12 to Acrobatics),à Acrobaties)
-WILD EMPATHY,WILD EMPATHY|BONUS,EMPATHIE SAUVAGE
-BONUS,WILD EMPATHY|BONUS,BONUS
-RAGE!,RAGE! POWERS,POUVOIRS DE
-POWERS,RAGE! POWERS,RAGE !
-DURATION,DURATION|PER DAY,DUREE
-PER DAY,DURATION|PER DAY,PAR JOUR
-Class|Skills,Class|Skills|+3,Classe|Compétences
-TOUCH,TOUCH AC,TOUCHER
-AC,TOUCH AC,CA
-Slow Fall,Slow Fall 50 ft,Chute ralentie
-50 ft,Slow Fall 50 ft,15 m
-POWER,POWER|PER DAY,POUVOIR
-PER DAY,POWER|PER DAY,PAR JOUR
-MASTER STRIKE,MASTER STRIKE|FORTITUDE DC,COUP DE MAÎTRE
-(which grants,(which grants +8 to Acrobatics),(qui donne
-to Acrobatics),(which grants +8 to Acrobatics),à Acrobaties)
-Nature Sense,Nature Sense|+2 to Knowledge (nature) and Survival,Instinct naturel
-+2 to Knowledge (nature) and Survival,Nature Sense|+2 to Knowledge (nature) and Survival,+2 en Connaissances (Nature) et Survie
+(which grants,(which grants +24 to Acrobatics),(qui donne 
+to Acrobatics),(which grants +24 to Acrobatics),à Acrobaties)
+STUNNING FIST,STUNNING FIST|TODAY,COUP ETOURDISSANT
+TODAY,STUNNING FIST|TODAY,AUJOURD'HUI
 WILL,WILL SAVE,VOLONTE
 SAVE,WILL SAVE,SAUVEGARDE
 KNOWLEDGE,KNOWLEDGE |BONUS,CONNAISSANCE
 BONUS,KNOWLEDGE |BONUS,BONUS
-Resist Nature’s Lure,Resist Nature’s Lure|+4 to saves against the fey and plants,Résister à l'Appel de la Nature
-+4 to saves against the fey and plants,Resist Nature’s Lure|+4 to saves against the fey and plants,+4 aux jets de sauvegarde contre les Fées et les Plantes
-Trackless Step,"Trackless Step|Leave no trail, unless deliberately",PASSAGE SANS TRACES
-"Leave no trail, unless deliberately","Trackless Step|Leave no trail, unless deliberately","Vous ne laissez pas de traces, sauf délibérement"
-COMBAT MANOEUVRE,COMBAT MANOEUVRE|DEFENCE,MANOEUVRES DE COMBAT
-DEFENCE,COMBAT MANOEUVRE|DEFENCE,DEFENSE
-Slow Fall,Slow Fall 70 ft,Chute ralentie
-70 ft,Slow Fall 70 ft,21 m
-Damage Reduction 3/,Damage Reduction 3/―,Réduction de dégâts 3/
-Venom Immunity,Venom Immunity|Immune to all poisons,Immunité aux venins
-Immune to all poisons,Venom Immunity|Immune to all poisons,Immunité à tous les poisons
-Dexterity Score|Penalty:,Dexterity Score|Penalty: -2,Score de dextérité|Pénalité:
-Slow Fall,Slow Fall 80 ft,Chute ralentie
-80 ft,Slow Fall 80 ft,24 m
-INSPIRE GREATNESS,INSPIRE GREATNESS  MAX AFFECTED,INSPIRER LA GRANDEUR
-MAX AFFECTED,INSPIRE GREATNESS  MAX AFFECTED,MAX AFFECTES
-(which grants,(which grants +24 to Acrobatics),(qui donne 
-to Acrobatics),(which grants +24 to Acrobatics),à Acrobaties)
-INSPIRE HEROICS,INSPIRE HEROICS  MAX AFFECTED,INSPIRATION HEROIQUE
-MAX AFFECTED,INSPIRE HEROICS  MAX AFFECTED,MAX AFFECTES
-FOES,FOES|PER DAY,ENNEMIS
-PER DAY,FOES|PER DAY,PAR JOUR
-Slow Fall,Slow Fall 30 ft,Chute ralentie
-30 ft,Slow Fall 30 ft,9 m
-A Thousand Faces,A Thousand Faces|Change appearance at will,Mille Visages
-Change appearance at will,A Thousand Faces|Change appearance at will,Changer d'apparence à volonté
-TALENTS,TALENTS|KNOWN,TALENTS
-KNOWN,TALENTS|KNOWN,CONNUS
-CHANNEL,CHANNEL|PER DAY,CANALISATION
-PER DAY,CHANNEL|PER DAY,PAR JOUR
-Cost:,Cost: 2 pt,Coût:
-2 pt,Cost: 2 pt,2 pts
-Fast Movement,Fast Movement +60 ft,Déplacement accéléré
-+60 ft,Fast Movement +60 ft,+18 m
-SAVE DC,WILL|SAVE DC,JET DE SAUVEGARDE
-FASCINATE,FASCINATE|MAX AUDIENCE,FASCINER
-MAX AUDIENCE,FASCINATE|MAX AUDIENCE,AUDIENCE MAX
-SPECIALITY,SPECIALITY SCHOOL,Spécialisation
-SCHOOL,SPECIALITY SCHOOL,École 
-ENERGY,ENERGY|ROLL,ENERGIE
-ROLL,ENERGY|ROLL,JET
-TRAP SENSE,TRAP SENSE|REFLEX BONUS,SENS DES PIEGES
-REFLEX BONUS,TRAP SENSE|REFLEX BONUS,BONUS DE REFLEXES
+Strength Score|Penalty:,Strength Score|Penalty: -2,Score de Force|Pénalité
 Cost:,Cost: 1 pt,Coût :
 1 pt,Cost: 1 pt,1 pt
-POWER POINTS,POWER POINTS|MAX COST,POINTS DE POUVOIR
-MAX COST,POWER POINTS|MAX COST,COUT MAX
-Fast Movement,Fast Movement +40 ft,Déplacement accéléré
-+40 ft,Fast Movement +40 ft,+12 m
-DAMAGE,DAMAGE|BONUS,DOMMAGES
-BONUS,DAMAGE|BONUS,BONUS
-ATTACK,ATTACK BONUS,ATTAQUE
-BONUS,ATTACK BONUS,BONUS
-loyalty,+1 loyalty,loyauté
-HEALING,HEALING|HIT POINTS,SOINS
-HIT POINTS,HEALING|HIT POINTS,POINTS DE VIE
-ft,30 ft,pds
-USES,USES|PER DAY,UTILISATIONS
-PER DAY,USES|PER DAY,PAR JOUR
-Damage Reduction 2/,Damage Reduction 2/―,Réduction de dégâts 2/
+CON,+ CON| per level,CON
+per level,+ CON| per level,par niveau
+FLAT-FOOTED,FLAT-FOOTED|CMD,PRIS AU DEPOURVU
+CMD,FLAT-FOOTED|CMD,DMD
 Level,25’+ 5’ × (Level ÷ 2),Niveau
-saving throws against enchantment,+2 saving throws against enchantment,jets de sauvegarde contre l'enchantement
-INT,+ INT| per level,INT
-per level,+ INT| per level,par niveau
-MIGHTY,MIGHTY RAGE!,MAITRE
-RAGE!,MIGHTY RAGE!,RAGE!
-Strength Score|Penalty:,Strength Score|Penalty: -2,Score de Force|Pénalité
-RAGE!,RAGE!  DURATION|PER DAY,RAGE !
-DURATION,RAGE!  DURATION|PER DAY,DUREE
-PER DAY,RAGE!  DURATION|PER DAY,PAR JOUR
-to jump checks -,+20 to jump checks - 1 ki point,aux jets de saut -
-1 ki point,+20 to jump checks - 1 ki point,1 point de Ki
-WILL,WILL SAVE DC,VOLONTE
-SAVE DC,WILL SAVE DC,JET DE SAUVEGARDE
-KI POOL,KI POOL|CAPACITY,RESERVE DE KI
-CAPACITY,KI POOL|CAPACITY,CAPACITE
-Damage Reduction 4/,Damage Reduction 4/―,Réduction de dégâts 4/
+Level,400’+ 40’ × Level,Niveau
 No action this round|Lose,No action this round|Lose DEX bonus to AC; -2 AC,Pas d'action ce tour-ci|Per le bonus de
 DEX,No action this round|Lose DEX bonus to AC; -2 AC,DEX
 bonus to,No action this round|Lose DEX bonus to AC; -2 AC,à la
 AC,No action this round|Lose DEX bonus to AC; -2 AC,CA
-OPPOSED,OPPOSED SCHOOLS,OPPOSÉES 
-SCHOOLS,OPPOSED SCHOOLS,ÉCOLES
-FATIGUED,FATIGUED|DURATION,FATIGUE
-DURATION,FATIGUED|DURATION,DUREE
+DAMAGE,DAMAGE|BONUS,DOMMAGES
+BONUS,DAMAGE|BONUS,BONUS
+ATTACK,ATTACK|BONUS,ATTAQUE
+BONUS,ATTACK|BONUS,BONUS
+Venom Immunity,Venom Immunity|Immune to all poisons,Immunité aux venins
+Immune to all poisons,Venom Immunity|Immune to all poisons,Immunité à tous les poisons
+Nature Sense,Nature Sense|+2 to Knowledge (nature) and Survival,Instinct naturel
++2 to Knowledge (nature) and Survival,Nature Sense|+2 to Knowledge (nature) and Survival,+2 en Connaissances (Nature) et Survie
+RAGE!,RAGE!|Duration,RAGE !
+Duration,RAGE!|Duration,DUREE
+RAGE!,RAGE! POWERS,POUVOIRS DE
+POWERS,RAGE! POWERS,RAGE !
+Acrobatics DC = 5 + Opponent’s,Acrobatics DC = 5 + Opponent’s CMD,DD d'Acrobaties = 5 + Adversaire
+CMD,Acrobatics DC = 5 + Opponent’s CMD,DMD
+Slow Fall,Slow Fall Any distance,Chute ralentie
+Any distance,Slow Fall Any distance,Toute distances
+DC,DC 25,DD
+DC,DC 15,DD
+WILL,WILL SAVE DC,VOLONTE
+SAVE DC,WILL SAVE DC,JET DE SAUVEGARDE
+REFLEX,REFLEX SAVE,RÉFLEXES
+SAVE,REFLEX SAVE,SAUVEGARDE
+Damage Reduction 3/,Damage Reduction 3/―,Réduction de dégâts 3/
+Fast Movement,Fast Movement +60 ft,Déplacement accéléré
++60 ft,Fast Movement +60 ft,+18 m
+Trackless Step,"Trackless Step|Leave no trail, unless deliberately",PASSAGE SANS TRACES
+"Leave no trail, unless deliberately","Trackless Step|Leave no trail, unless deliberately","Vous ne laissez pas de traces, sauf délibérement"
+TALENTS,TALENTS|KNOWN,TALENTS
+KNOWN,TALENTS|KNOWN,CONNUS
+Level,100’+ 10’ × Level,Niveau
+STRENTH|SCORE,STRENTH|SCORE|BONUS,FORCE|SCORE
+BONUS,STRENTH|SCORE|BONUS,BONUS
+CMD,CMD BONUS,DMD
+BONUS,CMD BONUS,BONUS
+SPELL,SPELL RESISTANCE,RÉSISTANCE
+RESISTANCE,SPELL RESISTANCE,À LA MAGIE
+POWER POINTS,POWER POINTS|MAX COST,POINTS DE POUVOIR
+MAX COST,POWER POINTS|MAX COST,COUT MAX
+SPECIALITY,SPECIALITY SCHOOL,Spécialisation
+SCHOOL,SPECIALITY SCHOOL,École 
 Slow Fall,Slow Fall 20 ft,Chute ralentie
 20 ft,Slow Fall 20 ft,6 m
+TRAP SENSE,TRAP SENSE|REFLEX BONUS,SENS DES PIEGES
+REFLEX BONUS,TRAP SENSE|REFLEX BONUS,BONUS DE REFLEXES
+Fast Movement,Fast Movement +40 ft,Déplacement accéléré
++40 ft,Fast Movement +40 ft,+12 m
 WIS,(WIS minimum 1),SAG
 minimum 1),(WIS minimum 1),minimum 1)
+POWER,POWER|PER DAY,POUVOIR
+PER DAY,POWER|PER DAY,PAR JOUR
+FASCINATE,FASCINATE|MAX AUDIENCE,FASCINER
+MAX AUDIENCE,FASCINATE|MAX AUDIENCE,AUDIENCE MAX
+ATTACK,ATTACK BONUS,ATTAQUE
+BONUS,ATTACK BONUS,BONUS
+Knowledge -,Knowledge - INT|Profession - WIS,Connaissances - 
+INT,Knowledge - INT|Profession - WIS,INT
+Profession -,Knowledge - INT|Profession - WIS,Profession -
+WIS,Knowledge - INT|Profession - WIS,SAG
+loyalty,+1 loyalty,loyauté
+TAKE 20,TAKE 20 PER DAY,FAIRE 20
+PER DAY,TAKE 20 PER DAY,PAR JOUR
+WIS,Bonus Spells|WIS,SAG
+DAMAGE,DAMAGE|REDUCTION,DOMMAGES
+REDUCTION,DAMAGE|REDUCTION,REDUCTION
+FLAT-FOOTED,FLAT-FOOTED ARMOUR CLASS,PRIS AU DEPOURVU
+ARMOUR CLASS,FLAT-FOOTED ARMOUR CLASS,CLASSE D'ARMURE
+SNEAK DAMAGE,SNEAK DAMAGE|BONUS,BONUS DE DÉGÂTS
+BONUS,SNEAK DAMAGE|BONUS,D'ATTAQUE SOURNOISE
+CONSTITUTION|SCORE,CONSTITUTION|SCORE|BONUS,SCORE de|CONSTITUTION
+BONUS,CONSTITUTION|SCORE|BONUS,BONUS
+DEFLECTION,DEFLECTION|BONUS,DEFLECTION
+BONUS,DEFLECTION|BONUS,BONUS
+Treated as an Outsider,Treated as an Outsider|Immune to Charm Person and other effects that|target non-outsiders.|Damage reduction 10/chaotic,Considéré comme Planaire
+Immune to Charm Person and other effects that|target non-outsiders.|Damage reduction,Treated as an Outsider|Immune to Charm Person and other effects that|target non-outsiders.|Damage reduction 10/chaotic,Immunisé à Charme Personne et autres effets qui|ciblent les non-planaires.|Réduction de Dommages
+10/chaotic,Treated as an Outsider|Immune to Charm Person and other effects that|target non-outsiders.|Damage reduction 10/chaotic,10/chaotique
+HEALING,HEALING|HIT POINTS,SOINS
+HIT POINTS,HEALING|HIT POINTS,POINTS DE VIE
+INT,+ INT| per level,INT
+per level,+ INT| per level,par niveau
+MIGHTY,MIGHTY RAGE!,MAITRE
+RAGE!,MIGHTY RAGE!,RAGE!
+Slow Fall,Slow Fall 80 ft,Chute ralentie
+80 ft,Slow Fall 80 ft,24 m
+STUNNING FIST,STUNNING FIST|PER DAY,COUP ETOURDISSANT
+PER DAY,STUNNING FIST|PER DAY,PAR JOUR
+ETHERIAL,ETHERIAL|ROUNDS,ETHERE
+ROUNDS,ETHERIAL|ROUNDS,TOURS
+RAGE!,RAGE!  DURATION|PER DAY,RAGE !
+DURATION,RAGE!  DURATION|PER DAY,DUREE
+PER DAY,RAGE!  DURATION|PER DAY,PAR JOUR
+(which grants,(which grants +16 to Acrobatics),(qui donne
+to Acrobatics),(which grants +16 to Acrobatics),à Acrobaties)
+Slow Fall,Slow Fall 30 ft,Chute ralentie
+30 ft,Slow Fall 30 ft,9 m
 Use monk level in place of,Use monk level in place of BAB for calculating CMB,Utiliser votre Niveau de Moine à la Place de
 BAB,Use monk level in place of BAB for calculating CMB,BBA
 for calculating,Use monk level in place of BAB for calculating CMB,Pour calculer
 CMB,Use monk level in place of BAB for calculating CMB,BMO
+COMBAT MANOEUVRE,COMBAT MANOEUVRE|BONUS,MANOEUVRE DE COMBAT
+BONUS,COMBAT MANOEUVRE|BONUS,BONUS
+FOES,FOES|PER DAY,ENNEMIS
+PER DAY,FOES|PER DAY,PAR JOUR
+(which grants,(which grants +12 to Acrobatics),(qui donne
+to Acrobatics),(which grants +12 to Acrobatics),à Acrobaties)
+Fast Movement,Fast Movement +50 ft,Déplacement accéléré
++50 ft,Fast Movement +50 ft,+15 m
+Cost:,Cost: 2 pt,Coût:
+2 pt,Cost: 2 pt,2 pts
+Class|Skills,Class|Skills|+3,Classe|Compétences
 RAGE!,RAGE! POWERS |KNOWN,POUVOIRS DE
 POWERS,RAGE! POWERS |KNOWN,RAGE !
 KNOWN,RAGE! POWERS |KNOWN,CONNUS
-RAGE!,RAGE!|TODAY,RAGE !
-TODAY,RAGE!|TODAY,AUJOURD'HUI
+DURATION,DURATION|PER DAY,DUREE
+PER DAY,DURATION|PER DAY,PAR JOUR
+Damage Reduction 5/,Damage Reduction 5/―,Réduction de dégâts 5/
+Slow Fall,Slow Fall 50 ft,Chute ralentie
+50 ft,Slow Fall 50 ft,15 m
+WILL,WILL|SAVE DC,VOLONTE
+WILL|SAVE,WILL|SAVE DC,VOLONTE|SAUVEGARDE
+DC,WILL|SAVE DC,DD
+TOUCH,TOUCH ARMOUR CLASS,CONTACT
+ARMOUR CLASS,TOUCH ARMOUR CLASS,CLASSE D'ARMURE
+Fast Movement,Fast Movement +30 ft,Déplacement accéléré
++30 ft,Fast Movement +30 ft,+9 m
+(which grants,(which grants +8 to Acrobatics),(qui donne
+to Acrobatics),(which grants +8 to Acrobatics),à Acrobaties)
+Slow Fall,Slow Fall 70 ft,Chute ralentie
+70 ft,Slow Fall 70 ft,21 m
+MAX POWER,MAX POWER|LEVEL,POUVOIR MAX
+LEVEL,MAX POWER|LEVEL,NIVEAU
+DC,DC 20,DD
+COMBAT MANOEUVRE,COMBAT MANOEUVRE|DEFENCE,MANOEUVRES DE COMBAT
+DEFENCE,COMBAT MANOEUVRE|DEFENCE,DEFENSE
+Damage Reduction 2/,Damage Reduction 2/―,Réduction de dégâts 2/
+Fast Movement,Fast Movement +10 ft,Déplacement accéléré
++10 ft,Fast Movement +10 ft,+3 m
+FATIGUED,FATIGUED|DURATION,FATIGUE
+DURATION,FATIGUED|DURATION,DUREE
+GREATER,GREATER RAGE!,SUPERIEURE
+RAGE!,GREATER RAGE!,RAGE!
+Dexterity Score|Penalty:,Dexterity Score|Penalty: -2,Score de dextérité|Pénalité:
+CHANNEL,CHANNEL|RANGE,CANALISATION
+RANGE,CHANNEL|RANGE,PORTEE
 Slip magically between spaces -,Slip magically between spaces - 2 ki points,Se faufile magiquement dans les espaces -
 2 ki points,Slip magically between spaces - 2 ki points,2 points de ki
+Heal your own wounds -,Heal your own wounds - 2 ki points,Soigner ses blessures - 
+2 ki points,Heal your own wounds - 2 ki points,2 points de Ki
+Damage Reduction 1/,Damage Reduction 1/―,Réduction de dégâts 1/
+Slow Fall,Slow Fall 90 ft,Chute ralentie
+90 ft,Slow Fall 90 ft,27 m
+BASE|ATTACK,BASE|ATTACK BONUS,BASE|A L'ATTAQUE
+BONUS,BASE|ATTACK BONUS,BONUS
+MASTER STRIKE,MASTER STRIKE|FORTITUDE DC,COUP DE MAÎTRE
+Tireless,Tireless RAGE!,Sans Fatigue
+RAGE!,Tireless RAGE!,RAGE!
+EVIL DAMAGE,EVIL DAMAGE|BONUS,BONUS AUX DOMMAGES
+BONUS,EVIL DAMAGE|BONUS,CONTRE LE MAL
+(which grants,(which grants +20 to Acrobatics),(qui donne 
+to Acrobatics),(which grants +20 to Acrobatics),à Acrobaties)
+saving throws against enchantment,+2 saving throws against enchantment,jets de sauvegarde contre l'enchantement
+ARCANE SPELL FAILURE,ARCANE SPELL FAILURE THRESHOLD,RISQUE D'ÉCHEC DES
+THRESHOLD,ARCANE SPELL FAILURE THRESHOLD,SORTS PROFANES
+A Thousand Faces,A Thousand Faces|Change appearance at will,Mille Visages
+Change appearance at will,A Thousand Faces|Change appearance at will,Changer d'apparence à volonté
+loyalty,-1 loyalty,loyauté
+INSPIRE GREATNESS,INSPIRE GREATNESS  MAX AFFECTED,INSPIRER LA GRANDEUR
+MAX AFFECTED,INSPIRE GREATNESS  MAX AFFECTED,MAX AFFECTES
+KI POOL,KI POOL|CAPACITY,RESERVE DE KI
+CAPACITY,KI POOL|CAPACITY,CAPACITE
+OPPOSED,OPPOSED SCHOOLS,OPPOSÉES 
+SCHOOLS,OPPOSED SCHOOLS,ÉCOLES
+RAGE!,RAGE!|TODAY,RAGE !
+TODAY,RAGE!|TODAY,AUJOURD'HUI
+ARMOUR|CLASS,ARMOUR|CLASS|PENALTY,CLASSE|D'ARMURE
+PENALTY,ARMOUR|CLASS|PENALTY,PENALITE
 WILL|SAVE,WILL|SAVE|BONUS,VOLONTE|SAUVEGARDE
 BONUS,WILL|SAVE|BONUS,BONUS
+to jump checks -,+20 to jump checks - 1 ki point,aux jets de saut -
+1 ki point,+20 to jump checks - 1 ki point,1 point de Ki
+INITIATIVE,INITIATIVE BONUS,BONUS D'
+BONUS,INITIATIVE BONUS,INITIATIVE
+Slow Fall,Slow Fall 40 ft,Chute ralentie
+40 ft,Slow Fall 40 ft,12 m
+ENERGY,ENERGY|ROLL,ENERGIE
+ROLL,ENERGY|ROLL,JET
+POWERS,POWERS|KNOWN,POUVOIRS
+KNOWN,POWERS|KNOWN,CONNUS
+Assume ethereal state for 1 minute -,Assume ethereal state for 1 minute - 3 ki points,Prend une forme éthérée pendant 1 minute -
+3 ki points,Assume ethereal state for 1 minute - 3 ki points,3 points de ki
+Fast Movement,Fast Movement +20 ft,Déplacement accéléré
++20 ft,Fast Movement +20 ft,+6 m
+Woodland Stride,Woodland Stride|Move through undergrowth at normal speed|and taking no damage,Déplacement Facilité
+Move through undergrowth at normal speed|and taking no damage,Woodland Stride|Move through undergrowth at normal speed|and taking no damage,Progresse à vitesse normale dans les taillis|ne prenant aucun dégâts
+INSPIRE HEROICS,INSPIRE HEROICS  MAX AFFECTED,INSPIRATION HEROIQUE
+MAX AFFECTED,INSPIRE HEROICS  MAX AFFECTED,MAX AFFECTES
+Wild Empathy,Wild Empathy|Improve the attitude of an animal,Empathie sauvage
+Improve the attitude of an animal,Wild Empathy|Improve the attitude of an animal,Améliore l'attitude d'un animal
+Acrobatics DC = Opponent’s,Acrobatics DC = Opponent’s CMD,DD Acrobaties = Adversaire
+CMD,Acrobatics DC = Opponent’s CMD,CMD
+Slow Fall,Slow Fall 60 ft,Chute ralentie
+60 ft,Slow Fall 60 ft,18 m
+Resist Nature’s Lure,Resist Nature’s Lure|+4 to saves against the fey and plants,Résister à l'Appel de la Nature
++4 to saves against the fey and plants,Resist Nature’s Lure|+4 to saves against the fey and plants,+4 aux jets de sauvegarde contre les Fées et les Plantes
+ft,30 ft,pds
+Bonus Spells,Bonus Spells|CHA,Sorts supplémentaires
+Timeless Body,"Timeless Body|No longer age, cannot be magically aged",Éternelle jeunesse
+"No longer age, cannot be magically aged","Timeless Body|No longer age, cannot be magically aged",Cesse de vieillir ; immunisé contre le vieillissement magique
+FORTITUDE|SAVE,FORTITUDE|SAVE DC,DD DU JET|DE
+DC,FORTITUDE|SAVE DC,VIGUEUR
+USES,USES|PER DAY,UTILISATIONS
+PER DAY,USES|PER DAY,PAR JOUR
+SHARE FAVOURED ENEMY,SHARE FAVOURED ENEMY|DURATION,PARTAGER ENNEMI JURE
+DURATION,SHARE FAVOURED ENEMY|DURATION,DUREE
+POWER POINTS,POWER POINTS|PER DAY,POINTS DE POUVOIR
+PER DAY,POWER POINTS|PER DAY,PAR JOUR
+Damage Reduction 4/,Damage Reduction 4/―,Réduction de dégâts 4/
+TOUCH,TOUCH AC,TOUCHER
+AC,TOUCH AC,CA
+AC,AC BONUS,CA
+BONUS,AC BONUS,BONUS
+2 × (d10 +,"2 × (d10 + CON) temporary hit points,|+2 attack, +1 fortitude save",2 x (d10 + 
+CON,"2 × (d10 + CON) temporary hit points,|+2 attack, +1 fortitude save",CON
+") temporary hit points,|+2 attack, +1 fortitude save","2 × (d10 + CON) temporary hit points,|+2 attack, +1 fortitude save",") points de vie temporaires,|+2 à l'attaque, +1 aux jets de sauvegarde vigueur"
+(which grants,(which grants +4 to Acrobatics),(qui donne 
+to Acrobatics),(which grants +4 to Acrobatics),à Acrobaties)
+CHANNEL,CHANNEL|PER DAY,CANALISATION
+PER DAY,CHANNEL|PER DAY,PAR JOUR
+Wild Shape,Wild Shape|Become any small or medium animal,Forme animale
+Become any small or medium animal,Wild Shape|Become any small or medium animal,Se transformer en un animal de taille P ou M
 Trap Sense +3,"",Sens des pièges +3
 INSPIRE COMPETENCE,"",INSPIRATION TALENTUEUSE
 Cleric|Level,"",Prêtre|Niveau
@@ -451,7 +453,7 @@ MYTHIC POWER,"",POUVOIR MYTHIQUE
 MONK,"",MOINE
 Recover all hit points with 8 hours rest,"",Récupérez tous vos points de vie après 8h de repos
 CHA - 4,"",CHA - 4
-Paladin|Level,"",Paladin|Niveau
+Paladin|Level,"",Niveau|de Paladin
 • Fascinated,"",* Fasciné
 Unlimited uses|per day,"",Utilisations illimitées|par jour
 LONG JUMP,"",SAUT EN LONGUEUR
@@ -459,7 +461,7 @@ BASE ATTACK|BONUS,"",BONUS DE BASE|A L'ATTAQUE
 MASTER STRIKE,"",COUP DE MAÎTRE
 Bonus,"",Bonus
 CHARACTER,"",PERSONNAGE
-Barbarian|Level,"",Barbare|Niveau
+Barbarian|Level,"",Niveau|de Barbare
 Stun (or other effects) target for one round,"",Etourdi (ou autres effets) la cible pour un round
 "Master strike cannot be used again on the same target within|24 hours, whether they pass the Fortitude save or not.","","Coup de maître ne peut pas être utilisé à nouveau sur la même cible endéans|24 heures, qu'elle passe son jet de vigueur ou non."
 DIAMOND SOUL,"",CORPS DE DIAMANT
@@ -557,6 +559,7 @@ Spell Failure,"",Echec des sorts
 Half-elf,"",Demi-elfe
 2d8,"",2d8
 Ability Modifier =|    (Total Ability Score - 10) ÷ 2,"",Modificateur de Caractérisitque =| (Score Total de la Caractéristique - 10) ÷ 2
+Light <weight>,"",Léger
 Manyshot,"",Feu nourri
 Linguistics,"",Linguistique
 HIT POINTS & SKILL RANKS,"",POINTS DE VIE & RANGS DE COMPETENCES
@@ -973,7 +976,7 @@ Temp Speed,"",Vitesse temp
 POWER STONES,"",PIERRES DE POUVOIR
 Artificer|Level,"",Niveau|d'Artificier
 Granted Power,"",Pouvoir Accordé
-Rogue|Level,"",Roublard|Niveau
+Rogue|Level,"",Niveau|de Roublard
 Swim Speed,"",Vitesse de nage
 Channel Positive Energy,"",Canalisation d'énergie positive
 VERSATILE PERFORMANCE,"",VERSATILITE ARTISTIQUE

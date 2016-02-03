@@ -1,133 +1,133 @@
 Original,Part of,Translation
-Cost:,Cost: 1 pt,Custo:
-1 pt,Cost: 1 pt,1pt
-FORTITUDE|SAVE,FORTITUDE|SAVE DC,Fortitude|Resistência
-DC,FORTITUDE|SAVE DC,CD
-TRAP SENSE,TRAP SENSE|BONUS,SENTIR ARMADILHA
-BONUS,TRAP SENSE|BONUS,BÔNUS
-5ft,÷ 5 ) × 5ft,1.5m
-WILL,WILL SAVE DC,VONTADE
-SAVE DC,WILL SAVE DC,RESISTÊNCIA CD
-RAGE!,RAGE!|Duration,FÚRIA!
-Duration,RAGE!|Duration,Duração
-70 ft,Slow Fall 70 ft,21m
-5ft,Pack Attack    Ally’s attack allows you to take 5ft step,1.5m
-AC,AC BONUS,CA
-BONUS,AC BONUS,BÔNUS
-KI POOL,KI POOL|CAPACITY,PISCINA DE KI
-CAPACITY,KI POOL|CAPACITY,CAPACIDADE
-ft,30 ft,m
-TOUCH,TOUCH ARMOUR CLASS,TOQUE
-ARMOUR CLASS,TOUCH ARMOUR CLASS,CLASSE DE ARMADURA
-+30 ft,Fast Movement +30 ft,+9m
-REFLEX,REFLEX SAVE,REFLEXO
-SAVE,REFLEX SAVE,RESISTÊNCIA
-Darkvision 60ft,Darkvision 60ft| • Can see without any light at all| • Invisible objects are still invisible| • Darkvision is black and white,Visão no Escuro 18m
-FORTITUDE,FORTITUDE SAVE,Fortitude
-SAVE,FORTITUDE SAVE,Resistência
-ft,10 ft  2 sq,m
-50 ft,Slow Fall 50 ft,15m
-+10 ft,Fast Movement +10 ft,+3m
-+20 ft,Fast Movement +20 ft,+6m
-Strength Score|Penalty:,Strength Score|Penalty: -2,Pontos de Força|Penalidade:
-30ft,"Harm spirits, 1d6 /level, within 30ft",9m
-FASCINATE,FASCINATE|MAX AUDIENCE,FASCINAR
-MAX AUDIENCE,FASCINATE|MAX AUDIENCE,MÁXIMA AUDIÊNCIA
-Dexterity Score|Penalty:,Dexterity Score|Penalty: -2,Pontos de Destreza|Penalidade:
 90 ft,Slow Fall 90 ft,27m
-STRENTH|SCORE,STRENTH|SCORE|BONUS,FORÇA
-BONUS,STRENTH|SCORE|BONUS,MODIFICADOR
-ENERGY,ENERGY|ROLL,ENERGIA
-ROLL,ENERGY|ROLL,ROLAGEM
-+60 ft,Fast Movement +60 ft,+18m
-2 × (d10 +,"2 × (d10 + CON) temporary hit points,|+2 attack, +1 fortitude save",2 × (d10 +
-WILL,WILL SAVE,VONTADE
-SAVE,WILL SAVE,RESISTENCIA
-30ft,"Attack range 30ft, half damage to targets of the wrong type",9m
-SNEAK DAMAGE,SNEAK DAMAGE|BONUS,DANO FURTIVO
-BONUS,SNEAK DAMAGE|BONUS,BÔNUS
-WILL|SAVE,WILL|SAVE|BONUS,Teste de|Vontade
-BONUS,WILL|SAVE|BONUS,Bônus
-FATIGUED,FATIGUED|DURATION,FATIGADO
-DURATION,FATIGUED|DURATION,DURAÇÃO
-+40 ft,Fast Movement +40 ft,+12m
-20ft aura of luck -,20ft aura of luck - 2 or more ki points,6m de Aura da Sorte - 
-+10 ft,Speed +10 ft,+10m
-GREATER,GREATER RAGE!,FÚRIA
-RAGE!,GREATER RAGE!,MAIOR!
-30 ft,Slow Fall 30 ft,9m
-Timeless Body,"Timeless Body|No longer age, cannot be magically aged",Corpo Atemporal
-"No longer age, cannot be magically aged","Timeless Body|No longer age, cannot be magically aged","Não envelhece, ignora magias de envelhecimento"
-ft,20 ft  4 sq,m
-80 ft,Slow Fall 80 ft,24m
-ft,= 5 ft + ( 5 ft ×,m
-DURATION,DURATION|PER DAY,DURAÇÃO
-PER DAY,DURATION|PER DAY,POR DIA
-Scent 30ft,"Scent 30ft| • Detect enemies, determine direction as a move action| • Track creatures using Survival| • Range of 30ft, or 60ft downwind, 15ft upwind;strong smells double range, overpowering smells triple",Farejar 9m
-30ft,"Scent 30ft| • Detect enemies, determine direction as a move action| • Track creatures using Survival| • Range of 30ft, or 60ft downwind, 15ft upwind;strong smells double range, overpowering smells triple",9m
-60ft,"Scent 30ft| • Detect enemies, determine direction as a move action| • Track creatures using Survival| • Range of 30ft, or 60ft downwind, 15ft upwind;strong smells double range, overpowering smells triple",18m
-15ft,"Scent 30ft| • Detect enemies, determine direction as a move action| • Track creatures using Survival| • Range of 30ft, or 60ft downwind, 15ft upwind;strong smells double range, overpowering smells triple",4.5m
-Nature Sense,Nature Sense|+2 to Knowledge (nature) and Survival,Senso da Natureza
-+2 to Knowledge (nature) and Survival,Nature Sense|+2 to Knowledge (nature) and Survival,+2 em Conhecimento (natureza) e em Sobrevivência
-RAGE!,RAGE!  DURATION|PER DAY,FÚRIA!
-DURATION,RAGE!  DURATION|PER DAY,DURAÇÃO
-PER DAY,RAGE!  DURATION|PER DAY,POR DIA
-Acrobatics DC = Opponent’s,Acrobatics DC = Opponent’s CMD,CD de Acrobacia = do Oponente
-CMD,Acrobatics DC = Opponent’s CMD,MCD
-20ft,Treat unarmed attacks as magic weapons|Increase range of a thrown object 20ft - 1 ki point,6m
-30 ft / 6 sq,Default range increment|30 ft / 6 sq.,9m / 6 quad
-WILD EMPATHY,WILD EMPATHY|BONUS,EMPATIA COM A NATUREZA
-BONUS,WILD EMPATHY|BONUS,BÔNUS
-RAGE!,RAGE!|TODAY,FÚRIA!
-TODAY,RAGE!|TODAY,HOJE
-20 ft,Slow Fall 20 ft,6m
-Acrobatics DC = 5 + Opponent’s,Acrobatics DC = 5 + Opponent’s CMD,CD de Acrobacia = 5 + do Oponente
-CMD,Acrobatics DC = 5 + Opponent’s CMD,MCD
-ARMOUR|CLASS,ARMOUR|CLASS|PENALTY,CLASSE DE|ARMADURA
-PENALTY,ARMOUR|CLASS|PENALTY,PENALIDADE
-FLAT-FOOTED,FLAT-FOOTED ARMOUR CLASS,SURPRESA
-ARMOUR CLASS,FLAT-FOOTED ARMOUR CLASS,CLASSE DE ARMADURA
-CONSTITUTION|SCORE,CONSTITUTION|SCORE|BONUS,CONSTITUIÇÃO
-BONUS,CONSTITUTION|SCORE|BONUS,MODIFICADOR
-ARCANE SPELL FAILURE,ARCANE SPELL FAILURE THRESHOLD,FALHA ARCANA
-THRESHOLD,ARCANE SPELL FAILURE THRESHOLD,LIMIAR
-MIGHTY,MIGHTY RAGE!,FÚRIA
-RAGE!,MIGHTY RAGE!,PODEROSA!
-TALENTS,TALENTS|KNOWN,TALENTOS
-KNOWN,TALENTS|KNOWN,CONHECIDOS
-CMD,CMD BONUS,MDC
-BONUS,CMD BONUS,Bônus
-Tireless,Tireless RAGE!,FÚRIA!
-RAGE!,Tireless RAGE!,Incansável
-60 ft,Slow Fall 60 ft,18m
-+50 ft,Fast Movement +50 ft,+15m
-"30ft cone of fire, deals 2d6 damage -","30ft cone of fire, deals 2d6 damage - 4 ki points","cone de fogo de 9m, dá 2d6 de dano -"
-40 ft,Slow Fall 40 ft,12m
-Wild Empathy,Wild Empathy|Improve the attitude of an animal,Empatia com a Natureza
-Improve the attitude of an animal,Wild Empathy|Improve the attitude of an animal,Melhora a Atitude de um Animal
 Wild Shape,Wild Shape|Become any small or medium animal,Forma Selvagem
 Become any small or medium animal,Wild Shape|Become any small or medium animal,Torna-se qualquer animal médio ou pequeno
-30 ft / 6 sq,The default range increment of a |thrown mind blade is 30 ft / 6 sq.,9m / 6quad
+TALENTS,TALENTS|KNOWN,TALENTOS
+KNOWN,TALENTS|KNOWN,CONHECIDOS
++20 ft,Fast Movement +20 ft,+6m
+FLAT-FOOTED,FLAT-FOOTED ARMOUR CLASS,SURPRESA
+ARMOUR CLASS,FLAT-FOOTED ARMOUR CLASS,CLASSE DE ARMADURA
+USES,USES|PER DAY,USOS
+PER DAY,USES|PER DAY,POR DIA
+DAMAGE,DAMAGE|REDUCTION,Redução de
+REDUCTION,DAMAGE|REDUCTION,Dano
+ft,20 ft  4 sq,m
+Darkvision 60ft,Darkvision 60ft| • Can see without any light at all| • Invisible objects are still invisible| • Darkvision is black and white,Visão no Escuro 18m
 WILL,WILL|SAVE DC,VONTADE
 WILL|SAVE,WILL|SAVE DC,VONTADE|RESISTÊNCIA
 SAVE DC,WILL|SAVE DC,CD DE RESISTÊNCIA
 DC,WILL|SAVE DC,CD
+REFLEX,REFLEX SAVE,REFLEXO
+SAVE,REFLEX SAVE,RESISTÊNCIA
+Bonus Spells,Bonus Spells|WIS,Magias Bônus
+WIS,Bonus Spells|WIS,SAB
+20ft,Treat unarmed attacks as magic weapons|Increase range of a thrown object 20ft - 1 ki point,6m
+KI POOL,KI POOL|CAPACITY,PISCINA DE KI
+CAPACITY,KI POOL|CAPACITY,CAPACIDADE
+RAGE!,RAGE!  DURATION|PER DAY,FÚRIA!
+DURATION,RAGE!  DURATION|PER DAY,DURAÇÃO
+PER DAY,RAGE!  DURATION|PER DAY,POR DIA
+RAGE!,RAGE!|TODAY,FÚRIA!
+TODAY,RAGE!|TODAY,HOJE
+DURATION,DURATION|PER DAY,DURAÇÃO
+PER DAY,DURATION|PER DAY,POR DIA
+Acrobatics DC = Opponent’s,Acrobatics DC = Opponent’s CMD,CD de Acrobacia = do Oponente
+CMD,Acrobatics DC = Opponent’s CMD,MCD
+80 ft,Slow Fall 80 ft,24m
+CONSTITUTION|SCORE,CONSTITUTION|SCORE|BONUS,CONSTITUIÇÃO
+BONUS,CONSTITUTION|SCORE|BONUS,MODIFICADOR
+5ft,Pack Attack    Ally’s attack allows you to take 5ft step,1.5m
+FORTITUDE,FORTITUDE SAVE,Fortitude
+SAVE,FORTITUDE SAVE,Resistência
+AC,AC BONUS,CA
+BONUS,AC BONUS,BÔNUS
+20ft aura of luck -,20ft aura of luck - 2 or more ki points,6m de Aura da Sorte - 
+30 ft,Slow Fall 30 ft,9m
++10 ft,Speed +10 ft,+10m
++10 ft,Fast Movement +10 ft,+3m
+INITIATIVE,INITIATIVE BONUS,INICIATIVA
+BONUS,INITIATIVE BONUS,BÔNUS
+WILL,WILL SAVE DC,VONTADE
+SAVE DC,WILL SAVE DC,RESISTÊNCIA CD
+Strength Score|Penalty:,Strength Score|Penalty: -2,Pontos de Força|Penalidade:
+ARMOUR|CLASS,ARMOUR|CLASS|PENALTY,CLASSE DE|ARMADURA
+PENALTY,ARMOUR|CLASS|PENALTY,PENALIDADE
+Wild Empathy,Wild Empathy|Improve the attitude of an animal,Empatia com a Natureza
+Improve the attitude of an animal,Wild Empathy|Improve the attitude of an animal,Melhora a Atitude de um Animal
++30 ft,Fast Movement +30 ft,+9m
+5ft,÷ 5 ) × 5ft,1.5m
+30 ft / 6 sq,Default range increment|30 ft / 6 sq.,9m / 6 quad
+Acrobatics DC = 5 + Opponent’s,Acrobatics DC = 5 + Opponent’s CMD,CD de Acrobacia = 5 + do Oponente
+CMD,Acrobatics DC = 5 + Opponent’s CMD,MCD
+"30ft cone of fire, deals 2d6 damage -","30ft cone of fire, deals 2d6 damage - 4 ki points","cone de fogo de 9m, dá 2d6 de dano -"
+STRENTH|SCORE,STRENTH|SCORE|BONUS,FORÇA
+BONUS,STRENTH|SCORE|BONUS,MODIFICADOR
+Nature Sense,Nature Sense|+2 to Knowledge (nature) and Survival,Senso da Natureza
++2 to Knowledge (nature) and Survival,Nature Sense|+2 to Knowledge (nature) and Survival,+2 em Conhecimento (natureza) e em Sobrevivência
+ft,= 5 ft + ( 5 ft ×,m
+Tireless,Tireless RAGE!,FÚRIA!
+RAGE!,Tireless RAGE!,Incansável
+RAGE!,RAGE!|Duration,FÚRIA!
+Duration,RAGE!|Duration,Duração
+WILD EMPATHY,WILD EMPATHY|BONUS,EMPATIA COM A NATUREZA
+BONUS,WILD EMPATHY|BONUS,BÔNUS
+20 ft,Slow Fall 20 ft,6m
+30 ft / 6 sq,The default range increment of a |thrown mind blade is 30 ft / 6 sq.,9m / 6quad
+2 × (d10 +,"2 × (d10 + CON) temporary hit points,|+2 attack, +1 fortitude save",2 × (d10 +
+WILL,WILL SAVE,VONTADE
+SAVE,WILL SAVE,RESISTENCIA
+40 ft,Slow Fall 40 ft,12m
+30ft,Half of Ranger’s|Favoured Enemy|bonus granted to|allies within 30ft,9m
+30ft,"Attack range 30ft, half damage to targets of the wrong type",9m
+ft,15 ft  3 sq,m
+ft,10 ft  2 sq,m
+FATIGUED,FATIGUED|DURATION,FATIGADO
+DURATION,FATIGUED|DURATION,DURAÇÃO
+60 ft,Slow Fall 60 ft,18m
+ARCANE SPELL FAILURE,ARCANE SPELL FAILURE THRESHOLD,FALHA ARCANA
+THRESHOLD,ARCANE SPELL FAILURE THRESHOLD,LIMIAR
+Timeless Body,"Timeless Body|No longer age, cannot be magically aged",Corpo Atemporal
+"No longer age, cannot be magically aged","Timeless Body|No longer age, cannot be magically aged","Não envelhece, ignora magias de envelhecimento"
++50 ft,Fast Movement +50 ft,+15m
+Dexterity Score|Penalty:,Dexterity Score|Penalty: -2,Pontos de Destreza|Penalidade:
+FORTITUDE|SAVE,FORTITUDE|SAVE DC,Fortitude|Resistência
+DC,FORTITUDE|SAVE DC,CD
+TOUCH,TOUCH ARMOUR CLASS,TOQUE
+ARMOUR CLASS,TOUCH ARMOUR CLASS,CLASSE DE ARMADURA
+ENERGY,ENERGY|ROLL,ENERGIA
+ROLL,ENERGY|ROLL,ROLAGEM
+GREATER,GREATER RAGE!,FÚRIA
+RAGE!,GREATER RAGE!,MAIOR!
++40 ft,Fast Movement +40 ft,+12m
+Scent 30ft,"Scent 30ft| • Detect enemies, determine direction as a move action| • Track creatures using Survival| • Range of 30ft, or 60ft downwind, 15ft upwind;strong smells double range, overpowering smells triple",Farejar 9m
+30ft,"Scent 30ft| • Detect enemies, determine direction as a move action| • Track creatures using Survival| • Range of 30ft, or 60ft downwind, 15ft upwind;strong smells double range, overpowering smells triple",9m
+60ft,"Scent 30ft| • Detect enemies, determine direction as a move action| • Track creatures using Survival| • Range of 30ft, or 60ft downwind, 15ft upwind;strong smells double range, overpowering smells triple",18m
+15ft,"Scent 30ft| • Detect enemies, determine direction as a move action| • Track creatures using Survival| • Range of 30ft, or 60ft downwind, 15ft upwind;strong smells double range, overpowering smells triple",4.5m
+ft,30 ft,m
+WILL|SAVE,WILL|SAVE|BONUS,Teste de|Vontade
+BONUS,WILL|SAVE|BONUS,Bônus
+50 ft,Slow Fall 50 ft,15m
+CMD,CMD BONUS,MDC
+BONUS,CMD BONUS,Bônus
++60 ft,Fast Movement +60 ft,+18m
+MASTER STRIKE,MASTER STRIKE|FORTITUDE DC,ATAQUE MESTRE
+FORTITUDE DC,MASTER STRIKE|FORTITUDE DC,Fortitude CD
+SNEAK DAMAGE,SNEAK DAMAGE|BONUS,DANO FURTIVO
+BONUS,SNEAK DAMAGE|BONUS,BÔNUS
+30ft,"Harm spirits, 1d6 /level, within 30ft",9m
+MIGHTY,MIGHTY RAGE!,FÚRIA
+RAGE!,MIGHTY RAGE!,PODEROSA!
 No action this round|Lose,No action this round|Lose DEX bonus to AC; -2 AC,Sem ação nesta rodada|Perde
 DEX,No action this round|Lose DEX bonus to AC; -2 AC,DES
 bonus to,No action this round|Lose DEX bonus to AC; -2 AC,e ganha
 AC,No action this round|Lose DEX bonus to AC; -2 AC,CA
-ft,15 ft  3 sq,m
-MASTER STRIKE,MASTER STRIKE|FORTITUDE DC,ATAQUE MESTRE
-FORTITUDE DC,MASTER STRIKE|FORTITUDE DC,Fortitude CD
-Bonus Spells,Bonus Spells|WIS,Magias Bônus
-WIS,Bonus Spells|WIS,SAB
-DAMAGE,DAMAGE|REDUCTION,Redução de
-REDUCTION,DAMAGE|REDUCTION,Dano
-INITIATIVE,INITIATIVE BONUS,INICIATIVA
-BONUS,INITIATIVE BONUS,BÔNUS
-USES,USES|PER DAY,USOS
-PER DAY,USES|PER DAY,POR DIA
-30ft,Half of Ranger’s|Favoured Enemy|bonus granted to|allies within 30ft,9m
+70 ft,Slow Fall 70 ft,21m
+Cost:,Cost: 1 pt,Custo:
+1 pt,Cost: 1 pt,1pt
+FASCINATE,FASCINATE|MAX AUDIENCE,FASCINAR
+MAX AUDIENCE,FASCINATE|MAX AUDIENCE,MÁXIMA AUDIÊNCIA
+TRAP SENSE,TRAP SENSE|BONUS,SENTIR ARMADILHA
+BONUS,TRAP SENSE|BONUS,BÔNUS
 Cleric|Level,"",Nível de|Clérigo
 Druid Level,"",Nível de Druida
 CHAOTIC,"",CAÓTICO

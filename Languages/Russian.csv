@@ -1,33 +1,33 @@
 Original,Part of,Translation
-Wild Empathy,Wild Empathy|Improve the attitude of an animal,Дикое сопереживание
-Improve the attitude of an animal,Wild Empathy|Improve the attitude of an animal,Улучшает отношение животных
-Nature Sense,Nature Sense|+2 to Knowledge (nature) and Survival,Чувство природы
-+2 to Knowledge (nature) and Survival,Nature Sense|+2 to Knowledge (nature) and Survival,+2 к навыкам Знание (природа) и Выживание
-SNEAK DAMAGE,SNEAK DAMAGE|BONUS,"Подлый урон,"
-BONUS,SNEAK DAMAGE|BONUS,бонус
-DURATION,DURATION|PER DAY,ДЛИТЕЛЬНОСТЬ
-PER DAY,DURATION|PER DAY,В ДЕНЬ
-FORTITUDE|SAVE,FORTITUDE|SAVE DC,КС спаса
-DC,FORTITUDE|SAVE DC,Стойкости
-Wild Shape,Wild Shape|Become any small or medium animal,Дикая форма
-Become any small or medium animal,Wild Shape|Become any small or medium animal,Превращаться в любое маленькое или среднее животное
 Timeless Body,"Timeless Body|No longer age, cannot be magically aged",Вечное тело
 "No longer age, cannot be magically aged","Timeless Body|No longer age, cannot be magically aged","Больше не стареет, не может быть магически состарен"
-Dexterity Score|Penalty:,Dexterity Score|Penalty: -2,Штрав параметра|Ловкости:
-WILD EMPATHY,WILD EMPATHY|BONUS,Бонус Дикого сопереживания
-Bonus Spells,Bonus Spells|WIS,Бонусные заклятия
-WIS,Bonus Spells|WIS,WIS
-MIGHTY,MIGHTY RAGE!,МОГУЧАЯ
-RAGE!,MIGHTY RAGE!,ЯРОСТЬ!
-TALENTS,TALENTS|KNOWN,Талантов
-KNOWN,TALENTS|KNOWN,известно
+DURATION,DURATION|PER DAY,ДЛИТЕЛЬНОСТЬ
+PER DAY,DURATION|PER DAY,В ДЕНЬ
 No action this round|Lose,No action this round|Lose DEX bonus to AC; -2 AC,Нет действий в этом раунде|Теряет бонус
 DEX,No action this round|Lose DEX bonus to AC; -2 AC,DEX
 bonus to,No action this round|Lose DEX bonus to AC; -2 AC,к
 AC,No action this round|Lose DEX bonus to AC; -2 AC,КЗ
+Strength Score|Penalty:,Strength Score|Penalty: -2,Штрав параметра|Силы:
+MIGHTY,MIGHTY RAGE!,МОГУЧАЯ
+RAGE!,MIGHTY RAGE!,ЯРОСТЬ!
+Dexterity Score|Penalty:,Dexterity Score|Penalty: -2,Штрав параметра|Ловкости:
+Wild Shape,Wild Shape|Become any small or medium animal,Дикая форма
+Become any small or medium animal,Wild Shape|Become any small or medium animal,Превращаться в любое маленькое или среднее животное
+Nature Sense,Nature Sense|+2 to Knowledge (nature) and Survival,Чувство природы
++2 to Knowledge (nature) and Survival,Nature Sense|+2 to Knowledge (nature) and Survival,+2 к навыкам Знание (природа) и Выживание
+TALENTS,TALENTS|KNOWN,Талантов
+KNOWN,TALENTS|KNOWN,известно
 GREATER,GREATER RAGE!,БОЛЬШАЯ
 RAGE!,GREATER RAGE!,ЯРОСТЬ!
-Strength Score|Penalty:,Strength Score|Penalty: -2,Штрав параметра|Силы:
+WILD EMPATHY,WILD EMPATHY|BONUS,Бонус Дикого сопереживания
+FORTITUDE|SAVE,FORTITUDE|SAVE DC,КС спаса
+DC,FORTITUDE|SAVE DC,Стойкости
+Wild Empathy,Wild Empathy|Improve the attitude of an animal,Дикое сопереживание
+Improve the attitude of an animal,Wild Empathy|Improve the attitude of an animal,Улучшает отношение животных
+Bonus Spells,Bonus Spells|WIS,Бонусные заклятия
+WIS,Bonus Spells|WIS,WIS
+SNEAK DAMAGE,SNEAK DAMAGE|BONUS,"Подлый урон,"
+BONUS,SNEAK DAMAGE|BONUS,бонус
 Cleric|Level,"",Уровень|Жреца
 Druid Level,"",Уровень друида
 CHAOTIC,"",ХАОС
