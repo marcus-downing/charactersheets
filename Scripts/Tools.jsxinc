@@ -12,11 +12,11 @@ Array.prototype.contains = function(obj) {
         }
     }
     return false;
-}
+};
 
 Array.isArray = function(obj) {
      return Object.prototype.toString.call(obj) == "[object Array]";
-}
+};
 
 function isString (obj) {
   //return Object.prototype.toString.call(obj) == '[object String]';
@@ -55,11 +55,11 @@ String.prototype.replaceAll = function(target, replacement) {
   return this.split(target).join(replacement);
 };
 
-String.prototype.trim  = function () { return this.replace(/^\s\s*/, '').replace(/\s\s*$/, ''); }
+String.prototype.trim  = function () { return this.replace(/^\s\s*/, '').replace(/\s\s*$/, ''); };
 
-String.prototype.ltrim = function () { return this.replace(/^\s\s*/,''); }
+String.prototype.ltrim = function () { return this.replace(/^\s\s*/,''); };
 
-String.prototype.rtrim = function () { return this.replace(/\s\s*$/,''); }
+String.prototype.rtrim = function () { return this.replace(/\s\s*$/,''); };
 
 /*if (CMYKColor) {
      CMYKColor.prototype.equals()
@@ -168,12 +168,12 @@ Folder.prototype.ensureFolder = function () {
       this.parent.ensureFolder();
     this.create();
   }
-}
+};
 
 File.prototype.ensureParentFolder = function () {
   if (this.parent)
     this.parent.ensureFolder();
-}
+};
 
 
 // http://www.bennadel.com/blog/1504-Ask-Ben-Parsing-CSV-Strings-With-Javascript-Exec-Regular-Expression-Command.htm
@@ -262,7 +262,7 @@ File.prototype.readCSV = function () {
   }
 
   return arrData;
-}
+};
 
 
 
@@ -293,7 +293,7 @@ File.prototype.writeCSV = function (data, bom) {
           this.writeln(line);
      }
      this.close();
-}
+};
 
 
 Folder.prototype.getAllFiles = function () {
@@ -312,7 +312,7 @@ Folder.prototype.getAllFiles = function () {
   }
   recurse(this);
   return fileList;
-}
+};
 
 //  transform a CSV-style 2D array with headings into an array of objects
 Array.prototype.associate = function () {
@@ -330,7 +330,7 @@ Array.prototype.associate = function () {
     out.push(obj);
   }
   return out;
-}
+};
 
 //  transform an array of objects into a CSV-style 2D array with headings
 //  optionally make sure the first few headings appear in a given order
@@ -361,7 +361,7 @@ Array.prototype.dissociate = function (template) {
           out.push(tuple);
      }
      return out;
-}
+};
 
 Array.prototype.selectFields = function (fields) {
      var data = [];
@@ -374,7 +374,7 @@ Array.prototype.selectFields = function (fields) {
           data.push(newitem);
      }
      return data;
-}
+};
 
 
 function exportFolderAsPDF(sourceFolder, destinationFolder) {
