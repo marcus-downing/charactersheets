@@ -28,7 +28,7 @@ do
 
       echo "   * Large file: $LARGE"
       mkdir -p "$(dirname "$LARGE")"
-      convert -bordercolor white -border 10x10 "$F" png:- | ../Scripts/magicwand 0,0 -t 4 -r outside -c trans png:- png:- | convert -trim png:- "$LARGE"
+      convert -set colorspace sRGB -bordercolor white -border 10x10 +profile '*' "$F" png:- | ../Scripts/magicwand 0,0 -t 4 -r outside -c trans png:- png:- | convert -trim png:- "$LARGE"
 
       echo "   * Small file: $SMALL"
       mkdir -p "$(dirname "$SMALL")"
