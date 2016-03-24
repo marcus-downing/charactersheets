@@ -1,3 +1,27 @@
+#include json2.js
+
+var pathfinderSkills = [
+  "Acrobatics", "Appraise", "Athletics", "Autohypnosis", "Bluff", "Climb", "Concentration", "Diplomacy", 
+  "Disable Device", "Disarm Traps", "Disguise", "Escape Artist", "Finesse", "Fly", "Handle Animal", "Heal", 
+  "Influence", "Intimidate", "Linguistics", "Locate Traps", "Nature", "Perception", "Performance", "Religion",
+  "Ride", "Sense Motive", "Sleight of Hand", "Society", "Spellcraft", "Stealth", "Survival", "Swim", "Track",
+  "Use Magic Device", "Wild Empathy",
+  "Knowledge (arcana)", "Knowledge (dungeoneering)", "Knowledge (engineering)", 
+  "Knowledge (geography)", "Knowledge (history)", "Knowledge (local)", "Knowledge (nature)", 
+  "Knowledge (nobility)", "Knowledge (planes)", "Knowledge (religion)", "Knowledge (psionics)"
+];
+
+var dnd35skills = [
+  "Appraise", "Autohypnosis", "Balance", "Bluff", "Climb", "Concentration", "Control Shape", "Decipher Script", 
+  "Diplomacy", "Disable Device", "Disguise", "Escape Artist", "Forgery", "Gather Information", "Handle Animal", 
+  "Heal", "Hide", "Iaijutsu Focus", "Intimidate", "Jump", "Listen", "Martial Lore", "Move Silently", "Open Lock", 
+  "Psicraft", "Ride", "Scry", "Search", "Sense Motive", "Sleight of Hand", "Spellcraft", "Spot", "Survival", 
+  "Swim", "Track", "Truespeak", "Tumble", "Use Magic Device", "Use Rope",
+  "Knowledge (arcana)", "Knowledge (dungeoneering)", "Knowledge (engineering)", "Knowledge (geography)", 
+  "Knowledge (history)", "Knowledge (local)", "Knowledge (nature)", "Knowledge (nobility)", 
+  "Knowledge (religion)", "Knowledge (planes)", "Knowledge (psionics)"
+];
+
 var i18n = {
   messages: [],
   frameNum: 1,
@@ -251,14 +275,7 @@ var i18n = {
         "Pathfinder/GM/NPC Group.ai",
         "Pathfinder/Archetypes/Druid/World Walker - Character Info.ai"
       ],
-      additions: [
-        "Acrobatics", "Appraise", "Bluff", "Climb", "Diplomacy", "Disable Device", "Disarm Traps", "Disguise",
-        "Escape Artist", "Fly", "Handle Animal", "Heal", "Intimidate", "Linguistics", "Locate Traps", "Perception",
-        "Ride", "Sense Motive", "Sleight of Hand", "Spellcraft", "Stealth", "Survival", "Swim", "Track",
-        "Use Magic Device", "Knowledge (arcana)", "Knowledge (dungeoneering)", "Knowledge (engineering)", 
-        "Knowledge (geography)", "Knowledge (history)", "Knowledge (local)", "Knowledge (nature)", 
-        "Knowledge (nobility)", "Knowledge (planes)", "Knowledge (religion)", "Knowledge (psionics)"
-      ]
+      additions: pathfinderSkills
     },
     {
       pages: [
@@ -270,15 +287,7 @@ var i18n = {
         "3.5/DM/NPC.ai",
         "3.5/DM/NPC Group.ai"
       ],
-      additions: [
-        "Appraise", "Balance", "Bluff", "Climb", "Decipher Script", "Diplomacy", "Disable Device", "Disguise", 
-        "Escape Artist", "Forgery", "Gather Information", "Handle Animal", "Heal", "Hide", "Intimidate", 
-        "Jump", "Listen", "Move Silently", "Open Lock", "Psycraft", "Ride", "Search", "Sense Motive", "Sleight of Hand", 
-        "Spellcraft", "Spot", "Survival", "Swim", "Track", "Tumble", "Use Magic Device", "Use Rope",
-        "Knowledge (arcana)", "Knowledge (dungeoneering)", "Knowledge (engineering)", "Knowledge (geography)", 
-        "Knowledge (history)", "Knowledge (local)", "Knowledge (nature)", "Knowledge (nobility)", 
-        "Knowledge (religion)", "Knowledge (planes)", "Knowledge (psionics)"
-      ]
+      additions: dnd35skills
     }
   ],
 
@@ -296,7 +305,7 @@ var i18n = {
         "3.5/Extended/Artificer.ai",
         "3.5/Extended/Warmage.ai"
       ],
-      "replacements": [
+      replacements: [
         { from: ["Light", ""], to: ["Light <illumination>", ""] }
       ]
     },
@@ -313,11 +322,12 @@ var i18n = {
         "3.5/Core/Character Info - More.ai",
         "3.5/Core/Animal Companion.ai",
         "3.5/Barbarian/Character Info.ai",
-        "3.5/DM/NPC.ai",
+        "3.5/DM/NPC.ai"
+      ],
+      replacements: [
+        { "from": ["d", ""], to: ["d <dice>", ""] }
+      ]
     },
-    replacements: [
-      { "from ["d", ""], to: ["d <dice>", ""] }
-    ]
   ],
 
   getPageAdditions: function (filename) {
