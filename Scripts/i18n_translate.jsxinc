@@ -14,13 +14,13 @@ i18n.patternise = function (text) {
     text = i18n.denormalise(text);
     text = text.replaceAll('/', '\/');
     return '/'+text+'/';
-}
+};
 
 i18n.trailingWhitespace = function(text) {
   var text = String(text);
   var trimmed = text.rtrim();
   return text.substring(trimmed.length);
-}
+};
 
 i18n.loadTranslations = function (messagesFile) {
 	try {
